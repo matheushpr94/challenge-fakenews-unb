@@ -36,9 +36,17 @@ challenge-fakenews-unb/
 ├── src/             # código reutilizável (dataset, features, treino, avaliação)
 ├── docs/            # respostas das guiding questions e decisões
 ├── reports/         # resultados e figuras
+├── lume/            # produto: Android, servidor e prévia web
 ├── requirements.txt
 └── README.md
 ```
+
+## Produto Lume
+
+O [Lume](lume/README.md) é o protótipo de um mascote Android para ajudar a entender notícias e posts. O código do produto fica em `lume/`, separado dos experimentos acadêmicos com LIAR2. A versão atual é uma **demo offline**, com respostas e índices fictícios; o classificador do challenge ainda não está integrado ao app.
+
+- [Prévia web](https://lume-previa.vercel.app/) · [APK demo](https://lume-previa.vercel.app/downloads/lume-demo-0.2.0.apk)
+- [NLP, classificação e percentual de confiabilidade](lume/docs/ia-e-confiabilidade.md)
 
 ## Como rodar
 

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lume — primeira experiência</title><meta name="description" content="Experimente a prévia do Lume: um mascote que ajuda a entender notícias e posts. Demonstração com respostas de exemplo."><link rel="icon" type="image/png" href="assets/lume-mascot.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top"><a class="brand" href="#">lume<span>●</span></a><span class="edition">UM COMPANHEIRO DE LEITURA</span><span class="version">Conceito 02 <span>↗</span></span></header>
+  <main>
+    <section class="intro">
+      <div class="eyebrow"><span class="dot"></span> POR PERTO, QUANDO PRECISAR</div>
+      <h1>Uma dúvida?<br>Me chama.</h1>
+      <p class="lead">Um pequeno companheiro para entender<br class="desktop"> o que aparece na sua tela.</p>
+      <div class="character-stage"><div class="halo"></div><img src="assets/lume-mascot.png" alt="Lume: uma gotinha verde suave, com olhos curiosos e um pequeno sorriso" class="hero-mascot"><span class="note">oi, eu sou o lume :)<svg viewBox="0 0 90 65" aria-hidden="true"><path d="M8 8Q75 3 67 53M55 41L67 55 78 44"/></svg></span></div>
+      <div class="traits"><span>Curioso.</span><span>Tranquilo.</span><span>Do seu lado.</span></div>
+      <div class="android-download"><a href="https://lume-previa.vercel.app/downloads/lume-demo-0.2.0.apk" download>Baixar APK demo <span aria-hidden="true">↓</span></a><span>Android 8+ · sem consumo de IA</span><small>Instale, abra o Lume e permita exibir sobre outros apps.<br>Versão de teste com respostas fictícias.</small></div>
+    </section>
+    <section class="experience" aria-label="Demonstração do aplicativo">
+      <div class="demo-heading"><span>EXPERIMENTE O FLUXO</span><button id="reset" class="reset">Recomeçar ↺</button></div>
+      <div class="scenario-picker"><label for="scenario-select">Exemplo</label><select id="scenario-select"><option value="0">Notícia com lacunas</option><option value="1">Post sem fonte</option><option value="2">Notícia com evidências</option></select></div>
+      <div class="phone" id="phone">
+        <div class="status"><span>9:41</span><span class="camera"></span><span>▂▄▆ &nbsp;▰</span></div>
+        <nav class="browserbar" aria-label="Cenário"><button id="scenario" title="Próximo exemplo" aria-label="Mostrar o próximo exemplo">↔</button><span id="address">◈ &nbsp; notícias.exemplo</span><span>⋮</span></nav>
+        <div class="page" id="page">
+          <div class="news-logo">o cotidiano<span>EXEMPLO FICTÍCIO</span></div>
+          <div class="article-tag">CIDADES & VIDA</div>
+          <h2 id="article-title">Mais árvores,<br>ruas mais frescas?</h2>
+          <p class="article-deck" id="article-deck">Medição inicial sugere queda de 2 °C em ruas que receberam novas árvores.</p>
+          <div class="byline">Redação de exemplo &nbsp;·&nbsp; 3 min de leitura</div>
+          <div class="illustration" aria-label="Ilustração de árvores e bancos em uma praça">
+            <svg viewBox="0 0 320 160" aria-hidden="true"><rect width="320" height="160" fill="#E6EDDC"/><path d="M0 138Q80 90 162 130T320 117V160H0Z" fill="#D0DDBD"/><path d="M43 128V70M115 143V49M257 134V66" stroke="#687C52" stroke-width="8"/><ellipse cx="44" cy="53" rx="35" ry="42" fill="#98B18A"/><ellipse cx="116" cy="39" rx="43" ry="52" fill="#718E66"/><ellipse cx="258" cy="54" rx="48" ry="51" fill="#A4BB93"/><path d="M153 117H217M151 130H219M159 131V144M211 131V144" stroke="#8C7860" stroke-width="6"/><path d="M175 105H195" stroke="#8C7860" stroke-width="5"/></svg>
+          </div>
+          <p id="article-body">Um boletim do projeto relata temperaturas menores em uma tarde de medição. Faltam detalhes sobre o clima, o período de comparação e ruas sem o plantio. [Notícia fictícia.]</p>
+          <p class="article-fade">Moradores acompanham as mudanças e discutem os próximos passos para o bairro.</p>
+        </div>
+        <div class="tap-hint" id="hint">Ficou na dúvida? <span>→</span></div>
+        <button class="floating-mascot" id="mascot" aria-label="Chamar Lume para ler a tela"><img src="assets/lume-mascot.png" alt=""></button>
+        <div class="shade" id="shade" hidden></div>
+        <section class="sheet" id="sheet" aria-label="Painel do Lume" hidden>
+          <div class="handle"></div>
+          <div class="sheet-header"><img src="assets/lume-mascot.png" alt=""><b>lume</b><span id="state-label">por aqui</span><button id="close" aria-label="Fechar painel">×</button></div>
+          <div id="sheet-content" aria-live="polite" tabindex="-1"></div>
+        </section>
+        <div class="home-bar"></div>
+      </div>
+      <div class="demo-foot"><span class="dot"></span><p>Notícias, respostas e índices demonstrativos.<br>Toque no mascote e escolha “Checar evidências”.</p></div>
+    </section>
+  </main>
+  <footer><span>Você escolhe quando ele lê.</span><span>Android MVP · identidade em exploração</span></footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+# Configuração local e credenciais
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+local.properties
+.vercel/
+.openai/
+
+# Dependências, caches e saídas geradas
+node_modules/
+.gradle/
+.kotlin/
+**/build/
+*.apk
+*.aab
+*.zip
+*.log
+.DS_Store
+Thumbs.db
+
+# Resultados e capturas de testes locais
+captures/
+screenshots-local/
