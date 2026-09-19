@@ -6,15 +6,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="top"><a class="brand" href="#">lume<span>●</span></a><span class="edition">UM COMPANHEIRO DE LEITURA</span><span class="version">Conceito 02 <span>↗</span></span></header>
+  <header class="top"><a class="brand" href="#">lume<span>●</span></a><span class="edition">UM COMPANHEIRO DE LEITURA</span><span class="version">Conceito 03 <span>↗</span></span></header>
   <main>
     <section class="intro">
       <div class="eyebrow"><span class="dot"></span> POR PERTO, QUANDO PRECISAR</div>
       <h1>Uma dúvida?<br>Me chama.</h1>
       <p class="lead">Um pequeno companheiro para entender<br class="desktop"> o que aparece na sua tela.</p>
-      <div class="character-stage"><div class="halo"></div><img src="assets/lume-mascot.png" alt="Lume: uma gotinha verde suave, com olhos curiosos e um pequeno sorriso" class="hero-mascot"><span class="note">oi, eu sou o lume :)<svg viewBox="0 0 90 65" aria-hidden="true"><path d="M8 8Q75 3 67 53M55 41L67 55 78 44"/></svg></span></div>
+      <div class="character-stage"><div class="halo"></div><img data-lume src="assets/lume-mascot.png" alt="Lume: uma gotinha verde suave, com olhos curiosos e um pequeno sorriso" class="hero-mascot"><span class="note">oi, eu sou o lume :)<svg viewBox="0 0 90 65" aria-hidden="true"><path d="M8 8Q75 3 67 53M55 41L67 55 78 44"/></svg></span></div>
       <div class="traits"><span>Curioso.</span><span>Tranquilo.</span><span>Do seu lado.</span></div>
-      <div class="android-download"><a href="https://lume-previa.vercel.app/downloads/lume-demo-0.2.0.apk" download>Baixar APK demo <span aria-hidden="true">↓</span></a><span>Android 8+ · sem consumo de IA</span><small>Instale, abra o Lume e permita exibir sobre outros apps.<br>Versão de teste com respostas fictícias.</small></div>
+      <div class="android-download"><a href="https://lume-previa.vercel.app/downloads/lume-demo-0.3.0.apk" download>Baixar APK demo <span aria-hidden="true">↓</span></a><span>Android 8+ · sem consumo de IA</span><small>Instale, abra o Lume e permita exibir sobre outros apps.<br>Versão de teste com respostas fictícias.</small></div>
     </section>
     <section class="experience" aria-label="Demonstração do aplicativo">
       <div class="demo-heading"><span>EXPERIMENTE O FLUXO</span><button id="reset" class="reset">Recomeçar ↺</button></div>
@@ -35,11 +35,11 @@
           <p class="article-fade">Moradores acompanham as mudanças e discutem os próximos passos para o bairro.</p>
         </div>
         <div class="tap-hint" id="hint">Ficou na dúvida? <span>→</span></div>
-        <button class="floating-mascot" id="mascot" aria-label="Chamar Lume para ler a tela"><img src="assets/lume-mascot.png" alt=""></button>
+        <button class="floating-mascot" id="mascot" aria-label="Chamar Lume para ler a tela"><img data-lume src="assets/lume-mascot.png" alt=""></button>
         <div class="shade" id="shade" hidden></div>
         <section class="sheet" id="sheet" aria-label="Painel do Lume" hidden>
           <div class="handle"></div>
-          <div class="sheet-header"><img src="assets/lume-mascot.png" alt=""><b>lume</b><span id="state-label">por aqui</span><button id="close" aria-label="Fechar painel">×</button></div>
+          <div class="sheet-header"><img data-lume src="assets/lume-mascot.png" alt=""><b>lume</b><span id="state-label">por aqui</span><button id="close" aria-label="Fechar painel">×</button></div>
           <div id="sheet-content" aria-live="polite" tabindex="-1"></div>
         </section>
         <div class="home-bar"></div>
@@ -47,7 +47,7 @@
       <div class="demo-foot"><span class="dot"></span><p>Notícias, respostas e índices demonstrativos.<br>Toque no mascote e escolha “Checar evidências”.</p></div>
     </section>
   </main>
-  <footer><span>Você escolhe quando ele lê.</span><span>Android MVP · identidade em exploração</span></footer>
+  <footer><span>Você escolhe quando ele lê.</span><button class="motion-toggle" id="motion-toggle">Pausar animações</button><span>Android MVP · identidade em exploração</span></footer>
   <script type="module" src="app.js"></script>
 </body>
 </html>

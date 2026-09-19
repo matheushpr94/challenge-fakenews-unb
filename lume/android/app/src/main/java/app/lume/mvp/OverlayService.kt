@@ -78,12 +78,13 @@ class OverlayService : Service() {
                 MotionEvent.ACTION_DOWN -> { downX = event.rawX; downY = event.rawY; initialX = p.x; initialY = p.y; dragged = false; true }
                 MotionEvent.ACTION_MOVE -> {
                     if (kotlin.math.abs(event.rawX-downX) + kotlin.math.abs(event.rawY-downY) > Ui.dp(this,8)) dragged = true
+                    if (dragged) image.drag(event.rawX - downX)
                     p.x = (initialX + event.rawX-downX).toInt().coerceIn(0,(metrics.widthPixels-size).coerceAtLeast(0))
                     p.y = (initialY + event.rawY-downY).toInt().coerceIn(0,(metrics.heightPixels-size-Ui.dp(this,32)).coerceAtLeast(0))
                     if (view.isAttachedToWindow) wm.updateViewLayout(view,p); true
                 }
-                MotionEvent.ACTION_UP -> { bubbleX = p.x; bubbleY = p.y; if (!dragged) view.performClick(); true }
-                MotionEvent.ACTION_CANCEL -> true
+                MotionEvent.ACTION_UP -> { image.drag(null); bubbleX = p.x; bubbleY = p.y; if (!dragged) view.performClick(); true }
+                MotionEvent.ACTION_CANCEL -> { image.drag(null); true }
                 else -> false
             }
         }
@@ -92,7 +93,7 @@ class OverlayService : Service() {
         val scroll = ScrollView(this).apply { background = Ui.shape(Ui.paper,Ui.dp(this@OverlayService,26)); elevation = Ui.dp(this@OverlayService,12).toFloat(); isFillViewport = false }
         val body = Ui.column(this)
         val header = LinearLayout(this).apply { gravity = Gravity.CENTER_VERTICAL }
-        header.addView(Ui.mascot(this,42))
+        header.addView(Ui.mascot(this,42).apply { thinking = busy })
         header.addView(Ui.text(this,"lume",25f,true),LinearLayout.LayoutParams(0,-2,1f))
         header.addView(Ui.quietButton(this,"Fechar") { closeReading() }.apply { layoutParams = LinearLayout.LayoutParams(Ui.dp(this@OverlayService,90),Ui.dp(this@OverlayService,48)) })
         body.addView(header); Ui.gap(this,body)

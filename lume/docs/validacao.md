@@ -1,5 +1,15 @@
 # Validação
 
+## Animações — 19/09/2026
+
+- Variante demo 0.3.0 compilada; cinco testes Android passaram, lint sem erros (cinco avisos de versões/concatenação de textos). Variante connected também compilada.
+- Nove testes web passaram: seis da rubrica e três de ciclo de vida de animação, com DOM mínimo simulado. Não substituem uma inspeção visual no navegador.
+- PNG da piscada inspecionado, 1254 × 1254 e transparência confirmada. Imagem original preservada.
+- APK assinado com o mesmo certificado da versão publicada. Manifesto empacotado continua sem permissão INTERNET.
+- SHA-256 do APK 0.3.0-demo: `ff8710d51e47ca0ef83e2daa713d81bee2e82ce91b89c2e9fdeeb697e29e80b4`.
+- ADB consultado: nenhum aparelho conectado. Sem medição de consumo de bateria, fluidez, nem teste físico de captura/arraste nesta atualização.
+- Publicação Vercel verificada sem autenticação: HTML, CSS, módulos alterados, quadro de piscada e APK 0.3.0 retornaram HTTP 200 com conteúdo idêntico ao local. O download anterior 0.2.0 também permanece disponível e idêntico.
+
 ## Organização no repositório — 18/09/2026
 
 - 17 testes passaram no novo diretório: 11 do servidor (provedor simulado) e seis da prévia web.

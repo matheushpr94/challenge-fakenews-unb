@@ -1,5 +1,14 @@
 # Histórico do Lume
 
+## 0.3.0-demo — 2026-09-19
+
+- Piscada com um segundo quadro do mascote, mantendo a imagem original.
+- Respiração discreta, cumprimento ao tocar no mascote grande e inclinação ao arrastar.
+- Estado de espera no cabeçalho durante a análise simulada da web e a análise da variante connected.
+- Pausa manual: rodapé da web e **Mais opções → Animar mascote** no Android.
+- Web respeita redução de movimento e pausa em aba oculta/fora do viewport; Android pausa fora de vista, com tela apagada, economia de bateria ou animações do sistema desativadas.
+- Nove testes web e cinco testes Android passaram; APK mantém a assinatura anterior e continua sem permissão INTERNET. Uso físico e inspeção visual de execução pendentes.
+
 ## 0.2.0-demo — 2026-09-17
 
 - APK demo offline sem permissão de internet, sem configuração de API e sem consumo de IA.

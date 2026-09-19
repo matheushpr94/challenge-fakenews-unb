@@ -28,7 +28,10 @@ class MainActivity : Activity() {
         scroll.addView(body); setContentView(scroll)
         body.addView(Ui.text(this,"lume",46f,true))
         body.addView(Ui.text(this,if (BuildConfig.DEMO_ONLY) "DEMONSTRAÇÃO · SEM INTERNET" else "PILOTO CONECTADO",12f).apply { setTextColor(Ui.muted) })
-        body.addView(Ui.mascot(this,180).apply { layoutParams = LinearLayout.LayoutParams(-1,Ui.dp(this@MainActivity,200)) })
+        body.addView(Ui.mascot(this,180).apply {
+            layoutParams = LinearLayout.LayoutParams(-1,Ui.dp(this@MainActivity,200))
+            contentDescription = "Cumprimentar Lume"; isFocusable = true; setOnClickListener { }
+        })
         body.addView(Ui.text(this,"Uma dúvida? Me chama.",25f,true))
         Ui.gap(this,body)
         body.addView(Ui.text(this,if (BuildConfig.DEMO_ONLY) "Teste o mascote e explore respostas de exemplo. Nenhuma chamada à IA, nenhum consumo de tokens." else "Ative o mascote, abra uma notícia e toque nele. Você revisa a captura antes de enviá-la para análise."))
@@ -40,6 +43,12 @@ class MainActivity : Activity() {
         Ui.gap(this,body,24)
         body.addView(Ui.text(this,if (BuildConfig.DEMO_ONLY) "Capturas ficam no aparelho. As respostas são fictícias e não analisam a notícia da sua tela." else "Você escolhe quando capturar e enviar. A análise usa um provedor externo de IA.",13f).apply { setTextColor(Ui.muted) })
         Ui.disclosure(this,body,"Mais opções") { options ->
+            val preferences = getSharedPreferences("lume",MODE_PRIVATE)
+            options.addView(Switch(this).apply {
+                text = "Animar mascote"; textSize = 14f; setTextColor(Ui.green); minHeight = Ui.dp(this@MainActivity,48)
+                isChecked = preferences.getBoolean("animate_mascot",true)
+                setOnCheckedChangeListener { _, checked -> preferences.edit().putBoolean("animate_mascot",checked).apply() }
+            })
             options.addView(Ui.quietButton(this,"Colar texto ou link") { paste() })
             if (!BuildConfig.DEMO_ONLY) options.addView(Ui.quietButton(this,"Configurar conexão") { settings() })
             options.addView(Ui.quietButton(this,"Desativar mascote") {

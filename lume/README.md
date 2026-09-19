@@ -2,10 +2,10 @@
 
 Mascote para Android que ajuda a entender notícias e posts a partir de um trecho escolhido pela pessoa. Este diretório é a base versionada do produto dentro do challenge.
 
-**Estado: 0.2.0-demo.** O APK distribuído funciona offline, tem respostas fictícias e não analisa o conteúdo capturado. Não faz pesquisas nem consome tokens de IA. O índice de evidências demonstrativo não é uma probabilidade de verdade.
+**Estado: 0.3.0-demo.** O APK distribuído funciona offline, tem respostas fictícias e não analisa o conteúdo capturado. Não faz pesquisas nem consome tokens de IA. O índice de evidências demonstrativo não é uma probabilidade de verdade.
 
 - [Experimentar no navegador](https://lume-previa.vercel.app/)
-- [Baixar APK demo 0.2.0](https://lume-previa.vercel.app/downloads/lume-demo-0.2.0.apk)
+- [Baixar APK demo 0.3.0](https://lume-previa.vercel.app/downloads/lume-demo-0.3.0.apk)
 - [IA, NLP e significado do percentual](docs/ia-e-confiabilidade.md)
 - [Validações e limitações](docs/validacao.md)
 - [Histórico de mudanças](CHANGELOG.md)
@@ -32,6 +32,8 @@ O trabalho acadêmico com LIAR2 continua nas pastas originais do repositório. A
 4. Para testar uma captura real, toque no mascote sobre outro aplicativo e autorize a captura. Ela permanece no aparelho; a resposta da demo usa o exemplo escolhido.
 
 Critérios e fontes fictícias ficam recolhidos em **Entender a avaliação**. As opções secundárias ficam em **Mais opções**. O funcionamento em aparelhos físicos ainda precisa ser validado.
+
+O mascote pisca, respira suavemente e inclina ao ser arrastado. Toque no mascote grande para cumprimentá-lo. Em **Mais opções → Animar mascote**, é possível pausar o movimento. A animação também respeita a configuração do sistema, a visibilidade e a economia de bateria. [Arte e comportamento](design/animation.md).
 
 ## Desenvolver
 

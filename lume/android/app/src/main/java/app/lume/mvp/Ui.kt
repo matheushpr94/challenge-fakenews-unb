@@ -7,10 +7,6 @@ import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.*
 
-class MascotView(c: Context) : ImageView(c) {
-    override fun performClick(): Boolean = super.performClick()
-}
-
 object Ui {
     val paper = Color.rgb(247, 248, 242)
     val ink = Color.rgb(32, 43, 36)

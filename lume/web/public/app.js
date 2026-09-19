@@ -1,12 +1,15 @@
 import { criteria, evaluateEvidence } from './evidence.mjs';
 import { articles } from './scenarios.mjs';
+import { initMascotMotion } from './motion.mjs';
+
+const motion = initMascotMotion();
 
 const $ = (id) => document.getElementById(id);
 const sheet = $('sheet'), content = $('sheet-content');
 let timer, state = 'idle', current = 0, returnFocus;
-function openSheet(label) { returnFocus ||= document.activeElement; $('hint').hidden=true; $('shade').hidden=false; sheet.hidden=false; $('mascot').hidden=true; $('state-label').textContent=label; }
+function openSheet(label) { returnFocus ||= document.activeElement; $('hint').hidden=true; $('shade').hidden=false; sheet.hidden=false; $('mascot').hidden=true; $('state-label').textContent=label; motion.state(state); }
 function draw(html, label) { openSheet(label); content.innerHTML=html; sheet.scrollTop=0; requestAnimationFrame(()=>content.focus({preventScroll:true})); }
-function close() { clearTimeout(timer); sheet.hidden=true; $('shade').hidden=true; $('mascot').hidden=false; state='idle'; returnFocus?.focus(); returnFocus=null; }
+function close() { clearTimeout(timer); sheet.hidden=true; $('shade').hidden=true; $('mascot').hidden=false; state='idle'; motion.state(state); returnFocus?.focus(); returnFocus=null; }
 function menu() { state='menu'; draw('<h3>O que vamos entender?</h3><p>Posso olhar este trecho e ajudar você a fazer sentido dele.</p><button class="action" data-action="capture">Ler esta tela ↗</button><p class="small">Nesta prévia, a captura é simulada. No Android, você autoriza o acesso pelo sistema.</p>','por aqui'); }
 function permission() { state='permission'; draw('<span class="demo-tag">ETAPA SIMULADA DO ANDROID</span><h3>Compartilhar esta tela?</h3><p>No aplicativo, o Android pede sua autorização antes de iniciar uma sessão de captura.</p><button class="action" data-action="allow">Simular captura</button><button class="action secondary" data-action="cancel">Agora não</button>','você decide'); }
 function review() { state='review'; const a=articles[current]; draw(`<h3>Vamos olhar isso juntos?</h3><p>Confira o trecho antes de continuar.</p><div class="capture-summary"><strong>${a.title}</strong><span>Trecho visível · exemplo fictício</span></div><input class="input" id="question" aria-label="Sua dúvida" placeholder="Sua dúvida (opcional)" maxlength="180"><p class="small">No app, continuar envia a captura à IA. Esta prévia usa apenas respostas de exemplo.</p><button class="action" data-action="verify">Checar evidências</button><button class="action secondary" data-action="explain">Explicar este conteúdo</button>`,'conteúdo capturado'); }
@@ -67,7 +70,7 @@ $('scenario-select').onchange=e=>selectScenario(Number(e.target.value));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')close();if(e.key==='Tab'&&!sheet.hidden){const elements=[...sheet.querySelectorAll('button,input,a[href],summary,select')];const first=elements[0],last=elements.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
 const mascot=$('mascot');let origin=null,moved=false,suppressClick=false;
 mascot.addEventListener('pointerdown',e=>{const r=mascot.getBoundingClientRect(),p=$('phone').getBoundingClientRect(),scale=p.width/$('phone').offsetWidth;origin={x:e.clientX,y:e.clientY,left:(r.left-p.left)/scale-7,top:(r.top-p.top)/scale-7,scale};moved=false;mascot.setPointerCapture(e.pointerId);});
-mascot.addEventListener('pointermove',e=>{if(!origin)return;const dx=(e.clientX-origin.x)/origin.scale,dy=(e.clientY-origin.y)/origin.scale;if(Math.abs(dx)+Math.abs(dy)>6)moved=true;if(moved){mascot.style.left=Math.max(0,Math.min($('phone').clientWidth-72,origin.left+dx))+'px';mascot.style.top=Math.max(72,Math.min($('phone').clientHeight-95,origin.top+dy))+'px';$('hint').hidden=true;}});
-mascot.addEventListener('pointerup',()=>{suppressClick=moved;origin=null;});
-mascot.addEventListener('pointercancel',()=>{origin=null;});
+mascot.addEventListener('pointermove',e=>{if(!origin)return;const dx=(e.clientX-origin.x)/origin.scale,dy=(e.clientY-origin.y)/origin.scale;if(Math.abs(dx)+Math.abs(dy)>6)moved=true;if(moved){motion.drag(mascot,true,dx);mascot.style.left=Math.max(0,Math.min($('phone').clientWidth-72,origin.left+dx))+'px';mascot.style.top=Math.max(72,Math.min($('phone').clientHeight-95,origin.top+dy))+'px';$('hint').hidden=true;}});
+mascot.addEventListener('pointerup',()=>{motion.drag(mascot,false);suppressClick=moved;origin=null;});
+mascot.addEventListener('pointercancel',()=>{motion.drag(mascot,false);origin=null;});
 mascot.addEventListener('click',()=>{if(suppressClick){suppressClick=false;return;}menu();});
