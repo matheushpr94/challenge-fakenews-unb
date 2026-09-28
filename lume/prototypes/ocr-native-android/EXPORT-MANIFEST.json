@@ -1,0 +1,521 @@
+{
+  "snapshot": "2026-09-28",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "fe85e5f1a8f2b117243f10eafd0e413ee0e29e60802b671fe68baa2cb3027e79"
+    },
+    {
+      "path": "FRONTEND-LUME.md",
+      "sha256": "525a609b2edab192b2d3b7829d735e630aa93ddb04749a5079a76b96f8ffdad5"
+    },
+    {
+      "path": "README.md",
+      "sha256": "80e8dfb75ae64dce92d5e1e15f14379b6ce0ec8baf7b225aeec3d3a8362e1c30"
+    },
+    {
+      "path": "RESEARCH-INTEGRATION.md",
+      "sha256": "69ab28e24ac946a449446a5b5c9a01b86accff21fe6758848726bab8f53dcd85"
+    },
+    {
+      "path": "RESEARCH-NATIVE.md",
+      "sha256": "1750cb1ab8efe6f35cf47eff0f9d9b3a2332f4ac240513302f78c7a55bbfd03d"
+    },
+    {
+      "path": "app/.gitignore",
+      "sha256": "5c3174b74edc6f2b9e0743594b8bd3c7f31e4f4405758cc9872b3fe1de1d28b4"
+    },
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "38892c14314ba9e18d89419826a3429964684bb91f21f43b004d2aeb57df9df5"
+    },
+    {
+      "path": "app/src/androidTest/java/com/example/lumeocrtest/ExampleInstrumentedTest.kt",
+      "sha256": "f56704960af5fe849a73a44efdcb5837a8b2b46dc324974988f775a2b0d6e8e7"
+    },
+    {
+      "path": "app/src/androidTest/java/com/example/lumeocrtest/LumeFrontendTest.kt",
+      "sha256": "5867e7f71cb24d3a2a69a3297108c3694c8fe8e429f37eea183b7292b4304121"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "9e26b182bce0d040b34ea787f5eae7e957a9637a1a00bf3c783f8d6f61eb57a1"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/AnalysisState.kt",
+      "sha256": "b680096ef6b302ac0880e54e705119b1bc0fe1f5d677453c6781347284fd0c4f"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/LumeApp.kt",
+      "sha256": "48c718bd87c96b2d230961ab0e7fd48530f3a8109dc64d4ced7460f7b885cd43"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/LumeMotion.kt",
+      "sha256": "7ae9b1c0e3ded3a55f5ba4f65b66457cc8ad706ec1ae9d5aac8c08a1f2b58cc0"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/MainActivity.kt",
+      "sha256": "d6720229fea66b7f1f0b4260edc0c536f8135ee0fc20581e9287b93a2e9dda50"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ResearchResults.kt",
+      "sha256": "f82a3118ef723cfca3119e719d656e44599b7f5cf75e83a4f5e1966c8bb37100"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/mascot/MascotService.kt",
+      "sha256": "1c0f922a8519207a903f5dfd7b5a7f60b996d98f70f18c19254494b217aa4fb4"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/ArticleMetadata.kt",
+      "sha256": "39c01835465ecd12e33403d31df353af26a7e856b1c31af1a019b4053e518965"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/ArticleMetadataExtractor.kt",
+      "sha256": "0a2cefdc1fef9dba131234aecde0d0e63707c56419393b3e69988371ca60f4a1"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/ArticleTextExtractor.kt",
+      "sha256": "708e2ed151e681146d64df35518e9a5df9ac1cda5b97711e61e037da4e80df2a"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/ClaimExtractor.kt",
+      "sha256": "84e0319af1ee26fbab0331a1bc8d2b77477ab847772726f88bd9c6e57b74591e"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/EvidenceClient.kt",
+      "sha256": "ee852ca20ce20bed82f118863e358e570277dce3a758416c26d989a4f0b2f953"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/ExtractedClaims.kt",
+      "sha256": "f74ed46ae8c0a1bd28a72f5e11a1c70c6b68f0d14b91c39e943981674a6712e6"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/OcrBlock.kt",
+      "sha256": "2e1f492dc249b1b4db18760d8be05fa67c63ce6d4ab9f174c8de585d619e4307"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/QueryAnalyzer.kt",
+      "sha256": "3ff50933364ffa02fb7beb8ee5eec11fbc2e30da0acebe677c9ad98d05eb2cc5"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/RelatedCheck.kt",
+      "sha256": "a6be4529e2022515a7776c67c8403e43a26fe81f3fe6655cda8a325dc5f07846"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/RelevanceScorer.kt",
+      "sha256": "adca570b93de6b9242500cee6be86707cb0559437b4c56f03f7c78fab4ed81f4"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/ResearchClient.kt",
+      "sha256": "7e5a8ba27de0cd29b0085f2c57d8a0added2c083a8f3b0633b545b2d407b226f"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/SearchClient.kt",
+      "sha256": "809f8b3b4c6c154c71a70108686cb9947e39a71f5fe047e7b451814c21645b48"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/SearchModels.kt",
+      "sha256": "0a3095d55c2048aaf90052104a704805aa5fab317a357638e21a6e31926b2aff"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/VlmClient.kt",
+      "sha256": "afad6b3b069d964264e5d099f8d42c3f56542682b435289405b97f26aa8c23c2"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ocr/VlmModels.kt",
+      "sha256": "48196cdc8100bb3df1882e390ede0e5800e976caa8d93a581ba5adc7fe992372"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/research/Claim.kt",
+      "sha256": "8fe49fd4bf9e8b0dcd85471c22a05dfe4b20a4344fce4f439518bc574375b484"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/research/Context.kt",
+      "sha256": "8181cb1eae3bec5d39b647576d8758e433535b450c16d70f6c02a1b505567732"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/research/Disambiguate.kt",
+      "sha256": "ed8c7583eb9c9c5987e8b0cdbe391b1275f9df0d98a9d6fa52a2da4fc61df17b"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/research/Evidence.kt",
+      "sha256": "10b4932684abf96a57924d5f0dc0fb271e755ef3df20e30ec2e81fa86c510b17"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/research/Interpret.kt",
+      "sha256": "719860ec1376682a0341f177a6fc2a6ceab70575f7d88c647d8880143885d05f"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/research/Net.kt",
+      "sha256": "a6de3fc830399012d10173b1015400c692c3aa491c360d74f240f1ebc973e5eb"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/research/Relevance.kt",
+      "sha256": "47d70f206d323aa0258e9f21ffb1026f6b15b46b56b8f631a3446acd91f2f429"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/research/RequestGate.kt",
+      "sha256": "e548a7c57c227cc33467ed9d0948413b3753ac35dad786214759db9777fa394d"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/research/ResearchService.kt",
+      "sha256": "4b2580c7f46d2fb4ea878d4ff40a2c2baa9b23f7557671ab538f78dad164a51e"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/research/Sources.kt",
+      "sha256": "5e4043369e056a735d9c7352923978db82194878309351e4965e386ff42db899"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/research/Text.kt",
+      "sha256": "fb31e47388ae27b36d8c7382c42455937f2a5afc44d33d65565cc4c968d2621b"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ui/theme/Color.kt",
+      "sha256": "27a8b4edbd5c048140c8665ffb104a60033db07b6db61be081dcf97ef458580b"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ui/theme/Theme.kt",
+      "sha256": "ccd03cdeb233802a779988cb3e5bd17a169cb92ba652e3149ea8aa7f2911d1a8"
+    },
+    {
+      "path": "app/src/main/java/com/example/lumeocrtest/ui/theme/Type.kt",
+      "sha256": "4321cb81a1b2cd13b9ee4ef575e0003a6f6be4528a3882a4eaf609726161b4cf"
+    },
+    {
+      "path": "app/src/main/keepRules/rules.keep",
+      "sha256": "cd9f36ade2d8604e1b7cf24eff5b171f9c0816c0aa013ba7eb55be4fe2e1dac7"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_background.xml",
+      "sha256": "ed423c73a6f40a4d2909f0901e60527b3a807cd59e1b5593bcaae1808b1c6321"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_launcher_foreground.xml",
+      "sha256": "01d1a6a6c1234eb7fe270d097eb283d72b9c95ae5118886f1b6573aad280f1f7"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_lume_notification.xml",
+      "sha256": "20bb17f48d1deb3065c8a664a85cd67646aa526c2d5af5a85faf10e3ad2d9a96"
+    },
+    {
+      "path": "app/src/main/res/drawable/lume_home.png",
+      "sha256": "c1dcd25af886927f0f2b20842d46495ea768d253570982aebf084ca3d855024f"
+    },
+    {
+      "path": "app/src/main/res/drawable/lume_mascot.png",
+      "sha256": "b26e9510ff58c8806869bd06d8978a4a58a71d6822527d06c25478c475d52818"
+    },
+    {
+      "path": "app/src/main/res/drawable/lume_mascot_blink.png",
+      "sha256": "037a8de75ebffa5361cc31be8aa156ca1e7a5e3e15718629d997063052a93599"
+    },
+    {
+      "path": "app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "sha256": "88f7653499ef524126ea5018a99baf9cc3269e7e584d6205dfdd76db39f39cc0"
+    },
+    {
+      "path": "app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "sha256": "88f7653499ef524126ea5018a99baf9cc3269e7e584d6205dfdd76db39f39cc0"
+    },
+    {
+      "path": "app/src/main/res/mipmap-hdpi/ic_launcher.webp",
+      "sha256": "dd00996198640ed28fbc09cdcd7a3807cf8707f3eb255b659634da3ca6a6ff01"
+    },
+    {
+      "path": "app/src/main/res/mipmap-hdpi/ic_launcher_round.webp",
+      "sha256": "1ed73f5341a69d3b41c7e02e126803f50cc8c3284adf4bbb737f0c93577aef07"
+    },
+    {
+      "path": "app/src/main/res/mipmap-mdpi/ic_launcher.webp",
+      "sha256": "846219e6f72fe9a6c104ca8919cbee36a101e7d2ff8da9da67b689a5888f060d"
+    },
+    {
+      "path": "app/src/main/res/mipmap-mdpi/ic_launcher_round.webp",
+      "sha256": "4e2c58b91de01130e6479e00cbbaaf6e77cd961dd2c8e303cf13cd077fa92632"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xhdpi/ic_launcher.webp",
+      "sha256": "398340dad816fc9a6338cb151a8cf1e45b926f9bfb70628b24c4bd2523cc94d4"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp",
+      "sha256": "91b490aef86574901137f0a252272e1f1add99c1ad709e0696ed68929b88d261"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xxhdpi/ic_launcher.webp",
+      "sha256": "58ae87fa0c5b5d1562d27fd648d2c061553fe20e3ed570bde588162d01ea7a27"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp",
+      "sha256": "3009fad079f5772f30ecd767f98924367fbe0f81c30048d672d4fda2d5ca7d12"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp",
+      "sha256": "f98fef5bc3bfe5b65692c40ad1cbae2bec4faf9f1b249c397626740db71b62d8"
+    },
+    {
+      "path": "app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp",
+      "sha256": "5faf033745c8c882c43bb1b372d4e4a5890caec63d9892a2e756c954108b85dc"
+    },
+    {
+      "path": "app/src/main/res/values/colors.xml",
+      "sha256": "b5626527d503417f0d8e5b1e08f338de7b31173bf0e122815f03e64932adbd88"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "cbbbd26220e4287280d69356e85cfd5e449b4358356c8ebc763e024cafb3be15"
+    },
+    {
+      "path": "app/src/main/res/values/themes.xml",
+      "sha256": "ea43199e74c3d19292353fe518d743a7c6bce0a4bb84a672fd24b0b7a6d04f16"
+    },
+    {
+      "path": "app/src/main/res/xml/backup_rules.xml",
+      "sha256": "6cf1a27e6807b1d24e41d3fbe7ddc1bfe1f42226027964f6eaf477d71b43b283"
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "cb1fc47ab4a984530ed60e0e6ee638929c3038290e7e7e0b4b03a3a30fbe7381"
+    },
+    {
+      "path": "app/src/test/java/com/example/lumeocrtest/ExampleUnitTest.kt",
+      "sha256": "b602b441de720a16c31c879929b44a085bca3d13f31caa7839a8617a49cd939d"
+    },
+    {
+      "path": "app/src/test/java/com/example/lumeocrtest/ocr/OcrTests.kt",
+      "sha256": "20cc52d43c41d013d90027a9e16cd56411c08e05932c5f7753f01034f0940e66"
+    },
+    {
+      "path": "app/src/test/java/com/example/lumeocrtest/ocr/ResearchClientTest.kt",
+      "sha256": "1500a5840c6eddfb3893c3c88499d2c3cb6be9ff8ad46e984161cc556ef7fed2"
+    },
+    {
+      "path": "app/src/test/java/com/example/lumeocrtest/research/FakeWeb.kt",
+      "sha256": "9f2ef261e3bc5ee96e5545eec4b5701700ff004c14b03e9189642472f0f69c53"
+    },
+    {
+      "path": "app/src/test/java/com/example/lumeocrtest/research/ResearchTests.kt",
+      "sha256": "1f7400555132af241a781c56cab6de79de846a448171ea116ecdc92d51a37e66"
+    },
+    {
+      "path": "build.gradle.kts",
+      "sha256": "be7dbfa1841b18b020f744e203b995d3dac5709c2a6b8e310fbcfaed0364919a"
+    },
+    {
+      "path": "docs/frontend/home.png",
+      "sha256": "9d545420ad993a88b04c5e390ee7cebb6d9efe6477567fed8250ecc95cdbf9ab"
+    },
+    {
+      "path": "docs/frontend/mascote.png",
+      "sha256": "ea56da4db09ea2e40d9b11868b2b63770aef3480e0b66224262aaf09b4689dbb"
+    },
+    {
+      "path": "evidence-server/README.md",
+      "sha256": "a35bf7cb30b091d0dc9f777d8aa1750940525e171b59c7a00cad9e9cfd9a9b93"
+    },
+    {
+      "path": "evidence-server/server.py",
+      "sha256": "e85e5d5706468c1ccc0db441d5b763daf854b6fc9b2c55e756105cf7f3558f07"
+    },
+    {
+      "path": "evidence-server/test_server.py",
+      "sha256": "3d99659101c315b067032d038e0553ba67032d96ddbd5900532f5fc27bcfa738"
+    },
+    {
+      "path": "gradle/gradle-daemon-jvm.properties",
+      "sha256": "6c13aa5ba36690ccfbbb25a8807d01d98c15833e446d7ae82ddc726472cb8ef7"
+    },
+    {
+      "path": "gradle/libs.versions.toml",
+      "sha256": "c90717bc0eb5b0914a6d0ede82ac181166973f6834aa526872379a472b75c7cb"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "76805e32c009c0cf0dd5d206bddc9fb22ea42e84db904b764f3047de095493f3"
+    },
+    {
+      "path": "gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "1f3b8858a43c9e16d1458b61b7b07dd86c8f9389179b847b709c30bbab079c17"
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "cf774135f23cd1e6c054168ce772e24140800347f95b29819744c96f97e4ef26"
+    },
+    {
+      "path": "gradlew",
+      "sha256": "3238afb2aed5cb16eb7d6718077e7138059108f007b54179e9cc157c5a6e0e89"
+    },
+    {
+      "path": "gradlew.bat",
+      "sha256": "1d297e00bd21de3ace22b4d7f2de1f9dfa858883d66bbf7c1ccbecccec8f4f3b"
+    },
+    {
+      "path": "local-vlm-server/.gitignore",
+      "sha256": "df5b27b3f059b3ec85b52b4901257138918fbdc9ea7a147c3c5ccfefc78f5de1"
+    },
+    {
+      "path": "local-vlm-server/README.md",
+      "sha256": "70acc58df9cababd6540466285355fe03648662e650c8320695cad1bdc7fc220"
+    },
+    {
+      "path": "local-vlm-server/requirements.txt",
+      "sha256": "40e8abcd425e5d8c4b1c1161bf7568a0e74ddfc169e0c4c710ce909a85240b4e"
+    },
+    {
+      "path": "local-vlm-server/schemas.py",
+      "sha256": "30eab3d0c994ddabf71b29e7693b5bc65ba979c79fecfd1bed902495a42432bb"
+    },
+    {
+      "path": "local-vlm-server/server.py",
+      "sha256": "599471a0062bea185b79d2dbdedca323d351aae6cd6a0ff4aaf30b3031d12afc"
+    },
+    {
+      "path": "local-vlm-server/vlm_service.py",
+      "sha256": "ffb56e166c7e3f1b320d00ea19eba23fe9235fa0a0a90828145e73a54a467001"
+    },
+    {
+      "path": "ml-training/.gitignore",
+      "sha256": "17c856006ad31a5d25f4fd45ce6993b155ce0da1cadb99c7a46c54ed71fa274a"
+    },
+    {
+      "path": "ml-training/README.md",
+      "sha256": "5696b77d350ef44e9abfc4fc65f91aea0ebd7715235b28a650473932c5011cc1"
+    },
+    {
+      "path": "ml-training/compare_svm.py",
+      "sha256": "0bce3fe1c1b3aefa5a235905c4963a2ac090b276f2f76b74a94da6545ed20e2b"
+    },
+    {
+      "path": "ml-training/predict.py",
+      "sha256": "fe67362d4ecdcc6fe898ae3d8a7220042392f772a609e4917cabe7d075e313c5"
+    },
+    {
+      "path": "ml-training/requirements.txt",
+      "sha256": "26c4a1161972ef2c16c9da85e4defc5c5bc82ecb0f3419ff57baf395f985f938"
+    },
+    {
+      "path": "ml-training/train.py",
+      "sha256": "12be02a4b831e55ed9bee43bc83850162fd16508aa346379b552baca56fe8e30"
+    },
+    {
+      "path": "ml-training/verify_mobile_export.py",
+      "sha256": "db0a9466614de8f5d0069ba2c75f626578ae677ffbc5036bbe5f307296d552b0"
+    },
+    {
+      "path": "research-server/README.md",
+      "sha256": "a122ad97933917e3e80b957b20141fb7d361f4b778ea064b568fcb1778172123"
+    },
+    {
+      "path": "research-server/docs/API.md",
+      "sha256": "e1c168c55a5e613f46ab01437d3e450232a493aced6ba103469ea94e74dfedff"
+    },
+    {
+      "path": "research-server/lume/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-server/lume/claim.py",
+      "sha256": "a54e99b09f9f502b8aeb21e856c94bd5e0e3bd6d73efcb48466bad53f02c2629"
+    },
+    {
+      "path": "research-server/lume/context.py",
+      "sha256": "3b14a7658e4c547e0e25dbba53dcddfc0733b7db4fe6f9a22c5880682641307e"
+    },
+    {
+      "path": "research-server/lume/disambiguate.py",
+      "sha256": "9383af2d408d22c9185e3050be426552decd625d922a5a06706ccc0251397e62"
+    },
+    {
+      "path": "research-server/lume/evidence.py",
+      "sha256": "2d260570aa1c36c41197107742521c51212ce2cc405ca8e827e31a2dc011e563"
+    },
+    {
+      "path": "research-server/lume/interpret.py",
+      "sha256": "b289bc2159c132044de8c4162e4b2c0b1c1b320fde6fb2483bf7696b2c06a443"
+    },
+    {
+      "path": "research-server/lume/llm.py",
+      "sha256": "f378a13b4c0f49e6ce131500c6d0e77610d8cba8204f933e4fa305a6b143a686"
+    },
+    {
+      "path": "research-server/lume/netfetch.py",
+      "sha256": "7c0eb3da441e7934ba12465f2ddd3dd6dcdcda23b7e57188fce171227ed4129f"
+    },
+    {
+      "path": "research-server/lume/relevance.py",
+      "sha256": "32518877de9883e186024613a15376dbba2f39ce215661d5a36680ebb20277aa"
+    },
+    {
+      "path": "research-server/lume/service.py",
+      "sha256": "7fa0a124e18f46a54b98173df237e107f6ccc26c1b9e32e48cfcac3c4a7a5833"
+    },
+    {
+      "path": "research-server/lume/sources.py",
+      "sha256": "3d173f73a9638158f68b673f9042024930a07796df4a1d1500f2fe61d0aa823e"
+    },
+    {
+      "path": "research-server/lume/textutil.py",
+      "sha256": "5dea196d4c4c93f1bf3308978a896544c5f624e9ace6d1140127cb52febfb86e"
+    },
+    {
+      "path": "research-server/run-local.sh",
+      "sha256": "26aaa62882153c13c7165b34487d18cc98305707a42c4c3216ea8bcfc1fb06b0"
+    },
+    {
+      "path": "research-server/scripts/try_search.py",
+      "sha256": "d531bb6886474b5daf7d5ffd55b55efa7d6a3877f8eb87b4cc78f34516896ea7"
+    },
+    {
+      "path": "research-server/server.py",
+      "sha256": "405de6ffc972c0cbbf2eafadaeac7441e8eb3b030ca26dc0bc9d5edd8e175959"
+    },
+    {
+      "path": "research-server/tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "research-server/tests/controller.test.mjs",
+      "sha256": "a0b8efec8029e32114de9671bfdd3c0498d76707b5f44f8a93952ee0f61f7909"
+    },
+    {
+      "path": "research-server/tests/fakeweb.py",
+      "sha256": "b91f45e3429b03ba0acd6644764c1d1b7cb1e5fd7b56c7ae2d64c886b96e7964"
+    },
+    {
+      "path": "research-server/tests/test_contexto.py",
+      "sha256": "855f79d60fb6619f506c13af58eae83938cb9f3126cea00ba7bfdfef96eee58a"
+    },
+    {
+      "path": "research-server/tests/test_disambiguation.py",
+      "sha256": "26342b9dc4f58c2ae61af3ec1c0ced0574c3f83bf917bed02f95e98c52a0a70e"
+    },
+    {
+      "path": "research-server/tests/test_indicacao.py",
+      "sha256": "05ab9db1185b7045fd9e76d8589774ed1f4ce0954b2143778680cc1c4804d35a"
+    },
+    {
+      "path": "research-server/tests/test_lume.py",
+      "sha256": "c94a5e60672c956b50ec37902c8fe1efac38bb52ee557a094656153c25658169"
+    },
+    {
+      "path": "research-server/web/app.js",
+      "sha256": "fdc6e409fd7f65d0b85459f47c6b920ffdd17ed3d137c5e3c9480ac1bb318bf5"
+    },
+    {
+      "path": "research-server/web/controller.js",
+      "sha256": "c9f28de5c8fcc4fe2c87b9d39c91c1733d3d25be0faf2f4e9d28cfd240eff776"
+    },
+    {
+      "path": "research-server/web/index.html",
+      "sha256": "7173184fe4e3260595fee15463a3446f8283f5e1c8a62360d0d65b6cabc82543"
+    },
+    {
+      "path": "research-server/web/style.css",
+      "sha256": "bd1ad3a0d02390956c59fe54ab57beb35346cd11aca646b3a82be72ebebc7cbc"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "sha256": "1542ee220b6debd2320a3e9ce08b5a65752e2598c4b81f49859ad939d428009d"
+    }
+  ]
+}
