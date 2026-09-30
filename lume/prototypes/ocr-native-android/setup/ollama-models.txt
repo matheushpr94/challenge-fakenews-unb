@@ -1,0 +1,5 @@
+# Modelos Ollama usados pelo Lume (os pesos NÃO ficam no Git; baixe em cada computador com `ollama pull`).
+# nome                         digest (conferir com `ollama list` / API /api/tags)                         tamanho  uso
+paraphrase-multilingual:latest ba13c2e06707cde2895d11e3c6e7905685edcca25861b93ccf15f692256e4339 562MB    obrigatório para a comparação de sentido (embeddings, /api/embed)
+# Validado com Ollama 0.34.4 (Windows 11, 30/09/2026).
+# qwen3.5:4b NÃO é mais usado pelo app (removido após a avaliação em docs/validacao-mesmo-acontecimento).

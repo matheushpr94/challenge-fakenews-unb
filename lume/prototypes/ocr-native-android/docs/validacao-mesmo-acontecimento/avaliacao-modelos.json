@@ -1,0 +1,685 @@
+{
+ "MiniLM-L12 multilíngue (paráfrase)": {
+  "acuracia_melhor_limiar": 0.757,
+  "limiar": 0.709,
+  "ms_por_texto": 3.8,
+  "aceitos_por_engano": [
+   "uol-gazeta-nota",
+   "uol-otempo",
+   "uol-stf-nega-87",
+   "s-data-diferente",
+   "s-proposta-decisao",
+   "s-papeis",
+   "s-local"
+  ],
+  "perdidos": [
+   "uol-mesmo-veiculo",
+   "s-so-resumo-mesmo"
+  ],
+  "scores": {
+   "uol-estadao": 0.709,
+   "uol-estadao-titulo": 0.709,
+   "uol-terra": 0.837,
+   "uol-oglobo": 0.774,
+   "uol-antagonista": 0.873,
+   "uol-propria": 1.0,
+   "uol-mesmo-veiculo": 0.333,
+   "uol-gazeta-nota": 0.739,
+   "uol-otempo": 0.742,
+   "uol-bets-acao": 0.418,
+   "uol-sinafut": 0.345,
+   "uol-clubes-articulam": 0.445,
+   "uol-gdf": 0.353,
+   "uol-pgr-1987": 0.68,
+   "uol-stf-nega-87": 0.777,
+   "uol-supercopa": 0.662,
+   "uol-stf-patrocinadoras-2025": 0.665,
+   "uol-zambelli": 0.367,
+   "est-uol": 0.709,
+   "est-oglobo": 0.883,
+   "est-terra-pede": 0.746,
+   "est-propria": 1.0,
+   "est-terra-republica": 1.0,
+   "est-bets-acao": 0.354,
+   "est-gazeta-nota": 0.696,
+   "s-sinonimos": 0.723,
+   "s-acao-diferente": 0.34,
+   "s-mesmo-objeto-outra-acao": 0.641,
+   "s-data-diferente": 0.916,
+   "s-proposta-decisao": 0.916,
+   "s-negacao": 0.851,
+   "s-numero": 0.843,
+   "s-homonimo": 0.412,
+   "s-so-titulo-incerto": 0.459,
+   "s-so-resumo-mesmo": 0.53,
+   "s-papeis": 0.87,
+   "s-local": 0.823
+  }
+ },
+ "multilingual-e5-small": {
+  "acuracia_melhor_limiar": 0.757,
+  "limiar": 0.942,
+  "ms_por_texto": 3.9,
+  "aceitos_por_engano": [
+   "uol-otempo",
+   "s-data-diferente",
+   "s-proposta-decisao",
+   "s-papeis",
+   "s-local"
+  ],
+  "perdidos": [
+   "uol-estadao",
+   "uol-estadao-titulo",
+   "uol-mesmo-veiculo",
+   "est-uol"
+  ],
+  "scores": {
+   "uol-estadao": 0.924,
+   "uol-estadao-titulo": 0.924,
+   "uol-terra": 0.965,
+   "uol-oglobo": 0.968,
+   "uol-antagonista": 0.967,
+   "uol-propria": 1.0,
+   "uol-mesmo-veiculo": 0.895,
+   "uol-gazeta-nota": 0.918,
+   "uol-otempo": 0.945,
+   "uol-bets-acao": 0.923,
+   "uol-sinafut": 0.914,
+   "uol-clubes-articulam": 0.935,
+   "uol-gdf": 0.895,
+   "uol-pgr-1987": 0.902,
+   "uol-stf-nega-87": 0.896,
+   "uol-supercopa": 0.91,
+   "uol-stf-patrocinadoras-2025": 0.928,
+   "uol-zambelli": 0.886,
+   "est-uol": 0.924,
+   "est-oglobo": 0.956,
+   "est-terra-pede": 0.942,
+   "est-propria": 1.0,
+   "est-terra-republica": 1.0,
+   "est-bets-acao": 0.905,
+   "est-gazeta-nota": 0.891,
+   "s-sinonimos": 0.949,
+   "s-acao-diferente": 0.934,
+   "s-mesmo-objeto-outra-acao": 0.935,
+   "s-data-diferente": 0.981,
+   "s-proposta-decisao": 0.979,
+   "s-negacao": 0.98,
+   "s-numero": 0.973,
+   "s-homonimo": 0.887,
+   "s-so-titulo-incerto": 0.915,
+   "s-so-resumo-mesmo": 0.943,
+   "s-papeis": 0.968,
+   "s-local": 0.956
+  }
+ },
+ "qwen3.5:4b (Ollama)": {
+  "acuracia": 0.432,
+  "ms_por_par": 658.3,
+  "trechos_nao_encontrados": 6,
+  "aceitos_por_engano": [
+   "uol-gazeta-nota",
+   "uol-otempo",
+   "uol-bets-acao",
+   "uol-sinafut",
+   "uol-clubes-articulam",
+   "uol-gdf",
+   "uol-pgr-1987",
+   "uol-stf-nega-87",
+   "uol-supercopa",
+   "uol-stf-patrocinadoras-2025",
+   "uol-zambelli",
+   "est-bets-acao",
+   "est-gazeta-nota",
+   "s-acao-diferente",
+   "s-mesmo-objeto-outra-acao",
+   "s-data-diferente",
+   "s-proposta-decisao",
+   "s-homonimo",
+   "s-so-titulo-incerto",
+   "s-papeis",
+   "s-local"
+  ],
+  "perdidos": [],
+  "saidas": {
+   "uol-estadao": "mesmo",
+   "uol-estadao-titulo": "mesmo",
+   "uol-terra": "mesmo",
+   "uol-oglobo": "mesmo",
+   "uol-antagonista": "mesmo",
+   "uol-propria": "mesmo",
+   "uol-mesmo-veiculo": "divergente",
+   "uol-gazeta-nota": "mesmo",
+   "uol-otempo": "divergente",
+   "uol-bets-acao": "mesmo",
+   "uol-sinafut": "divergente",
+   "uol-clubes-articulam": "mesmo",
+   "uol-gdf": "divergente",
+   "uol-pgr-1987": "divergente",
+   "uol-stf-nega-87": "divergente",
+   "uol-supercopa": "divergente",
+   "uol-stf-patrocinadoras-2025": "divergente",
+   "uol-zambelli": "divergente",
+   "est-uol": "mesmo",
+   "est-oglobo": "mesmo",
+   "est-terra-pede": "mesmo",
+   "est-propria": "mesmo",
+   "est-terra-republica": "mesmo",
+   "est-bets-acao": "mesmo",
+   "est-gazeta-nota": "mesmo",
+   "s-sinonimos": "mesmo",
+   "s-acao-diferente": "divergente",
+   "s-mesmo-objeto-outra-acao": "divergente",
+   "s-data-diferente": "divergente",
+   "s-proposta-decisao": "divergente",
+   "s-negacao": "divergente",
+   "s-numero": "divergente",
+   "s-homonimo": "divergente",
+   "s-so-titulo-incerto": "mesmo",
+   "s-so-resumo-mesmo": "mesmo",
+   "s-papeis": "divergente",
+   "s-local": "divergente"
+  }
+ },
+ "mDeBERTa-v3 xnli int8 (inferência)": {
+  "acuracia": 0.432,
+  "ms_por_par": 59.7,
+  "aceitos_por_engano": [
+   "uol-gazeta-nota",
+   "uol-otempo",
+   "uol-bets-acao",
+   "uol-sinafut",
+   "uol-clubes-articulam",
+   "uol-gdf",
+   "uol-pgr-1987",
+   "uol-stf-nega-87",
+   "uol-supercopa",
+   "uol-stf-patrocinadoras-2025",
+   "uol-zambelli",
+   "est-bets-acao",
+   "est-gazeta-nota",
+   "s-mesmo-objeto-outra-acao",
+   "s-data-diferente",
+   "s-proposta-decisao",
+   "s-homonimo",
+   "s-so-titulo-incerto",
+   "s-papeis",
+   "s-local"
+  ],
+  "perdidos": [
+   "s-numero"
+  ],
+  "contradicao_detectada": [],
+  "probs": {
+   "uol-estadao": {
+    "entailment": 0.5230000019073486,
+    "neutral": 0.4699999988079071,
+    "contradiction": 0.007000000216066837
+   },
+   "uol-estadao-titulo": {
+    "entailment": 0.5170000195503235,
+    "neutral": 0.4749999940395355,
+    "contradiction": 0.00800000037997961
+   },
+   "uol-terra": {
+    "entailment": 0.5450000166893005,
+    "neutral": 0.44600000977516174,
+    "contradiction": 0.008999999612569809
+   },
+   "uol-oglobo": {
+    "entailment": 0.5109999775886536,
+    "neutral": 0.4819999933242798,
+    "contradiction": 0.007000000216066837
+   },
+   "uol-antagonista": {
+    "entailment": 0.5139999985694885,
+    "neutral": 0.4779999852180481,
+    "contradiction": 0.00800000037997961
+   },
+   "uol-propria": {
+    "entailment": 0.546999990940094,
+    "neutral": 0.44699999690055847,
+    "contradiction": 0.006000000052154064
+   },
+   "uol-mesmo-veiculo": {
+    "entailment": 0.5410000085830688,
+    "neutral": 0.45100000500679016,
+    "contradiction": 0.00800000037997961
+   },
+   "uol-gazeta-nota": {
+    "entailment": 0.5329999923706055,
+    "neutral": 0.460999995470047,
+    "contradiction": 0.006000000052154064
+   },
+   "uol-otempo": {
+    "entailment": 0.5630000233650208,
+    "neutral": 0.42800000309944153,
+    "contradiction": 0.008999999612569809
+   },
+   "uol-bets-acao": {
+    "entailment": 0.5299999713897705,
+    "neutral": 0.46299999952316284,
+    "contradiction": 0.006000000052154064
+   },
+   "uol-sinafut": {
+    "entailment": 0.5460000038146973,
+    "neutral": 0.44699999690055847,
+    "contradiction": 0.007000000216066837
+   },
+   "uol-clubes-articulam": {
+    "entailment": 0.531000018119812,
+    "neutral": 0.460999995470047,
+    "contradiction": 0.00800000037997961
+   },
+   "uol-gdf": {
+    "entailment": 0.5329999923706055,
+    "neutral": 0.46000000834465027,
+    "contradiction": 0.007000000216066837
+   },
+   "uol-pgr-1987": {
+    "entailment": 0.527999997138977,
+    "neutral": 0.4659999907016754,
+    "contradiction": 0.006000000052154064
+   },
+   "uol-stf-nega-87": {
+    "entailment": 0.5569999814033508,
+    "neutral": 0.43799999356269836,
+    "contradiction": 0.006000000052154064
+   },
+   "uol-supercopa": {
+    "entailment": 0.5379999876022339,
+    "neutral": 0.4560000002384186,
+    "contradiction": 0.006000000052154064
+   },
+   "uol-stf-patrocinadoras-2025": {
+    "entailment": 0.5239999890327454,
+    "neutral": 0.46799999475479126,
+    "contradiction": 0.007000000216066837
+   },
+   "uol-zambelli": {
+    "entailment": 0.5299999713897705,
+    "neutral": 0.46399998664855957,
+    "contradiction": 0.006000000052154064
+   },
+   "est-uol": {
+    "entailment": 0.5120000243186951,
+    "neutral": 0.4819999933242798,
+    "contradiction": 0.006000000052154064
+   },
+   "est-oglobo": {
+    "entailment": 0.5450000166893005,
+    "neutral": 0.4490000009536743,
+    "contradiction": 0.004999999888241291
+   },
+   "est-terra-pede": {
+    "entailment": 0.5389999747276306,
+    "neutral": 0.45500001311302185,
+    "contradiction": 0.006000000052154064
+   },
+   "est-propria": {
+    "entailment": 0.5260000228881836,
+    "neutral": 0.46700000762939453,
+    "contradiction": 0.007000000216066837
+   },
+   "est-terra-republica": {
+    "entailment": 0.5509999990463257,
+    "neutral": 0.4429999887943268,
+    "contradiction": 0.006000000052154064
+   },
+   "est-bets-acao": {
+    "entailment": 0.515999972820282,
+    "neutral": 0.47699999809265137,
+    "contradiction": 0.007000000216066837
+   },
+   "est-gazeta-nota": {
+    "entailment": 0.5350000262260437,
+    "neutral": 0.45899999141693115,
+    "contradiction": 0.006000000052154064
+   },
+   "s-sinonimos": {
+    "entailment": 0.5049999952316284,
+    "neutral": 0.4869999885559082,
+    "contradiction": 0.007000000216066837
+   },
+   "s-acao-diferente": {
+    "entailment": 0.47200000286102295,
+    "neutral": 0.5199999809265137,
+    "contradiction": 0.00800000037997961
+   },
+   "s-mesmo-objeto-outra-acao": {
+    "entailment": 0.5320000052452087,
+    "neutral": 0.46299999952316284,
+    "contradiction": 0.004999999888241291
+   },
+   "s-data-diferente": {
+    "entailment": 0.531000018119812,
+    "neutral": 0.46000000834465027,
+    "contradiction": 0.008999999612569809
+   },
+   "s-proposta-decisao": {
+    "entailment": 0.5009999871253967,
+    "neutral": 0.492000013589859,
+    "contradiction": 0.007000000216066837
+   },
+   "s-negacao": {
+    "entailment": 0.5199999809265137,
+    "neutral": 0.4699999988079071,
+    "contradiction": 0.009999999776482582
+   },
+   "s-numero": {
+    "entailment": 0.4569999873638153,
+    "neutral": 0.5289999842643738,
+    "contradiction": 0.014000000432133675
+   },
+   "s-homonimo": {
+    "entailment": 0.5400000214576721,
+    "neutral": 0.453000009059906,
+    "contradiction": 0.007000000216066837
+   },
+   "s-so-titulo-incerto": {
+    "entailment": 0.5299999713897705,
+    "neutral": 0.46299999952316284,
+    "contradiction": 0.00800000037997961
+   },
+   "s-so-resumo-mesmo": {
+    "entailment": 0.5230000019073486,
+    "neutral": 0.4659999907016754,
+    "contradiction": 0.010999999940395355
+   },
+   "s-papeis": {
+    "entailment": 0.5329999923706055,
+    "neutral": 0.460999995470047,
+    "contradiction": 0.006000000052154064
+   },
+   "s-local": {
+    "entailment": 0.5559999942779541,
+    "neutral": 0.43700000643730164,
+    "contradiction": 0.00800000037997961
+   }
+  }
+ },
+ "MiniLMv2-L6 mnli-xnli (inferência)": {
+  "acuracia": 0.541,
+  "ms_por_par": 8.6,
+  "aceitos_por_engano": [
+   "uol-gazeta-nota",
+   "uol-otempo",
+   "uol-bets-acao",
+   "uol-sinafut",
+   "uol-clubes-articulam",
+   "uol-gdf",
+   "uol-stf-nega-87",
+   "uol-zambelli",
+   "s-proposta-decisao",
+   "s-homonimo",
+   "s-papeis",
+   "s-local"
+  ],
+  "perdidos": [
+   "uol-antagonista",
+   "est-uol",
+   "est-oglobo",
+   "est-terra-pede",
+   "s-sinonimos"
+  ],
+  "contradicao_detectada": [
+   "uol-estadao",
+   "uol-estadao-titulo",
+   "uol-mesmo-veiculo",
+   "uol-gazeta-nota",
+   "uol-otempo",
+   "uol-bets-acao",
+   "uol-sinafut",
+   "uol-clubes-articulam",
+   "uol-gdf",
+   "uol-stf-nega-87",
+   "uol-zambelli",
+   "s-negacao",
+   "s-numero",
+   "s-homonimo",
+   "s-local"
+  ],
+  "probs": {
+   "uol-estadao": {
+    "entailment": 0.16599999368190765,
+    "neutral": 0.15299999713897705,
+    "contradiction": 0.6819999814033508
+   },
+   "uol-estadao-titulo": {
+    "entailment": 0.289000004529953,
+    "neutral": 0.12399999797344208,
+    "contradiction": 0.5860000252723694
+   },
+   "uol-terra": {
+    "entailment": 0.7080000042915344,
+    "neutral": 0.0820000022649765,
+    "contradiction": 0.20999999344348907
+   },
+   "uol-oglobo": {
+    "entailment": 0.7329999804496765,
+    "neutral": 0.23800000548362732,
+    "contradiction": 0.028999999165534973
+   },
+   "uol-antagonista": {
+    "entailment": 0.07100000232458115,
+    "neutral": 0.8679999709129333,
+    "contradiction": 0.061000000685453415
+   },
+   "uol-propria": {
+    "entailment": 0.9929999709129333,
+    "neutral": 0.004000000189989805,
+    "contradiction": 0.003000000026077032
+   },
+   "uol-mesmo-veiculo": {
+    "entailment": 0.013000000268220901,
+    "neutral": 0.10300000011920929,
+    "contradiction": 0.8840000033378601
+   },
+   "uol-gazeta-nota": {
+    "entailment": 0.07800000160932541,
+    "neutral": 0.3310000002384186,
+    "contradiction": 0.5920000076293945
+   },
+   "uol-otempo": {
+    "entailment": 0.004999999888241291,
+    "neutral": 0.43299999833106995,
+    "contradiction": 0.5619999766349792
+   },
+   "uol-bets-acao": {
+    "entailment": 0.08100000023841858,
+    "neutral": 0.2370000034570694,
+    "contradiction": 0.6819999814033508
+   },
+   "uol-sinafut": {
+    "entailment": 0.02500000037252903,
+    "neutral": 0.026000000536441803,
+    "contradiction": 0.9490000009536743
+   },
+   "uol-clubes-articulam": {
+    "entailment": 0.008999999612569809,
+    "neutral": 0.2329999953508377,
+    "contradiction": 0.7590000033378601
+   },
+   "uol-gdf": {
+    "entailment": 0.012000000104308128,
+    "neutral": 0.017999999225139618,
+    "contradiction": 0.9700000286102295
+   },
+   "uol-pgr-1987": {
+    "entailment": 0.06800000369548798,
+    "neutral": 0.847000002861023,
+    "contradiction": 0.08500000089406967
+   },
+   "uol-stf-nega-87": {
+    "entailment": 0.010999999940395355,
+    "neutral": 0.00800000037997961,
+    "contradiction": 0.9810000061988831
+   },
+   "uol-supercopa": {
+    "entailment": 0.00800000037997961,
+    "neutral": 0.9390000104904175,
+    "contradiction": 0.05400000140070915
+   },
+   "uol-stf-patrocinadoras-2025": {
+    "entailment": 0.3059999942779541,
+    "neutral": 0.28700000047683716,
+    "contradiction": 0.40700000524520874
+   },
+   "uol-zambelli": {
+    "entailment": 0.007000000216066837,
+    "neutral": 0.014000000432133675,
+    "contradiction": 0.9800000190734863
+   },
+   "est-uol": {
+    "entailment": 0.004999999888241291,
+    "neutral": 0.9480000138282776,
+    "contradiction": 0.04699999839067459
+   },
+   "est-oglobo": {
+    "entailment": 0.006000000052154064,
+    "neutral": 0.9919999837875366,
+    "contradiction": 0.0020000000949949026
+   },
+   "est-terra-pede": {
+    "entailment": 0.006000000052154064,
+    "neutral": 0.7889999747276306,
+    "contradiction": 0.20600000023841858
+   },
+   "est-propria": {
+    "entailment": 0.9649999737739563,
+    "neutral": 0.019999999552965164,
+    "contradiction": 0.014999999664723873
+   },
+   "est-terra-republica": {
+    "entailment": 0.9919999837875366,
+    "neutral": 0.004000000189989805,
+    "contradiction": 0.003000000026077032
+   },
+   "est-bets-acao": {
+    "entailment": 0.003000000026077032,
+    "neutral": 0.9629999995231628,
+    "contradiction": 0.03500000014901161
+   },
+   "est-gazeta-nota": {
+    "entailment": 0.006000000052154064,
+    "neutral": 0.8539999723434448,
+    "contradiction": 0.14100000262260437
+   },
+   "s-sinonimos": {
+    "entailment": 0.4359999895095825,
+    "neutral": 0.5580000281333923,
+    "contradiction": 0.006000000052154064
+   },
+   "s-acao-diferente": {
+    "entailment": 0.003000000026077032,
+    "neutral": 0.6679999828338623,
+    "contradiction": 0.32899999618530273
+   },
+   "s-mesmo-objeto-outra-acao": {
+    "entailment": 0.0010000000474974513,
+    "neutral": 0.9810000061988831,
+    "contradiction": 0.017000000923871994
+   },
+   "s-data-diferente": {
+    "entailment": 0.0010000000474974513,
+    "neutral": 0.9929999709129333,
+    "contradiction": 0.006000000052154064
+   },
+   "s-proposta-decisao": {
+    "entailment": 0.8970000147819519,
+    "neutral": 0.10000000149011612,
+    "contradiction": 0.0020000000949949026
+   },
+   "s-negacao": {
+    "entailment": 0.007000000216066837,
+    "neutral": 0.003000000026077032,
+    "contradiction": 0.9900000095367432
+   },
+   "s-numero": {
+    "entailment": 0.18799999356269836,
+    "neutral": 0.2630000114440918,
+    "contradiction": 0.5490000247955322
+   },
+   "s-homonimo": {
+    "entailment": 0.0010000000474974513,
+    "neutral": 0.19699999690055847,
+    "contradiction": 0.8009999990463257
+   },
+   "s-so-titulo-incerto": {
+    "entailment": 0.004999999888241291,
+    "neutral": 0.8309999704360962,
+    "contradiction": 0.164000004529953
+   },
+   "s-so-resumo-mesmo": {
+    "entailment": 0.9789999723434448,
+    "neutral": 0.007000000216066837,
+    "contradiction": 0.014000000432133675
+   },
+   "s-papeis": {
+    "entailment": 0.5590000152587891,
+    "neutral": 0.02199999988079071,
+    "contradiction": 0.4189999997615814
+   },
+   "s-local": {
+    "entailment": 0.009999999776482582,
+    "neutral": 0.01600000075995922,
+    "contradiction": 0.9739999771118164
+   }
+  }
+ },
+ "paraphrase-multilingual-mpnet (Ollama)": {
+  "acuracia_melhor_limiar": 0.811,
+  "limiar": 0.717,
+  "ms_por_texto": 676.0,
+  "aceitos_por_engano": [
+   "uol-gazeta-nota",
+   "uol-otempo",
+   "s-data-diferente",
+   "s-proposta-decisao",
+   "s-papeis",
+   "s-local"
+  ],
+  "perdidos": [
+   "uol-mesmo-veiculo"
+  ],
+  "scores": {
+   "uol-estadao": 0.748,
+   "uol-estadao-titulo": 0.748,
+   "uol-terra": 0.889,
+   "uol-oglobo": 0.801,
+   "uol-antagonista": 0.901,
+   "uol-propria": 1.0,
+   "uol-mesmo-veiculo": 0.398,
+   "uol-gazeta-nota": 0.794,
+   "uol-otempo": 0.754,
+   "uol-bets-acao": 0.597,
+   "uol-sinafut": 0.538,
+   "uol-clubes-articulam": 0.547,
+   "uol-gdf": 0.504,
+   "uol-pgr-1987": 0.632,
+   "uol-stf-nega-87": 0.69,
+   "uol-supercopa": 0.641,
+   "uol-stf-patrocinadoras-2025": 0.652,
+   "uol-zambelli": 0.421,
+   "est-uol": 0.748,
+   "est-oglobo": 0.803,
+   "est-terra-pede": 0.775,
+   "est-propria": 1.0,
+   "est-terra-republica": 1.0,
+   "est-bets-acao": 0.467,
+   "est-gazeta-nota": 0.661,
+   "s-sinonimos": 0.807,
+   "s-acao-diferente": 0.581,
+   "s-mesmo-objeto-outra-acao": 0.709,
+   "s-data-diferente": 0.913,
+   "s-proposta-decisao": 0.934,
+   "s-negacao": 0.909,
+   "s-numero": 0.863,
+   "s-homonimo": 0.406,
+   "s-so-titulo-incerto": 0.591,
+   "s-so-resumo-mesmo": 0.717,
+   "s-papeis": 0.922,
+   "s-local": 0.8
+  }
+ }
+}

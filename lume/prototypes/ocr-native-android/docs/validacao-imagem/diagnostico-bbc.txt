@@ -1,0 +1,268 @@
+--------- beginning of main
+CONSULTAS (9)
+  [google_news] 'Dino Senhora Aparecida fux derruba decisão posts' -> ok 20
+  [bing_news] 'Dino Senhora Aparecida fux derruba decisão posts' -> ok 10
+  [google_news] 'Dino fux derruba posts' -> ok 20
+  [bing_news] 'Dino fux derruba posts' -> ok 10
+  [google_news] 'Dino fux ministros supremo' -> ok 20
+  [google_news] 'Dino Senhora Aparecida fux' -> ok 20
+  [bing_web] 'Dino Senhora Aparecida fux derruba decisão posts' -> ok 10
+  [wikipedia] 'Dino fux derruba' -> ok 3
+  [wikipedia] 'Dino' -> ok 3
+TRIAGEM (116)
+  contexto | agenciabrasil.ebc.com.br | Fux suspende decisão de Dino que restabelecia posts de Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | Migalhas | Fux derruba decisão de Dino e manda excluir posts sobre Nossa Senhora | Trata do mesmo acontecimento
+  direto | BBC | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | Trata do mesmo acontecimento
+  direto | congressoemfoco.com.br | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | oglobo.globo.com | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | Trata do mesmo acontecimento
+  contexto | Consultor Jurídico | Fux suspende decisão de Dino e barra posts sobre Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | CartaCapital | Fux derruba decisão de Dino e suspende posts envolvendo Flávio Bolsonaro e Nossa Senhora | Trata do mesmo acontecimento
+  contexto | VEJA | Fux suspende decisão de Dino, e redes devem excluir posts sobre Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | Exame | Fux suspende decisão de Dino e manda derrubar posts sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  contexto | Gazeta do Povo | Luiz Fux derruba liminar de Flávio Dino e aponta incoerência do STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | Estadão | Nossa Senhora Aparecida no centro da eleição: entenda as decisões e como a santa foi parar no STF | apenas o nome coincide; outro assunto
+  contexto | Poder360 | Fux derruba decisão de Dino e redes devem excluir fake news sobre padroeira | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | Estado de Minas | Guerra no STF: Fux derruba decisão de Dino sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | oglobo.globo.com | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  contexto | agenciabrasil.ebc.com.br | Flávio recorre a Fux para derrubar post sobre Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Estadão | Fux suspende decisão de Dino sobre fake news de Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | oglobo.globo.com | Fux suspende decisão de Dino e restabelece ordem do TSE sobre posts de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  contexto | Metrópoles | Fux derruba decisão de Dino que liberou postagens de Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | TVT News | Fux suspende decisão de Dino sobre Nossa Senhora Aparecida a 5 dias da eleição | Mesma pessoa/instituição, outro aspecto ou só 
+parte do acontecimento
+  contexto | CartaCapital | Leia a íntegra da decisão de Fux que barrou posts sobre Flávio Bolsonaro e Nossa Senhora | Mesmo tema, sem citar Dino, Senhora Aparecida
+  direto | Notícias R7 | Fux derruba decisão de Dino sobre posts atribuídos a Flávio Bolsonaro sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | g1 | Fux suspende decisão de Dino e retoma determinação de Mendonça sobre posts de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | O GLOBO | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | BBC on MSN | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | Trata do mesmo acontecimento
+  direto | Correio Braziliense | Fux derruba decisão de Dino e manda remover posts sobre Nossa Senhora | Trata do mesmo acontecimento
+  direto | O GLOBO | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | Trata do mesmo acontecimento
+  direto | Forbes Brasil | Fux Suspende Decisão de Dino Que Restabelecia Posts de Nossa Senhora | Trata do mesmo acontecimento
+  direto | ND Mais | Luiz Fux derruba decisão de Flávio Dino e manda apagar novamente das redes post sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | CartaCapital | Fux derruba decisão de Dino e suspende posts envolvendo Flávio Bolsonaro e Nossa Senhora | Trata do mesmo acontecimento
+  direto | Portal O Dia | Fux derruba decisão de Dino e manda remover posts sobre Nossa Senhora Aparecida; entenda | Trata do mesmo acontecimento
+  direto | Migalhas | Fux derruba decisão de Dino e manda excluir posts sobre Nossa Senhora | Trata do mesmo acontecimento
+  contexto | agenciabrasil.ebc.com.br | Fux suspende decisão de Dino que restabelecia posts de Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | BBC | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | Trata do mesmo acontecimento
+  contexto | Consultor Jurídico | Fux suspende decisão de Dino e barra posts sobre Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | CartaCapital | Fux derruba decisão de Dino e suspende posts envolvendo Flávio Bolsonaro e Nossa Senhora | Trata do mesmo acontecimento
+  direto | congressoemfoco.com.br | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | oglobo.globo.com | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | Trata do mesmo acontecimento
+  contexto | Gazeta do Povo | Luiz Fux derruba liminar de Flávio Dino e aponta incoerência do STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | VEJA | Fux suspende decisão de Dino, e redes devem excluir posts sobre Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Poder360 | Fux derruba decisão de Dino e redes devem excluir fake news sobre padroeira | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | Exame | Fux suspende decisão de Dino e manda derrubar posts sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  contexto | Metrópoles | Fux derruba decisão de Dino que liberou postagens de Nossa Senhora | Mesma pessoa/insti
+tuição, outro aspecto ou só parte do acontecimento
+  direto | oglobo.globo.com | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  contexto | CartaCapital | Leia a íntegra da decisão de Fux que barrou posts sobre Flávio Bolsonaro e Nossa Senhora | Mesmo tema, sem citar Dino, Senhora Aparecida
+  contexto | agenciabrasil.ebc.com.br | Flávio recorre a Fux para derrubar post sobre Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | oglobo.globo.com | Fux suspende decisão de Dino e restabelece ordem do TSE sobre posts de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | Estado de Minas | Guerra no STF: Fux derruba decisão de Dino sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | Correio Braziliense | Fux derruba decisão de Dino e manda remover posts sobre Nossa Senhora | Trata do mesmo acontecimento
+  direto | R7 | Fux derruba decisão de Dino sobre posts atribuídos a Flávio Bolsonaro sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  descartado | SBT News | Análise: Fux expõe Moraes sobre fake news e democracia | poucos detalhes em comum (entidades 0/2, termos 1/4)
+  direto | Notícias R7 | Fux derruba decisão de Dino sobre posts atribuídos a Flávio Bolsonaro sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | g1 | Fux suspende decisão de Dino e retoma determinação de Mendonça sobre posts de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | Correio Braziliense | Fux derruba decisão de Dino e manda remover posts sobre Nossa Senhora | Trata do mesmo acontecimento
+  direto | BBC on MSN | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | Trata do mesmo acontecimento
+  direto | O GLOBO | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | O GLOBO | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | Trata do mesmo acontecimento
+  direto | CartaCapital | Fux derruba decisão de Dino e suspende posts envolvendo Flávio Bolsonaro e Nossa Senhora | Trata do mesmo acontecimento
+  direto | Forbes Brasil | Fux Suspende Decisão de Dino Que Restabelecia Posts de Nossa Senhora | Trata do mesmo acontecimento
+  direto | Migalhas | Fux derruba decisão de Dino e manda excluir posts sobre Nossa Senhora | Trata do mesmo acontecimento
+  direto | Poder360 | Fux derruba decisão de Dino e redes devem excluir fake news sobre padroeira | Trata do mesmo acontecimento
+  contexto | agenciabrasil.ebc.com.br | Fux suspende decisão de Dino que restabelecia posts de Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | Migalhas | Fux derruba decisão de Dino e manda excluir posts sobre Nossa Senhora | Trata do mesmo acontecimento
+  direto | JOTA Info | Fux suspende decisão de Dino e restabelece retirada de post sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  contexto | Consultor Jurídico | Fux suspende decisão de Dino e barra posts sobre Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | BBC | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | Trata do mesmo acontecimento
+  contexto | Gazeta do Povo | Luiz Fux derruba liminar de Flávio Dino e apo
+nta incoerência do STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | UOL Notícias | Por que o recurso de Flávio foi para Fux, e o de Tabet, para Dino no STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | G1 | Fux suspende decisão de Dino e retoma determinação de Mendonça sobre posts de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | CartaCapital | Fux derruba decisão de Dino e suspende posts envolvendo Flávio Bolsonaro e Nossa Senhora | Trata do mesmo acontecimento
+  contexto | cnnbrasil.com.br | Fux susta decisão de Dino e retoma ordem contra fake news sobre Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Poder360 | Fux derruba decisão de Dino e redes devem excluir fake news sobre padroeira | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Gazeta do Povo | Fux suspende decisão de Dino sobre Flávio Bolsonaro e Padroeira | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | folha.uol.com.br | Fux contraria Dino e manda suspender novamente publicações sobre Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | oglobo.globo.com | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | Trata do mesmo acontecimento
+  contexto | CartaCapital | Leia a íntegra da decisão de Fux que barrou posts sobre Flávio Bolsonaro e Nossa Senhora | Mesmo tema, sem citar Dino, Senhora Aparecida
+  descartado | cnnbrasil.com.br | Entenda como fake news sobre Nossa Senhora Aparecida acirrou embate no STF | apenas o nome coincide; outro assunto
+  contexto | Gazeta do Povo | STF segue em choque: Fux enfrenta Dino e restabelece ordem de Mendonça | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Valor Econômico | Fux acata pedido da defesa de Flávio e cassa decisão de Dino sobre Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Valor Econômico | Fux acata pedido da defesa de Flávio e derruba decisão de Dino | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | oglobo.globo.com | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  contexto | agenciabrasil.ebc.com.br | Fux suspende decisão de Dino que restabelecia posts de Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Consultor Jurídico | Fux suspende decisão de Dino e barra posts sobre Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | JOTA Info | Fux suspende decisão de Dino e restabelece retirada de post sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | Migalhas | Fux derruba decisão de Dino e manda excluir posts sobre Nossa Senhora | Trata do mesmo acontecimento
+  direto | BBC | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | Trata do mesmo acontecimento
+  direto | congressoemfoco.com.br | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  contexto | Brasil de Fato | Fux restaura decisão de Mendonça e manda suspender posts sobre Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecime
+nto
+  contexto | Assine o Meio | Guerra Santa: Fux e Dino disputam decisão envolvendo Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | oglobo.globo.com | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | Trata do mesmo acontecimento
+  contexto | Gazeta do Povo | Decisão de Fux sobre Aparecida expõe abusos seletivos de Dino e Moraes | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | cnnbrasil.com.br | Entenda como fake news sobre Nossa Senhora Aparecida acirrou embate no STF | apenas o nome coincide; outro assunto
+  contexto | vermelho.org.br | Fux cassa decisão de Dino e devolve a Flávio a censura sobre Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Estadão | Fux suspende decisão de Dino sobre fake news de Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | G1 | Fux suspende decisão de Dino e retoma determinação de Mendonça sobre posts de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  contexto | agenciabrasil.ebc.com.br | Fux restabelece proibição de posts sobre Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Gazeta do Povo | Luiz Fux derruba liminar de Flávio Dino e aponta incoerência do STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Valor Econômico | Fux acata pedido da defesa de Flávio e cassa decisão de Dino sobre Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | oglobo.globo.com | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  contexto | TVT News | Fux suspende decisão de Dino sobre Nossa Senhora Aparecida a 5 dias da eleição | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | jb.fm | Fux derruba decisão de Dino e suspende novamente publicações sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  descartado | chromedino.com | Dinosaur Game — Chrome Dino T-Rex Run Online | apenas o nome coincide; outro assunto
+  descartado | pwa-dino.github.io | chrome://dino | apenas o nome coincide; outro assunto
+  descartado | poki.com | Dino Game - Jogue Grátis Online! | Poki | apenas o nome coincide; outro assunto
+  descartado | dinosaur.game | Jogo do Dinossauro - Jogue Dino Online | apenas o nome coincide; outro assunto
+  descartado | poki.com | Play Dinosaur Game: No Download, Instant Play - Poki | apenas o nome coincide; outro assunto
+  descartado | elgoog.eu | Jogue o Jogo do Dinossauro do Chrome - elgooG | apenas o nome coincide; outro assunto
+  descartado | dino-chrome.com | Jogo do Dinossauro Jogar Chrome Dino online | apenas o nome coincide; outro assunto
+  descartado | crazygames.com | Dino Game ️ Play on CrazyGames | apenas o nome coincide; outro assunto
+  descartado | elgoog.eu | Dino do Chrome em 3D - elgooG | apenas o nome coincide; outro assunto
+  descartado | elgoog.im | Play Chrome Dinosaur Game 3D - elgooG | apenas o nome coincide; outro assunto
+  contexto | Wikipédia | Luiz Fux | Contexto geral (enciclopédia)
+  descartado | Wikipédia | Ação Penal 2668 | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  contexto | Wikipédia | Tarcísio de Freitas | Contexto geral (enciclopédia)
+  descar
+tado | Wikipédia | Flávio Dino | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Ramon Dino | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Sálvio Dino | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+DUPLICATA (48)
+  removida | Notícias R7 | Fux derruba decisão de Dino sobre posts atribuídos a Flávio Bolsonaro sobre Nossa Senhora Aparecida | mesma URL já recebida de bing_news
+  removida | BBC on MSN | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | mesma URL já recebida de bing_news
+  removida | O GLOBO | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | mesma URL já recebida de bing_news
+  removida | BBC | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | mesma URL já recebida de google_news
+  removida | oglobo.globo.com | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | mesma URL já recebida de google_news
+  removida | Exame | Fux suspende decisão de Dino e manda derrubar posts sobre Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | BBC | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | mesma URL já recebida de google_news
+  removida | oglobo.globo.com | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | mesma URL já recebida de google_news
+  removida | BBC | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | mesma URL já recebida de google_news
+  removida | oglobo.globo.com | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | mesma URL já recebida de google_news
+  removida | g1 | Fux suspende decisão de Dino e retoma determinação de Mendonça sobre posts de Nossa Senhora Aparecida | mesma URL já recebida de bing_news
+  removida | O GLOBO | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | mesma URL já recebida de bing_news
+  removida | congressoemfoco.com.br | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | oglobo.globo.com | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | oglobo.globo.com | Fux suspende decisão de Dino e restabelece ordem do TSE sobre posts de Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | Estado de Minas | Guerra no STF: Fux derruba decisão de Dino sobre Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | oglobo.globo.com | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | JOTA Info | Fux suspende decisão de Dino e restabelece retirada de post sobre Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | congressoemfoco.com.br | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | G1 | Fux suspende decisão de Dino e retoma determinação de Mendonça sobre posts de Nossa Senhor
+a Aparecida | mesma URL já recebida de google_news
+  removida | oglobo.globo.com | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | Correio Braziliense | Fux derruba decisão de Dino e manda remover posts sobre Nossa Senhora | mesma URL já recebida de bing_news
+  removida | CartaCapital | Fux derruba decisão de Dino e suspende posts envolvendo Flávio Bolsonaro e Nossa Senhora | mesma URL já recebida de bing_news
+  removida | Forbes Brasil | Fux Suspende Decisão de Dino Que Restabelecia Posts de Nossa Senhora | mesma URL já recebida de bing_news
+  removida | Migalhas | Fux derruba decisão de Dino e manda excluir posts sobre Nossa Senhora | mesma URL já recebida de google_news
+  removida | CartaCapital | Fux derruba decisão de Dino e suspende posts envolvendo Flávio Bolsonaro e Nossa Senhora | mesma URL já recebida de google_news
+  removida | Migalhas | Fux derruba decisão de Dino e manda excluir posts sobre Nossa Senhora | mesma URL já recebida de google_news
+  removida | CartaCapital | Fux derruba decisão de Dino e suspende posts envolvendo Flávio Bolsonaro e Nossa Senhora | mesma URL já recebida de google_news
+  removida | Migalhas | Fux derruba decisão de Dino e manda excluir posts sobre Nossa Senhora | mesma URL já recebida de google_news
+  removida | Estadão | Fux suspende decisão de Dino sobre fake news de Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | Valor Econômico | Fux acata pedido da defesa de Flávio e cassa decisão de Dino sobre Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | TVT News | Fux suspende decisão de Dino sobre Nossa Senhora Aparecida a 5 dias da eleição | mesma URL já recebida de google_news
+  removida | agenciabrasil.ebc.com.br | Fux suspende decisão de Dino que restabelecia posts de Nossa Senhora | mesma URL já recebida de google_news
+  removida | Consultor Jurídico | Fux suspende decisão de Dino e barra posts sobre Nossa Senhora | mesma URL já recebida de google_news
+  removida | VEJA | Fux suspende decisão de Dino, e redes devem excluir posts sobre Nossa Senhora | mesma URL já recebida de google_news
+  removida | Poder360 | Fux derruba decisão de Dino e redes devem excluir fake news sobre padroeira | mesma URL já recebida de google_news
+  removida | Metrópoles | Fux derruba decisão de Dino que liberou postagens de Nossa Senhora | mesma URL já recebida de google_news
+  removida | agenciabrasil.ebc.com.br | Flávio recorre a Fux para derrubar post sobre Nossa Senhora Aparecida | mesma URL já recebida de google_news
+  removida | agenciabrasil.ebc.com.br | Fux suspende decisão de Dino que restabelecia posts de Nossa Senhora | mesma URL já recebida de google_news
+  removida | Consultor Jurídico | Fux suspende decisão de Dino e barra posts sobre Nossa Senhora | mesma URL já recebida de google_news
+  removida | Poder360 | Fux derruba decisão de Dino e redes devem excluir fake news sobre padroeira | mesma URL já recebida de google_news
+  removida | agenciabrasil.ebc.com.br | Fux suspende decisão de Dino que restabelecia posts de Nossa Senhora | mesma URL já recebida de google_news
+  removida | Consultor Jurídico | Fux suspende decisão de Dino e barra posts sobre Nossa Senhora | mesma URL já recebida de google_news
+  removida | Gazeta do Povo | Luiz Fux derruba liminar de Flávio Dino e aponta incoerência do STF | mesma URL já recebida de google_news
+  removida | Gazeta do Povo | Luiz Fux derr
+uba liminar de Flávio Dino e aponta incoerência do STF | mesma URL já recebida de google_news
+  removida | Gazeta do Povo | Luiz Fux derruba liminar de Flávio Dino e aponta incoerência do STF | mesma URL já recebida de google_news
+  removida | CartaCapital | Leia a íntegra da decisão de Fux que barrou posts sobre Flávio Bolsonaro e Nossa Senhora | mesma URL já recebida de google_news
+  removida | CartaCapital | Leia a íntegra da decisão de Fux que barrou posts sobre Flávio Bolsonaro e Nossa Senhora | mesma URL já recebida de google_news
+REPUBLICACAO (14)
+  agrupada | R7 | Fux derruba decisão de Dino sobre posts atribuídos a Flávio Bolsonaro sobre Nossa Senhora Aparecida | título/trecho quase igual a Notícias R7
+  agrupada | BBC | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | título/trecho quase igual a BBC on MSN
+  agrupada | oglobo.globo.com | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | título/trecho quase igual a O GLOBO
+  agrupada | Correio Braziliense | Fux derruba decisão de Dino e manda remover posts sobre Nossa Senhora | título/trecho quase igual a Portal O Dia
+  agrupada | Correio Braziliense | Fux derruba decisão de Dino e manda remover posts sobre Nossa Senhora | título/trecho quase igual a Portal O Dia
+  agrupada | G1 | Fux suspende decisão de Dino e retoma determinação de Mendonça sobre posts de Nossa Senhora Aparecida | título/trecho quase igual a g1
+  agrupada | congressoemfoco.com.br | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | título/trecho quase igual a O GLOBO
+  agrupada | oglobo.globo.com | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | título/trecho quase igual a O GLOBO
+  agrupada | Metrópoles | Fux derruba decisão de Dino que liberou postagens de Nossa Senhora | título/trecho quase igual a O GLOBO
+  agrupada | agenciabrasil.ebc.com.br | Fux suspende decisão de Dino que restabelecia posts de Nossa Senhora | título/trecho quase igual a Forbes Brasil
+  agrupada | Consultor Jurídico | Fux suspende decisão de Dino e barra posts sobre Nossa Senhora | título/trecho quase igual a Forbes Brasil
+  agrupada | CartaCapital | Fux derruba decisão de Dino e suspende posts envolvendo Flávio Bolsonaro e Nossa Senhora | título/trecho quase igual a CartaCapital
+  agrupada | Migalhas | Fux derruba decisão de Dino e manda excluir posts sobre Nossa Senhora | título/trecho quase igual a Migalhas
+  agrupada | Poder360 | Fux derruba decisão de Dino e redes devem excluir fake news sobre padroeira | título/trecho quase igual a Poder360
+RELEITURA (0)
+LIMITE (10)
+  contexto | Gazeta do Povo | Luiz Fux derruba liminar de Flávio Dino e aponta incoerência do STF | acima do limite de 8 na seção
+  contexto | cnnbrasil.com.br | Fux susta decisão de Dino e retoma ordem contra fake news sobre Aparecida | acima do limite de 8 na seção
+  contexto | Gazeta do Povo | Fux suspende decisão de Dino sobre Flávio Bolsonaro e Padroeira | acima do limite de 8 na seção
+  contexto | Gazeta do Povo | Decisão de Fux sobre Aparecida expõe abusos seletivos de Dino e Moraes | acima do limite de 8 na seção
+  contexto | vermelho.org.br | Fux cassa decisão de Dino e devolve a Flávio a censura sobre Nossa Senhora | acima do limite de 8 na seção
+  contexto | agenciabrasil.ebc.com.br | Fux restabelece proibição de posts sobre Nossa Senhora Aparecida | acima do limite de 8 na seção
+  con
+texto | CartaCapital | Leia a íntegra da decisão de Fux que barrou posts sobre Flávio Bolsonaro e Nossa Senhora | acima do limite de 8 na seção
+  contexto | UOL Notícias | Por que o recurso de Flávio foi para Fux, e o de Tabet, para Dino no STF | acima do limite de 8 na seção
+  contexto | folha.uol.com.br | Fux contraria Dino e manda suspender novamente publicações sobre Nossa Senhora | acima do limite de 8 na seção
+  contexto | Gazeta do Povo | STF segue em choque: Fux enfrenta Dino e restabelece ordem de Mendonça | acima do limite de 8 na seção
+EXIBIDA (26)
+  direto | Notícias R7 | Fux derruba decisão de Dino sobre posts atribuídos a Flávio Bolsonaro sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | BBC on MSN | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | Trata do mesmo acontecimento
+  direto | O GLOBO | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | Trata do mesmo acontecimento
+  direto | ND Mais | Luiz Fux derruba decisão de Flávio Dino e manda apagar novamente das redes post sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | Portal O Dia | Fux derruba decisão de Dino e manda remover posts sobre Nossa Senhora Aparecida; entenda | Trata do mesmo acontecimento
+  direto | Exame | Fux suspende decisão de Dino e manda derrubar posts sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | g1 | Fux suspende decisão de Dino e retoma determinação de Mendonça sobre posts de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | O GLOBO | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | Estado de Minas | Guerra no STF: Fux derruba decisão de Dino sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | oglobo.globo.com | Fux suspende decisão de Dino e restabelece ordem do TSE sobre posts de Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | JOTA Info | Fux suspende decisão de Dino e restabelece retirada de post sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | jb.fm | Fux derruba decisão de Dino e suspende novamente publicações sobre Nossa Senhora Aparecida | Trata do mesmo acontecimento
+  direto | Forbes Brasil | Fux Suspende Decisão de Dino Que Restabelecia Posts de Nossa Senhora | Trata do mesmo acontecimento
+  direto | CartaCapital | Fux derruba decisão de Dino e suspende posts envolvendo Flávio Bolsonaro e Nossa Senhora | Trata do mesmo acontecimento
+  direto | Migalhas | Fux derruba decisão de Dino e manda excluir posts sobre Nossa Senhora | Trata do mesmo acontecimento
+  direto | Poder360 | Fux derruba decisão de Dino e redes devem excluir fake news sobre padroeira | Trata do mesmo acontecimento
+  contexto | Estadão | Fux suspende decisão de Dino sobre fake news de Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | TVT News | Fux suspende decisão de Dino sobre Nossa Senhora Aparecida a 5 dias da eleição | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Valor Econômico | Fux acata pedido da defesa de Flávio e cassa decisão de Dino sobre Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Assine o Meio | Guerra Santa: Fux e Dino disputam decisão envolvendo Nossa Senhora Aparecida
+ | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | VEJA | Fux suspende decisão de Dino, e redes devem excluir posts sobre Nossa Senhora | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | agenciabrasil.ebc.com.br | Flávio recorre a Fux para derrubar post sobre Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Valor Econômico | Fux acata pedido da defesa de Flávio e derruba decisão de Dino | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Brasil de Fato | Fux restaura decisão de Mendonça e manda suspender posts sobre Nossa Senhora Aparecida | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto_geral | Wikipédia | Luiz Fux | Contexto geral (enciclopédia)
+  contexto_geral | Wikipédia | Tarcísio de Freitas | Contexto geral (enciclopédia)
+RELACAO (26)
+  mesmo_fato | Notícias R7 | Fux derruba decisão de Dino sobre posts atribuídos a Flávio Bolsonaro sobre Nossa Senhora Aparecida | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | BBC on MSN | Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da  | Relata o mesmo acontecimento [leitura: trecho]
+  mesmo_fato | O GLOBO | Fux diz que TSE tem 'última palavra em matéria eleitoral' e derruba decisão de Dino sobre posts de Nossa Senho | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | ND Mais | Luiz Fux derruba decisão de Flávio Dino e manda apagar novamente das redes post sobre Nossa Senhora Aparecida | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | Portal O Dia | Fux derruba decisão de Dino e manda remover posts sobre Nossa Senhora Aparecida; entenda | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | Exame | Fux suspende decisão de Dino e manda derrubar posts sobre Nossa Senhora Aparecida | Relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | g1 | Fux suspende decisão de Dino e retoma determinação de Mendonça sobre posts de Nossa Senhora Aparecida | Relata o mesmo acontecimento [leitura: pagina] «Fachin pode levar caso Nossa Senhora Aparecida ao plenário do STF O ministro do Supremo Tribunal Federal (STF) Luiz Fux suspendeu nesta segu»
+  mesmo_fato | O GLOBO | Fux derruba decisão de Dino sobre postagens de Nossa Senhora Aparecida | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | Estado de Minas | Guerra no STF: Fux derruba decisão de Dino sobre Nossa Senhora Aparecida | Relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | oglobo.globo.com | Fux suspende decisão de Dino e restabelece ordem do TSE sobre posts de Nossa Senhora Aparecida | Relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | JOTA Info | Fux suspende decisão de Dino e restabelece retirada de post sobre Nossa Senhora Aparecida | Relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | jb.fm | Fux derruba decisão de Dino e suspende novamente publicações sobre Nossa Senhora Aparecida | Relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | Forbes Brasil | Fux Suspende Decisão de Dino Que Restabelecia Posts de Nossa Senhora | Relata o mesmo acontecimento [leitura: trecho]
+  mesmo_fato | CartaCapital | Fux derruba decisão de Dino e suspende posts envolvendo Flávio Bolsonaro e Nossa Senhora | Relata o mesmo acontecimento [leitura: trecho]
+  mesmo_fato | Migalhas | Fux derruba decisão de Dino e manda 
+excluir posts sobre Nossa Senhora | Relata o mesmo acontecimento [leitura: trecho]
+  mesmo_fato | Poder360 | Fux derruba decisão de Dino e redes devem excluir fake news sobre padroeira | Relata o mesmo acontecimento [leitura: trecho]
+  contexto | Estadão | Fux suspende decisão de Dino sobre fake news de Nossa Senhora Aparecida | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | TVT News | Fux suspende decisão de Dino sobre Nossa Senhora Aparecida a 5 dias da eleição | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Valor Econômico | Fux acata pedido da defesa de Flávio e cassa decisão de Dino sobre Nossa Senhora Aparecida | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Assine o Meio | Guerra Santa: Fux e Dino disputam decisão envolvendo Nossa Senhora Aparecida | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | VEJA | Fux suspende decisão de Dino, e redes devem excluir posts sobre Nossa Senhora | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | agenciabrasil.ebc.com.br | Flávio recorre a Fux para derrubar post sobre Nossa Senhora Aparecida | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Valor Econômico | Fux acata pedido da defesa de Flávio e derruba decisão de Dino | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Brasil de Fato | Fux restaura decisão de Mendonça e manda suspender posts sobre Nossa Senhora Aparecida | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Wikipédia | Luiz Fux | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]
+  contexto | Wikipédia | Tarcísio de Freitas | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]

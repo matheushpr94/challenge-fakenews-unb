@@ -237,7 +237,8 @@ fun structure(interp: Interpretation, mainText: String, nowYear: Int): Pair<Afir
     val ents = interp.entidades
     // Só a entidade principal sai dos qualificadores; outras ("Copa do Mundo") podem ser a categoria.
     val entTokens = if (ents.isNotEmpty()) norm(ents[0]).split(" ").toSet() else emptySet()
-    var q = extractQuantities(mainText, entTokens).firstOrNull()
+    // "em 30 dias", "no prazo de 120 dias": prazo do fato, não uma contagem a comparar.
+    var q = extractQuantities(mainText, entTokens).firstOrNull { !isDuration(it, mainText) }
     val tipo = classify(mainText, q, interp.anos, nowYear, interp.tempoRelativo)
     val unitStem = q?.chaveUnidade
     val propTerms = interp.termos.filter { stem(it) != unitStem }

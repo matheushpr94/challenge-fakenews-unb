@@ -180,7 +180,7 @@ fun yearEvidence(interp: Interpretation, groups: List<Group>): List<EvidenceItem
 private fun tagVariants(items: List<EvidenceItem>, groups: List<Group>, entity: String?): List<EvidenceItem> {
     for (i in items) {
         val cand = groups[i.group].members.firstOrNull { it.first.url == i.url }?.first ?: groups[i.group].lead.first
-        i.entidadeFonte = sourceEntity(cand, entity)
+        i.entidadeFonte = if (cand.origin == "wikipedia") sourceEntity(cand, entity) else null
     }
     return items
 }
@@ -231,7 +231,7 @@ fun synthesize(interp: Interpretation, groups: List<Group>, directCount: Int): S
 
 private fun decide(interp: Interpretation, q: Quantity?, items: List<EvidenceItem>, detail: String?, groups: List<Group>): Synthesis {
     val expl = mutableListOf<Explanation>()
-    val used = items.filter { it.relacao in setOf("apoia", "contradiz", "valor") && it.conteudo in STRONG_CONTENT }
+    var used = emptyList<EvidenceItem>()
     val claimed = when {
         q?.valor != null -> q.texto + if (q.qualificadores.isNotEmpty()) " (${q.qualificadores.joinToString(" ")})" else ""
         q == null && interp.anos.isNotEmpty() -> interp.anos.joinToString(", ")
@@ -256,7 +256,8 @@ private fun decide(interp: Interpretation, q: Quantity?, items: List<EvidenceIte
             sit = if (sit == "apoiam") "contradizem" else "apoiam"
             expl.add(Explanation("A entrada nega esse valor (“${interp.afirmacao?.negacaoTexto ?: "não"}…”); a indicação considera essa negação."))
         }
-        return Synthesis(sit, SITUACAO_FRASE.getValue(sit), detail, "regras", expl.toList(), items.take(12), opcoes, used)
+        return Synthesis(sit, SITUACAO_FRASE.getValue(sit), detail, "regras", expl.toList(), items.take(12), opcoes,
+            if (sit == "insuficiente") emptyList() else used)
     }
 
     if (rel.isEmpty()) return out("insuficiente", listOf(Explanation("As fontes encontradas não informam esse valor de forma comparável. Ausência de informação não é contradição.")))
@@ -282,14 +283,16 @@ private fun decide(interp: Interpretation, q: Quantity?, items: List<EvidenceIte
         val best = counts.maxByOrNull { it.value }!!.key
         its.first { it.valor == best }
     }
+    val onlyOtherEntity = reps.mapNotNull { it.entidadeFonte }.toSet().singleOrNull()
+    if (onlyOtherEntity != null && reps.all { it.entidadeFonte == onlyOtherEntity }) {
+        return out("insuficiente", listOf(Explanation(
+            "A fonte encontrada trata de $onlyOtherEntity, outra entidade. Esse dado não responde à afirmação pesquisada.")))
+    }
     if (reps.none { it.explicito }) {
         return out("insuficiente", reps.take(2).map { Explanation("Valor encontrado sem citar a entidade na mesma frase: " + describe(it), listOf(src(it))) } +
             Explanation("Sem menção explícita à entidade, não dá para afirmar que o número se refere a ela."))
     }
     reps = reps.filter { it.explicito } // só frases que nomeiam a entidade (ou artigos sobre ela)
-    val distinct = mutableListOf<Double>()
-    for (v in reps.map { it.valor }.sorted()) if (distinct.isEmpty() || !same(distinct.last(), v)) distinct.add(v)
-
     val named = reps.filter { it.entidadeFonte != null }
     val variants = named.map { it.entidadeFonte!! }.toSet()
     if (variants.size > 1 && named.map { it.valor }.toSet().size > 1) {
@@ -312,6 +315,17 @@ private fun decide(interp: Interpretation, q: Quantity?, items: List<EvidenceIte
             reps.take(4).joinToString("; ") { describe(it) + (it.entidadeFonte?.let { v -> " [$v]" } ?: "") } +
             ". Escolha a qual delas a afirmação se refere.", reps.take(4).map { src(it) })))
     }
+    // Uma organização cujo nome contém o nome pesquisado não responde pela entidade original.
+    if (named.isNotEmpty()) {
+        val exact = reps.filter { it.entidadeFonte == null }
+        if (exact.isEmpty()) return out("insuficiente", listOf(Explanation(
+            "O dado encontrado se refere a ${named.first().entidadeFonte}, outra entidade; não foi comparado com a afirmação.",
+            named.take(2).map { src(it) })))
+        reps = exact
+    }
+    used = reps
+    val distinct = mutableListOf<Double>()
+    for (v in reps.map { it.valor }.sorted()) if (distinct.isEmpty() || !same(distinct.last(), v)) distinct.add(v)
     val lines = reps.take(5).map { Explanation(describe(it), listOf(src(it))) }.toMutableList()
     if (reps.size == 1) lines.add(Explanation("Apenas uma fonte independente com conteúdo lido informou esse valor."))
     val weakOther = rel.filter { it.conteudo !in STRONG_CONTENT && distinct.none { v -> same(it.valor, v) } }
@@ -351,31 +365,29 @@ private fun decide(interp: Interpretation, q: Quantity?, items: List<EvidenceIte
     return out("divergentes", lines + periodNote(reps))
 }
 
-val INDICACAO = mapOf("tende_verdadeira" to "Tende a ser verdadeira", "tende_falsa" to "Tende a ser falsa",
-    "inconclusiva" to "Inconclusiva", "resposta" to "Resposta encontrada", "sem_resposta" to "Informação insuficiente",
+val INDICACAO = mapOf("dados_compativeis" to "Dados compatíveis nas fontes", "dados_diferentes" to "Dados diferentes nas fontes",
+    "inconclusiva" to "Pesquisa inconclusiva", "resposta" to "Informação encontrada", "sem_resposta" to "Informação insuficiente",
     "falha_tecnica" to "Falha técnica")
-const val AVISO_INDICACAO = "Indicação baseada nas fontes consultadas; não é uma garantia de veracidade."
+const val AVISO_INDICACAO = "Pesquisa de fontes e contexto. A classificação de veracidade ainda não está disponível."
 
-/** Converte a situação das evidências na indicação provisória. Nunca parte da conclusão. */
+/** Descreve apenas o que as fontes consultadas informam; não classifica veracidade. */
 fun indicate(s: Synthesis, interp: Interpretation): Indication {
     val q = interp.quantity
     val questionWithoutClaim = q != null && q.valor == null
-    val nSources = s.evidencias.filter { it.relacao in setOf("apoia", "contradiz", "valor") }.map { it.url }.toSet().size
-    var (key, why) = when {
+    val (key, why) = when {
         s.situacao == "erro_tecnico" -> "falha_tecnica" to "Não foi possível consultar as fontes. Isso é uma falha técnica, não falta de evidências."
         questionWithoutClaim -> when (s.situacao) {
             "resposta" -> "resposta" to "Valor informado por fontes com conteúdo lido."
             "divergentes" -> "sem_resposta" to "As fontes indicam valores diferentes."
             else -> "sem_resposta" to "As fontes consultadas não informam esse valor de forma comparável."
         }
-        s.situacao == "apoiam" -> "tende_verdadeira" to "Os trechos consultados sustentam o detalhe informado."
-        s.situacao == "contradizem" -> "tende_falsa" to "Os trechos consultados apresentam informação incompatível com o detalhe informado."
+        s.situacao == "apoiam" -> "dados_compativeis" to "Os trechos consultados trazem dados compatíveis com este detalhe. Confira a fonte e o período."
+        s.situacao == "contradizem" -> "dados_diferentes" to "Os trechos consultados trazem dados diferentes para este detalhe. Confira a fonte e o período."
         s.situacao == "divergentes" -> "inconclusiva" to "As fontes apresentam informações divergentes."
         s.situacao == "sem_comparacao" -> "inconclusiva" to "As regras do Lume só comparam quantidades, unidades, períodos e anos. Este tipo de afirmação exige compreensão do texto que as regras não oferecem."
         s.situacao == "nao_verificavel" -> "inconclusiva" to "Opinião ou previsão: não há um fato único para comparar."
         s.opcoes.isNotEmpty() -> "inconclusiva" to "O nome corresponde a entidades diferentes; escolha a que você quis dizer."
         else -> "inconclusiva" to "Faltam evidências comparáveis sobre este detalhe. Ausência de evidência não indica falsidade."
     }
-    if ((key == "tende_verdadeira" || key == "tende_falsa") && nSources == 1) why += " Baseada em uma única fonte independente."
     return Indication(key, INDICACAO.getValue(key), why, AVISO_INDICACAO)
 }

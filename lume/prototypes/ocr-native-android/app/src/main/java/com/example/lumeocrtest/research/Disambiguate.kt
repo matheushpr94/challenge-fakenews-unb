@@ -140,7 +140,7 @@ private fun senseOptions(clean: String, key: String, senses: List<Candidate>): L
     val onlyKey = norm(clean) == norm(key)
     return senses.map { c ->
         val text = if (onlyKey) "O que é ${c.title}?"
-        else clean.trimEnd(' ', '?').replaceFirst(Regex(Regex.escape(key), RegexOption.IGNORE_CASE), Regex.escapeReplacement(c.title)) + "?"
+        else clean.trimEnd(' ', '?', '.', '!', ';', ':').replaceFirst(Regex(Regex.escape(key), RegexOption.IGNORE_CASE), Regex.escapeReplacement(c.title)) + "?"
         Option(text.replaceFirstChar { it.uppercase() }, "significado_ou_entidade")
     }
 }
@@ -183,7 +183,7 @@ fun validateOptions(opts: List<Option>, allowedText: String, rejected: List<Stri
     for (o in opts) {
         var t = o.texto.split(Regex("\\s+")).joinToString(" ").take(140)
         if (t.isBlank() || Regex("$WB(verdadeir|fals|fake|mentira)", RegexOption.IGNORE_CASE).containsMatchIn(t)) continue
-        if (!t.endsWith("?")) t += "?"
+        if (!t.endsWith("?")) t = t.trimEnd(' ', '.', '!', ';', ':') + "?"
         val toks = norm(t).split(" ").toSet()
         if (properNouns(t).any { it !in allowed }) continue // nome ausente da entrada e do contexto
         if (toks.any { Regex("\\d+").matches(it) && it !in allowed }) continue // número/ano inventado

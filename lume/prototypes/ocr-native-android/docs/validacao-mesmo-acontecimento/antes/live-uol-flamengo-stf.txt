@@ -1,0 +1,170 @@
+CAPTURA: uol-flamengo-stf | AFIRMAÇÃO: Flamengo aciona STF e reforça ação das bets contra proibição do governo
+esclarecimento: escolher=false opções=[] motivo=intenção clara para as regras
+modo=unica status=ok
+--- parte: Flamengo aciona STF e reforça ação das bets contra proibição do governo
+tipo=acontecimento entidades=[STF] termos=[flamengo, aciona, reforça, ação, bets, governo] numeros=[]
+partes=[[flamengo, aciona], [reforça, ação, bets, governo]] tópicos=[flamengo, bet, aciona, stf, e, reforca, acao, da, contra, proibicao, do, governo]
+siglas={STF=[supremo tribunal federal]} variações=[] prazos=[] etapa=null dataRef=29/09/2026
+consultas=[especifica: STF flamengo aciona reforça governo, acontecimento: supremo tribunal federal flamengo aciona governo, ampliada: STF flamengo, parte: STF reforça ação bets]
+status=ok síntese=sem_comparacao descartados=56 1446 ms semântica=false
+  seção responde: 0 -> []
+  seção direto: 3 -> [UOL, Terra, O GLOBO]
+  seção anterior: 0 -> []
+  seção contexto: 8 -> [O GLOBO, O Antagonista, Gazeta Botafogo, pt.wikipedia.org, G1, Estadão, G1, Correio Braziliense]
+  seção contexto_geral: 0 -> []
+CONSULTAS (9)
+  [google_news] 'STF flamengo aciona reforça governo' -> ok 14
+  [bing_news] 'STF flamengo aciona reforça governo' -> ok 1
+  [google_news] 'supremo tribunal federal flamengo aciona governo' -> ok 20
+  [bing_news] 'supremo tribunal federal flamengo aciona governo' -> ok 1
+  [google_news] 'STF flamengo' -> ok 20
+  [google_news] 'STF reforça ação bets' -> ok 20
+  [bing_web] 'STF flamengo aciona reforça governo' -> ok 10
+  [wikipedia] 'STF flamengo aciona' -> ok 3
+  [wikipedia] 'STF' -> ok 3
+TRIAGEM (92)
+  direto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Trata do mesmo acontecimento
+  descartado | UOL Economia | José Paulo Kupfer: Desenrola 3.0 é o melhor da série Desenrola, mas também será paliativo | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | UOL Economia | Felipe Salto: Fim das bets salva vidas e ajuda a economia | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | UOL Notícias | '2º round' no STF tem novos bate-bocas, defesa de Moraes e desabafo de Dino | apenas o nome coincide; outro assunto
+  descartado | UOL Economia | Aline Sordili: EUA, China e empresas de IA divergem sobre frear desenvolvimento | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | G1 | Com Bolsonaro condenado, governo prevê mais sanções dos EUA às autoridades brasileiras e tensão com Trump até  | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | Blog do BG | Após ataques com ônibus queimados, governo reforça policiamento em Natal e garante transporte | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | GZH | Com discurso de campanha no Rio, Bolsonaro reforça tom eleitoral no 7 de Setembro | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | uol educacao | Ensino Einstein Como a formação coloca a nutrição no centro do cuidado em saúde | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  contexto | G1 | Foragida na Itália, Carla Zambelli comenta política nacional e reforça críticas ao STF em perfil alternativo n | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | UOL Economia | 'Entra com processo', diz terceirizada do iFood a entregadores após calote | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | UOL | Tabela Série C | Jogos, Times, Resultados | UOL Esporte | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | UOL | Influencer expõe solicitações de mensagens antigas de Bruno Henrique e Dudu | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  direto | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Trata do mesmo acontecimento
+  direto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Trata do mesmo acontecimento
+  contexto | Estadão | Governo do DF aciona STF e diz que Lula nega socorro ao BRB por motivo eleitoral: ‘Decisão política’ | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  contexto | G1 | Governo do DF aciona STF contra a União em duas ações envolvendo recursos federais; entenda como ambas podem a | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Correio Braziliense | Entidades se unem pelo fortalecimento do BRB, enquanto Celina aciona STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | Blog do BG | [VÍDEO] CAIO JUNQUEIRA: Governo Lula aciona modo vale-tudo pela reeleição | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  contexto | Revista Fórum | Lindbergh aciona STF para bloquear R$ 72 milhões em bens de Flávio Bolsonaro | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | O GLOBO | Governo Lula aciona Fachin para derrubar decisão que afastou Andrei da chefia da PF | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  contexto | O Dia | Senado aprova PEC dos agentes de saúde e governo fala em acionar STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Revista Fórum | Deputado aciona STF para investigar suposta propina de Vorcaro a Tarcísio e Bolsonaro | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | O GLOBO | Horas após governo de SP acionar STF, Fazenda libera empréstimo de R$ 5,4 bilhões para o estado | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Diário do Rio | Alerj aciona STF para tentar colocar Douglas Ruas no comando interino do governo do Rio | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Tribuna do Sertão | PDT nacional aciona STF para anular eleição na Alerj que elegeu Douglas Ruas como presidente | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | G1 | Governo do DF aciona STF contra lei federal que pode gerar corte bilionário no Fundo Constitucional | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | O GLOBO | Governo avalia vetar ou ir ao STF contra renegociação de dívidas rurais, diz ministro | apenas o nome coincide; outro assunto
+  descartado | O GLOBO | Prefeitura de SP aciona STJ para Fazenda liberar garantias a empréstimo de R$ 3,5 bilhões para ônibus elétrico | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | G1 | Durigan diz que governo avalia vetar renegociação de dívidas rurais caso projeto passe na Câmara; Senado aprov | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  contexto | G1 | Distrito Federal aciona STF para derrubar entrave da União que pode impactar empréstimo de socorro ao BRB | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | G1 | Moraes manda governo adotar providências para extradição de Zambelli da Itália para o Brasil | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | O GLOBO | Governo aciona 'bombeiros' para reconstruir ponte com Alcolumbre após derrota de Messias | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  direto | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Trata do mesmo acontecimento
+  direto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Trata do mesmo acontecimento
+  direto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Trata do mesmo acontecimento
+  contexto | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | O Antagonista | Flamengo vai ao STF contra proibição das bets | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Flamengo RJ | Sinafut pede ao STF suspensão da MP das Bets e transição até fim de 2026 | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | Metrópoles | STF supera futebol em buscas no Google durante julgamento de Moraes | apenas o nome coincide; outro assunto
+  contexto | Gazeta de São Paulo | STF tem torcedores de Flamengo, Palmeiras e Corinthians, mas estes não são maioria; veja lista completa dos ti | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Francês News | Julgamento de Moraes faz buscas por STF superarem Flamengo no Google | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | JOTA Jornalismo | Sport, Flamengo e o título de 1987 | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | Consultor Jurídico | Crítica a parecer da PGR sobre disputa entre Flamengo e Sport | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  contexto | migalhas.com.br | No STF, PGR defende pedido do Flamengo como campeão brasileiro de 1987 | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Estado de Minas | PGR defende ao STF que Flamengo pode ser reconhecido como campeão brasileiro de 1987 | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | ESPN Brasil | Flamengo ganha apoio da Procuradoria-Geral da República por título de 1987 junto do Sport | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  contexto | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | CartaCapital | PGR defende que Flamengo e Sport sejam campeões do Brasileiro de 1987 | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | CNN Brasil | Sport reage a parecer da PGR sobre título do Campeonato Brasileiro de 1987 | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | migalhas.com.br | Moraes e Dino assistem a jogo entre Flamengo e Corinthians em Brasília | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  direto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Trata do mesmo acontecimento
+  descartado | CBN | Dino reforça pedido de Gilmar Mendes por investigação de precatórios | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | CNN Brasil | Flávio reforça pedido a Fux contra decisão de Dino sobre Nossa Senhora | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | UOL Economia | Felipe Salto: Fim das bets salva vidas e ajuda a economia | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | Correio Braziliense | Caso Master: Gilmar Mendes defende reformas nas instituições | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | Revista Oeste | Em decisão sobre bets, Dino reforça poder do Executivo para agir por decreto | poucos detalhes em comum (entidades 0/1, termos 2/5)
+  contexto | DOL | Novo usa mensagens de Vorcaro e Alcolumbre em ação no STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Midiamax | No STF, Dino mantém decreto de MG que veda publicidade de bets em bens públicos | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  contexto | Pleno.News | Gilmar reforça querer proibição de delegados no STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | Gazeta do Povo | Trump mantém emergência nacional sobre o Brasil e cita ações do STF como justificativa | apenas o nome coincide; outro assunto
+  descartado | jornaldotocantins.com.br | Supremo prevê julgar ações contra legalização das bets no segundo semestre | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | UOL Economia | José Paulo Kupfer: Desenrola 3.0 é o melhor da série Desenrola, mas também será paliativo | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | SBT News | Defesa de Wagner pede a Mendonça acesso à investigação | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | Claudio Dantas | Joaquim Barbosa reforça entrada na disputa presidencial | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | Terra | Zambelli: Decisão reforça questionamento a Moraes e repercutirá em outros casos, dizem juristas | poucos detalhes em comum (entidades 0/1, termos 1/5)
+  descartado | Click Sergipe | Senado Federal defende Alessandro Vieira e reforça proteção à atividade parlamentar diante de ação judicial | poucos detalhes em comum (entidades 0/1, termos 2/5)
+  descartado | Folha Vitória | STF reconhece que cidades capixabas podem decidir sobre indenizações no caso Mariana | apenas o nome coincide; outro assunto
+  contexto | Portal 96FM | Voto de Nunes Marques no 8 de Janeiro reforça argumentos da defesa de Bolsonaro no STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Claudio Dantas | Jorge Messias reforça articulação no Senado por vaga no STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | portal.stf.jus.br | Página Principal | Portal STF | apenas o nome coincide; outro assunto
+  descartado | portal.stf.jus.br | Supremo Tribunal Federal | apenas o nome coincide; outro assunto
+  contexto | pt.wikipedia.org | Supremo Tribunal Federal – Wikipédia, a enciclopédia livre | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | g1.globo.com | STF - Supremo Tribunal Federal | Tudo Sobre | G1 | apenas o nome coincide; outro assunto
+  descartado | stf.jus.br | Supremo Tribunal Federal - stf.jus.br | apenas o nome coincide; outro assunto
+  descartado | cnnbrasil.com.br | STF | CNN Brasil | apenas o nome coincide; outro assunto
+  descartado | noticias.stf.jus.br | Supremo Tribunal Federal | apenas o nome coincide; outro assunto
+  descartado | constituicao.stf.jus.br | STF - Constituição Federal do Brasil | apenas o nome coincide; outro assunto
+  descartado | cms.stf.jus.br | Consulta processual - cms.stf.jus.br | apenas o nome coincide; outro assunto
+  descartado | veja.abril.com.br | Notícias sobre Supremo Tribunal Federal – STF - VEJA | apenas o nome coincide; outro assunto
+  descartado | Wikipédia | Bruno Fernandes de Souza | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Controvérsia do título de campeão brasileiro de futebol de 1987 | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | 2025 | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Lista de presidentes do Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Lista de ministros do Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+DUPLICATA (4)
+  removida | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesma URL já recebida de google_news
+  removida | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesma URL já recebida de google_news
+  removida | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesma URL já recebida de google_news
+  removida | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | mesma URL já recebida de bing_news
+REPUBLICACAO (2)
+  agrupada | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | título/trecho quase igual a Terra
+  agrupada | Estado de Minas | PGR defende ao STF que Flamengo pode ser reconhecido como campeão brasileiro de 1987 | título/trecho quase igual a migalhas.com.br
+RELEITURA (0)
+LIMITE (19)
+  contexto | Revista Fórum | Lindbergh aciona STF para bloquear R$ 72 milhões em bens de Flávio Bolsonaro | acima do limite de 8 na seção
+  contexto | O Dia | Senado aprova PEC dos agentes de saúde e governo fala em acionar STF | acima do limite de 8 na seção
+  contexto | Revista Fórum | Deputado aciona STF para investigar suposta propina de Vorcaro a Tarcísio e Bolsonaro | acima do limite de 8 na seção
+  contexto | O GLOBO | Horas após governo de SP acionar STF, Fazenda libera empréstimo de R$ 5,4 bilhões para o estado | acima do limite de 8 na seção
+  contexto | Diário do Rio | Alerj aciona STF para tentar colocar Douglas Ruas no comando interino do governo do Rio | acima do limite de 8 na seção
+  contexto | Tribuna do Sertão | PDT nacional aciona STF para anular eleição na Alerj que elegeu Douglas Ruas como presidente | acima do limite de 8 na seção
+  contexto | G1 | Governo do DF aciona STF contra lei federal que pode gerar corte bilionário no Fundo Constitucional | acima do limite de 8 na seção
+  contexto | G1 | Distrito Federal aciona STF para derrubar entrave da União que pode impactar empréstimo de socorro ao BRB | acima do limite de 8 na seção
+  contexto | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | acima do limite de 8 na seção
+  contexto | Flamengo RJ | Sinafut pede ao STF suspensão da MP das Bets e transição até fim de 2026 | acima do limite de 8 na seção
+  contexto | Gazeta de São Paulo | STF tem torcedores de Flamengo, Palmeiras e Corinthians, mas estes não são maioria; veja lista completa dos ti | acima do limite de 8 na seção
+  contexto | Francês News | Julgamento de Moraes faz buscas por STF superarem Flamengo no Google | acima do limite de 8 na seção
+  contexto | migalhas.com.br | No STF, PGR defende pedido do Flamengo como campeão brasileiro de 1987 | acima do limite de 8 na seção
+  contexto | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | acima do limite de 8 na seção
+  contexto | DOL | Novo usa mensagens de Vorcaro e Alcolumbre em ação no STF | acima do limite de 8 na seção
+  contexto | Midiamax | No STF, Dino mantém decreto de MG que veda publicidade de bets em bens públicos | acima do limite de 8 na seção
+  contexto | Pleno.News | Gilmar reforça querer proibição de delegados no STF | acima do limite de 8 na seção
+  contexto | Portal 96FM | Voto de Nunes Marques no 8 de Janeiro reforça argumentos da defesa de Bolsonaro no STF | acima do limite de 8 na seção
+  contexto | Claudio Dantas | Jorge Messias reforça articulação no Senado por vaga no STF | acima do limite de 8 na seção
+EXIBIDA (11)
+  direto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Trata do mesmo acontecimento
+  direto | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Trata do mesmo acontecimento
+  direto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Trata do mesmo acontecimento
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | O Antagonista | Flamengo vai ao STF contra proibição das bets | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | pt.wikipedia.org | Supremo Tribunal Federal – Wikipédia, a enciclopédia livre | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | G1 | Foragida na Itália, Carla Zambelli comenta política nacional e reforça críticas ao STF em perfil alternativo n | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Estadão | Governo do DF aciona STF e diz que Lula nega socorro ao BRB por motivo eleitoral: ‘Decisão política’ | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | G1 | Governo do DF aciona STF contra a União em duas ações envolvendo recursos federais; entenda como ambas podem a | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Correio Braziliense | Entidades se unem pelo fortalecimento do BRB, enquanto Celina aciona STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+RELACAO (11)
+  mesmo_fato | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Relata todas as partes da afirmação [leitura: titulo]
+  mesmo_fato | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata todas as partes da afirmação [leitura: pagina] «O Flamengo se antecipou aos clubes e acionou o Supremo Tribunal Federal (STF) para tentar derrubar o veto às bets.»
+  mesmo_fato | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Relata o acontecimento; não menciona “flamengo aciona”, “reforça ação bets governo” no que foi lido [leitura: titulo]
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | O Antagonista | Flamengo vai ao STF contra proibição das bets | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | pt.wikipedia.org | Supremo Tribunal Federal – Wikipédia, a enciclopédia livre | Trata do tema, mas não confirma o detalhe pesquisado [leitura: pagina]
+  contexto | G1 | Foragida na Itália, Carla Zambelli comenta política nacional e reforça críticas ao STF em perfil alternativo n | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Estadão | Governo do DF aciona STF e diz que Lula nega socorro ao BRB por motivo eleitoral: ‘Decisão política’ | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | G1 | Governo do DF aciona STF contra a União em duas ações envolvendo recursos federais; entenda como ambas podem a | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Correio Braziliense | Entidades se unem pelo fortalecimento do BRB, enquanto Celina aciona STF | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]

@@ -1,0 +1,114 @@
+===== agencia-senado-bets
+main=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] headline=[0] metaIdx=[0, 1, 2, 4, 6, 7, 8, 9, 11]
+title=MP proíbe bets e determina encerramento das operações em 30 dias
+subtitle=Da Agência Senado| 28/09/2026, 10h51
+metadata=ArticleMetadata(source=null, sourceOrigin=null, author=null, publishedAt=null, url=null, authorEvidence=null, dateEvidence=null, institutionalByline=null, sourceEvidence=null, place=null, updated=null, imageCredits=[], captions=[], publishedAtMs=null)
+consumed=[]
+BODY>>>
+MP proíbe bets e determina encerramento das operações em 30 dias
+
+A MP prevê a extinção, em 30 dias, das autorizações concedidas a empresas que operam no mercado
+
+Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa em todo o país. O texto foi publicado na sexta-feira (25) e prevê a extinção, em 30 dias, das autorizações concedidas às empresas que atualmente operam nesse mercado. A MP também estabelece regras para a devolução dos recursos dos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos para bloquear sites, aplicativos e transações financeiras relacionados às apostas. A medida já está em vigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo.
+
+Proposições legislativas
+
+A MP 1.394/2026 altera a Lei 14.790, de 2023, e alcança apostas sobre eventos esportivos reais e jogos virtual. A proibição também vale para empresas sediadas no exterior
+<<<
+mainClaim=MP proíbe bets e determina encerramento das operações em 30 dias
+===== bbc-fux-article
+main=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] headline=[0, 1] metaIdx=[0, 1, 2, 3, 4, 5, 6, 7, 8]
+title=Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da eleição
+subtitle=null
+metadata=ArticleMetadata(source=BBC News Brasil, sourceOrigin=EXPLICIT_LABEL, author=Pedro Martins, publishedAt=29 setembro 2026, 06:10 -03, url=null, authorEvidence=assinatura junto ao veículo, dateEvidence=data junto à assinatura, institutionalByline=null, sourceEvidence=null, place=null, updated=null, imageCredits=[], captions=[], publishedAtMs=null)
+consumed=[5, 4, 6]
+BODY>>>
+Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da eleição
+
+A cinco dias do primeiro turno das eleiçoes presidenciais, uma disputa envolvendo Nossa Senhora Aparecida voltou a colocar em lados opostos ministros do Supremo Tribunal Federal (STF)e do Tribunal Superior Eleitoral (TSE).
+
+Na sexta-feira (25/9), André Mendonça, vice-presidente do TSE e também ministro do Supremo, determinou a remoçao de publicaçoes nas redes sociais que Senhora Aparerida do DPeto para retiraro titulo de Nossa
+
+No domingo (27/9), Flávio Dino, ministro do STF, derrubou a ordem de Mendonça; por fim, na noite de segunda-feira (28/9), o também ministro do Supremo Luiz Fux suspendeu a decisäo de Dino e fez voltar a valer, ao menos provisoriamente, a determinação dada por Mendonça no âmbito da Justiça Eleitoral.
+
+Fux suspendeu a decisao de Dino que havia liberado publicaçöes nas redes relacionadas à controvérsia sobre Nossa Senhora Aparecida, sequndo o jornal O
+<<<
+mainClaim=Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da eleição
+===== agenciabrasil-bets
+main=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] headline=[2] metaIdx=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 18]
+title=Bets passam a ser proibidas no país e apostador receberá saldo
+subtitle=MP diz que plataformas ficarão fora do ar e proíbe novos depósitos
+metadata=ArticleMetadata(source=null, sourceOrigin=null, author=null, publishedAt=25/09/2026 - 20:33 Brasília, url=null, authorEvidence=null, dateEvidence=data indicada na página, institutionalByline=null, sourceEvidence=null, place=null, updated=null, imageCredits=[], captions=[], publishedAtMs=null)
+consumed=[8]
+BODY>>>
+Bets passam a ser proibidas no país e apostador receberá saldo
+
+MP diz que plataformas ficarão fora do ar e proíbe novos depósitos
+
+GOVERNO FEDERAL CONTRA AS BETS
+
+Utilizamos cookies e outras tecnologias semelhantes para
+
+melhorar a sua experiência em nossa plataforma. Ao continuar navegando, você concorda com as condições previstas na nossa Política de Privacidade.
+<<<
+mainClaim=Bets passam a ser proibidas no país e apostador receberá saldo
+===== camara-bets-pl
+main=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] headline=[4] metaIdx=[1, 2, 3, 4, 5, 6]
+title=AGÊNCIA CÂMARA DE NOTÍCIAS
+subtitle=null
+metadata=ArticleMetadata(source=null, sourceOrigin=null, author=null, publishedAt=null, url=null, authorEvidence=null, dateEvidence=null, institutionalByline=null, sourceEvidence=null, place=null, updated=null, imageCredits=[], captions=[], publishedAtMs=null)
+consumed=[]
+BODY>>>
+AGÊNCIA CÂMARA DE NOTÍCIAS
+
+Projeto de lei apresentado pelo governo torna crimea exploração e a publicidade de bets Proposta foi enviada pelo Poder Executivo após a edição de MP que proíbe as loterias de apostas de quota fixa no Brasil
+
+BRASIL SEM BETS E DESENROLA 3.0
+
+Medida provisória que proíbe as bets foi editada na última
+<<<
+mainClaim=AGÊNCIA CÂMARA DE NOTÍCIAS
+===== g1-inadimplencia
+main=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21] headline=[] metaIdx=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+title=null
+subtitle=null
+metadata=ArticleMetadata(source=null, sourceOrigin=null, author=null, publishedAt=null, url=null, authorEvidence=null, dateEvidence=null, institutionalByline=null, sourceEvidence=null, place=null, updated=null, imageCredits=[], captions=[], publishedAtMs=null)
+consumed=[]
+BODY>>>
+R$ 5,910 -0,5%
+
+Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em
+
+De janeiro a agosto deste ano, os bancos liberaram R$s 311 bilhões por meio dessa linha de crédito, se aproximando dos R$ 400 bilhões desembolsados em 2025 (o maior dos últimos anos). Juro do cartão de crédito rotativo somou 445% ao ano no mês passado.
+<<<
+mainClaim=R$ 5,910 -0,5%. Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em
+===== g1-inadimplencia-corpo
+main=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9] headline=[1] metaIdx=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+title=De janeiro a agosto deste ano, os bancos liberaram R$ 311 bilhões por meio dessa linha de crédito, se aproximando dos R$ 400 bilhões desembolsados em 2025 (0 maior dos últimos anos). Juro do cartão de crédito rotativo somou 445% ao ano no mês passado.
+subtitle=null
+metadata=ArticleMetadata(source=null, sourceOrigin=null, author=null, publishedAt=null, url=null, authorEvidence=null, dateEvidence=null, institutionalByline=null, sourceEvidence=null, place=null, updated=null, imageCredits=[], captions=[], publishedAtMs=null)
+consumed=[]
+BODY>>>
+De janeiro a agosto deste ano, os bancos liberaram R$ 311 bilhões por meio dessa linha de crédito, se aproximando dos R$ 400 bilhões desembolsados em 2025 (0 maior dos últimos anos). Juro do cartão de crédito rotativo somou 445% ao ano no mês passado.
+
+Por Alexandro Martello, g1 - Brasília 29/09/2026 08h40 Atualizado há 7 horas
+
+Pra todoS OS seus feitos.
+
+A taxa de inadimplência média total registrada pelos bancos nas operações de crédito subiu de 4,9% para 5% de julho para agosto, informou nesta terça-feira (29) o Banco Central (BC).
+<<<
+mainClaim=De janeiro a agosto deste ano, os bancos liberaram R$ 311 bilhões por meio dessa linha de crédito, se aproximando dos R$ 400 bilhões desembolsados em 2025 (0 maior dos últimos anos). Juro do cartão de crédito rotativo somou 445% ao ano no mês passado.
+===== recorte-senado-sem-titulo
+main=[0, 1, 2, 3, 4, 5] headline=[0] metaIdx=[0, 1, 2, 3, 4, 5]
+title=Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa em todo o país. O texto foi publicado na sexta-feira (25) e prevê a extinção, em 30 dias, das autorizações concedidas às empresas que atualmente operam nesse mercado. A MP também estabelece regras para a devolução dos recursos dos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos para bloquear sites, aplicativos e transações financeiras relacionados às apostas. A medida já está em vigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo.
+subtitle=null
+metadata=ArticleMetadata(source=null, sourceOrigin=null, author=null, publishedAt=null, url=null, authorEvidence=null, dateEvidence=null, institutionalByline=null, sourceEvidence=null, place=null, updated=null, imageCredits=[], captions=[], publishedAtMs=null)
+consumed=[]
+BODY>>>
+Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa em todo o país. O texto foi publicado na sexta-feira (25) e prevê a extinção, em 30 dias, das autorizações concedidas às empresas que atualmente operam nesse mercado. A MP também estabelece regras para a devolução dos recursos dos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos para bloquear sites, aplicativos e transações financeiras relacionados às apostas. A medida já está em vigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo.
+
+Proposições legislativas
+
+A MP 1.394/2026 altera a Lei 14.790, de 2023, e alcança apostas sobre eventos esportivos reais e jogos virtual. A proibicão também vale para empresas sediadas no exterior
+<<<
+mainClaim=Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa em todo o país. O texto foi publicado na sexta-feira (25) e prevê a extinção, em 30 dias, das autorizações concedidas às empresas que atualmente operam nesse mercado. A MP também estabelece regras para a devolução dos recursos dos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos para bloquear sites, aplicativos e transações financeiras relacionados às apostas. A medida já está em vigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo.

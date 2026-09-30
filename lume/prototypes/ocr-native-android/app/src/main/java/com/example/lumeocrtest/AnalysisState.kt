@@ -9,20 +9,27 @@ import kotlinx.coroutines.*
 
 /** Memory-only session; survives rotation without saving captures to disk. */
 class AnalysisState : ViewModel() {
-    val service=ResearchService()
+    val service=ResearchService(semanticRanker = OllamaEmbeddingRanker(BuildConfig.OLLAMA_EMBED_MODEL, BuildConfig.OLLAMA_URL))
     val gate=RequestGate()
     val linkFetcher=OkHttpFetcher()
     val scope=CoroutineScope(SupervisorJob()+Dispatchers.Main.immediate)
     var ocrJob: Job?=null
     var startedUri: String?=null
     var consumedImport=0
+    val historyRevision = mutableIntStateOf(0)
     val selectedUri = mutableStateOf<String?>(null)
     val preview = mutableStateOf<ImageBitmap?>(null)
     val recognizedText = mutableStateOf("")
     val cleanedText = mutableStateOf("")
     val metadata = mutableStateOf<ArticleMetadata?>(null)
     val mainClaim = mutableStateOf<String?>(null)
+    val subtitle = mutableStateOf<String?>(null)
     val claims = mutableStateOf<List<String>>(emptyList())
+    /** Leitura da captura (papéis dos blocos, campos com evidência) e escolha da afirmação. */
+    val reading = mutableStateOf<com.example.lumeocrtest.ocr.ArticleReading?>(null)
+    val claimChoice = mutableStateOf<com.example.lumeocrtest.ocr.ClaimChoice?>(null)
+    /** Contexto da matéria lida, usado na pesquisa (siglas, variações de redação, data). */
+    val articleContext = mutableStateOf<ArticleContext?>(null)
     val showRawText = mutableStateOf(false)
     val ocrError = mutableStateOf<String?>(null)
     val ocrState = mutableStateOf("")

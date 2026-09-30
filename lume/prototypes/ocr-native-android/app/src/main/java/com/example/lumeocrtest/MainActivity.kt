@@ -1,6 +1,8 @@
 package com.example.lumeocrtest
 
 import android.net.Uri
+import android.content.Intent
+import java.io.File
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -55,11 +57,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import com.example.lumeocrtest.ocr.ArticleMetadata
-import com.example.lumeocrtest.ocr.ArticleMetadataExtractor
-import com.example.lumeocrtest.ocr.ArticleTextExtractor
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import com.example.lumeocrtest.ocr.ClaimExtractor
-import com.example.lumeocrtest.ocr.OcrBlock
-import com.example.lumeocrtest.ocr.OcrRect
+import com.example.lumeocrtest.ocr.toOcrBlocks
+import com.example.lumeocrtest.research.ArticleContext
 import com.example.lumeocrtest.research.Clarification
 import com.example.lumeocrtest.research.Evaluation
 import com.example.lumeocrtest.research.RequestGate
@@ -72,6 +74,7 @@ import com.google.mlkit.vision.text.Text as MlText
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -83,23 +86,66 @@ import kotlin.coroutines.resumeWithException
 private const val TAG = "LumeUi"
 
 class MainActivity : ComponentActivity() {
+    companion object {
+        const val OPEN_CAPTURE = "com.example.lumeocrtest.OPEN_CAPTURE"
+        const val CAPTURE_URI = "capture_uri"
+        const val CAPTURE_ERROR = "capture_error"
+    }
     private var openRequest by mutableIntStateOf(0)
-    override fun onNewIntent(intent: android.content.Intent) {
+    private var sharedText by mutableStateOf<String?>(null)
+    private var sharedImage by mutableStateOf<String?>(null)
+    private var captureError by mutableStateOf<String?>(null)
+
+    @Suppress("DEPRECATION")
+    private fun receive(intent: Intent?) {
+        Log.i(TAG, "Entrada recebida: ${intent?.action}; tipo=${intent?.type}")
+        when (intent?.action) {
+            Intent.ACTION_SEND -> {
+                captureError = null
+                sharedImage = if (intent.type?.startsWith("image/") == true)
+                    (intent.getParcelableExtra<Uri>(Intent.EXTRA_STREAM))?.toString() else null
+                sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)?.takeIf { it.isNotBlank() }
+                openRequest++
+            }
+            Intent.ACTION_PROCESS_TEXT -> {
+                captureError = null
+                sharedImage = null
+                sharedText = intent.getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT)?.toString()?.takeIf { it.isNotBlank() }
+                openRequest++
+            }
+            OPEN_CAPTURE -> {
+                sharedImage = intent.getStringExtra(CAPTURE_URI)
+                sharedText = null
+                captureError = intent.getStringExtra(CAPTURE_ERROR)
+                openRequest++
+            }
+            com.example.lumeocrtest.mascot.MascotService.OPEN_ANALYSIS -> {
+                sharedText = null
+                sharedImage = null
+                captureError = null
+                openRequest++
+            }
+        }
+    }
+
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         setIntent(intent)
-        if(intent.action == com.example.lumeocrtest.mascot.MascotService.OPEN_ANALYSIS) openRequest++
+        receive(intent)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        if(intent.action == com.example.lumeocrtest.mascot.MascotService.OPEN_ANALYSIS) openRequest++
-        setContent { LumeOCRTestTheme { LumeApp(openRequest) } }
+        receive(intent)
+        setContent { LumeOCRTestTheme { LumeApp(openRequest, sharedText, sharedImage, captureError) } }
 
     }
 }
 
 private data class OcrOutcome(val text: String, val cleaned: String, val metadata: ArticleMetadata, val mainClaim: String?,
-                              val otherClaims: List<String>)
+                              val otherClaims: List<String>, val subtitle: String?,
+                              val reading: com.example.lumeocrtest.ocr.ArticleReading,
+                              val choice: com.example.lumeocrtest.ocr.ClaimChoice)
 
 private suspend fun runOcr(context: android.content.Context, uri: String, onPreview: (ImageBitmap?) -> Unit): OcrOutcome {
     val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
@@ -111,26 +157,26 @@ private suspend fun runOcr(context: android.content.Context, uri: String, onPrev
                 .addOnSuccessListener { if (cont.isActive) cont.resume(it) }
                 .addOnFailureListener { if (cont.isActive) cont.resumeWithException(it) }
         }
-        val blocks = result.textBlocks.map { block ->
-            OcrBlock(text = block.text,
-                boundingBox = block.boundingBox?.let { OcrRect(it.left, it.top, it.right, it.bottom) },
-                lines = block.lines.map { it.text })
+        val blocks = result.toOcrBlocks()
+        // Leitura por papéis: título, assinatura, corpo, legenda, crédito, lateral, anúncio… (ver ArticleReader).
+        val reader = com.example.lumeocrtest.ocr.ArticleReader()
+        val reading = reader.read(blocks, inputImage.width, inputImage.height)
+        val choice = reader.claimFor(reading)
+        if ((context.applicationInfo.flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
+            reading.report().chunked(3500).forEach { Log.d("LumeOcr", it) }
+            Log.d("LumeOcr", "afirmação=${choice.claim} escolher=${choice.needsChoice} alternativas=${choice.alternatives}")
         }
-        val metadataResult = ArticleMetadataExtractor().extractMetadata(blocks)
-        val metadata = metadataResult.metadata
-        val cleaned = ArticleTextExtractor().extractArticle(blocks, inputImage.width, inputImage.height, metadataResult.consumedBlockIndexes)
-        val extracted = ClaimExtractor().extractClaims(cleaned)
-        fun isMetadata(claim: String) = listOfNotNull(metadata.author, metadata.source, metadata.publishedAt)
-            .any { claim.contains(it, ignoreCase = true) }
-        return OcrOutcome(result.text.ifBlank { "Nenhum texto encontrado." }, cleaned, metadata,
-            extracted.mainClaim?.takeUnless { isMetadata(it) }, extracted.otherClaims.filterNot { isMetadata(it) })
+        return OcrOutcome(result.text.ifBlank { "Nenhum texto encontrado." }, reading.body, reading.metadata,
+            choice.claim, choice.alternatives, reading.subtitle, reading, choice)
     } finally {
         recognizer.close()
     }
 }
 
 @Composable
-internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0) {
+internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0,
+                       sharedRequest: Int = 0, sharedText: String? = null, sharedImage: String? = null,
+                       captureError: String? = null) {
     val context = LocalContext.current
     val state = remember(context) { androidx.lifecycle.ViewModelProvider(context as ComponentActivity)[AnalysisState::class.java] }
     var selectedUri by state.selectedUri
@@ -139,10 +185,14 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0) {
     var cleanedText by state.cleanedText
     var metadata by state.metadata
     var mainClaim by state.mainClaim
+    var subtitle by state.subtitle
     var claims by state.claims
     var showRawText by state.showRawText
     var ocrError by state.ocrError
     var ocrState by state.ocrState
+    var reading by state.reading
+    var claimChoice by state.claimChoice
+    var articleContext by state.articleContext
 
     // Pesquisa nativa (sem servidor): esclarecimento -> busca -> leitura -> comparação.
     val service = state.service
@@ -168,6 +218,12 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0) {
     var lastAction by state.lastAction
     val busy = busyText.isNotEmpty()
 
+    LaunchedEffect(Unit) { if (queryText.isBlank()) queryText = ResearchHistory.draft(context) }
+    LaunchedEffect(queryText) {
+        delay(600)
+        ResearchHistory.saveDraft(context, queryText)
+    }
+
     fun resetResults() {
         evaluation = null; clarification = null; searchError = null; notice = null; correcting = false; enteringDetails = false
     }
@@ -181,8 +237,12 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0) {
         lastAction = { runSearch(text) }
         job = scope.launch {
             try {
-                val result = service.evaluate(text, "req-$ticket")
-                if (!gate.deliver(ticket, result) { evaluation = it }) Log.i(TAG, "resposta descartada: pertence a uma pesquisa anterior (req-$ticket)")
+                val result = service.evaluate(text, "req-$ticket", articleContext)
+                result.partes.forEach { p -> p.diagnostico?.report()?.chunked(3500)?.forEach { Log.d("LumeTrace", it) } }
+                if (gate.deliver(ticket, result) { evaluation = it }) {
+                    ResearchHistory.save(context, text, result)
+                    state.historyRevision.intValue++
+                } else Log.i(TAG, "resposta descartada: pertence a uma pesquisa anterior (req-$ticket)")
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
@@ -230,15 +290,30 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0) {
             job?.cancel()
             val ticket=gate.next()
             resetResults(); busyText="Lendo o link…"; lastAction={ startFlow(t) }
+            selectedUri = null; state.startedUri = null; preview = null; recognizedText = ""; cleanedText = ""
+            metadata = null; mainClaim = null; subtitle = null; claims = emptyList()
+            reading = null; claimChoice = null; articleContext = null
             job=scope.launch {
                 try {
                     val page=withContext(Dispatchers.IO) { com.example.lumeocrtest.research.fetchPage(t,state.linkFetcher) }
                     if (!gate.isCurrent(ticket)) return@launch
-                    val text=listOf(page.title,page.description).filter { it.isNotBlank() }.distinct().joinToString(". ").take(1200)
+                    val body = page.paragraphs.joinToString("\n\n")
+                    val extracted = ClaimExtractor().extractClaims(body)
+                    val pageTitle = page.title.trim().let { title ->
+                        val site = page.siteName.trim()
+                        if (site.isNotEmpty()) title.removeSuffix(" | $site").removeSuffix(" - $site").trim() else title
+                    }
+                    val text = pageTitle.takeIf { it.length >= 20 && it.split(Regex("\\s+")).size >= 4 }
+                        ?: extracted.mainClaim?.takeIf { it.isNotBlank() }
+                        ?: listOf(page.title, page.description).filter { it.isNotBlank() }.distinct().joinToString(". ")
                     if(text.length<15) throw IllegalArgumentException("Texto indisponível")
                     queryText=text
-                    flowOriginal=text; flowDetails=""; flowRejected=emptyList(); flowRound=0; lastOptions=null
-                    clarifyThenSearch()
+                    mainClaim=text
+                    claims=extracted.otherClaims
+                    cleanedText=body
+                    notice=if(body.isNotBlank()) "Confira a afirmação extraída da matéria antes de pesquisar."
+                        else "O corpo da matéria não pôde ser lido. Confira o título e a descrição antes de pesquisar."
+                    busyText=""
                 } catch(e: CancellationException) { throw e }
                 catch(e: Exception) {
                     Log.w(TAG,"Link não pôde ser lido",e)
@@ -272,6 +347,25 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0) {
         }
     }
 
+    LaunchedEffect(sharedRequest) {
+        if (sharedRequest > 0) {
+            if (sharedImage != null) selectedUri = sharedImage
+            else if (sharedText != null) {
+                state.ocrJob?.cancel()
+                selectedUri = null
+                state.startedUri = null
+                preview = null; recognizedText = ""; cleanedText = ""; metadata = null
+                mainClaim = null; subtitle = null; claims = emptyList(); ocrError = null; ocrState = ""
+                reading = null; claimChoice = null; articleContext = null
+                job?.cancel(); gate.invalidate(); busyText = ""; resetResults()
+                queryText = sharedText
+                notice = "Conteúdo recebido. Confira o texto antes de pesquisar."
+            } else if (captureError != null) {
+                ocrError = captureError
+            }
+        }
+    }
+
     LaunchedEffect(selectedUri) {
         val uri = selectedUri ?: return@LaunchedEffect
         if (uri==state.startedUri) return@LaunchedEffect
@@ -285,24 +379,33 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0) {
         resetResults()
         searchedText = null
         ocrState = "Lendo a imagem..."
-        preview = null; recognizedText = ""; cleanedText = ""; metadata = null; mainClaim = null; claims = emptyList()
+        preview = null; recognizedText = ""; cleanedText = ""; metadata = null; mainClaim = null; subtitle = null; claims = emptyList()
+        reading = null; claimChoice = null; articleContext = null
         showRawText = false; ocrError = null; queryText = ""
         try {
             val out = runOcr(context.applicationContext, uri) { preview = it }
             recognizedText = out.text; cleanedText = out.cleaned; metadata = out.metadata
-            mainClaim = out.mainClaim; claims = out.otherClaims
-            val target = out.cleaned.takeIf { it.isNotBlank() } ?: out.mainClaim ?: out.otherClaims.firstOrNull()
+            mainClaim = out.mainClaim; subtitle = out.subtitle; claims = out.otherClaims
+            reading = out.reading; claimChoice = out.choice
+            articleContext = ArticleContext(out.reading.title, out.reading.subtitle, out.reading.body,
+                out.metadata.source, out.metadata.publishedAtMs, author = out.metadata.author)
             ocrState = ""
-            if (target != null) {
-                queryText = target
-                startFlow(target)
-            }
+            // Só preenche a pesquisa quando há uma afirmação clara; senão, pede a escolha ao usuário.
+            queryText = out.choice.claim.orEmpty()
+            notice = null
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
             Log.e(TAG, "OCR falhou", e)
             ocrError = "Não foi possível ler o texto desta imagem. Tente outra imagem."
         } finally {
+            val captured = Uri.parse(uri)
+            if (captured.scheme == "file") {
+                val file = captured.path?.let(::File)
+                if (file != null && file.name.startsWith("lume-capture-") && file.parentFile == context.cacheDir) {
+                    file.delete()
+                }
+            }
             if(state.startedUri==uri) ocrState = ""
         }
         }
@@ -313,67 +416,65 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0) {
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(painter = painterResource(id = R.drawable.lume_home), contentDescription = "Lume", modifier = Modifier.height(48.dp))
+            Image(painter = painterResource(id = R.drawable.lume_mascot), contentDescription = "Lume", modifier = Modifier.height(48.dp))
             Spacer(modifier = Modifier.width(8.dp))
             Text("Lume", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, color = LumeDarkGreen)
         }
 
-        Button(onClick = { picker.launch("image/*") }, enabled = ocrState.isEmpty()) { Text("Simular captura") }
-        preview?.let { Image(bitmap = it, contentDescription = "Imagem selecionada", modifier = Modifier.fillMaxWidth().heightIn(max = 260.dp)) }
-        if (ocrState.isNotEmpty()) Text(ocrState)
+        Button(onClick = { picker.launch("image/*") }, enabled = ocrState.isEmpty()) { Text("Importar imagem") }
+        preview?.let { Image(bitmap = it, contentDescription = "Imagem selecionada", modifier = Modifier.fillMaxWidth().heightIn(max = 180.dp)) }
+        if (ocrState.isNotEmpty()) Row(verticalAlignment = Alignment.CenterVertically) {
+            CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
+            Spacer(Modifier.width(8.dp)); Text(ocrState)
+        }
         ocrError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
 
-        if (recognizedText.isNotEmpty()) {
-            Text("Imagem lida no aparelho", style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.secondary)
-            Text("Sobre esta publicação", style = MaterialTheme.typography.titleMedium, color = LumeDarkGreen)
-            Card(modifier = Modifier.fillMaxWidth()) {
-                Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                    val md = metadata
-                    if (md?.author != null || md?.source != null) {
-                        Text(buildString {
-                            append("Publicado")
-                            md.author?.let { append(" por $it") }
-                            md.source?.let { append(" em $it") }
-                        } + ".")
-                    } else {
-                        Text("Autor e fonte não identificados com segurança.")
-                    }
-                    md?.publishedAt?.let { Text(it) }
-                    md?.url?.let { Text(it, color = MaterialTheme.colorScheme.primary) }
-                }
+        reading?.let { r ->
+            ReadingSummary(r, evaluation)
+            if (r.body.isNotBlank()) {
+                var bodyOpen by remember(r) { mutableStateOf(false) }
+                TextButton(onClick = { bodyOpen = !bodyOpen }) { Text(if (bodyOpen) "Esconder o texto da matéria" else "Ver o texto da matéria") }
+                LumeVisibility(bodyOpen) { Card(modifier = Modifier.fillMaxWidth()) { Text(r.body, modifier = Modifier.padding(16.dp)) } }
             }
-            Text("Conteúdo identificado", style = MaterialTheme.typography.titleMedium, color = LumeDarkGreen)
-            Card(modifier = Modifier.fillMaxWidth()) {
-                Text(cleanedText.ifEmpty { "Não foi possível extrair o texto principal." }, modifier = Modifier.padding(16.dp))
+            TextButton(onClick = { showRawText = !showRawText }) {
+                Text(if (showRawText) "Ocultar tudo o que foi reconhecido" else "Ver tudo o que foi reconhecido na imagem")
             }
-            if (claims.isNotEmpty()) {
-                var expanded by remember { mutableStateOf(false) }
-                TextButton(onClick = { expanded = !expanded }) {
-                    Text(if (expanded) "Esconder outras afirmações" else "Ver outras afirmações desta publicação")
-                }
-                LumeVisibility(expanded) { Column { claims.forEach { claim ->
-                    Surface(onClick = { queryText = claim }, shape = RoundedCornerShape(8.dp),
-                        color = if (queryText == claim) LumeLightGreen else MaterialTheme.colorScheme.surfaceVariant,
-                        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
-                        Text(claim, modifier = Modifier.padding(12.dp), style = MaterialTheme.typography.bodyMedium)
-                    }
-                } } }
-            }
-            TextButton(onClick = { showRawText = !showRawText }) { Text(if (showRawText) "Ocultar texto bruto" else "Ver texto bruto") }
             LumeVisibility(showRawText) { SelectionContainer {
                 Card(modifier = Modifier.fillMaxWidth()) { Text(recognizedText, modifier = Modifier.padding(16.dp)) }
             } }
         }
 
         // ---- pergunta e pesquisa -----------------------------------------------------------------
-        Text(if (mainClaim != null) "O Lume entendeu (edite se precisar):" else "Cole uma notícia, afirmação ou pergunta",
-            style = MaterialTheme.typography.titleMedium)
+        Text(if (reading != null) "O que vamos pesquisar?" else "Cole uma notícia, afirmação ou pergunta",
+            style = MaterialTheme.typography.titleMedium, color = LumeDarkGreen, fontWeight = FontWeight.Bold,
+            modifier = Modifier.semantics { heading() })
+        claimChoice?.let { c ->
+            Text(c.note ?: "Esta é a afirmação principal que encontramos na imagem. Confira e edite, se precisar, antes de pesquisar.",
+                style = MaterialTheme.typography.bodyMedium)
+        }
         OutlinedTextField(
             value = queryText, onValueChange = { queryText = it }, modifier = Modifier.fillMaxWidth(),
-            label = { Text("Texto ou link para pesquisar") },
+            label = { Text(if (reading != null) "Afirmação a pesquisar" else "Texto ou link para pesquisar") },
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
             keyboardActions = KeyboardActions(onSearch = { if (queryText.isNotBlank() && !busy) startFlow(queryText) }),
         )
+        if (reading != null) com.example.lumeocrtest.ocr.vagueSubject(queryText)?.let { vague ->
+            Text("A frase começa com “$vague”, que depende do que vem antes na matéria. Para uma busca melhor, " +
+                "diga de que se trata (por exemplo, o nome da medida ou do órgão).",
+                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.tertiary)
+        }
+        claimChoice?.alternatives?.takeIf { it.isNotEmpty() }?.let { alts ->
+            var altOpen by remember(alts) { mutableStateOf(claimChoice?.needsChoice == true) }
+            if (claimChoice?.needsChoice == true) Text("Frases encontradas na imagem:", style = MaterialTheme.typography.labelLarge)
+            else TextButton(onClick = { altOpen = !altOpen }) { Text(if (altOpen) "Esconder outras frases da matéria" else "Escolher outra frase da matéria") }
+            LumeVisibility(altOpen) { Column(verticalArrangement = Arrangement.spacedBy(6.dp)) { alts.forEach { alt ->
+                Surface(onClick = { queryText = alt }, shape = RoundedCornerShape(8.dp),
+                    color = if (queryText == alt) LumeLightGreen else MaterialTheme.colorScheme.surfaceVariant,
+                    modifier = Modifier.fillMaxWidth()) {
+                    Text(alt, modifier = Modifier.padding(12.dp), style = MaterialTheme.typography.bodyMedium)
+                }
+            } } }
+        }
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Button(onClick = { startFlow(queryText) }, enabled = queryText.isNotBlank() && !busy) { Text("Pesquisar") }
             if (busy) OutlinedButton(onClick = { cancelSearch() }) { Text("Cancelar") }
@@ -403,7 +504,7 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0) {
 
         searchedText?.let { q ->
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text("Pesquisando: ", style = MaterialTheme.typography.bodySmall)
+                Text(if (busy) "Pesquisando: " else "Pesquisado: ", style = MaterialTheme.typography.bodySmall)
                 Text(q, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f, fill = false))
                 TextButton(onClick = { correcting = !correcting; correctionText = q }) { Text("Corrigir") }
             }

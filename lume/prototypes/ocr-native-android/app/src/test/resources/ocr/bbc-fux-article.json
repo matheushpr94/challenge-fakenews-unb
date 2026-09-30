@@ -1,0 +1,824 @@
+{
+ "image": "bbc-fux-article.png",
+ "width": 740,
+ "height": 901,
+ "blocks": [
+  {
+   "text": "Fux derruba decisão de Dino\nsobre posts de Nossa Senhora\nAparecida: entenda o vaivém\na menos de uma semana da",
+   "box": [
+    48,
+    6,
+    468,
+    148
+   ],
+   "lines": [
+    {
+     "text": "Fux derruba decisão de Dino",
+     "box": [
+      50,
+      9,
+      456,
+      31
+     ],
+     "confidence": 0.8885869383811951
+    },
+    {
+     "text": "sobre posts de Nossa Senhora",
+     "box": [
+      50,
+      41,
+      468,
+      78
+     ],
+     "confidence": 0.8780924677848816
+    },
+    {
+     "text": "Aparecida: entenda o vaivém",
+     "box": [
+      48,
+      82,
+      461,
+      115
+     ],
+     "confidence": 0.8671875
+    },
+    {
+     "text": "a menos de uma semana da",
+     "box": [
+      50,
+      126,
+      438,
+      147
+     ],
+     "confidence": 0.8698601722717285
+    }
+   ]
+  },
+  {
+   "text": "eleição",
+   "box": [
+    49,
+    162,
+    147,
+    192
+   ],
+   "lines": [
+    {
+     "text": "eleição",
+     "box": [
+      49,
+      162,
+      147,
+      192
+     ],
+     "confidence": 0.8108258843421936
+    }
+   ]
+  },
+  {
+   "text": "GETTY IMASES",
+   "box": [
+    54,
+    452,
+    113,
+    458
+   ],
+   "lines": [
+    {
+     "text": "GETTY IMASES",
+     "box": [
+      54,
+      452,
+      113,
+      458
+     ],
+     "confidence": 0.6725852489471436
+    }
+   ]
+  },
+  {
+   "text": "Nossa Senhora Aparecida foi proclamada Padroeira do Bra pelo Vaticano em 1930",
+   "box": [
+    55,
+    472,
+    417,
+    480
+   ],
+   "lines": [
+    {
+     "text": "Nossa Senhora Aparecida foi proclamada Padroeira do Bra pelo Vaticano em 1930",
+     "box": [
+      55,
+      472,
+      417,
+      480
+     ],
+     "confidence": 0.8216145634651184
+    }
+   ]
+  },
+  {
+   "text": "Pedro Martins >",
+   "box": [
+    48,
+    496,
+    126,
+    509
+   ],
+   "lines": [
+    {
+     "text": "Pedro Martins >",
+     "box": [
+      48,
+      496,
+      126,
+      509
+     ],
+     "confidence": 0.8359375
+    }
+   ]
+  },
+  {
+   "text": "Da BBC News Brasil em Londres",
+   "box": [
+    48,
+    513,
+    174,
+    525
+   ],
+   "lines": [
+    {
+     "text": "Da BBC News Brasil em Londres",
+     "box": [
+      48,
+      513,
+      174,
+      525
+     ],
+     "confidence": 0.7057291865348816
+    }
+   ]
+  },
+  {
+   "text": "29 setembro 2026, 06:10 -03",
+   "box": [
+    49,
+    545,
+    164,
+    552
+   ],
+   "lines": [
+    {
+     "text": "29 setembro 2026, 06:10 -03",
+     "box": [
+      49,
+      545,
+      164,
+      552
+     ],
+     "confidence": 0.795516312122345
+    }
+   ]
+  },
+  {
+   "text": "Temr",
+   "box": [
+    49,
+    573,
+    69,
+    578
+   ],
+   "lines": [
+    {
+     "text": "Temr",
+     "box": [
+      49,
+      573,
+      69,
+      578
+     ],
+     "confidence": 0.5380859375
+    }
+   ]
+  },
+  {
+   "text": "la6min",
+   "box": [
+    81,
+    566,
+    139,
+    579
+   ],
+   "lines": [
+    {
+     "text": "la6min",
+     "box": [
+      81,
+      566,
+      139,
+      579
+     ],
+     "confidence": 0.4661458432674408
+    }
+   ]
+  },
+  {
+   "text": "A cinco dias do primeiro turno das eleiçoes presidenciais, uma disputa envolvendo\nNossa Senhora Aparecida voltou a colocar em lados opostos ministros do\nSupremo Tribunal Federal (STF)e do Tribunal Superior Eleitoral (TSE).",
+   "box": [
+    49,
+    595,
+    448,
+    635
+   ],
+   "lines": [
+    {
+     "text": "A cinco dias do primeiro turno das eleiçoes presidenciais, uma disputa envolvendo",
+     "box": [
+      49,
+      595,
+      448,
+      605
+     ],
+     "confidence": 0.8487164974212646
+    },
+    {
+     "text": "Nossa Senhora Aparecida voltou a colocar em lados opostos ministros do",
+     "box": [
+      49,
+      609,
+      408,
+      619
+     ],
+     "confidence": 0.864453136920929
+    },
+    {
+     "text": "Supremo Tribunal Federal (STF)e do Tribunal Superior Eleitoral (TSE).",
+     "box": [
+      49,
+      624,
+      391,
+      635
+     ],
+     "confidence": 0.8334400653839111
+    }
+   ]
+  },
+  {
+   "text": "Na sexta-feira (25\/9), André Mendonça, vice-presidente do TSE e também\nministro do Supremo, determinou a remoçao de publicaçoes nas redes sociais que\nSenhora Aparerida do DPeto para retiraro titulo de Nossa",
+   "box": [
+    48,
+    647,
+    448,
+    710
+   ],
+   "lines": [
+    {
+     "text": "Na sexta-feira (25\/9), André Mendonça, vice-presidente do TSE e também",
+     "box": [
+      49,
+      655,
+      410,
+      666
+     ],
+     "confidence": 0.8165343403816223
+    },
+    {
+     "text": "ministro do Supremo, determinou a remoçao de publicaçoes nas redes sociais que",
+     "box": [
+      49,
+      670,
+      448,
+      683
+     ],
+     "confidence": 0.7364155650138855
+    },
+    {
+     "text": "Senhora Aparerida do DPeto para retiraro titulo de Nossa",
+     "box": [
+      49,
+      676,
+      420,
+      710
+     ],
+     "confidence": 0.6731770634651184
+    }
+   ]
+  },
+  {
+   "text": "do F",
+   "box": [
+    209,
+    699,
+    229,
+    706
+   ],
+   "lines": [
+    {
+     "text": "do F",
+     "box": [
+      209,
+      699,
+      229,
+      706
+     ],
+     "confidence": 0.6979166865348816
+    }
+   ]
+  },
+  {
+   "text": "No domingo (27\/9), Flávio Dino, ministro do STF, derrubou a ordem de Mendonça;\npor fim, na noite de segunda-feira (28\/9), o também ministro do Supremo Luiz Fux\nsuspendeu a decisäo de Dino e fez voltar a valer, ao menos provisoriamente, a\ndeterminação dada por Mendonça no âmbito da Justiça Eleitoral.",
+   "box": [
+    49,
+    729,
+    451,
+    784
+   ],
+   "lines": [
+    {
+     "text": "No domingo (27\/9), Flávio Dino, ministro do STF, derrubou a ordem de Mendonça;",
+     "box": [
+      49,
+      729,
+      450,
+      740
+     ],
+     "confidence": 0.8267637491226196
+    },
+    {
+     "text": "por fim, na noite de segunda-feira (28\/9), o também ministro do Supremo Luiz Fux",
+     "box": [
+      49,
+      744,
+      451,
+      755
+     ],
+     "confidence": 0.8413596153259277
+    },
+    {
+     "text": "suspendeu a decisäo de Dino e fez voltar a valer, ao menos provisoriamente, a",
+     "box": [
+      49,
+      758,
+      428,
+      769
+     ],
+     "confidence": 0.837646484375
+    },
+    {
+     "text": "determinação dada por Mendonça no âmbito da Justiça Eleitoral.",
+     "box": [
+      49,
+      771,
+      365,
+      784
+     ],
+     "confidence": 0.8285590410232544
+    }
+   ]
+  },
+  {
+   "text": "O que Fux decidiu",
+   "box": [
+    49,
+    825,
+    224,
+    847
+   ],
+   "lines": [
+    {
+     "text": "O que Fux decidiu",
+     "box": [
+      49,
+      825,
+      224,
+      847
+     ],
+     "confidence": 0.8077567219734192
+    }
+   ]
+  },
+  {
+   "text": "Fux suspendeu a decisao de Dino que havia liberado publicaçöes nas redes\nrelacionadas à controvérsia sobre Nossa Senhora Aparecida, sequndo o jornal O",
+   "box": [
+    49,
+    868,
+    439,
+    894
+   ],
+   "lines": [
+    {
+     "text": "Fux suspendeu a decisao de Dino que havia liberado publicaçöes nas redes",
+     "box": [
+      49,
+      868,
+      413,
+      880
+     ],
+     "confidence": 0.8379867076873779
+    },
+    {
+     "text": "relacionadas à controvérsia sobre Nossa Senhora Aparecida, sequndo o jornal O",
+     "box": [
+      49,
+      882,
+      439,
+      894
+     ],
+     "confidence": 0.8754664063453674
+    }
+   ]
+  },
+  {
+   "text": "Principais notícias",
+   "box": [
+    501,
+    16,
+    637,
+    30
+   ],
+   "lines": [
+    {
+     "text": "Principais notícias",
+     "box": [
+      501,
+      16,
+      637,
+      30
+     ],
+     "confidence": 0.892578125
+    }
+   ]
+  },
+  {
+   "text": "Piketty prevê fim do dölar\ncomo moeda global: Muito em\nbreve",
+   "box": [
+    512,
+    65,
+    669,
+    104
+   ],
+   "lines": [
+    {
+     "text": "Piketty prevê fim do dölar",
+     "box": [
+      517,
+      65,
+      647,
+      78
+     ],
+     "confidence": 0.7546164989471436
+    },
+    {
+     "text": "como moeda global: Muito em",
+     "box": [
+      516,
+      80,
+      669,
+      94
+     ],
+     "confidence": 0.8087635636329651
+    },
+    {
+     "text": "breve",
+     "box": [
+      512,
+      94,
+      540,
+      104
+     ],
+     "confidence": 0.8265625238418579
+    }
+   ]
+  },
+  {
+   "text": "Há 1 hora",
+   "box": [
+    513,
+    112,
+    550,
+    119
+   ],
+   "lines": [
+    {
+     "text": "Há 1 hora",
+     "box": [
+      513,
+      112,
+      550,
+      119
+     ],
+     "confidence": 0.5747767686843872
+    }
+   ]
+  },
+  {
+   "text": "'Disputa religiosa' em torno de\nfake news de volta ao centro da\neleição presidencial, destaca\nimprensa internacional",
+   "box": [
+    512,
+    160,
+    671,
+    223
+   ],
+   "lines": [
+    {
+     "text": "'Disputa religiosa' em torno de",
+     "box": [
+      513,
+      160,
+      669,
+      170
+     ],
+     "confidence": 0.8308738470077515
+    },
+    {
+     "text": "fake news de volta ao centro da",
+     "box": [
+      512,
+      179,
+      671,
+      195
+     ],
+     "confidence": 0.6973437666893005
+    },
+    {
+     "text": "eleição presidencial, destaca",
+     "box": [
+      513,
+      200,
+      660,
+      211
+     ],
+     "confidence": 0.8615451455116272
+    },
+    {
+     "text": "imprensa internacional",
+     "box": [
+      513,
+      211,
+      633,
+      223
+     ],
+     "confidence": 0.7767857313156128
+    }
+   ]
+  },
+  {
+   "text": "Há 4 horas",
+   "box": [
+    513,
+    230,
+    555,
+    237
+   ],
+   "lines": [
+    {
+     "text": "Há 4 horas",
+     "box": [
+      513,
+      230,
+      555,
+      237
+     ],
+     "confidence": 0.60205078125
+    }
+   ]
+  },
+  {
+   "text": "Fux derruba decisão de Dino\nsobre posts de Nossa Senhora\nAparecida: entenda o vaivém a\nmenos de uma semana da",
+   "box": [
+    512,
+    276,
+    670,
+    329
+   ],
+   "lines": [
+    {
+     "text": "Fux derruba decisão de Dino",
+     "box": [
+      513,
+      278,
+      661,
+      286
+     ],
+     "confidence": 0.7875339388847351
+    },
+    {
+     "text": "sobre posts de Nossa Senhora",
+     "box": [
+      513,
+      291,
+      667,
+      301
+     ],
+     "confidence": 0.8577473759651184
+    },
+    {
+     "text": "Aparecida: entenda o vaivém a",
+     "box": [
+      512,
+      305,
+      671,
+      315
+     ],
+     "confidence": 0.8179687261581421
+    },
+    {
+     "text": "menos de uma semana da",
+     "box": [
+      512,
+      314,
+      643,
+      329
+     ],
+     "confidence": 0.7816840410232544
+    }
+   ]
+  },
+  {
+   "text": "Há7 horas",
+   "box": [
+    513,
+    349,
+    554,
+    356
+   ],
+   "lines": [
+    {
+     "text": "Há7 horas",
+     "box": [
+      513,
+      349,
+      554,
+      356
+     ],
+     "confidence": 0.6787109375
+    }
+   ]
+  },
+  {
+   "text": "Leia mais",
+   "box": [
+    500,
+    405,
+    569,
+    419
+   ],
+   "lines": [
+    {
+     "text": "Leia mais",
+     "box": [
+      500,
+      405,
+      569,
+      419
+     ],
+     "confidence": 0.82421875
+    }
+   ]
+  },
+  {
+   "text": "Eleições presidenciais: o que as\npesquisas diziam sobre Lula x\nBolsonaro a uma semana da\ne 2016eo",
+   "box": [
+    510,
+    576,
+    672,
+    627
+   ],
+   "lines": [
+    {
+     "text": "Eleições presidenciais: o que as",
+     "box": [
+      510,
+      576,
+      672,
+      589
+     ],
+     "confidence": 0.8289620280265808
+    },
+    {
+     "text": "pesquisas diziam sobre Lula x",
+     "box": [
+      511,
+      594,
+      665,
+      604
+     ],
+     "confidence": 0.8298437595367432
+    },
+    {
+     "text": "Bolsonaro a uma semana da",
+     "box": [
+      511,
+      607,
+      656,
+      615
+     ],
+     "confidence": 0.7319568395614624
+    },
+    {
+     "text": "e 2016eo",
+     "box": [
+      600,
+      622,
+      659,
+      628
+     ],
+     "confidence": 0.4235491156578064
+    }
+   ]
+  },
+  {
+   "text": "gue dizem em 2026",
+   "box": [
+    510,
+    630,
+    609,
+    643
+   ],
+   "lines": [
+    {
+     "text": "gue dizem em 2026",
+     "box": [
+      510,
+      630,
+      609,
+      643
+     ],
+     "confidence": 0.8507254719734192
+    }
+   ]
+  },
+  {
+   "text": "28 setembro 2026",
+   "box": [
+    510,
+    650,
+    587,
+    661
+   ],
+   "lines": [
+    {
+     "text": "28 setembro 2026",
+     "box": [
+      510,
+      650,
+      587,
+      661
+     ],
+     "confidence": 0.8529576063156128
+    }
+   ]
+  },
+  {
+   "text": "Por que Lula acusa Trump de\ntentar interferir na eleição a\nfavor de Flávio Bolsonaro\n28 setembro 2026",
+   "box": [
+    509,
+    793,
+    658,
+    851
+   ],
+   "lines": [
+    {
+     "text": "Por que Lula acusa Trump de",
+     "box": [
+      511,
+      795,
+      659,
+      805
+     ],
+     "confidence": 0.8094815611839294
+    },
+    {
+     "text": "tentar interferir na eleição a",
+     "box": [
+      509,
+      805,
+      655,
+      818
+     ],
+     "confidence": 0.7967247366905212
+    },
+    {
+     "text": "favor de Flávio Bolsonaro",
+     "box": [
+      509,
+      820,
+      641,
+      830
+     ],
+     "confidence": 0.8432173132896423
+    },
+    {
+     "text": "28 setembro 2026",
+     "box": [
+      510,
+      839,
+      588,
+      850
+     ],
+     "confidence": 0.8914620280265808
+    }
+   ]
+  }
+ ]
+}

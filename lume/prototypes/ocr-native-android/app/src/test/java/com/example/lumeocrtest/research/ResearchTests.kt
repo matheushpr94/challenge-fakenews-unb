@@ -93,10 +93,11 @@ class OcrToResearchTests {
         val claims = com.example.lumeocrtest.ocr.ClaimExtractor().extractClaims(
             "Vale Claro tem 150 mil habitantes, diz levantamento\n\nO número foi divulgado nesta segunda-feira e circula nas redes sociais.")
         val main = claims.mainClaim!!
-        assertTrue(main.startsWith("Vale Claro tem 150 mil habitantes, diz levantamento. O número"))
+        assertEquals("Vale Claro tem 150 mil habitantes, diz levantamento", main)
+        assertTrue(claims.otherClaims.single().startsWith("O número foi divulgado"))
         val parts = ResearchService(fetcher = FakeWeb(), clock = { NOW }).splitClaims(main)
-        assertEquals(2, parts.size)
-        assertEquals("Vale Claro tem 150 mil habitantes, diz levantamento.", parts[0].first)
+        assertEquals(1, parts.size)
+        assertEquals(main, parts[0].first)
     }
 }
 
@@ -104,8 +105,8 @@ class IndicationTests {
     @Test fun support() {
         val r = search(serrano("O Atlético Serrano conquistou cinco títulos nacionais."), "O Atlético Serrano tem 5 títulos nacionais")
         val ind = r.sintese!!.indicacao!!
-        assertEquals("tende_verdadeira", ind.rotulo)
-        assertTrue(ind.motivo.contains("única fonte"))
+        assertEquals("dados_compativeis", ind.rotulo)
+        assertTrue(ind.motivo.contains("dados compatíveis"))
         assertEquals(AVISO_INDICACAO, ind.aviso)
         assertEquals(PAGE, r.resultados.getValue("responde").first().url)
     }
@@ -113,7 +114,7 @@ class IndicationTests {
     @Test fun contradictionExplainsValuesWithLink() {
         val r = search(serrano("O Atlético Serrano conquistou oito títulos nacionais ao longo da história, o último em 2019."),
             "O Atlético Serrano tem 5 títulos nacionais")
-        assertEquals("tende_falsa", label(r))
+        assertEquals("dados_diferentes", label(r))
         assertTrue(explanation(r).contains("5 títulos"))
         assertTrue(explanation(r).contains("oito títulos"))
         assertTrue(r.sintese!!.explicacao.any { e -> e.fontes.any { it.url == PAGE } })
@@ -200,22 +201,24 @@ class IndicationTests {
             pages = mapOf(a to htmlPage(listOf("Vale Claro tinha 120 mil habitantes em 2015, segundo estimativa."), published = d(2016, 1, 5)),
                 b to htmlPage(listOf("Vale Claro tem 150 mil habitantes, segundo o censo de 2025."), published = d(2025, 11, 3))))
         val r = search(web, "Vale Claro tem 120 mil habitantes")
-        assertEquals("tende_falsa", label(r))
+        assertEquals("dados_diferentes", label(r))
         assertTrue(explanation(r).contains("mais recente"))
         assertTrue(explanation(r).contains("150 mil"))
     }
 
     @Test fun negationIsAppliedToTheComparedValue() {
-        assertEquals("tende_verdadeira", label(search(serrano("O Atlético Serrano conquistou oito títulos nacionais."), "O Atlético Serrano não tem 5 títulos nacionais")))
-        assertEquals("tende_falsa", label(search(serrano("O Atlético Serrano conquistou cinco títulos nacionais."), "O Atlético Serrano não tem 5 títulos nacionais")))
+        assertEquals("dados_compativeis", label(search(serrano("O Atlético Serrano conquistou oito títulos nacionais."), "O Atlético Serrano não tem 5 títulos nacionais")))
+        assertEquals("dados_diferentes", label(search(serrano("O Atlético Serrano conquistou cinco títulos nacionais."), "O Atlético Serrano não tem 5 títulos nacionais")))
     }
 
     @Test fun rulesCannotInterpretFreeTextAndExplainIt() {
         val web = FakeWeb(google = listOf(News("Prefeito de Vale Claro assina decreto de emergência", "Jornal A", date = d(2026, 9, 25))))
         val r = search(web, "O prefeito de Vale Claro não assinou o decreto de emergência")
         assertEquals("inconclusiva", label(r))
-        assertTrue(r.sintese!!.indicacao!!.motivo.contains("regras"))
-        assertTrue(r.resultados.getValue("direto").first().alertas.any { "negação" in it })
+        // Mesmo acontecimento, mas com sentido oposto: aparece como detalhe divergente, nunca como confirmação.
+        val c = r.resultados.getValue("direto").single()
+        assertEquals(RelationKind.DIFERENTE, c.relacaoTipo)
+        assertTrue(c.motivos.orEmpty().any { it.startsWith("Negação") })
     }
 
     @Test fun opinionIsInconclusive() {
@@ -233,14 +236,14 @@ class IndicationTests {
                 "O estádio do Atlético Serrano tem 20 mil lugares, segundo o clube."))))
         val e = evaluate(web, "O Atlético Serrano tem 5 títulos nacionais. O estádio do Atlético Serrano tem 20 mil lugares.")
         assertEquals("partes", e.modo)
-        assertEquals(listOf("tende_falsa", "tende_verdadeira"), e.partes.map { label(it) })
+        assertEquals(listOf("dados_diferentes", "dados_compativeis"), e.partes.map { label(it) })
     }
 
     @Test fun twoValuesInOneSentenceAreSeparateDetails() {
         val r = search(serrano("O Atlético Serrano conquistou oito títulos nacionais e dois títulos estaduais."),
             "O Atlético Serrano tem 8 títulos nacionais e 3 títulos estaduais")
-        assertEquals("tende_verdadeira", label(r))
-        assertEquals("tende_falsa", r.detalhesAdicionais.single().indicacao!!.rotulo)
+        assertEquals("dados_compativeis", label(r))
+        assertEquals("dados_diferentes", r.detalhesAdicionais.single().indicacao!!.rotulo)
     }
 
     @Test fun republicationsCountOnce() {
@@ -251,7 +254,7 @@ class IndicationTests {
             News(title, "Portal Dois", u2, d(2026, 9, 1), "O Atlético Serrano chegou a oito títulos nacionais.")),
             pages = mapOf(u1 to htmlPage(listOf(p)), u2 to htmlPage(listOf(p))))
         val r = search(web, "O Atlético Serrano tem 5 títulos nacionais")
-        assertEquals("tende_falsa", label(r))
+        assertEquals("dados_diferentes", label(r))
         assertEquals(1, r.resultados.getValue("responde").size)
         assertEquals(1, r.resultados.getValue("responde").first().republicacoes.size)
         assertTrue(explanation(r).contains("Apenas uma fonte independente"))
@@ -262,7 +265,7 @@ class IndicationTests {
             bingNews = listOf(News("Ponte Velha de Ribeira fecha para reforma", "Jornal B", "https://b.example.com/ponte", d(2026, 9, 21))),
             wiki = listOf(WikiPage("Ponte Velha de Ribeira", "A Ponte Velha de Ribeira é uma ponte em arco. Foi inaugurada em 12 de maio de 1932 pelo governo estadual.")))
         val r = search(web, "A Ponte Velha de Ribeira foi inaugurada em 1932")
-        assertEquals("tende_verdadeira", label(r))
+        assertEquals("dados_compativeis", label(r))
         assertTrue(web.count("www.bing.com/search?") >= 2)
         assertEquals(listOf("Ponte Velha de Ribeira"), r.resultados.getValue("responde").map { it.titulo })
         assertFalse(allCards(r).any { it.titulo == "Ponte Velha de Ribeira é interditada após rachaduras" })
@@ -287,7 +290,7 @@ class ContextTests {
     @Test fun usefulDefinitionAndPeriodContextWithSource() {
         val useful = "O número de habitantes de Vale Claro é estimado pelo instituto estadual, com data de referência em 1º de julho de cada ano."
         val r = run(paragraphs = listOf(answer, useful))
-        assertEquals("tende_verdadeira", label(r))
+        assertEquals("dados_compativeis", label(r))
         assertEquals(useful, r.contexto.single().texto)
         assertEquals(url, r.contexto.single().url)
         assertFalse(r.contexto.any { "150 mil" in it.texto })
@@ -379,7 +382,7 @@ class ClarificationTests {
             WikiPage("Esporte Clube Porto Novo", "O Esporte Clube Porto Novo foi fundado em 1945 no litoral.")))
         val r = search(web, "O Porto Novo foi fundado em 1900")
         assertEquals("ambigua", r.status)
-        assertNotEquals("tende_falsa", label(r))
+        assertNotEquals("dados_diferentes", label(r))
         assertTrue(r.sugestoes.any { "Porto Novo Futebol Clube" in it.texto })
     }
 
@@ -391,6 +394,54 @@ class ClarificationTests {
 }
 
 class RobustnessTests {
+    @Test fun sameInstitutionAndActionWithDifferentObjectIsContext() {
+        val i = interpret("Prefeitura de Vale Claro aprova contrato de transporte escolar", NOW)
+        val other = Candidate("Prefeitura de Vale Claro aprova contrato de coleta de lixo",
+            "https://example.org/coleta", "Jornal", "bing_news",
+            snippet = "O serviço de coleta foi contratado pela prefeitura.")
+        val same = Candidate("Prefeitura de Vale Claro aprova contrato de transporte escolar",
+            "https://example.org/transporte", "Jornal", "bing_news")
+        assertTrue(assess(i, other, NOW).category !in setOf("direto", "anterior"))
+        assertEquals("direto", assess(i, same, NOW).category)
+    }
+
+    @Test fun oppositePolarityCannotBeShownAsSameClaim() {
+        val i = interpret("Conselho de Rio Claro não aprovou o projeto de saneamento", NOW)
+        val opposite = Candidate("Conselho de Rio Claro aprovou o projeto de saneamento",
+            "https://example.org/projeto", "Jornal", "bing_news")
+        assertTrue(assess(i, opposite, NOW).category !in setOf("direto", "anterior"))
+    }
+
+    @Test fun bbcEventRejectsNamesakeAndEarlierReligiousStory() {
+        val claim = "Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da eleição"
+        val interp = interpret(claim, NOW)
+        val namesake = Candidate("Ramon Dino", "https://pt.wikipedia.org/wiki/Ramon_Dino", "Wikipédia", "wikipedia",
+            snippet = "Ramon Dino é um fisiculturista brasileiro.")
+        val earlier = Candidate("Brasil já tinha um Padroeiro antes de Nossa Senhora Aparecida; saiba qual",
+            "https://g1.globo.com/2025/10/12/padroeiro.ghtml", "g1", "bing_web",
+            snippet = "A proclamação de Nossa Senhora Aparecida como Padroeira foi autorizada em 1930.")
+        val sameEvent = Candidate("Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida",
+            "https://example.org/fux-dino", "Jornal", "bing_news",
+            snippet = "A decisão sobre os posts foi suspensa antes da eleição.")
+        assertEquals("descartado", assess(interp, namesake, NOW).category)
+        assertTrue(assess(interp, earlier, NOW).category !in setOf("direto", "anterior"))
+        assertEquals("direto", assess(interp, sameEvent, NOW).category)
+    }
+
+    @Test fun anotherUniversityWithSharedWordsDoesNotAnswerFoundingYear() {
+        assertFalse(entityMatch("Universidade de Brasília", norm("Universidade Católica de Brasília"),
+            norm("Universidade Católica de Brasília").split(" ").toSet(), emptySet()))
+        val interp = interpret("A Universidade de Brasília foi fundada em 1962.", NOW)
+        val other = Candidate("Universidade Católica de Brasília", "https://pt.wikipedia.org/wiki/Universidade_Catolica_de_Brasilia",
+            "Wikipédia", "wikipedia", contentKind = "completo",
+            pageText = "É administrada pela União Brasileira de Educação Católica, associação fundada em 1972 pelos Maristas.")
+        val groups = listOf(Group(mutableListOf(other to assess(interp, other, NOW))))
+        assertEquals("descartado", assess(interp, other, NOW).category)
+        val synthesis = synthesize(interp, groups, 0)
+        assertEquals("insuficiente", synthesis.situacao)
+        assertTrue(synthesis.usadas.isEmpty())
+    }
+
     @Test fun networkFailureIsTechnicalFailureNotEmptyResult() {
         val r = search(FakeWeb(fail = setOf("google", "bing_news", "bing_web", "wiki")), "O Atlético Serrano tem 5 títulos nacionais")
         assertEquals("erro", r.status)

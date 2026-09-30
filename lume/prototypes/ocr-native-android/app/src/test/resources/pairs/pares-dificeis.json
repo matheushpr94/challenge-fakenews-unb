@@ -1,0 +1,942 @@
+[
+ {
+  "id": "uol-estadao",
+  "tipo": "sinonimos",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Estadão",
+   "dominio": "estadao.com.br",
+   "url": "https://www.estadao.com.br/esportes/futebol/flamengo-e-o-primeiro-clube-a-entrar-com-pedido-no-stf-contra-fim-das-casas-de-apostas-no-brasil/",
+   "titulo": "Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil",
+   "trecho": "Clube quer acompanhar ação da Associação Nacional de Jogos e Loterias (ANJL), que pede suspensão da MP das bets ...",
+   "pagina": "Clubes não usaram bem dinheiros das bets, diz presidente do Cuiabá Cristiano Dresch crê que as equipes patrocinadas por casas de apostas só usaram o dinheiro pra aumentar salário dos atletas. Crédito: Estadão O Flamengo ingressou no STF contra a medida provisória que proíbe apostas no Brasil, apoiando a ação da ANJL. O clube, patrocinado pela Betano, teme perder R$ 400 milhões a R$ 430 milhões até 2027, afetando o futebol brasileiro em R$ 2,5 bilhões. Alega que a proibição prejudica o esporte e critica o prazo para retirada de patrocínios. A ANJL e a Anseja também contestam a MP, que cancela licenças de apostas. O caso está sob análise do ministro Luiz Fux. O Flamengo foi o primeiro clube a ingressar em uma ação no Supremo Tribunal Federal (STF) que contesta a medida provisória que proibiu as bets no Brasil. O clube carioca pediu para acompanhar a Ação Direta de Inconstitucionalidade movida pela Associação Nacional de Jogos e Loterias (ANJL), que pede a suspensão da MP. A agremiação flamenguista tem acordo com a Betano, que também patrocina o Campeonato Brasileiro e a Copa do Brasil. O contrato prevê R$ 895 milhões ao longo de 40 meses, sendo o maior entre os clubes do País. O valor mensal é de R$ 268,5 milhões. A intenção do Flamengo é ingressar na ação como “amicus curiae”. A função permite que representantes flamenguistas forneçam informações para a análise do caso e participem de eventuais audiências. É o mesmo movimento que o Sindicato Nacional das Associações de Futebol Profissional (Sinafut) fez também nesta terça-feira. Não é descartada uma ação conjunta de outros clubes. O argumento do clube é de que o fim dos patrocínios de loterias de aposta de quota fixa provocaria a perda direta do contrato máster. É estimada uma perda orçamentária entre R$ 400 milhões e R$ 430 milhões para o exercício de 2027, projetando um impacto global de R$ 2,5 bilhões para todo o futebol brasileiro. Os números já haviam sido tornados públicos em falas do presidente Luiz Eduardo Baptista. O Flamengo ainda argumenta que a medida do governo federal é um “atentado ao dever constitucional de fomento ao desporto e proibição do retrocesso social”. O texto defende que a proibição das bets “compromete diretamente o fomento às práticas desportivas e afeta modalidades olímpicas, o futebol feminino e as categorias de base, que dependem do financiamento cruzado das receitas comerciais do futebol masculino”. Há críticas ao prazo para a retirada dos patrocínios, que foi estipulado para",
+   "data": "2026-09-29T19:09:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "mesmo_acontecimento",
+  "aceitos": [
+   "mesmo_acontecimento"
+  ],
+  "justificativa": "Mesmo agente (Flamengo), mesma ação com outras palavras (aciona STF = entrar com pedido no STF), mesmo objeto (bets = casas de apostas), mesma data."
+ },
+ {
+  "id": "uol-estadao-titulo",
+  "tipo": "so_titulo",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Estadão",
+   "dominio": "estadao.com.br",
+   "url": "https://www.estadao.com.br/esportes/futebol/flamengo-e-o-primeiro-clube-a-entrar-com-pedido-no-stf-contra-fim-das-casas-de-apostas-no-brasil/",
+   "titulo": "Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-29T19:09:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "mesmo_acontecimento",
+  "aceitos": [
+   "mesmo_acontecimento"
+  ],
+  "justificativa": "Como chegou na busca ao vivo (Google Notícias, só título): mesmo agente, 'entrar com pedido no STF' = 'aciona STF', 'casas de apostas' = 'bets'."
+ },
+ {
+  "id": "uol-terra",
+  "tipo": "sinonimos",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Terra",
+   "dominio": "terra.com.br",
+   "url": "https://www.terra.com.br/esportes/flamengo/flamengo-pede-ao-stf-para-ingressar-em-acao-contra-o-fim-das-bets,19e304f6186bd76bd25613ed0a944b85tgeq0mpg.html",
+   "titulo": "Flamengo pede ao STF para ingressar em ação contra o fim das bets",
+   "trecho": "Rubro-Negro engrossa o coro das casas de apostas para reforçar a tentativa de derrubar o veto às bets; Clubes se articulam por ação conjunta ...",
+   "pagina": "O Flamengo se antecipou aos clubes e acionou o Supremo Tribunal Federal (STF) para tentar derrubar o veto às bets. O clube entrou com petição na noite desta terça-feira (29/9) para participar da ação que questiona a medida provisória, anunciada pelo presidente Lula na última sexta-feira. O Rubro-Negro reforçou a necessidade de apreciação da medida cautelar feita pela Associação Nacional de Jogos e Loterias (ANJL) e do Instituto Brasileiro de Jogo Responsável (IBJR) para que haja suspensão da eficácia da MP assinada pelo governo semana passada. No entanto, o relator, o ministro Luiz Fux, ainda precisa analisar o pedido. No documento, o Flamengo destaca que o fim repentino dos patrocínios de apostas prejudica a manutenção das demais modalidades. Além disso, o clube diz ainda que os efeitos da MP colocam em risco o mercado antes mesmo de dar ao Congresso a chance de discutir o texto. O Fla também argumenta o risco de cumprir o prazo de 10 dias estipulado pelo governo para o clube retirar marcas e anúncios do ar e de instalações físicas. A logística envolve uniformes confeccionados com meses de antecedência, que torcedores já comercializaram e vestiram. Além disso, o documento cita as placas fixadas em estádios e transmissões de TV durante as competições. Na última segunda-feira, o Sindicato Nacional das Associações de Futebol Profissional (Sinafut) também acionou o STF para tentar derrubar a medida provisória. O sindicato pede, pelo menos, um período de transição de seis meses para a probição das casas de apostas. A diretoria ainda calcula perdas de até R$ 430 milhões no próprio Fla. No texto, o clube prevê um prejuízo de cerca de R$ 2,5 bilhões em todo o futebol nacional. A Betano, empresa que estampava o uniforme do rubro-negro como máster, assinou um contrato no ano passado de R$ 268 milhões anuais. O contrato era até o fim de 2028, oq eu totalizaria R$ 895 milhões faturados apenas com a marca. Siga nosso conteúdo nas redes sociais: Bluesky, Threads, Twitter, Instagram e Facebook. Para poder interagir com todos comentários, faça Login na sua conta Terra Os comentários são de responsabilidade exclusiva de seus autores e não representam a opinião deste site. Se achar algo que viole os termos de uso, denuncie.",
+   "data": "2026-09-29T19:21:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "mesmo_acontecimento",
+  "aceitos": [
+   "mesmo_acontecimento"
+  ],
+  "justificativa": "Página: 'O clube entrou com petição na noite desta terça-feira (29/9)' — mesmo agente, ação, alvo e dia."
+ },
+ {
+  "id": "uol-oglobo",
+  "tipo": "sinonimos",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "O GLOBO",
+   "dominio": "oglobo.globo.com",
+   "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNcU8yQU9ETUhRMWN5cnNIbTQ1RVVVZWFoNV8zYVFDdm43OERTSnlGMDhpa2d1Y0ZsRVRfbnpVYV9BWjFYeXBJM19UU1ZfWmgzcER3MlBWRHB5UGdwOVRibEJSOWN1VGhHMEZMcjZ2OG9JcVJkSEZDWG5wVk9vRmVaX2RlQWJ2WVNiMDAxMVNyS093TnVQTENIMlU4OElIa1VmRUlialNRSElDZ2ZFSlhoNlhPcU9PNXRxX3JqZ2ZPdE5jLXNvalR0YVM2U0xJUVU2ekNiS2J3NA?oc=5",
+   "titulo": "Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-30T00:15:01Z",
+   "origem": "google_news"
+  },
+  "esperado": "mesmo_acontecimento",
+  "aceitos": [
+   "mesmo_acontecimento"
+  ],
+  "justificativa": "'pede ingresso em ação no STF contra fim das bets' = ingressou no STF; só título."
+ },
+ {
+  "id": "uol-antagonista",
+  "tipo": "so_titulo",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "O Antagonista",
+   "dominio": "oantagonista.com.br",
+   "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxObGtrVGNKRnVtTHhoTDRUVlBCM0Y4ZDhuUW5XRUtBb0dVcEdwVVhWc0VVUmNFb3h5dExZZXdsQTRwSVNaLTF2NEdLQW1qMGppUXAxcVhOZTFNZy0zQ2lhTVA2Sjk5d1I1WVA0WVY3b1Q5ZUxXYUpadmhLVk5EcmVQVlBWb1V4N29lQ0JjdGtiSHNTckN6?oc=5",
+   "titulo": "Flamengo vai ao STF contra proibição das bets",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-30T00:38:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "mesmo_acontecimento",
+  "aceitos": [
+   "mesmo_acontecimento"
+  ],
+  "justificativa": "'vai ao STF contra proibição das bets': mesmo agente, ação e objeto; só título, publicado no mesmo dia."
+ },
+ {
+  "id": "uol-propria",
+  "tipo": "propria",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "UOL",
+   "dominio": "uol.com.br",
+   "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOcE83SkJDM25zdkJJeFc0N05hYUlSM2lBTjNSdnk0OHF6cklPaWJhZWpBWm85eGNpSDBFNjdBN1dEay02NjRvSXl0MWdnSktwRWtrNVlWMU15aUNadWM0cFVVRklBTHJHd0NHUjFKck1vN0g2azZtQ2NxeEhlNE8tTzR4Q2N3eFBFcnhabXZsR1FQUmFQRExxZXktalRhTndPNmpULXRFN0lHVi0yalFTbW00SVg3OHktbnRUX3BUZ2JhcTBmb2FyUEh3QjZDQURMOTFDYjdfbmhiODZK?oc=5",
+   "titulo": "Flamengo aciona STF e reforça ação das bets contra proibição do governo",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-30T01:59:33Z",
+   "origem": "google_news"
+  },
+  "esperado": "propria",
+  "aceitos": [
+   "propria"
+  ],
+  "justificativa": "É a própria matéria importada (mesmo veículo e mesmo título)."
+ },
+ {
+  "id": "uol-mesmo-veiculo",
+  "tipo": "propria",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "UOL Notícias",
+   "dominio": "noticias.uol.com.br",
+   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPdXNJR1JlUmhRQzZKZmE5LXRLNGJlaHUwQnlwYmRjVGpzdDJlc3VvOVY1djZEQVFFUEtSZlRRNWdURlJaV3UyY2Y5LS1TX253bHBqbFBlYWxFZl93S1pBNzM0WkJPNkw2OWpuZXNueFBnbTBqRDV5cUdfekJWZ2xUc2hSOFIxMGtVYXBkMVY0dF81aTk4QkZYZmlNNXZ4SXNYUS05Q0dTRGlyUERRNUV3c0JJOUtvZDNkRnJFTF8zcmRtczNlOGxRdVN2VWh0OWo5OHBCcWd3?oc=5",
+   "titulo": "Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-28T20:51:10Z",
+   "origem": "google_news"
+  },
+  "esperado": "mesmo_veiculo",
+  "aceitos": [
+   "mesmo_veiculo"
+  ],
+  "justificativa": "Outra matéria do mesmo veículo da captura: não é fonte independente."
+ },
+ {
+  "id": "uol-gazeta-nota",
+  "tipo": "acao_diferente_data_diferente",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Gazeta Brasil",
+   "dominio": "gazetabrasil.com.br",
+   "url": "https://gazetabrasil.com.br/esportes/2026/09/25/proibir-nao-acaba-com-o-jogo-flamengo-se-posiciona-contra-restricoes-a-bets-no-brasil/",
+   "titulo": "“Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil",
+   "trecho": "Clube defende aperfeiçoamento das regras e afirma que veto reduziria recursos para o esporte e para a arrecadação pública; nota foi divulgada horas antes do ...",
+   "pagina": "🔥 Confira os Produtos Mais Vendidos desta Sexta-feira (25) no Mercado Livre 🛍️ Ver Ofertas no Mercado Livre 🔥 Confira os Produtos Mais Vendidos desta Sexta-feira (25) na Shopee Clube defende aperfeiçoamento das regras e afirma que veto reduziria recursos para o esporte e para a arrecadação pública; nota foi divulgada horas antes do anúncio de medidas do governo Lula contra os jogos on-line. O Flamengo criticou nesta sexta-feira (25) a possibilidade de proibição das bets no Brasil. Em nota intitulada “Proibir não acaba com o jogo”, o clube afirmou que a medida poderia fortalecer o mercado clandestino e reduzir significativamente os recursos destinados ao esporte. A manifestação ocorre diante da decisão do governo do presidente Luiz Inácio Lula da Silva (PT) de endurecer as regras para os jogos de azar on-line. O Planalto apresenta às 17h desta sexta-feira medidas de restrição ao setor e iniciativas para a renegociação de dívidas das famílias. Na quarta-feira (23), Lula afirmou durante ato de campanha no Rio de Janeiro que pretende “acabar com as bets” e declarou que os clubes de futebol precisarão buscar outras formas de financiamento. “Sinceramente, em nome da boa política, em nome da sociedade brasileira, a gente vai acabar com isso. E os times que aprendam a viver sem lavagem de dinheiro”, declarou o presidente. Na nota, o Flamengo afirmou que a regulamentação das apostas pode ser aperfeiçoada e ter regras mais rígidas, mas se posicionou contra uma eventual proibição. “Não se pode criar uma regra, levar empresas e instituições a assumir compromissos com base nela e, de um dia para o outro, mudar todo o marco regulatório”, citou a diretoria. Segundo o clube, uma mudança desse tipo afetaria a segurança jurídica e traria impactos ao futebol profissional, às categorias de base, ao futebol feminino, aos esportes olímpicos e aos campeonatos. Também atingiria empregos, fornecedores e empresas de comunicação, marketing e tecnologia vinculadas ao esporte. O Flamengo argumentou que impedir a atuação das empresas autorizadas não acabaria com as apostas e abriria mais espaço para plataformas clandestinas. O clube citou pesquisa do Instituto Locomotiva realizada em maio de 2026 com 2.291 apostadores. Estudo da LCA Consultores baseado no levantamento estima que 38% a 44% do valor apostado on-line no Brasil esteja em plataformas clandestinas. Segundo os dados citados pelo Flamengo, a fatia estimada do mercado ilegal era de 41% a 51% em 2025 e caiu para 38% a 44% no pri",
+   "data": "2026-09-25T11:21:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "contexto",
+  "aceitos": [
+   "contexto",
+   "outro"
+  ],
+  "justificativa": "Página: 'O Flamengo criticou nesta sexta-feira (25) a possibilidade de proibição' — nota de posição 4 dias antes, não o pedido ao STF."
+ },
+ {
+  "id": "uol-otempo",
+  "tipo": "acao_diferente_data_diferente",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "O TEMPO",
+   "dominio": "otempo.com.br",
+   "url": "https://www.otempo.com.br/sports/futebol-nacional/2026/9/25/flamengo-fluminense-e-gremio-se-manifestam-sobre-proibicao-das-bets-no-brasil",
+   "titulo": "Flamengo, Fluminense e Grêmio se manifestam sobre proibição das bets no Brasil",
+   "trecho": "O anúncio do fim das bets no Brasil provocou reação de clubes que mantêm contratos com empresas de apostas. Flamengo, Fluminense e Grêmio se posicionaram nesta sexta-feira (25) sobre a medida do gover ...",
+   "pagina": "Com localizações salvas você poderá receber alertas de lugares que você escolheu e da sua atual localização. Compartilhe sua localização para sempre receber alertas locais, independente da sua posição. Para remover uma cidade, selecione o ícone da lixeira. Com localizações salvas você poderá receber alertas de lugares que você escolheu e da sua atual localização. O anúncio do fim das bets no Brasil provocou reação de clubes que mantêm contratos com empresas de apostas. Flamengo, Fluminense e Grêmio se posicionaram nesta sexta-feira (25) sobre a medida do governo federal, com críticas à mudança abrupta das regras e alertas para possíveis impactos financeiros no futebol. A decisão anunciada pelo governo prevê o fim da operação das plataformas de apostas no país e também atinge os acordos comerciais firmados com clubes. A medida será formalizada por meio de uma Medida Provisória, enquanto um projeto de lei também deverá ser encaminhado ao Congresso Nacional. ➡️ Governo federal anuncia proibição total de bets no Brasil O Flamengo publicou uma nota defendendo a continuidade do mercado regulado de apostas e afirmou que uma alteração no modelo atualmente estabelecido teria efeitos sobre diferentes áreas do esporte brasileiro. Segundo o clube, empresas que passaram a atuar de forma legal fizeram investimentos e assumiram compromissos depois da regulamentação do setor. Para o Rubro-Negro, uma mudança repentina afetaria a previsibilidade de contratos e investimentos. – Não se pode criar uma regra, levar empresas e instituições a assumir compromissos com base nela e, de um dia para o outro, mudar todo o marco regulatório – afirmou o Flamengo em trecho da nota. O clube também diferenciou eventuais ajustes na regulamentação de uma interrupção do mercado legal. Na avaliação apresentada na nota, problemas existentes nas regras devem ser corrigidos, inclusive com medidas mais rígidas quando necessário, sem que isso signifique a extinção do modelo regulado. ➡️ 'Fim do futebol': clubes da Série A defendem mercado regulado de bets no Brasil O Flamengo ainda citou possíveis reflexos para o futebol profissional, categorias de base, futebol feminino, esportes olímpicos, campeonatos, empresas de comunicação, marketing e tecnologia, além de fornecedores, arenas e prestadores de serviços. A manifestação foi publicada também pela Betano, patrocinadora master do clube. Procurada pelo Lance!, a empresa afirmou acompanhar a discussão com preocupação. – A Betano monitora com muita preo",
+   "data": "2026-09-25T16:15:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "contexto",
+  "aceitos": [
+   "contexto",
+   "outro"
+  ],
+  "justificativa": "'se posicionaram nesta sexta-feira (25)' — manifestação, não ação no STF."
+ },
+ {
+  "id": "uol-bets-acao",
+  "tipo": "mesmas_entidades_outro_agente",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "O GLOBO",
+   "dominio": "oglobo.globo.com",
+   "url": "https://oglobo.globo.com/economia/noticia/2026/09/28/bets-entram-com-nova-acao-no-stf-pedem-relatoria-de-fux-e-dizem-ter-detectado-833-sites-ilegais-desde-proibicao-de-lula.ghtml",
+   "titulo": "Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites ilegais desde proibição de Lula",
+   "trecho": "Entidade pede que processo seja direcionado ao ministro, que já relata ações sobre o setor e associações reiteram pedido para suspender MP ...",
+   "pagina": "28/09/2026 16h20 Atualizado 28/09/2026 20h25 Entidades que representam empresas de apostas entraram com uma nova ação no Supremo Tribunal Federal (STF) contra a medida provisória do presidente Luiz Inácio Lula da Silva que proibiu as bets no país e pediram que o processo fique sob a relatoria do ministro Luiz Fux. As associações também afirmam ter identificado 833 novos sites ilegais de apostas desde a entrada em vigor da proibição. A Associação Nacional de Jogos e Loterias (ANJL) informou nesta segunda-feira a Fux que já protocolou uma ação direta de inconstitucionalidade contra a medida provisória. No mesmo processo, a entidade pede que o Supremo reconheça a constitucionalidade do marco legal que regulamentou as apostas no país. A entidade pediu ainda que a nova ação seja distribuída a Fux por prevenção. O argumento é que o ministro já relata as três outras ações do mesmo tipo que discutem a constitucionalidade das regras do setor e têm objeto relacionado ao da nova ação. A prevenção é uma regra processual usada para concentrar em um mesmo relator processos que possuem conexão, evitando decisões conflitantes. A análise da prevenção, contudo, ainda será feita pela presidência do STF. Segundo as entidades, a MP atingiu diretamente as normas que já são discutidas nas ações sob responsabilidade de Fux. Por isso, sustentam que ele deve também assumir a relatoria do novo processo. O pedido de prevenção ainda precisa ser analisado pelo Supremo. Na manifestação encaminhada ao ministro, ANJL e Instituto Brasileiro de Jogo Responsável (IBJR) também reforçam o pedido para que os efeitos da MP sejam suspensos imediatamente. Como argumento de urgência, afirmam que houve um \"exponencial e indevido aumento do mercado ilegal\" desde a proibição. Segundo a petição, um monitoramento do Observatório contra o Mercado Ilegal identificou 833 novos sites ilegais neste fim de semana. O número é apresentado pelas próprias entidades e não corresponde, na manifestação, a levantamento de um órgão público. As associações alegam que, se a medida provisória continuar produzindo efeitos, o mercado regulado poderá ser desmontado antes mesmo de o Congresso concluir a análise da norma. Na avaliação delas, o crescimento das plataformas clandestinas também prejudicaria a proteção dos apostadores. As entidades pedem a Fux que suspenda integralmente a MP até sua apreciação pelo Congresso ou até o julgamento da nova ação pelo STF, o que ocorrer primeiro. Nesse período, querem manter em vigor as",
+   "data": "2026-09-28T12:20:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "contexto",
+  "aceitos": [
+   "contexto"
+  ],
+  "justificativa": "Mesma ação (ação no STF) e mesmo objeto, mas quem agiu foram as entidades das empresas de apostas, em 28/09."
+ },
+ {
+  "id": "uol-sinafut",
+  "tipo": "mesmas_entidades_outro_agente",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Flamengo RJ",
+   "dominio": "flamengorj.com.br",
+   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE11RF8ydENkbDBpVTBXY2tCNVAyTndyb2F5MzVLbzhQWE92dGVCZXpKekE0VW50cGZ3SVFEV205czlONG1Ra1hoNUdDMEI5RzdfVnRpQWY1TExoalRkQzQ0NmZMWk84eGxoMjgtcFdVSTdFRmtHNFZDMDMxRHlpdw?oc=5",
+   "titulo": "Sinafut pede ao STF suspensão da MP das Bets e transição até fim de 2026",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-29T01:12:52Z",
+   "origem": "google_news"
+  },
+  "esperado": "contexto",
+  "aceitos": [
+   "contexto",
+   "outro"
+  ],
+  "justificativa": "Outro agente (Sinafut) pede ao STF sobre a mesma MP."
+ },
+ {
+  "id": "uol-clubes-articulam",
+  "tipo": "proposta_vs_decisao",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "O GLOBO",
+   "dominio": "oglobo.globo.com",
+   "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNS3FEeV9Pd2tvMldPWUJVbUlyWlVuazFmSm5uLWMyaFZJNDZYRThOSWYzdlB6dlJoRGJxLU9NdGtGa0toaWoxOFZ3LVBmOGp0M2lYS29YS25KRkU4VzdWMDBnaGdzT2taOEZLMFhCNExIYUFxVnRvamtUMjB3bnNzZTFhbHBSTmIxVW04N1Z6ZG5ROE40S3o1WGNRdlJaMU0tYzk2LWVPQTRVMFg5azJFZzBSWGVnUVZLcEpTNVJhbFBDSFJ5M2xaZ2d2WHFkdFVxS0NUYndlTdIB5gFBVV95cUxPVmdJaHl4TG9Pek9RWjRmWVQ2ODU3elBuOUJ5clptZmZkQWR3WEc0RmRzM1FsMm9OYlhJd2RlTXpmMEVnQVVJbFpnYW1PbDBSTFhsSzlBQUJTaEQ0MG5JUTVVTjJoUzdoOUNFTjJSNXFBYktVMkk5N2p6aUJpUzJLV2NDS0NnZ0xDNlhjZWduTUpxZUc0d0U3b1VibG9uMXpycjFCMTF0ZnpmOFFZWlFSU2s1OElIMmFXU01jWVo2Ml93UnRlSlFQZmluTVNZUnBfWkxGU2RwZjZjT2xBcEkzSjc4NngwUQ?oc=5",
+   "titulo": "Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-29T17:09:18Z",
+   "origem": "google_news"
+  },
+  "esperado": "contexto",
+  "aceitos": [
+   "contexto",
+   "outro",
+   "incerta"
+  ],
+  "justificativa": "Clubes articulam (planejam) ação conjunta: outro agente e outra etapa."
+ },
+ {
+  "id": "uol-gdf",
+  "tipo": "mesma_acao_outro_assunto",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Estadão",
+   "dominio": "estadao.com.br",
+   "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQdFpxVWdOdE9kTkR6dGNHU1VpS1poQ3RrTUFyN0Z3Qm1RNElzb1ZGNmY2MTZ2VmdPWEF3WGJzdEYyeVVFXzQzRzYxbWtubGtsLXNyMDFja1h6Mmg1djRBN2t0RDRhQWw0VnFIRGdBWjhtaWxiaXNERW9CWjVCeG9wbWEwbXMyczFlZ0RodzlJcDc4b0VqR3VVS0djby0takp3ak9zN3ZXQkRPN2g3SjJ1UEVwcjR5a2tpZWlYVHE4Z2RXN3lIaDNnUTJn0gHPAUFVX3lxTE03a0VmeDRaRk42MnROQk44WDRWT1Rwb0hiTnJlNVpTOVM2dXp0NUxvYmhNQzJOcTRKWGd4bVc0NU5ZR1pkZ3NCU1Rna25uMjBjYWZnY0ljejdXb0R1NmhyVWVvTWtpYWMwM0NqRG5sZklzeTBsalZUNF9JNHJMSnl6MkdGSkFBWWozTGhIRjE4ZWhkLXVCU25wczZlM2gtRkhBTWJkcEhnRklMVllxUmtGMmVVaFg2bkppT1V1dnB1VVVCNVRtTTd0dzhRd1ozOA?oc=5",
+   "titulo": "Governo do DF aciona STF e diz que Lula nega socorro ao BRB por motivo eleitoral: ‘Decisão política’",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-18T07:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "Mesma ação (aciona STF), outro agente e outro objeto (socorro ao BRB)."
+ },
+ {
+  "id": "uol-pgr-1987",
+  "tipo": "homonimo_papel",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "CNN Brasil",
+   "dominio": "cnnbrasil.com.br",
+   "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNcHpxUzlHZjZidGhZOUNmSDlfa3M0cG5Va3ZfMnZpZFBOSk1GUkNpVzFTU0MwZk13cmZhRTFiOWZ4QXBlVlVOVlNfei1wbEVQaGZ0V0tpTXBqajR0U1M0MmJmZkxVYWpKY0hoNjk2NmpTZktLTmsxYmZZWEs3WmZibFVhdDEzamRKdGlLb0ZKVUROamxaY0hnME5Zd3E5NE9GSkdwTDJ0RDdVT0FVS1gwalJyaXlST1h0YUNwbGpTSThPOGJicENEQ3RuSWh6c1JReVhHbWZR?oc=5",
+   "titulo": "PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-02-19T08:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "Flamengo aparece como objeto de outro processo (título de 1987); agente é a PGR."
+ },
+ {
+  "id": "uol-stf-nega-87",
+  "tipo": "papeis_invertidos",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Agência Brasil",
+   "dominio": "agenciabrasil.ebc.com.br",
+   "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQa1hQY19mRWN0Q0dxU1ZmeVllbllPZFNyLVhvQ1NrZ1lVQlhWMnBkXzQ0NzMwUzdDZjdLLVM3Zkg3MExaNmpSaHFPMzBSUGI2LVBhNjM2ZEJKQTJzRllJN2JXWGIwOHQ5ZnZibTFjX1g2TVhORTk0cG9McUV6ZE1uWE1ia0RxM1VSSE5BOGNwbmdvMWJTUjU2ZHYtTHRVR3hNSlJPNWFPWElwV0hGaDdzdVFkc0J5bkdQUzU5UGpiRFluWjQ?oc=5",
+   "titulo": "STF nega recurso do Flamengo e mantém Sport campeão brasileiro de 87",
+   "trecho": "",
+   "pagina": "",
+   "data": "2023-12-07T08:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "STF é quem decide; Flamengo é parte de outro caso, em 2023."
+ },
+ {
+  "id": "uol-supercopa",
+  "tipo": "mesmas_entidades",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Metrópoles",
+   "dominio": "metropoles.com",
+   "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQVEJyQlZCVWJvYnJva05rcUIzZU9yZGpHNUpNWE95TFplX292T2p4c1JxTzVwekozV05RVzY3ajJWR2otRHk3R3hzaE1MX2NadDdkRGxOYndXLTg2VmcwWTZFaUJ3bWxmdEh0bGlOM3FGcm4tS0R4QWVZcE5OVFFRaGc1Wl9Ra2hRUENkczhsTFpPcGpxLVJYMURfQ05MSDZHWkhoS0xQZTc2M0hiQ3NqejJGUnpQVU9MUTB0dlMwWnY?oc=5",
+   "titulo": "Ministros do STF vão à final da Supercopa entre Flamengo e Corinthians",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-02-02T08:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "Mesmos nomes (STF, Flamengo), outro assunto."
+ },
+ {
+  "id": "uol-stf-patrocinadoras-2025",
+  "tipo": "data_diferente",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "ge",
+   "dominio": "ge.globo.com",
+   "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQcFk1dFJ0U0ctaWlNWFlHUWlRby14Tkl5ZktKeEpIQnhfNEtDcXJLSEhNWllOc3lPXzgzVHFWdTAwVjdoRl9pRURsaWtKN1lfTVE4MmNBbUxjM2M5di1yVTd1dHN4aG1IZ05kcTlmV3FISlhsU3owcFNybE5PbFpVWGhWVXVEbHA3WDRMS0VFY1d0LXpzaWRBRTJvWFF2cG1VU05ZRGxMem1FU0xkbUNqM21BZkVSVkgyN3JwQ3FIRUFzNTBCdkJBX0VrZFZnc3A1X2g1bTV0ZGV6UmI3Umg0bdIB7wFBVV95cUxOU3ZPaklscklSN1ZZQy1BaUFuMDJQWjRpU1RvNkJDR0F4SF84WW13N0pTNGppcjMxNFBIZTdtNHpjM1ItUGRDNzd1dEM5RGtJV0dQREZtSmZUVi1KUUNvbVJldVFXeTZ2Nm5FQ25ubXp4alIxS3hNNmtZRzNKT2RkZXlobTJpZ1dZV3RKYkRETks4RVZTUmpSTFJQc2JKdnlKZFJOQW9reVRkdkFmcWRxZXZNUFhrbEtxRVpGdVMwdjNjQklMc2tsbnM3V2RjZVdNbTlIOVptUzJOV184eElsZm5leTUtZjdBZGRBTmpQaw?oc=5",
+   "titulo": "STF proíbe patrocinadoras de Corinthians e Flamengo de operar nacionalmente",
+   "trecho": "",
+   "pagina": "",
+   "data": "2025-01-02T08:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro",
+   "contexto"
+  ],
+  "justificativa": "Fato parecido (bets e patrocínio do Flamengo) em janeiro de 2025; STF é o agente."
+ },
+ {
+  "id": "uol-zambelli",
+  "tipo": "palavras_em_comum",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "G1",
+   "dominio": "g1.globo.com",
+   "url": "https://news.google.com/rss/articles/CBMihgJBVV95cUxPeF9jcXhrWVVFb1lLWkxNbTdjV2hsU2JnOUhsb2UtRU9ZWXNhaEw1QUxvNUxIWW9ocG9WLVhuMzEwVG1tbHlwdTNRaGxsOGphNzUwMGpYOHhyR1UwaUNYbEpGWGEyaVNUSzN5bDBVMjVTYy0zZFFqS2x6ZDI4S3VZazZHQ3JvNElqVWg1NEx1MkZaWXJENlJtNzNCeVVMci16VWdBeXc2TkVpWncxU3hXMEZ6U2NJekRkd21aQ24zNzVLb3VLVUYyaUhPTC1sWk5FSkRTSURQRVdlZW84RUZEczM3a0htS0lzdXFmM0RMR2c3NkZQSWJ1bTROUVVET2h3LS1ndDFR0gGUAkFVX3lxTE9pbkdKYm9wMWcyeHVoYjNQNXNjOFZaOTllczdzN2R4bld6bEFDLUxTMF8yMFE1YWoxVXN1OWlQcVBaU2pvUmR1VXZSUVMtQ01laWZXNzNnVlYyNlhpcll0VXBUeGk1SHBVVGZTNlZDLWRvLTdOS3BBVldKcUp5aVliS1AwY04xNlNmeWYyVzZLcmkwNVpVUW15eTZQdHVYMlh6ZzhXbkZiWmxpS0tSeW5lNV9wU0ZHN280NVFCaFFJc0l5b2pxQ1lRZXVQZTZNRVk5ZGhtYTNaZlBPSF9KaFpNLXl3VWpIazVvOFpXRUhmRF9aUWJ0c012QXl6OG5BNnhLOXhKRVNPQlJpNnNSUXNTa01KdA?oc=5",
+   "titulo": "Foragida na Itália, Carla Zambelli comenta política nacional e reforça críticas ao STF em perfil alternativo no Instagram",
+   "trecho": "",
+   "pagina": "",
+   "data": "2025-07-16T07:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "Só 'reforça' e 'STF' em comum."
+ },
+ {
+  "id": "uol-gdf-corte-homonimo",
+  "tipo": "homonimos",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "G1",
+   "dominio": "g1.globo.com",
+   "url": "https://g1.globo.com/d3b497b2f9",
+   "titulo": "Governo do DF aciona STF contra lei federal que pode gerar corte bilionário no Fundo Constitucional",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-30T01:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "Título real recebido em 30/09 no emulador: 'corte' (redução de verba) não é a 'corte' (tribunal) de 'amigo da corte'; outro agente e outro assunto."
+ },
+ {
+  "id": "uol-df-derrubar",
+  "tipo": "mesma_acao_outro_assunto",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "G1",
+   "dominio": "g1.globo.com",
+   "url": "https://g1.globo.com/d54b1276dd",
+   "titulo": "Distrito Federal aciona STF para derrubar entrave da União que pode impactar empréstimo de socorro ao BRB",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-18T12:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "Título real recebido em 30/09 no emulador: mesma ação (aciona STF) e o verbo 'derrubar' em comum, mas outro agente (DF) e outro assunto (empréstimo ao BRB)."
+ },
+ {
+  "id": "uol-folhape-87",
+  "tipo": "data_diferente",
+  "original": {
+   "captura": "uol-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Folha PE",
+   "dominio": "folhape.com.br",
+   "url": "https://folhape.com.br/1b4706107e",
+   "titulo": "Flamengo campeão brasileiro de 87? PGR envia ao STF parecer favorável ao clube carioca",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-02-19T12:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "Título real recebido em 30/09 no emulador: publicado em fevereiro, sobre o título de 1987; 'carioca' só descreve o Flamengo na captura, não é assunto."
+ },
+ {
+  "id": "est-uol",
+  "tipo": "sinonimos",
+  "original": {
+   "captura": "estadao-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "UOL",
+   "dominio": "uol.com.br",
+   "url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOcE83SkJDM25zdkJJeFc0N05hYUlSM2lBTjNSdnk0OHF6cklPaWJhZWpBWm85eGNpSDBFNjdBN1dEay02NjRvSXl0MWdnSktwRWtrNVlWMU15aUNadWM0cFVVRklBTHJHd0NHUjFKck1vN0g2azZtQ2NxeEhlNE8tTzR4Q2N3eFBFcnhabXZsR1FQUmFQRExxZXktalRhTndPNmpULXRFN0lHVi0yalFTbW00SVg3OHktbnRUX3BUZ2JhcTBmb2FyUEh3QjZDQURMOTFDYjdfbmhiODZK?oc=5",
+   "titulo": "Flamengo aciona STF e reforça ação das bets contra proibição do governo",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-30T01:59:33Z",
+   "origem": "google_news"
+  },
+  "esperado": "mesmo_acontecimento",
+  "aceitos": [
+   "mesmo_acontecimento"
+  ],
+  "justificativa": "'aciona STF' = 'entrar com pedido no STF'; 'proibição das bets' = 'fim das casas de apostas'."
+ },
+ {
+  "id": "est-oglobo",
+  "tipo": "sinonimos",
+  "original": {
+   "captura": "estadao-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "O GLOBO",
+   "dominio": "oglobo.globo.com",
+   "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNcU8yQU9ETUhRMWN5cnNIbTQ1RVVVZWFoNV8zYVFDdm43OERTSnlGMDhpa2d1Y0ZsRVRfbnpVYV9BWjFYeXBJM19UU1ZfWmgzcER3MlBWRHB5UGdwOVRibEJSOWN1VGhHMEZMcjZ2OG9JcVJkSEZDWG5wVk9vRmVaX2RlQWJ2WVNiMDAxMVNyS093TnVQTENIMlU4OElIa1VmRUlialNRSElDZ2ZFSlhoNlhPcU9PNXRxX3JqZ2ZPdE5jLXNvalR0YVM2U0xJUVU2ekNiS2J3NA?oc=5",
+   "titulo": "Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-30T00:15:01Z",
+   "origem": "google_news"
+  },
+  "esperado": "mesmo_acontecimento",
+  "aceitos": [
+   "mesmo_acontecimento"
+  ],
+  "justificativa": "'pede ingresso em ação no STF contra fim das bets'."
+ },
+ {
+  "id": "est-terra-pede",
+  "tipo": "sinonimos",
+  "original": {
+   "captura": "estadao-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Terra",
+   "dominio": "terra.com.br",
+   "url": "https://www.terra.com.br/esportes/flamengo/flamengo-pede-ao-stf-para-ingressar-em-acao-contra-o-fim-das-bets,19e304f6186bd76bd25613ed0a944b85tgeq0mpg.html",
+   "titulo": "Flamengo pede ao STF para ingressar em ação contra o fim das bets",
+   "trecho": "Rubro-Negro engrossa o coro das casas de apostas para reforçar a tentativa de derrubar o veto às bets; Clubes se articulam por ação conjunta ...",
+   "pagina": "O Flamengo se antecipou aos clubes e acionou o Supremo Tribunal Federal (STF) para tentar derrubar o veto às bets. O clube entrou com petição na noite desta terça-feira (29/9) para participar da ação que questiona a medida provisória, anunciada pelo presidente Lula na última sexta-feira. O Rubro-Negro reforçou a necessidade de apreciação da medida cautelar feita pela Associação Nacional de Jogos e Loterias (ANJL) e do Instituto Brasileiro de Jogo Responsável (IBJR) para que haja suspensão da eficácia da MP assinada pelo governo semana passada. No entanto, o relator, o ministro Luiz Fux, ainda precisa analisar o pedido. No documento, o Flamengo destaca que o fim repentino dos patrocínios de apostas prejudica a manutenção das demais modalidades. Além disso, o clube diz ainda que os efeitos da MP colocam em risco o mercado antes mesmo de dar ao Congresso a chance de discutir o texto. O Fla também argumenta o risco de cumprir o prazo de 10 dias estipulado pelo governo para o clube retirar marcas e anúncios do ar e de instalações físicas. A logística envolve uniformes confeccionados com meses de antecedência, que torcedores já comercializaram e vestiram. Além disso, o documento cita as placas fixadas em estádios e transmissões de TV durante as competições. Na última segunda-feira, o Sindicato Nacional das Associações de Futebol Profissional (Sinafut) também acionou o STF para tentar derrubar a medida provisória. O sindicato pede, pelo menos, um período de transição de seis meses para a probição das casas de apostas. A diretoria ainda calcula perdas de até R$ 430 milhões no próprio Fla. No texto, o clube prevê um prejuízo de cerca de R$ 2,5 bilhões em todo o futebol nacional. A Betano, empresa que estampava o uniforme do rubro-negro como máster, assinou um contrato no ano passado de R$ 268 milhões anuais. O contrato era até o fim de 2028, oq eu totalizaria R$ 895 milhões faturados apenas com a marca. Siga nosso conteúdo nas redes sociais: Bluesky, Threads, Twitter, Instagram e Facebook. Para poder interagir com todos comentários, faça Login na sua conta Terra Os comentários são de responsabilidade exclusiva de seus autores e não representam a opinião deste site. Se achar algo que viole os termos de uso, denuncie.",
+   "data": "2026-09-29T19:21:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "mesmo_acontecimento",
+  "aceitos": [
+   "mesmo_acontecimento"
+  ],
+  "justificativa": "Página: 'acionou o Supremo Tribunal Federal (STF)... entrou com petição'."
+ },
+ {
+  "id": "est-propria",
+  "tipo": "propria",
+  "original": {
+   "captura": "estadao-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Estadão",
+   "dominio": "estadao.com.br",
+   "url": "https://www.estadao.com.br/esportes/futebol/flamengo-e-o-primeiro-clube-a-entrar-com-pedido-no-stf-contra-fim-das-casas-de-apostas-no-brasil/",
+   "titulo": "Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil",
+   "trecho": "Clube quer acompanhar ação da Associação Nacional de Jogos e Loterias (ANJL), que pede suspensão da MP das bets ...",
+   "pagina": "Clubes não usaram bem dinheiros das bets, diz presidente do Cuiabá Cristiano Dresch crê que as equipes patrocinadas por casas de apostas só usaram o dinheiro pra aumentar salário dos atletas. Crédito: Estadão O Flamengo ingressou no STF contra a medida provisória que proíbe apostas no Brasil, apoiando a ação da ANJL. O clube, patrocinado pela Betano, teme perder R$ 400 milhões a R$ 430 milhões até 2027, afetando o futebol brasileiro em R$ 2,5 bilhões. Alega que a proibição prejudica o esporte e critica o prazo para retirada de patrocínios. A ANJL e a Anseja também contestam a MP, que cancela licenças de apostas. O caso está sob análise do ministro Luiz Fux. O Flamengo foi o primeiro clube a ingressar em uma ação no Supremo Tribunal Federal (STF) que contesta a medida provisória que proibiu as bets no Brasil. O clube carioca pediu para acompanhar a Ação Direta de Inconstitucionalidade movida pela Associação Nacional de Jogos e Loterias (ANJL), que pede a suspensão da MP. A agremiação flamenguista tem acordo com a Betano, que também patrocina o Campeonato Brasileiro e a Copa do Brasil. O contrato prevê R$ 895 milhões ao longo de 40 meses, sendo o maior entre os clubes do País. O valor mensal é de R$ 268,5 milhões. A intenção do Flamengo é ingressar na ação como “amicus curiae”. A função permite que representantes flamenguistas forneçam informações para a análise do caso e participem de eventuais audiências. É o mesmo movimento que o Sindicato Nacional das Associações de Futebol Profissional (Sinafut) fez também nesta terça-feira. Não é descartada uma ação conjunta de outros clubes. O argumento do clube é de que o fim dos patrocínios de loterias de aposta de quota fixa provocaria a perda direta do contrato máster. É estimada uma perda orçamentária entre R$ 400 milhões e R$ 430 milhões para o exercício de 2027, projetando um impacto global de R$ 2,5 bilhões para todo o futebol brasileiro. Os números já haviam sido tornados públicos em falas do presidente Luiz Eduardo Baptista. O Flamengo ainda argumenta que a medida do governo federal é um “atentado ao dever constitucional de fomento ao desporto e proibição do retrocesso social”. O texto defende que a proibição das bets “compromete diretamente o fomento às práticas desportivas e afeta modalidades olímpicas, o futebol feminino e as categorias de base, que dependem do financiamento cruzado das receitas comerciais do futebol masculino”. Há críticas ao prazo para a retirada dos patrocínios, que foi estipulado para",
+   "data": "2026-09-29T19:09:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "propria",
+  "aceitos": [
+   "propria"
+  ],
+  "justificativa": "É a própria matéria importada."
+ },
+ {
+  "id": "est-terra-republica",
+  "tipo": "republicacao",
+  "original": {
+   "captura": "estadao-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Terra",
+   "dominio": "terra.com.br",
+   "url": "https://news.google.com/rss/articles/CBMikwJBVV95cUxPNU1EeTNNMHZKMm1HZjFxcFFEX1UxQzREV0pvRkdCTFpMOEc1ZXNVYWREYzVxRXotNkhUc3dLaFFkSXNRcWJMTXFvblNaRC1EX20zYWhoZzFuU3p4X21WS0tfNTdad2tkaXVBZ3pJLWFmdjNaUFdiWHNfVXVaOEFWdWwzY1I0SmlYcTBmQldnY0p5ZnE1SEtra2lJQTI4NE1KVEdhUGh2NThwbTc2cmtXWEtMQjhUbG8wcHdCY1BMVnQ2YkZYdGF2ZFJQVmlCWHFCcWRwOHRfREZUTndJbElZWDJ1S3hQT19zcThlQlkzYy1KQS1TSEZnemhFS2xQeUQ1OE5DbDZNTlRsWVJIRTR4aWJUQQ?oc=5",
+   "titulo": "Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-09-30T02:21:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "republicacao",
+  "aceitos": [
+   "republicacao",
+   "propria"
+  ],
+  "justificativa": "Título idêntico ao da captura em outro veículo: republicação, não fonte independente."
+ },
+ {
+  "id": "est-bets-acao",
+  "tipo": "mesmas_entidades_outro_agente",
+  "original": {
+   "captura": "estadao-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "O GLOBO",
+   "dominio": "oglobo.globo.com",
+   "url": "https://oglobo.globo.com/economia/noticia/2026/09/28/bets-entram-com-nova-acao-no-stf-pedem-relatoria-de-fux-e-dizem-ter-detectado-833-sites-ilegais-desde-proibicao-de-lula.ghtml",
+   "titulo": "Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites ilegais desde proibição de Lula",
+   "trecho": "Entidade pede que processo seja direcionado ao ministro, que já relata ações sobre o setor e associações reiteram pedido para suspender MP ...",
+   "pagina": "28/09/2026 16h20 Atualizado 28/09/2026 20h25 Entidades que representam empresas de apostas entraram com uma nova ação no Supremo Tribunal Federal (STF) contra a medida provisória do presidente Luiz Inácio Lula da Silva que proibiu as bets no país e pediram que o processo fique sob a relatoria do ministro Luiz Fux. As associações também afirmam ter identificado 833 novos sites ilegais de apostas desde a entrada em vigor da proibição. A Associação Nacional de Jogos e Loterias (ANJL) informou nesta segunda-feira a Fux que já protocolou uma ação direta de inconstitucionalidade contra a medida provisória. No mesmo processo, a entidade pede que o Supremo reconheça a constitucionalidade do marco legal que regulamentou as apostas no país. A entidade pediu ainda que a nova ação seja distribuída a Fux por prevenção. O argumento é que o ministro já relata as três outras ações do mesmo tipo que discutem a constitucionalidade das regras do setor e têm objeto relacionado ao da nova ação. A prevenção é uma regra processual usada para concentrar em um mesmo relator processos que possuem conexão, evitando decisões conflitantes. A análise da prevenção, contudo, ainda será feita pela presidência do STF. Segundo as entidades, a MP atingiu diretamente as normas que já são discutidas nas ações sob responsabilidade de Fux. Por isso, sustentam que ele deve também assumir a relatoria do novo processo. O pedido de prevenção ainda precisa ser analisado pelo Supremo. Na manifestação encaminhada ao ministro, ANJL e Instituto Brasileiro de Jogo Responsável (IBJR) também reforçam o pedido para que os efeitos da MP sejam suspensos imediatamente. Como argumento de urgência, afirmam que houve um \"exponencial e indevido aumento do mercado ilegal\" desde a proibição. Segundo a petição, um monitoramento do Observatório contra o Mercado Ilegal identificou 833 novos sites ilegais neste fim de semana. O número é apresentado pelas próprias entidades e não corresponde, na manifestação, a levantamento de um órgão público. As associações alegam que, se a medida provisória continuar produzindo efeitos, o mercado regulado poderá ser desmontado antes mesmo de o Congresso concluir a análise da norma. Na avaliação delas, o crescimento das plataformas clandestinas também prejudicaria a proteção dos apostadores. As entidades pedem a Fux que suspenda integralmente a MP até sua apreciação pelo Congresso ou até o julgamento da nova ação pelo STF, o que ocorrer primeiro. Nesse período, querem manter em vigor as",
+   "data": "2026-09-28T12:20:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "contexto",
+  "aceitos": [
+   "contexto"
+  ],
+  "justificativa": "Antes aceito como mesmo acontecimento: a ação é das entidades de apostas, em 28/09."
+ },
+ {
+  "id": "est-gazeta-nota",
+  "tipo": "acao_diferente_data_diferente",
+  "original": {
+   "captura": "estadao-flamengo-stf"
+  },
+  "candidata": {
+   "veiculo": "Gazeta Brasil",
+   "dominio": "gazetabrasil.com.br",
+   "url": "https://gazetabrasil.com.br/esportes/2026/09/25/proibir-nao-acaba-com-o-jogo-flamengo-se-posiciona-contra-restricoes-a-bets-no-brasil/",
+   "titulo": "“Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil",
+   "trecho": "Clube defende aperfeiçoamento das regras e afirma que veto reduziria recursos para o esporte e para a arrecadação pública; nota foi divulgada horas antes do ...",
+   "pagina": "🔥 Confira os Produtos Mais Vendidos desta Sexta-feira (25) no Mercado Livre 🛍️ Ver Ofertas no Mercado Livre 🔥 Confira os Produtos Mais Vendidos desta Sexta-feira (25) na Shopee Clube defende aperfeiçoamento das regras e afirma que veto reduziria recursos para o esporte e para a arrecadação pública; nota foi divulgada horas antes do anúncio de medidas do governo Lula contra os jogos on-line. O Flamengo criticou nesta sexta-feira (25) a possibilidade de proibição das bets no Brasil. Em nota intitulada “Proibir não acaba com o jogo”, o clube afirmou que a medida poderia fortalecer o mercado clandestino e reduzir significativamente os recursos destinados ao esporte. A manifestação ocorre diante da decisão do governo do presidente Luiz Inácio Lula da Silva (PT) de endurecer as regras para os jogos de azar on-line. O Planalto apresenta às 17h desta sexta-feira medidas de restrição ao setor e iniciativas para a renegociação de dívidas das famílias. Na quarta-feira (23), Lula afirmou durante ato de campanha no Rio de Janeiro que pretende “acabar com as bets” e declarou que os clubes de futebol precisarão buscar outras formas de financiamento. “Sinceramente, em nome da boa política, em nome da sociedade brasileira, a gente vai acabar com isso. E os times que aprendam a viver sem lavagem de dinheiro”, declarou o presidente. Na nota, o Flamengo afirmou que a regulamentação das apostas pode ser aperfeiçoada e ter regras mais rígidas, mas se posicionou contra uma eventual proibição. “Não se pode criar uma regra, levar empresas e instituições a assumir compromissos com base nela e, de um dia para o outro, mudar todo o marco regulatório”, citou a diretoria. Segundo o clube, uma mudança desse tipo afetaria a segurança jurídica e traria impactos ao futebol profissional, às categorias de base, ao futebol feminino, aos esportes olímpicos e aos campeonatos. Também atingiria empregos, fornecedores e empresas de comunicação, marketing e tecnologia vinculadas ao esporte. O Flamengo argumentou que impedir a atuação das empresas autorizadas não acabaria com as apostas e abriria mais espaço para plataformas clandestinas. O clube citou pesquisa do Instituto Locomotiva realizada em maio de 2026 com 2.291 apostadores. Estudo da LCA Consultores baseado no levantamento estima que 38% a 44% do valor apostado on-line no Brasil esteja em plataformas clandestinas. Segundo os dados citados pelo Flamengo, a fatia estimada do mercado ilegal era de 41% a 51% em 2025 e caiu para 38% a 44% no pri",
+   "data": "2026-09-25T11:21:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "contexto",
+  "aceitos": [
+   "contexto",
+   "outro"
+  ],
+  "justificativa": "Antes aceito como mesmo acontecimento: nota do Flamengo em 25/09, antes do pedido ao STF."
+ },
+ {
+  "id": "s-sinonimos",
+  "tipo": "sinonimos",
+  "original": {
+   "titulo": "Prefeitura de Vale Claro suspende aulas na rede municipal após enchente",
+   "subtitulo": null,
+   "corpo": "A Prefeitura de Vale Claro suspendeu nesta segunda-feira (9) as aulas em todas as escolas municipais por causa da enchente do rio Turvo.",
+   "veiculo": "Diário do Vale",
+   "data": "2026-03-09"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/31537e3993",
+   "titulo": "Vale Claro interrompe atividades nas escolas municipais por causa da cheia",
+   "trecho": "Com a cheia do rio Turvo, a prefeitura de Vale Claro cancelou as aulas da rede municipal nesta segunda.",
+   "pagina": "",
+   "data": "2026-03-09T15:00:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "mesmo_acontecimento",
+  "aceitos": [
+   "mesmo_acontecimento"
+  ],
+  "justificativa": "Suspende aulas = interrompe atividades/cancelou as aulas; enchente = cheia; mesmo dia."
+ },
+ {
+  "id": "s-acao-diferente",
+  "tipo": "mesmas_entidades_acoes_diferentes",
+  "original": {
+   "titulo": "Governador Tiago Mendes sanciona lei que cria passe livre estudantil em Pedra Azul",
+   "subtitulo": null,
+   "corpo": "O governador Tiago Mendes sancionou nesta quarta-feira (4) a lei do passe livre estudantil.",
+   "veiculo": "Folha Azul",
+   "data": "2026-02-04"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/3acb38d25e",
+   "titulo": "Governador Tiago Mendes visita obras do metrô de Pedra Azul",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-02-04T12:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "Mesmo governador, outra ação e outro objeto."
+ },
+ {
+  "id": "s-mesmo-objeto-outra-acao",
+  "tipo": "mesmas_entidades_acoes_diferentes",
+  "original": {
+   "titulo": "Governador Tiago Mendes sanciona lei que cria passe livre estudantil em Pedra Azul",
+   "subtitulo": null,
+   "corpo": "O governador Tiago Mendes sancionou nesta quarta-feira (4) a lei do passe livre estudantil.",
+   "veiculo": "Folha Azul",
+   "data": "2026-02-04"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/ab4e25120a",
+   "titulo": "Tiago Mendes critica custo do passe livre estudantil",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-01-20T12:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "contexto",
+  "aceitos": [
+   "contexto",
+   "outro"
+  ],
+  "justificativa": "Mesmo agente e objeto, outra ação (crítica) e outra data."
+ },
+ {
+  "id": "s-data-diferente",
+  "tipo": "datas_diferentes",
+  "original": {
+   "titulo": "Barragem do Rio Verde transborda e deixa 200 desalojados em Pedra Azul",
+   "subtitulo": null,
+   "corpo": "A barragem do Rio Verde transbordou nesta terça-feira (29) e deixou 200 pessoas desalojadas em Pedra Azul.",
+   "veiculo": "Folha Azul",
+   "data": "2026-09-29"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/0da7233a50",
+   "titulo": "Barragem do Rio Verde transborda e deixa desalojados em Pedra Azul",
+   "trecho": "Em janeiro de 2024, a barragem do Rio Verde transbordou após chuvas fortes.",
+   "pagina": "",
+   "data": "2024-01-10T12:00:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro",
+   "contexto"
+  ],
+  "justificativa": "Mesmo tipo de fato, publicado e datado em janeiro de 2024."
+ },
+ {
+  "id": "s-proposta-decisao",
+  "tipo": "proposta_vs_decisao",
+  "original": {
+   "titulo": "Governo de Pedra Azul proíbe venda de fogos de artifício com estampido",
+   "subtitulo": null,
+   "corpo": "O governo de Pedra Azul publicou nesta sexta-feira (2) decreto que proíbe a venda de fogos com estampido.",
+   "veiculo": "Folha Azul",
+   "data": "2026-10-02"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/4eaaf88086",
+   "titulo": "Governo de Pedra Azul propõe proibir venda de fogos com estampido",
+   "trecho": "O governo enviou à Assembleia um projeto de lei que proíbe a venda de fogos com estampido.",
+   "pagina": "",
+   "data": "2026-10-02T12:00:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "contexto",
+  "aceitos": [
+   "contexto",
+   "divergente"
+  ],
+  "justificativa": "A fonte fala de proposta (projeto de lei), a afirmação de proibição já decretada."
+ },
+ {
+  "id": "s-negacao",
+  "tipo": "afirmacao_vs_negacao",
+  "original": {
+   "titulo": "Secretaria de Saúde de Vale Claro confirma surto de sarampo",
+   "subtitulo": null,
+   "corpo": "A Secretaria de Saúde de Vale Claro confirmou nesta quinta-feira (5) um surto de sarampo no bairro Centro.",
+   "veiculo": "Diário do Vale",
+   "data": "2026-03-05"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/45b93adc4f",
+   "titulo": "Secretaria de Saúde de Vale Claro nega surto de sarampo",
+   "trecho": "A secretaria afirmou que os casos investigados não configuram surto.",
+   "pagina": "",
+   "data": "2026-03-05T18:00:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "divergente",
+  "aceitos": [
+   "divergente"
+  ],
+  "justificativa": "Mesmo acontecimento discutido, mas a fonte nega o que a afirmação confirma."
+ },
+ {
+  "id": "s-numero",
+  "tipo": "numero_divergente",
+  "original": {
+   "titulo": "Prefeitura de Vale Claro dá prazo de 30 dias para retirada de ambulantes do centro",
+   "subtitulo": null,
+   "corpo": "A prefeitura de Vale Claro notificou nesta segunda-feira (9) os ambulantes do centro.",
+   "veiculo": "Diário do Vale",
+   "data": "2026-03-09"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/b977021ed5",
+   "titulo": "Prefeitura de Vale Claro dá 10 dias para ambulantes deixarem o centro",
+   "trecho": "Os ambulantes do centro de Vale Claro terão 10 dias para deixar as calçadas, segundo notificação da prefeitura.",
+   "pagina": "",
+   "data": "2026-03-09T20:00:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "divergente",
+  "aceitos": [
+   "divergente"
+  ],
+  "justificativa": "Mesmo ato da prefeitura, prazo diferente (10 dias × 30 dias)."
+ },
+ {
+  "id": "s-homonimo",
+  "tipo": "homonimos",
+  "original": {
+   "titulo": "Santa Rita vence o Operário por 2 a 0 e lidera o Campeonato Estadual",
+   "subtitulo": null,
+   "corpo": "",
+   "veiculo": "Gazeta Esportiva Fictícia",
+   "data": "2026-04-12"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/7bc9a8ff4b",
+   "titulo": "Santa Rita decreta emergência por falta de chuva",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-04-12T10:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "Mesmo nome (clube × cidade), outro assunto."
+ },
+ {
+  "id": "s-so-titulo-incerto",
+  "tipo": "so_titulo",
+  "original": {
+   "titulo": "Câmara de Vale Claro aprova reajuste de 12% no IPTU",
+   "subtitulo": null,
+   "corpo": "A Câmara de Vale Claro aprovou nesta terça-feira (10) o reajuste de 12% no IPTU de 2027.",
+   "veiculo": "Diário do Vale",
+   "data": "2026-11-10"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/3a56e53d69",
+   "titulo": "IPTU de Vale Claro: o que muda em 2027",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-11-10T12:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "incerta",
+  "aceitos": [
+   "incerta",
+   "contexto"
+  ],
+  "justificativa": "Só o título, sem dizer o que aconteceu: não dá para saber se relata a aprovação."
+ },
+ {
+  "id": "s-so-resumo-mesmo",
+  "tipo": "so_resumo",
+  "original": {
+   "titulo": "Câmara de Vale Claro aprova reajuste de 12% no IPTU",
+   "subtitulo": null,
+   "corpo": "A Câmara de Vale Claro aprovou nesta terça-feira (10) o reajuste de 12% no IPTU de 2027.",
+   "veiculo": "Diário do Vale",
+   "data": "2026-11-10"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/91e14f0359",
+   "titulo": "Vereadores de Vale Claro aprovam aumento do IPTU",
+   "trecho": "O reajuste de 12% no imposto foi aprovado nesta terça pelos vereadores.",
+   "pagina": "",
+   "data": "2026-11-10T22:00:00Z",
+   "origem": "bing_news"
+  },
+  "esperado": "mesmo_acontecimento",
+  "aceitos": [
+   "mesmo_acontecimento"
+  ],
+  "justificativa": "Vereadores = Câmara; aprovam aumento = aprova reajuste; 12% no resumo."
+ },
+ {
+  "id": "s-papeis",
+  "tipo": "papeis_invertidos",
+  "original": {
+   "titulo": "Atlético Serrano processa a Federação Estadual por rebaixamento",
+   "subtitulo": null,
+   "corpo": "O Atlético Serrano entrou nesta segunda-feira (2) com ação contra a Federação Estadual para anular o rebaixamento.",
+   "veiculo": "Gazeta Esportiva Fictícia",
+   "data": "2026-03-02"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/02636c077c",
+   "titulo": "Federação Estadual processa o Atlético Serrano por dívida",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-03-02T12:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "Papéis invertidos (quem processa quem) e outro objeto (dívida)."
+ },
+ {
+  "id": "s-local",
+  "tipo": "local_diferente",
+  "original": {
+   "titulo": "Incêndio atinge mercado central de Vale Claro",
+   "subtitulo": null,
+   "corpo": "",
+   "veiculo": "Diário do Vale",
+   "data": "2026-06-01"
+  },
+  "candidata": {
+   "veiculo": "Jornal Fictício",
+   "dominio": "jornalficticio.example",
+   "url": "https://jornalficticio.example/e2f5f58cc9",
+   "titulo": "Incêndio atinge mercado central de Pedra Azul",
+   "trecho": "",
+   "pagina": "",
+   "data": "2026-06-01T12:00:00Z",
+   "origem": "google_news"
+  },
+  "esperado": "outro",
+  "aceitos": [
+   "outro"
+  ],
+  "justificativa": "Mesmo tipo de fato em outro lugar."
+ }
+]

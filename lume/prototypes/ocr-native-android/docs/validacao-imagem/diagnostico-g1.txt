@@ -1,0 +1,189 @@
+--------- beginning of main
+CONSULTAS (7)
+  [google_news] 'inadimplência subir recorde agosto' -> ok 20
+  [bing_news] 'inadimplência subir recorde agosto' -> ok 12
+  [google_news] 'inadimplência subir' -> ok 20
+  [bing_news] 'inadimplência subir' -> ok 8
+  [google_news] 'inadimplência bilhões' -> ok 20
+  [bing_web] 'inadimplência subir recorde agosto' -> ok 10
+  [wikipedia] 'inadimplência subir' -> ok 3
+TRIAGEM (93)
+  direto | G1 | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | Trata do mesmo acontecimento
+  contexto | InfoMoney | Endividamento das famílias volta a subir e repete recorde de 49,9% em julho, diz BC | Mesmo tema, sem todos os termos da entrada
+  descartado | UOL Economia | Crédito acelera em agosto, com inadimplência maior e renda pressionada | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  direto | Brasil 247 | Inadimplência bate novo recorde em agosto, segundo Banco Central | Trata do mesmo acontecimento
+  direto | Bem Paraná | Inadimplência das famílias no crédito livre atinge novo recorde e chega a 8% em agosto, mostra BC | Trata do mesmo acontecimento
+  direto | Terra | Inadimplência das famílias atinge novo recorde em agosto, aponta BC | Trata do mesmo acontecimento
+  direto | avozdocampo.com | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | Trata do mesmo acontecimento
+  contexto | G1 | Inadimplência volta a subir e bate novo recorde | Mesmo tema, mas não há confirmação de que seja o mesmo acontecimento
+  descartado | Agora ES | IGP-M volta a subir em setembro e acumula alta de 3,34% em 12 meses | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  contexto | VEJA | O ‘efeito bola de neve’ provocado pelo recorde histórico de inadimplência no Brasil | Mesmo tema, sem todos os termos da entrada
+  descartado | BPMoney | Inadimplência sobe a 29,9% e atinge famílias brasileiras em agosto, mostra CNC | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  descartado | ncnews.com.br | Endividamento atinge 82% das famílias e bate novo recorde no Brasil | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  direto | Valor Econômico | Com endividamento em nível recorde, inadimplência voltou a crescer em agosto, diz CNC | Trata do mesmo acontecimento
+  descartado | avozdoalgarve.pt | Prestação da casa atinge máximo por dívida recorde e subida dos juros | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  direto | Folha de S.Paulo | Inadimplência das famílias no crédito livre atinge novo recorde e chega a 8% em agosto, mostra BC | Trata do mesmo acontecimento
+  contexto | Bem Paraná | Inadimplência da taxa de condomínio bate recorde no Paraná | Mesmo tema, sem todos os termos da entrada
+  descartado | Valor Econômico | Inadimplência atinge 82% das famílias e deve piorar | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  descartado | Idealista | Prestação da casa atinge máximo por dívida recorde e subida dos juros | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  contexto | ISTOÉ DINHEIRO | Mesmo com Desenrola, inadimplência vai a 6,4% e bate recorde, diz BC | Mesmo tema, sem todos os termos da entrada
+  descartado | dinheirovivo.dn.pt | Famílias investiram 753 milhões de euros em Certificados de Aforro em agosto | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  direto | Brasil 247 | Inadimplência bate novo recorde em agosto, segundo Banco Central | Trata do mesmo acontecimento
+  direto | O GLOBO | Inadimplência das famílias sobe e renov
+a recorde em agosto, diz Banco Central | Trata do mesmo acontecimento
+  direto | VEJA | Inadimplência das famílias bate recorde e chega a 8% em agosto, diz BC | Trata do mesmo acontecimento
+  direto | InfoMoney | Inadimplência no Brasil renova recorde da série histórica a 6,6% em agosto, mostra BC | Trata do mesmo acontecimento
+  contexto | Metro 1 | Inadimplência das famílias bate recorde e chega a 8% no crédito livre, diz BC | Mesmo tema, sem todos os termos da entrada
+  descartado | timesbrasil | Inadimplência sobe a 5% e juros para famílias também avançam, afirma Banco Central | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  direto | g1 | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | Trata do mesmo acontecimento
+  direto | newscariri | Inadimplência no crédito atinge novo recorde e chega a 5,04% em agosto | Trata do mesmo acontecimento
+  direto | Jornal de Brasília | Inadimplência das famílias no crédito livre atinge novo recorde e chega a 8% em agosto, mostra BC | Trata do mesmo acontecimento
+  direto | Estadão on MSN | Inadimplência das famílias atinge novo recorde em agosto, aponta BC | Trata do mesmo acontecimento
+  contexto | Valor Econômico | Inadimplência recorde não reflete impacto do Desenrola, diz BC | Mesmo tema, sem todos os termos da entrada
+  direto | Extra | Inadimplência das famílias sobe e renova recorde em agosto | Trata do mesmo acontecimento
+  direto | G1 | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | Trata do mesmo acontecimento
+  contexto | G1 | Inadimplência volta a subir e bate novo recorde | Mesmo tema, mas não há confirmação de que seja o mesmo acontecimento
+  contexto | Seu Dinheiro | Inter (INBR32) ainda não viu o pior: inadimplência deve subir no 3T26; CEO revela de onde vem a pressão | Mesmo tema, sem todos os termos da entrada
+  direto | avozdocampo.com | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | Trata do mesmo acontecimento
+  direto | Ao Vivo de Brasília | Juros para famílias voltam a subir e inadimplência atinge 6% em agosto | Trata do mesmo acontecimento
+  contexto | AgFeed | Inadimplência continua a subir no agro e bate 8,8% no primeiro trimestre | Mesmo tema, sem todos os termos da entrada
+  descartado | InfoMoney | Inadimplência avança a 29,9% em agosto, puxada por famílias de menor renda, diz CNC | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  descartado | gauchazh.clicrbs.com.br | Inadimplência volta a subir e renova recorde no RS | Outro acontecimento segundo a comparação contextual
+  contexto | Folha de S.Paulo | Juros e inadimplência voltam a subir e refreiam novos empréstimos | Mesmo tema, sem todos os termos da entrada
+  descartado | Estadão | Vale (VALE3) decepciona em custos, vê dívida subir e ações caem mais de 5% após balanço | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  contexto | Diario de Cuiabá | Famílias reduzem endividamento, mas inadimplência volta a subir | Mesmo tema, sem todos os termos da entrada
+  contexto | gauchazh.clicrbs.com.br | A maior do país: inadimplência de empresas volta a subir no RS após três quedas | Mesmo tema, sem todos os termos da entrada
+  contexto | AgFeed | Inadimplência pode subir mais em 2026, alerta economista | Mesmo tema, sem todos os termos da entrada
+  contexto | bandnewstv.uol.com.br | Inadimplência bancária volta a subir em julho, segundo o Banco Central | Mesmo tema, sem todos os term
+os da entrada
+  contexto | Estadão | Banco do Brasil lucra R$ 3,9 bilhões no 2º trimestre, mas inadimplência volta a subir | Mesmo tema, sem todos os termos da entrada
+  contexto | Valor Econômico | Santander vê inadimplência subir e lucro cair | Mesmo tema, sem todos os termos da entrada
+  contexto | O GLOBO | Inadimplência bancária volta a subir em maio e bate recorde no Brasil, segundo BC | Refere-se a outro período (maio); a afirmação cita agosto
+  direto | Valor Econômico | Com endividamento em nível recorde, inadimplência voltou a crescer em agosto, diz CNC | Trata do mesmo acontecimento
+  descartado | Valor Econômico | Dívida vai subir para 115% do PIB em 2036, projeta IFI | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  contexto | Gazeta do Povo | Inadimplência deve subir e atingir pico em 2026 | Mesmo tema, sem todos os termos da entrada
+  descartado | timesbrasil | Inadimplência sobe a 5% e juros para famílias também avançam, afirma Banco Central | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  contexto | portaltela | Juros para famílias sobem em agosto e inadimplência chega a 6% | O título trata de outro aspecto do tema; o acontecimento aparece só no resumo ou na página
+  direto | g1 | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | Trata do mesmo acontecimento
+  descartado | Valor Econômico | Inadimplência atinge 82% das famílias e deve piorar | Outro acontecimento segundo a comparação contextual
+  contexto | Seu Dinheiro | Inter (INBR32) ainda não viu o pior: inadimplência deve subir no 3T26; CEO revela de onde vem a pressão | Mesmo tema, sem todos os termos da entrada
+  direto | portalacre | Inadimplência recua pelo segundo mês seguido no Acre, enquanto índice nacional volta a subir, aponta Serasa | Trata do mesmo acontecimento
+  contexto | correiobraziliense.com.br | Inadimplência de aluguel no Brasil volta a subir em abril, diz Superlógica | Mesmo tema, sem todos os termos da entrada
+  contexto | Infomoney | Taxa média de inadimplência deve subir para 6,18% em julho, apontam Ibevar e FIA | Mesmo tema, sem todos os termos da entrada
+  direto | G1 | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | Trata do mesmo acontecimento
+  descartado | UOL Economia | Na Bolsa, quais setores podem ser beneficiados pela proibição das bets | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  contexto | Midiamax | MS soma 136,6 mil empresas inadimplentes e R$ 4 bilhões em dívidas | Mesmo tema, sem todos os termos da entrada
+  contexto | Foco Nacional | Nova tecnologia mira inadimplência de R$ 40 bilhões e reforça gestão financeira na construção e no mercado imo | Mesmo tema, sem todos os termos da entrada
+  descartado | agenciabrasil.ebc.com.br | Governo cria 3ª fase do Desenrola com compra de dívidas pela União | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  descartado | BBC | Novo Desenrola: governo Lula planeja R$ 15 bi para comprar dívidas dos bancos e aliviar bolso das famílias | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  descartado | Estadão | Lula anuncia programa de compra de dívidas das famílias ao custo de R$ 15 bi a 9 dias da eleição | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  direto | avozdocampo.com | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | Trata do mesmo acontecimento
+  contexto | FecomercioSP | Empresas têm inadimplência recorde; crédito em at
+raso chega a R$ 86,1 bilhões | Mesmo tema, sem todos os termos da entrada
+  descartado | CartaCapital | Como vai funcionar o Desenrola 3.0, que mira em R$ 150 bilhões em dívidas | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  descartado | InfoMoney | Governo lança Desenrola 3.0 mirando R$ 150 bilhões em dívidas de famílias | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  descartado | Seu Dinheiro | Desenrola 3.0: governo Lula quer renegociar até R$ 150 bilhões em dívidas — mas como vai bancar essa conta? | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  descartado | cnnbrasil.com.br | Dívida pública federal vai a R$ 9,29 trilhões em agosto, diz Tesouro | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  descartado | agenciabrasil.ebc.com.br | Saiba como funcionará compra de dívidas pela União | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  descartado | G1 | Governo anuncia Desenrola 3.0 para renegociar R$ 150 bilhões em dívidas | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  descartado | cnnbrasil.com.br | Desenrola Fies 2026 renegocia R$ 7,39 bilhões em dívidas, afirma MEC | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  descartado | O GLOBO | Desenrola 3.0 mira R$ 150 bilhões em dívidas; veja como vai funcionar | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  descartado | O GLOBO | Desenrola 3.0: saiba como vai funcionar novo programa de renegociação de dívidas, lançado a 9 dias das eleiçõe | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  descartado | Valor Econômico | Governo anuncia Desenrola Brasil 3.0 com foco em quitar R$ 150 bi em dívidas de famílias | poucos detalhes em comum (entidades 0/0, termos 0/3)
+  contexto | O GLOBO | Na mira das campanhas de Lula e Flávio, programa de compra de dívidas de inadimplentes pode custar até R$ 10 b | Mesmo tema, sem todos os termos da entrada
+  descartado | conceito.de | Inadimplência - O que é, causas, conceito e definição | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  descartado | investidorsardinha.r7.com | Inadimplência: o que é, causas, tipos e como evitar | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  contexto | g1.globo.com | Em meio à corrida eleitoral, inadimplência volta a subir e bate ... - G1 | Mesmo tema, sem todos os termos da entrada
+  descartado | serasa.com.br | Inadimplência: entenda causas, consequências e saiba como evitar - Serasa | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  descartado | blog.nubank.com.br | O que é inadimplência e o que significa estar inadimplente? | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  descartado | escritoriosouzaadvogados.com.br | O que é inadimplência? Entenda causas e como resolver | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  descartado | dicio.com.br | Inadimplência - Dicio, Dicionário Online de Português | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  direto | cnnbrasil.com.br | Inadimplência bate novo recorde em agosto - CNN Brasil | Trata do mesmo acontecimento
+  descartado | spcbrasil.com.br | Inadimplência: Conceito e Estratégias para Prevenção | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  descartado | jusbrasil.com.br | Afinal, o que é inadimplência? | Jusbrasil | poucos detalhes em comum (entidades 0/0, termos 1/3)
+  descartado | Wikipédia | Governo Lula (2023–presente) | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Ricardo Nunes | e
+nciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Credit default swap | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+DUPLICATA (8)
+  removida | g1 | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | mesma URL já recebida de bing_news
+  removida | G1 | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | mesma URL já recebida de google_news
+  removida | G1 | Inadimplência volta a subir e bate novo recorde | mesma URL já recebida de google_news
+  removida | avozdocampo.com | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | mesma URL já recebida de google_news
+  removida | G1 | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | mesma URL já recebida de google_news
+  removida | avozdocampo.com | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | mesma URL já recebida de google_news
+  removida | g1.globo.com | Em meio à corrida eleitoral, inadimplência volta a subir e bate ... - G1 | mesma URL já recebida de bing_news
+  removida | Valor Econômico | Com endividamento em nível recorde, inadimplência voltou a crescer em agosto, diz CNC | mesma URL já recebida de google_news
+REPUBLICACAO (8)
+  agrupada | G1 | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | título/trecho quase igual a g1
+  agrupada | avozdocampo.com | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | título/trecho quase igual a g1
+  agrupada | Terra | Inadimplência das famílias atinge novo recorde em agosto, aponta BC | título/trecho quase igual a Estadão on MSN
+  agrupada | Brasil 247 | Inadimplência bate novo recorde em agosto, segundo Banco Central | título/trecho quase igual a Brasil 247
+  agrupada | Extra | Inadimplência das famílias sobe e renova recorde em agosto | título/trecho quase igual a O GLOBO
+  agrupada | Bem Paraná | Inadimplência das famílias no crédito livre atinge novo recorde e chega a 8% em agosto, mostra BC | título/trecho quase igual a Jornal de Brasília
+  agrupada | Folha de S.Paulo | Inadimplência das famílias no crédito livre atinge novo recorde e chega a 8% em agosto, mostra BC | título/trecho quase igual a Jornal de Brasília
+  agrupada | Seu Dinheiro | Inter (INBR32) ainda não viu o pior: inadimplência deve subir no 3T26; CEO revela de onde vem a pressão | título/trecho quase igual a Seu Dinheiro
+RELEITURA (0)
+LIMITE (17)
+  contexto | InfoMoney | Endividamento das famílias volta a subir e repete recorde de 49,9% em julho, diz BC | acima do limite de 8 na seção
+  contexto | VEJA | O ‘efeito bola de neve’ provocado pelo recorde histórico de inadimplência no Brasil | acima do limite de 8 na seção
+  contexto | Bem Paraná | Inadimplência da taxa de condomínio bate recorde no Paraná | acima do limite de 8 na seção
+  contexto | ISTOÉ DINHEIRO | Mesmo com Desenrola, inadimplência vai a 6,4% e bate recorde, diz BC | acima do limite de 8 na seção
+  contexto | AgFeed | Inadimplência continua a subir no agro e bate 8,8% no primeiro trimestre | acima do limite de 8 na seção
+  contexto | Folha de S.Paulo | Juros e inadimplência voltam a subir e refreiam novos empréstimos | acima do limite de 8 na seção
+  contexto | Diario de Cuiabá | Famílias reduzem endividamento, mas inadimplência volta a subir | acima do limite de 8
+ na seção
+  contexto | gauchazh.clicrbs.com.br | A maior do país: inadimplência de empresas volta a subir no RS após três quedas | acima do limite de 8 na seção
+  contexto | AgFeed | Inadimplência pode subir mais em 2026, alerta economista | acima do limite de 8 na seção
+  contexto | bandnewstv.uol.com.br | Inadimplência bancária volta a subir em julho, segundo o Banco Central | acima do limite de 8 na seção
+  contexto | Estadão | Banco do Brasil lucra R$ 3,9 bilhões no 2º trimestre, mas inadimplência volta a subir | acima do limite de 8 na seção
+  contexto | Valor Econômico | Santander vê inadimplência subir e lucro cair | acima do limite de 8 na seção
+  contexto | Gazeta do Povo | Inadimplência deve subir e atingir pico em 2026 | acima do limite de 8 na seção
+  contexto | Midiamax | MS soma 136,6 mil empresas inadimplentes e R$ 4 bilhões em dívidas | acima do limite de 8 na seção
+  contexto | Foco Nacional | Nova tecnologia mira inadimplência de R$ 40 bilhões e reforça gestão financeira na construção e no mercado imo | acima do limite de 8 na seção
+  contexto | FecomercioSP | Empresas têm inadimplência recorde; crédito em atraso chega a R$ 86,1 bilhões | acima do limite de 8 na seção
+  contexto | O GLOBO | Na mira das campanhas de Lula e Flávio, programa de compra de dívidas de inadimplentes pode custar até R$ 10 b | acima do limite de 8 na seção
+EXIBIDA (20)
+  direto | VEJA | Inadimplência das famílias bate recorde e chega a 8% em agosto, diz BC | Trata do mesmo acontecimento
+  direto | g1 | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | Trata do mesmo acontecimento
+  direto | Estadão on MSN | Inadimplência das famílias atinge novo recorde em agosto, aponta BC | Trata do mesmo acontecimento
+  direto | Brasil 247 | Inadimplência bate novo recorde em agosto, segundo Banco Central | Trata do mesmo acontecimento
+  direto | O GLOBO | Inadimplência das famílias sobe e renova recorde em agosto, diz Banco Central | Trata do mesmo acontecimento
+  direto | InfoMoney | Inadimplência no Brasil renova recorde da série histórica a 6,6% em agosto, mostra BC | Trata do mesmo acontecimento
+  direto | newscariri | Inadimplência no crédito atinge novo recorde e chega a 5,04% em agosto | Trata do mesmo acontecimento
+  direto | Jornal de Brasília | Inadimplência das famílias no crédito livre atinge novo recorde e chega a 8% em agosto, mostra BC | Trata do mesmo acontecimento
+  direto | portalacre | Inadimplência recua pelo segundo mês seguido no Acre, enquanto índice nacional volta a subir, aponta Serasa | Trata do mesmo acontecimento
+  direto | cnnbrasil.com.br | Inadimplência bate novo recorde em agosto - CNN Brasil | Trata do mesmo acontecimento
+  direto | Valor Econômico | Com endividamento em nível recorde, inadimplência voltou a crescer em agosto, diz CNC | Trata do mesmo acontecimento
+  direto | Ao Vivo de Brasília | Juros para famílias voltam a subir e inadimplência atinge 6% em agosto | Trata do mesmo acontecimento
+  contexto | G1 | Inadimplência volta a subir e bate novo recorde | Mesmo tema, mas não há confirmação de que seja o mesmo acontecimento
+  contexto | O GLOBO | Inadimplência bancária volta a subir em maio e bate recorde no Brasil, segundo BC | Refere-se a outro período (maio); a afirmação cita agosto
+  contexto | Metro 1 | Inadimplência das famílias bate recorde e chega a 8% no crédito livre, diz BC | Mesmo tema, sem todos os termos da entrada
+  contexto | Valor Econômico | Inadimplência recor
+de não reflete impacto do Desenrola, diz BC | Mesmo tema, sem todos os termos da entrada
+  contexto | portaltela | Juros para famílias sobem em agosto e inadimplência chega a 6% | O título trata de outro aspecto do tema; o acontecimento aparece só no resumo ou na página
+  contexto | Seu Dinheiro | Inter (INBR32) ainda não viu o pior: inadimplência deve subir no 3T26; CEO revela de onde vem a pressão | Mesmo tema, sem todos os termos da entrada
+  contexto | correiobraziliense.com.br | Inadimplência de aluguel no Brasil volta a subir em abril, diz Superlógica | Mesmo tema, sem todos os termos da entrada
+  contexto | Infomoney | Taxa média de inadimplência deve subir para 6,18% em julho, apontam Ibevar e FIA | Mesmo tema, sem todos os termos da entrada
+RELACAO (20)
+  mesmo_fato | VEJA | Inadimplência das famílias bate recorde e chega a 8% em agosto, diz BC | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | g1 | Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | Estadão on MSN | Inadimplência das famílias atinge novo recorde em agosto, aponta BC | Relata o mesmo acontecimento [leitura: trecho]
+  mesmo_fato | Brasil 247 | Inadimplência bate novo recorde em agosto, segundo Banco Central | Relata o mesmo acontecimento [leitura: pagina] «Dados mostram estabilidade na inadimplência de pessoas jurídicas e alta no segmento das famílias 247 – A inadimplência da carteira de crédit»
+  mesmo_fato | O GLOBO | Inadimplência das famílias sobe e renova recorde em agosto, diz Banco Central | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | InfoMoney | Inadimplência no Brasil renova recorde da série histórica a 6,6% em agosto, mostra BC | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | newscariri | Inadimplência no crédito atinge novo recorde e chega a 5,04% em agosto | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | Jornal de Brasília | Inadimplência das famílias no crédito livre atinge novo recorde e chega a 8% em agosto, mostra BC | Relata o mesmo acontecimento [leitura: trecho]
+  mesmo_fato | portalacre | Inadimplência recua pelo segundo mês seguido no Acre, enquanto índice nacional volta a subir, aponta Serasa | Relata o mesmo acontecimento [leitura: trecho]
+  mesmo_fato | cnnbrasil.com.br | Inadimplência bate novo recorde em agosto - CNN Brasil | Relata o mesmo acontecimento [leitura: trecho]
+  mesmo_fato | Valor Econômico | Com endividamento em nível recorde, inadimplência voltou a crescer em agosto, diz CNC | Relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | Ao Vivo de Brasília | Juros para famílias voltam a subir e inadimplência atinge 6% em agosto | Relata o mesmo acontecimento [leitura: titulo]
+  contexto | G1 | Inadimplência volta a subir e bate novo recorde | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | O GLOBO | Inadimplência bancária volta a subir em maio e bate recorde no Brasil, segundo BC | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Metro 1 | Inadimplência das famílias bate recorde e chega a 8% no crédito livre, diz BC | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]
+  contexto | Valor Econômico | Inadimplência recorde não reflete impacto do Desenrola, diz BC | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]
+  contexto | portaltela | Juros para família
+s sobem em agosto e inadimplência chega a 6% | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]
+  contexto | Seu Dinheiro | Inter (INBR32) ainda não viu o pior: inadimplência deve subir no 3T26; CEO revela de onde vem a pressão | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]
+  contexto | correiobraziliense.com.br | Inadimplência de aluguel no Brasil volta a subir em abril, diz Superlógica | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]
+  contexto | Infomoney | Taxa média de inadimplência deve subir para 6,18% em julho, apontam Ibevar e FIA | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]

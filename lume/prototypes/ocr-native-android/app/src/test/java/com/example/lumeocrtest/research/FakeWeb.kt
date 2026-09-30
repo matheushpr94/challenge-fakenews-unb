@@ -23,7 +23,7 @@ private fun rfc(ms: Long?) = ms?.let { java.text.SimpleDateFormat("EEE, dd MMM y
 
 fun googleRss(items: List<News>) = "<?xml version=\"1.0\"?><rss version=\"2.0\"><channel>" + items.joinToString("") {
     "<item><title>${esc(it.title)} - ${esc(it.source)}</title>" +
-        "<link>https://news.google.com/rss/articles/${Math.abs(it.title.hashCode())}?oc=5</link>" +
+        "<link>https://news.google.com/rss/articles/${Math.abs((it.title + it.source).hashCode())}?oc=5</link>" +
         "<pubDate>${rfc(it.date)}</pubDate><description>x</description>" +
         "<source url=\"https://${it.domain}\">${esc(it.source)}</source></item>"
 } + "</channel></rss>"

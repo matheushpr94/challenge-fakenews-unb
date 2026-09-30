@@ -1,0 +1,539 @@
+{
+ "image": "g1-inadimplencia.png",
+ "width": 1080,
+ "height": 2400,
+ "blocks": [
+  {
+   "text": "globo.com g1",
+   "box": [
+    33,
+    37,
+    336,
+    84
+   ],
+   "lines": [
+    {
+     "text": "globo.com g1",
+     "box": [
+      33,
+      37,
+      336,
+      84
+     ],
+     "confidence": 0.8703835010528564
+    }
+   ]
+  },
+  {
+   "text": "=g1",
+   "box": [
+    62,
+    157,
+    196,
+    227
+   ],
+   "lines": [
+    {
+     "text": "=g1",
+     "box": [
+      62,
+      157,
+      196,
+      227
+     ],
+     "confidence": 0.54296875
+    }
+   ]
+  },
+  {
+   "text": ":das",
+   "box": [
+    42,
+    343,
+    96,
+    366
+   ],
+   "lines": [
+    {
+     "text": ":das",
+     "box": [
+      42,
+      343,
+      96,
+      366
+     ],
+     "confidence": 0.794921875
+    }
+   ]
+  },
+  {
+   "text": "ar Comercial",
+   "box": [
+    42,
+    403,
+    253,
+    434
+   ],
+   "lines": [
+    {
+     "text": "ar Comercial",
+     "box": [
+      42,
+      403,
+      253,
+      434
+     ],
+     "confidence": 0.890625
+    }
+   ]
+  },
+  {
+   "text": "5,211",
+   "box": [
+    41,
+    474,
+    114,
+    507
+   ],
+   "lines": [
+    {
+     "text": "5,211",
+     "box": [
+      41,
+      474,
+      114,
+      507
+     ],
+     "confidence": 0.792187511920929
+    }
+   ]
+  },
+  {
+   "text": "),28%",
+   "box": [
+    41,
+    540,
+    129,
+    575
+   ],
+   "lines": [
+    {
+     "text": "),28%",
+     "box": [
+      41,
+      540,
+      129,
+      575
+     ],
+     "confidence": 0.770312488079071
+    }
+   ]
+  },
+  {
+   "text": "Valor PROM",
+   "box": [
+    71,
+    645,
+    278,
+    685
+   ],
+   "lines": [
+    {
+     "text": "Valor PROM",
+     "box": [
+      71,
+      645,
+      278,
+      685
+     ],
+     "confidence": 0.7408854365348816
+    }
+   ]
+  },
+  {
+   "text": "ge",
+   "box": [
+    401,
+    52,
+    448,
+    83
+   ],
+   "lines": [
+    {
+     "text": "ge",
+     "box": [
+      401,
+      52,
+      448,
+      83
+     ],
+     "confidence": 0.79296875
+    }
+   ]
+  },
+  {
+   "text": "agosto",
+   "box": [
+    56,
+    1731,
+    283,
+    1798
+   ],
+   "lines": [
+    {
+     "text": "agosto",
+     "box": [
+      56,
+      1731,
+      283,
+      1798
+     ],
+     "confidence": 0.8723958134651184
+    }
+   ]
+  },
+  {
+   "text": "ECONOMIA",
+   "box": [
+    394,
+    165,
+    692,
+    217
+   ],
+   "lines": [
+    {
+     "text": "ECONOMIA",
+     "box": [
+      394,
+      165,
+      692,
+      217
+     ],
+     "confidence": 0.759765625
+    }
+   ]
+  },
+  {
+   "text": "gshow globoplay g1jog",
+   "box": [
+    509,
+    41,
+    1067,
+    83
+   ],
+   "lines": [
+    {
+     "text": "gshow globoplay g1jog",
+     "box": [
+      509,
+      41,
+      1067,
+      83
+     ],
+     "confidence": 0.8634868264198303
+    }
+   ]
+  },
+  {
+   "text": "Dólar Turismo",
+   "box": [
+    338,
+    406,
+    576,
+    433
+   ],
+   "lines": [
+    {
+     "text": "Dólar Turismo",
+     "box": [
+      338,
+      406,
+      576,
+      433
+     ],
+     "confidence": 0.8759765625
+    }
+   ]
+  },
+  {
+   "text": "R$ 5,415",
+   "box": [
+    339,
+    476,
+    475,
+    508
+   ],
+   "lines": [
+    {
+     "text": "R$ 5,415",
+     "box": [
+      339,
+      476,
+      475,
+      508
+     ],
+     "confidence": 0.8616071343421936
+    }
+   ]
+  },
+  {
+   "text": "-0,18%",
+   "box": [
+    376,
+    545,
+    484,
+    576
+   ],
+   "lines": [
+    {
+     "text": "-0,18%",
+     "box": [
+      376,
+      545,
+      484,
+      576
+     ],
+     "confidence": 0.6627604365348816
+    }
+   ]
+  },
+  {
+   "text": "Euro Comercial",
+   "box": [
+    659,
+    406,
+    914,
+    433
+   ],
+   "lines": [
+    {
+     "text": "Euro Comercial",
+     "box": [
+      659,
+      406,
+      914,
+      433
+     ],
+     "confidence": 0.8861178159713745
+    }
+   ]
+  },
+  {
+   "text": "R$ 5,910\n-0,5%",
+   "box": [
+    658,
+    475,
+    795,
+    577
+   ],
+   "lines": [
+    {
+     "text": "R$ 5,910",
+     "box": [
+      659,
+      476,
+      796,
+      508
+     ],
+     "confidence": 0.8833705186843872
+    },
+    {
+     "text": "-0,5%",
+     "box": [
+      696,
+      542,
+      783,
+      576
+     ],
+     "confidence": 0.663281261920929
+    }
+   ]
+  },
+  {
+   "text": "Em meio à corrida eleitoral,\ninadimplência volta a subir\ne bate novo recorde em",
+   "box": [
+    56,
+    1467,
+    998,
+    1696
+   ],
+   "lines": [
+    {
+     "text": "Em meio à corrida eleitoral,",
+     "box": [
+      59,
+      1467,
+      998,
+      1538
+     ],
+     "confidence": 0.8753255009651184
+    },
+    {
+     "text": "inadimplência volta a subir",
+     "box": [
+      58,
+      1556,
+      989,
+      1630
+     ],
+     "confidence": 0.8621419072151184
+    },
+    {
+     "text": "e bate novo recorde em",
+     "box": [
+      56,
+      1640,
+      862,
+      1696
+     ],
+     "confidence": 0.8914930820465088
+    }
+   ]
+  },
+  {
+   "text": "Eu",
+   "box": [
+    997,
+    407,
+    1034,
+    433
+   ],
+   "lines": [
+    {
+     "text": "Eu",
+     "box": [
+      997,
+      407,
+      1034,
+      433
+     ],
+     "confidence": 0.748046875
+    }
+   ]
+  },
+  {
+   "text": "Por Alexandro Martello, g1 – Brasília",
+   "box": [
+    56,
+    2178,
+    687,
+    2212
+   ],
+   "lines": [
+    {
+     "text": "Por Alexandro Martello, g1 – Brasília",
+     "box": [
+      56,
+      2178,
+      687,
+      2212
+     ],
+     "confidence": 0.8575439453125
+    }
+   ]
+  },
+  {
+   "text": "R$",
+   "box": [
+    997,
+    476,
+    1035,
+    506
+   ],
+   "lines": [
+    {
+     "text": "R$",
+     "box": [
+      997,
+      476,
+      1035,
+      506
+     ],
+     "confidence": 0.857421875
+    }
+   ]
+  },
+  {
+   "text": "De janeiro a agosto deste ano, os bancos liberaram R$s\n311 bilhões por meio dessa linha de crédito, se\naproximando dos R$ 400 bilhões desembolsados em\n2025 (o maior dos últimos anos). Juro do cartão de\ncrédito rotativo somou 445% ao ano no mês passado.",
+   "box": [
+    54,
+    1831,
+    1023,
+    2106
+   ],
+   "lines": [
+    {
+     "text": "De janeiro a agosto deste ano, os bancos liberaram R$s",
+     "box": [
+      56,
+      1831,
+      1023,
+      1878
+     ],
+     "confidence": 0.850781261920929
+    },
+    {
+     "text": "311 bilhões por meio dessa linha de crédito, se",
+     "box": [
+      69,
+      1893,
+      891,
+      1934
+     ],
+     "confidence": 0.8539663553237915
+    },
+    {
+     "text": "aproximando dos R$ 400 bilhões desembolsados em",
+     "box": [
+      54,
+      1953,
+      999,
+      1989
+     ],
+     "confidence": 0.8797637224197388
+    },
+    {
+     "text": "2025 (o maior dos últimos anos). Juro do cartão de",
+     "box": [
+      55,
+      2010,
+      955,
+      2046
+     ],
+     "confidence": 0.8572789430618286
+    },
+    {
+     "text": "crédito rotativo somou 445% ao ano no mês passado.",
+     "box": [
+      55,
+      2067,
+      1012,
+      2106
+     ],
+     "confidence": 0.8703497052192688
+    }
+   ]
+  },
+  {
+   "text": "29\/09\/2026 08h40 Atualizado há 7 horas",
+   "box": [
+    54,
+    2238,
+    659,
+    2262
+   ],
+   "lines": [
+    {
+     "text": "29\/09\/2026 08h40 Atualizado há 7 horas",
+     "box": [
+      54,
+      2238,
+      659,
+      2262
+     ],
+     "confidence": 0.8860085010528564
+    }
+   ]
+  }
+ ]
+}

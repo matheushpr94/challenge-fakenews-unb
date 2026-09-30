@@ -1,0 +1,380 @@
+{
+ "image": "agencia-senado-bets.png",
+ "width": 793,
+ "height": 901,
+ "blocks": [
+  {
+   "text": "MP proíbe bets e determina encerramento\ndas operações em 30 dias",
+   "box": [
+    42,
+    8,
+    772,
+    89
+   ],
+   "lines": [
+    {
+     "text": "MP proíbe bets e determina encerramento",
+     "box": [
+      44,
+      12,
+      773,
+      46
+     ],
+     "confidence": 0.8697150945663452
+    },
+    {
+     "text": "das operações em 30 dias",
+     "box": [
+      42,
+      48,
+      491,
+      89
+     ],
+     "confidence": 0.829296886920929
+    }
+   ]
+  },
+  {
+   "text": "Da Agência Senado| 28\/09\/2026, 10h51",
+   "box": [
+    42,
+    106,
+    279,
+    120
+   ],
+   "lines": [
+    {
+     "text": "Da Agência Senado| 28\/09\/2026, 10h51",
+     "box": [
+      42,
+      106,
+      279,
+      120
+     ],
+     "confidence": 0.84521484375
+    }
+   ]
+  },
+  {
+   "text": "BETTING ONLINE e",
+   "box": [
+    184,
+    250,
+    302,
+    269
+   ],
+   "lines": [
+    {
+     "text": "BETTING ONLINE e",
+     "box": [
+      184,
+      250,
+      302,
+      269
+     ],
+     "confidence": 0.7904576063156128
+    }
+   ]
+  },
+  {
+   "text": "Proposições\nlegislativas",
+   "box": [
+    42,
+    675,
+    130,
+    712
+   ],
+   "lines": [
+    {
+     "text": "Proposições",
+     "box": [
+      42,
+      676,
+      130,
+      694
+     ],
+     "confidence": 0.8380681872367859
+    },
+    {
+     "text": "legislativas",
+     "box": [
+      41,
+      695,
+      124,
+      711
+     ],
+     "confidence": 0.8704426884651184
+    }
+   ]
+  },
+  {
+   "text": "FOOTBALL MATCH",
+   "box": [
+    185,
+    375,
+    294,
+    385
+   ],
+   "lines": [
+    {
+     "text": "FOOTBALL MATCH",
+     "box": [
+      185,
+      375,
+      294,
+      385
+     ],
+     "confidence": 0.8455528616905212
+    }
+   ]
+  },
+  {
+   "text": "MPV 1394\/2026",
+   "box": [
+    41,
+    741,
+    123,
+    755
+   ],
+   "lines": [
+    {
+     "text": "MPV 1394\/2026",
+     "box": [
+      41,
+      741,
+      123,
+      755
+     ],
+     "confidence": 0.8863932490348816
+    }
+   ]
+  },
+  {
+   "text": "BET",
+   "box": [
+    196,
+    412,
+    267,
+    447
+   ],
+   "lines": [
+    {
+     "text": "BET",
+     "box": [
+      196,
+      412,
+      267,
+      447
+     ],
+     "confidence": 0.8776041865348816
+    }
+   ]
+  },
+  {
+   "text": "A MP prevê a extinção, em 30 dias, das autorizações concedidas a empresas que operam no mercado",
+   "box": [
+    48,
+    611,
+    672,
+    624
+   ],
+   "lines": [
+    {
+     "text": "A MP prevê a extinção, em 30 dias, das autorizações concedidas a empresas que operam no mercado",
+     "box": [
+      48,
+      611,
+      672,
+      624
+     ],
+     "confidence": 0.8528481125831604
+    }
+   ]
+  },
+  {
+   "text": "f X",
+   "box": [
+    657,
+    112,
+    704,
+    127
+   ],
+   "lines": [
+    {
+     "text": "f X",
+     "box": [
+      657,
+      112,
+      704,
+      127
+     ],
+     "confidence": 0.560546875
+    }
+   ]
+  },
+  {
+   "text": "in",
+   "box": [
+    766,
+    114,
+    780,
+    126
+   ],
+   "lines": [
+    {
+     "text": "in",
+     "box": [
+      766,
+      114,
+      780,
+      126
+     ],
+     "confidence": 0.498046875
+    }
+   ]
+  },
+  {
+   "text": "Começou a tramitar no Congresso Nacional a medida provisória que proíbe a\nexploração, a oferta, a intermediação e a publicidade de apostas de quota fixa\nem todo o país. O texto foi publicado na sexta-feira (25) e prevê a extinção, em\n30 dias, das autorizações concedidas às empresas que atualmente operam\nnesse mercado. A MP também estabelece regras para a devolução dos recursos\ndos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos\npara bloquear sites, aplicativos e transações financeiras relacionados às apostas. A medida já está em\nvigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo.",
+   "box": [
+    41,
+    670,
+    788,
+    844
+   ],
+   "lines": [
+    {
+     "text": "Começou a tramitar no Congresso Nacional a medida provisória que proíbe a",
+     "box": [
+      229,
+      670,
+      773,
+      685
+     ],
+     "confidence": 0.8847026228904724
+    },
+    {
+     "text": "exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa",
+     "box": [
+      229,
+      693,
+      777,
+      709
+     ],
+     "confidence": 0.8737571239471436
+    },
+    {
+     "text": "em todo o país. O texto foi publicado na sexta-feira (25) e prevê a extinção, em",
+     "box": [
+      229,
+      713,
+      784,
+      730
+     ],
+     "confidence": 0.8574519157409668
+    },
+    {
+     "text": "30 dias, das autorizações concedidas às empresas que atualmente operam",
+     "box": [
+      229,
+      738,
+      751,
+      753
+     ],
+     "confidence": 0.8773053288459778
+    },
+    {
+     "text": "nesse mercado. A MP também estabelece regras para a devolução dos recursos",
+     "box": [
+      229,
+      761,
+      788,
+      776
+     ],
+     "confidence": 0.8666914701461792
+    },
+    {
+     "text": "dos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos",
+     "box": [
+      229,
+      784,
+      770,
+      799
+     ],
+     "confidence": 0.8939303159713745
+    },
+    {
+     "text": "para bloquear sites, aplicativos e transações financeiras relacionados às apostas. A medida já está em",
+     "box": [
+      42,
+      806,
+      751,
+      822
+     ],
+     "confidence": 0.8814364075660706
+    },
+    {
+     "text": "vigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo.",
+     "box": [
+      41,
+      830,
+      637,
+      844
+     ],
+     "confidence": 0.8763020634651184
+    }
+   ]
+  },
+  {
+   "text": "Anna Tolipova",
+   "box": [
+    721,
+    635,
+    782,
+    645
+   ],
+   "lines": [
+    {
+     "text": "Anna Tolipova",
+     "box": [
+      721,
+      635,
+      782,
+      645
+     ],
+     "confidence": 0.845703125
+    }
+   ]
+  },
+  {
+   "text": "A MP 1.394\/2026 altera a Lei 14.790, de 2023, e alcança apostas sobre eventos esportivos reais e jogos\nvirtual. A proibição também vale para empresas sediadas no exterior",
+   "box": [
+    41,
+    864,
+    784,
+    901
+   ],
+   "lines": [
+    {
+     "text": "A MP 1.394\/2026 altera a Lei 14.790, de 2023, e alcança apostas sobre eventos esportivos reais e jogos",
+     "box": [
+      41,
+      864,
+      762,
+      879
+     ],
+     "confidence": 0.8860294222831726
+    },
+    {
+     "text": "virtual. A proibição também vale para empresas sediadas no exterior",
+     "box": [
+      302,
+      887,
+      784,
+      901
+     ],
+     "confidence": 0.8608566522598267
+    }
+   ]
+  }
+ ]
+}

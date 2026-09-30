@@ -1,0 +1,310 @@
+{
+ "image": "estadao-flamengo-stf.png",
+ "width": 1151,
+ "height": 518,
+ "blocks": [
+  {
+   "text": "ESTADÃO",
+   "box": [
+    11,
+    2,
+    87,
+    28
+   ],
+   "lines": [
+    {
+     "text": "ESTADÃO",
+     "box": [
+      11,
+      2,
+      87,
+      28
+     ],
+     "confidence": 0.7935267686843872
+    }
+   ]
+  },
+  {
+   "text": "ELEIÇÕES JORNAL DO CARRO",
+   "box": [
+    265,
+    50,
+    461,
+    62
+   ],
+   "lines": [
+    {
+     "text": "ELEIÇÕES JORNAL DO CARRO",
+     "box": [
+      265,
+      50,
+      461,
+      62
+     ],
+     "confidence": 0.8191964030265808
+    }
+   ]
+  },
+  {
+   "text": "Notícia 0 Estadāo \/ Esportes \/ Futebol",
+   "box": [
+    111,
+    150,
+    468,
+    170
+   ],
+   "lines": [
+    {
+     "text": "Notícia 0 Estadāo \/ Esportes \/ Futebol",
+     "box": [
+      111,
+      150,
+      468,
+      170
+     ],
+     "confidence": 0.834228515625
+    }
+   ]
+  },
+  {
+   "text": "TECMUNDO",
+   "box": [
+    494,
+    52,
+    562,
+    60
+   ],
+   "lines": [
+    {
+     "text": "TECMUNDO",
+     "box": [
+      494,
+      52,
+      562,
+      60
+     ],
+     "confidence": 0.8466796875
+    }
+   ]
+  },
+  {
+   "text": "E-INVESTIDOR",
+   "box": [
+    595,
+    49,
+    677,
+    60
+   ],
+   "lines": [
+    {
+     "text": "E-INVESTIDOR",
+     "box": [
+      595,
+      49,
+      677,
+      60
+     ],
+     "confidence": 0.7584635615348816
+    }
+   ]
+  },
+  {
+   "text": "PULSA",
+   "box": [
+    712,
+    52,
+    748,
+    60
+   ],
+   "lines": [
+    {
+     "text": "PULSA",
+     "box": [
+      712,
+      52,
+      748,
+      60
+     ],
+     "confidence": 0.824999988079071
+    }
+   ]
+  },
+  {
+   "text": "PALADAR",
+   "box": [
+    781,
+    52,
+    834,
+    60
+   ],
+   "lines": [
+    {
+     "text": "PALADAR",
+     "box": [
+      781,
+      52,
+      834,
+      60
+     ],
+     "confidence": 0.8822544813156128
+    }
+   ]
+  },
+  {
+   "text": "PUBLICIDADE",
+   "box": [
+    601,
+    476,
+    665,
+    489
+   ],
+   "lines": [
+    {
+     "text": "PUBLICIDADE",
+     "box": [
+      601,
+      476,
+      665,
+      489
+     ],
+     "confidence": 0.80859375
+    }
+   ]
+  },
+  {
+   "text": "DESCUBRA",
+   "box": [
+    868,
+    52,
+    927,
+    60
+   ],
+   "lines": [
+    {
+     "text": "DESCUBRA",
+     "box": [
+      868,
+      52,
+      927,
+      60
+     ],
+     "confidence": 0.86962890625
+    }
+   ]
+  },
+  {
+   "text": "ASSINE",
+   "box": [
+    962,
+    52,
+    1003,
+    60
+   ],
+   "lines": [
+    {
+     "text": "ASSINE",
+     "box": [
+      962,
+      52,
+      1003,
+      60
+     ],
+     "confidence": 0.783203125
+    }
+   ]
+  },
+  {
+   "text": "Flamengo é o primeiro clube a entrar com\npedido no STF contra fim das casas de apostas\nno Brasil",
+   "box": [
+    109,
+    190,
+    1104,
+    358
+   ],
+   "lines": [
+    {
+     "text": "Flamengo é o primeiro clube a entrar com",
+     "box": [
+      135,
+      198,
+      1007,
+      242
+     ],
+     "confidence": 0.872987687587738
+    },
+    {
+     "text": "pedido no STF contra fim das casas de apostas",
+     "box": [
+      111,
+      257,
+      1104,
+      304
+     ],
+     "confidence": 0.8890413641929626
+    },
+    {
+     "text": "no Brasil",
+     "box": [
+      110,
+      313,
+      299,
+      358
+     ],
+     "confidence": 0.88623046875
+    }
+   ]
+  },
+  {
+   "text": "Clube quer acompanhar ação da Associação Nacional de Jogos e Loterias (ANJL), que pede\nsuspensão da MP das bets",
+   "box": [
+    111,
+    380,
+    1046,
+    442
+   ],
+   "lines": [
+    {
+     "text": "Clube quer acompanhar ação da Associação Nacional de Jogos e Loterias (ANJL), que pede",
+     "box": [
+      111,
+      386,
+      1047,
+      408
+     ],
+     "confidence": 0.8669734597206116
+    },
+    {
+     "text": "suspensão da MP das bets",
+     "box": [
+      111,
+      417,
+      378,
+      442
+     ],
+     "confidence": 0.8373047113418579
+    }
+   ]
+  },
+  {
+   "text": "mês ]",
+   "box": [
+    1109,
+    5,
+    1146,
+    25
+   ],
+   "lines": [
+    {
+     "text": "mês ]",
+     "box": [
+      1109,
+      5,
+      1146,
+      25
+     ],
+     "confidence": 0.4716796875
+    }
+   ]
+  }
+ ]
+}

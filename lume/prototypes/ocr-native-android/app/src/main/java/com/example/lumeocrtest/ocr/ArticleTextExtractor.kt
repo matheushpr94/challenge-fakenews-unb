@@ -9,22 +9,54 @@ class ArticleTextExtractor {
             "saiba mais", "compartilhar", "remover anúncio", "menu", "voltar", "início", "entrar",
             "assine", "login", "cadastre-se", "buscar", "pesquisar"
         )
+        private val END_SECTION = Regex("(?iu)^(?:leia também|leia mais|mais lidas|mais notícias|notícias relacionadas|recomendadas|você também pode gostar|veja também)\\s*:?$")
     }
 
-    fun extractArticle(blocks: List<OcrBlock>, imageWidth: Int, imageHeight: Int, consumedIndexes: Set<Int>): String {
+    fun extractArticle(blocks: List<OcrBlock>, imageWidth: Int, imageHeight: Int, consumedIndexes: Set<Int>,
+                       layout: ArticleLayout = ArticleLayoutAnalyzer().analyze(blocks, imageWidth, imageHeight)): String {
         if (blocks.isEmpty()) return ""
-
-        val availableBlocks = blocks.filterIndexed { index, _ -> !consumedIndexes.contains(index) }
-        val validBlocks = availableBlocks.filter { isValidArticleBlock(it, imageWidth, imageHeight) }
-
-        val blocksToUse = if (validBlocks.isEmpty()) {
-            availableBlocks.sortedWith(visualOrderComparator()).filter { it.text.length > 20 || it.lines.size > 1 }.ifEmpty { availableBlocks }
-        } else {
-            validBlocks.sortedWith(visualOrderComparator())
+        val firstTitleTop = layout.headlineIndexes.mapNotNull { blocks[it].boundingBox?.top }.minOrNull()
+        val titleBottom = layout.headlineIndexes.mapNotNull { blocks[it].boundingBox?.bottom }.maxOrNull() ?: -1
+        val orderedMain = blocks.withIndex().filter { (i, b) -> i in layout.mainIndexes && b.boundingBox != null }
+            .sortedBy { it.value.boundingBox!!.top }
+        val endY = orderedMain.firstOrNull { (_, b) ->
+            val top = b.boundingBox!!.top
+            top > titleBottom && END_SECTION.matches(b.text.trim()) &&
+                orderedMain.any { (_, before) -> before.boundingBox!!.top in (titleBottom + 1) until top && before.text.length >= 50 }
+        }?.value?.boundingBox?.top
+        val candidateBlocks = blocks.withIndex().filter { (i, b) ->
+            i in layout.mainIndexes && i !in consumedIndexes && i !in layout.headlineIndexes &&
+                (firstTitleTop == null || b.boundingBox == null || b.boundingBox.top >= firstTitleTop) &&
+                (endY == null || b.boundingBox == null || b.boundingBox.top < endY)
+        }.map { it.value }
+        val title = if (layout.title != null && layout.headlineIndexes.none { it in consumedIndexes }) {
+            val rects = layout.headlineIndexes.mapNotNull { blocks[it].boundingBox }
+            val box = OcrRect(rects.minOf { it.left }, rects.minOf { it.top },
+                rects.maxOf { it.right }, rects.maxOf { it.bottom })
+            OcrBlock(layout.title, box, listOf(layout.title))
+        } else null
+        val lineSizes = candidateBlocks.mapNotNull { b -> b.boundingBox?.let {
+            (it.bottom - it.top).toDouble() / maxOf(1, b.lines.size)
+        } }.sorted()
+        val typicalLine = lineSizes.getOrNull(lineSizes.size / 2) ?: 0.0
+        val validBlocks = candidateBlocks.filter { b ->
+            val box = b.boundingBox
+            val captionSize = box != null && typicalLine > 0 &&
+                (box.bottom - box.top).toDouble() / maxOf(1, b.lines.size) < typicalLine * 0.68 && b.text.length < 160
+            !captionSize && isValidArticleBlock(b, imageWidth, imageHeight)
         }
 
-        return mergeBlocks(blocksToUse)
+        val blocksToUse = (if (validBlocks.isEmpty()) {
+            candidateBlocks.sortedWith(visualOrderComparator()).filter { it.text.length > 20 || it.lines.size > 1 }.ifEmpty { candidateBlocks }
+        } else {
+            validBlocks.sortedWith(visualOrderComparator())
+        })
+
+        return mergeBlocks(listOfNotNull(title) + blocksToUse)
     }
+
+    /** Junta blocos já escolhidos e ordenados, unindo linhas quebradas e separando parágrafos. */
+    fun mergeInOrder(blocks: List<OcrBlock>): String = mergeBlocks(blocks)
 
     private fun mergeBlocks(blocks: List<OcrBlock>): String {
         if (blocks.isEmpty()) return ""
@@ -33,7 +65,7 @@ class ArticleTextExtractor {
         var prevBlock: OcrBlock? = null
         
         for (block in blocks) {
-            val currentText = mergeLinesInBlock(block.lines)
+            val currentText = if (block.lines.isEmpty()) block.text.trim() else mergeLinesInBlock(block.lines)
             
             if (prevBlock != null) {
                 val prevText = builder.toString().trimEnd()

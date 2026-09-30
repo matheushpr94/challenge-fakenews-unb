@@ -1,0 +1,325 @@
+--------- beginning of main
+CONSULTAS (9)
+  [google_news] 'STF Brasil flamengo primeiro clube apostas' -> ok 20
+  [bing_news] 'STF Brasil flamengo primeiro clube apostas' -> ok 5
+  [google_news] 'Flamengo STF fim casas' -> ok 20
+  [bing_news] 'Flamengo STF fim casas' -> ok 6
+  [google_news] 'STF flamengo primeiro apostas' -> ok 20
+  [google_news] 'STF Brasil flamengo' -> ok 20
+  [bing_web] 'STF Brasil flamengo primeiro clube apostas' -> ok 10
+  [wikipedia] 'STF flamengo primeiro' -> ok 3
+  [wikipedia] 'STF' -> ok 3
+TRIAGEM (107)
+  nao_independente | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  nao_independente | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  direto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento
+  direto | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Pelo título, relata o mesmo acontecimento
+  direto | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento
+  direto | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento
+  descartado | G1 | Antes de reunião com clubes, Lula diz que acabar com bets não traz 'prejuízo para o futebol' | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  nao_independente | Estadão | Espanha goleia Croácia pela Liga das Nações com dois gols de Yamal e soma 40 jogos invicta | publicado pelo mesmo veículo da matéria importada (Estadão)
+  incerto | Impactto News | Entidades de apostas contestam no STF medida que suspendeu bets no Brasil | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  contexto | ge | Fim das bets: reunião de clubes com ministros é adiada para depois do primeiro turno das eleições | Trata do mesmo assunto, sem relatar este acontecimento
+  incerto | Impactto News | Clubes paulistas discutem atuação conjunta após veto às casas de apostas | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  descartado | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | exame.com | 'Como vou pagar o Paquetá?': Bap critica proibição de bets e aponta impacto de R$ 400 mi no Fla | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | CNN Brasil | Sport reage a parecer da PGR sobre título do Campeonato Brasileiro de 1987 | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  direto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Pelo título, relata o mesmo acontecimento
+  descartado | Terra | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  nao_independente | Estadão | Corinthians e Flamengo veem patrocínios de bets em xeque após veto do STF | publicado pelo mesmo veículo da matéria importada (Estadão)
+  descartado | ge | Forçar cartão amarelo é manipulação? Debate chega ao STF, e especialistas veem riscos | Outro acontecimento: Outro 
+assunto com palavras parecidas
+  descartado | ge | Defesa de Bruno Henrique contesta acusação por estelionato e pede julgamento de STJ e STF | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | ge | STF decide que forçar cartão a pedido de apostadores não basta para manipular evento esportivo | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  nao_independente | Estadão on MSN | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  direto | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento
+  contexto | O TEMPO | Flamengo, Fluminense e Grêmio se manifestam sobre proibição das bets no Brasil | Mesmo envolvido, outra ação sobre o mesmo assunto
+  descartado | Gazeta Brasil | “Hoje sou Flávio Bolsonaro 22”: torcedores do Flamengo reagem à MP das bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  contexto | Gazeta Brasil | “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil | Mesmo envolvido, outra ação sobre o mesmo assunto
+  nao_independente | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  direto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Pelo título, relata o mesmo acontecimento
+  nao_independente | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  direto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento
+  direto | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Pelo título, relata o mesmo acontecimento
+  direto | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Outro fato sobre o mesmo assunto
+  direto | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento
+  direto | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento
+  descartado | Portal Leo Dias | Em protesto ao fim das bets, clubes ameaçam parar o Brasileirão | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Terra | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  contexto | ge | Fim das bets: reunião de clubes com ministros é adiada para depois do primeiro turno das eleições | Trata do mesmo assunto, sem relatar este acontecimento
+  descartado | ge | Defesa de Bruno Henrique contesta acusação por estelionato e pede julgamento de STJ e STF | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | Folha PE | Flamengo campeão brasileiro de 87? PGR envia ao STF parecer favorável ao clube carioca | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | Agência Brasil | PGR defende que Flam
+engo e Sport sejam campeões do Brasileiro de 1987 | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | O GLOBO | Alexandre de Moraes, Flávio Dino, Gilmar e Motta acompanham final entre Flamengo e Corinthians em Brasília | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | O GLOBO | PGR defende que STF reconheça Flamengo como campeão brasileiro de 1987 | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | ge | Forçar cartão amarelo é manipulação? Debate chega ao STF, e especialistas veem riscos | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | ge | STF proíbe patrocinadoras de Corinthians e Flamengo de operar nacionalmente | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | G1 | Ministro do STF Dias Toffoli viajou para final da Libertadores com advogado do caso Banco Master | Outro acontecimento: Outro assunto com palavras parecidas
+  nao_independente | Estadão on MSN | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  direto | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento
+  direto | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Relata o mesmo acontecimento
+  direto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Relata o mesmo acontecimento
+  descartado | Boa Informação | Presidente do Flamengo pede rejeição da MP sobre bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | GP1 | Presidente do Flamengo critica fim das bets: “como vou pagar o Paquetá?” | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  nao_independente | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  nao_independente | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  direto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento
+  direto | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Pelo título, relata o mesmo acontecimento
+  direto | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento
+  direto | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento
+  contexto | G1 | Entidades que representam bets pedem ao STF suspensão da MP de Lula que proíbe apostas online | Outro fato sobre o mesmo assunto
+  direto | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento
+  direto | O Dia | Flamengo entra com petição contra veto às bets no STF | Pelo título, relata o mesmo acontecimento
+  contexto | Sem Pauta News | Bets recorrem ao STF contra MP de Lula que proibiu apostas no País | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Va
+sco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Outro fato sobre o mesmo assunto
+  descartado | ge | Defesa de Bruno Henrique contesta acusação por estelionato e pede julgamento de STJ e STF | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | Agência Brasil | Justiça torna Bruno Henrique réu por estelionato | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  nao_independente | Estadão | Bruno Henrique vira réu por estelionato na Justiça do DF após recurso do MP | publicado pelo mesmo veículo da matéria importada (Estadão)
+  direto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Pelo título, relata o mesmo acontecimento
+  descartado | ge | STF decide que forçar cartão a pedido de apostadores não basta para manipular evento esportivo | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | ge | Forçar cartão amarelo é manipulação? Debate chega ao STF, e especialistas veem riscos | Outro acontecimento: Outro assunto com palavras parecidas
+  contexto | ge | Associações de apostas alegam inconstitucionalidade e pedem derrubada de MP no STF | Outro fato sobre o mesmo assunto
+  incerto | GZH | O contra-ataque das bets no STF e como ficará a camisa do Grêmio no próximo jogo | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  nao_independente | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  direto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Pelo título, relata o mesmo acontecimento
+  direto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento
+  nao_independente | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  direto | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Pelo título, relata o mesmo acontecimento
+  direto | O Dia | Flamengo entra com petição contra veto às bets no STF | Pelo título, relata o mesmo acontecimento
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Outro fato sobre o mesmo assunto
+  direto | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento
+  direto | Terra | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento
+  direto | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento
+  descartado | stf noticias | 135 anos do STF: como a Corte resolveu disputas jurídicas do futebol | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | Metrópoles | STF supera futebol em buscas no Google durante julgamento de Moraes | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  direto | professorrafaelporcari.com | – Flamengo recorre ao STF contra proibição das bets e cita perda de até R$ 430 m
+ilhões. | Pelo título, relata o mesmo acontecimento
+  descartado | Gazeta de São Paulo | STF tem torcedores de Flamengo, Palmeiras e Corinthians, mas estes não são maioria; veja lista completa dos ti | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | Francês News | Julgamento de Moraes faz buscas por STF superarem Flamengo no Google | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | Agência Brasil | PGR defende que Flamengo e Sport sejam campeões do Brasileiro de 1987 | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Migalhas | No STF, PGR defende pedido do Flamengo como campeão brasileiro de 1987 | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | diariodorio.com | PF informa ao STF que PM do Rio não enviou imagens de câmeras corporais de megaoperação na Penha | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | CNN Brasil | Sport reage a parecer da PGR sobre título do Campeonato Brasileiro de 1987 | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | portal.stf.jus.br | Página Principal | Portal STF | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | portal.stf.jus.br | Supremo Tribunal Federal | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | pt.wikipedia.org | Supremo Tribunal Federal – Wikipédia, a enciclopédia livre | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | g1.globo.com | STF - Supremo Tribunal Federal | Tudo Sobre | G1 | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | stf.jus.br | Supremo Tribunal Federal - stf.jus.br | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | cnnbrasil.com.br | STF | CNN Brasil | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | noticias.stf.jus.br | Supremo Tribunal Federal | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | constituicao.stf.jus.br | STF - Constituição Federal do Brasil | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | cms.stf.jus.br | Consulta processual - cms.stf.jus.br | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | portal.stf.jus.br | O STF | Portal STF | Outro acontecimento: Outro assunto com palavras parecidas
+  contexto | Wikipédia | Clube de Regatas do Flamengo | Contexto geral (enciclopédia)
+  contexto | Wikipédia | Títulos do Clube de Regatas do Flamengo no futebol | Contexto geral (enciclopédia)
+  descartado | Wikipédia | Campeonato Brasileiro de Futebol de 2026 - Série A | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Lista de presidentes do Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Lista de ministros do Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+INDEPENDENCIA (13)
+  propria | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das c
+asas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  republicacao | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  mesmo_veiculo | Estadão | Espanha goleia Croácia pela Liga das Nações com dois gols de Yamal e soma 40 jogos invicta | publicado pelo mesmo veículo da matéria importada (Estadão)
+  mesmo_veiculo | Estadão | Corinthians e Flamengo veem patrocínios de bets em xeque após veto do STF | publicado pelo mesmo veículo da matéria importada (Estadão)
+  propria | Estadão on MSN | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  propria | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  republicacao | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  propria | Estadão on MSN | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  propria | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  republicacao | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  mesmo_veiculo | Estadão | Bruno Henrique vira réu por estelionato na Justiça do DF após recurso do MP | publicado pelo mesmo veículo da matéria importada (Estadão)
+  propria | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  republicacao | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo título da matéria importada, publicado por outro veículo (republicação)
+ACONTECIMENTO (88)
+  mesmo_acontecimento | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “aciona” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “recorre ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “pede ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | ncnews.com.br | Flameng
+o vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “vai ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  outro_acontecimento | G1 | Antes de reunião com clubes, Lula diz que acabar com bets não traz 'prejuízo para o futebol' | Trata de outras pessoas ou de outro lugar | Quem: Lula — não é quem agiu na matéria importada (Flamengo clube); Ação: “diz” — diferente de “entrar com pedido”; Sobre o quê: bets — em comum; Nomes citados: lula — nenhum aparece na matéria importada
+  relacao_incerta | Impactto News | Entidades de apostas contestam no STF medida que suspendeu bets no Brasil | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: apostas, bets — em comum
+  contexto_relacionado | ge | Fim das bets: reunião de clubes com ministros é adiada para depois do primeiro turno das eleições | Trata do mesmo assunto, sem relatar este acontecimento | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: Fim, bets — em comum
+  relacao_incerta | Impactto News | Clubes paulistas discutem atuação conjunta após veto às casas de apostas | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: casas, apostas — em comum
+  outro_acontecimento | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Outro acontecimento com nomes ou palavras em comum | Quem: PGR — não é quem agiu na matéria importada (Flamengo clube); Ação: “defende” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | exame.com | 'Como vou pagar o Paquetá?': Bap critica proibição de bets e aponta impacto de R$ 400 mi no Fla | Trata de outras pessoas ou de outro lugar | Quem: Bap — não é quem agiu na matéria importada (Flamengo clube); Ação: “critica” — diferente de “entrar com pedido”; Sobre o quê: bets — em comum; Nomes citados: paqueta, fla — nenhum aparece na matéria importada
+  outro_acontecimento | CNN Brasil | Sport reage a parecer da PGR sobre título do Campeonato Brasileiro de 1987 | Trata de outras pessoas ou de outro lugar | Quem: Sport — não é quem agiu na matéria importada (Flamengo clube); Ação: “reage” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: pgr, campeonato — nenhum aparece na matéria importada
+  mesmo_acontecimento | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Pelo título, relata o mesmo acontecimento | Quem: Flamengo antecipa clubes — o mesmo da matéria importada; Ação: “pede ingresso” — equivale a “entrar com pedido”; Sobre o quê: fim, bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  outro_acontecimento | Terra | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | Trata de outras pessoas ou de outro lugar | Quem: Bap presidente Flamengo — o mesmo da matéria importada; Ação: “pede” — diferente de “
+entrar com pedido”; Sobre o quê: bets — em comum; Nomes citados: flamengo, mp, congresso — nenhum aparece na matéria importada
+  outro_acontecimento | ge | Forçar cartão amarelo é manipulação? Debate chega ao STF, e especialistas veem riscos | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | ge | Defesa de Bruno Henrique contesta acusação por estelionato e pede julgamento de STJ e STF | Outro acontecimento com nomes ou palavras em comum | Quem: Defesa Bruno Henrique contesta — não é quem agiu na matéria importada (Flamengo clube); Ação: “pede” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | ge | STF decide que forçar cartão a pedido de apostadores não basta para manipular evento esportivo | Outro acontecimento com nomes ou palavras em comum | Quem: STF — não é quem agiu na matéria importada (Flamengo clube); Ação: “decide” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  mesmo_acontecimento | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “pede ao STF” — equivale a “entrar com pedido”; Sobre o quê: fim, bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (29/09/2026)
+  contexto_relacionado | O TEMPO | Flamengo, Fluminense e Grêmio se manifestam sobre proibição das bets no Brasil | Mesmo envolvido, outra ação sobre o mesmo assunto | Quem: Flamengo Fluminense Grêmio — o mesmo da matéria importada; Ação: “manifestam” — diferente de “entrar com pedido”; Sobre o quê: bets — em comum
+  outro_acontecimento | Gazeta Brasil | “Hoje sou Flávio Bolsonaro 22”: torcedores do Flamengo reagem à MP das bets | Trata de outras pessoas ou de outro lugar | Quem: torcedores Flamengo — o mesmo da matéria importada; Ação: “reagem” — diferente de “entrar com pedido”; Sobre o quê: bets — em comum; Nomes citados: flamengo, mp — nenhum aparece na matéria importada
+  contexto_relacionado | Gazeta Brasil | “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil | Mesmo envolvido, outra ação sobre o mesmo assunto | Quem: Flamengo — o mesmo da matéria importada; Ação: “posiciona” — diferente de “entrar com pedido”; Sobre o quê: bets — em comum
+  mesmo_acontecimento | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Pelo título, relata o mesmo acontecimento | Quem: Flamengo antecipa clubes — o mesmo da matéria importada; Ação: “pede ingresso” — equivale a “entrar com pedido”; Sobre o quê: fim, bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “aciona” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o 
+mesmo da matéria importada; Ação: “recorre ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “pede ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  contexto_relacionado | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Outro fato sobre o mesmo assunto | Quem: não dá para saber pelo texto lido; Ação: “articulam” — diferente de “entrar com pedido”; Sobre o quê: fim, bets — em comum
+  mesmo_acontecimento | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “vai ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “entra no STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  outro_acontecimento | Portal Leo Dias | Em protesto ao fim das bets, clubes ameaçam parar o Brasileirão | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: fim, bets — em comum; Nomes citados: brasileirao — nenhum aparece na matéria importada
+  outro_acontecimento | Terra | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | Trata de outras pessoas ou de outro lugar | Quem: Bap presidente Flamengo — o mesmo da matéria importada; Ação: “pede” — diferente de “entrar com pedido”; Sobre o quê: bets — em comum; Nomes citados: flamengo, mp, congresso — nenhum aparece na matéria importada
+  contexto_relacionado | ge | Fim das bets: reunião de clubes com ministros é adiada para depois do primeiro turno das eleições | Trata do mesmo assunto, sem relatar este acontecimento | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: Fim, bets — em comum
+  outro_acontecimento | ge | Defesa de Bruno Henrique contesta acusação por estelionato e pede julgamento de STJ e STF | Outro acontecimento com nomes ou palavras em comum | Quem: Defesa Bruno Henrique contesta — não é quem agiu na matéria importada (Flamengo clube); Ação: “pede” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Folha PE | Flamengo campeão brasileiro de 87? PGR envia ao STF parecer favorável ao clube carioca | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Agência Brasil | PGR defende que Flamengo e Sport sejam campeõe
+s do Brasileiro de 1987 | Trata de outras pessoas ou de outro lugar | Quem: PGR — não é quem agiu na matéria importada (Flamengo clube); Ação: “defende” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: pgr, flamengo, sport — nenhum aparece na matéria importada
+  outro_acontecimento | O GLOBO | Alexandre de Moraes, Flávio Dino, Gilmar e Motta acompanham final entre Flamengo e Corinthians em Brasília | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: alexandre, moraes, flavio, dino, gilmar, motta, flamengo, corinthians, brasilia — nenhum aparece na matéria importada
+  outro_acontecimento | O GLOBO | PGR defende que STF reconheça Flamengo como campeão brasileiro de 1987 | Outro acontecimento com nomes ou palavras em comum | Quem: PGR — não é quem agiu na matéria importada (Flamengo clube); Ação: “defende” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | ge | Forçar cartão amarelo é manipulação? Debate chega ao STF, e especialistas veem riscos | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | ge | STF proíbe patrocinadoras de Corinthians e Flamengo de operar nacionalmente | Outro acontecimento com nomes ou palavras em comum | Quem: STF — não é quem agiu na matéria importada (Flamengo clube); Ação: “proíbe” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | G1 | Ministro do STF Dias Toffoli viajou para final da Libertadores com advogado do caso Banco Master | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  mesmo_acontecimento | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “pede ao STF” — equivale a “entrar com pedido”; Sobre o quê: fim, bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (29/09/2026)
+  mesmo_acontecimento | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “recorre ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (29/09/2026)
+  mesmo_acontecimento | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Relata o mesmo acontecimento | Quem: Flamengo antecipa clubes — o mesmo da matéria importada; Ação: “pede ingresso” — equivale a “entrar com pedido”; Sobre o quê: fim, bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (29/09/2026)
+  outro_acontecimento | Boa Informação | Presidente do Flamengo pede rejeição da MP sobre bets | Trata de outras pessoas ou de outro lugar | Quem: Presidente Flamengo — o mesmo da matéria importada; Ação: “pede” — diferente de “entrar com pedido”; Sobre o quê: 
+bets — em comum; Nomes citados: flamengo, mp — nenhum aparece na matéria importada
+  outro_acontecimento | GP1 | Presidente do Flamengo critica fim das bets: “como vou pagar o Paquetá?” | Trata de outras pessoas ou de outro lugar | Quem: Presidente Flamengo — o mesmo da matéria importada; Ação: “critica” — diferente de “entrar com pedido”; Sobre o quê: fim, bets — em comum; Nomes citados: flamengo — nenhum aparece na matéria importada
+  mesmo_acontecimento | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “aciona” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “recorre ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “pede ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “vai ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  contexto_relacionado | G1 | Entidades que representam bets pedem ao STF suspensão da MP de Lula que proíbe apostas online | Outro fato sobre o mesmo assunto | Quem: Entidades representam bets pedem — não é quem agiu na matéria importada (Flamengo clube); Ação: “suspensão” — diferente de “entrar com pedido”; Sobre o quê: bets, apostas — em comum
+  mesmo_acontecimento | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “entra no STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | O Dia | Flamengo entra com petição contra veto às bets no STF | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “entra com petição” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  contexto_relacionado | Sem Pauta News | Bets recorrem ao STF contra MP de Lula que proibiu apostas no País | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto | Quem: Bets — não é quem agiu na matéria importada (Flamengo clube); Ação: “recorrem ao STF” — equivale a “entrar com pedido”; Sobre o quê: Bets, apostas — em comum
+  contexto_relacionado | Gazeta Botafogo | Qua
+rta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Outro fato sobre o mesmo assunto | Quem: Quarta — não é quem agiu na matéria importada (Flamengo clube); Ação: “derrota” — diferente de “entrar com pedido”; Sobre o quê: BETS — em comum
+  outro_acontecimento | ge | Defesa de Bruno Henrique contesta acusação por estelionato e pede julgamento de STJ e STF | Outro acontecimento com nomes ou palavras em comum | Quem: Defesa Bruno Henrique contesta — não é quem agiu na matéria importada (Flamengo clube); Ação: “pede” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Agência Brasil | Justiça torna Bruno Henrique réu por estelionato | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: bruno, henrique — nenhum aparece na matéria importada
+  outro_acontecimento | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Outro acontecimento com nomes ou palavras em comum | Quem: PGR — não é quem agiu na matéria importada (Flamengo clube); Ação: “defende” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  mesmo_acontecimento | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Pelo título, relata o mesmo acontecimento | Quem: Flamengo antecipa clubes — o mesmo da matéria importada; Ação: “pede ingresso” — equivale a “entrar com pedido”; Sobre o quê: fim, bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  outro_acontecimento | ge | STF decide que forçar cartão a pedido de apostadores não basta para manipular evento esportivo | Outro acontecimento com nomes ou palavras em comum | Quem: STF — não é quem agiu na matéria importada (Flamengo clube); Ação: “decide” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | ge | Forçar cartão amarelo é manipulação? Debate chega ao STF, e especialistas veem riscos | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  contexto_relacionado | ge | Associações de apostas alegam inconstitucionalidade e pedem derrubada de MP no STF | Outro fato sobre o mesmo assunto | Quem: Associações apostas alegam inconstitucionalidade — não é quem agiu na matéria importada (Flamengo clube); Ação: “pedem” — diferente de “entrar com pedido”; Sobre o quê: apostas — em comum
+  relacao_incerta | GZH | O contra-ataque das bets no STF e como ficará a camisa do Grêmio no próximo jogo | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: bets — em comum
+  mesmo_acontecimento | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Pelo título, relata o mesmo acontecimento | Quem: Flamengo antecipa clubes — o mesmo da matéria importada; Ação: “pede ingresso” — equivale a “entrar com pedido”; Sobre o quê: fim, bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  
+mesmo_acontecimento | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “aciona” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “recorre ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | O Dia | Flamengo entra com petição contra veto às bets no STF | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “entra com petição” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  contexto_relacionado | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Outro fato sobre o mesmo assunto | Quem: não dá para saber pelo texto lido; Ação: “articulam” — diferente de “entrar com pedido”; Sobre o quê: fim, bets — em comum
+  mesmo_acontecimento | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “vai ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | Terra | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “pede ao STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  mesmo_acontecimento | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “entra no STF” — equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  outro_acontecimento | stf noticias | 135 anos do STF: como a Corte resolveu disputas jurídicas do futebol | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Metrópoles | STF supera futebol em buscas no Google durante julgamento de Moraes | Outro acontecimento com nomes ou palavras em comum | Quem: STF supera futebol buscas — não é quem agiu na matéria importada (Flamengo clube); Ação: “julgamento” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  mesmo_acontecimento | professorrafaelporcari.com | – Flamengo recorre ao STF contra proibição das bets e cita perda de até R$ 430 milhões. | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “recorre ao STF” 
+— equivale a “entrar com pedido”; Sobre o quê: bets — em comum; Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+  outro_acontecimento | Gazeta de São Paulo | STF tem torcedores de Flamengo, Palmeiras e Corinthians, mas estes não são maioria; veja lista completa dos ti | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Francês News | Julgamento de Moraes faz buscas por STF superarem Flamengo no Google | Outro acontecimento com nomes ou palavras em comum | Quem: não dá para saber pelo texto lido; Ação: “Julgamento” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Outro acontecimento com nomes ou palavras em comum | Quem: PGR — não é quem agiu na matéria importada (Flamengo clube); Ação: “defende” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Agência Brasil | PGR defende que Flamengo e Sport sejam campeões do Brasileiro de 1987 | Trata de outras pessoas ou de outro lugar | Quem: PGR — não é quem agiu na matéria importada (Flamengo clube); Ação: “defende” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: pgr, flamengo, sport — nenhum aparece na matéria importada
+  outro_acontecimento | Migalhas | No STF, PGR defende pedido do Flamengo como campeão brasileiro de 1987 | Outro acontecimento com nomes ou palavras em comum | Quem: STF PGR — não é quem agiu na matéria importada (Flamengo clube); Ação: “defende” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | diariodorio.com | PF informa ao STF que PM do Rio não enviou imagens de câmeras corporais de megaoperação na Penha | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | CNN Brasil | Sport reage a parecer da PGR sobre título do Campeonato Brasileiro de 1987 | Trata de outras pessoas ou de outro lugar | Quem: Sport — não é quem agiu na matéria importada (Flamengo clube); Ação: “reage” — diferente de “entrar com pedido”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: pgr, campeonato — nenhum aparece na matéria importada
+  outro_acontecimento | portal.stf.jus.br | Página Principal | Portal STF | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | portal.stf.jus.br | Supremo Tribunal Federal | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: supremo — nenhum aparece na matéria importada
+  outro_acontecimento | pt.wikipedia.org | Supremo Tribunal Federal – Wikipédia, a enciclopédia livre | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunt
+o em comum; Nomes citados: supremo, wikipedia — nenhum aparece na matéria importada
+  outro_acontecimento | g1.globo.com | STF - Supremo Tribunal Federal | Tudo Sobre | G1 | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | stf.jus.br | Supremo Tribunal Federal - stf.jus.br | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: supremo — nenhum aparece na matéria importada
+  outro_acontecimento | cnnbrasil.com.br | STF | CNN Brasil | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | noticias.stf.jus.br | Supremo Tribunal Federal | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: supremo — nenhum aparece na matéria importada
+  outro_acontecimento | constituicao.stf.jus.br | STF - Constituição Federal do Brasil | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | cms.stf.jus.br | Consulta processual - cms.stf.jus.br | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | portal.stf.jus.br | O STF | Portal STF | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+DUPLICATA (19)
+  removida | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | mesma URL já recebida de bing_news
+  removida | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | mesma URL já recebida de google_news
+  removida | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | mesma URL já recebida de google_news
+  removida | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | mesma URL já recebida de google_news
+  removida | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | mesma URL já recebida de google_news
+  removida | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | mesma URL já recebida de google_news
+  removida | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | mesma URL já recebida de google_news
+  removida | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | mesma URL já recebida de google_news
+  removida | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesma URL já recebida de google_news
+  removida | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | mesma URL já recebida de google_news
+  removida | ncnews.
+com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | mesma URL já recebida de google_news
+  removida | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesma URL já recebida de google_news
+  removida | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | mesma URL já recebida de google_news
+  removida | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | mesma URL já recebida de google_news
+  removida | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesma URL já recebida de google_news
+  removida | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | mesma URL já recebida de google_news
+  removida | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | mesma URL já recebida de google_news
+  removida | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | mesma URL já recebida de google_news
+  removida | ge | Fim das bets: reunião de clubes com ministros é adiada para depois do primeiro turno das eleições | mesma URL já recebida de google_news
+REPUBLICACAO (4)
+  agrupada | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | título/trecho quase igual a O GLOBO
+  agrupada | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | título/trecho quase igual a Brasil 247
+  agrupada | Terra | Flamengo pede ao STF para entrar em ação contra veto às bets | título/trecho quase igual a iG Esportes
+  agrupada | O Dia | Flamengo entra com petição contra veto às bets no STF | título/trecho quase igual a O Dia
+RELEITURA (0)
+LIMITE (0)
+EXIBIDA (28)
+  direto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Relata o mesmo acontecimento
+  direto | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento
+  direto | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Relata o mesmo acontecimento
+  direto | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento
+  direto | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento
+  direto | O Dia | Flamengo entra com petição contra veto às bets no STF | Pelo título, relata o mesmo acontecimento
+  direto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento
+  direto | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento
+  direto | professorrafaelporcari.com | – Flamengo recorre ao STF contra proibição das bets e cita perda de até R$ 430 milhões. | Pelo título, relata o mesmo acontecimento
+  incerto | Impactto News | Entidades de apostas contestam no STF medida que suspendeu bets no Brasil | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  incerto | GZH | O contra-ataque das bets no STF e como ficará a camisa do Grêmio no próximo jogo | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  incerto | Impactto News | Clubes paulistas discutem atuaçã
+o conjunta após veto às casas de apostas | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  contexto | O TEMPO | Flamengo, Fluminense e Grêmio se manifestam sobre proibição das bets no Brasil | Mesmo envolvido, outra ação sobre o mesmo assunto
+  contexto | Gazeta Brasil | “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil | Mesmo envolvido, outra ação sobre o mesmo assunto
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Outro fato sobre o mesmo assunto
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Outro fato sobre o mesmo assunto
+  contexto | G1 | Entidades que representam bets pedem ao STF suspensão da MP de Lula que proíbe apostas online | Outro fato sobre o mesmo assunto
+  contexto | Sem Pauta News | Bets recorrem ao STF contra MP de Lula que proibiu apostas no País | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto
+  contexto | ge | Associações de apostas alegam inconstitucionalidade e pedem derrubada de MP no STF | Outro fato sobre o mesmo assunto
+  contexto | ge | Fim das bets: reunião de clubes com ministros é adiada para depois do primeiro turno das eleições | Trata do mesmo assunto, sem relatar este acontecimento
+  contexto_geral | Wikipédia | Títulos do Clube de Regatas do Flamengo no futebol | Contexto geral (enciclopédia)
+  contexto_geral | Wikipédia | Clube de Regatas do Flamengo | Contexto geral (enciclopédia)
+  nao_independente | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  nao_independente | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  nao_independente | Estadão | Espanha goleia Croácia pela Liga das Nações com dois gols de Yamal e soma 40 jogos invicta | publicado pelo mesmo veículo da matéria importada (Estadão)
+  nao_independente | Estadão | Corinthians e Flamengo veem patrocínios de bets em xeque após veto do STF | publicado pelo mesmo veículo da matéria importada (Estadão)
+  nao_independente | Estadão on MSN | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesmo veículo e mesmo título da matéria importada
+  nao_independente | Estadão | Bruno Henrique vira réu por estelionato na Justiça do DF após recurso do MP | publicado pelo mesmo veículo da matéria importada (Estadão)
+RELACAO (28)
+  mesmo_fato | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento [leitura: pagina] «O Flamengo se antecipou aos clubes e acionou o Supremo Tribunal Federal (STF) para tentar derrubar o veto às bets.»
+  mesmo_fato | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do g
+overno | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | O Dia | Flamengo entra com petição contra veto às bets no STF | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | professorrafaelporcari.com | – Flamengo recorre ao STF contra proibição das bets e cita perda de até R$ 430 milhões. | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  indefinido | Impactto News | Entidades de apostas contestam no STF medida que suspendeu bets no Brasil | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: titulo]
+  indefinido | GZH | O contra-ataque das bets no STF e como ficará a camisa do Grêmio no próximo jogo | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: titulo]
+  indefinido | Impactto News | Clubes paulistas discutem atuação conjunta após veto às casas de apostas | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: titulo]
+  contexto | O TEMPO | Flamengo, Fluminense e Grêmio se manifestam sobre proibição das bets no Brasil | Mesmo envolvido, outra ação sobre o mesmo assunto [leitura: pagina]
+  contexto | Gazeta Brasil | “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil | Mesmo envolvido, outra ação sobre o mesmo assunto [leitura: pagina]
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Outro fato sobre o mesmo assunto [leitura: titulo]
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Outro fato sobre o mesmo assunto [leitura: titulo]
+  contexto | G1 | Entidades que representam bets pedem ao STF suspensão da MP de Lula que proíbe apostas online | Outro fato sobre o mesmo assunto [leitura: titulo]
+  contexto | Sem Pauta News | Bets recorrem ao STF contra MP de Lula que proibiu apostas no País | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto [leitura: titulo]
+  contexto | ge | Associações de apostas alegam inconstitucionalidade e pedem derrubada de MP no STF | Outro fato sobre o mesmo assunto [leitura: titulo]
+  contexto | ge | Fim das bets: reunião de clubes com ministros é adiada para depois do primeiro turno das eleições | Trata do mesmo assunto, sem relatar este acontecimento [leitura: titulo]
+  contexto | Wikipédia | Títulos do Clube de Regatas do Flamengo no futebol | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]
+  contexto | Wikipédia | Clube de Regatas do Flamengo | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]
+  propria | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | É a própria matéria importada (mesmo veículo e mesmo título da matéria importada) [leitura: titulo]
+  republicacao | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Republicação da matéria importada (mesmo título da matéria importada, publicado por outro veículo (republicação)) [leitura: titulo]
+  mesmo_veiculo | Estadão | Espanha goleia Croá
+cia pela Liga das Nações com dois gols de Yamal e soma 40 jogos invicta | Publicação do mesmo veículo da matéria importada (publicado pelo mesmo veículo da matéria importada (Estadão)) [leitura: titulo]
+  mesmo_veiculo | Estadão | Corinthians e Flamengo veem patrocínios de bets em xeque após veto do STF | Publicação do mesmo veículo da matéria importada (publicado pelo mesmo veículo da matéria importada (Estadão)) [leitura: titulo]
+  propria | Estadão on MSN | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | É a própria matéria importada (mesmo veículo e mesmo título da matéria importada) [leitura: trecho]
+  mesmo_veiculo | Estadão | Bruno Henrique vira réu por estelionato na Justiça do DF após recurso do MP | Publicação do mesmo veículo da matéria importada (publicado pelo mesmo veículo da matéria importada (Estadão)) [leitura: titulo]
