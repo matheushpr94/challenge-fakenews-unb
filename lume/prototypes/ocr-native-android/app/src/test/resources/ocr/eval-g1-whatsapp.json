@@ -1,0 +1,464 @@
+{
+ "image": "eval-g1-whatsapp.png",
+ "width": 1106,
+ "height": 1314,
+ "blocks": [
+  {
+   "text": "WhatsApp anuncia novos controles\nparentais para adolescentes no Brasil",
+   "box": [
+    173,
+    84,
+    853,
+    172
+   ],
+   "lines": [
+    {
+     "text": "WhatsApp anuncia novos controles",
+     "box": [
+      173,
+      84,
+      816,
+      123
+     ],
+     "confidence": 0.8896821141242981
+    },
+    {
+     "text": "parentais para adolescentes no Brasil",
+     "box": [
+      176,
+      132,
+      853,
+      172
+     ],
+     "confidence": 0.8757102489471436
+    }
+   ]
+  },
+  {
+   "text": "Pais e responsáveis poderão definir quem pode adicionar o adolescente a grupos,\nreceber notificações sobre a atividade dele e limitar o acesso a conteúdos da Meta Al.",
+   "box": [
+    175,
+    190,
+    871,
+    229
+   ],
+   "lines": [
+    {
+     "text": "Pais e responsáveis poderão definir quem pode adicionar o adolescente a grupos,",
+     "box": [
+      175,
+      190,
+      843,
+      207
+     ],
+     "confidence": 0.8914292454719543
+    },
+    {
+     "text": "receber notificações sobre a atividade dele e limitar o acesso a conteúdos da Meta Al.",
+     "box": [
+      175,
+      212,
+      871,
+      229
+     ],
+     "confidence": 0.8772243857383728
+    }
+   ]
+  },
+  {
+   "text": "Por Redação g1 -São Paulo",
+   "box": [
+    175,
+    256,
+    411,
+    274
+   ],
+   "lines": [
+    {
+     "text": "Por Redação g1 -São Paulo",
+     "box": [
+      175,
+      256,
+      411,
+      274
+     ],
+     "confidence": 0.816220223903656
+    }
+   ]
+  },
+  {
+   "text": "lal inteligência artificial itaú",
+   "box": [
+    438,
+    19,
+    642,
+    42
+   ],
+   "lines": [
+    {
+     "text": "lal inteligência artificial itaú",
+     "box": [
+      438,
+      19,
+      642,
+      42
+     ],
+     "confidence": 0.7416487336158752
+    }
+   ]
+  },
+  {
+   "text": "30\/09\/2026 11h19 Atualizado há 13 minutos",
+   "box": [
+    174,
+    277,
+    552,
+    296
+   ],
+   "lines": [
+    {
+     "text": "30\/09\/2026 11h19 Atualizado há 13 minutos",
+     "box": [
+      174,
+      277,
+      552,
+      296
+     ],
+     "confidence": 0.890625
+    }
+   ]
+  },
+  {
+   "text": "gl.com.br",
+   "box": [
+    348,
+    446,
+    371,
+    531
+   ],
+   "lines": [
+    {
+     "text": "gl.com.br",
+     "box": [
+      348,
+      446,
+      371,
+      531
+     ],
+     "confidence": 0.7903645634651184
+    }
+   ]
+  },
+  {
+   "text": "tac",
+   "box": [
+    298,
+    1307,
+    322,
+    1314
+   ],
+   "lines": [
+    {
+     "text": "tac",
+     "box": [
+      298,
+      1307,
+      322,
+      1314
+     ],
+     "confidence": 0.4713541567325592
+    }
+   ]
+  },
+  {
+   "text": "Nome de usuário",
+   "box": [
+    470,
+    408,
+    597,
+    422
+   ],
+   "lines": [
+    {
+     "text": "Nome de usuário",
+     "box": [
+      470,
+      408,
+      597,
+      422
+     ],
+     "confidence": 0.8816105723381042
+    }
+   ]
+  },
+  {
+   "text": "Os nomes de usuário\nlançados em breve. Re\njá o seu.",
+   "box": [
+    372,
+    644,
+    630,
+    735
+   ],
+   "lines": [
+    {
+     "text": "Os nomes de usuário",
+     "box": [
+      376,
+      646,
+      620,
+      666
+     ],
+     "confidence": 0.863037109375
+    },
+    {
+     "text": "lançados em breve. Re",
+     "box": [
+      373,
+      678,
+      631,
+      703
+     ],
+     "confidence": 0.890625
+    },
+    {
+     "text": "já o seu.",
+     "box": [
+      484,
+      707,
+      579,
+      734
+     ],
+     "confidence": 0.828125
+    }
+   ]
+  },
+  {
+   "text": "Com o nome de usuário, seu nú.\nde telefone não será exibido par\npessoas que não sabem seu núr",
+   "box": [
+    422,
+    761,
+    650,
+    818
+   ],
+   "lines": [
+    {
+     "text": "Com o nome de usuário, seu nú.",
+     "box": [
+      430,
+      761,
+      644,
+      777
+     ],
+     "confidence": 0.7303059697151184
+    },
+    {
+     "text": "de telefone não será exibido par",
+     "box": [
+      422,
+      781,
+      650,
+      798
+     ],
+     "confidence": 0.8531539440155029
+    },
+    {
+     "text": "pessoas que não sabem seu núr",
+     "box": [
+      422,
+      802,
+      648,
+      818
+     ],
+     "confidence": 0.7991536259651184
+    }
+   ]
+  },
+  {
+   "text": "WhatsApp ganha nomes de\nusuárioevai dispensar número\nControlar auen\npara começar conversa",
+   "box": [
+    344,
+    813,
+    759,
+    899
+   ],
+   "lines": [
+    {
+     "text": "WhatsApp ganha nomes de",
+     "box": [
+      344,
+      814,
+      716,
+      842
+     ],
+     "confidence": 0.8599609136581421
+    },
+    {
+     "text": "usuárioevai dispensar número",
+     "box": [
+      345,
+      844,
+      760,
+      871
+     ],
+     "confidence": 0.7540565133094788
+    },
+    {
+     "text": "Controlar auen",
+     "box": [
+      423,
+      863,
+      520,
+      883
+     ],
+     "confidence": 0.4663461446762085
+    },
+    {
+     "text": "para começar conversa",
+     "box": [
+      345,
+      876,
+      653,
+      899
+     ],
+     "confidence": 0.7109375
+    }
+   ]
+  },
+  {
+   "text": "WhatsApp ganha nomes de usuário e vai dispensar\nnúmero para começar conversa",
+   "box": [
+    302,
+    1139,
+    730,
+    1173
+   ],
+   "lines": [
+    {
+     "text": "WhatsApp ganha nomes de usuário e vai dispensar",
+     "box": [
+      302,
+      1139,
+      730,
+      1157
+     ],
+     "confidence": 0.877636730670929
+    },
+    {
+     "text": "número para começar conversa",
+     "box": [
+      303,
+      1158,
+      567,
+      1173
+     ],
+     "confidence": 0.8189062476158142
+    }
+   ]
+  },
+  {
+   "text": "mal",
+   "box": [
+    381,
+    1305,
+    399,
+    1314
+   ],
+   "lines": [
+    {
+     "text": "mal",
+     "box": [
+      381,
+      1305,
+      399,
+      1314
+     ],
+     "confidence": 0.58984375
+    }
+   ]
+  },
+  {
+   "text": "Saiba mais",
+   "box": [
+    422,
+    904,
+    495,
+    919
+   ],
+   "lines": [
+    {
+     "text": "Saiba mais",
+     "box": [
+      422,
+      904,
+      495,
+      919
+     ],
+     "confidence": 0.8255208134651184
+    }
+   ]
+  },
+  {
+   "text": "O WhatsApp anunciou nesta quarta-feira (30)",
+   "box": [
+    175,
+    1225,
+    546,
+    1242
+   ],
+   "lines": [
+    {
+     "text": "O WhatsApp anunciou nesta quarta-feira (30)",
+     "box": [
+      175,
+      1225,
+      546,
+      1242
+     ],
+     "confidence": 0.87890625
+    }
+   ]
+  },
+  {
+   "text": "novos recursos de controle parental para",
+   "box": [
+    175,
+    1253,
+    526,
+    1270
+   ],
+   "lines": [
+    {
+     "text": "novos recursos de controle parental para",
+     "box": [
+      175,
+      1253,
+      526,
+      1270
+     ],
+     "confidence": 0.9167410731315613
+    }
+   ]
+  },
+  {
+   "text": "\"conlizr hlicicade",
+   "box": [
+    777,
+    1305,
+    946,
+    1314
+   ],
+   "lines": [
+    {
+     "text": "\"conlizr hlicicade",
+     "box": [
+      777,
+      1305,
+      946,
+      1314
+     ],
+     "confidence": 0.5016084313392639
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,446 @@
+{
+ "image": "eval-x-huck.png",
+ "width": 1170,
+ "height": 2532,
+ "blocks": [
+  {
+   "text": "11:20 C",
+   "box": [
+    102,
+    56,
+    276,
+    97
+   ],
+   "lines": [
+    {
+     "text": "11:20 C",
+     "box": [
+      102,
+      56,
+      276,
+      97
+     ],
+     "confidence": 0.68359375
+    }
+   ]
+  },
+  {
+   "text": "WEW",
+   "box": [
+    79,
+    398,
+    114,
+    416
+   ],
+   "lines": [
+    {
+     "text": "WEW",
+     "box": [
+      79,
+      398,
+      114,
+      416
+     ],
+     "confidence": 0.4739583432674408
+    }
+   ]
+  },
+  {
+   "text": "SPACE LIBERDADE",
+   "box": [
+    206,
+    328,
+    595,
+    369
+   ],
+   "lines": [
+    {
+     "text": "SPACE LIBERDADE",
+     "box": [
+      206,
+      328,
+      595,
+      369
+     ],
+     "confidence": 0.8794642686843872
+    }
+   ]
+  },
+  {
+   "text": "@NewsLiberdade",
+   "box": [
+    186,
+    386,
+    534,
+    420
+   ],
+   "lines": [
+    {
+     "text": "@NewsLiberdade",
+     "box": [
+      186,
+      386,
+      534,
+      420
+     ],
+     "confidence": 0.8434709906578064
+    }
+   ]
+  },
+  {
+   "text": "3 Show translation",
+   "box": [
+    31,
+    488,
+    382,
+    521
+   ],
+   "lines": [
+    {
+     "text": "3 Show translation",
+     "box": [
+      31,
+      488,
+      382,
+      521
+     ],
+     "confidence": 0.824951171875
+    }
+   ]
+  },
+  {
+   "text": "Post",
+   "box": [
+    533,
+    186,
+    637,
+    224
+   ],
+   "lines": [
+    {
+     "text": "Post",
+     "box": [
+      533,
+      186,
+      637,
+      224
+     ],
+     "confidence": 0.9072265625
+    }
+   ]
+  },
+  {
+   "text": "10:22- 30\/09\/26 22K Views",
+   "box": [
+    29,
+    1447,
+    584,
+    1490
+   ],
+   "lines": [
+    {
+     "text": "10:22- 30\/09\/26 22K Views",
+     "box": [
+      29,
+      1447,
+      584,
+      1490
+     ],
+     "confidence": 0.84765625
+    }
+   ]
+  },
+  {
+   "text": "O 42 tl 424",
+   "box": [
+    28,
+    1540,
+    456,
+    1593
+   ],
+   "lines": [
+    {
+     "text": "O 42 tl 424",
+     "box": [
+      28,
+      1540,
+      456,
+      1593
+     ],
+     "confidence": 0.5673828125
+    }
+   ]
+  },
+  {
+   "text": "EURGENTE - Mensagens da PF revelam que\nLuciano Huck foi sócio, amigo e conselheiro de\nDaniel Vorcaro, diz Veja",
+   "box": [
+    31,
+    546,
+    1088,
+    743
+   ],
+   "lines": [
+    {
+     "text": "EURGENTE - Mensagens da PF revelam que",
+     "box": [
+      50,
+      546,
+      1060,
+      600
+     ],
+     "confidence": 0.8365478515625
+    },
+    {
+     "text": "Luciano Huck foi sócio, amigo e conselheiro de",
+     "box": [
+      31,
+      625,
+      1088,
+      670
+     ],
+     "confidence": 0.8433493375778198
+    },
+    {
+     "text": "Daniel Vorcaro, diz Veja",
+     "box": [
+      31,
+      695,
+      561,
+      743
+     ],
+     "confidence": 0.8677455186843872
+    }
+   ]
+  },
+  {
+   "text": "Relevant v",
+   "box": [
+    30,
+    1675,
+    244,
+    1707
+   ],
+   "lines": [
+    {
+     "text": "Relevant v",
+     "box": [
+      30,
+      1675,
+      244,
+      1707
+     ],
+     "confidence": 0.8606770634651184
+    }
+   ]
+  },
+  {
+   "text": "Post your reply",
+   "box": [
+    67,
+    2191,
+    359,
+    2233
+   ],
+   "lines": [
+    {
+     "text": "Post your reply",
+     "box": [
+      67,
+      2191,
+      359,
+      2233
+     ],
+     "confidence": 0.91796875
+    }
+   ]
+  },
+  {
+   "text": "2,6K",
+   "box": [
+    644,
+    1551,
+    730,
+    1590
+   ],
+   "lines": [
+    {
+     "text": "2,6K",
+     "box": [
+      644,
+      1551,
+      730,
+      1590
+     ],
+     "confidence": 0.7724609375
+    }
+   ]
+  },
+  {
+   "text": "0ll 994",
+   "box": [
+    878,
+    54,
+    1081,
+    98
+   ],
+   "lines": [
+    {
+     "text": "0ll 994",
+     "box": [
+      878,
+      54,
+      1081,
+      98
+     ],
+     "confidence": 0.4075520932674408
+    }
+   ]
+  },
+  {
+   "text": "34",
+   "box": [
+    656,
+    2004,
+    699,
+    2033
+   ],
+   "lines": [
+    {
+     "text": "34",
+     "box": [
+      656,
+      2004,
+      699,
+      2033
+     ],
+     "confidence": 0.9296875
+    }
+   ]
+  },
+  {
+   "text": "X.com",
+   "box": [
+    933,
+    324,
+    1108,
+    371
+   ],
+   "lines": [
+    {
+     "text": "X.com",
+     "box": [
+      933,
+      324,
+      1108,
+      371
+     ],
+     "confidence": 0.750781238079071
+    }
+   ]
+  },
+  {
+   "text": "37",
+   "box": [
+    906,
+    1551,
+    951,
+    1586
+   ],
+   "lines": [
+    {
+     "text": "37",
+     "box": [
+      906,
+      1551,
+      951,
+      1586
+     ],
+     "confidence": 0.697265625
+    }
+   ]
+  },
+  {
+   "text": "Canário Branco @CanarioB9. .55m Ø\nLuciano Huck é amigo e aliado de Lula e dos\nministros da Primeira Turma",
+   "box": [
+    186,
+    1801,
+    1063,
+    1956
+   ],
+   "lines": [
+    {
+     "text": "Canário Branco @CanarioB9. .55m Ø",
+     "box": [
+      186,
+      1801,
+      1060,
+      1844
+     ],
+     "confidence": 0.7948545217514038
+    },
+    {
+     "text": "Luciano Huck é amigo e aliado de Lula e dos",
+     "box": [
+      188,
+      1861,
+      1063,
+      1904
+     ],
+     "confidence": 0.8624770045280457
+    },
+    {
+     "text": "ministros da Primeira Turma",
+     "box": [
+      188,
+      1923,
+      747,
+      1956
+     ],
+     "confidence": 0.8600260615348816
+    }
+   ]
+  },
+  {
+   "text": "View quotes >",
+   "box": [
+    846,
+    1671,
+    1135,
+    1716
+   ],
+   "lines": [
+    {
+     "text": "View quotes >",
+     "box": [
+      846,
+      1671,
+      1135,
+      1716
+     ],
+     "confidence": 0.8490766882896423
+    }
+   ]
+  },
+  {
+   "text": "l 766",
+   "box": [
+    814,
+    1997,
+    921,
+    2039
+   ],
+   "lines": [
+    {
+     "text": "l 766",
+     "box": [
+      814,
+      1997,
+      921,
+      2039
+     ],
+     "confidence": 0.716796875
+    }
+   ]
+  }
+ ]
+}

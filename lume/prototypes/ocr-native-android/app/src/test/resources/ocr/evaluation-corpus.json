@@ -1,0 +1,68 @@
+{
+  "purpose": "Avaliar somente leitura e escolha do texto a pesquisar; as capturas não são rótulos de veracidade.",
+  "cases": [
+    {
+      "id": "eval-x-huck",
+      "kind": "post",
+      "scenario": "Post principal do X com imagens e resposta de outro perfil abaixo.",
+      "expectedFocus": "Mensagens da PF revelam que Luciano Huck foi sócio, amigo e conselheiro de Daniel Vorcaro, diz Veja",
+      "mustKeep": ["Luciano Huck", "Daniel Vorcaro", "sócio", "conselheiro"],
+      "claimMustExclude": ["Canário Branco", "ministros da Primeira Turma"],
+      "bodyMustExclude": ["Canário Branco", "ministros da Primeira Turma"]
+    },
+    {
+      "id": "eval-x-almoco",
+      "kind": "post",
+      "scenario": "Post do X com fotos, chamada de veículo e resposta de outro perfil.",
+      "expectedFocus": "Imagens mostram como foi o almoço 'ultra vip' organizado por Vorcaro para Moraes, diz O Globo",
+      "mustKeep": ["almoço", "Vorcaro", "Moraes"],
+      "claimMustExclude": ["Pague seus impostos"],
+      "bodyMustExclude": ["Pague seus impostos"]
+    },
+    {
+      "id": "eval-x-sobretaxa",
+      "kind": "post",
+      "scenario": "Post do X com número, indicação temporal, texto dentro de imagem e resposta abaixo.",
+      "expectedFocus": "China impõe sobretaxa de 55% sobre as carnes bovinas brasileiras a partir de amanhã",
+      "mustKeep": ["China", "55%", "carnes bovinas brasileiras", "amanhã"],
+      "claimMustExclude": ["Imposto Novo", "Caíque Lopes"],
+      "bodyMustExclude": ["Caíque Lopes"]
+    },
+    {
+      "id": "eval-x-flamengo",
+      "kind": "post",
+      "scenario": "Resultado de busca no X; consulta no topo e post com vários parágrafos.",
+      "expectedFocus": "Flamengo entra com pedido no STF contra Medida Provisória que proibiu as bets",
+      "mustKeep": ["Flamengo", "pedido", "STF", "Medida Provisória", "bets"],
+      "claimMustExclude": ["bets flamengo stf", "Top Latest People"],
+      "bodyMustExclude": ["bets flamengo stf"]
+    },
+    {
+      "id": "eval-g1-investigacao",
+      "kind": "article",
+      "scenario": "Matéria com barra do portal, anúncio, botões de compartilhamento e aviso de cookies.",
+      "expectedFocus": "EUA abrem investigação inédita sobre OpenAI e Anthropic após agentes de IA invadirem sistemas",
+      "mustKeep": ["EUA", "investigação", "OpenAI", "Anthropic", "agentes de IA"],
+      "claimMustExclude": ["inteligência artificial itaú", "cookies", "Prosseguir"],
+      "bodyMustExclude": ["cookies", "Prosseguir"]
+    },
+    {
+      "id": "eval-g1-whatsapp",
+      "kind": "article",
+      "scenario": "Matéria com anúncio e texto de outra funcionalidade do WhatsApp dentro da imagem.",
+      "expectedFocus": "WhatsApp anuncia novos controles parentais para adolescentes no Brasil",
+      "mustKeep": ["WhatsApp", "controles parentais", "adolescentes", "Brasil"],
+      "claimMustExclude": ["nomes de usuário", "dispensar número", "inteligência artificial itaú"],
+      "bodyMustExclude": ["inteligência artificial itaú"]
+    },
+    {
+      "id": "eval-metropoles-lei-seca",
+      "kind": "article",
+      "scenario": "Título de guia com dois-pontos e ordinal; botão do site e crédito de imagem.",
+      "expectedFocus": "Lei Seca: saiba em quais estados é proibido beber no 1º turno das eleições",
+      "mustKeep": ["Lei Seca", "em quais estados", "1", "turno", "eleições"],
+      "claimMustExclude": ["Adicione o Metrópoles", "Getty Images"],
+      "bodyMustExclude": ["Adicione o Metrópoles"]
+    }
+  ]
+}

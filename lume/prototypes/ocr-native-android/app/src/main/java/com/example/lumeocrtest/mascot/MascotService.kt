@@ -1,6 +1,5 @@
 package com.example.lumeocrtest.mascot
 
-import android.animation.ValueAnimator
 import android.app.*
 import android.content.*
 import android.content.pm.ServiceInfo
@@ -9,7 +8,7 @@ import android.graphics.PixelFormat
 import android.os.*
 import android.provider.Settings
 import android.view.*
-import android.view.animation.OvershootInterpolator
+import android.view.animation.DecelerateInterpolator
 import android.widget.*
 import androidx.core.app.NotificationCompat
 import com.example.lumeocrtest.MainActivity
@@ -31,18 +30,22 @@ class MascotService : Service() {
         private const val CHANNEL = "lume_mascot"
     }
     private lateinit var manager: WindowManager
-    private var bubble: ImageView? = null
+    private var bubble: SlimeView? = null
     private var panel: View? = null
     private var closingPanel: View? = null
     private var params: WindowManager.LayoutParams? = null
-    private var snap: ValueAnimator? = null
     private var screenOn = true
+    private var motion: MascotMotion? = null
+    private val mainHandler = Handler(Looper.getMainLooper())
+    /** Lado e altura relativa em que a gotinha repousa, para manter o lugar ao girar a tela. */
+    private var atRight = true
+    private var relativeY = 1f / 3
     private val receiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             screenOn = intent.action != Intent.ACTION_SCREEN_OFF
             if (!screenOn) {
-                snap?.cancel(); bubble?.animate()?.cancel(); hidePanel()
-            }
+                motion?.stop(); hidePanel()
+            } else if (bubble?.visibility == View.VISIBLE) motion?.start()
         }
     }
     override fun onBind(intent: Intent?) = null
@@ -56,11 +59,18 @@ class MascotService : Service() {
         if (intent?.action == STOP) { dismissMascot(); return START_NOT_STICKY }
         if (intent?.action == HIDE_FOR_CAPTURE) {
             hidePanel()
+            motion?.stop()
             bubble?.visibility = View.INVISIBLE
             return START_NOT_STICKY
         }
         if (intent?.action == SHOW_AFTER_CAPTURE) {
-            bubble?.visibility = View.VISIBLE
+            val view = bubble
+            val lp = params
+            if (view != null && lp != null) {
+                view.visibility = View.VISIBLE
+                // Volta emergindo da borda, numa versão curta da entrada.
+                if (screenOn) { motion?.start(); view.post { motion?.enter(restX(lp), atRight, lp.width, short = true) } }
+            }
             return START_NOT_STICKY
         }
         if (!Settings.canDrawOverlays(this)) { stopSelf(); return START_NOT_STICKY }
@@ -102,128 +112,155 @@ class MascotService : Service() {
         @Suppress("DEPRECATION") manager.defaultDisplay.getSize(rect)
         return intArrayOf((rect.x-width).coerceAtLeast(0), (rect.y-height-dp(32)).coerceAtLeast(0))
     }
+    /** Mesmo desenho, decodificado com folga sobre o tamanho exibido (nitidez ao esticar; o original tem 1254 px). */
+    private fun mascotBitmap(res: Int, sizePx: Int): android.graphics.Bitmap {
+        val bounds = android.graphics.BitmapFactory.Options().apply { inJustDecodeBounds = true; inScaled = false }
+        android.graphics.BitmapFactory.decodeResource(resources, res, bounds)
+        var sample = 1
+        while (bounds.outWidth / (sample * 2) >= sizePx * 3 / 2) sample *= 2
+        return android.graphics.BitmapFactory.decodeResource(resources, res,
+            android.graphics.BitmapFactory.Options().apply { inSampleSize = sample; inScaled = false })
+    }
+    /** Posição de repouso (x da janela) na borda atual. */
+    private fun restX(lp: WindowManager.LayoutParams) = if (atRight) bounds(lp.width, lp.height)[0] else 0
+    private fun animationScale() = Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f)
+
     private fun showBubble() {
-        val size = dp(76)
-        val lp = windowParams(size, size)
+        // A janela tem uma folga em volta do desenho para a gotinha esticar e inclinar sem ser cortada.
+        val drawSize = dp(76)
+        val size = dp(92)
+        val lp = windowParams(size, size).apply { flags = flags or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS }
         val limit = bounds(size, size)
         lp.x = limit[0]; lp.y = limit[1] / 3
-        val image = ImageView(this).apply {
-            setImageResource(R.drawable.lume_mascot)
-            scaleType = ImageView.ScaleType.FIT_CENTER
+        atRight = true; relativeY = 1f / 3
+        val eyesOpen = mascotBitmap(R.drawable.lume_mascot, drawSize)
+        val eyesClosed = mascotBitmap(R.drawable.lume_mascot_blink, drawSize)
+        val image = SlimeView(this, eyesOpen, drawSize).apply {
             contentDescription = "Lume. Toque para abrir as opções ou arraste para mover."
             importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
             isFocusable = true; isClickable = true
             setOnClickListener { togglePanel() }
         }
         var startX = 0; var startY = 0; var touchX = 0f; var touchY = 0f; var dragged = false
+        var tracker: VelocityTracker? = null
         val slop = ViewConfiguration.get(this).scaledTouchSlop
         image.setOnTouchListener { view, event ->
             when (event.actionMasked) {
                 MotionEvent.ACTION_DOWN -> {
-                    snap?.cancel(); image.animate().cancel(); hidePanel()
+                    motion?.press()
                     startX = lp.x; startY = lp.y; touchX = event.rawX; touchY = event.rawY; dragged = false
+                    tracker?.recycle(); tracker = VelocityTracker.obtain().also { it.addMovement(event) }
                     true
                 }
                 MotionEvent.ACTION_MOVE -> {
+                    tracker?.addMovement(event)
                     val dx = event.rawX-touchX; val dy = event.rawY-touchY
-                    if (abs(dx) > slop || abs(dy) > slop) dragged = true
+                    if (!dragged && (abs(dx) > slop || abs(dy) > slop)) { dragged = true; hidePanel(); motion?.dragStart() }
                     if (dragged) {
+                        // A janela segue o dedo no mesmo quadro; só o corpo reage com atraso.
                         val b = bounds(size,size)
                         lp.x = (startX+dx.toInt()).coerceIn(0,b[0]); lp.y = (startY+dy.toInt()).coerceIn(0,b[1])
                         update(image,lp)
+                        tracker?.let { it.computeCurrentVelocity(1000); motion?.dragMove(it.xVelocity, it.yVelocity) }
                     }
                     true
                 }
-                MotionEvent.ACTION_UP -> {
-                    if (!dragged) view.performClick() else snapToEdge()
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    tracker?.addMovement(event); tracker?.computeCurrentVelocity(1000)
+                    val vx = tracker?.xVelocity ?: 0f
+                    tracker?.recycle(); tracker = null
+                    if (!dragged && event.actionMasked == MotionEvent.ACTION_UP) { motion?.release(); view.performClick() }
+                    else snapToEdge(vx)
                     true
                 }
-                MotionEvent.ACTION_CANCEL -> { snapToEdge(); true }
                 else -> false
             }
         }
+        // Começa fora da tela, atrás da borda: nenhum quadro da gotinha parada aparece antes da entrada.
+        val restAt = lp.x
+        if (animationsEnabled()) { lp.x = restAt + size; image.alpha = 0f }
         manager.addView(image, lp)
         bubble = image; params = lp
-        if (animationsEnabled()) {
-            image.alpha = 0f; image.scaleX = .9f; image.scaleY = .9f
-            image.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(220).start()
-        }
+        motion = MascotMotion(image, mainHandler, resources.displayMetrics.density, eyesOpen, eyesClosed,
+            { x -> lp.x = x; update(image, lp) }, ::animationsEnabled, ::animationScale)
+        motion?.start()
+        // A entrada começa depois do primeiro layout (a gotinha precisa estar na tela para animar).
+        image.post { if (bubble === image) motion?.enter(restAt, atRight, size) }
     }
     private fun update(view: View, lp: WindowManager.LayoutParams) {
         try { manager.updateViewLayout(view,lp) } catch (e: Exception) { stopSelf() }
     }
-    private fun snapToEdge() {
+    private fun snapToEdge(vx: Float = 0f) {
         val view = bubble ?: return; val lp = params ?: return
         val limit = bounds(lp.width,lp.height)
-        val target = if (lp.x < limit[0]/2) 0 else limit[0]
-        if (!animationsEnabled() || !screenOn) { lp.x=target; update(view,lp); return }
-        snap = ValueAnimator.ofInt(lp.x,target).apply {
-            duration=300; interpolator=OvershootInterpolator(.65f)
-            addUpdateListener { lp.x=(it.animatedValue as Int).coerceIn(0,limit[0]); update(view,lp) }
-            start()
-        }
+        // Um gesto rápido decide o lado; devagar, vale a borda mais próxima.
+        val fling = abs(vx) > dp(900)
+        val target = if (fling) (if (vx > 0) limit[0] else 0) else MascotTiming.snapTarget(lp.x, limit[0])
+        atRight = target > 0; relativeY = if (limit[1] > 0) lp.y.toFloat() / limit[1] else 0f
+        if (!animationsEnabled() || !screenOn) { lp.x=target; update(view,lp); motion?.dragEnd(target, target, 0f); return }
+        motion?.dragEnd(lp.x, target, vx)
     }
+    /** Momento em que o painel fechou por um toque fora dele (o próprio toque na gotinha não deve reabri-lo). */
+    private var closedByOutsideAt = 0L
+
     private fun togglePanel() {
-        if (panel != null) { hidePanel(animated=true); return }
+        if (panel != null) { hidePanel(animated=true); motion?.panelClosed(); return }
+        if (SystemClock.uptimeMillis() - closedByOutsideAt < 350) return
         removeClosingPanel()
         val lp = params ?: return
-        val container = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            setPadding(dp(16),dp(12),dp(16),dp(12))
-            background = android.graphics.drawable.GradientDrawable().apply {
-                setColor(android.graphics.Color.rgb(250,250,245)); cornerRadius=dp(24).toFloat()
-            }
-            elevation=dp(8).toFloat()
+        val ui = MascotPanel(this)
+        val content = ui.content(
+            onRead = {
+                hidePanel(); motion?.acknowledged()
+                startActivity(Intent(this,CaptureActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+            },
+            onOpen = {
+                hidePanel(); motion?.acknowledged()
+                startActivity(Intent(this,MainActivity::class.java).setAction(OPEN_ANALYSIS)
+                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP))
+            },
+            onClose = { hidePanel(animated=true); motion?.panelClosed() },
+            onDisable = { dismissMascot() },
+        )
+        // Área útil (sem barras do sistema) e tamanho do cartão: largura fixa, altura pelo conteúdo, limitada à tela.
+        val area = bounds(0,0)
+        val margin = dp(8)
+        val cardW = dp(248).coerceAtMost(area[0] - 2*margin - ui.tail)
+        content.measure(View.MeasureSpec.makeMeasureSpec(cardW,View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED))
+        val cardH = content.measuredHeight.coerceAtMost(area[1] - 2*margin - ui.tail)
+        // A imagem da gotinha tem margem transparente: a ponta encosta no desenho, não na caixa da imagem.
+        val inset = dp(18)
+        val place = PanelLayout.place(lp.x + inset, lp.y + inset, lp.width - 2*inset, area[0], area[1], cardW, cardH,
+            ui.tail, margin, ui.corner)
+        val root = ui.wrap(content, place, cardW, cardH)
+        val horizontal = place.side == TailSide.LEFT || place.side == TailSide.RIGHT
+        val winW = cardW + (if (horizontal) ui.tail else 0) + 2*ui.shadow
+        val winH = cardH + (if (horizontal) 0 else ui.tail) + 2*ui.shadow
+        val pp = windowParams(winW, winH).apply {
+            // Só o cartão recebe toques; um toque fora dele fecha o painel e segue para o app de baixo.
+            flags = flags or WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            x = (if (place.side == TailSide.LEFT) place.x - ui.tail else place.x) - ui.shadow
+            y = (if (place.side == TailSide.TOP) place.y - ui.tail else place.y) - ui.shadow
         }
-        container.addView(TextView(this).apply {
-            text="Uma dúvida? Me chama."; textSize=17f; setTextColor(android.graphics.Color.rgb(43,63,52))
-        })
-        container.addView(TextView(this).apply {
-            text="Escolha o trecho da tela ou abra o Lume para colar texto e importar uma imagem."; textSize=14f
-            setPadding(0,dp(8),0,dp(8)); setTextColor(android.graphics.Color.rgb(100,111,99))
-        })
-        fun button(text: String, action: () -> Unit) {
-            container.addView(Button(this).apply {
-                this.text=text; isAllCaps=false; minHeight=dp(48)
-                setTextColor(android.graphics.Color.WHITE)
-                background=android.graphics.drawable.GradientDrawable().apply {
-                    setColor(android.graphics.Color.rgb(43,64,53)); cornerRadius=dp(24).toFloat()
-                }
-                setOnClickListener { action() }
-            }, LinearLayout.LayoutParams(-1,-2).apply { topMargin=dp(8) })
+        root.setOnTouchListener { _, e ->
+            if (e.actionMasked == MotionEvent.ACTION_OUTSIDE) {
+                closedByOutsideAt = SystemClock.uptimeMillis(); hidePanel(animated=true); motion?.panelClosed(); true
+            } else false
         }
-        button("Abrir análise") {
-            hidePanel()
-            startActivity(Intent(this,MainActivity::class.java).setAction(OPEN_ANALYSIS)
-                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP))
+        manager.addView(root,pp); panel=root
+        motion?.panelOpened(towardLeft = place.side == TailSide.RIGHT)
+        if (animationsEnabled()) {
+            val card = root.getChildAt(0)
+            card.alpha=0f; card.scaleX=.92f; card.scaleY=.92f
+            card.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(170).setInterpolator(DecelerateInterpolator(1.5f)).start()
         }
-        button("Ler esta tela") {
-            hidePanel()
-            startActivity(Intent(this,CaptureActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-        }
-        button("Fechar opções") { hidePanel(animated=true) }
-        button("Desativar mascote") {
-            dismissMascot()
-        }
-        val available=bounds(0,0)
-        val width=dp(268).coerceAtMost(available[0])
-        container.measure(View.MeasureSpec.makeMeasureSpec(width,View.MeasureSpec.EXACTLY),
-            View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED))
-        val height=container.measuredHeight.coerceAtMost(available[1])
-        val scroll=ScrollView(this).apply { addView(container); isFillViewport=true }
-        val b=bounds(width,height)
-        val pp=windowParams(width,height)
-        pp.x=(lp.x - width + lp.width).coerceIn(0,b[0]); pp.y=(lp.y+lp.height).coerceIn(0,b[1])
-        manager.addView(scroll,pp); panel=scroll
-        if (animationsEnabled()) { scroll.alpha=0f; scroll.translationY=dp(8).toFloat(); scroll.animate().alpha(1f).translationY(0f).setDuration(180).start() }
     }
     private fun dismissMascot() {
         hidePanel(animated=true)
-        val view=bubble
-        if(view!=null && animationsEnabled() && screenOn) {
-            snap?.cancel()
-            view.animate().cancel()
-            view.animate().alpha(0f).scaleX(.94f).scaleY(.94f).setDuration(160).withEndAction { stopSelf() }.start()
+        val view=bubble; val lp=params; val m=motion
+        if(view!=null && lp!=null && m!=null && animationsEnabled() && screenOn) {
+            // Sai escorregando pela borda em que está.
+            m.exit(lp.x, atRight, lp.width) { stopSelf() }
         } else stopSelf()
     }
     private fun removeClosingPanel() {
@@ -236,7 +273,10 @@ class MascotService : Service() {
         panel=null; view.animate().cancel()
         if(animated && animationsEnabled() && screenOn) {
             closingPanel=view
-            view.animate().alpha(0f).translationY(dp(8).toFloat()).setDuration(150).withEndAction {
+            // Volta para a ponta do balão, rápido.
+            val card=(view as? ViewGroup)?.getChildAt(0) ?: view
+            card.animate().cancel()
+            card.animate().alpha(0f).scaleX(.94f).scaleY(.94f).setDuration(120).setInterpolator(android.view.animation.AccelerateInterpolator()).withEndAction {
                 runCatching { manager.removeView(view) }
                 if(closingPanel===view) closingPanel=null
             }.start()
@@ -245,14 +285,16 @@ class MascotService : Service() {
     private fun animationsEnabled() = getSharedPreferences("lume_preferences",0).getBoolean("animations",true) && Settings.Global.getFloat(contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE,1f) > 0f
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        hidePanel(); snap?.cancel()
+        hidePanel(); motion?.cancelWindow()
         val lp=params ?: return; val view=bubble ?: return; val b=bounds(lp.width,lp.height)
-        lp.x=lp.x.coerceIn(0,b[0]); lp.y=lp.y.coerceIn(0,b[1]); update(view,lp)
+        // Ao girar, continua na mesma borda e na mesma altura relativa (sem ficar no meio da tela).
+        lp.x=if (atRight) b[0] else 0; lp.y=(relativeY*b[1]).toInt().coerceIn(0,b[1]); update(view,lp)
     }
     override fun onDestroy() {
         mutableActive.value=false
-        snap?.cancel(); hidePanel()
-        bubble?.let { it.animate().cancel(); runCatching { manager.removeView(it) } }
+        motion?.stop(); motion=null; mainHandler.removeCallbacksAndMessages(null)
+        hidePanel()
+        bubble?.let { runCatching { manager.removeView(it) } }
         bubble=null
         runCatching { unregisterReceiver(receiver) }
         super.onDestroy()

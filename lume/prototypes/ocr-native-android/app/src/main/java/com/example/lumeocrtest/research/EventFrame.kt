@@ -46,6 +46,8 @@ data class EventFrame(
     val attribution: Set<String> = emptySet(),
     /** Substantivos dentro do trecho de quem agiu ("o coro das casas de apostas"): podem ser assunto. */
     val agentNouns: Set<String> = emptySet(),
+    /** Na voz passiva ("almoço organizado por X"), o substantivo que nomeia o próprio fato. */
+    val eventNoun: Set<String> = emptySet(),
 )
 
 /** Data do fato: explícita no texto (dia, mês ou ano) ou, na falta, a data de publicação. */
@@ -107,6 +109,12 @@ private val ACTIONS = listOf(
     ap("confirmar", "confirm\\w+|nega|negam|negou|negaram|desment\\w+"),
     ap("prazo", "(?:da|dao|deu|deram|estabelec\\w+|fix\\w+|defin\\w+|concede\\w*|concedeu) (?:um |o |novo )?(?:prazo|\\d+)"),
     ap("aprovar", "aprov\\w+|sancion\\w+|promulg\\w+"),
+    // Criar ou aplicar uma cobrança, regra ou sanção.
+    ap("impor", "impoe|impoem|impos|impuseram|impor|impora|institu(?:i|em|iu|iram)|tax(?:ou|aram|ara)|sobretax(?:ou|aram)|" +
+        "(?:aplic|cobr)(?:a|am|ou|aram|ara) (?:uma |nova |novas )?(?:taxa|tarifa|sobretaxa|aliquota|multa|sancao|sancoes)|" +
+        "(?:cria|criam|criou|criaram) (?:uma |nova |novas )?(?:taxa|tarifa|sobretaxa|cota|cotas|aliquota)"),
+    // Promover um encontro ou evento.
+    ap("organizar", "organiz\\w+|promov(?:e|em|eu|eram|ido|ida|idos|idas)|realiz(?:a|am|ou|aram|ado|ada|ados|adas)|oferec(?:e|em|eu|eram|ido|ida)"),
     ap("proibir", "proib\\w+|proibe|bane|baniu|banir|ved(?:a|am|ou|ar)|restring\\w+"),
     ap("revogar", "revog\\w+|suspend\\w+|suspens\\w+|derrub\\w+|anul\\w+|cancel\\w+|interromp\\w+|cass(?:a|am|ou|aram)|sust(?:a|am|ou|aram)|invalid\\w+|revert(?:e|em|eu)"),
     ap("rejeitar", "rejeit\\w+|arquiv\\w+"),
@@ -126,7 +134,7 @@ private val ACTIONS = listOf(
     ap("queda", "cai|caem|caiu|recu(?:a|am|ou)|diminu(?:i|em|iu)|despenc\\w+|reduz|reduzem|reduziu|encolh\\w+|(?:atinge|atingiu|bate|bateu) (?:o |a |novo |nova )?(?:minima|piso)"),
 )
 
-private val DECISION_CLASSES = setOf("aprovar", "proibir", "revogar", "rejeitar", "decidir")
+private val DECISION_CLASSES = setOf("aprovar", "proibir", "impor", "revogar", "rejeitar", "decidir")
 private val COURT_WORDS = setOf("stf", "stj", "tse", "tst", "supremo", "justica", "tribunal", "corte", "acao", "pedido", "peticao",
     "recurso", "ingresso", "mandado").map { topicKey(it) }.toSet()
 private val ATTRIBUTION = Regex("(?iu)(?:,|—|-|;)?\\s*(?:diz|dizem|mostra|mostram|aponta|apontam|revela|revelam|indica|indicam|segundo|conforme|de acordo com)\\s+(?:o |a |os |as )?([\\p{L}\\p{N}.&-]+(?:\\s+[\\p{Lu}\\p{N}][\\p{L}\\p{N}.&-]*){0,3})\\s*$")
@@ -138,6 +146,19 @@ fun attributionIn(sentence: String): Set<String> {
     val mid = ATTRIBUTION_MID.findAll(sentence).map { it.groupValues[1] }.toList()
     return (listOfNotNull(end) + mid).flatMap { tokens(it) }.filter { w -> w.length >= 2 && w !in STOP_NORM && w !in CONNECTORS }.toSet()
 }
+
+/** Atribuição no fim da frase, depois de vírgula ou travessão ("…, diz O Globo"): não é o que aconteceu. */
+private val TRAILING_ATTRIBUTION = Regex("(?iu)\\s*(?:,|—|–|\\s-|;)\\s*(?:diz|dizem|afirma|afirmam|informa|informam|mostra|mostram|aponta|apontam|" +
+    "revela|revelam|indica|indicam|segundo|conforme|de acordo com)\\s+((?:o |a |os |as )?[\\p{L}\\p{N}.&-]+(?:\\s+[\\p{Lu}\\p{N}][\\p{L}\\p{N}.&-]*){0,3})\\s*\\.?\\s*$")
+
+/** Quem o texto cita como origem da informação no fim da frase ("O Globo"), como está escrito. */
+fun trailingAttribution(sentence: String): String? = TRAILING_ATTRIBUTION.find(sentence)?.groupValues?.get(1)?.trim()
+
+private val PASSIVE_BY = setOf("pelo", "pela", "pelos", "pelas", "por")
+/** Depois de "por X", estas palavras começam outro complemento ("para Y", "em Z"). */
+private val AGENT_END = setOf("para", "em", "no", "na", "nos", "nas", "contra", "sobre", "durante", "apos", "com", "ate", "desde")
+/** Ações que só dizem que alguém esteve no fato ou o promoveu: descrevem o mesmo fato que o substantivo nomeia. */
+private val PRESENCE_CLASSES = setOf("organizar", "visitar")
 
 private val ATTRIBUTION_MID = Regex("(?u)(?:[Ss]egundo|[Cc]onforme|[Dd]e acordo com)\\s+(?:(?:os )?dados\\s+d[oa]s?\\s+|o\\s+|a\\s+)?(\\p{Lu}[\\p{L}]+(?:\\s+\\p{Lu}[\\p{L}]+){0,2})")
 private val OPPOSITE = setOf("alta", "queda")
@@ -257,10 +278,12 @@ private fun stripQuotes(s: String) = QUOTED.replace(s, " ").trim().ifBlank { s }
 
 /** Quadro do acontecimento numa frase (título, resumo ou frase da página). */
 fun eventFrame(sentence: String, contextText: String): EventFrame {
-    val clean = stripQuotes(sentence)
+    val full = stripQuotes(sentence)
+    // A atribuição final ("…, diz O Globo") fica registrada à parte; a ação é procurada no que vem antes dela.
+    val clean = TRAILING_ATTRIBUTION.replace(full, "").takeIf { it.split(" ").size >= 3 } ?: full
     val t = toks(clean)
     val act = findAction(t)
-    val names = nameTokens(clean, contextText)
+    val names = nameTokens(full, contextText)
     if (act == null) {
         // Sem ação reconhecida: o sujeito provável é o nome no início da frase ("Criadores ameaçam...", "IPTU de X: ...").
         val lead = mutableListOf<Tok>()
@@ -292,12 +315,19 @@ fun eventFrame(sentence: String, contextText: String): EventFrame {
     }
     var objToks = afterAll.take(14)
     // Voz passiva ("foi aprovado pelos vereadores"): quem agiu vem depois de "pelo/pela"; o sujeito é o objeto.
-    val passive = t[a0].n.matches(Regex(".*(ado|ada|ados|adas|ido|ida|idos|idas)")) &&
-        (maxOf(clauseStart, a0 - 3) until a0).any { t[it].n in setOf("foi", "foram", "sera", "serao", "seria", "sao", "e", "era", "sendo", "ser", "sido") }
+    val participle = t[a0].n.matches(Regex(".*(ado|ada|ados|adas|ido|ida|idos|idas)"))
+    // Particípio seguido de "por/pelo" sem verbo auxiliar ("almoço organizado por X"): também é voz passiva.
+    val reduced = participle && afterAll.firstOrNull()?.n in PASSIVE_BY
+    val passive = participle && (reduced ||
+        (maxOf(clauseStart, a0 - 3) until a0).any { t[it].n in setOf("foi", "foram", "sera", "serao", "seria", "sao", "e", "era", "sendo", "ser", "sido") })
     if (passive) {
-        val by = afterAll.indexOfFirst { it.n in setOf("pelo", "pela", "pelos", "pelas") }
+        val by = afterAll.indexOfFirst { it.n in (if (reduced) PASSIVE_BY else PASSIVE_BY - "por") }
         objToks = agentToks
-        agentToks = if (by >= 0) afterAll.drop(by + 1).take(5) else emptyList()
+        agentToks = when {
+            by < 0 -> emptyList()
+            reduced -> afterAll.drop(by + 1).takeWhile { it.n !in AGENT_END }.take(5)
+            else -> afterAll.drop(by + 1).take(5)
+        }
         agentText = agentToks.joinToString(" ") { it.lit }
     }
     val negated = (maxOf(0, a0 - 3) until a0).any { t[it].n in NEG_NORM } ||
@@ -317,16 +347,25 @@ fun eventFrame(sentence: String, contextText: String): EventFrame {
     val obj = contentKeys(objToks, names + actionWords) + phraseTail
     return EventFrame(sentence, agentText, agentNames, agentWords, cls, actionText, obj, names, negated,
         numbersWithUnit(clean), actStage(clean), target, nounKeys(objToks, names + actionWords) + phraseTail,
-        attributionIn(clean), nounKeys(agentToks, names))
+        attributionIn(full), nounKeys(agentToks, names), if (passive) {
+            // Qualificação entre aspas simples ("'de gala'") descreve o fato; não o nomeia.
+            val quoted = SINGLE_QUOTED.findAll(clean).map { it.range }.toList()
+            nounKeys(objToks.filter { tok -> quoted.none { tok.start in it } }, names)
+        } else emptySet())
 }
 
 private val DETERMINERS = setOf("o", "a", "os", "as", "um", "uma", "da", "do", "das", "dos", "de", "no", "na", "nos", "nas",
     "ao", "aos", "contra", "sobre", "com", "pela", "pelo", "sem", "em", "num", "numa")
 
+private val ARTICLES = setOf("o", "os", "um", "do", "dos", "no", "nos", "ao", "aos", "pelo", "pelos")
+private val SINGLE_QUOTED = Regex("['‘][^'‘’]{2,40}['’]")
+
 /** Palavras em posição de substantivo (depois de artigo ou preposição): distinguem assunto de verbos soltos. */
 private fun nounKeys(t: List<Tok>, exclude: Set<String>): Set<String> =
     // Infinitivo depois de preposição ("tentativa de derrubar") é verbo, não substantivo.
-    contentKeys(t.filterIndexed { i, tok -> i > 0 && t[i - 1].n in DETERMINERS && !(tok.n.length > 4 && tok.n.matches(Regex(".*(ar|er|ir)"))) }, exclude)
+    // Depois de artigo ("o jantar", "um parecer") a mesma forma é substantivo.
+    contentKeys(t.filterIndexed { i, tok -> i > 0 && t[i - 1].n in DETERMINERS &&
+        !(tok.n.length > 4 && tok.n.matches(Regex(".*(ar|er|ir)")) && t[i - 1].n !in ARTICLES) }, exclude)
 
 // ------------------------------------------------------------------------------------------------
 // Datas do fato
@@ -371,6 +410,7 @@ fun factDateIn(text: String, publishedMs: Long?, coarse: Boolean = false): FactD
         }
         val n = " ${norm(text)} "
         if (" anteontem " in n) return FactDate(pub - 2 * Dates.DAY_MS, "dia", "anteontem", true)
+        if (" amanha " in n) return FactDate(pub + Dates.DAY_MS, "dia", "amanhã", true)
         if (" ontem " in n) return FactDate(pub - Dates.DAY_MS, "dia", "ontem", true)
         if (" hoje " in n || " nesta noite " in n || " nesta manha " in n || " nesta tarde " in n) return FactDate(pub, "dia", "hoje", true)
     }
@@ -566,6 +606,16 @@ fun compareEvent(o: OriginalEvent, cand: Candidate, nowMs: Long, semantic: Doubl
             return Verdict(EventRelation.OUTRO, "Trata de outras pessoas ou de outro lugar",
                 m + "Nomes citados: ${f.names.joinToString(", ")} — nenhum aparece na matéria importada", ev, f)
         }
+        // Fato nomeado por um substantivo ("almoço organizado por X para Y"): outra redação com o mesmo substantivo e
+        // todos os envolvidos descreve o mesmo fato, mesmo sem o verbo ou com outro participante como sujeito.
+        // Só nomes em comum, sem o substantivo do fato, não bastam.
+        val eventNoun = oF.eventNoun
+        if (eventNoun.isNotEmpty() && oPart.size >= 2 && fPart.containsAll(oPart) && (f.action == null || sameAction || f.action in PRESENCE_CLASSES || f.action == "confirmar")) {
+            val nounHits = contentKeys(toks(text), emptySet()) intersect eventNoun
+            if (nounHits.isNotEmpty()) return Verdict(EventRelation.MESMO, "Relata o mesmo acontecimento",
+                listOf("Quem: ${WORD_RE.findAll(text).map { it.value }.filter { w -> tokens(w).any { it in oPart } }.distinct().take(4).joinToString(", ")} — os mesmos envolvidos da matéria importada",
+                    "O quê: “${literalWords(text, nounHits).firstOrNull() ?: nounHits.first()}” — o mesmo fato, descrito com outras palavras"), ev, f)
+        }
         if (f.action == null) {
             val sharedNames = (oNamesAll intersect f.names).size
             return when {
@@ -661,6 +711,9 @@ fun compareEvent(o: OriginalEvent, cand: Candidate, nowMs: Long, semantic: Doubl
             // o fato pode ter ocorrido até alguns dias antes dela.
             val verdict = when {
                 candDate.explicit && od.explicit -> if (gap == null) null else if (cd < odd) "antes" else "depois"
+                // A matéria importada não diz quando o fato ocorreu. Se a fonte foi publicada na mesma época, a data que ela
+                // cita ("em dezembro de 2023") é a do próprio fato relatado agora, não sinal de outro episódio.
+                candDate.explicit && cand.published != null && Math.abs(dayStart(cand.published!!) - odd) <= 7 * Dates.DAY_MS -> "mesma_epoca"
                 candDate.explicit -> when { cd < odd - 7 * Dates.DAY_MS -> "antes"; cd > odd + Dates.DAY_MS -> "depois"; else -> null }
                 od.explicit -> {
                     // Fato de um mês ("em agosto") costuma ser noticiado até semanas depois; de um dia, até uma semana.
@@ -687,6 +740,7 @@ fun compareEvent(o: OriginalEvent, cand: Candidate, nowMs: Long, semantic: Doubl
                     kind = EventRelation.INCERTA; resumo = "Pode ser outro episódio: publicado em ${fmt(candDate.ms)}, sem dizer a data do fato"
                     motivos += "Quando: publicado em ${fmt(candDate.ms)}; a matéria importada é de $origLabel"
                 }
+                "mesma_epoca" -> motivos += "Quando: publicado em ${fmt(cand.published!!)}, na mesma época da matéria importada; a fonte situa o fato em $candLabel"
                 else -> motivos += "Quando: $candLabel — compatível com $origLabel"
             }
         } else if (od == null && candDate != null && nowMs - candDate.ms > RECENT_DAYS * Dates.DAY_MS) {
@@ -764,6 +818,13 @@ fun eventQuery(o: OriginalEvent, claim: String): String? {
     fun literal(keys: Set<String>) = words.filter { w -> tokens(w).any { it in keys || topicKey(it) in keys } }
     val agent = literal(f.agentNames).ifEmpty { literal((f.agentWords - GENERIC_HEADS)).take(2) }
     val target = literal(f.target)
+    if (f.eventNoun.isNotEmpty()) {
+        // Voz passiva: quem promoveu, os demais envolvidos e o substantivo que nomeia o fato ("Vorcaro Moraes almoço").
+        val others = literal(f.names - f.agentNames - o.attribution)
+        val noun = literal(f.eventNoun).take(2)
+        if ((agent + others).isEmpty() || noun.isEmpty()) return null
+        return (agent + others + noun).distinct().joinToString(" ")
+    }
     val subject = (literal(f.nouns) + literal(f.objectKeys)).distinct().filter { it !in agent && it !in target }.take(2)
     if (agent.isEmpty() || subject.isEmpty()) return null
     return (agent + target + subject).distinct().joinToString(" ")

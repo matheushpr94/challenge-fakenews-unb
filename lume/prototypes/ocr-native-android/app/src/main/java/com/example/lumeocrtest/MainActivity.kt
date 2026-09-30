@@ -66,6 +66,29 @@ import com.example.lumeocrtest.research.Clarification
 import com.example.lumeocrtest.research.Evaluation
 import com.example.lumeocrtest.research.RequestGate
 import com.example.lumeocrtest.research.ResearchService
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.foundation.border
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Image
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
+import com.example.lumeocrtest.ui.theme.Amber
+import com.example.lumeocrtest.ui.theme.AmberSoft
+import com.example.lumeocrtest.ui.theme.Hairline
+import com.example.lumeocrtest.ui.theme.InkSoft
+import com.example.lumeocrtest.ui.theme.LumeMist
+import com.example.lumeocrtest.ui.theme.Sheet
 import com.example.lumeocrtest.ui.theme.LumeDarkGreen
 import com.example.lumeocrtest.ui.theme.LumeLightGreen
 import com.example.lumeocrtest.ui.theme.LumeOCRTestTheme
@@ -173,6 +196,7 @@ private suspend fun runOcr(context: android.content.Context, uri: String, onPrev
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0,
                        sharedRequest: Int = 0, sharedText: String? = null, sharedImage: String? = null,
@@ -411,124 +435,141 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0,
         }
     }
 
+    val progressView = remember { BringIntoViewRequester() }
+    val resultsView = remember { BringIntoViewRequester() }
+    // Traz o cabeçalho "Pesquisado" para o topo, deixando o resumo logo abaixo visível.
+    val topArea = with(LocalDensity.current) { androidx.compose.ui.geometry.Rect(0f, -12.dp.toPx(), 1f, 520.dp.toPx()) }
     Column(
-        modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(painter = painterResource(id = R.drawable.lume_mascot), contentDescription = "Lume", modifier = Modifier.height(48.dp))
-            Spacer(modifier = Modifier.width(8.dp))
-            Text("Lume", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, color = LumeDarkGreen)
-        }
-
-        Button(onClick = { picker.launch("image/*") }, enabled = ocrState.isEmpty()) { Text("Importar imagem") }
-        preview?.let { Image(bitmap = it, contentDescription = "Imagem selecionada", modifier = Modifier.fillMaxWidth().heightIn(max = 180.dp)) }
-        if (ocrState.isNotEmpty()) Row(verticalAlignment = Alignment.CenterVertically) {
-            CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
-            Spacer(Modifier.width(8.dp)); Text(ocrState)
-        }
-        ocrError?.let { Text(it, color = MaterialTheme.colorScheme.error) }
-
-        reading?.let { r ->
-            ReadingSummary(r, evaluation)
-            if (r.body.isNotBlank()) {
-                var bodyOpen by remember(r) { mutableStateOf(false) }
-                TextButton(onClick = { bodyOpen = !bodyOpen }) { Text(if (bodyOpen) "Esconder o texto da matéria" else "Ver o texto da matéria") }
-                LumeVisibility(bodyOpen) { Card(modifier = Modifier.fillMaxWidth()) { Text(r.body, modifier = Modifier.padding(16.dp)) } }
+        // ---- captura: prévia enquadrada + o que foi lido ------------------------------------------
+        if (ocrState.isNotEmpty()) {
+            preview?.let { img ->
+                Image(bitmap = img, contentDescription = "Captura enviada", contentScale = ContentScale.Crop, alignment = Alignment.TopCenter,
+                    modifier = Modifier.fillMaxWidth().height(200.dp).clip(MaterialTheme.shapes.medium)
+                        .border(BorderStroke(1.dp, Hairline), MaterialTheme.shapes.medium))
             }
-            TextButton(onClick = { showRawText = !showRawText }) {
-                Text(if (showRawText) "Ocultar tudo o que foi reconhecido" else "Ver tudo o que foi reconhecido na imagem")
-            }
-            LumeVisibility(showRawText) { SelectionContainer {
-                Card(modifier = Modifier.fillMaxWidth()) { Text(recognizedText, modifier = Modifier.padding(16.dp)) }
-            } }
+            StageProgress(ocrState)
         }
+        ocrError?.let { ErrorNote(it, null) }
+        reading?.let { r -> Reveal(key = r) { Column(verticalArrangement = Arrangement.spacedBy(6.dp)) { ReadingSummary(r, evaluation, preview, recognizedText) } } }
 
         // ---- pergunta e pesquisa -----------------------------------------------------------------
-        Text(if (reading != null) "O que vamos pesquisar?" else "Cole uma notícia, afirmação ou pergunta",
-            style = MaterialTheme.typography.titleMedium, color = LumeDarkGreen, fontWeight = FontWeight.Bold,
-            modifier = Modifier.semantics { heading() })
-        claimChoice?.let { c ->
-            Text(c.note ?: "Esta é a afirmação principal que encontramos na imagem. Confira e edite, se precisar, antes de pesquisar.",
-                style = MaterialTheme.typography.bodyMedium)
-        }
+        SectionHeader(if (reading != null) "O que vamos pesquisar?" else "Cole uma notícia, afirmação ou pergunta",
+            claimChoice?.let { it.note ?: "Esta é a afirmação principal que encontramos na imagem. Confira e edite, se precisar, antes de pesquisar." })
         OutlinedTextField(
             value = queryText, onValueChange = { queryText = it }, modifier = Modifier.fillMaxWidth(),
             label = { Text(if (reading != null) "Afirmação a pesquisar" else "Texto ou link para pesquisar") },
+            shape = MaterialTheme.shapes.medium,
+            colors = OutlinedTextFieldDefaults.colors(focusedContainerColor = Sheet, unfocusedContainerColor = Sheet,
+                unfocusedBorderColor = Hairline),
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
             keyboardActions = KeyboardActions(onSearch = { if (queryText.isNotBlank() && !busy) startFlow(queryText) }),
         )
         if (reading != null) com.example.lumeocrtest.ocr.vagueSubject(queryText)?.let { vague ->
             Text("A frase começa com “$vague”, que depende do que vem antes na matéria. Para uma busca melhor, " +
                 "diga de que se trata (por exemplo, o nome da medida ou do órgão).",
-                style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.tertiary)
+                style = MaterialTheme.typography.bodySmall, color = Amber)
         }
         claimChoice?.alternatives?.takeIf { it.isNotEmpty() }?.let { alts ->
-            var altOpen by remember(alts) { mutableStateOf(claimChoice?.needsChoice == true) }
-            if (claimChoice?.needsChoice == true) Text("Frases encontradas na imagem:", style = MaterialTheme.typography.labelLarge)
-            else TextButton(onClick = { altOpen = !altOpen }) { Text(if (altOpen) "Esconder outras frases da matéria" else "Escolher outra frase da matéria") }
-            LumeVisibility(altOpen) { Column(verticalArrangement = Arrangement.spacedBy(6.dp)) { alts.forEach { alt ->
-                Surface(onClick = { queryText = alt }, shape = RoundedCornerShape(8.dp),
-                    color = if (queryText == alt) LumeLightGreen else MaterialTheme.colorScheme.surfaceVariant,
-                    modifier = Modifier.fillMaxWidth()) {
-                    Text(alt, modifier = Modifier.padding(12.dp), style = MaterialTheme.typography.bodyMedium)
-                }
-            } } }
+            val mustChoose = claimChoice?.needsChoice == true
+            val label = when {
+                mustChoose -> "Frases encontradas na imagem"
+                reading?.socialPost == true -> "Ver outros detalhes do post"
+                else -> "Escolher outra frase da matéria"
+            }
+            Collapsible(label, key = alts, initiallyOpen = mustChoose) {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) { alts.forEach { alt ->
+                    val selected = queryText == alt
+                    LumeCard(color = if (selected) LumeMist else Sheet, border = if (selected) LumeLightGreen else Hairline,
+                        onClick = { queryText = alt }) {
+                        Text(alt, modifier = Modifier.padding(14.dp), style = MaterialTheme.typography.bodyMedium)
+                    }
+                } }
+            }
         }
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            Button(onClick = { startFlow(queryText) }, enabled = queryText.isNotBlank() && !busy) { Text("Pesquisar") }
-            if (busy) OutlinedButton(onClick = { cancelSearch() }) { Text("Cancelar") }
+        FlowRow(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Button(onClick = { startFlow(queryText) }, enabled = queryText.isNotBlank() && !busy,
+                modifier = Modifier.heightIn(min = 48.dp)) {
+                Icon(Icons.Outlined.Search, contentDescription = null, modifier = Modifier.size(18.dp))
+                Spacer(Modifier.width(8.dp)); Text("Pesquisar")
+            }
+            if (busy) OutlinedButton(onClick = { cancelSearch() }, modifier = Modifier.heightIn(min = 48.dp)) { Text("Cancelar") }
+            else OutlinedButton(onClick = { picker.launch("image/*") }, enabled = ocrState.isEmpty(), modifier = Modifier.heightIn(min = 48.dp)) {
+                Icon(Icons.Outlined.Image, contentDescription = null, modifier = Modifier.size(18.dp))
+                Spacer(Modifier.width(8.dp)); Text(if (reading != null) "Outra imagem" else "Importar imagem")
+            }
         }
-        if (busy) Row(verticalAlignment = Alignment.CenterVertically) {
-            CircularProgressIndicator(modifier = Modifier.size(20.dp), strokeWidth = 2.dp)
-            Spacer(Modifier.width(8.dp))
-            Text(busyText)
-        }
-        notice?.let { Text(it, style = MaterialTheme.typography.bodySmall) }
+        // A etapa em andamento e, depois, o início dos resultados são trazidos para a área visível.
+        val focus = androidx.compose.ui.platform.LocalFocusManager.current
+        // Ao iniciar a busca, recolhe o teclado para o andamento e os resultados ficarem visíveis.
+        LaunchedEffect(busy) { if (busy) { focus.clearFocus(); delay(120); runCatching { progressView.bringIntoView() } } }
+        LumeVisibility(busy) { StageProgress(busyText.ifEmpty { "Pesquisando…" }, Modifier.bringIntoViewRequester(progressView)) }
+        notice?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = InkSoft) }
 
         clarification?.let { c ->
-            ClarificationChooser(c.opcoes, onOption = { queryText = it; runSearch(it) },
-                onNotThis = { enteringDetails = true })
-            if (enteringDetails) {
-                OutlinedTextField(value = detailsText, onValueChange = { detailsText = it }, modifier = Modifier.fillMaxWidth(),
-                    label = { Text("Conte um pouco mais sobre o que você quis dizer.") })
-                Button(enabled = detailsText.isNotBlank() && !busy, onClick = {
-                    flowRejected = flowRejected + c.opcoes.map { it.texto }
-                    flowDetails = listOf(flowDetails, detailsText.trim()).filter { it.isNotBlank() }.joinToString(". ")
-                    flowRound += 1
-                    detailsText = ""
-                    clarifyThenSearch()
-                }) { Text("Continuar") }
+            Reveal(key = c) { ClarificationChooser(c.opcoes, onOption = { queryText = it; runSearch(it) },
+                onNotThis = { enteringDetails = true }) }
+            LumeVisibility(enteringDetails) {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    OutlinedTextField(value = detailsText, onValueChange = { detailsText = it }, modifier = Modifier.fillMaxWidth(),
+                        shape = MaterialTheme.shapes.medium,
+                        label = { Text("Conte um pouco mais sobre o que você quis dizer.") })
+                    Button(enabled = detailsText.isNotBlank() && !busy, onClick = {
+                        flowRejected = flowRejected + c.opcoes.map { it.texto }
+                        flowDetails = listOf(flowDetails, detailsText.trim()).filter { it.isNotBlank() }.joinToString(". ")
+                        flowRound += 1
+                        detailsText = ""
+                        clarifyThenSearch()
+                    }) { Text("Continuar") }
+                }
             }
         }
 
         searchedText?.let { q ->
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(if (busy) "Pesquisando: " else "Pesquisado: ", style = MaterialTheme.typography.bodySmall)
-                Text(q, style = MaterialTheme.typography.bodySmall, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f, fill = false))
-                TextButton(onClick = { correcting = !correcting; correctionText = q }) { Text("Corrigir") }
-            }
-            if (correcting) {
-                OutlinedTextField(value = correctionText, onValueChange = { correctionText = it }, modifier = Modifier.fillMaxWidth(),
-                    label = { Text("Corrigir a pergunta") })
-                Button(enabled = correctionText.isNotBlank(), onClick = { queryText = correctionText; runSearch(correctionText.trim()) }) {
-                    Text("Pesquisar esta pergunta")
+            HorizontalDivider(color = Hairline)
+            Row(Modifier.bringIntoViewRequester(resultsView), verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                    Overline(if (busy) "Pesquisando" else "Pesquisado")
+                    Text(q, style = MaterialTheme.typography.bodyLarge, maxLines = if (largeText()) 6 else 3, overflow = TextOverflow.Ellipsis)
                 }
-                lastOptions?.let { c -> ClarificationChooser(c.opcoes, onOption = { queryText = it; runSearch(it) }, onNotThis = null) }
+                TextButton(onClick = { correcting = !correcting; correctionText = q }, modifier = Modifier.heightIn(min = 48.dp)) { Text("Corrigir") }
+            }
+            LumeVisibility(correcting) {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    OutlinedTextField(value = correctionText, onValueChange = { correctionText = it }, modifier = Modifier.fillMaxWidth(),
+                        shape = MaterialTheme.shapes.medium, label = { Text("Corrigir a pergunta") })
+                    Button(enabled = correctionText.isNotBlank(), onClick = { queryText = correctionText; runSearch(correctionText.trim()) }) {
+                        Text("Pesquisar esta pergunta")
+                    }
+                    lastOptions?.let { c -> ClarificationChooser(c.opcoes, onOption = { queryText = it; runSearch(it) }, onNotThis = null) }
+                }
             }
         }
 
-        searchError?.let { err ->
-            Text(err, color = MaterialTheme.colorScheme.error)
-            OutlinedButton(onClick = { lastAction?.invoke() }) { Text("Tentar novamente") }
+        LaunchedEffect(evaluation, searchError) {
+            if ((evaluation != null || searchError != null) && !busy) { delay(80); runCatching { resultsView.bringIntoView(topArea) } }
         }
+        searchError?.let { err -> ErrorNote(err) { lastAction?.invoke() } }
         evaluation?.let { e ->
             if (e.status == "erro") {
-                Text("Não foi possível consultar as fontes agora. Verifique a conexão e tente novamente.", color = MaterialTheme.colorScheme.error)
-                OutlinedButton(onClick = { lastAction?.invoke() }) { Text("Tentar novamente") }
+                ErrorNote("Não foi possível consultar as fontes agora. Verifique a conexão e tente novamente.") { lastAction?.invoke() }
             } else {
-                ResearchResults(e, onOption = { queryText = it; runSearch(it) })
+                Reveal(key = e) { ResearchResults(e, onOption = { queryText = it; runSearch(it) }) }
             }
+        }
+        Spacer(Modifier.height(8.dp))
+    }
+}
+
+/** Erro em linguagem simples, com a ação de tentar de novo quando houver. */
+@Composable
+private fun ErrorNote(text: String, onRetry: (() -> Unit)?) {
+    LumeCard(color = AmberSoft, border = Color.Transparent) {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            Text(text, style = MaterialTheme.typography.bodyMedium, color = Amber)
+            onRetry?.let { OutlinedButton(onClick = it, modifier = Modifier.heightIn(min = 48.dp)) { Text("Tentar novamente") } }
         }
     }
 }

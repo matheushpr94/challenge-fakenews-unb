@@ -39,7 +39,9 @@ class EvidenceItem(
     val trecho: String,
     val qualificadores: List<String>,
     val anos: List<Int>,
-    val relacao: String, // apoia | contradiz | valor | limite | outra_categoria | outro_periodo | sem_categoria | categoria_nao_informada
+    // apoia | contradiz | valor | limite | outra_categoria | outro_periodo | sem_categoria | categoria_nao_informada |
+    // contexto_anterior | contexto_relacionado | negada_na_fonte (as três últimas não entram na comparação)
+    val relacao: String,
     val explicito: Boolean = true, // a frase cita a entidade (e não só o título da página)
     var entidadeFonte: String? = null, // nome mais longo que contém a entidade (outra organização homônima)
 )
@@ -98,7 +100,13 @@ private fun otherSubject(sent: String, knownStems: Set<String>): Boolean = extra
     es.isNotEmpty() && (es intersect knownStems).isEmpty()
 }
 
-fun quantityEvidence(interp: Interpretation, groups: List<Group>): List<EvidenceItem> {
+/**
+ * `contextOnly`: para afirmações sobre algo que acontece numa data, diz se a fonte só serve de contexto
+ * (publicação anterior ao período alegado, ou fonte que não relata o mesmo acontecimento). O valor encontrado
+ * nela é mostrado, mas não apoia nem contradiz a afirmação.
+ */
+fun quantityEvidence(interp: Interpretation, groups: List<Group>,
+                     contextOnly: (Candidate, Assessment) -> String? = { _, _ -> null }): List<EvidenceItem> {
     val q = interp.quantity ?: return emptyList()
     val entity = interp.entidades.firstOrNull()
     val entTokens = entity?.let { norm(it).split(" ").toSet() } ?: emptySet()
@@ -109,8 +117,9 @@ fun quantityEvidence(interp: Interpretation, groups: List<Group>): List<Evidence
     val known = interp.entidades.flatMap { norm(it).split(" ") }.map { stem(it) }.toSet() + qualStems + propStems + q.chaveUnidade
     val items = mutableListOf<EvidenceItem>()
     groups.forEachIndexed { gi, g ->
-        for ((cand, _) in g.members) {
+        for ((cand, assessment) in g.members) {
             val titleHasEntity = entity != null && mentionsEntity(entity, cand.title)
+            val onlyContext = contextOnly(cand, assessment)
             val seen = HashSet<Pair<Double, String>>()
             for ((kind, text) in sourceTexts(cand)) {
                 val sentences = if (kind != "titulo") evSentences(text) else listOf(text)
@@ -127,6 +136,9 @@ fun quantityEvidence(interp: Interpretation, groups: List<Group>): List<Evidence
                         if (!seen.add((x.valor ?: 0.0) to sent.take(60))) continue
                         val xq = qualifierKeys(x)
                         val rel = when {
+                            // "Não estabeleceu uma taxa de 55% para…": a frase cita o valor para negá-lo ou restringi-lo.
+                            x.negada && !q.negada -> "negada_na_fonte"
+                            onlyContext != null -> onlyContext
                             claimQuals.isNotEmpty() && xq.isNotEmpty() && (claimQuals intersect xq).isEmpty() -> "outra_categoria"
                             claimQuals.isNotEmpty() && xq.isEmpty() -> "sem_categoria" // não diz a qual categoria se refere
                             claimQuals.isEmpty() && xq.isNotEmpty() -> "categoria_nao_informada" // a entrada não diz a categoria
@@ -209,7 +221,8 @@ private fun periodNote(reps: List<EvidenceItem>): Explanation {
     return Explanation("As fontes indicam valores diferentes para o mesmo período ou sem período informado; podem usar definições ou contagens diferentes.")
 }
 
-fun synthesize(interp: Interpretation, groups: List<Group>, directCount: Int): Synthesis {
+fun synthesize(interp: Interpretation, groups: List<Group>, directCount: Int,
+               contextOnly: (Candidate, Assessment) -> String? = { _, _ -> null }): Synthesis {
     val af = interp.afirmacao
     val tipo = af?.tipo
     val detail = af?.detalheVerificavel
@@ -220,7 +233,7 @@ fun synthesize(interp: Interpretation, groups: List<Group>, directCount: Int): S
     val q = interp.quantity
     val entity = interp.entidades.firstOrNull()
     val items = when {
-        q != null -> tagVariants(quantityEvidence(interp, groups), groups, entity)
+        q != null -> tagVariants(quantityEvidence(interp, groups, contextOnly), groups, entity)
         tipo == "fato_historico" && interp.anos.isNotEmpty() -> tagVariants(yearEvidence(interp, groups), groups, entity)
         directCount > 0 -> return Synthesis("sem_comparacao", SITUACAO_FRASE.getValue("sem_comparacao"), detail, "nenhum")
         else -> return Synthesis("insuficiente", SITUACAO_FRASE.getValue("insuficiente"), detail, "nenhum",
@@ -240,8 +253,15 @@ private fun decide(interp: Interpretation, q: Quantity?, items: List<EvidenceIte
     if (claimed != null) expl.add(Explanation("Informado na entrada: $claimed."))
     // Valores deixados de fora da comparação: explicados DEPOIS da comparação, no máximo 2.
     val reasons = mapOf("outra_categoria" to "refere-se a outra categoria", "outro_periodo" to "refere-se a outro período",
-        "categoria_nao_informada" to "a fonte especifica uma categoria que a entrada não informa")
-    val excluded = items.filter { it.relacao in reasons && it.conteudo in STRONG_CONTENT }.take(2)
+        "categoria_nao_informada" to "a fonte especifica uma categoria que a entrada não informa",
+        "contexto_anterior" to "publicação anterior ao período da afirmação; é contexto histórico e não mostra o que vale agora",
+        "contexto_relacionado" to "a fonte não relata este mesmo acontecimento; é contexto relacionado",
+        "negada_na_fonte" to "a frase da fonte cita o valor com negação ou ressalva; leia o trecho")
+    val contextKinds = setOf("contexto_anterior", "contexto_relacionado", "negada_na_fonte")
+    val asContext = items.filter { it.relacao in contextKinds }
+    // Uma linha por fonte; primeiro as de contexto, que explicam por que um valor igual não foi contado.
+    val excluded = items.filter { it.relacao in reasons && it.conteudo in STRONG_CONTENT }
+        .sortedBy { if (it.relacao in contextKinds) 0 else 1 }.distinctBy { it.url }.take(3)
         .map { Explanation("Não comparado — ${describe(it)}: ${reasons.getValue(it.relacao)}.", listOf(src(it))) }
     val rel = items.filter { it.relacao in setOf("apoia", "contradiz", "valor") }
     val strong = rel.filter { it.conteudo in STRONG_CONTENT }
@@ -260,6 +280,12 @@ private fun decide(interp: Interpretation, q: Quantity?, items: List<EvidenceIte
             if (sit == "insuficiente") emptyList() else used)
     }
 
+    if (rel.isEmpty() && asContext.isNotEmpty()) {
+        val n = asContext.map { it.url }.distinct().size
+        return out("insuficiente", listOf(Explanation("Não encontramos fontes comparáveis sobre o que a afirmação diz que acontece agora. " +
+            "$n ${if (n == 1) "publicação cita" else "publicações citam"} esse valor em outro momento ou em outro contexto: " +
+            "isso ajuda a entender o assunto, mas não confirma nem desmente a afirmação. Ausência de fontes não indica falsidade.")))
+    }
     if (rel.isEmpty()) return out("insuficiente", listOf(Explanation("As fontes encontradas não informam esse valor de forma comparável. Ausência de informação não é contradição.")))
     if (strong.isEmpty()) {
         return out("insuficiente", rel.take(3).map { Explanation("Pista, sem leitura da página: " + describe(it), listOf(src(it))) } +

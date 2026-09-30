@@ -34,6 +34,7 @@ Para conferir o projeto pelo terminal:
 ## Diagnóstico e regressões
 
 - `OcrFixtureDumpTest` (androidTest) grava a saída real do ML Kit das capturas em `app/src/test/resources/ocr`; `ArticleReaderRegressionTest` e `ReaderDiagnosticsTest` usam esses arquivos na JVM.
+- [`docs/capture-corpus/`](docs/capture-corpus/README.md) reúne sete capturas de notícias e posts com expectativas explícitas, métricas por etapa e uma linha de base reproduzível (`CaptureCorpusEvaluationTest`). Os textos das capturas não são rótulos de veracidade.
 - `WebCaptureTool` (androidTest) gera capturas de páginas públicas no emulador: `adb shell am instrument -w -e class com.example.lumeocrtest.WebCaptureTool -e captureUrl <url> -e captureName <nome> com.example.lumeocrtest.test/androidx.test.runner.AndroidJUnitRunner`.
 - Cada pesquisa gera um `ResearchTrace` (consultas, itens por provedor, triagem com motivo, duplicatas, agrupamentos, limite, exibidos e relação). No app de depuração ele vai para o logcat (`LumeTrace`); na tela, um resumo em "Como a pesquisa foi feita".
 - Busca com rede real pela JVM: `LUME_LIVE=1 gradlew.bat :app:testDebugUnitTest --tests "*LiveResearchDiagnostics*"` (relatórios em `app/build/lume-live/`).

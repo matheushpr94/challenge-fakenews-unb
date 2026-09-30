@@ -30,7 +30,7 @@ private val FRAMING_RE = Regex(
         "^\\s*(eu\\s+)?(vi|li|ouvi|recebi)\\s+(dizer\\s+)?que\\s+|^\\s*(dizem|disseram|falaram|estão\\s+dizendo|" +
         "est[aã]o\\s+falando)\\s+que\\s+|^\\s*(é|e)\\s+verdade\\s*[:,-]?\\s*", RegexOption.IGNORE_CASE)
 private val RELATIVE_RE = Regex(
-    "$WB(hoje|ontem|anteontem|agora h[aá] pouco|nesta semana|esta semana|neste fim de semana|" +
+    "$WB(hoje|ontem|anteontem|amanh[ãa]|agora h[aá] pouco|nesta semana|esta semana|neste fim de semana|" +
         "recentemente|acaba de|acabou de|nest[ae] (?:segunda|ter[çc]a|quarta|quinta|sexta|s[aá]bado|" +
         "domingo)(?:-feira)?)$WE", RegexOption.IGNORE_CASE)
 private val MONTH_ALT = MONTHS.keys.sortedByDescending { it.length }.joinToString("|")
@@ -83,17 +83,36 @@ data class Interpretation(
     val partes: List<List<String>> = emptyList(),
     /** Radicais centrais da matéria lida (no título ou repetidos no texto); vazio sem contexto. */
     val topicos: Set<String> = emptySet(),
+    /** Material citado como prova no começo da frase ("imagens", "vídeo"); a pesquisa não avalia a autenticidade dele. */
+    val materialCitado: String? = null,
 )
+
+/** Chamada de atenção no começo do texto ("URGENTE -", "BOMBA:"): marcador editorial, não faz parte do fato. */
+private val ATTENTION_RE = Regex("(?iu)^\\s*(?:urgente|bomba|aten[cç][aã]o|alerta|agora|plant[aã]o|exclusivo|grave|breaking|" +
+    "[uú]ltima hora|confirmado|vejam?)\\s*[:!|–—-]+\\s*")
+/** "Imagens mostram como foi…", "Vídeo mostra que…": o fato é o que vem depois; o material citado é outro detalhe. */
+private val MEDIA_RE = Regex("(?iu)^\\s*(?:nov[ao]s?\\s+)?(imagens?|fotos?|fotografias?|v[ií]deos?)\\s+(?:mostram?|revelam?|registram?|exibem?|flagram?)\\s+" +
+    "(?:como\\s+(?:foi|é|era|foram|ficou)\\s+|(?:o\\s+)?momento\\s+em\\s+que\\s+|que\\s+)?")
+/** Leitura de imagem que colou duas palavras curtas ("foio", "parao", "queos"). Nenhuma dessas formas é palavra. */
+private val FUSED_RE = Regex("(?iu)(?<![\\p{L}])(foi|era|para|como|que|sobre|entre)(os|as|o|a)(?![\\p{L}])")
+
+/** Material citado como prova no começo da frase ("imagens", "vídeo"), quando houver. */
+fun citedMedia(text: String?): String? =
+    MEDIA_RE.find(ATTENTION_RE.replaceFirst(FRAMING_RE.replaceFirst((text ?: "").trim(), ""), ""))?.groupValues?.get(1)?.lowercase()
 
 fun cleanInput(text: String?): String {
     var t = (text ?: "").replace("\r", "\n").take(MAX_INPUT)
     t = t.replace(Regex("[ \\t\\u00a0]+"), " ")
     t = t.replace(Regex("\\n{2,}"), "\n").trim()
+    t = FUSED_RE.replace(t) { "${it.groupValues[1]} ${it.groupValues[2]}" }
     var prev: String? = null
     while (prev != t) {
         prev = t
         t = FRAMING_RE.replaceFirst(t, "").trim()
+        t = ATTENTION_RE.replaceFirst(t, "").trim()
     }
+    // Só quando sobra uma frase com conteúdo: "Vídeo mostra Lula" continua inteiro.
+    MEDIA_RE.find(t)?.let { m -> t.substring(m.range.last + 1).trim().takeIf { r -> r.split(" ").size >= 4 }?.let { t = it } }
     return t.trim(' ', '?', '¿', '!', '-', '–', '—', ':')
 }
 
@@ -234,7 +253,7 @@ fun interpret(text: String?, nowMs: Long = System.currentTimeMillis(), context: 
         vocabulario = contextVocabulary(main.ifEmpty { clean }, context?.body.orEmpty() + " " + context?.subtitle.orEmpty(),
             exclude = aliasTokens + entTokens),
         detalheStems = detailStems(main.ifEmpty { clean }, ctxText), dataReferencia = context?.publishedAtMs,
-        partes = clausesOf(main.removePrefix(intro), terms),
+        partes = clausesOf(main.removePrefix(intro), terms), materialCitado = citedMedia(text),
         topicos = topicStems(context),
     )
     val (afirmacao, quantity) = structure(interp, main.ifEmpty { clean }, nowYear)
@@ -294,7 +313,11 @@ fun buildQueries(interp: Interpretation, clean: String, ents: List<String>, even
         // Uma consulta com o valor alegado e outras SEM ele, para descobrir o valor documentado.
         // A comparação continua usando o valor alegado.
         val qualStems = q.qualificadores.map { stem(it) }.toSet()
-        val others = terms.filter { stem(it) != q.chaveUnidade && stem(it) !in qualStems }.take(2)
+        // Afirmação datada ("amanhã", publicação com data): a consulta leva mais palavras do assunto (produto, alvo)
+        // e nenhuma palavra de tempo, para não trazer só publicações que coincidem no nome e no número.
+        val dated = interp.tempoRelativo.isNotEmpty() || interp.dataReferencia != null
+        val timeWords = interp.tempoRelativo.flatMap { norm(it).split(" ") }.toSet() + setOf("partir", "nesta", "neste")
+        val others = terms.filter { stem(it) != q.chaveUnidade && stem(it) !in qualStems && norm(it) !in timeWords }.take(if (dated) 4 else 2)
         val genericUnit = q.chaveUnidade == "%" || norm(q.unidade) in setOf("pessoas", "casos", "mortes", "mortos",
             "reais", "dolares", "vezes", "anos")
         val subj = ents.take(2) + (if (genericUnit || ents.isEmpty()) others else emptyList())

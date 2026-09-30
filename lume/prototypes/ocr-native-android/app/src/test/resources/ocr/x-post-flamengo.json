@@ -1,0 +1,617 @@
+{
+ "image": "zz-x-post-flamengo.png",
+ "width": 1170,
+ "height": 2532,
+ "blocks": [
+  {
+   "text": "BJA",
+   "box": [
+    68,
+    499,
+    88,
+    520
+   ],
+   "lines": [
+    {
+     "text": "BJA",
+     "box": [
+      68,
+      499,
+      88,
+      520
+     ],
+     "confidence": 0.4075520932674408
+    }
+   ]
+  },
+  {
+   "text": "09:57",
+   "box": [
+    95,
+    59,
+    231,
+    97
+   ],
+   "lines": [
+    {
+     "text": "09:57",
+     "box": [
+      95,
+      59,
+      231,
+      97
+     ],
+     "confidence": 0.8265625238418579
+    }
+   ]
+  },
+  {
+   "text": "Top Latest",
+   "box": [
+    54,
+    323,
+    367,
+    360
+   ],
+   "lines": [
+    {
+     "text": "Top Latest",
+     "box": [
+      54,
+      323,
+      367,
+      360
+     ],
+     "confidence": 0.8459201455116272
+    }
+   ]
+  },
+  {
+   "text": "3",
+   "box": [
+    66,
+    501,
+    93,
+    509
+   ],
+   "lines": [
+    {
+     "text": "3",
+     "box": [
+      66,
+      501,
+      93,
+      509
+     ],
+     "confidence": 0.4765625
+    }
+   ]
+  },
+  {
+   "text": "Q bets flamengo stf",
+   "box": [
+    208,
+    184,
+    629,
+    230
+   ],
+   "lines": [
+    {
+     "text": "Q bets flamengo stf",
+     "box": [
+      208,
+      184,
+      629,
+      230
+     ],
+     "confidence": 0.85888671875
+    }
+   ]
+  },
+  {
+   "text": "People",
+   "box": [
+    473,
+    321,
+    614,
+    358
+   ],
+   "lines": [
+    {
+     "text": "People",
+     "box": [
+      473,
+      321,
+      614,
+      358
+     ],
+     "confidence": 0.8776041865348816
+    }
+   ]
+  },
+  {
+   "text": "Planeta do Futebol",
+   "box": [
+    187,
+    407,
+    576,
+    440
+   ],
+   "lines": [
+    {
+     "text": "Planeta do Futebol",
+     "box": [
+      187,
+      407,
+      576,
+      440
+     ],
+     "confidence": 0.862548828125
+    }
+   ]
+  },
+  {
+   "text": "0 724",
+   "box": [
+    856,
+    54,
+    1077,
+    100
+   ],
+   "lines": [
+    {
+     "text": "0 724",
+     "box": [
+      856,
+      54,
+      1077,
+      100
+     ],
+     "confidence": 0.486328125
+    }
+   ]
+  },
+  {
+   "text": "Videos",
+   "box": [
+    721,
+    321,
+    865,
+    355
+   ],
+   "lines": [
+    {
+     "text": "Videos",
+     "box": [
+      721,
+      321,
+      865,
+      355
+     ],
+     "confidence": 0.8138020634651184
+    }
+   ]
+  },
+  {
+   "text": "O@fute... . 12h",
+   "box": [
+    671,
+    405,
+    962,
+    445
+   ],
+   "lines": [
+    {
+     "text": "O@fute... . 12h",
+     "box": [
+      671,
+      405,
+      962,
+      445
+     ],
+     "confidence": 0.5982571840286255
+    }
+   ]
+  },
+  {
+   "text": "Photos",
+   "box": [
+    971,
+    321,
+    1116,
+    356
+   ],
+   "lines": [
+    {
+     "text": "Photos",
+     "box": [
+      971,
+      321,
+      1116,
+      356
+     ],
+     "confidence": 0.8815104365348816
+    }
+   ]
+  },
+  {
+   "text": "AGORA! Flamengo se antecipa aos clubes e\nentra com pedido no STF contra Medida\nProvisória que proibiu as bets.",
+   "box": [
+    186,
+    466,
+    1140,
+    622
+   ],
+   "lines": [
+    {
+     "text": "AGORA! Flamengo se antecipa aos clubes e",
+     "box": [
+      257,
+      466,
+      1140,
+      506
+     ],
+     "confidence": 0.8517922759056091
+    },
+    {
+     "text": "entra com pedido no STF contra Medida",
+     "box": [
+      186,
+      525,
+      989,
+      566
+     ],
+     "confidence": 0.870337724685669
+    },
+    {
+     "text": "Provisória que proibiu as bets.",
+     "box": [
+      188,
+      583,
+      788,
+      622
+     ],
+     "confidence": 0.8535879850387573
+    }
+   ]
+  },
+  {
+   "text": "O Rubro-Negro pediu hoje ao ministro Luiz Fux\npara participar da ação que questiona a MP. O\nclube também quer que sua manifestação seja\nconsiderada na análise do pedido de\nsUspensão da MP.",
+   "box": [
+    185,
+    695,
+    1116,
+    975
+   ],
+   "lines": [
+    {
+     "text": "O Rubro-Negro pediu hoje ao ministro Luiz Fux",
+     "box": [
+      186,
+      699,
+      1116,
+      739
+     ],
+     "confidence": 0.84375
+    },
+    {
+     "text": "para participar da ação que questiona a MP. O",
+     "box": [
+      188,
+      757,
+      1108,
+      799
+     ],
+     "confidence": 0.872994065284729
+    },
+    {
+     "text": "clube também quer que sua manifestação seja",
+     "box": [
+      186,
+      814,
+      1117,
+      856
+     ],
+     "confidence": 0.8724662065505981
+    },
+    {
+     "text": "considerada na análise do pedido de",
+     "box": [
+      186,
+      872,
+      916,
+      914
+     ],
+     "confidence": 0.892578125
+    },
+    {
+     "text": "sUspensão da MP.",
+     "box": [
+      201,
+      924,
+      545,
+      975
+     ],
+     "confidence": 0.7424665093421936
+    }
+   ]
+  },
+  {
+   "text": "X",
+   "box": [
+    1089,
+    406,
+    1132,
+    451
+   ],
+   "lines": [
+    {
+     "text": "X",
+     "box": [
+      1089,
+      406,
+      1132,
+      451
+     ],
+     "confidence": 0.42578125
+    }
+   ]
+  },
+  {
+   "text": "Na petição, o Fla afirma que a proibição afeta o\nFINANCIAMENTO DO ESPORTE. O clube cita o\nseu patrocínio máster, de R$ 268,5 milhões por\nano, válido até o fim de 2028.",
+   "box": [
+    186,
+    1044,
+    1132,
+    1259
+   ],
+   "lines": [
+    {
+     "text": "Na petição, o Fla afirma que a proibição afeta o",
+     "box": [
+      203,
+      1044,
+      1122,
+      1088
+     ],
+     "confidence": 0.8689903616905212
+    },
+    {
+     "text": "FINANCIAMENTO DO ESPORTE. O clube cita o",
+     "box": [
+      188,
+      1104,
+      1121,
+      1138
+     ],
+     "confidence": 0.785041332244873
+    },
+    {
+     "text": "seu patrocínio máster, de R$ 268,5 milhões por",
+     "box": [
+      200,
+      1160,
+      1132,
+      1202
+     ],
+     "confidence": 0.8405448794364929
+    },
+    {
+     "text": "ano, válido até o fim de 2028.",
+     "box": [
+      186,
+      1219,
+      769,
+      1259
+     ],
+     "confidence": 0.86669921875
+    }
+   ]
+  },
+  {
+   "text": "presidente Bap critica a MP desde sua\nassinatura.",
+   "box": [
+    186,
+    1625,
+    948,
+    1715
+   ],
+   "lines": [
+    {
+     "text": "presidente Bap critica a MP desde sua",
+     "box": [
+      188,
+      1625,
+      948,
+      1665
+     ],
+     "confidence": 0.8683215975761414
+    },
+    {
+     "text": "assinatura.",
+     "box": [
+      186,
+      1682,
+      403,
+      1715
+     ],
+     "confidence": 0.8643465638160706
+    }
+   ]
+  },
+  {
+   "text": "O Flamengo considera insuficientes os 10 dias\npara saida das empresas de apostas e alerta\npara os efeitos da perda repentina de receitas\nno futebol, nos esportes olímpicos, no futebol\nfeminino e nas categorias de base. O",
+   "box": [
+    185,
+    1334,
+    1109,
+    1606
+   ],
+   "lines": [
+    {
+     "text": "O Flamengo considera insuficientes os 10 dias",
+     "box": [
+      186,
+      1334,
+      1109,
+      1376
+     ],
+     "confidence": 0.8691906929016113
+    },
+    {
+     "text": "para saida das empresas de apostas e alerta",
+     "box": [
+      200,
+      1393,
+      1073,
+      1435
+     ],
+     "confidence": 0.880859375
+    },
+    {
+     "text": "para os efeitos da perda repentina de receitas",
+     "box": [
+      188,
+      1450,
+      1101,
+      1493
+     ],
+     "confidence": 0.8860176205635071
+    },
+    {
+     "text": "no futebol, nos esportes olímpicos, no futebol",
+     "box": [
+      188,
+      1508,
+      1099,
+      1551
+     ],
+     "confidence": 0.8631836175918579
+    },
+    {
+     "text": "feminino e nas categorias de base. O",
+     "box": [
+      185,
+      1566,
+      919,
+      1606
+     ],
+     "confidence": 0.8580729365348816
+    }
+   ]
+  },
+  {
+   "text": "Outros clubes também se articulam para agir\nEM BLOCO.",
+   "box": [
+    186,
+    1798,
+    1084,
+    1890
+   ],
+   "lines": [
+    {
+     "text": "Outros clubes também se articulam para agir",
+     "box": [
+      186,
+      1798,
+      1084,
+      1840
+     ],
+     "confidence": 0.8711993098258972
+    },
+    {
+     "text": "EM BLOCO.",
+     "box": [
+      188,
+      1857,
+      418,
+      1890
+     ],
+     "confidence": 0.72705078125
+    }
+   ]
+  },
+  {
+   "text": "O movimento segue a iniciativa do Sindicato\nNacional das Associações de Futebol\nProfissional (Sinafut) na ação da Associa\nNacional de Jogose Loterias (ANJL) e d +\nInstituto Brasileiro de Jogo Responsável",
+   "box": [
+    186,
+    1972,
+    1082,
+    2245
+   ],
+   "lines": [
+    {
+     "text": "O movimento segue a iniciativa do Sindicato",
+     "box": [
+      186,
+      1972,
+      1070,
+      2012
+     ],
+     "confidence": 0.8487119674682617
+    },
+    {
+     "text": "Nacional das Associações de Futebol",
+     "box": [
+      188,
+      2030,
+      928,
+      2070
+     ],
+     "confidence": 0.8471522331237793
+    },
+    {
+     "text": "Profissional (Sinafut) na ação da Associa",
+     "box": [
+      203,
+      2083,
+      1006,
+      2129
+     ],
+     "confidence": 0.8588324785232544
+    },
+    {
+     "text": "Nacional de Jogose Loterias (ANJL) e d +",
+     "box": [
+      188,
+      2141,
+      1082,
+      2188
+     ],
+     "confidence": 0.8275331258773804
+    },
+    {
+     "text": "Instituto Brasileiro de Jogo Responsável",
+     "box": [
+      188,
+      2203,
+      978,
+      2245
+     ],
+     "confidence": 0.8659939169883728
+    }
+   ]
+  },
+  {
+   "text": "Alám dacIenancão da MD acindioata nadaA",
+   "box": [
+    189,
+    2258,
+    1102,
+    2285
+   ],
+   "lines": [
+    {
+     "text": "Alám dacIenancão da MD acindioata nadaA",
+     "box": [
+      189,
+      2258,
+      1102,
+      2285
+     ],
+     "confidence": 0.3938419222831726
+    }
+   ]
+  }
+ ]
+}

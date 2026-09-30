@@ -1,0 +1,278 @@
+{
+ "image": "eval-g1-investigacao.png",
+ "width": 1450,
+ "height": 1540,
+ "blocks": [
+  {
+   "text": "globo.com g1 ge gshow globoplay gljogos globopop o globo valor",
+   "box": [
+    26,
+    59,
+    1333,
+    92
+   ],
+   "lines": [
+    {
+     "text": "globo.com g1 ge gshow globoplay gljogos globopop o globo valor",
+     "box": [
+      26,
+      59,
+      1333,
+      92
+     ],
+     "confidence": 0.8626179099082947
+    }
+   ]
+  },
+  {
+   "text": "EUA abrem investigação inédita sobre OpenAl e\nAnthropic após agentes de IA invadirem sistemas",
+   "box": [
+    47,
+    407,
+    1336,
+    527
+   ],
+   "lines": [
+    {
+     "text": "EUA abrem investigação inédita sobre OpenAl e",
+     "box": [
+      47,
+      407,
+      1290,
+      464
+     ],
+     "confidence": 0.8668870329856873
+    },
+    {
+     "text": "Anthropic após agentes de IA invadirem sistemas",
+     "box": [
+      68,
+      469,
+      1336,
+      527
+     ],
+     "confidence": 0.8692835569381714
+    }
+   ]
+  },
+  {
+   "text": "Por Redação g1 -São Paulo",
+   "box": [
+    45,
+    686,
+    412,
+    714
+   ],
+   "lines": [
+    {
+     "text": "Por Redação g1 -São Paulo",
+     "box": [
+      45,
+      686,
+      412,
+      714
+     ],
+     "confidence": 0.8119419813156128
+    }
+   ]
+  },
+  {
+   "text": "Apuração da FTC ocorre após agentes da OpenAl acessarem sistemas sem autorização nos EUA e na\nAustrália; órgão quer ouvir executivos e obter informações sobre os riscos da tecnologia.",
+   "box": [
+    42,
+    557,
+    1410,
+    632
+   ],
+   "lines": [
+    {
+     "text": "Apuração da FTC ocorre após agentes da OpenAl acessarem sistemas sem autorização nos EUA e na",
+     "box": [
+      42,
+      557,
+      1410,
+      589
+     ],
+     "confidence": 0.8475561141967773
+    },
+    {
+     "text": "Austrália; órgão quer ouvir executivos e obter informações sobre os riscos da tecnologia.",
+     "box": [
+      54,
+      602,
+      1247,
+      632
+     ],
+     "confidence": 0.8440036773681641
+    }
+   ]
+  },
+  {
+   "text": "30\/09\/2026 13h51· Atualizado há uma hora",
+   "box": [
+    43,
+    730,
+    529,
+    754
+   ],
+   "lines": [
+    {
+     "text": "30\/09\/2026 13h51· Atualizado há uma hora",
+     "box": [
+      43,
+      730,
+      529,
+      754
+     ],
+     "confidence": 0.8584821224212646
+    }
+   ]
+  },
+  {
+   "text": "TECNOLOGIA",
+   "box": [
+    603,
+    158,
+    874,
+    193
+   ],
+   "lines": [
+    {
+     "text": "TECNOLOGIA",
+     "box": [
+      603,
+      158,
+      874,
+      193
+     ],
+     "confidence": 0.7554687261581421
+    }
+   ]
+  },
+  {
+   "text": "Publicidade",
+   "box": [
+    77,
+    1003,
+    229,
+    1024
+   ],
+   "lines": [
+    {
+     "text": "Publicidade",
+     "box": [
+      77,
+      1003,
+      229,
+      1024
+     ],
+     "confidence": 0.8643465638160706
+    }
+   ]
+  },
+  {
+   "text": "ja.j inteligência artificial itaú",
+   "box": [
+    531,
+    284,
+    943,
+    336
+   ],
+   "lines": [
+    {
+     "text": "ja.j inteligência artificial itaú",
+     "box": [
+      531,
+      284,
+      943,
+      336
+     ],
+     "confidence": 0.6065104007720947
+    }
+   ]
+  },
+  {
+   "text": "Ativar som",
+   "box": [
+    178,
+    1034,
+    317,
+    1060
+   ],
+   "lines": [
+    {
+     "text": "Ativar som",
+     "box": [
+      178,
+      1034,
+      317,
+      1060
+     ],
+     "confidence": 0.7591145634651184
+    }
+   ]
+  },
+  {
+   "text": "Nós usanmos cookies e outras tecnologias semelhantes para melhorara sua experiência em nossos serviços, personalizar\npublicidade e recomendar conteúdo de seu interesse. Ao utilizar nossos serviços, você está ciente dessa funcionalidade.\nInformamos ainda que atualizamos nosso Aviso de Privacidade. Conheça nosso Portal da Privacidade e veja o nosso novo Aviso.",
+   "box": [
+    70,
+    1283,
+    1385,
+    1390
+   ],
+   "lines": [
+    {
+     "text": "Nós usanmos cookies e outras tecnologias semelhantes para melhorara sua experiência em nossos serviços, personalizar",
+     "box": [
+      70,
+      1283,
+      1311,
+      1307
+     ],
+     "confidence": 0.873046875
+    },
+    {
+     "text": "publicidade e recomendar conteúdo de seu interesse. Ao utilizar nossos serviços, você está ciente dessa funcionalidade.",
+     "box": [
+      70,
+      1325,
+      1298,
+      1347
+     ],
+     "confidence": 0.8487454652786255
+    },
+    {
+     "text": "Informamos ainda que atualizamos nosso Aviso de Privacidade. Conheça nosso Portal da Privacidade e veja o nosso novo Aviso.",
+     "box": [
+      70,
+      1368,
+      1385,
+      1390
+     ],
+     "confidence": 0.8588541746139526
+    }
+   ]
+  },
+  {
+   "text": "Prosseguir",
+   "box": [
+    667,
+    1456,
+    810,
+    1484
+   ],
+   "lines": [
+    {
+     "text": "Prosseguir",
+     "box": [
+      667,
+      1456,
+      810,
+      1484
+     ],
+     "confidence": 0.8667968511581421
+    }
+   ]
+  }
+ ]
+}

@@ -380,7 +380,24 @@ class ResearchService(
 
         val evGroups = groups.take(20)
         val nDirect = groups.count { g -> g.members.maxOf { CATEGORY_RANK.getValue(it.second.category) } == CATEGORY_RANK.getValue("direto") }
-        var sintese = synthesize(interp, evGroups, nDirect)
+        // Afirmação sobre algo que acontece numa data (traz "hoje", "amanhã"… ou vem de uma publicação datada e descreve
+        // uma ação): só fontes sobre o mesmo acontecimento, no mesmo período, esclarecem o detalhe. Publicações
+        // anteriores e fontes relacionadas viram contexto. Contagens e fatos estáveis continuam aceitando fontes antigas.
+        val happening = interp.quantity != null && interp.afirmacao?.tipo != "quantidade_periodo" && (interp.tempoRelativo.isNotEmpty() ||
+            interp.dataReferencia != null && originalEvent(interp.assunto, context, now).frame.action != null)
+        val contextOnly: (Candidate, Assessment) -> String? = { c, a ->
+            val pub = c.published.takeIf { c.origin != "wikipedia" }
+            val ref = interp.dataReferencia
+            when {
+                !happening -> null
+                a.category == "anterior" -> "contexto_anterior"
+                pub != null && ref != null && pub < ref - REFERENCE_WINDOW_MS -> "contexto_anterior"
+                pub != null && ref == null && interp.tempoRelativo.isNotEmpty() && now - pub > RELATIVE_MAX_AGE_MS -> "contexto_anterior"
+                a.category != "direto" -> "contexto_relacionado"
+                else -> null
+            }
+        }
+        var sintese = synthesize(interp, evGroups, nDirect, contextOnly)
         val evByGroup = sintese.usadas.groupBy { it.group }
         val buckets = linkedMapOf<String, MutableList<Group>>("responde" to mutableListOf(), "direto" to mutableListOf(),
             "incerto" to mutableListOf(), "anterior" to mutableListOf(), "contexto" to mutableListOf(), "contexto_geral" to mutableListOf(),
@@ -446,7 +463,7 @@ class ResearchService(
                 if (q2.posicao == first.posicao || extraDetails.size >= 2) continue
                 val i2 = interp.copy(quantity = q2, afirmacao = interp.afirmacao?.copy(quantidade = q2, detalheNegado = q2.negada,
                     detalheVerificavel = detailText(q2, entity)))
-                val s2 = synthesize(i2, evGroups, nDirect)
+                val s2 = synthesize(i2, evGroups, nDirect, contextOnly)
                 extraDetails.add(s2.copy(indicacao = indicate(s2, i2)))
             }
         }
@@ -514,7 +531,9 @@ class ResearchService(
     private fun card(g: Group, category: String, evItems: List<EvidenceItem>?, interp: Interpretation,
                      comparisons: Map<Candidate, EventComparison>, independence: Map<Candidate, IndependenceCheck>): ResultCard {
         // Representante: o membro com a relação mais forte (e, entre eles, o conteúdo mais completo).
-        val (cand, best) = g.members.maxWith(compareBy({ CATEGORY_RANK.getValue(it.second.category) }, { CONTENT_RANK.getValue(it.first.contentKind) }, { it.second.score }))
+        // Quando o cartão aparece por esclarecer o detalhe, mostra a publicação de onde o trecho saiu (mesma data e link).
+        val evUrls = evItems?.map { it.url }?.toSet().orEmpty()
+        val (cand, best) = g.members.maxWith(compareBy({ if (it.first.url in evUrls) 1 else 0 }, { CATEGORY_RANK.getValue(it.second.category) }, { CONTENT_RANK.getValue(it.first.contentKind) }, { it.second.score }))
         val cmp = comparisons[cand]
         val ind = independence[cand]
         val rel = when {
@@ -581,6 +600,11 @@ class ResearchService(
         val obs = mutableListOf<String>()
         val republished = all.sumOf { it.members.size - 1 }
         if (republished > 0) obs.add("$republished publicação(ões) repetiam conteúdo já listado e foram agrupadas; cópias da mesma matéria não são fontes distintas de informação.")
+        // O que o texto cita como prova ou como origem não é verificado só por haver matérias sobre o fato.
+        interp.materialCitado?.let { obs.add("A afirmação cita $it. A pesquisa compara o acontecimento descrito; não avalia se esse material é autêntico nem se mostra o que o texto diz.") }
+        trailingAttribution(interp.textoOriginal.lineSequence().firstOrNull().orEmpty())?.let {
+            obs.add("O texto atribui a informação a “$it”. Isso é o que o texto diz: só conta como fonte se a publicação aparecer entre os resultados.")
+        }
         if (interp.negacoes.isNotEmpty()) obs.add("A entrada contém negação (“${interp.negacoes[0]}…”). Confira nos trechos se as fontes afirmam o mesmo sentido.")
         val dated = direct.flatMap { g -> g.members.mapNotNull { it.first.published } }
         val now = clock()

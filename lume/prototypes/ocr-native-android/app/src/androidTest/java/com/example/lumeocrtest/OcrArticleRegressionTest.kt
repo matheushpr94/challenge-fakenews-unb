@@ -87,11 +87,11 @@ class OcrArticleRegressionTest {
         assertTrue(g1Claim.claim.orEmpty().startsWith("Em meio à corrida eleitoral"))
     }
 
-    @Test fun partialCapturesAskInsteadOfGuessing() {
+    @Test fun partialCapturesDoNotInventTitle() {
         val (cut, cutClaim) = read("g1-inadimplencia-corpo.png")
         assertNull(cut.title); assertTrue(cutClaim.needsChoice)
         val (crop, cropClaim) = read("recorte-senado-sem-titulo.png")
         assertNull(crop.title); assertNull(crop.metadata.source); assertNull(crop.metadata.author)
-        assertTrue(cropClaim.needsChoice)
+        assertTrue(cropClaim.claim.orEmpty().startsWith("Começou a tramitar"))
     }
 }

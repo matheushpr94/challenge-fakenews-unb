@@ -14,6 +14,7 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -115,7 +116,10 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
                     val measured=measurable.measure(constraints)
                     layout(if(visible) measured.width else 0, if(visible) measured.height else 0) { if(visible) measured.place(0,0) }
                 }) {
-                TextButton(onClick={page="home"}) { Icon(Icons.AutoMirrored.Outlined.ArrowBack,null); Spacer(Modifier.width(8.dp)); Text("Voltar") }
+                Row(Modifier.fillMaxWidth().padding(horizontal=4.dp),verticalAlignment=Alignment.CenterVertically) {
+                    IconButton(onClick={page="home"}) { Icon(Icons.AutoMirrored.Outlined.ArrowBack,"Voltar") }
+                    Text("Análise",style=MaterialTheme.typography.titleMedium)
+                }
                 OcrScreen(Modifier.weight(1f), importRequest, openRequest, sharedText, sharedImage, captureError)
             }
         }
@@ -124,27 +128,28 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
                 else EnterTransition.None togetherWith ExitTransition.None }) { screen ->
             when(screen) {
                 "analysis" -> Unit
-                "profile" -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp),verticalArrangement=Arrangement.spacedBy(24.dp)) {
-                    Text("Ajustes do Lume",style=MaterialTheme.typography.headlineMedium,fontWeight=FontWeight.Bold)
-                    Text("Preferências neste aparelho",color=MaterialTheme.colorScheme.secondary)
-                    Row(verticalAlignment=Alignment.CenterVertically) {
-                        Text("Animações suaves",Modifier.weight(1f))
-                        Switch(checked=animations,onCheckedChange={animations=it;prefs.edit().putBoolean("animations",it).apply()})
+                "profile" -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal=16.dp,vertical=20.dp),verticalArrangement=Arrangement.spacedBy(14.dp)) {
+                    Text("Ajustes do Lume",style=MaterialTheme.typography.headlineMedium,modifier=Modifier.padding(horizontal=4.dp))
+                    SectionHeader("Preferências neste aparelho",modifier=Modifier.padding(horizontal=4.dp))
+                    LumeCard {
+                        SettingSwitch("Animações suaves","Transições e movimentos do Lume. Também segue a configuração de animações do Android.",animations) {
+                            animations=it;prefs.edit().putBoolean("animations",it).apply()
+                        }
+                        HorizontalDivider(color=MaterialTheme.colorScheme.outlineVariant)
+                        SettingSwitch("Salvar pesquisas e rascunho","Ficam só neste aparelho.",saveHistory) { saveHistory=it;ResearchHistory.setEnabled(context,it) }
                     }
-                    Text("O mascote está ${if(active) "ativado" else "desativado"}.")
-                    if(active) OutlinedButton(onClick={context.startService(Intent(context,MascotService::class.java).setAction(MascotService.STOP))}) { Text("Desativar mascote") }
-                    Text("Sobre a leitura",style=MaterialTheme.typography.titleMedium)
-                    Text("O Lume lê a imagem escolhida ou uma tela autorizada por você. Ao pesquisar, o texto é usado em consultas na internet. A gotinha só inicia a captura quando você toca em 'Ler esta tela' e aceita a permissão do Android.")
-                    Text("A pesquisa consulta fontes públicas. A classificação de veracidade ainda não está disponível.",color=MaterialTheme.colorScheme.secondary)
-                    Text("Histórico neste aparelho",style=MaterialTheme.typography.titleMedium)
-                    Row(verticalAlignment=Alignment.CenterVertically) {
-                        Text("Salvar pesquisas e rascunho",Modifier.weight(1f))
-                        Switch(checked=saveHistory,onCheckedChange={saveHistory=it;ResearchHistory.setEnabled(context,it)})
+                    SectionHeader("Mascote",modifier=Modifier.padding(horizontal=4.dp))
+                    LumeCard {
+                        Column(Modifier.padding(16.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                            Text("O mascote está ${if(active) "ativado" else "desativado"}.",style=MaterialTheme.typography.bodyLarge)
+                            if(active) OutlinedButton(onClick={context.startService(Intent(context,MascotService::class.java).setAction(MascotService.STOP))},modifier=Modifier.heightIn(min=48.dp)) { Text("Desativar mascote") }
+                        }
                     }
+                    SectionHeader("Histórico neste aparelho",modifier=Modifier.padding(horizontal=4.dp))
                     val saved = remember(historyRevision, page) { ResearchHistory.list(context) }
-                    if (saved.isEmpty()) Text("Nenhuma pesquisa salva.",color=MaterialTheme.colorScheme.secondary)
+                    if (saved.isEmpty()) Text("Nenhuma pesquisa salva.",color=MaterialTheme.colorScheme.secondary,modifier=Modifier.padding(horizontal=4.dp))
                     saved.forEach { entry ->
-                        Card(onClick={
+                        LumeCard(onClick={
                             val result=ResearchHistory.restore(entry)
                             if(result!=null) {
                                 analysisState.evaluation.value=result
@@ -153,9 +158,9 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
                                 analysisState.clarification.value=null
                                 analysisVisited=true;page="analysis"
                             }
-                        },modifier=Modifier.fillMaxWidth()) {
+                        }) {
                             Column(Modifier.padding(14.dp),verticalArrangement=Arrangement.spacedBy(4.dp)) {
-                                Text(entry.query,maxLines=2,style=MaterialTheme.typography.bodyMedium,fontWeight=FontWeight.SemiBold)
+                                Text(entry.query,maxLines=2,style=MaterialTheme.typography.titleLarge)
                                 Text(DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT).format(Date(entry.savedAt)),
                                     style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
                             }
@@ -163,39 +168,57 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
                     }
                     if(saved.isNotEmpty() || ResearchHistory.draft(context).isNotEmpty())
                         TextButton(onClick={ResearchHistory.clear(context);analysisState.historyRevision.intValue++}) { Text("Apagar histórico e rascunho") }
-                    Text("A comparação contextual por IA usa o modelo gratuito instalado neste computador quando ele está conectado ao app.",
-                        style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
-                    Text("Pesquisa de fontes · Sem conta ou login",style=MaterialTheme.typography.bodySmall)
+                    SectionHeader("Sobre a leitura",modifier=Modifier.padding(horizontal=4.dp))
+                    LumeCard(color=MaterialTheme.colorScheme.surfaceContainerHigh,border=androidx.compose.ui.graphics.Color.Transparent) {
+                        Column(Modifier.padding(16.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                            Text("O Lume lê a imagem escolhida ou uma tela autorizada por você. Ao pesquisar, o texto é usado em consultas na internet. A gotinha só inicia a captura quando você toca em 'Ler esta tela' e aceita a permissão do Android.",style=MaterialTheme.typography.bodyMedium)
+                            Text("A pesquisa consulta fontes públicas. A classificação de veracidade ainda não está disponível.",style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.secondary)
+                            Text("A comparação contextual por IA usa o modelo gratuito instalado neste computador quando ele está conectado ao app.",
+                                style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
+                        }
+                    }
+                    Text("Pesquisa de fontes · Sem conta ou login",style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary,modifier=Modifier.padding(horizontal=4.dp))
                 }
                 else -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal=24.dp,vertical=20.dp),verticalArrangement=Arrangement.spacedBy(12.dp)) {
-                    Text("lume",style=MaterialTheme.typography.headlineMedium,fontWeight=FontWeight.Bold)
+                    Text("lume",style=MaterialTheme.typography.headlineMedium,color=MaterialTheme.colorScheme.primary)
                     Text("Seu companheiro de leitura.",color=MaterialTheme.colorScheme.secondary)
-                    Spacer(Modifier.height(10.dp))
+                    Spacer(Modifier.height(4.dp))
                     Box(Modifier.fillMaxWidth(),contentAlignment=Alignment.Center) { HomeMascot(motion && resumed && page=="home") }
-                    Text("Uma dúvida? Me chama.",Modifier.fillMaxWidth(),style=MaterialTheme.typography.titleLarge,fontWeight=FontWeight.Bold,textAlign=TextAlign.Center)
+                    Text("Uma dúvida? Me chama.",Modifier.fillMaxWidth(),style=MaterialTheme.typography.headlineMedium,textAlign=TextAlign.Center)
                     Text("Cole um texto, compartilhe um link, importe uma imagem ou peça ao Lume para ler a tela com sua autorização.",
-                        Modifier.fillMaxWidth().padding(horizontal=12.dp,vertical=8.dp),textAlign=TextAlign.Center,color=MaterialTheme.colorScheme.secondary)
+                        Modifier.fillMaxWidth().padding(horizontal=8.dp),textAlign=TextAlign.Center,color=MaterialTheme.colorScheme.secondary)
                     Spacer(Modifier.height(8.dp))
                     Button(onClick={ if(Settings.canDrawOverlays(context)) activate() else explanation=true },enabled=!active,
-                        modifier=Modifier.fillMaxWidth().heightIn(min=56.dp),shape=RoundedCornerShape(32.dp)) {
-                        Icon(Icons.Outlined.AutoAwesome,null); Spacer(Modifier.width(8.dp)); Text(if(active) "Mascote ativado" else "Ativar mascote",fontWeight=FontWeight.Bold)
+                        modifier=Modifier.fillMaxWidth().heightIn(min=54.dp)) {
+                        Icon(Icons.Outlined.WaterDrop,null,Modifier.size(20.dp)); Spacer(Modifier.width(8.dp)); Text(if(active) "Mascote ativado" else "Ativar mascote")
                     }
-                    Button(onClick={analysisVisited=true;page="analysis"},modifier=Modifier.fillMaxWidth().heightIn(min=56.dp),shape=RoundedCornerShape(32.dp),
-                        colors=ButtonDefaults.buttonColors(containerColor=MaterialTheme.colorScheme.secondaryContainer,contentColor=MaterialTheme.colorScheme.onSecondaryContainer)) {
-                        Icon(Icons.Outlined.Search,null); Spacer(Modifier.width(8.dp)); Text("Colar texto ou link",fontWeight=FontWeight.Bold)
+                    FilledTonalButton(onClick={analysisVisited=true;page="analysis"},modifier=Modifier.fillMaxWidth().heightIn(min=54.dp)) {
+                        Icon(Icons.Outlined.Search,null,Modifier.size(20.dp)); Spacer(Modifier.width(8.dp)); Text("Colar texto ou link")
                     }
-                    TextButton(onClick={analysisVisited=true;importRequest++;page="analysis"},modifier=Modifier.fillMaxWidth()) { Icon(Icons.Outlined.Image,null); Spacer(Modifier.width(8.dp));Text("Importar imagem") }
-                    TextButton(onClick={context.startActivity(Intent(context,CaptureActivity::class.java))},modifier=Modifier.fillMaxWidth()) {
-                        Icon(Icons.Outlined.DocumentScanner,null); Spacer(Modifier.width(8.dp)); Text("Ler esta tela")
+                    val importButton: @Composable (Modifier) -> Unit = { m ->
+                        OutlinedButton(onClick={analysisVisited=true;importRequest++;page="analysis"},modifier=m.heightIn(min=52.dp),contentPadding=PaddingValues(horizontal=10.dp)) {
+                            Icon(Icons.Outlined.Image,null,Modifier.size(18.dp)); Spacer(Modifier.width(6.dp)); Text("Importar imagem",textAlign=TextAlign.Center)
+                        }
                     }
-                    Spacer(Modifier.height(8.dp))
-                    Text("Você decide quando ele lê",style=MaterialTheme.typography.titleMedium,fontWeight=FontWeight.Bold)
-                    Text("A gotinha abre as opções quando você toca. Para capturar a tela, o Android pede sua autorização a cada sessão.",color=MaterialTheme.colorScheme.secondary)
+                    val readButton: @Composable (Modifier) -> Unit = { m ->
+                        OutlinedButton(onClick={context.startActivity(Intent(context,CaptureActivity::class.java))},modifier=m.heightIn(min=52.dp),contentPadding=PaddingValues(horizontal=10.dp)) {
+                            Icon(Icons.Outlined.DocumentScanner,null,Modifier.size(18.dp)); Spacer(Modifier.width(6.dp)); Text("Ler esta tela",textAlign=TextAlign.Center)
+                        }
+                    }
+                    if (largeText()) { importButton(Modifier.fillMaxWidth()); readButton(Modifier.fillMaxWidth()) }
+                    else Row(horizontalArrangement=Arrangement.spacedBy(10.dp)) { importButton(Modifier.weight(1f)); readButton(Modifier.weight(1f)) }
                     AnimatedVisibility(active,enter=if(motion) fadeIn()+expandVertically() else EnterTransition.None,exit=if(motion) fadeOut()+shrinkVertically() else ExitTransition.None) {
                         OutlinedButton(onClick={context.startService(Intent(context,MascotService::class.java).setAction(MascotService.STOP))},modifier=Modifier.fillMaxWidth().heightIn(min=52.dp)) { Text("Desativar mascote") }
                     }
                     message?.let { Text(it,color=MaterialTheme.colorScheme.error) }
-                    Spacer(Modifier.height(28.dp))
+                    Spacer(Modifier.height(8.dp))
+                    LumeCard(color=MaterialTheme.colorScheme.surfaceContainerHigh,border=androidx.compose.ui.graphics.Color.Transparent) {
+                        Column(Modifier.padding(16.dp),verticalArrangement=Arrangement.spacedBy(4.dp)) {
+                            Text("Você decide quando ele lê",style=MaterialTheme.typography.titleMedium)
+                            Text("A gotinha abre as opções quando você toca. Para capturar a tela, o Android pede sua autorização a cada sessão.",style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.secondary)
+                        }
+                    }
+                    Spacer(Modifier.height(12.dp))
                     Text("Lume · Pesquisa de fontes e contexto",Modifier.fillMaxWidth(),textAlign=TextAlign.Center,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
                 }
             }
@@ -207,6 +230,20 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
         text={Text("Permita que a gotinha apareça sobre outros aplicativos. Ela só abre as opções quando você toca e não lê nem captura sua tela.")},
         confirmButton={TextButton(onClick={explanation=false;pendingPermission=true;permission.launch(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,Uri.parse("package:${context.packageName}")))}){Text("Continuar")}},
         dismissButton={TextButton(onClick={explanation=false}){Text("Agora não")}})
+}
+
+/** Linha de ajuste com título, explicação curta e chave; a linha inteira alterna o valor. */
+@Composable
+private fun SettingSwitch(title: String, hint: String, checked: Boolean, onChange: (Boolean) -> Unit) {
+    Row(Modifier.fillMaxWidth().toggleable(checked, role=androidx.compose.ui.semantics.Role.Switch, onValueChange=onChange)
+        .padding(horizontal=16.dp,vertical=12.dp),verticalAlignment=Alignment.CenterVertically) {
+        Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(2.dp)) {
+            Text(title,style=MaterialTheme.typography.bodyLarge)
+            Text(hint,style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
+        }
+        Spacer(Modifier.width(12.dp))
+        Switch(checked=checked,onCheckedChange=null)
+    }
 }
 
 @Composable
@@ -256,7 +293,7 @@ private fun HomeMascot(motion: Boolean) {
 
     Box(
         modifier = Modifier
-            .size(180.dp)
+            .size(156.dp)
             .graphicsLayer {
                 translationY = -breathe
                 scaleX = touch.value

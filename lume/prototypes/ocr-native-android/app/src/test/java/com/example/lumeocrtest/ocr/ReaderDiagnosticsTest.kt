@@ -7,7 +7,7 @@ import java.io.File
 class ReaderDiagnosticsTest {
     @Test fun writeReadingReports() {
         val out = StringBuilder()
-        for (name in RealCaptures.ALL) {
+        for (name in RealCaptures.ALL + RealCaptures.MORE) {
             val f = OcrFixtures.load(name)
             val reader = ArticleReader()
             val reading = reader.read(f.blocks, f.width, f.height)
@@ -25,4 +25,6 @@ class ReaderDiagnosticsTest {
 object RealCaptures {
     val ALL = listOf("agencia-senado-bets", "bbc-fux-article", "agenciabrasil-bets", "camara-bets-pl",
         "g1-inadimplencia", "g1-inadimplencia-corpo", "recorte-senado-sem-titulo", "uol-flamengo-stf", "estadao-flamengo-stf")
+    /** Capturas acrescentadas depois: uma página de notícia com título de serviço e três posts de rede social. */
+    val MORE = listOf("metropoles-lei-seca", "x-post-almoco", "x-post-sobretaxa", "x-post-flamengo")
 }
