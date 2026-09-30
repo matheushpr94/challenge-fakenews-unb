@@ -1,0 +1,366 @@
+DEPOIS: 40/40 corretos
+
+ok   uol-estadao [sinonimos] esperado=mesmo_acontecimento antes=mesmo_acontecimento depois=mesmo_acontecimento
+     fonte: Estadão — Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil
+     por quê (rótulo manual): Mesmo agente (Flamengo), mesma ação com outras palavras (aciona STF = entrar com pedido no STF), mesmo objeto (bets = casas de apostas), mesma data.
+     resumo: Relata o mesmo acontecimento [leitura: pagina]
+       · Quem: Flamengo clube — o mesmo da matéria importada
+       · Ação: “entrar com pedido” — equivale a “aciona”
+       · Sobre o quê: casas, apostas — em comum
+       · Quando: publicado em 29/09/2026 — compatível com 29/09/2026
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil »
+       « pagina: Crédito: Estadão O Flamengo ingressou no STF contra a medida provisória que proíbe apostas no Brasil, apoiando a ação da ANJL. »
+ok   uol-estadao-titulo [so_titulo] esperado=mesmo_acontecimento antes=contexto depois=mesmo_acontecimento
+     fonte: Estadão — Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil
+     por quê (rótulo manual): Como chegou na busca ao vivo (Google Notícias, só título): mesmo agente, 'entrar com pedido no STF' = 'aciona STF', 'casas de apostas' = 'bets'.
+     resumo: Pelo título, relata o mesmo acontecimento [leitura: titulo]
+       · Quem: Flamengo clube — o mesmo da matéria importada
+       · Ação: “entrar com pedido” — equivale a “aciona”
+       · Sobre o quê: casas, apostas — em comum
+       · Quando: publicado em 29/09/2026 — compatível com 29/09/2026
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil »
+ok   uol-terra [sinonimos] esperado=mesmo_acontecimento antes=mesmo_acontecimento depois=mesmo_acontecimento
+     fonte: Terra — Flamengo pede ao STF para ingressar em ação contra o fim das bets
+     por quê (rótulo manual): Página: 'O clube entrou com petição na noite desta terça-feira (29/9)' — mesmo agente, ação, alvo e dia.
+     resumo: Relata o mesmo acontecimento [leitura: pagina]
+       · Quem: Flamengo — o mesmo da matéria importada
+       · Ação: “pede ao STF” — equivale a “aciona”
+       · Sobre o quê: bets — em comum
+       · Quando: publicado em 29/09/2026 — compatível com 29/09/2026
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Flamengo pede ao STF para ingressar em ação contra o fim das bets »
+       « pagina: O Flamengo se antecipou aos clubes e acionou o Supremo Tribunal Federal (STF) para tentar derrubar o veto às bets. »
+ok   uol-oglobo [sinonimos] esperado=mesmo_acontecimento antes=mesmo_acontecimento depois=mesmo_acontecimento
+     fonte: O GLOBO — Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets
+     por quê (rótulo manual): 'pede ingresso em ação no STF contra fim das bets' = ingressou no STF; só título.
+     resumo: Pelo título, relata o mesmo acontecimento [leitura: titulo]
+       · Quem: Flamengo antecipa clubes — o mesmo da matéria importada
+       · Ação: “pede ingresso” — equivale a “aciona”
+       · Sobre o quê: bets — em comum
+       · Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets »
+ok   uol-antagonista [so_titulo] esperado=mesmo_acontecimento antes=contexto depois=mesmo_acontecimento
+     fonte: O Antagonista — Flamengo vai ao STF contra proibição das bets
+     por quê (rótulo manual): 'vai ao STF contra proibição das bets': mesmo agente, ação e objeto; só título, publicado no mesmo dia.
+     resumo: Pelo título, relata o mesmo acontecimento [leitura: titulo]
+       · Quem: Flamengo — o mesmo da matéria importada
+       · Ação: “vai ao STF” — equivale a “aciona”
+       · Sobre o quê: proibição, bets — em comum
+       · Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Flamengo vai ao STF contra proibição das bets »
+ok   uol-propria [propria] esperado=propria antes=mesmo_acontecimento depois=propria
+     fonte: UOL — Flamengo aciona STF e reforça ação das bets contra proibição do governo
+     por quê (rótulo manual): É a própria matéria importada (mesmo veículo e mesmo título).
+     independência: mesmo veículo e mesmo título da matéria importada
+ok   uol-mesmo-veiculo [propria] esperado=mesmo_veiculo antes=outro depois=mesmo_veiculo
+     fonte: UOL Notícias — Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets
+     por quê (rótulo manual): Outra matéria do mesmo veículo da captura: não é fonte independente.
+     independência: publicado pelo mesmo veículo da matéria importada (UOL)
+ok   uol-gazeta-nota [acao_diferente_data_diferente] esperado=contexto antes=outro depois=contexto
+     fonte: Gazeta Brasil — “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil
+     por quê (rótulo manual): Página: 'O Flamengo criticou nesta sexta-feira (25) a possibilidade de proibição' — nota de posição 4 dias antes, não o pedido ao STF.
+     resumo: Mesmo envolvido, outra ação sobre o mesmo assunto [leitura: pagina]
+       · Quem: Flamengo — o mesmo da matéria importada
+       · Ação: “posiciona” — diferente de “aciona”
+       · Sobre o quê: bets — em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil »
+ok   uol-otempo [acao_diferente_data_diferente] esperado=contexto antes=outro depois=contexto
+     fonte: O TEMPO — Flamengo, Fluminense e Grêmio se manifestam sobre proibição das bets no Brasil
+     por quê (rótulo manual): 'se posicionaram nesta sexta-feira (25)' — manifestação, não ação no STF.
+     resumo: Mesmo envolvido, outra ação sobre o mesmo assunto [leitura: pagina]
+       · Quem: Flamengo Fluminense Grêmio — o mesmo da matéria importada
+       · Ação: “manifestam” — diferente de “aciona”
+       · Sobre o quê: proibição, bets — em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Flamengo, Fluminense e Grêmio se manifestam sobre proibição das bets no Brasil »
+ok   uol-bets-acao [mesmas_entidades_outro_agente] esperado=contexto antes=mesmo_acontecimento depois=contexto
+     fonte: O GLOBO — Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites ilegais desde proibição de Lula
+     por quê (rótulo manual): Mesma ação (ação no STF) e mesmo objeto, mas quem agiu foram as entidades das empresas de apostas, em 28/09.
+     resumo: Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto [leitura: pagina]
+       · Quem: Bets — não é quem agiu na matéria importada (Flamengo)
+       · Ação: “entram com nova ação” — equivale a “aciona”
+       · Sobre o quê: Bets — em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites ilegais desde proibição de Lula »
+ok   uol-sinafut [mesmas_entidades_outro_agente] esperado=contexto antes=contexto depois=contexto
+     fonte: Flamengo RJ — Sinafut pede ao STF suspensão da MP das Bets e transição até fim de 2026
+     por quê (rótulo manual): Outro agente (Sinafut) pede ao STF sobre a mesma MP.
+     resumo: Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto [leitura: titulo]
+       · Quem: Sinafut — não é quem agiu na matéria importada (Flamengo)
+       · Ação: “pede ao STF” — equivale a “aciona”
+       · Sobre o quê: Bets — em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Sinafut pede ao STF suspensão da MP das Bets e transição até fim de 2026 »
+ok   uol-clubes-articulam [proposta_vs_decisao] esperado=contexto antes=contexto depois=contexto
+     fonte: O GLOBO — Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets
+     por quê (rótulo manual): Clubes articulam (planejam) ação conjunta: outro agente e outra etapa.
+     resumo: Outro fato sobre o mesmo assunto [leitura: titulo]
+       · Quem: não dá para saber pelo texto lido
+       · Ação: “articulam” — diferente de “aciona”
+       · Sobre o quê: bets — em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets »
+ok   uol-gdf [mesma_acao_outro_assunto] esperado=outro antes=contexto depois=outro
+     fonte: Estadão — Governo do DF aciona STF e diz que Lula nega socorro ao BRB por motivo eleitoral: ‘Decisão política’
+     por quê (rótulo manual): Mesma ação (aciona STF), outro agente e outro objeto (socorro ao BRB).
+     resumo: Mesma ação, mas por outro envolvido e sobre outro assunto [leitura: titulo]
+       · Quem: Governo DF — não é quem agiu na matéria importada (Flamengo)
+       · Ação: “aciona” — equivale a “aciona”
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Governo do DF aciona STF e diz que Lula nega socorro ao BRB por motivo eleitoral: ‘Decisão política’ »
+ok   uol-pgr-1987 [homonimo_papel] esperado=outro antes=contexto depois=outro
+     fonte: CNN Brasil — PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987
+     por quê (rótulo manual): Flamengo aparece como objeto de outro processo (título de 1987); agente é a PGR.
+     resumo: Outro acontecimento com nomes ou palavras em comum [leitura: titulo]
+       · Quem: PGR — não é quem agiu na matéria importada (Flamengo)
+       · Ação: “defende” — diferente de “aciona”
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 »
+ok   uol-stf-nega-87 [papeis_invertidos] esperado=outro antes=contexto depois=outro
+     fonte: Agência Brasil — STF nega recurso do Flamengo e mantém Sport campeão brasileiro de 87
+     por quê (rótulo manual): STF é quem decide; Flamengo é parte de outro caso, em 2023.
+     resumo: Outro acontecimento com nomes ou palavras em comum [leitura: titulo]
+       · Quem: STF — não é quem agiu na matéria importada (Flamengo)
+       · Ação: “nega recurso” — diferente de “aciona”
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: STF nega recurso do Flamengo e mantém Sport campeão brasileiro de 87 »
+ok   uol-supercopa [mesmas_entidades] esperado=outro antes=contexto depois=outro
+     fonte: Metrópoles — Ministros do STF vão à final da Supercopa entre Flamengo e Corinthians
+     por quê (rótulo manual): Mesmos nomes (STF, Flamengo), outro assunto.
+     resumo: Outro acontecimento com nomes ou palavras em comum [leitura: titulo]
+       · Quem: Ministros STF — não é quem agiu na matéria importada (Flamengo)
+       · Ação: “vão à final” — diferente de “aciona”
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Ministros do STF vão à final da Supercopa entre Flamengo e Corinthians »
+ok   uol-stf-patrocinadoras-2025 [data_diferente] esperado=outro antes=contexto depois=outro
+     fonte: ge — STF proíbe patrocinadoras de Corinthians e Flamengo de operar nacionalmente
+     por quê (rótulo manual): Fato parecido (bets e patrocínio do Flamengo) em janeiro de 2025; STF é o agente.
+     resumo: Mesma ação, mas por outro envolvido e sobre outro assunto [leitura: titulo]
+       · Quem: STF — não é quem agiu na matéria importada (Flamengo)
+       · Ação: “proíbe” — equivale a “aciona”
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: STF proíbe patrocinadoras de Corinthians e Flamengo de operar nacionalmente »
+ok   uol-zambelli [palavras_em_comum] esperado=outro antes=contexto depois=outro
+     fonte: G1 — Foragida na Itália, Carla Zambelli comenta política nacional e reforça críticas ao STF em perfil alternativo no Instagram
+     por quê (rótulo manual): Só 'reforça' e 'STF' em comum.
+     resumo: Outro acontecimento com nomes ou palavras em comum [leitura: titulo]
+       · Quem: Carla Zambelli — não é quem agiu na matéria importada (Flamengo)
+       · Ação: “comenta” — diferente de “aciona”
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Foragida na Itália, Carla Zambelli comenta política nacional e reforça críticas ao STF em perfil alternativo no Instagram »
+ok   uol-gdf-corte-homonimo [homonimos] esperado=outro antes=contexto depois=outro
+     fonte: G1 — Governo do DF aciona STF contra lei federal que pode gerar corte bilionário no Fundo Constitucional
+     por quê (rótulo manual): Título real recebido em 30/09 no emulador: 'corte' (redução de verba) não é a 'corte' (tribunal) de 'amigo da corte'; outro agente e outro assunto.
+     resumo: Mesma ação, mas por outro envolvido e sobre outro assunto [leitura: titulo]
+       · Quem: Governo DF — não é quem agiu na matéria importada (Flamengo)
+       · Ação: “aciona” — equivale a “aciona”
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Governo do DF aciona STF contra lei federal que pode gerar corte bilionário no Fundo Constitucional »
+ok   uol-df-derrubar [mesma_acao_outro_assunto] esperado=outro antes=contexto depois=outro
+     fonte: G1 — Distrito Federal aciona STF para derrubar entrave da União que pode impactar empréstimo de socorro ao BRB
+     por quê (rótulo manual): Título real recebido em 30/09 no emulador: mesma ação (aciona STF) e o verbo 'derrubar' em comum, mas outro agente (DF) e outro assunto (empréstimo ao BRB).
+     resumo: Mesma ação, mas por outro envolvido e sobre outro assunto [leitura: titulo]
+       · Quem: Distrito Federal — não é quem agiu na matéria importada (Flamengo)
+       · Ação: “aciona” — equivale a “aciona”
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Distrito Federal aciona STF para derrubar entrave da União que pode impactar empréstimo de socorro ao BRB »
+ok   uol-folhape-87 [data_diferente] esperado=outro antes=contexto depois=outro
+     fonte: Folha PE — Flamengo campeão brasileiro de 87? PGR envia ao STF parecer favorável ao clube carioca
+     por quê (rótulo manual): Título real recebido em 30/09 no emulador: publicado em fevereiro, sobre o título de 1987; 'carioca' só descreve o Flamengo na captura, não é assunto.
+     resumo: Publicado em 19/02/2026, antes do fato relatado na matéria importada (29/09/2026): não pode relatá-lo [leitura: titulo]
+       · Quem: não dá para saber — o texto lido não diz o que aconteceu
+       · Ação: o texto lido não diz o que aconteceu
+       · Sobre o quê: sem palavras do assunto em comum
+       · Quando: publicado em 19/02/2026, antes de 29/09/2026
+       « captura: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+       « titulo: Flamengo campeão brasileiro de 87? PGR envia ao STF parecer favorável ao clube carioca »
+ok   est-uol [sinonimos] esperado=mesmo_acontecimento antes=contexto depois=mesmo_acontecimento
+     fonte: UOL — Flamengo aciona STF e reforça ação das bets contra proibição do governo
+     por quê (rótulo manual): 'aciona STF' = 'entrar com pedido no STF'; 'proibição das bets' = 'fim das casas de apostas'.
+     resumo: Pelo título, relata o mesmo acontecimento [leitura: titulo]
+       · Quem: Flamengo — o mesmo da matéria importada
+       · Ação: “aciona” — equivale a “entrar com pedido”
+       · Sobre o quê: bets — em comum
+       · Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+       « captura: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil »
+       « titulo: Flamengo aciona STF e reforça ação das bets contra proibição do governo »
+ok   est-oglobo [sinonimos] esperado=mesmo_acontecimento antes=contexto depois=mesmo_acontecimento
+     fonte: O GLOBO — Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets
+     por quê (rótulo manual): 'pede ingresso em ação no STF contra fim das bets'.
+     resumo: Pelo título, relata o mesmo acontecimento [leitura: titulo]
+       · Quem: Flamengo antecipa clubes — o mesmo da matéria importada
+       · Ação: “pede ingresso” — equivale a “entrar com pedido”
+       · Sobre o quê: fim, bets — em comum
+       · Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (30/09/2026)
+       « captura: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil »
+       « titulo: Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets »
+ok   est-terra-pede [sinonimos] esperado=mesmo_acontecimento antes=mesmo_acontecimento depois=mesmo_acontecimento
+     fonte: Terra — Flamengo pede ao STF para ingressar em ação contra o fim das bets
+     por quê (rótulo manual): Página: 'acionou o Supremo Tribunal Federal (STF)... entrou com petição'.
+     resumo: Relata o mesmo acontecimento [leitura: pagina]
+       · Quem: Flamengo — o mesmo da matéria importada
+       · Ação: “pede ao STF” — equivale a “entrar com pedido”
+       · Sobre o quê: fim, bets — em comum
+       · Quando: a matéria importada não mostra a data; comparado pela data de publicação da fonte (29/09/2026)
+       « captura: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil »
+       « titulo: Flamengo pede ao STF para ingressar em ação contra o fim das bets »
+       « pagina: O Flamengo se antecipou aos clubes e acionou o Supremo Tribunal Federal (STF) para tentar derrubar o veto às bets. »
+ok   est-propria [propria] esperado=propria antes=mesmo_acontecimento depois=propria
+     fonte: Estadão — Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil
+     por quê (rótulo manual): É a própria matéria importada.
+     independência: mesmo veículo e mesmo título da matéria importada
+ok   est-terra-republica [republicacao] esperado=republicacao antes=mesmo_acontecimento depois=republicacao
+     fonte: Terra — Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil
+     por quê (rótulo manual): Título idêntico ao da captura em outro veículo: republicação, não fonte independente.
+     independência: mesmo título da matéria importada, publicado por outro veículo (republicação)
+ok   est-bets-acao [mesmas_entidades_outro_agente] esperado=contexto antes=contexto depois=contexto
+     fonte: O GLOBO — Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites ilegais desde proibição de Lula
+     por quê (rótulo manual): Antes aceito como mesmo acontecimento: a ação é das entidades de apostas, em 28/09.
+     resumo: Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto [leitura: pagina]
+       · Quem: Bets — não é quem agiu na matéria importada (Flamengo clube)
+       · Ação: “entram com nova ação” — equivale a “entrar com pedido”
+       · Sobre o quê: Bets — em comum
+       « captura: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil »
+       « titulo: Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites ilegais desde proibição de Lula »
+ok   est-gazeta-nota [acao_diferente_data_diferente] esperado=contexto antes=contexto depois=contexto
+     fonte: Gazeta Brasil — “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil
+     por quê (rótulo manual): Antes aceito como mesmo acontecimento: nota do Flamengo em 25/09, antes do pedido ao STF.
+     resumo: Mesmo envolvido, outra ação sobre o mesmo assunto [leitura: pagina]
+       · Quem: Flamengo — o mesmo da matéria importada
+       · Ação: “posiciona” — diferente de “entrar com pedido”
+       · Sobre o quê: bets — em comum
+       « captura: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil »
+       « titulo: “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil »
+ok   s-sinonimos [sinonimos] esperado=mesmo_acontecimento antes=contexto depois=mesmo_acontecimento
+     fonte: Jornal Fictício — Vale Claro interrompe atividades nas escolas municipais por causa da cheia
+     por quê (rótulo manual): Suspende aulas = interrompe atividades/cancelou as aulas; enchente = cheia; mesmo dia.
+     resumo: Relata o mesmo acontecimento [leitura: trecho]
+       · Quem: Vale Claro — o mesmo da matéria importada
+       · Ação: “interrompe” — equivale a “suspende”
+       · Sobre o quê: escolas, municipais, causa — em comum
+       · Quando: “nesta segunda” (09/03/2026) — compatível com 09/03/2026
+       « captura: Prefeitura de Vale Claro suspende aulas na rede municipal após enchente »
+       « titulo: Vale Claro interrompe atividades nas escolas municipais por causa da cheia »
+       « resumo: Com a cheia do rio Turvo, a prefeitura de Vale Claro cancelou as aulas da rede municipal nesta segunda. »
+ok   s-acao-diferente [mesmas_entidades_acoes_diferentes] esperado=outro antes=outro depois=outro
+     fonte: Jornal Fictício — Governador Tiago Mendes visita obras do metrô de Pedra Azul
+     por quê (rótulo manual): Mesmo governador, outra ação e outro objeto.
+     resumo: Mesmo envolvido, outro assunto [leitura: titulo]
+       · Quem: Governador Tiago Mendes — o mesmo da matéria importada
+       · Ação: “visita” — diferente de “sanciona”
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Governador Tiago Mendes sanciona lei que cria passe livre estudantil em Pedra Azul »
+       « titulo: Governador Tiago Mendes visita obras do metrô de Pedra Azul »
+ok   s-mesmo-objeto-outra-acao [mesmas_entidades_acoes_diferentes] esperado=contexto antes=outro depois=contexto
+     fonte: Jornal Fictício — Tiago Mendes critica custo do passe livre estudantil
+     por quê (rótulo manual): Mesmo agente e objeto, outra ação (crítica) e outra data.
+     resumo: Mesmo envolvido, outra ação sobre o mesmo assunto [leitura: titulo]
+       · Quem: Tiago Mendes — o mesmo da matéria importada
+       · Ação: “critica” — diferente de “sanciona”
+       · Sobre o quê: passe, livre, estudantil — em comum
+       « captura: Governador Tiago Mendes sanciona lei que cria passe livre estudantil em Pedra Azul »
+       « titulo: Tiago Mendes critica custo do passe livre estudantil »
+ok   s-data-diferente [datas_diferentes] esperado=outro antes=contexto depois=contexto
+     fonte: Jornal Fictício — Barragem do Rio Verde transborda e deixa desalojados em Pedra Azul
+     por quê (rótulo manual): Mesmo tipo de fato, publicado e datado em janeiro de 2024.
+     resumo: Fato parecido em data anterior (“Em janeiro de 2024” (01/01/2024)); não mostra que ocorreu agora [leitura: trecho]
+       · Quem: Barragem Rio Verde — o mesmo da matéria importada
+       · Ação: “transborda” — equivale a “transborda”
+       · Sobre o quê: deixa, desalojados — em comum
+       · Quando: “Em janeiro de 2024” (01/01/2024) — antes de 29/09/2026
+       « captura: Barragem do Rio Verde transborda e deixa 200 desalojados em Pedra Azul »
+       « titulo: Barragem do Rio Verde transborda e deixa desalojados em Pedra Azul »
+       « resumo: Em janeiro de 2024, a barragem do Rio Verde transbordou após chuvas fortes. »
+ok   s-proposta-decisao [proposta_vs_decisao] esperado=contexto antes=mesmo_acontecimento depois=contexto
+     fonte: Jornal Fictício — Governo de Pedra Azul propõe proibir venda de fogos com estampido
+     por quê (rótulo manual): A fonte fala de proposta (projeto de lei), a afirmação de proibição já decretada.
+     resumo: Outra etapa: fala de proposta ou anúncio, não da decisão [leitura: trecho]
+       · Quem: Governo Pedra Azul — o mesmo da matéria importada
+       · Ação: “propõe” — diferente de “proíbe”
+       · Sobre o quê: venda, fogos, estampido — em comum
+       « captura: Governo de Pedra Azul proíbe venda de fogos de artifício com estampido »
+       « titulo: Governo de Pedra Azul propõe proibir venda de fogos com estampido »
+ok   s-negacao [afirmacao_vs_negacao] esperado=divergente antes=contexto depois=divergente
+     fonte: Jornal Fictício — Secretaria de Saúde de Vale Claro nega surto de sarampo
+     por quê (rótulo manual): Mesmo acontecimento discutido, mas a fonte nega o que a afirmação confirma.
+     resumo: Trata do mesmo fato, mas o nega [leitura: trecho]
+       · Quem: Secretaria Saúde Vale Claro — o mesmo da matéria importada
+       · Ação: “nega” — equivale a “confirma”
+       · Sobre o quê: surto, sarampo — em comum
+       · Quando: publicado em 05/03/2026 — compatível com 05/03/2026
+       · Negação: a fonte nega; a matéria importada afirma
+       « captura: Secretaria de Saúde de Vale Claro confirma surto de sarampo »
+       « titulo: Secretaria de Saúde de Vale Claro nega surto de sarampo »
+ok   s-numero [numero_divergente] esperado=divergente antes=contexto depois=divergente
+     fonte: Jornal Fictício — Prefeitura de Vale Claro dá 10 dias para ambulantes deixarem o centro
+     por quê (rótulo manual): Mesmo ato da prefeitura, prazo diferente (10 dias × 30 dias).
+     resumo: Relata o mesmo acontecimento com outro número: 10 dias (a matéria importada diz 30 dias) [leitura: trecho]
+       · Quem: Prefeitura Vale Claro — o mesmo da matéria importada
+       · Ação: “dá 10” — equivale a “dá prazo”
+       · Sobre o quê: ambulantes, centro — em comum
+       · Quando: publicado em 09/03/2026 — compatível com 09/03/2026 (data de publicação)
+       · Detalhe: 10 dias × 30 dias
+       « captura: Prefeitura de Vale Claro dá prazo de 30 dias para retirada de ambulantes do centro »
+       « titulo: Prefeitura de Vale Claro dá 10 dias para ambulantes deixarem o centro »
+ok   s-homonimo [homonimos] esperado=outro antes=outro depois=outro
+     fonte: Jornal Fictício — Santa Rita decreta emergência por falta de chuva
+     por quê (rótulo manual): Mesmo nome (clube × cidade), outro assunto.
+     resumo: Mesmo envolvido, outro assunto [leitura: titulo]
+       · Quem: Santa Rita — o mesmo da matéria importada
+       · Ação: “decreta” — diferente de “vence”
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Santa Rita vence o Operário por 2 a 0 e lidera o Campeonato Estadual »
+       « titulo: Santa Rita decreta emergência por falta de chuva »
+ok   s-so-titulo-incerto [so_titulo] esperado=incerta antes=outro depois=incerta
+     fonte: Jornal Fictício — IPTU de Vale Claro: o que muda em 2027
+     por quê (rótulo manual): Só o título, sem dizer o que aconteceu: não dá para saber se relata a aprovação.
+     resumo: Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: titulo]
+       · Quem: não dá para saber — o texto lido não diz o que aconteceu
+       · Ação: o texto lido não diz o que aconteceu
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Câmara de Vale Claro aprova reajuste de 12% no IPTU »
+       « titulo: IPTU de Vale Claro: o que muda em 2027 »
+ok   s-so-resumo-mesmo [so_resumo] esperado=mesmo_acontecimento antes=mesmo_acontecimento depois=mesmo_acontecimento
+     fonte: Jornal Fictício — Vereadores de Vale Claro aprovam aumento do IPTU
+     por quê (rótulo manual): Vereadores = Câmara; aprovam aumento = aprova reajuste; 12% no resumo.
+     resumo: Relata o mesmo acontecimento [leitura: trecho]
+       · Quem: Vereadores Vale Claro — o mesmo da matéria importada
+       · Ação: “aprovam” — equivale a “aprova”
+       · Sobre o quê: reajuste — em comum (na abertura do texto)
+       · Quando: “nesta terça” (10/11/2026) — compatível com 10/11/2026
+       · Detalhe: cita 12%
+       « captura: Câmara de Vale Claro aprova reajuste de 12% no IPTU »
+       « titulo: Vereadores de Vale Claro aprovam aumento do IPTU »
+       « resumo: O reajuste de 12% no imposto foi aprovado nesta terça pelos vereadores. »
+ok   s-papeis [papeis_invertidos] esperado=outro antes=contexto depois=outro
+     fonte: Jornal Fictício — Federação Estadual processa o Atlético Serrano por dívida
+     por quê (rótulo manual): Papéis invertidos (quem processa quem) e outro objeto (dívida).
+     resumo: Mesma ação, mas por outro envolvido e sobre outro assunto [leitura: titulo]
+       · Quem: Federação Estadual — não é quem agiu na matéria importada (Atlético Serrano)
+       · Ação: “processa” — equivale a “processa”
+       · Sobre o quê: sem palavras do assunto em comum
+       « captura: Atlético Serrano processa a Federação Estadual por rebaixamento »
+       « titulo: Federação Estadual processa o Atlético Serrano por dívida »
+ok   s-local [local_diferente] esperado=outro antes=contexto depois=outro
+     fonte: Jornal Fictício — Incêndio atinge mercado central de Pedra Azul
+     por quê (rótulo manual): Mesmo tipo de fato em outro lugar.
+     resumo: Trata de outras pessoas ou de outro lugar [leitura: titulo]
+       · Quem: não dá para saber pelo texto lido
+       · Ação: “Incêndio” — equivale a “Incêndio”
+       · Sobre o quê: sem palavras do assunto em comum
+       · Nomes citados: pedra, azul — nenhum aparece na matéria importada
+       « captura: Incêndio atinge mercado central de Vale Claro »
+       « titulo: Incêndio atinge mercado central de Pedra Azul »

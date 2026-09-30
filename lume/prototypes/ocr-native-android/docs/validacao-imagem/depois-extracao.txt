@@ -1,0 +1,188 @@
+===== agencia-senado-bets (793x901, 13 blocos)
+título=MP proíbe bets e determina encerramento das operações em 30 dias
+candidatos a título=[(MP proíbe bets e determina encerramento das operações em 30 dias, 12.5), (BET, 2.2)]
+subtítulo=null
+veículo=Agência Senado (BYLINE; “Da Agência Senado| 28/09/2026, 10h51”)
+autor=null (null) | assinatura institucional=Agência Senado
+data=28/09/2026, 10h51 (Da Agência Senado| 28/09/2026, 10h51) | atualizado=null | local=null
+créditos=[Anna Tolipova] | legendas=[A MP prevê a extinção, em 30 dias, das autorizações concedidas a empresas que operam no mercado]
+corpo=Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa em todo o país. O texto foi publicado na sexta-feira (25) e prevê a extinção, em 30 dias, das autorizações concedidas às empresas que atualmente operam nesse mercado. A MP também estabelece regras para a devolução dos recursos dos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos para bloquear sites, aplicativos e transações financeiras relacionados às apostas. A medida já está em vigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo. ⏎  ⏎ A MP 1.394/2026 altera a Lei 14.790, de 2023, e 
+  [0] 42,8-772,89 título: “MP proíbe bets e determina encerramento das operações em 30 dias” — maior letra da matéria, seguida de assinatura/texto
+  [1] 42,106-279,120 assinatura/data: “Da Agência Senado| 28/09/2026, 10h51” — linha de autoria/veículo/data
+  [8] 657,112-704,127 botões/interface: “f X” — rótulos de botões ou menus
+  [9] 766,114-780,126 botões/interface: “in” — rótulos de botões ou menus
+  [2] 184,250-302,269 texto dentro de imagem: “BETTING ONLINE e” — texto curto fora do fluxo do texto (imagem, selo ou arte)
+  [4] 185,375-294,385 texto dentro de imagem: “FOOTBALL MATCH” — texto curto fora do fluxo do texto (imagem, selo ou arte)
+  [6] 196,412-267,447 texto dentro de imagem: “BET” — texto curto fora do fluxo do texto (imagem, selo ou arte)
+  [7] 48,611-672,624 legenda de imagem: “A MP prevê a extinção, em 30 dias, das autorizações concedidas a empresas que operam no me” — frase curta no pé de uma área sem texto (imagem)
+  [11] 721,635-782,645 crédito de imagem: “Anna Tolipova” — crédito junto à imagem (não é autoria da matéria)
+  [10] 41,670-788,844 corpo: “Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, a of” — parágrafo na coluna do texto principal
+  [3] 42,675-130,712 coluna lateral: “Proposições legislativas” — ao lado das linhas do texto principal (área lateral)
+  [5] 41,741-123,755 coluna lateral: “MPV 1394/2026” — ao lado das linhas do texto principal (área lateral)
+  [12] 41,864-784,901 corpo: “A MP 1.394/2026 altera a Lei 14.790, de 2023, e alcança apostas sobre eventos esportivos r” — parágrafo na coluna do texto principal
+afirmação=MP proíbe bets e determina encerramento das operações em 30 dias | escolher=false | nota=null
+alternativas=[Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa em todo o país., O texto foi publicado na sexta-feira (25) e prevê a extinção, em 30 dias, das autorizações concedidas às empresas que atualmente operam nesse mercado., A MP também estabelece regras para a devolução dos recursos dos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos para bloquear sites, aplicativos e transações financeiras relacionados às apostas., A medida já está em vigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo.]
+===== bbc-fux-article (740x901, 27 blocos)
+título=Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a menos de uma semana da eleição
+candidatos a título=[(Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o va, 13.0), (Pedro Martins > Da BBC News Brasil em Londres, 9.0), (Na sexta-feira (25/9), André Mendonça, vice-presidente do TSE e também ministro , 8.9), (O que Fux decidiu, 7.5), (Piketty prevê fim do dölar como moeda global: Muito em breve, 6.5), (gue dizem em 2026 28 setembro 2026, 3.9), (Leia mais, 3.4), (Principais notícias, -2.2)]
+subtítulo=null
+veículo=BBC News Brasil (BYLINE; “Da BBC News Brasil em Londres”)
+autor=Pedro Martins (“Pedro Martins >” junto da linha “Da BBC News Brasil em Londres”) | assinatura institucional=null
+data=29 setembro 2026, 06:10 (29 setembro 2026, 06:10 -03) | atualizado=null | local=Londres
+créditos=[GETTY IMASES] | legendas=[Nossa Senhora Aparecida foi proclamada Padroeira do Bra pelo Vaticano em 1930]
+corpo=A cinco dias do primeiro turno das eleiçoes presidenciais, uma disputa envolvendo Nossa Senhora Aparecida voltou a colocar em lados opostos ministros do Supremo Tribunal Federal (STF)e do Tribunal Superior Eleitoral (TSE). ⏎  ⏎ Na sexta-feira (25/9), André Mendonça, vice-presidente do TSE e também ministro do Supremo, determinou a remoçao de publicaçoes nas redes sociais que Senhora Aparerida do DPeto para retiraro titulo de Nossa ⏎  ⏎ No domingo (27/9), Flávio Dino, ministro do STF, derrubou a ordem de Mendonça; por fim, na noite de segunda-feira (28/9), o também ministro do Supremo Luiz Fux suspendeu a decisäo de Dino e fez voltar a valer, ao menos provisoriamente, a determinação dada por 
+  [0] 48,6-468,148 título: “Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a men” — maior letra da matéria, seguida de assinatura/texto
+  [15] 501,16-637,30 coluna lateral: “Principais notícias” — fora da coluna do texto principal
+  [16] 512,65-669,104 coluna lateral: “Piketty prevê fim do dölar como moeda global: Muito em breve” — fora da coluna do texto principal
+  [17] 513,112-550,119 coluna lateral: “Há 1 hora” — fora da coluna do texto principal
+  [18] 512,160-671,223 coluna lateral: “'Disputa religiosa' em torno de fake news de volta ao centro da eleição presidencial, dest” — fora da coluna do texto principal
+  [1] 49,162-147,192 título: “eleição” — maior letra da matéria, seguida de assinatura/texto
+  [19] 513,230-555,237 coluna lateral: “Há 4 horas” — fora da coluna do texto principal
+  [20] 512,276-670,329 coluna lateral: “Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida: entenda o vaivém a men” — fora da coluna do texto principal
+  [21] 513,349-554,356 coluna lateral: “Há7 horas” — fora da coluna do texto principal
+  [22] 500,405-569,419 coluna lateral: “Leia mais” — fora da coluna do texto principal
+  [2] 54,452-113,458 crédito de imagem: “GETTY IMASES” — crédito junto à imagem (não é autoria da matéria)
+  [3] 55,472-417,480 legenda de imagem: “Nossa Senhora Aparecida foi proclamada Padroeira do Bra pelo Vaticano em 1930” — frase curta no pé de uma área sem texto (imagem)
+  [4] 48,496-126,509 assinatura/data: “Pedro Martins >” — linha de autoria/veículo/data
+  [5] 48,513-174,525 assinatura/data: “Da BBC News Brasil em Londres” — linha de autoria/veículo/data
+  [6] 49,545-164,552 assinatura/data: “29 setembro 2026, 06:10 -03” — linha de autoria/veículo/data
+  [8] 81,566-139,579 botões/interface: “la6min” — leitura de baixa confiança e muito curta
+  [7] 49,573-69,578 botões/interface: “Temr” — leitura de baixa confiança e muito curta
+  [23] 510,576-672,627 coluna lateral: “Eleições presidenciais: o que as pesquisas diziam sobre Lula x Bolsonaro a uma semana da e” — fora da coluna do texto principal
+  [9] 49,595-448,635 corpo: “A cinco dias do primeiro turno das eleiçoes presidenciais, uma disputa envolvendo Nossa Se” — parágrafo na coluna do texto principal
+  [24] 510,630-609,643 coluna lateral: “gue dizem em 2026” — fora da coluna do texto principal
+  [10] 48,647-448,710 corpo: “Na sexta-feira (25/9), André Mendonça, vice-presidente do TSE e também ministro do Supremo” — parágrafo na coluna do texto principal
+  [25] 510,650-587,661 coluna lateral: “28 setembro 2026” — fora da coluna do texto principal
+  [11] 209,699-229,706 texto dentro de imagem: “do F” — texto curto fora do fluxo do texto (imagem, selo ou arte)
+  [12] 49,729-451,784 corpo: “No domingo (27/9), Flávio Dino, ministro do STF, derrubou a ordem de Mendonça; por fim, na” — parágrafo na coluna do texto principal
+  [26] 509,793-658,851 coluna lateral: “Por que Lula acusa Trump de tentar interferir na eleição a favor de Flávio Bolsonaro 28 se” — fora da coluna do texto principal
+  [13] 49,825-224,847 texto dentro de imagem: “O que Fux decidiu” — texto curto fora do fluxo do texto (imagem, selo ou arte)
+  [14] 49,868-439,894 corpo: “Fux suspendeu a decisao de Dino que havia liberado publicaçöes nas redes relacionadas à co” — parágrafo na coluna do texto principal
+afirmação=Fux derruba decisão de Dino sobre posts de Nossa Senhora Aparecida | escolher=false | nota=null
+alternativas=[A cinco dias do primeiro turno das eleiçoes presidenciais, uma disputa envolvendo Nossa Senhora Aparecida voltou a colocar em lados opostos ministros do Supremo Tribunal Federal (STF)e do Tribunal Superior Eleitoral (TSE)., Na sexta-feira (25/9), André Mendonça, vice-presidente do TSE e também ministro do Supremo, determinou a remoçao de publicaçoes nas redes sociais que Senhora Aparerida do DPeto para retiraro titulo de Nossa, No domingo (27/9), Flávio Dino, ministro do STF, derrubou a ordem de Mendonça; por fim, na noite de segunda-feira (28/9), o também ministro do Supremo Luiz Fux suspendeu a decisäo de Dino e fez voltar a valer, ao menos provisoriamente, a determinação dada por Mendonça no âmbito da Justiça Eleitoral., Fux suspendeu a decisao de Dino que havia liberado publicaçöes nas redes relacionadas à controvérsia sobre Nossa Senhora Aparecida, sequndo o jornal O]
+===== agenciabrasil-bets (1080x2400, 20 blocos)
+título=Bets passam a ser proibidas no país e apostador receberá saldo
+candidatos a título=[(Bets passam a ser proibidas no país e apostador receberá saldo, 10.2), (GOVERNO FEDERAL CONTRA AS BETS, 2.2), (agênciaBrasil(, 2.0)]
+subtítulo=MP diz que plataformas ficarão fora do ar e proíbe novos depósitos
+veículo=Agência Brasil (BYLINE; “MARCELo BRANDÃo - REPÓRTER DA AGÊNCIA BRASIL”)
+autor=Marcelo Brandão (MARCELo BRANDÃo - REPÓRTER DA AGÊNCIA BRASIL) | assinatura institucional=null
+data=25/09/2026, 20:33 (Publicado em 25/09/2026 - 20:33) | atualizado=null | local=Brasília
+créditos=[© PAULO PINTO/AGÊNCIA BRASIL] | legendas=[]
+corpo=
+  [0] 273,38-803,119 cabeçalho/navegação: “agênciaBrasil(” — acima do título (cabeçalho, menu ou barra do site)
+  [1] 45,189-351,218 cabeçalho/navegação: “ÚLTIMAS NOTÍCIAS” — acima do título (cabeçalho, menu ou barra do site)
+  [5] 450,195-1080,218 cabeçalho/navegação: “CULTURA DIREITOS HUMANOS ECC” — acima do título (cabeçalho, menu ou barra do site)
+  [7] 470,314-611,338 editoria: “Economia” — rótulo curto logo acima do título
+  [2] 87,388-1014,537 título: “Bets passam a ser proibidas no país e apostador receberá saldo” — maior letra da matéria, seguida de assinatura/texto
+  [3] 64,572-1017,667 subtítulo: “MP diz que plataformas ficarão fora do ar e proíbe novos depósitos” — frase logo abaixo do título, antes da assinatura
+  [6] 44,759-588,789 assinatura/data: “MARCELo BRANDÃo - REPÓRTER DA” — linha de autoria/veículo/data
+  [18] 1007,771-1028,789 botões/interface: “in” — rótulos de botões ou menus
+  [4] 43,803-287,831 assinatura/data: “AGÊNCIA BRASIL” — linha de autoria/veículo/data
+  [8] 45,859-520,926 assinatura/data: “Publicado em 25/09/2026 - 20:33 Brasília” — linha de autoria/veículo/data
+  [12] 286,1004-1082,1156 texto dentro de imagem: “GOVERNO FEDERAL CONTRA AS BETS” — texto curto fora do fluxo do texto (imagem, selo ou arte)
+  [13] 623,1245-684,1256 texto dentro de imagem: “MINSTERIC” — texto curto fora do fluxo do texto (imagem, selo ou arte)
+  [14] 589,1576-1061,1601 crédito de imagem: “© PAULO PINTO/AGÊNCIA BRASIL” — crédito junto à imagem (não é autoria da matéria)
+  [15] 397,1669-680,1695 botões/interface: “Versão em áudio” — rótulos de botões ou menus
+  [9] 172,1763-343,1791 botões/interface: “0:00 /6:14” — controle de áudio/vídeo
+  [10] 70,1858-360,1896 botões/interface: “Uso de cookies” — aviso de cookies/assinatura/notificações
+  [16] 69,1939-902,1970 botões/interface: “Utilizamos cookies e outras tecnologias semelhantes para” — aviso de cookies/assinatura/notificações
+  [17] 68,1992-1001,2132 botões/interface: “melhorar a sua experiência em nossa plataforma. Ao continuar navegando, você concorda com ” — aviso de cookies/assinatura/notificações
+  [19] 79,2153-671,2193 botões/interface: “Para mais informações, consulte aqui.” — aviso de cookies/assinatura/notificações
+  [11] 121,2261-166,2286 botões/interface: “OK” — rótulos de botões ou menus
+afirmação=Bets passam a ser proibidas no país e apostador receberá saldo | escolher=false | nota=null
+alternativas=[MP diz que plataformas ficarão fora do ar e proíbe novos depósitos]
+===== camara-bets-pl (1080x2400, 13 blocos)
+título=Projeto de lei apresentado pelo governo torna crimea exploração e a publicidade de bets
+candidatos a título=[(Projeto de lei apresentado pelo governo torna crimea exploração e a publicidade , 9.7), (BRASIL SEM BETS E DESENROLA 3.0, 1.9), (AGÊNCIA CÂMARA DE NOTÍCIAS, 0.9)]
+subtítulo=Proposta foi enviada pelo Poder Executivo após a edição de MP que proíbe as loterias de apostas de quota fixa no Brasil
+veículo=Agência Câmara (BYLINE; “Da Agência Câmara - 28/09/2026 - 18:47”)
+autor=null (null) | assinatura institucional=Agência Câmara
+data=28/09/2026, 18:47 (Da Agência Câmara - 28/09/2026 - 18:47) | atualizado=null | local=null
+créditos=[] | legendas=[Medida provisória que proíbe as bets foi editada na última]
+corpo=
+  [1] 379,40-724,89 cabeçalho/navegação: “XOANOS CÂMARA DOS” — acima do título (cabeçalho, menu ou barra do site)
+  [3] 575,77-712,92 cabeçalho/navegação: “DEPUTADOS” — acima do título (cabeçalho, menu ou barra do site)
+  [0] 78,96-143,113 botões/interface: “MENU” — rótulos de botões ou menus
+  [4] 179,186-896,341 cabeçalho/navegação: “AGÊNCIA CÂMARA DE NOTÍCIAS” — acima do título (cabeçalho, menu ou barra do site)
+  [2] 125,451-334,500 botões/interface: “Compartilhe” — rótulos de botões ou menus
+  [5] 432,572-649,611 editoria: “SEGURANÇA” — rótulo curto logo acima do título
+  [6] 23,661-999,946 título: “Projeto de lei apresentado pelo governo torna crimea exploração e a publicidade de bets” — maior letra da matéria, seguida de assinatura/texto
+  [7] 22,1007-1001,1187 subtítulo: “Proposta foi enviada pelo Poder Executivo após a edição de MP que proíbe as loterias de ap” — frase logo abaixo do título, antes da assinatura
+  [8] 25,1271-800,1311 assinatura/data: “Da Agência Câmara - 28/09/2026 - 18:47” — linha de autoria/veículo/data
+  [9] 116,1449-893,1500 texto dentro de imagem: “Comentário PropostaEnquete” — texto curto fora do fluxo do texto (imagem, selo ou arte)
+  [10] 305,1658-770,1695 texto dentro de imagem: “MEDIDA PROVisÓRIA” — texto curto fora do fluxo do texto (imagem, selo ou arte)
+  [11] 77,1704-999,1867 texto dentro de imagem: “BRASIL SEM BETS E DESENROLA 3.0” — texto curto fora do fluxo do texto (imagem, selo ou arte)
+  [12] 25,2352-1017,2390 legenda de imagem: “Medida provisória que proíbe as bets foi editada na última” — frase curta no pé de uma área sem texto (imagem)
+afirmação=Projeto de lei apresentado pelo governo torna crimea exploração e a publicidade de bets | escolher=false | nota=null
+alternativas=[Proposta foi enviada pelo Poder Executivo após a edição de MP que proíbe as loterias de apostas de quota fixa no Brasil]
+===== g1-inadimplencia (1080x2400, 22 blocos)
+título=Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto
+candidatos a título=[(Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em , 10.0), (ECONOMIA, -2.4)]
+subtítulo=De janeiro a agosto deste ano, os bancos liberaram R$s 311 bilhões por meio dessa linha de crédito, se aproximando dos R$ 400 bilhões desembolsados em 2025 (o maior dos últimos anos). Juro do cartão de crédito rotativo somou 445% ao ano no mês passado.
+veículo=g1 (BYLINE; “Por Alexandro Martello, g1 – Brasília”)
+autor=Alexandro Martello (Por Alexandro Martello, g1 – Brasília) | assinatura institucional=null
+data=29/09/2026 08h40 (29/09/2026 08h40 Atualizado há 7 horas) | atualizado=há 7 horas | local=Brasília
+créditos=[] | legendas=[]
+corpo=
+  [0] 33,37-336,84 cabeçalho/navegação: “globo.com g1” — acima do título (cabeçalho, menu ou barra do site)
+  [10] 509,41-1067,83 cabeçalho/navegação: “gshow globoplay g1jog” — acima do título (cabeçalho, menu ou barra do site)
+  [7] 401,52-448,83 cabeçalho/navegação: “ge” — acima do título (cabeçalho, menu ou barra do site)
+  [1] 62,157-196,227 botões/interface: “=g1” — leitura de baixa confiança e muito curta
+  [9] 394,165-692,217 cabeçalho/navegação: “ECONOMIA” — acima do título (cabeçalho, menu ou barra do site)
+  [2] 42,343-96,366 cabeçalho/navegação: “:das” — acima do título (cabeçalho, menu ou barra do site)
+  [3] 42,403-253,434 cabeçalho/navegação: “ar Comercial” — acima do título (cabeçalho, menu ou barra do site)
+  [11] 338,406-576,433 cabeçalho/navegação: “Dólar Turismo” — acima do título (cabeçalho, menu ou barra do site)
+  [14] 659,406-914,433 cabeçalho/navegação: “Euro Comercial” — acima do título (cabeçalho, menu ou barra do site)
+  [17] 997,407-1034,433 cabeçalho/navegação: “Eu” — acima do título (cabeçalho, menu ou barra do site)
+  [4] 41,474-114,507 botões/interface: “5,211” — somente números/cotações
+  [15] 658,475-795,577 botões/interface: “R$ 5,910 -0,5%” — somente números/cotações
+  [12] 339,476-475,508 botões/interface: “R$ 5,415” — somente números/cotações
+  [19] 997,476-1035,506 botões/interface: “R$” — sem texto legível
+  [5] 41,540-129,575 botões/interface: “),28%” — somente números/cotações
+  [13] 376,545-484,576 botões/interface: “-0,18%” — somente números/cotações
+  [6] 71,645-278,685 cabeçalho/navegação: “Valor PROM” — acima do título (cabeçalho, menu ou barra do site)
+  [16] 56,1467-998,1696 título: “Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em” — maior letra da matéria, seguida de assinatura/texto
+  [8] 56,1731-283,1798 título: “agosto” — maior letra da matéria, seguida de assinatura/texto
+  [20] 54,1831-1023,2106 subtítulo: “De janeiro a agosto deste ano, os bancos liberaram R$s 311 bilhões por meio dessa linha de” — frase logo abaixo do título, antes da assinatura
+  [18] 56,2178-687,2212 assinatura/data: “Por Alexandro Martello, g1 – Brasília” — linha de autoria/veículo/data
+  [21] 54,2238-659,2262 assinatura/data: “29/09/2026 08h40 Atualizado há 7 horas” — linha de autoria/veículo/data
+afirmação=Em meio à corrida eleitoral, inadimplência volta a subir e bate novo recorde em agosto | escolher=false | nota=null
+alternativas=[De janeiro a agosto deste ano, os bancos liberaram R$s 311 bilhões por meio dessa linha de crédito, se aproximando dos R$ 400 bilhões desembolsados em 2025 (o maior dos últimos anos). Juro do cartão de crédito rotativo somou 445% ao ano no mês passado.]
+===== g1-inadimplencia-corpo (1080x2400, 10 blocos)
+título=null | título parcial=“agosto”
+candidatos a título=[(agosto, 1.5)]
+subtítulo=De janeiro a agosto deste ano, os bancos liberaram R$ 311 bilhões por meio dessa linha de crédito, se aproximando dos R$ 400 bilhões desembolsados em 2025 (0 maior dos últimos anos). Juro do cartão de crédito rotativo somou 445% ao ano no mês passado.
+veículo=g1 (BYLINE; “Por Alexandro Martello, g1 - Brasília”)
+autor=Alexandro Martello (Por Alexandro Martello, g1 - Brasília) | assinatura institucional=null
+data=29/09/2026 08h40 (29/09/2026 08h40 Atualizado há 7 horas) | atualizado=há 7 horas | local=Brasília
+créditos=[] | legendas=[]
+corpo=A taxa de inadimplência média total registrada pelos bancos nas operações de crédito subiu de 4,9% para 5% de julho para agosto, informou nesta terça-feira (29) o Banco Central (BC). ⏎  ⏎ O valor atingiu, assim, o maior patamar
+  [0] 56,36-281,102 título: “agosto” — letra de título, mas começa no meio da frase (cortado)
+  [1] 54,143-1023,411 subtítulo: “De janeiro a agosto deste ano, os bancos liberaram R$ 311 bilhões por meio dessa linha de ” — frase logo abaixo do título, antes da assinatura
+  [2] 54,485-687,573 assinatura/data: “Por Alexandro Martello, g1 - Brasília 29/09/2026 08h40 Atualizado há 7 horas” — linha de autoria/veículo/data
+  [3] 263,909-814,929 anúncio: “CONTINUA DEPOIS DA PUBLICIDADE” — aviso de publicidade
+  [4] 787,1053-846,1089 anúncio: “itaú” — entre o aviso de publicidade e o texto seguinte
+  [5] 732,1125-903,1148 anúncio: “Personnalitë” — entre o aviso de publicidade e o texto seguinte
+  [6] 620,1222-894,1346 anúncio: “Pra todoS OS seus feitos.” — entre o aviso de publicidade e o texto seguinte
+  [7] 603,1372-792,1394 anúncio: “Abra sua conta.” — entre o aviso de publicidade e o texto seguinte
+  [8] 53,1895-999,2237 corpo: “A taxa de inadimplência média total registrada pelos bancos nas operações de crédito subiu” — parágrafo na coluna do texto principal
+  [9] 88,2339-892,2388 corpo: “O valor atingiu, assim, o maior patamar” — parágrafo na coluna do texto principal
+afirmação=null | escolher=true | nota=O título aparece cortado na imagem (“…agosto”). Escolha uma frase abaixo ou escreva o que quer pesquisar.
+alternativas=[De janeiro a agosto deste ano, os bancos liberaram R$ 311 bilhões por meio dessa linha de crédito, se aproximando dos R$ 400 bilhões desembolsados em 2025 (0 maior dos últimos anos). Juro do cartão de crédito rotativo somou 445% ao ano no mês passado., A taxa de inadimplência média total registrada pelos bancos nas operações de crédito subiu de 4,9% para 5% de julho para agosto, informou nesta terça-feira (29) o Banco Central (BC)., O valor atingiu, assim, o maior patamar]
+===== recorte-senado-sem-titulo (793x246, 6 blocos)
+título=null
+candidatos a título=[]
+subtítulo=null
+veículo=null (null; “null”)
+autor=null (null) | assinatura institucional=null
+data=null (null) | atualizado=null | local=null
+créditos=[] | legendas=[]
+corpo=Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa em todo o país. O texto foi publicado na sexta-feira (25) e prevê a extinção, em 30 dias, das autorizações concedidas às empresas que atualmente operam nesse mercado. A MP também estabelece regras para a devolução dos recursos dos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos para bloquear sites, aplicativos e transações financeiras relacionados às apostas. A medida já está em vigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo. ⏎  ⏎ A MP 1.394/2026 altera a Lei 14.790, de 2023, e 
+  [0] 41,15-788,189 corpo: “Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, a of” — parágrafo na coluna do texto principal
+  [1] 42,22-131,56 coluna lateral: “Proposições legislativas” — ao lado das linhas do texto principal (área lateral)
+  [2] 42,89-125,99 coluna lateral: “MPV 1394/2026” — ao lado das linhas do texto principal (área lateral)
+  [3] 41,209-784,245 corpo: “A MP 1.394/2026 altera a Lei 14.790, de 2023, e alcança apostas sobre eventos esportivos r” — parágrafo na coluna do texto principal
+  [4] 2,240-75,246 botões/interface: “P6-uein0aue” — leitura de baixa confiança e muito curta
+  [5] 235,240-271,246 botões/interface: “conado” — leitura de baixa confiança e muito curta
+afirmação=null | escolher=true | nota=Não encontramos um título nesta imagem. Escolha uma frase abaixo ou escreva o que quer pesquisar.
+alternativas=[Começou a tramitar no Congresso Nacional a medida provisória que proíbe a exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa em todo o país., O texto foi publicado na sexta-feira (25) e prevê a extinção, em 30 dias, das autorizações concedidas às empresas que atualmente operam nesse mercado., A MP também estabelece regras para a devolução dos recursos dos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos para bloquear sites, aplicativos e transações financeiras relacionados às apostas., A medida já está em vigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo.]

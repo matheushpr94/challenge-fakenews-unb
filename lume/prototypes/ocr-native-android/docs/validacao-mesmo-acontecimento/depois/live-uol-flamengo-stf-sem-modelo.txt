@@ -1,0 +1,345 @@
+CAPTURA: uol-flamengo-stf | AFIRMAÇÃO: Flamengo aciona STF e reforça ação das bets contra proibição do governo
+esclarecimento: escolher=false opções=[] motivo=intenção clara para as regras
+modo=unica status=ok
+--- parte: Flamengo aciona STF e reforça ação das bets contra proibição do governo
+tipo=acontecimento entidades=[STF] termos=[flamengo, aciona, reforça, ação, bets, governo] numeros=[]
+partes=[[flamengo, aciona], [reforça, ação, bets, governo]] tópicos=[flamengo, bet, aciona, stf, e, reforca, acao, da, contra, proibicao, do, governo]
+siglas={STF=[supremo tribunal federal]} variações=[] prazos=[] etapa=null dataRef=29/09/2026
+consultas=[especifica: STF flamengo aciona reforça governo, evento: Flamengo STF bets proibição, acontecimento: supremo tribunal federal flamengo aciona governo, ampliada: STF flamengo, parte: STF reforça ação bets]
+status=ok síntese=sem_comparacao descartados=72 2217 ms semântica=false
+  seção responde: 0 -> []
+  seção direto: 10 -> [Terra, Brasil 247, O GLOBO, Estadão on MSN, iG Esportes, O Antagonista, O Dia, professorrafaelporcari.com, ncnews.com.br, BNLData]
+  seção incerto: 2 -> [R7, Tribuna PR]
+  seção anterior: 0 -> []
+  seção contexto: 8 -> [Boa Informação, O GLOBO, O GLOBO, Gazeta Botafogo, LANCE!, Jogada 10, O TEMPO, Midiamax]
+  seção contexto_geral: 0 -> []
+  seção nao_independente: 6 -> [UOL, UOL Economia, UOL Notícias, UOL Notícias, UOL Notícias, educacao.uol.com.br]
+CONSULTAS (10)
+  [google_news] 'STF flamengo aciona reforça governo' -> ok 14
+  [bing_news] 'STF flamengo aciona reforça governo' -> ok 1
+  [google_news] 'Flamengo STF bets proibição' -> ok 20
+  [bing_news] 'Flamengo STF bets proibição' -> ok 12
+  [google_news] 'supremo tribunal federal flamengo aciona governo' -> ok 20
+  [google_news] 'STF flamengo' -> ok 20
+  [google_news] 'STF reforça ação bets' -> ok 20
+  [bing_web] 'STF flamengo aciona reforça governo' -> ok 10
+  [wikipedia] 'STF flamengo aciona' -> ok 3
+  [wikipedia] 'STF' -> ok 3
+TRIAGEM (123)
+  nao_independente | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesmo veículo e mesmo título da matéria importada
+  nao_independente | UOL Economia | Dólar cai a R$ 5,217 e Bolsa sobe após dados de crédito e de emprego | publicado pelo mesmo veículo da matéria importada (UOL)
+  nao_independente | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | publicado pelo mesmo veículo da matéria importada (UOL)
+  nao_independente | UOL Notícias | Voto nas eleições de 2026 valerá como prova de vida do INSS | publicado pelo mesmo veículo da matéria importada (UOL)
+  nao_independente | UOL Notícias | Sakamoto: Desistência de Salles é ruim para Marina e Tebet | publicado pelo mesmo veículo da matéria importada (UOL)
+  nao_independente | educacao.uol.com.br | Ensino Einstein Formação em medicina é ponto de partida para transformar a saúde | publicado pelo mesmo veículo da matéria importada (UOL)
+  descartado | G1 | Com Bolsonaro condenado, governo prevê mais sanções dos EUA às autoridades brasileiras e tensão com Trump até  | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Blog do BG | Após ataques com ônibus queimados, governo reforça policiamento em Natal e garante transporte | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  nao_independente | educacao.uol.com.br | Ensino Einstein Como a formação coloca a nutrição no centro do cuidado em saúde | publicado pelo mesmo veículo da matéria importada (UOL)
+  descartado | GZH | Com discurso de campanha no Rio, Bolsonaro reforça tom eleitoral no 7 de Setembro | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | G1 | Foragida na Itália, Carla Zambelli comenta política nacional e reforça críticas ao STF em perfil alternativo n | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  nao_independente | UOL Economia | PagBank Investimentos: Investir também é uma questão de pertencimento | publicado pelo mesmo veículo da matéria importada (UOL)
+  nao_independente | UOL | Amistosos da Seleção Brasileira | publicado pelo mesmo veículo da matéria importada (UOL)
+  nao_independente | UOL | Tabela Série C | Jogos, Times, Resultados | UOL Esporte | publicado pelo mesmo veículo da matéria importada (UOL)
+  direto | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento
+  nao_independente | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesmo veículo e mesmo título da matéria importada
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Outro fato sobre o mesmo assunto
+  direto | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Pelo título, relata o mesmo acontecimento
+  direto | O Dia | Flamengo entra com petição contra veto às bets no STF | Pelo título, relata o mesmo acontecimento
+  direto | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Pelo título, relata o mesmo acontecimento
+  direto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Pelo título, relata o mesmo acontecimento
+  contexto | Estadão | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | Mesmo envolvido, outra ação sobre o mesmo assunto
+  descartado | Exame | 'Como vou pagar o Paquetá?': Bap critica proibição de bets e aponta impacto de R$ 400 mi no Fla | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  nao_independente | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | publicado pelo mesmo veículo da matéria importada (UOL)
+  contexto | LANCE! | AGU estabelece prazo para STF se manifestar sobre proibição de bets | Outro fato sobre o mesmo assunto
+  direto | professorrafaelporcari.com | – Flamengo recorre ao STF contra proibição das bets e cita perda de até R$ 430 milhões. | Pelo título, relata o mesmo acontecimento
+  contexto | Jogada 10 | Sindicato dos clubes brasileiros vai ao STF para suspender MP das Bets | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto
+  contexto | Terra | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | Mesmo envolvido, outra ação sobre o mesmo assunto
+  nao_independente | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | publicado pelo mesmo veículo da matéria importada (UOL)
+  descartado | G1 | Antes de reunião com clubes, Lula diz que acabar com bets não traz 'prejuízo para o futebol' | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | O GLOBO | Carta ao Flamengo | Outro acontecimento: Outro assunto com palavras parecidas
+  contexto | ge | Fim das bets: reunião de clubes com ministros é adiada para depois do primeiro turno das eleições | Trata do mesmo assunto, sem relatar este acontecimento
+  descartado | ge | Fim das bets: clubes são convidados para reunião com ministros em Brasília | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | ge | Governo anuncia suspensão da atividade das casas de apostas no Brasil | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  contexto | O TEMPO | Bets se articulam para derrubar proibição no STF | Outro fato sobre o mesmo assunto
+  direto | O Antagonista | Flamengo vai ao STF contra proibição das bets | Relata o mesmo acontecimento
+  direto | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Relata o mesmo acontecimento
+  direto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Relata o mesmo acontecimento
+  direto | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento
+  descartado | Extra | Sem bet, Flamengo pode perder mais de R$ 2 bilhões em cinco anos e clube avalia cortes nos esportes olímpicos | Outro acontecimento: Mesmo envolvido, outro assunto
+  direto | Estadão on MSN | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Relata o mesmo acontecimento
+  descartado | Exame | 'Como vou pagar o Paquetá?': Bap critica proibição de bets e aponta impacto de R$ 400 mi no Fla | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  contexto | Boa Informação | Presidente do Flamengo pede rejeição da MP sobre bets | Mesmo envolvido, outra ação sobre o mesmo assunto
+  contexto | LANCE! | AGU estabelece prazo para STF se manifestar sobre proibição de bets | Outro fato sobre o mesmo assunto
+  direto | BNLData | Flamengo pode perder R$ 400 mi por ano com proibição de bets | Relata o mesmo acontecimento
+  contexto | O GLOBO | Bets acionam STF e pedem suspensão da proibição determinada pelo governo Lula | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto
+  incerto | Tribuna PR | Clubes de futebol terão crédito de R$ 20 bilhões após proibição das bets | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  nao_independente | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesmo veículo e mesmo título da matéria importada
+  descartado | Estadão | Governo do DF aciona STF e diz que Lula nega socorro ao BRB por motivo eleitoral: ‘Decisão política’ | Outro acontecimento: Mesma ação, mas por outro envolvido e sobre outro assunto
+  nao_independente | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | publicado pelo mesmo veículo da matéria importada (UOL)
+  descartado | G1 | Governo do DF aciona STF contra a União em duas ações envolvendo recursos federais; entenda como ambas podem a | Outro acontecimento: Mesma ação, mas por outro envolvido e sobre outro assunto
+  descartado | Correio Braziliense | Entidades se unem pelo fortalecimento do BRB, enquanto Celina aciona STF | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | Blog do BG | [VÍDEO] CAIO JUNQUEIRA: Governo Lula aciona modo vale-tudo pela reeleição | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Revista Fórum | Lindbergh aciona STF para bloquear R$ 72 milhões em bens de Flávio Bolsonaro | Outro acontecimento: Mesma ação, mas por outro envolvido e sobre outro assunto
+  descartado | O GLOBO | Governo Lula aciona Fachin para derrubar decisão que afastou Andrei da chefia da PF | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | O Dia | Senado aprova PEC dos agentes de saúde e governo fala em acionar STF | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | Revista Fórum | Deputado aciona STF para investigar suposta propina de Vorcaro a Tarcísio e Bolsonaro | Outro acontecimento: Mesma ação sobre outro assunto
+  descartado | O GLOBO | Horas após governo de SP acionar STF, Fazenda libera empréstimo de R$ 5,4 bilhões para o estado | Outro acontecimento: Mesma ação, mas por outro envolvido e sobre outro assunto
+  descartado | diariodorio.com | Alerj aciona STF para tentar colocar Douglas Ruas no comando interino do governo do Rio | Outro acontecimento: Mesma ação, mas por outro envolvido e sobre outro assunto
+  descartado | Tribuna do Sertão | PDT nacional aciona STF para anular eleição na Alerj que elegeu Douglas Ruas como presidente | Outro acontecimento: Mesma ação, mas por outro envolvido e sobre outro assunto
+  descartado | G1 | Governo do DF aciona STF contra lei federal que pode gerar corte bilionário no Fundo Constitucional | Outro acontecimento: Mesma ação, mas por outro envolvido e sobre outro assunto
+  descartado | O GLOBO | Governo avalia vetar ou ir ao STF contra renegociação de dívidas rurais, diz ministro | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | O GLOBO | Prefeitura de SP aciona STJ para Fazenda liberar garantias a empréstimo de R$ 3,5 bilhões para ônibus elétrico | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | G1 | Durigan diz que governo avalia vetar renegociação de dívidas rurais caso projeto passe na Câmara; Senado aprov | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | G1 | Distrito Federal aciona STF para derrubar entrave da União que pode impactar empréstimo de socorro ao BRB | Outro acontecimento: Mesma ação, mas por outro envolvido e sobre outro assunto
+  descartado | G1 | Moraes manda governo adotar providências para extradição de Zambelli da Itália para o Brasil | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | O GLOBO | Governo aciona 'bombeiros' para reconstruir ponte com Alcolumbre após derrota de Messias | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  nao_independente | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesmo veículo e mesmo título da matéria importada
+  direto | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Pelo título, relata o mesmo acontecimento
+  direto | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Pelo título, relata o mesmo acontecimento
+  direto | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento
+  direto | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento
+  direto | professorrafaelporcari.com | – Flamengo recorre ao STF contra proibição das bets e cita perda de até R$ 430 milhões. | Pelo título, relata o mesmo acontecimento
+  descartado | Metrópoles | STF supera futebol em buscas no Google durante julgamento de Moraes | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | Gazeta de São Paulo | STF tem torcedores de Flamengo, Palmeiras e Corinthians, mas estes não são maioria; veja lista completa dos ti | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | Francês News | Julgamento de Moraes faz buscas por STF superarem Flamengo no Google | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | JOTA Jornalismo | Sport, Flamengo e o título de 1987 | Outro acontecimento: Outro assunto com palavras parecidas
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Outro fato sobre o mesmo assunto
+  descartado | conjur.com.br | Crítica a parecer da PGR sobre disputa entre Flamengo e Sport | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | migalhas.com.br | No STF, PGR defende pedido do Flamengo como campeão brasileiro de 1987 | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | Estado de Minas | PGR defende ao STF que Flamengo pode ser reconhecido como campeão brasileiro de 1987 | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | ESPN Brasil | Flamengo ganha apoio da Procuradoria-Geral da República por título de 1987 junto do Sport | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | CNN Brasil | Sport reage a parecer da PGR sobre título do Campeonato Brasileiro de 1987 | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | migalhas.com.br | Moraes e Dino assistem a jogo entre Flamengo e Corinthians em Brasília | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | CartaCapital | PGR defende que Flamengo e Sport sejam campeões do Brasileiro de 1987 | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | ESPN Brasil | STF forma maioria contra recurso do Flamengo e mantém Sport como único campeão brasileiro de 1987 | Outro acontecimento: Mesmo envolvido, outro assunto
+  nao_independente | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesmo veículo e mesmo título da matéria importada
+  descartado | CBN | Dino reforça pedido de Gilmar Mendes por investigação de precatórios | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | CNN Brasil | Flávio reforça pedido a Fux contra decisão de Dino sobre Nossa Senhora | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  nao_independente | UOL Economia | Dólar cai a R$ 5,217 e Bolsa sobe após dados de crédito e de emprego | publicado pelo mesmo veículo da matéria importada (UOL)
+  descartado | Correio Braziliense | Caso Master: Gilmar Mendes defende reformas nas instituições | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Revista Oeste | Em decisão sobre bets, Dino reforça poder do Executivo para agir por decreto | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | DOL | Novo usa mensagens de Vorcaro e Alcolumbre em ação no STF | Outro acontecimento: Outro assunto com palavras parecidas
+  contexto | Midiamax | No STF, Dino mantém decreto de MG que veda publicidade de bets em bens públicos | Outro fato sobre o mesmo assunto
+  nao_independente | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | publicado pelo mesmo veículo da matéria importada (UOL)
+  descartado | Pleno.News | Gilmar reforça querer proibição de delegados no STF | Outro acontecimento: Mesma ação, mas por outro envolvido e sobre outro assunto
+  descartado | Gazeta do Povo | Trump mantém emergência nacional sobre o Brasil e cita ações do STF como justificativa | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  contexto | Jornal do Tocantins | Supremo prevê julgar ações contra legalização das bets no segundo semestre | Outro fato sobre o mesmo assunto
+  descartado | SBT News | Defesa de Wagner pede a Mendonça acesso à investigação | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Claudio Dantas | Joaquim Barbosa reforça entrada na disputa presidencial | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Terra | Zambelli: Decisão reforça questionamento a Moraes e repercutirá em outros casos, dizem juristas | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Click Sergipe | Senado Federal defende Alessandro Vieira e reforça proteção à atividade parlamentar diante de ação judicial | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Folha Vitória | STF reconhece que cidades capixabas podem decidir sobre indenizações no caso Mariana | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | Portal 96FM | Voto de Nunes Marques no 8 de Janeiro reforça argumentos da defesa de Bolsonaro no STF | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | Claudio Dantas | Jorge Messias reforça articulação no Senado por vaga no STF | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | CNN Brasil | Flávio Dino vota a favor de acordos de leniência da Lava Jato e reforça CGU | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | portal.stf.jus.br | Página Principal | Portal STF | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | portal.stf.jus.br | O STF | Portal STF | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | constituicao.stf.jus.br | STF - Constituição Federal do Brasil | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | noticias.stf.jus.br | Supremo Tribunal Federal | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | pt.wikipedia.org | Supremo Tribunal Federal – Wikipédia, a enciclopédia livre | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | cnnbrasil.com.br | STF | CNN Brasil | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | cms.stf.jus.br | Diário de Justiça Eletrônico (DJe) - cms.stf.jus.br | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | stf.jus.br | Supremo Tribunal Federal - stf.jus.br | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | g1.globo.com | STF - Supremo Tribunal Federal | Tudo Sobre | G1 | Outro acontecimento: Outro assunto com palavras parecidas
+  incerto | r7.com | Tudo sobre STF (Supremo Tribunal Federal): as últimas notícias no R7 | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  descartado | Wikipédia | Bruno Fernandes de Souza | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Controvérsia do título de campeão brasileiro de futebol de 1987 | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | 2025 | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Lista de presidentes do Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Lista de ministros do Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+INDEPENDENCIA (19)
+  propria | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesmo veículo e mesmo título da matéria importada
+  mesmo_veiculo | UOL Economia | Dólar cai a R$ 5,217 e Bolsa sobe após dados de crédito e de emprego | publicado pelo mesmo veículo da matéria importada (UOL)
+  mesmo_veiculo | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | publicado pelo mesmo veículo da matéria importada (UOL)
+  mesmo_veiculo | UOL Notícias | Voto nas eleições de 2026 valerá como prova de vida do INSS | publicado pelo mesmo veículo da matéria importada (UOL)
+  mesmo_veiculo | UOL Notícias | Sakamoto: Desistência de Salles é ruim para Marina e Tebet | publicado pelo mesmo veículo da matéria importada (UOL)
+  mesmo_veiculo | educacao.uol.com.br | Ensino Einstein Formação em medicina é ponto de partida para transformar a saúde | publicado pelo mesmo veículo da matéria importada (UOL)
+  mesmo_veiculo | educacao.uol.com.br | Ensino Einstein Como a formação coloca a nutrição no centro do cuidado em saúde | publicado pelo mesmo veículo da matéria importada (UOL)
+  mesmo_veiculo | UOL Economia | PagBank Investimentos: Investir também é uma questão de pertencimento | publicado pelo mesmo veículo da matéria importada (UOL)
+  mesmo_veiculo | UOL | Amistosos da Seleção Brasileira | publicado pelo mesmo veículo da matéria importada (UOL)
+  mesmo_veiculo | UOL | Tabela Série C | Jogos, Times, Resultados | UOL Esporte | publicado pelo mesmo veículo da matéria importada (UOL)
+  propria | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesmo veículo e mesmo título da matéria importada
+  mesmo_veiculo | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | publicado pelo mesmo veículo da matéria importada (UOL)
+  mesmo_veiculo | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | publicado pelo mesmo veículo da matéria importada (UOL)
+  propria | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesmo veículo e mesmo título da matéria importada
+  mesmo_veiculo | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | publicado pelo mesmo veículo da matéria importada (UOL)
+  propria | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesmo veículo e mesmo título da matéria importada
+  propria | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesmo veículo e mesmo título da matéria importada
+  mesmo_veiculo | UOL Economia | Dólar cai a R$ 5,217 e Bolsa sobe após dados de crédito e de emprego | publicado pelo mesmo veículo da matéria importada (UOL)
+  mesmo_veiculo | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | publicado pelo mesmo veículo da matéria importada (UOL)
+ACONTECIMENTO (98)
+  outro_acontecimento | G1 | Com Bolsonaro condenado, governo prevê mais sanções dos EUA às autoridades brasileiras e tensão com Trump até  | Trata de outras pessoas ou de outro lugar | Quem: Bolsonaro — não é quem agiu na matéria importada (Flamengo); Ação: “condenado” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: bolsonaro, eua, trump — nenhum aparece na matéria importada
+  outro_acontecimento | Blog do BG | Após ataques com ônibus queimados, governo reforça policiamento em Natal e garante transporte | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: natal — nenhum aparece na matéria importada
+  outro_acontecimento | GZH | Com discurso de campanha no Rio, Bolsonaro reforça tom eleitoral no 7 de Setembro | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: rio, bolsonaro — nenhum aparece na matéria importada
+  outro_acontecimento | G1 | Foragida na Itália, Carla Zambelli comenta política nacional e reforça críticas ao STF em perfil alternativo n | Outro acontecimento com nomes ou palavras em comum | Quem: Carla Zambelli — não é quem agiu na matéria importada (Flamengo); Ação: “comenta” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  mesmo_acontecimento | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “pede ao STF” — equivale a “aciona”; Sobre o quê: bets — em comum; Quando: publicado em 29/09/2026 — compatível com 29/09/2026
+  contexto_relacionado | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Outro fato sobre o mesmo assunto | Quem: não dá para saber pelo texto lido; Ação: “articulam” — diferente de “aciona”; Sobre o quê: bets — em comum
+  mesmo_acontecimento | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Pelo título, relata o mesmo acontecimento | Quem: Flamengo clube — o mesmo da matéria importada; Ação: “entrar com pedido” — equivale a “aciona”; Sobre o quê: casas, apostas — em comum; Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+  mesmo_acontecimento | O Dia | Flamengo entra com petição contra veto às bets no STF | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “entra com petição” — equivale a “aciona”; Sobre o quê: veto, bets — em comum; Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+  mesmo_acontecimento | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “recorre ao STF” — equivale a “aciona”; Sobre o quê: bets — em comum; Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+  mesmo_acontecimento | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Pelo título, relata o mesmo acontecimento | Quem: Flamengo antecipa clubes — o mesmo da matéria importada; Ação: “pede ingresso” — equivale a “aciona”; Sobre o quê: bets — em comum; Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+  contexto_relacionado | Estadão | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | Mesmo envolvido, outra ação sobre o mesmo assunto | Quem: Bap presidente Flamengo — o mesmo da matéria importada; Ação: “pede” — diferente de “aciona”; Sobre o quê: proibição, bets — em comum
+  outro_acontecimento | Exame | 'Como vou pagar o Paquetá?': Bap critica proibição de bets e aponta impacto de R$ 400 mi no Fla | Trata de outras pessoas ou de outro lugar | Quem: Bap — não é quem agiu na matéria importada (Flamengo); Ação: “critica” — diferente de “aciona”; Sobre o quê: proibição, bets — em comum; Nomes citados: paqueta, fla — nenhum aparece na matéria importada
+  contexto_relacionado | LANCE! | AGU estabelece prazo para STF se manifestar sobre proibição de bets | Outro fato sobre o mesmo assunto | Quem: AGU — não é quem agiu na matéria importada (Flamengo); Ação: “estabelece prazo” — diferente de “aciona”; Sobre o quê: proibição, bets — em comum
+  mesmo_acontecimento | professorrafaelporcari.com | – Flamengo recorre ao STF contra proibição das bets e cita perda de até R$ 430 milhões. | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “recorre ao STF” — equivale a “aciona”; Sobre o quê: proibição, bets — em comum; Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+  contexto_relacionado | Jogada 10 | Sindicato dos clubes brasileiros vai ao STF para suspender MP das Bets | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto | Quem: Sindicato clubes brasileiros — não é quem agiu na matéria importada (Flamengo); Ação: “vai ao STF” — equivale a “aciona”; Sobre o quê: Bets — em comum
+  contexto_relacionado | Terra | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | Mesmo envolvido, outra ação sobre o mesmo assunto | Quem: Bap presidente Flamengo — o mesmo da matéria importada; Ação: “pede” — diferente de “aciona”; Sobre o quê: proibição, bets — em comum
+  outro_acontecimento | G1 | Antes de reunião com clubes, Lula diz que acabar com bets não traz 'prejuízo para o futebol' | Trata de outras pessoas ou de outro lugar | Quem: Lula — não é quem agiu na matéria importada (Flamengo); Ação: “diz” — diferente de “aciona”; Sobre o quê: bets — em comum; Nomes citados: lula — nenhum aparece na matéria importada
+  outro_acontecimento | O GLOBO | Carta ao Flamengo | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  contexto_relacionado | ge | Fim das bets: reunião de clubes com ministros é adiada para depois do primeiro turno das eleições | Trata do mesmo assunto, sem relatar este acontecimento | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: bets — em comum
+  outro_acontecimento | ge | Fim das bets: clubes são convidados para reunião com ministros em Brasília | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: bets — em comum; Nomes citados: brasilia — nenhum aparece na matéria importada
+  outro_acontecimento | ge | Governo anuncia suspensão da atividade das casas de apostas no Brasil | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber pelo texto lido; Ação: “anuncia” — diferente de “aciona”; Sobre o quê: casas, apostas — em comum; Nomes citados: brasil — nenhum aparece na matéria importada
+  contexto_relacionado | O TEMPO | Bets se articulam para derrubar proibição no STF | Outro fato sobre o mesmo assunto | Quem: Bets — não é quem agiu na matéria importada (Flamengo); Ação: “articulam” — diferente de “aciona”; Sobre o quê: Bets, derrubar, proibição — em comum
+  mesmo_acontecimento | O Antagonista | Flamengo vai ao STF contra proibição das bets | Relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “vai ao STF” — equivale a “aciona”; Sobre o quê: proibição, bets — em comum; Quando: publicado em 29/09/2026 — compatível com 29/09/2026
+  mesmo_acontecimento | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “recorre ao STF” — equivale a “aciona”; Sobre o quê: bets — em comum; Quando: publicado em 29/09/2026 — compatível com 29/09/2026
+  mesmo_acontecimento | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Relata o mesmo acontecimento | Quem: Flamengo antecipa clubes — o mesmo da matéria importada; Ação: “pede ingresso” — equivale a “aciona”; Sobre o quê: bets — em comum; Quando: “nesta terça-feira” (29/09/2026) — compatível com 29/09/2026
+  mesmo_acontecimento | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “pede ao STF” — equivale a “aciona”; Sobre o quê: bets — em comum; Quando: publicado em 29/09/2026 — compatível com 29/09/2026
+  outro_acontecimento | Extra | Sem bet, Flamengo pode perder mais de R$ 2 bilhões em cinco anos e clube avalia cortes nos esportes olímpicos | Mesmo envolvido, outro assunto | Quem: Flamengo perder R 2 — o mesmo da matéria importada; Ação: “avalia” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  mesmo_acontecimento | Estadão on MSN | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Relata o mesmo acontecimento | Quem: Flamengo clube — o mesmo da matéria importada; Ação: “entrar com pedido” — equivale a “aciona”; Sobre o quê: casas, apostas — em comum; Quando: publicado em 29/09/2026 — compatível com 29/09/2026
+  outro_acontecimento | Exame | 'Como vou pagar o Paquetá?': Bap critica proibição de bets e aponta impacto de R$ 400 mi no Fla | Trata de outras pessoas ou de outro lugar | Quem: Bap — não é quem agiu na matéria importada (Flamengo); Ação: “critica” — diferente de “aciona”; Sobre o quê: proibição, bets — em comum; Nomes citados: paqueta, fla — nenhum aparece na matéria importada
+  contexto_relacionado | Boa Informação | Presidente do Flamengo pede rejeição da MP sobre bets | Mesmo envolvido, outra ação sobre o mesmo assunto | Quem: Presidente Flamengo — o mesmo da matéria importada; Ação: “pede” — diferente de “aciona”; Sobre o quê: bets — em comum
+  contexto_relacionado | LANCE! | AGU estabelece prazo para STF se manifestar sobre proibição de bets | Outro fato sobre o mesmo assunto | Quem: AGU — não é quem agiu na matéria importada (Flamengo); Ação: “estabelece prazo” — diferente de “aciona”; Sobre o quê: proibição, bets — em comum
+  mesmo_acontecimento | BNLData | Flamengo pode perder R$ 400 mi por ano com proibição de bets | Relata o mesmo acontecimento | Quem: Flamengo perder R 400 — o mesmo da matéria importada; Ação: “proibição” — equivale a “aciona”; Sobre o quê: bets — em comum; Quando: publicado em 29/09/2026 — compatível com 29/09/2026
+  contexto_relacionado | O GLOBO | Bets acionam STF e pedem suspensão da proibição determinada pelo governo Lula | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto | Quem: Bets — não é quem agiu na matéria importada (Flamengo); Ação: “acionam” — equivale a “aciona”; Sobre o quê: Bets, proibição — em comum
+  relacao_incerta | Tribuna PR | Clubes de futebol terão crédito de R$ 20 bilhões após proibição das bets | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: proibição, bets — em comum
+  outro_acontecimento | Estadão | Governo do DF aciona STF e diz que Lula nega socorro ao BRB por motivo eleitoral: ‘Decisão política’ | Mesma ação, mas por outro envolvido e sobre outro assunto | Quem: Governo DF — não é quem agiu na matéria importada (Flamengo); Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | G1 | Governo do DF aciona STF contra a União em duas ações envolvendo recursos federais; entenda como ambas podem a | Mesma ação, mas por outro envolvido e sobre outro assunto | Quem: Governo DF — não é quem agiu na matéria importada (Flamengo); Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Correio Braziliense | Entidades se unem pelo fortalecimento do BRB, enquanto Celina aciona STF | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Blog do BG | [VÍDEO] CAIO JUNQUEIRA: Governo Lula aciona modo vale-tudo pela reeleição | Trata de outras pessoas ou de outro lugar | Quem: Governo Lula — não é quem agiu na matéria importada (Flamengo); Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: video, caio, junqueira, lula — nenhum aparece na matéria importada
+  outro_acontecimento | Revista Fórum | Lindbergh aciona STF para bloquear R$ 72 milhões em bens de Flávio Bolsonaro | Mesma ação, mas por outro envolvido e sobre outro assunto | Quem: Lindbergh — não é quem agiu na matéria importada (Flamengo); Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | O GLOBO | Governo Lula aciona Fachin para derrubar decisão que afastou Andrei da chefia da PF | Trata de outras pessoas ou de outro lugar | Quem: Governo Lula — não é quem agiu na matéria importada (Flamengo); Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: lula, fachin, andrei, pf — nenhum aparece na matéria importada
+  outro_acontecimento | O Dia | Senado aprova PEC dos agentes de saúde e governo fala em acionar STF | Outro acontecimento com nomes ou palavras em comum | Quem: Senado — não é quem agiu na matéria importada (Flamengo); Ação: “aprova” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Revista Fórum | Deputado aciona STF para investigar suposta propina de Vorcaro a Tarcísio e Bolsonaro | Mesma ação sobre outro assunto | Quem: não dá para saber pelo texto lido; Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | O GLOBO | Horas após governo de SP acionar STF, Fazenda libera empréstimo de R$ 5,4 bilhões para o estado | Mesma ação, mas por outro envolvido e sobre outro assunto | Quem: Horas governo SP — não é quem agiu na matéria importada (Flamengo); Ação: “acionar” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | diariodorio.com | Alerj aciona STF para tentar colocar Douglas Ruas no comando interino do governo do Rio | Mesma ação, mas por outro envolvido e sobre outro assunto | Quem: Alerj — não é quem agiu na matéria importada (Flamengo); Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Tribuna do Sertão | PDT nacional aciona STF para anular eleição na Alerj que elegeu Douglas Ruas como presidente | Mesma ação, mas por outro envolvido e sobre outro assunto | Quem: PDT nacional — não é quem agiu na matéria importada (Flamengo); Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | G1 | Governo do DF aciona STF contra lei federal que pode gerar corte bilionário no Fundo Constitucional | Mesma ação, mas por outro envolvido e sobre outro assunto | Quem: Governo DF — não é quem agiu na matéria importada (Flamengo); Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | O GLOBO | Governo avalia vetar ou ir ao STF contra renegociação de dívidas rurais, diz ministro | Outro acontecimento com nomes ou palavras em comum | Quem: não dá para saber pelo texto lido; Ação: “avalia” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | O GLOBO | Prefeitura de SP aciona STJ para Fazenda liberar garantias a empréstimo de R$ 3,5 bilhões para ônibus elétrico | Trata de outras pessoas ou de outro lugar | Quem: Prefeitura SP — não é quem agiu na matéria importada (Flamengo); Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: sp, stj, fazenda — nenhum aparece na matéria importada
+  outro_acontecimento | G1 | Durigan diz que governo avalia vetar renegociação de dívidas rurais caso projeto passe na Câmara; Senado aprov | Trata de outras pessoas ou de outro lugar | Quem: Durigan — não é quem agiu na matéria importada (Flamengo); Ação: “diz” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: senado — nenhum aparece na matéria importada
+  outro_acontecimento | G1 | Distrito Federal aciona STF para derrubar entrave da União que pode impactar empréstimo de socorro ao BRB | Mesma ação, mas por outro envolvido e sobre outro assunto | Quem: Distrito Federal — não é quem agiu na matéria importada (Flamengo); Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | G1 | Moraes manda governo adotar providências para extradição de Zambelli da Itália para o Brasil | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: zambelli, italia, brasil — nenhum aparece na matéria importada
+  outro_acontecimento | O GLOBO | Governo aciona 'bombeiros' para reconstruir ponte com Alcolumbre após derrota de Messias | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber pelo texto lido; Ação: “aciona” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: alcolumbre, messias — nenhum aparece na matéria importada
+  mesmo_acontecimento | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Pelo título, relata o mesmo acontecimento | Quem: Flamengo clube — o mesmo da matéria importada; Ação: “entrar com pedido” — equivale a “aciona”; Sobre o quê: casas, apostas — em comum; Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+  mesmo_acontecimento | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Pelo título, relata o mesmo acontecimento | Quem: Flamengo clube — o mesmo da matéria importada; Ação: “entrar com pedido” — equivale a “aciona”; Sobre o quê: casas, apostas — em comum; Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+  mesmo_acontecimento | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “vai ao STF” — equivale a “aciona”; Sobre o quê: veto, bets — em comum; Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+  mesmo_acontecimento | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “pede ao STF” — equivale a “aciona”; Sobre o quê: veto, bets — em comum; Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+  mesmo_acontecimento | professorrafaelporcari.com | – Flamengo recorre ao STF contra proibição das bets e cita perda de até R$ 430 milhões. | Pelo título, relata o mesmo acontecimento | Quem: Flamengo — o mesmo da matéria importada; Ação: “recorre ao STF” — equivale a “aciona”; Sobre o quê: proibição, bets — em comum; Quando: publicado em 30/09/2026 — compatível com 29/09/2026
+  outro_acontecimento | Metrópoles | STF supera futebol em buscas no Google durante julgamento de Moraes | Outro acontecimento com nomes ou palavras em comum | Quem: STF supera futebol buscas — não é quem agiu na matéria importada (Flamengo); Ação: “julgamento” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Gazeta de São Paulo | STF tem torcedores de Flamengo, Palmeiras e Corinthians, mas estes não são maioria; veja lista completa dos ti | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Francês News | Julgamento de Moraes faz buscas por STF superarem Flamengo no Google | Outro acontecimento com nomes ou palavras em comum | Quem: não dá para saber pelo texto lido; Ação: “Julgamento” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | JOTA Jornalismo | Sport, Flamengo e o título de 1987 | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  contexto_relacionado | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Outro fato sobre o mesmo assunto | Quem: Quarta — não é quem agiu na matéria importada (Flamengo); Ação: “derrota” — diferente de “aciona”; Sobre o quê: BETS — em comum
+  outro_acontecimento | conjur.com.br | Crítica a parecer da PGR sobre disputa entre Flamengo e Sport | Outro acontecimento com nomes ou palavras em comum | Quem: não dá para saber pelo texto lido; Ação: “Crítica” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | migalhas.com.br | No STF, PGR defende pedido do Flamengo como campeão brasileiro de 1987 | Outro acontecimento com nomes ou palavras em comum | Quem: STF PGR — não é quem agiu na matéria importada (Flamengo); Ação: “defende” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Estado de Minas | PGR defende ao STF que Flamengo pode ser reconhecido como campeão brasileiro de 1987 | Outro acontecimento com nomes ou palavras em comum | Quem: PGR — não é quem agiu na matéria importada (Flamengo); Ação: “defende” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | ESPN Brasil | Flamengo ganha apoio da Procuradoria-Geral da República por título de 1987 junto do Sport | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Outro acontecimento com nomes ou palavras em comum | Quem: PGR — não é quem agiu na matéria importada (Flamengo); Ação: “defende” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | CNN Brasil | Sport reage a parecer da PGR sobre título do Campeonato Brasileiro de 1987 | Trata de outras pessoas ou de outro lugar | Quem: Sport — não é quem agiu na matéria importada (Flamengo); Ação: “reage” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: pgr, campeonato — nenhum aparece na matéria importada
+  outro_acontecimento | migalhas.com.br | Moraes e Dino assistem a jogo entre Flamengo e Corinthians em Brasília | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | CartaCapital | PGR defende que Flamengo e Sport sejam campeões do Brasileiro de 1987 | Outro acontecimento com nomes ou palavras em comum | Quem: PGR — não é quem agiu na matéria importada (Flamengo); Ação: “defende” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | ESPN Brasil | STF forma maioria contra recurso do Flamengo e mantém Sport como único campeão brasileiro de 1987 | Mesmo envolvido, outro assunto | Quem: STF forma maioria recurso — o mesmo da matéria importada; Ação: “mantém” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | CBN | Dino reforça pedido de Gilmar Mendes por investigação de precatórios | Trata de outras pessoas ou de outro lugar | Quem: Dino reforça pedido Gilmar — não é quem agiu na matéria importada (Flamengo); Ação: “investigação” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: gilmar, mendes — nenhum aparece na matéria importada
+  outro_acontecimento | CNN Brasil | Flávio reforça pedido a Fux contra decisão de Dino sobre Nossa Senhora | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: fux, dino, senhora — nenhum aparece na matéria importada
+  outro_acontecimento | Correio Braziliense | Caso Master: Gilmar Mendes defende reformas nas instituições | Trata de outras pessoas ou de outro lugar | Quem: Gilmar Mendes — não é quem agiu na matéria importada (Flamengo); Ação: “defende” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: caso, master, gilmar, mendes — nenhum aparece na matéria importada
+  outro_acontecimento | Revista Oeste | Em decisão sobre bets, Dino reforça poder do Executivo para agir por decreto | Trata de outras pessoas ou de outro lugar | Quem: decisão bets Dino reforça — não é quem agiu na matéria importada (Flamengo); Ação: “decreto” — diferente de “aciona”; Sobre o quê: bets, reforça — em comum; Nomes citados: dino, executivo — nenhum aparece na matéria importada
+  outro_acontecimento | DOL | Novo usa mensagens de Vorcaro e Alcolumbre em ação no STF | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  contexto_relacionado | Midiamax | No STF, Dino mantém decreto de MG que veda publicidade de bets em bens públicos | Outro fato sobre o mesmo assunto | Quem: STF Dino — não é quem agiu na matéria importada (Flamengo); Ação: “mantém” — diferente de “aciona”; Sobre o quê: bets — em comum
+  outro_acontecimento | Pleno.News | Gilmar reforça querer proibição de delegados no STF | Mesma ação, mas por outro envolvido e sobre outro assunto | Quem: Gilmar reforça querer — não é quem agiu na matéria importada (Flamengo); Ação: “proibição” — equivale a “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Gazeta do Povo | Trump mantém emergência nacional sobre o Brasil e cita ações do STF como justificativa | Outro acontecimento com nomes ou palavras em comum | Quem: Trump — não é quem agiu na matéria importada (Flamengo); Ação: “mantém” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  contexto_relacionado | Jornal do Tocantins | Supremo prevê julgar ações contra legalização das bets no segundo semestre | Outro fato sobre o mesmo assunto | Quem: Supremo — não é quem agiu na matéria importada (Flamengo); Ação: “prevê” — diferente de “aciona”; Sobre o quê: bets — em comum
+  outro_acontecimento | SBT News | Defesa de Wagner pede a Mendonça acesso à investigação | Trata de outras pessoas ou de outro lugar | Quem: Defesa Wagner — não é quem agiu na matéria importada (Flamengo); Ação: “pede” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: defesa, wagner, mendonca — nenhum aparece na matéria importada
+  outro_acontecimento | Claudio Dantas | Joaquim Barbosa reforça entrada na disputa presidencial | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: joaquim, barbosa — nenhum aparece na matéria importada
+  outro_acontecimento | Terra | Zambelli: Decisão reforça questionamento a Moraes e repercutirá em outros casos, dizem juristas | Trata de outras pessoas ou de outro lugar | Quem: Decisão reforça questionamento Moraes — não é quem agiu na matéria importada (Flamengo); Ação: “dizem” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: moraes — nenhum aparece na matéria importada
+  outro_acontecimento | Click Sergipe | Senado Federal defende Alessandro Vieira e reforça proteção à atividade parlamentar diante de ação judicial | Trata de outras pessoas ou de outro lugar | Quem: Senado Federal — não é quem agiu na matéria importada (Flamengo); Ação: “defende” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum; Nomes citados: senado, alessandro, vieira — nenhum aparece na matéria importada
+  outro_acontecimento | Folha Vitória | STF reconhece que cidades capixabas podem decidir sobre indenizações no caso Mariana | Outro acontecimento com nomes ou palavras em comum | Quem: STF reconhece cidades capixabas — não é quem agiu na matéria importada (Flamengo); Ação: “decidir” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Portal 96FM | Voto de Nunes Marques no 8 de Janeiro reforça argumentos da defesa de Bolsonaro no STF | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | Claudio Dantas | Jorge Messias reforça articulação no Senado por vaga no STF | Outro acontecimento com nomes ou palavras em comum | Quem: Jorge Messias reforça — não é quem agiu na matéria importada (Flamengo); Ação: “articulação” — diferente de “aciona”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | CNN Brasil | Flávio Dino vota a favor de acordos de leniência da Lava Jato e reforça CGU | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: flavio, dino, lava, jato, cgu — nenhum aparece na matéria importada
+  outro_acontecimento | portal.stf.jus.br | Página Principal | Portal STF | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | portal.stf.jus.br | O STF | Portal STF | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | constituicao.stf.jus.br | STF - Constituição Federal do Brasil | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | noticias.stf.jus.br | Supremo Tribunal Federal | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | pt.wikipedia.org | Supremo Tribunal Federal – Wikipédia, a enciclopédia livre | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | cnnbrasil.com.br | STF | CNN Brasil | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | cms.stf.jus.br | Diário de Justiça Eletrônico (DJe) - cms.stf.jus.br | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: diario, eletronico, dje — nenhum aparece na matéria importada
+  outro_acontecimento | stf.jus.br | Supremo Tribunal Federal - stf.jus.br | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | g1.globo.com | STF - Supremo Tribunal Federal | Tudo Sobre | G1 | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  relacao_incerta | r7.com | Tudo sobre STF (Supremo Tribunal Federal): as últimas notícias no R7 | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+DUPLICATA (3)
+  removida | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | mesma URL já recebida de bing_news
+  removida | professorrafaelporcari.com | – Flamengo recorre ao STF contra proibição das bets e cita perda de até R$ 430 milhões. | mesma URL já recebida de google_news
+  removida | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesma URL já recebida de google_news
+REPUBLICACAO (6)
+  agrupada | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | título/trecho quase igual a Brasil 247
+  agrupada | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | título/trecho quase igual a O GLOBO
+  agrupada | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | título/trecho quase igual a Estadão on MSN
+  agrupada | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | título/trecho quase igual a Estadão on MSN
+  agrupada | LANCE! | AGU estabelece prazo para STF se manifestar sobre proibição de bets | título/trecho quase igual a LANCE!
+  agrupada | Terra | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | título/trecho quase igual a Estadão
+RELEITURA (0)
+LIMITE (8)
+  contexto | Estadão | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | acima do limite de 8 na seção
+  contexto | ge | Fim das bets: reunião de clubes com ministros é adiada para depois do primeiro turno das eleições | acima do limite de 8 na seção
+  contexto | Jornal do Tocantins | Supremo prevê julgar ações contra legalização das bets no segundo semestre | acima do limite de 8 na seção
+  nao_independente | educacao.uol.com.br | Ensino Einstein Como a formação coloca a nutrição no centro do cuidado em saúde | acima do limite de 6 na seção
+  nao_independente | UOL Economia | PagBank Investimentos: Investir também é uma questão de pertencimento | acima do limite de 6 na seção
+  nao_independente | UOL | Amistosos da Seleção Brasileira | acima do limite de 6 na seção
+  nao_independente | UOL | Tabela Série C | Jogos, Times, Resultados | UOL Esporte | acima do limite de 6 na seção
+  nao_independente | UOL | Flamengo entra no STF e engrossa coro das bets contra proibição do governo | acima do limite de 6 na seção
+EXIBIDA (26)
+  direto | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento
+  direto | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Relata o mesmo acontecimento
+  direto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Relata o mesmo acontecimento
+  direto | Estadão on MSN | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Relata o mesmo acontecimento
+  direto | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento
+  direto | O Antagonista | Flamengo vai ao STF contra proibição das bets | Relata o mesmo acontecimento
+  direto | O Dia | Flamengo entra com petição contra veto às bets no STF | Pelo título, relata o mesmo acontecimento
+  direto | professorrafaelporcari.com | – Flamengo recorre ao STF contra proibição das bets e cita perda de até R$ 430 milhões. | Pelo título, relata o mesmo acontecimento
+  direto | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento
+  direto | BNLData | Flamengo pode perder R$ 400 mi por ano com proibição de bets | Relata o mesmo acontecimento
+  incerto | R7 | Tudo sobre STF (Supremo Tribunal Federal): as últimas notícias no R7 | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  incerto | Tribuna PR | Clubes de futebol terão crédito de R$ 20 bilhões após proibição das bets | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  contexto | Boa Informação | Presidente do Flamengo pede rejeição da MP sobre bets | Mesmo envolvido, outra ação sobre o mesmo assunto
+  contexto | O GLOBO | Bets acionam STF e pedem suspensão da proibição determinada pelo governo Lula | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Outro fato sobre o mesmo assunto
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Outro fato sobre o mesmo assunto
+  contexto | LANCE! | AGU estabelece prazo para STF se manifestar sobre proibição de bets | Outro fato sobre o mesmo assunto
+  contexto | Jogada 10 | Sindicato dos clubes brasileiros vai ao STF para suspender MP das Bets | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto
+  contexto | O TEMPO | Bets se articulam para derrubar proibição no STF | Outro fato sobre o mesmo assunto
+  contexto | Midiamax | No STF, Dino mantém decreto de MG que veda publicidade de bets em bens públicos | Outro fato sobre o mesmo assunto
+  nao_independente | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesmo veículo e mesmo título da matéria importada
+  nao_independente | UOL Economia | Dólar cai a R$ 5,217 e Bolsa sobe após dados de crédito e de emprego | publicado pelo mesmo veículo da matéria importada (UOL)
+  nao_independente | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | publicado pelo mesmo veículo da matéria importada (UOL)
+  nao_independente | UOL Notícias | Voto nas eleições de 2026 valerá como prova de vida do INSS | publicado pelo mesmo veículo da matéria importada (UOL)
+  nao_independente | UOL Notícias | Sakamoto: Desistência de Salles é ruim para Marina e Tebet | publicado pelo mesmo veículo da matéria importada (UOL)
+  nao_independente | educacao.uol.com.br | Ensino Einstein Formação em medicina é ponto de partida para transformar a saúde | publicado pelo mesmo veículo da matéria importada (UOL)
+RELACAO (26)
+  mesmo_fato | Terra | Flamengo pede ao STF para ingressar em ação contra o fim das bets | Relata o mesmo acontecimento [leitura: pagina] «O Flamengo se antecipou aos clubes e acionou o Supremo Tribunal Federal (STF) para tentar derrubar o veto às bets.»
+  mesmo_fato | Brasil 247 | Flamengo recorre ao STF contra medida que proíbe bets e cita patrocínio de R$ 268,5 milhões | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | Estadão on MSN | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Relata o mesmo acontecimento [leitura: trecho]
+  mesmo_fato | iG Esportes | Flamengo pede ao STF para entrar em ação contra veto às bets | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | O Antagonista | Flamengo vai ao STF contra proibição das bets | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | O Dia | Flamengo entra com petição contra veto às bets no STF | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | professorrafaelporcari.com | – Flamengo recorre ao STF contra proibição das bets e cita perda de até R$ 430 milhões. | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | ncnews.com.br | Flamengo vai ao STF contra veto às bets e cita risco de prejuízo ao esporte | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | BNLData | Flamengo pode perder R$ 400 mi por ano com proibição de bets | Relata o mesmo acontecimento [leitura: pagina]
+  indefinido | R7 | Tudo sobre STF (Supremo Tribunal Federal): as últimas notícias no R7 | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: pagina]
+  indefinido | Tribuna PR | Clubes de futebol terão crédito de R$ 20 bilhões após proibição das bets | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: pagina]
+  contexto | Boa Informação | Presidente do Flamengo pede rejeição da MP sobre bets | Mesmo envolvido, outra ação sobre o mesmo assunto [leitura: trecho]
+  contexto | O GLOBO | Bets acionam STF e pedem suspensão da proibição determinada pelo governo Lula | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto [leitura: trecho]
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Outro fato sobre o mesmo assunto [leitura: titulo]
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Outro fato sobre o mesmo assunto [leitura: titulo]
+  contexto | LANCE! | AGU estabelece prazo para STF se manifestar sobre proibição de bets | Outro fato sobre o mesmo assunto [leitura: trecho]
+  contexto | Jogada 10 | Sindicato dos clubes brasileiros vai ao STF para suspender MP das Bets | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto [leitura: titulo]
+  contexto | O TEMPO | Bets se articulam para derrubar proibição no STF | Outro fato sobre o mesmo assunto [leitura: titulo]
+  contexto | Midiamax | No STF, Dino mantém decreto de MG que veda publicidade de bets em bens públicos | Outro fato sobre o mesmo assunto [leitura: titulo]
+  propria | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | É a própria matéria importada (mesmo veículo e mesmo título da matéria importada) [leitura: titulo]
+  mesmo_veiculo | UOL Economia | Dólar cai a R$ 5,217 e Bolsa sobe após dados de crédito e de emprego | Publicação do mesmo veículo da matéria importada (publicado pelo mesmo veículo da matéria importada (UOL)) [leitura: titulo]
+  mesmo_veiculo | UOL Notícias | Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets | Publicação do mesmo veículo da matéria importada (publicado pelo mesmo veículo da matéria importada (UOL)) [leitura: titulo]
+  mesmo_veiculo | UOL Notícias | Voto nas eleições de 2026 valerá como prova de vida do INSS | Publicação do mesmo veículo da matéria importada (publicado pelo mesmo veículo da matéria importada (UOL)) [leitura: titulo]
+  mesmo_veiculo | UOL Notícias | Sakamoto: Desistência de Salles é ruim para Marina e Tebet | Publicação do mesmo veículo da matéria importada (publicado pelo mesmo veículo da matéria importada (UOL)) [leitura: titulo]
+  mesmo_veiculo | educacao.uol.com.br | Ensino Einstein Formação em medicina é ponto de partida para transformar a saúde | Publicação do mesmo veículo da matéria importada (publicado pelo mesmo veículo da matéria importada (UOL)) [leitura: titulo]

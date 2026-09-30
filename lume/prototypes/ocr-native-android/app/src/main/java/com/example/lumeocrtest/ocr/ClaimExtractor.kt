@@ -13,8 +13,9 @@ class ClaimExtractor {
         // The main claim is the first substantial paragraph. We might combine the first few if they are short (e.g. title + subtitle)
         var mainClaimText = paragraphs[0]
         var pIndex = 1
-        // Combine if it's very short (like a category or short title) or doesn't end with punctuation
-        while (pIndex < paragraphs.size && (mainClaimText.length < 40 || !mainClaimText.matches(Regex(".*[.?!]$")))) {
+        // Manchetes jornalísticas frequentemente não têm ponto final. Isso não autoriza
+        // concatenar o corpo da matéria (ou texto de outra coluna) à afirmação pesquisada.
+        while (pIndex < paragraphs.size && mainClaimText.length < 40) {
             // Título sem pontuação final + subtítulo: mantém a fronteira da frase para a pesquisa avaliar cada uma.
             val sep = if (mainClaimText.trimEnd().matches(Regex(".*[.?!:;]$"))) " " else ". "
             mainClaimText += sep + paragraphs[pIndex]

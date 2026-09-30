@@ -1,0 +1,41 @@
+ANTES (fluxo anterior): 16/40 corretos
+ok   uol-estadao [sinonimos] esperado=mesmo_acontecimento antes=mesmo_acontecimento | Estadão: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no 
+ERRO uol-estadao-titulo [so_titulo] esperado=mesmo_acontecimento antes=contexto | Estadão: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no 
+ok   uol-terra [sinonimos] esperado=mesmo_acontecimento antes=mesmo_acontecimento | Terra: Flamengo pede ao STF para ingressar em ação contra o fim das bets
+ok   uol-oglobo [sinonimos] esperado=mesmo_acontecimento antes=mesmo_acontecimento | O GLOBO: Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets
+ERRO uol-antagonista [so_titulo] esperado=mesmo_acontecimento antes=contexto | O Antagonista: Flamengo vai ao STF contra proibição das bets
+ERRO uol-propria [propria] esperado=propria antes=mesmo_acontecimento | UOL: Flamengo aciona STF e reforça ação das bets contra proibição do governo
+ERRO uol-mesmo-veiculo [propria] esperado=mesmo_veiculo antes=outro | UOL Notícias: Governo pede 72h para se manifestar antes de Fux tomar decisão sobre bets
+ok   uol-gazeta-nota [acao_diferente_data_diferente] esperado=contexto antes=outro | Gazeta Brasil: “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil
+ok   uol-otempo [acao_diferente_data_diferente] esperado=contexto antes=outro | O TEMPO: Flamengo, Fluminense e Grêmio se manifestam sobre proibição das bets no Brasil
+ERRO uol-bets-acao [mesmas_entidades_outro_agente] esperado=contexto antes=mesmo_acontecimento | O GLOBO: Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites i
+ok   uol-sinafut [mesmas_entidades_outro_agente] esperado=contexto antes=contexto | Flamengo RJ: Sinafut pede ao STF suspensão da MP das Bets e transição até fim de 2026
+ok   uol-clubes-articulam [proposta_vs_decisao] esperado=contexto antes=contexto | O GLOBO: Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets
+ERRO uol-gdf [mesma_acao_outro_assunto] esperado=outro antes=contexto | Estadão: Governo do DF aciona STF e diz que Lula nega socorro ao BRB por motivo eleitoral: ‘Decisão
+ERRO uol-pgr-1987 [homonimo_papel] esperado=outro antes=contexto | CNN Brasil: PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987
+ERRO uol-stf-nega-87 [papeis_invertidos] esperado=outro antes=contexto | Agência Brasil: STF nega recurso do Flamengo e mantém Sport campeão brasileiro de 87
+ERRO uol-supercopa [mesmas_entidades] esperado=outro antes=contexto | Metrópoles: Ministros do STF vão à final da Supercopa entre Flamengo e Corinthians
+ok   uol-stf-patrocinadoras-2025 [data_diferente] esperado=outro antes=contexto | ge: STF proíbe patrocinadoras de Corinthians e Flamengo de operar nacionalmente
+ERRO uol-zambelli [palavras_em_comum] esperado=outro antes=contexto | G1: Foragida na Itália, Carla Zambelli comenta política nacional e reforça críticas ao STF em 
+ERRO uol-gdf-corte-homonimo [homonimos] esperado=outro antes=contexto | G1: Governo do DF aciona STF contra lei federal que pode gerar corte bilionário no Fundo Const
+ERRO uol-df-derrubar [mesma_acao_outro_assunto] esperado=outro antes=contexto | G1: Distrito Federal aciona STF para derrubar entrave da União que pode impactar empréstimo de
+ERRO uol-folhape-87 [data_diferente] esperado=outro antes=contexto | Folha PE: Flamengo campeão brasileiro de 87? PGR envia ao STF parecer favorável ao clube carioca
+ERRO est-uol [sinonimos] esperado=mesmo_acontecimento antes=contexto | UOL: Flamengo aciona STF e reforça ação das bets contra proibição do governo
+ERRO est-oglobo [sinonimos] esperado=mesmo_acontecimento antes=contexto | O GLOBO: Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets
+ok   est-terra-pede [sinonimos] esperado=mesmo_acontecimento antes=mesmo_acontecimento | Terra: Flamengo pede ao STF para ingressar em ação contra o fim das bets
+ERRO est-propria [propria] esperado=propria antes=mesmo_acontecimento | Estadão: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no 
+ERRO est-terra-republica [republicacao] esperado=republicacao antes=mesmo_acontecimento | Terra: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no 
+ok   est-bets-acao [mesmas_entidades_outro_agente] esperado=contexto antes=contexto | O GLOBO: Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites i
+ok   est-gazeta-nota [acao_diferente_data_diferente] esperado=contexto antes=contexto | Gazeta Brasil: “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil
+ERRO s-sinonimos [sinonimos] esperado=mesmo_acontecimento antes=contexto | Jornal Fictício: Vale Claro interrompe atividades nas escolas municipais por causa da cheia
+ok   s-acao-diferente [mesmas_entidades_acoes_diferentes] esperado=outro antes=outro | Jornal Fictício: Governador Tiago Mendes visita obras do metrô de Pedra Azul
+ok   s-mesmo-objeto-outra-acao [mesmas_entidades_acoes_diferentes] esperado=contexto antes=outro | Jornal Fictício: Tiago Mendes critica custo do passe livre estudantil
+ok   s-data-diferente [datas_diferentes] esperado=outro antes=contexto | Jornal Fictício: Barragem do Rio Verde transborda e deixa desalojados em Pedra Azul
+ERRO s-proposta-decisao [proposta_vs_decisao] esperado=contexto antes=mesmo_acontecimento | Jornal Fictício: Governo de Pedra Azul propõe proibir venda de fogos com estampido
+ERRO s-negacao [afirmacao_vs_negacao] esperado=divergente antes=contexto | Jornal Fictício: Secretaria de Saúde de Vale Claro nega surto de sarampo
+ERRO s-numero [numero_divergente] esperado=divergente antes=contexto | Jornal Fictício: Prefeitura de Vale Claro dá 10 dias para ambulantes deixarem o centro
+ok   s-homonimo [homonimos] esperado=outro antes=outro | Jornal Fictício: Santa Rita decreta emergência por falta de chuva
+ERRO s-so-titulo-incerto [so_titulo] esperado=incerta antes=outro | Jornal Fictício: IPTU de Vale Claro: o que muda em 2027
+ok   s-so-resumo-mesmo [so_resumo] esperado=mesmo_acontecimento antes=mesmo_acontecimento | Jornal Fictício: Vereadores de Vale Claro aprovam aumento do IPTU
+ERRO s-papeis [papeis_invertidos] esperado=outro antes=contexto | Jornal Fictício: Federação Estadual processa o Atlético Serrano por dívida
+ERRO s-local [local_diferente] esperado=outro antes=contexto | Jornal Fictício: Incêndio atinge mercado central de Pedra Azul

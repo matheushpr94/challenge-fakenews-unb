@@ -1,0 +1,114 @@
+AFIRMAÇÃO: MP proíbe bets e determina encerramento das operações em 30 dias
+esclarecimento: escolher=false opções=[] motivo=intenção clara para as regras
+modo=unica status=ok
+--- parte: MP proíbe bets e determina encerramento das operações em 30 dias
+tipo=contagem entidades=[MP] termos=[proíbe, bets, determina, encerramento, operações] numeros=[30]
+consultas=[especifica: MP 30 dias, valor_documentado: MP dias, pergunta_valor: quantas dias MP]
+status=ok síntese=apoiam descartados=23 3298 ms semântica=false
+  seção responde: 4 -> [Jornal de Uberaba, globo, Midia Jur, UOL]
+  seção direto: 1 -> [Bahia.ba]
+  seção anterior: 0 -> []
+  seção contexto: 3 -> [Fatos de Mato Grosso, Canal Rural, G1]
+  seção contexto_geral: 2 -> [Wikipédia, Wikipédia]
+CONSULTAS (7)
+  [bing_web] 'MP 30 dias' -> ok 10
+  [bing_web] 'MP dias' -> ok 10
+  [bing_web] 'quantas dias MP' -> ok 10
+  [google_news] 'MP 30 dias' -> ok 15
+  [bing_news] 'MP 30 dias' -> ok 5
+  [wikipedia] 'MP dias' -> ok 3
+  [wikipedia] 'MP' -> ok 3
+TRIAGEM (56)
+  contexto | mpdft.mp.br | MPDFT - Ministério Público do Distrito Federal e Territórios | Página de referência sobre a entidade
+  contexto | mpu.mp.br | Ministério Público da União | Página de referência sobre a entidade
+  contexto | cidesp.com.br | O que significa MP na fatura do cartão? - cidesp.com.br | Página de referência sobre a entidade
+  contexto | mpf.mp.br | Ministério Público Federal | Página de referência sobre a entidade
+  contexto | mpgo.mp.br | Portal do Ministério Público do Estado de Goiás | Página de referência sobre a entidade
+  contexto | sabertecnologias.com.br | O que significa MP na fatura do cartão? | Página de referência sobre a entidade
+  contexto | planalto.gov.br | Principal_MP - Planalto | Página de referência sobre a entidade
+  contexto | mpm.mp.br | Consulta Processual - mpm.mp.br | Página de referência sobre a entidade
+  descartado | mpm.mp.br | MINISTÉRIO PÚBLICO MILITAR | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | consultaprocessual.cnmp.mp.br | Consulta processual | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  contexto | mpdft.mp.br | MPDFT - Ministério Público do Distrito Federal e Territórios | Página de referência sobre a entidade
+  contexto | mpu.mp.br | Ministério Público da União | Página de referência sobre a entidade
+  contexto | cidesp.com.br | O que significa MP na fatura do cartão? - cidesp.com.br | Página de referência sobre a entidade
+  contexto | mpf.mp.br | Ministério Público Federal | Página de referência sobre a entidade
+  contexto | mpgo.mp.br | Portal do Ministério Público do Estado de Goiás | Página de referência sobre a entidade
+  contexto | sabertecnologias.com.br | O que significa MP na fatura do cartão? | Página de referência sobre a entidade
+  contexto | planalto.gov.br | Principal_MP - Planalto | Página de referência sobre a entidade
+  contexto | mpm.mp.br | Consulta Processual - mpm.mp.br | Página de referência sobre a entidade
+  descartado | mpm.mp.br | MINISTÉRIO PÚBLICO MILITAR | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | consultaprocessual.cnmp.mp.br | Consulta processual | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | cobranca.sorocaba.sp.gov.br | Portal de Negociação - Governo do Estado de São Paulo | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | cobranca.sorocaba.sp.gov.br | Portal de Negociação - Governo do Estado de São Paulo | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | cobranca.sorocaba.sp.gov.br | Portal de Negociação | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | cobranca.sorocaba.sp.gov.br | Portal de Negociação - cobranca.sorocaba.sp.gov.br | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | cobranca.sorocaba.sp.gov.br | INSTITUI OBRIGAÇÕES TRIBUTÁRIAS, ESTABELECE SANÇÕES E OUTROS ... | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | cobranca.sorocaba.sp.gov.br | DECRETO Nº 22.219, DE 10 DE MARÇO DE 201 - cobranca.sorocaba.sp.gov.br | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | cobranca.sorocaba.sp.gov.br | D I S P Õ E S O B R E A C O N S U LTA , S I M U L A Ç Ã O D E F O R M A ... | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | cobranca.sorocaba.sp.gov.br | Portal de Negociação - cobranca.sorocaba.sp.gov.br | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | cobranca.sorocaba.sp.gov.br | DISPÕE SOBRE A ADMINISTRAÇÃO DOS CRÉDITOS MUNICIPAIS INSCRITOS EM ... | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | cobranca.sorocaba.sp.gov.br | DISPÕE SOBRE ALTERAÇÕES NA LEGISLAÇÃO MUNICIPAL E DÁ OUTRAS PROVID | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  direto | Senado | MP proíbe bets e determina encerramento das operações em 30 dias | Trata do mesmo acontecimento
+  descartado | Canal Rural | Multa por abuso no preço dos combustíveis pode chegar a R$ 500 milhões | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | G1 | Governo prorroga subvenção ao diesel por mais 30 dias, às vésperas da eleição | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  contexto | Fatos de Mato Grosso | Ministro dá 30 dias ao MP para decidir caso de servidor suspeito de cobrar por transferências em Cuiabá | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | bahia.ba | Após proibição das bets, MP prevê fim das operações em 30 dias | Trata do mesmo acontecimento
+  descartado | Correio Braziliense | Governo prorroga subsídio sobre o diesel por mais 30 dias | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  contexto | Metrô News Jornal | Medida Provisória Proíbe Apostas e Determina Encerramento em 30 Dias | Mesmo tema, sem citar MP
+  descartado | CNN Brasil | Renegociação de dívidas rurais deve avançar nos próximos 30 dias | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  descartado | Conselho Nacional do Ministério Público | Proposta de resolução prevê prazo de 30 dias para execução de sanções disciplinares | poucos detalhes em comum (entidades 0/1, termos 0/5)
+  contexto | UOL Notícias | Dívidas rurais: MP suspende por 30 dias o prazo de parcelas vencendo, diz Pimenta | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Canal Rural | MP autoriza subvenção ao óleo diesel por até 30 dias | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | G1 | Caso Orelha: MP tem 30 dias para analisar vídeos e celulares de investigados em SC | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Fatos de Mato Grosso | MP dá 30 dias para Cuiabá criar estrutura de resgate de cavalos e bois abandonados | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | Congresso em Foco | Governo edita MP que amplia ação contra filas de benefícios do INSS | apenas o nome coincide; outro assunto
+  descartado | Revista Cultivar | Congresso instala comissão para analisar MP do endividamento rural | apenas o nome coincide; outro assunto
+  contexto | Midia Jur | MP tem 30 dias para denunciar ou arquivar investigação contra servidor por cobrar propina | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | Jornal de Uberaba | MP proíbe bets e determina encerramento das operações em 30 dias | Trata do mesmo acontecimento
+  direto | Bahia.ba | Após proibição das bets, MP prevê fim das operações em 30 dias | Trata do mesmo acontecimento
+  direto | globo | MP dá 30 dias para que EMTU explique por que concessionárias violam contrato e circulam com 30% da frota de ôn | Trata do mesmo acontecimento
+  contexto | UOL | Dívidas rurais: MP suspende por 30 dias o prazo de parcelas vencendo, diz Pimenta | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Wikipédia | Medida Provisória n.º 1.394, de 25 de setembro de 2026 | Contexto geral (enciclopédia)
+  descartado | Wikipédia | Assassinato de Vinicius Gritzbach | enciclopédia sem relação com os termos
+  contexto | Wikipédia | Medida provisória | Contexto geral (enciclopédia)
+  descartado | Wikipédia | MP | página de desambiguação
+  contexto | Wikipédia | MP Lafer | Contexto geral (enciclopédia)
+  contexto | Wikipédia | MP 34 | Contexto geral (enciclopédia)
+DUPLICATA (8)
+  removida | mpdft.mp.br | MPDFT - Ministério Público do Distrito Federal e Territórios | mesma URL já recebida de bing_web
+  removida | mpu.mp.br | Ministério Público da União | mesma URL já recebida de bing_web
+  removida | cidesp.com.br | O que significa MP na fatura do cartão? - cidesp.com.br | mesma URL já recebida de bing_web
+  removida | mpf.mp.br | Ministério Público Federal | mesma URL já recebida de bing_web
+  removida | mpgo.mp.br | Portal do Ministério Público do Estado de Goiás | mesma URL já recebida de bing_web
+  removida | sabertecnologias.com.br | O que significa MP na fatura do cartão? | mesma URL já recebida de bing_web
+  removida | planalto.gov.br | Principal_MP - Planalto | mesma URL já recebida de bing_web
+  removida | mpm.mp.br | Consulta Processual - mpm.mp.br | mesma URL já recebida de bing_web
+REPUBLICACAO (4)
+  agrupada | Senado | MP proíbe bets e determina encerramento das operações em 30 dias | título/trecho quase igual a Jornal de Uberaba
+  agrupada | bahia.ba | Após proibição das bets, MP prevê fim das operações em 30 dias | título/trecho quase igual a Bahia.ba
+  agrupada | UOL Notícias | Dívidas rurais: MP suspende por 30 dias o prazo de parcelas vencendo, diz Pimenta | título/trecho quase igual a UOL
+  agrupada | sabertecnologias.com.br | O que significa MP na fatura do cartão? | título/trecho quase igual a cidesp.com.br
+LIMITE (11)
+  contexto | Fatos de Mato Grosso | MP dá 30 dias para Cuiabá criar estrutura de resgate de cavalos e bois abandonados | acima do limite de 3 na seção
+  contexto | mpdft.mp.br | MPDFT - Ministério Público do Distrito Federal e Territórios | acima do limite de 3 na seção
+  contexto | mpu.mp.br | Ministério Público da União | acima do limite de 3 na seção
+  contexto | cidesp.com.br | O que significa MP na fatura do cartão? - cidesp.com.br | acima do limite de 3 na seção
+  contexto | mpf.mp.br | Ministério Público Federal | acima do limite de 3 na seção
+  contexto | mpgo.mp.br | Portal do Ministério Público do Estado de Goiás | acima do limite de 3 na seção
+  contexto | planalto.gov.br | Principal_MP - Planalto | acima do limite de 3 na seção
+  contexto | mpm.mp.br | Consulta Processual - mpm.mp.br | acima do limite de 3 na seção
+  contexto | Metrô News Jornal | Medida Provisória Proíbe Apostas e Determina Encerramento em 30 Dias | acima do limite de 3 na seção
+  contexto_geral | Wikipédia | MP Lafer | acima do limite de 2 na seção
+  contexto_geral | Wikipédia | MP 34 | acima do limite de 2 na seção
+EXIBIDA (10)
+  responde | Jornal de Uberaba | MP proíbe bets e determina encerramento das operações em 30 dias | Trata do mesmo acontecimento
+  responde | globo | MP dá 30 dias para que EMTU explique por que concessionárias violam contrato e circulam com 30% da frota de ôn | Trata do mesmo acontecimento
+  responde | Midia Jur | MP tem 30 dias para denunciar ou arquivar investigação contra servidor por cobrar propina | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  responde | UOL | Dívidas rurais: MP suspende por 30 dias o prazo de parcelas vencendo, diz Pimenta | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | Bahia.ba | Após proibição das bets, MP prevê fim das operações em 30 dias | Trata do mesmo acontecimento
+  contexto | Fatos de Mato Grosso | Ministro dá 30 dias ao MP para decidir caso de servidor suspeito de cobrar por transferências em Cuiabá | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Canal Rural | MP autoriza subvenção ao óleo diesel por até 30 dias | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | G1 | Caso Orelha: MP tem 30 dias para analisar vídeos e celulares de investigados em SC | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto_geral | Wikipédia | Medida Provisória n.º 1.394, de 25 de setembro de 2026 | Contexto geral (enciclopédia)
+  contexto_geral | Wikipédia | Medida provisória | Contexto geral (enciclopédia)

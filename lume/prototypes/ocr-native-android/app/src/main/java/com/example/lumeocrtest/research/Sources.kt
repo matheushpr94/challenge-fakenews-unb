@@ -110,7 +110,7 @@ fun parseRss(text: String): List<RssItem> {
     return out
 }
 
-suspend fun googleNews(query: String, fetcher: Fetcher, limit: Int = 15): List<Candidate> {
+suspend fun googleNews(query: String, fetcher: Fetcher, limit: Int = 20): List<Candidate> {
     val url = GOOGLE_NEWS + params("q" to query, "hl" to "pt-BR", "gl" to "BR", "ceid" to "BR:pt-419")
     val resp = get(fetcher, url, FetchOptions(accept = "application/rss+xml,application/xml"))
     return parseRss(resp.text()).take(limit).mapNotNull { it ->

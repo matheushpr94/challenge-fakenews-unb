@@ -1,0 +1,25 @@
+== senado
+   consultas: 10 | itens recebidos: 109 | repetidos por URL: 17 | agrupados como mesmo texto: 9
+   triagem: {'direto': 30, 'descartado': 22, 'contexto': 56, 'c': 1} | acima do limite: 35
+   descartes principais: [('poucos detalhes em comum', 10), ('apenas o nome coincide; outro assunto', 7), ('enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesqu', 4)]
+   exibidos por relação: {'mesmo_fato': 17, 'contexto': 9} | veículos distintos no mesmo fato: 15 | detalhe: {'cita o detalhe': 6, 'não cita/não lido': 10, 'sem detalhe numérico': 1}
+== bbc
+   consultas: 9 | itens recebidos: 116 | repetidos por URL: 48 | agrupados como mesmo texto: 14
+   triagem: {'contexto': 43, 'direto': 55, 'descartado': 17, 'descar': 1} | acima do limite: 10
+   descartes principais: [('apenas o nome coincide; outro assunto', 13), ('enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesqu', 3), ('poucos detalhes em comum', 1)]
+   exibidos por relação: {'mesmo_fato': 16, 'contexto': 10} | veículos distintos no mesmo fato: 15 | detalhe: {'sem detalhe numérico': 16}
+== g1
+   consultas: 7 | itens recebidos: 93 | repetidos por URL: 8 | agrupados como mesmo texto: 8
+   triagem: {'direto': 25, 'contexto': 28, 'descartado': 40} | acima do limite: 17
+   descartes principais: [('poucos detalhes em comum', 35), ('Outro acontecimento segundo a comparação contextual', 2), ('enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesqu', 2)]
+   exibidos por relação: {'mesmo_fato': 12, 'contexto': 8} | veículos distintos no mesmo fato: 12 | detalhe: {'sem detalhe numérico': 12}
+== recorte
+   consultas: 8 | itens recebidos: 90 | repetidos por URL: 0 | agrupados como mesmo texto: 0
+   triagem: {'descartado': 90} | acima do limite: 0
+   descartes principais: [('poucos detalhes em comum', 75), ('Outro acontecimento segundo a comparação contextual', 11), ('poucos detalhes', 1)]
+   exibidos por relação: {} | veículos distintos no mesmo fato: 0 | detalhe: {}
+== camara-retry
+   consultas: 7 | itens recebidos: 74 | repetidos por URL: 5 | agrupados como mesmo texto: 3
+   triagem: {'direto': 5, 'contexto': 11, 'descartado': 58} | acima do limite: 1
+   descartes principais: [('poucos detalhes em comum', 57), ('poucos detalh', 1)]
+   exibidos por relação: {'mesmo_fato': 3, 'contexto': 4} | veículos distintos no mesmo fato: 3 | detalhe: {'sem detalhe numérico': 3}

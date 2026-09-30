@@ -26,17 +26,17 @@ class LumeFrontendTest {
         ui.onNodeWithText("Seu companheiro de leitura.").assertIsDisplayed()
         ui.onNodeWithContentDescription("Lume, seu companheiro de leitura").assertIsDisplayed()
         ui.onNodeWithText("Ativar mascote").assertIsDisplayed()
-        ui.onNodeWithText("Simular captura").performScrollTo().assertIsDisplayed()
+        ui.onNodeWithText("Importar imagem").performScrollTo().assertIsDisplayed()
         ui.onNodeWithText("Configurar conexão").assertDoesNotExist()
-        ui.onNodeWithText("Perfil").performClick()
+        ui.onNodeWithText("Ajustes").performClick()
         ui.onNodeWithText("Preferências neste aparelho").assertIsDisplayed()
         ui.onNodeWithText("Animações suaves").assertIsDisplayed()
     }
 
     @Test fun editsSurviveProfileAndRotation() {
         ui.onNodeWithText("Colar texto ou link").performScrollTo().performClick()
-        ui.onNode(hasSetTextAction()).performScrollTo().performTextInput("Texto editado para conferir")
-        ui.onNodeWithText("Perfil").performClick()
+        ui.onNode(hasSetTextAction()).performScrollTo().performTextReplacement("Texto editado para conferir")
+        ui.onNodeWithText("Ajustes").performClick()
         ui.onNodeWithText("Analisar",useUnmergedTree=true).performClick()
         ui.onNodeWithText("Colar texto ou link").performScrollTo().performClick()
         ui.onNode(hasSetTextAction()).assertTextContains("Texto editado para conferir")

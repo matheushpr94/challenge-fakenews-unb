@@ -1,0 +1,223 @@
+{
+ "image": "recorte-senado-sem-titulo.png",
+ "width": 793,
+ "height": 246,
+ "blocks": [
+  {
+   "text": "Começou a tramitar no Congresso Nacional a medida provisória que proíbe a\nexploração, a oferta, a intermediação e a publicidade de apostas de quota fixa\nem todo o país. O texto foi publicado na sexta-feira (25) e prevê a extinção, em\n30 dias, das autorizações concedidas às empresas que atualmente operam\nnesse mercado. A MP também estabelece regras para a devolução dos recursos\ndos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos\npara bloquear sites, aplicativos e transações financeiras relacionados às apostas. A medida já está em\nvigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo.",
+   "box": [
+    41,
+    15,
+    788,
+    189
+   ],
+   "lines": [
+    {
+     "text": "Começou a tramitar no Congresso Nacional a medida provisória que proíbe a",
+     "box": [
+      229,
+      15,
+      773,
+      30
+     ],
+     "confidence": 0.8847026228904724
+    },
+    {
+     "text": "exploração, a oferta, a intermediação e a publicidade de apostas de quota fixa",
+     "box": [
+      229,
+      38,
+      777,
+      54
+     ],
+     "confidence": 0.851621687412262
+    },
+    {
+     "text": "em todo o país. O texto foi publicado na sexta-feira (25) e prevê a extinção, em",
+     "box": [
+      229,
+      60,
+      784,
+      75
+     ],
+     "confidence": 0.8587740659713745
+    },
+    {
+     "text": "30 dias, das autorizações concedidas às empresas que atualmente operam",
+     "box": [
+      229,
+      83,
+      751,
+      99
+     ],
+     "confidence": 0.8735271692276001
+    },
+    {
+     "text": "nesse mercado. A MP também estabelece regras para a devolução dos recursos",
+     "box": [
+      229,
+      106,
+      788,
+      120
+     ],
+     "confidence": 0.878720223903656
+    },
+    {
+     "text": "dos apostadores, proíbe publicidade e patrocínio das bets e cria mecanismos",
+     "box": [
+      229,
+      129,
+      770,
+      145
+     ],
+     "confidence": 0.8759615421295166
+    },
+    {
+     "text": "para bloquear sites, aplicativos e transações financeiras relacionados às apostas. A medida já está em",
+     "box": [
+      42,
+      152,
+      751,
+      168
+     ],
+     "confidence": 0.8780628442764282
+    },
+    {
+     "text": "vigor, mas precisa ser analisada no prazo de 120 dias para se tornar lei em definitivo.",
+     "box": [
+      41,
+      175,
+      637,
+      189
+     ],
+     "confidence": 0.88623046875
+    }
+   ]
+  },
+  {
+   "text": "Proposições\nlegislativas",
+   "box": [
+    42,
+    22,
+    131,
+    56
+   ],
+   "lines": [
+    {
+     "text": "Proposições",
+     "box": [
+      42,
+      23,
+      132,
+      39
+     ],
+     "confidence": 0.8355823755264282
+    },
+    {
+     "text": "legislativas",
+     "box": [
+      42,
+      39,
+      123,
+      56
+     ],
+     "confidence": 0.89453125
+    }
+   ]
+  },
+  {
+   "text": "MPV 1394\/2026",
+   "box": [
+    42,
+    89,
+    125,
+    99
+   ],
+   "lines": [
+    {
+     "text": "MPV 1394\/2026",
+     "box": [
+      42,
+      89,
+      125,
+      99
+     ],
+     "confidence": 0.9052734375
+    }
+   ]
+  },
+  {
+   "text": "A MP 1.394\/2026 altera a Lei 14.790, de 2023, e alcança apostas sobre eventos esportivos reais e jogos\nvirtual. A proibicão também vale para empresas sediadas no exterior",
+   "box": [
+    41,
+    209,
+    784,
+    245
+   ],
+   "lines": [
+    {
+     "text": "A MP 1.394\/2026 altera a Lei 14.790, de 2023, e alcança apostas sobre eventos esportivos reais e jogos",
+     "box": [
+      41,
+      209,
+      762,
+      224
+     ],
+     "confidence": 0.8860294222831726
+    },
+    {
+     "text": "virtual. A proibicão também vale para empresas sediadas no exterior",
+     "box": [
+      302,
+      232,
+      784,
+      245
+     ],
+     "confidence": 0.8358027935028076
+    }
+   ]
+  },
+  {
+   "text": "P6-uein0aue",
+   "box": [
+    2,
+    240,
+    75,
+    246
+   ],
+   "lines": [
+    {
+     "text": "P6-uein0aue",
+     "box": [
+      2,
+      240,
+      75,
+      246
+     ],
+     "confidence": 0.23757101595401764
+    }
+   ]
+  },
+  {
+   "text": "conado",
+   "box": [
+    235,
+    240,
+    271,
+    246
+   ],
+   "lines": [
+    {
+     "text": "conado",
+     "box": [
+      235,
+      240,
+      271,
+      246
+     ],
+     "confidence": 0.2740885317325592
+    }
+   ]
+  }
+ ]
+}

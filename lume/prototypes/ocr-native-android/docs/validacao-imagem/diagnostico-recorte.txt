@@ -1,0 +1,111 @@
+--------- beginning of main
+CONSULTAS (8)
+  [google_news] 'publicado prevê extinção mercado 30 dias' -> ok 8
+  [bing_news] 'publicado prevê extinção mercado 30 dias' -> vazio 0
+  [google_news] 'publicado prevê' -> ok 20
+  [bing_news] 'publicado prevê' -> ok 9
+  [google_news] 'publicado proíbe medida' -> ok 20
+  [google_news] 'prevê extinção 30 dias' -> ok 20
+  [bing_web] 'publicado prevê extinção mercado 30 dias' -> ok 10
+  [wikipedia] 'publicado prevê' -> ok 3
+TRIAGEM (90)
+  descartado | Senado | MP proíbe bets e determina encerramento das operações em 30 dias | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | correiodamanha.com.br | Bets recorrem ao STF contra proibição determinada por Lula | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | SBT News | Governo adia reunião com clubes de futebol sobre bets | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | InfoMoney | Medida provisória do fim das bets dispensa governo de indenizar empresas | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Bahia Notícias | Consulta pública do Senado tem 80% votando a favor da MP que proíbe as bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Jornal Grande Bahia | Presidente Lula proíbe bets nove dias antes do 1º turno; MP rompe regulação federal e abre disputa judicial po | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Senado | Modificada, regulamentação da reforma tributária volta à Câmara | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Diário da Serra | 'Lei da Onça' prevê indenização a pecuaristas que tiverem prejuízo com ataques ao rebanho | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | agenciasp.sp.gov.br | Defesa Civil prevê primavera marcada por calor intenso e temporais frequentes em São Paulo | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | Blog Gran Cursos Online | Concurso SEFAZ SP 2026: contrato publicado, edital em setembro | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | Business and Human Rights Centre | Brasil: Estudo publicado na revista Science prevê aumento de 1,4 milhão de hectares no desmatamento com fim da | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Prefeitura Municipal de Chapada dos Guimarães | Prefeitura de Chapada dos Guimarães prevê publicação de edital de concurso público ainda em junho | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Prefeitura de Belo Horizonte | Publicado decreto que prevê multa de até R$ 24 mil para empresas por fios soltos em BH | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Agência FPA | Minuta da MP da renegociação de dívidas rurais prevê pontos centrais de projeto de lei | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | gauchazh.clicrbs.com.br | Edital do viaduto da BR-116, em Caxias, deve ser publicado até novembro, prevê ministro dos Transportes | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Estratégia Concursos | Edital IPE Prev RS publicado! São 121 vagas e até R$ 10 mil | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Nova Concursos | Concurso PC BA: edital deve ser publicado em julho, prevê secretário | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Qconcursos Folha Dirigida | Concurso PC BA deve ter edital publicado em julho; 750 vagas! | poucos detalhes 
+em comum (entidades 0/0, termos 1/5)
+  descartado | Guaraí Notícias | Contrato publicado no Diário Oficial prevê a construção de ponte sobre o lago da AABB em Guaraí | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | ge.globo.com | Bruxo ganês que amaldiçoou Harry Kane afirma que Cabo Verde vai eliminar a Argentina | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Direção Concursos | Edital concurso IPE Prev RS publicado: 121 vagas + CR; até R$ 10 mil! | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | JC Concursos | Concurso AGU: edital para 170 vagas previsto para ser publicado até dezembro | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | Proximos Concursos | Concurso IPE Prev RS 2026: Edital publicado hoje com 121 vagas • Notícias e Atualizações | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Gazeta do Cerrado | Concurso da Saúde no TO avança e governo prevê publicação do edital entre junho e agosto | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | MundoBA | Jerônimo prevê publicação de edital da nova concessão da BR-324 até setembro | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | facebook.com | O diploma publicado esta segunda-feira prevê a passagem para a Autoridade da Mobilidade e dos Transportes de a | Outro acontecimento segundo a comparação contextual
+  descartado | Estratégia Concursos | Concurso São Sebastião Prev (SP) PUBLICADO! Até R$ 5,7 mil | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | gauchazh.clicrbs.com.br | Edital que prevê a duplicação de trecho da BR-116 em Caxias do Sul é publicado; obra deve começar no ano que v | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Brasil 247 | Chamada pública vai financiar projetos de geração de renda para inscritos no CadÚnico | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | UOL | Governo prevê abrir consulta pública para leilão de reserva de energia neste mês | Outro acontecimento segundo a comparação contextual
+  descartado | Agencia Brasil | Rio prevê ampliar rede pública de recarga para veículos elétricos | Outro acontecimento segundo a comparação contextual
+  descartado | EM | O que prevê a PEC da Segurança Pública? Entenda | Outro acontecimento segundo a comparação contextual
+  descartado | Terra | Dívida pública do Brasil deve atingir 100% do PIB no 1º ano do próximo governo, prevê FMI | Outro acontecimento segundo a comparação contextual
+  descartado | Telesintese | 5G: Proposta de leilão tornada pública prevê pontuação a coberturas adicionais | Outro acontecimento segundo a comparação contextual
+  descartado | Infomoney | PEC da Segurança Pública prevê referendo sobre a redução da maioridade penal | Outro acontecimento segundo a comparação contextual
+  descartado | globo | Relator vai incluir na PEC da Segurança Pública artigo que prevê confisco de bens de organizações criminosas | Outro acontecimento segundo a comparação contextual
+  descartado | Estadao Rss Feeds | Dívida pública do Brasil deve atingir 100% do PIB no 1º ano do próximo governo, prevê FMI | Outro acontecimento segundo a comparação contextual
+  descartado | Senado | MP proíbe bets e determina encerramento das operações em 30 dias | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | www.gov.br | Presidente Lula assina Medida Provisória que proíbe as bets no Brasil — Ministério da Saúde | 
+poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | G1 | Transações com PIX caem 10% após proibição das bets; veja os dados | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | agenciabrasil.ebc.com.br | Bets passam a ser proibidas no país e apostador receberá saldo | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | mattosfilho.com.br | Medida Provisória proíbe apostas de quota fixa no Brasil | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Meio e Mensagem | Medida Provisória proíbe atuação das bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | BBC | Lula anuncia proibição das bets no Brasil: entenda a medida e até quando apostadores poderão sacar dinheiro | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Brasil 247 | Senado abre consulta pública sobre medida provisória que proíbe bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Associação das Emissoras de Radiodifusão do Paraná | Medida proíbe publicidade de bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | www.gov.br | Governo Federal proíbe bets em todo o País e lança pacote de proteção às famílias endividadas | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Estadão | Proibição das bets ganha apoio nas redes, mas Lula é pouco associado à medida, aponta pesquisa | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Bahia Notícias | Medida Provisória que proíbe bets obriga Arena Fonte Nova a suspender naming rigths com Casa de Apostas | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Poder360 | Lula proíbe bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | rco.com.br | Transações com Pix recuam cerca de 10% após publicação de MP que proíbe bets | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Diário da Manhã | Corinthians, Palmeiras e São Paulo adotam cautela após MP que proíbe bets | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | G1 | A 9 dias das eleições, governo Lula anuncia proibição de bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | correiodamanha.com.br | Lula assina MP que proíbe bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | folhabv.com.br | Lula assina MP que proíbe bets no Brasil e dá até 5 de outubro para sacar saldo | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Poder360 | 415 bets ilegais surgem no Brasil após proibição, mostra monitoramento | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | G1 | Proibição das bets: governo prevê advertência, multa e suspensão das atividades para empresas que descumprirem | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Senado | MP proíbe bets e determina encerramento das operações em 30 dias | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | SBT News | Bets não terão devolução do valor pago para operar no país | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | A TARDE | TCU libera concessão das BRs 116 e 324 e prevê extinção dos pedágios | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Consultor Jurídico | Extinção da jornada 6x1 prevê quatro dias de trabalho por semana | poucos detalhes em comum (entidades 0/0, termos 
+2/5)
+  descartado | Migalhas | Extinção do patrimônio de afetação e cláusula de extinção contratual | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | band.com.br | Associações pedem ao STF suspensão da MP que proíbe bets | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | gauchazh.clicrbs.com.br | Leite veta projeto que prevê extinção da taxa de licenciamento para veículos no RS | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | rbtv.com.br | Atleta araçatubense conquista tricampeonato brasileiro no lançamento do dardo | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Sindireceita | Sindireceita se reúne com deputado Sóstenes Cavalcante (PL) para tratar PEC 06 | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Extra online | Medida provisória do fim das bets dispensa governo de indenizar empresas | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | correiodamanha.com.br | Lula defende fim das bets e faz novos ataques a adversários | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Migalhas | STF julgará compensação total de prejuízos fiscais por empresa extinta | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | rbtv.com.br | Araçatuba conquista fase regional da Copa São Paulo e garante vaga na final estadual | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | O GLOBO | Relator finaliza proposta de reforma administrativa; veja os principais pontos | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Migalhas | A contagem do prazo em dias úteis para ajuizamento do pedido de tutela cautelar antecedente | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Migalhas | CNJ: Provimento dá 60 dias para cartórios informarem mudança em imóveis à prefeitura | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | SBT News | Governo adia reunião com clubes de futebol sobre bets | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Migalhas | Art. 76 – Consequências jurídicas da incapacidade processual e da irregularidade da representação | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Agora ES | Congresso passa a ter agendamento prévio para visitação | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Agora ES | Desenrola Brasil 3.0 já está em vigor; veja como funciona | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | dicio.com.br | Publicado - Dicio, Dicionário Online de Português | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | sinonimos.com.br | Sinônimo de Publicado - Sinônimos | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | escreva.ai | Publicado - Significado e Sinônimo - escreva.ai | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | dicio.com.br | Publicados - Dicio, Dicionário Online de Português | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | infopedia.pt | publicado | Dicionário Infopédia da Língua Portuguesa | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | aulete.com.br | Significado de publicado - Dicionário online Caldas Aulete | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | pt.wiktionary.org | publicado - Wikcionário | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | infopedia.pt | [publicado] - infopedia.p
+t | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | palavras.co | Publicado: o que significa, sinônimos e origem | Palavras | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | oquesignifica.com | O qué significa publicado | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | Wikipédia | Lei das Bets | Outro acontecimento segundo a comparação contextual
+  descartado | Wikipédia | Escândalo do Banco Master | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Partido Missão | Outro acontecimento segundo a comparação contextual
+DUPLICATA (0)
+REPUBLICACAO (0)
+RELEITURA (0)
+LIMITE (0)
+EXIBIDA (0)
+RELACAO (0)

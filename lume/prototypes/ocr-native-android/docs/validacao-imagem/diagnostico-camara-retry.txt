@@ -1,0 +1,118 @@
+--------- beginning of main
+CONSULTAS (7)
+  [google_news] 'projeto lei torna bets' -> ok 4
+  [bing_news] 'projeto lei torna bets' -> ok 5
+  [google_news] 'projeto lei bets' -> ok 20
+  [bing_news] 'projeto lei bets' -> ok 12
+  [google_news] 'projeto lei' -> ok 20
+  [bing_web] 'projeto lei torna bets' -> ok 10
+  [wikipedia] 'projeto lei' -> ok 3
+TRIAGEM (74)
+  direto | Portal da Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | Trata do mesmo acontecimento
+  contexto | iGaming Business | Chega ao Congresso Nacional projeto que torna crime a exploração de bets | Mesmo tema, mas não há confirmação de que seja o mesmo acontecimento
+  contexto | Portal Sertão da Paraíba | Governo federal apresenta projeto de lei que torna crime a operação de bets | Mesmo tema, mas não há confirmação de que seja o mesmo acontecimento
+  descartado | CartaCapital | Na contramão de outras cidades, Rio se torna a primeira capital a proibir anúncios de bets em espaços públicos | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  direto | Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | Trata do mesmo acontecimento
+  descartado | g1 | A 9 dias das eleições, governo Lula anuncia proibição de bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Correio Braziliense | Às vésperas da eleição, governo anuncia fim das bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Extra | Governo deve propor pena de até seis anos de prisão a quem operar bets | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  contexto | Notícias R7 | Governo prepara projeto de lei que prevê até 6 anos de prisão por exploração de bets | Mesmo tema, sem todos os termos da entrada
+  contexto | Senado | Chega ao Congresso projeto que torna crime a exploração de bets | Mesmo tema, mas não há confirmação de que seja o mesmo acontecimento
+  descartado | Agência Brasil | Entenda medida provisória e projeto que proíbem bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | Portal da Câmara Municipal de São Paulo | Plenário aprova projeto para proibir publicidade de bets em eventos esportivos | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | www.gov.br | Presidente Lula assina Medida Provisória que proíbe as bets no Brasil — Ministério da Saúde | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | O GLOBO | Governo Lula deve propor pena de até 6 anos de prisão para quem explorar ou operar bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | CUT - Central Única dos Trabalhadores | Lula assina MP que proíbe bets; Projeto de Lei prevê prisão para quem receber aposta | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Senado | Editadas medidas provisórias contra bets e endividamento das famílias | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | cnnbrasil.com.br | PT e PL foram a favor da legalização e regulamentação das bets no Congresso | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | JOTA Info | Com duas MPs e um projeto de lei na mesa, Lula anunciará medidas contra as bets nesta sexta | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Estadão | Proibição às bets inclui projeto com pena de até seis anos de prisão para quem explorar apostas | poucos detalhes em comum (e
+ntidades 0/0, termos 2/5)
+  descartado | CartaCapital | Penas previstas em projeto que criminaliza bets chegam a 6 anos de prisão | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  contexto | iGaming Business | Chega ao Congresso Nacional projeto que torna crime a exploração de bets | Mesmo tema, mas não há confirmação de que seja o mesmo acontecimento
+  descartado | Exame | Governo Lula deve enviar projeto de lei que pune influenciador que divulgar bets | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | www.gov.br | Governo Federal proíbe bets em todo o País e lança pacote de proteção às famílias endividadas | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | G1 | A 9 dias das eleições, governo Lula anuncia proibição de bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | JOTA Info | Pacote de Lula contra bets prevê proibição e até oito anos de prisão | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | G1 | Governo envia projeto que criminaliza apostas e jogos online; penas podem chegar a seis anos de prisão | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | Meio e Mensagem | Câmara de SP aprova veto a bets em eventos esportivos | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Livecoins | Deputado do PSOL apresenta projeto de lei para banir bets no Brasil e pagamentos com criptomoedas nas platafor | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Metrópoles | Além de MP, governo Lula prepara projetos de lei sobre bets | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  direto | Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | Trata do mesmo acontecimento
+  descartado | O GLOBO | Líderes do Congresso apontam mudanças em MP do fim das bets e dizem que tema deve ser discutido após eleições | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  contexto | Notícias R7 | Governo prepara projeto de lei que prevê até 6 anos de prisão por exploração de bets | Mesmo tema, sem todos os termos da entrada
+  descartado | Livecoins | Deputado do PSOL apresenta projeto de lei para banir bets no Brasil e pagamentos com criptomoedas nas platafor | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Jovem Pan | Projeto de Lula proíbe bets e prevê até seis anos de prisão; entenda | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  direto | Jornal Hoje News | Chega ao Congresso projeto que torna crime a exploração de bets | Trata do mesmo acontecimento
+  descartado | Estadão | Proibição às bets inclui projeto com pena de até seis anos de prisão para quem explorar apostas | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | g1 | Proibição das bets: governo diz que já pediu o bloqueio de mais de 5,2 mil sites e retirada de quase 200 apps  | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | O GLOBO | Aprovação, regulamentação e proibição: dos governos Temer a Lula, como foram os oito anos das bets no Brasil | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  contexto | Brasil 247 | Governo Lula envia ao Congresso projeto de lei que criminaliza apostas e jogos online | Mesmo tema, sem todos os termos da entrada
+  descartado | Portal de Camaquã | Projeto de lei quer proibir anúncios de bets que atraem crianças e adolescentes durante eventos esportivos | poucos detalhes em comum (e
+ntidades 0/0, termos 2/5)
+  descartado | Metrópoles | Câmara de SP aprova projeto de lei que proíbe propaganda de bets na capital | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Folha de S.Paulo | Mensagens de Motta com Vorcaro citam 'sociedade' em negócio e discussão sobre projeto de lei na Câmara | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  contexto | Senado | Chega ao Congresso projeto que torna crime a exploração de bets | Mesmo tema, mas não há confirmação de que seja o mesmo acontecimento
+  descartado | Brasil de Fato | Caso Nossa Senhora Aparecida: entenda polêmica com Flávio Bolsonaro e projeto de lei | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Valor Econômico | Projeto de lei sobre produção na Europa ameaça fabricantes japoneses de veículos elétricos | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Campo Grande News | ALEMS aprova projeto que flexibiliza jornada de servidores | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | Terra | Porto Alegre debate Projeto de Lei para combater a Misoginia Digital e o Discurso de Ódio online | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Folha PE | Flávio: Não existe projeto de lei sobre retirada do título de N. Sra de Padroeira do Brasil | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Maringá Post | Câmara aprova Projetos de Lei para empresa pública administrar data center em Maringá | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Estadão | Infrações administrativas não devem impedir a emissão de CNH definitiva, propõe Projeto de Lei | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Senado | CCJ pode votar projeto de lei que cria Fundo de Amparo às Crianças Órfãs | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Câmara Municipal de São José do Rio Preto | Câmara amplia prazo para uso de áreas públicas por circos e parques de diversão | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Alerj | Foi | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  direto | Portal da Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | Trata do mesmo acontecimento
+  descartado | Câmara Municipal de Blumenau | CCJ dá parecer favorável a sete projetos e um veto na reunião desta terça-feira | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | Câmara Municipal de São José dos Pinhais | Vereadores realizam 57ª Sessão Ordinária | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Câmara Municipal de Sorocaba | 59ª SESSÃO ORDINÁRIA: Projeto que incentiva consumo de alimentos saudáveis é aprovado | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | Câmara Municipal de Campo Grande | Câmara aprova campanha sobre direito das pessoas com fibromialgia e medalha pelos 50 anos de MS | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Prefeitura de Campo Grande | Projeto de Lei Prevê Reajuste Gradual e Incorporação de Auxílio para Técnicos da Saúde – CGNotícias | poucos detalhes em comum (entidades 0/0, termos 2/5)
+  descartado | Alerj | Foi | poucos detalhes em comum (entidades 0/0, termos 0/5)
+  descartado | Câmara Municipal de Campo Grande | Ronilço Guerreiro propõe criação de fundo municipal para apoiar feiras e fortalecer pequenos negócios em Campo | poucos detalh
+es em comum (entidades 0/0, termos 0/5)
+  descartado | escritoriodeprojetos.com.br | O que é um Projeto? Definição, Tipos e Exemplos (PMBOK 8) | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | artia.com | O que é um Projeto? Entenda a função e os principais tipos - Artia | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | pt.wikipedia.org | Projeto – Wikipédia, a enciclopédia livre | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | blog.taskrush.com.br | Modelo de projeto: exemplos práticos e guia para montar o seu | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | projeteee.mme.gov.br | ProjetEEE - Projetando Edificações Energeticamente Eficientes | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | dicio.com.br | Projeto - Dicio, Dicionário Online de Português | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | iprojetei.com.br | Projetos | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | neotriad.com | Como Fazer um Projeto: passo a passo para planejar e executar - Neotriad | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | projectmanager.com | O que é um plano de projeto? O guia para o ... - ProjectManager | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  descartado | dsec.com.br | O que é um Projeto? Conceito, Tipos e Ciclo de Vida | poucos detalhes em comum (entidades 0/0, termos 1/5)
+  contexto | Wikipédia | Projeto de lei | Contexto geral (enciclopédia)
+  contexto | Wikipédia | Projeto de Lei 2338/2023 | Contexto geral (enciclopédia)
+  contexto | Wikipédia | Projeto de lei anti-Oruam | Contexto geral (enciclopédia)
+DUPLICATA (5)
+  removida | Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | mesma URL já recebida de bing_news
+  removida | Portal da Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | mesma URL já recebida de google_news
+  removida | iGaming Business | Chega ao Congresso Nacional projeto que torna crime a exploração de bets | mesma URL já recebida de google_news
+  removida | Senado | Chega ao Congresso projeto que torna crime a exploração de bets | mesma URL já recebida de google_news
+  removida | Notícias R7 | Governo prepara projeto de lei que prevê até 6 anos de prisão por exploração de bets | mesma URL já recebida de bing_news
+REPUBLICACAO (3)
+  agrupada | Portal da Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | título/trecho quase igual a Câmara dos Deputados
+  agrupada | iGaming Business | Chega ao Congresso Nacional projeto que torna crime a exploração de bets | título/trecho quase igual a Jornal Hoje News
+  agrupada | Senado | Chega ao Congresso projeto que torna crime a exploração de bets | título/trecho quase igual a Jornal Hoje News
+RELEITURA (1)
+  direto | Notícias R7 | Governo prepara projeto de lei que prevê até 6 anos de prisão por exploração de bets | página lida: Trata do mesmo acontecimento
+LIMITE (1)
+  contexto_geral | Wikipédia | Projeto de Lei 2338/2023 | acima do limite de 2 na seção
+EXIBIDA (7)
+  direto | Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | Trata do mesmo acontecimento
+  direto | Jornal Hoje News | Chega ao Congresso projeto que torna crime a exploração de bets | Trata do m
+esmo acontecimento
+  direto | Notícias R7 | Governo prepara projeto de lei que prevê até 6 anos de prisão por exploração de bets | Trata do mesmo acontecimento
+  contexto | Portal Sertão da Paraíba | Governo federal apresenta projeto de lei que torna crime a operação de bets | Mesmo tema, mas não há confirmação de que seja o mesmo acontecimento
+  contexto | Brasil 247 | Governo Lula envia ao Congresso projeto de lei que criminaliza apostas e jogos online | Mesmo tema, sem todos os termos da entrada
+  contexto_geral | Wikipédia | Projeto de lei anti-Oruam | Contexto geral (enciclopédia)
+  contexto_geral | Wikipédia | Projeto de lei | Contexto geral (enciclopédia)
+RELACAO (7)
+  mesmo_fato | Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | Jornal Hoje News | Chega ao Congresso projeto que torna crime a exploração de bets | Relata o mesmo acontecimento [leitura: pagina] «O projeto de lei ( PL 5.477/2026 ) torna crime tanto a exploração quanto a publicidade de bets, tipificando cinco condutas como criminosas.»
+  mesmo_fato | Notícias R7 | Governo prepara projeto de lei que prevê até 6 anos de prisão por exploração de bets | Relata o mesmo acontecimento [leitura: pagina]
+  contexto | Portal Sertão da Paraíba | Governo federal apresenta projeto de lei que torna crime a operação de bets | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Brasil 247 | Governo Lula envia ao Congresso projeto de lei que criminaliza apostas e jogos online | Trata do tema, mas não confirma o detalhe pesquisado [leitura: pagina]
+  contexto | Wikipédia | Projeto de lei anti-Oruam | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]
+  contexto | Wikipédia | Projeto de lei | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]

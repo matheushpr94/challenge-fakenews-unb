@@ -1,0 +1,337 @@
+CAPTURA: agencia-senado-bets | AFIRMAÇÃO: MP proíbe bets e determina encerramento das operações em 30 dias
+esclarecimento: escolher=false opções=[] motivo=intenção clara para as regras
+modo=unica status=ok
+--- parte: MP proíbe bets e determina encerramento das operações em 30 dias
+tipo=acontecimento entidades=[MP] termos=[proíbe, bets, determina, encerramento, operações] numeros=[30]
+partes=[[proíbe, bets], [determina, encerramento, operações]] tópicos=[proibe, bet, dia, medida, publicidade, aposta, empresa, lei, mp, e, determina, encerramento, da, operacoe, em, 30]
+siglas={MP=[medida provisória]} variações=[publicidade, apostas, empresas] prazos=[30 dias] etapa=decidido dataRef=28/09/2026
+consultas=[especifica: MP proíbe bets determina operações 30 dias, evento: MP operações bets, acontecimento: medida provisória proíbe bets, variacao: medida provisória proíbe publicidade apostas, detalhe: MP bets determina encerramento 30 dias, ampliada: MP proíbe, parte: MP determina encerramento operações]
+status=ok síntese=sem_comparacao descartados=41 4158 ms semântica=true
+  seção responde: 0 -> []
+  seção direto: 15 -> [Bahia.ba, Tribuna do Planalto, Jornal União, Jornal de Uberaba, Correio do Povo, Acontecendo Aqui, nopontosc.com.br, O GLOBO, ISTOÉ DINHEIRO, conjur.com.br, Meio e Mensagem, mattosfilho.com.br, BNLData, portal.rbnfm.com.br, UOL]
+  seção incerto: 6 -> [Diário do Centro do Mundo, Misturebas, InfoMoney, Senado Federal, SBT News, Meio e Mensagem]
+  seção anterior: 0 -> []
+  seção contexto: 8 -> [Jornal Grande Bahia, CBN, UOL Economia, Repórter PB, noveen.com.br, InfoMoney, Jetss on MSN, TV Guararapes]
+  seção contexto_geral: 1 -> [Wikipédia]
+  seção nao_independente: 2 -> [Senado Federal, Jornal de Uberaba]
+CONSULTAS (10)
+  [google_news] 'MP proíbe bets determina operações 30 dias' -> ok 3
+  [bing_news] 'MP proíbe bets determina operações 30 dias' -> ok 11
+  [google_news] 'MP operações bets' -> ok 20
+  [bing_news] 'MP operações bets' -> ok 11
+  [google_news] 'medida provisória proíbe bets' -> ok 20
+  [google_news] 'medida provisória proíbe publicidade apostas' -> ok 20
+  [google_news] 'MP bets determina encerramento 30 dias' -> ok 6
+  [bing_web] 'MP proíbe bets determina operações 30 dias' -> ok 10
+  [wikipedia] 'MP proíbe bets' -> ok 3
+  [wikipedia] 'MP' -> ok 3
+TRIAGEM (107)
+  nao_independente | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  descartado | Bahia Comenta | Chega ao Congresso projeto que torna crime a exploração de bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Jornal de Uberaba | Jornal de Uberaba 04-11-25 | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  nao_independente | Jornal de Uberaba | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  direto | Bahia.ba | Após proibição das bets, MP prevê fim das operações em 30 dias | Relata o mesmo acontecimento
+  direto | O GLOBO | MP do fim das bets dispensa governo de indenizar empresas; entenda | Relata o mesmo acontecimento
+  descartado | Jornal Estado de Minas | Governo proíbe totalmente as bets no Brasil; o que muda? | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  direto | Jornal União | MP proíbe bets no Brasil e determina retirada de plataformas do ar em outubro | Relata o mesmo acontecimento
+  direto | ISTOÉ DINHEIRO | MP proíbe bets no Brasil e barra indenização a empresas | Relata o mesmo acontecimento
+  contexto | InfoMoney | Governo anuncia MP que proíbe bets no Brasil; veja o que muda | Outra etapa: fala de proposta ou anúncio, não da decisão
+  direto | Jornal de Uberaba | MP proíbe bets no Brasil e determina devolução de saldo ao apostador | Relata o mesmo acontecimento
+  descartado | Polêmica Paraíba | TEM DINHEIRO NA BET? Veja o que acontece com seu saldo, prazo para sacar e quais plataformas sairão do ar | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  incerto | Diário do Centro do Mundo | A disputa por R$ 2,55 bilhões com o governo após fim das bets | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  contexto | Jornal Grande Bahia | Presidente Lula proíbe bets nove dias antes do 1º turno; MP rompe regulação federal e abre disputa judicial po | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto
+  nao_independente | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  incerto | SBT News | MP das bets: Pix tem queda de 10% após medida | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  incerto | Agência Brasil | Bets passam a ser proibidas no país e apostador receberá saldo | Parece o mesmo acontecimento, mas o texto lido não diz quem agiu
+  descartado | ABC Agora | Proibição de Bets Pela MP 1.394 Mobiliza Banco Central e Sistema Financeiro Em Operação de Bloqueio | Outro acontecimento: Mesma ação sobre outro assunto
+  contexto | TV Guararapes | Transações por Pix caem 10% após publicação de MP contra bets | Outro fato sobre o mesmo assunto
+  contexto | www.gov.br | Presidente Lula assina Medida Provisória que proíbe as bets no Brasil — Ministério da Saúde | Outro fato sobre o mesmo assunto
+  contexto | CBN | Lula anuncia nesta sexta (25) MP para proibir operação de bets no Brasil | Outra etapa: fala de proposta ou anúncio, não da decisão
+  contexto | Propmark | MP das bets suspende operações de apostas no Brasil | Mesmo envolvido, outra ação sobre o mesmo assunto
+  direto | Acontecendo Aqui | MP das bets proíbe operações no Brasil e veta publicidade a partir de outubro | Pelo título, relata o mesmo acontecimento
+  contexto | UOL Economia | DOU extra traz MP do Desenrola 3.0 e MP que proíbe operação das bets no País | Mesmo envolvido, outra ação sobre o mesmo assunto
+  direto | Tribuna do Planalto | Maioria apoia a MP da proibição das bets em consulta pública; decisão pede encerramento das operações em 30 di | Pelo título, relata o mesmo acontecimento
+  direto | bahia.ba | Após proibição das bets, MP prevê fim das operações em 30 dias | Pelo título, relata o mesmo acontecimento
+  contexto | cbncaruaru.com | Lula anuncia nesta sexta-feira (25) MP para proibir operação de bets no Brasil | Outra etapa: fala de proposta ou anúncio, não da decisão
+  direto | nopontosc.com.br | MP proíbe operação das bets no Brasil e estabelece prazo para devolução de saldo | Pelo título, relata o mesmo acontecimento
+  direto | UOL | Alicia Klein: MP de Lula proibirá todas as bets no Brasil e deve ser assinada amanhã | Pelo título, relata o mesmo acontecimento
+  contexto | Poder Paraíba | Governo prepara MP para proibir apostas virtuais no Brasil | Outra etapa: fala de proposta ou anúncio, não da decisão
+  contexto | Repórter PB | Bets começam a rescindir contratos com emissoras após MP que proíbe operações no Brasil | Outro fato sobre o mesmo assunto
+  contexto | bahia.ba | Lula prepara MP para proibir bets no Brasil nesta sexta-feira | Outra etapa: fala de proposta ou anúncio, não da decisão
+  descartado | mpf.mp.br | Jogo de Sombras: MPF e Receita Federal deflagram operação contra esquema de bets que movimentou mais de R$ 5 b | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Ministério Público do Estado da Bahia. | | Operação 'Aposta Suja' é deflagrada contra bets ilegais, golpes e lavagem de dinheiro | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  direto | O GLOBO | MP do fim das bets dispensa governo de indenizar empresas; entenda | Relata o mesmo acontecimento
+  contexto | InfoMoney | Governo anuncia MP que proíbe bets no Brasil; veja o que muda | Outra etapa: fala de proposta ou anúncio, não da decisão
+  direto | ISTOÉ DINHEIRO | MP proíbe bets no Brasil e barra indenização a empresas | Relata o mesmo acontecimento
+  incerto | Misturebas | MP contra bets é publicada e Pix registra queda de 10% nas transações | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  nao_independente | Jornal de Uberaba | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  contexto | Portal do Zacarias | Pix registra queda de 10% nas transações após MP que proibiu bets | Trata do mesmo assunto, sem relatar este acontecimento
+  descartado | Jornal de Uberaba | Número de transações com Pix caem 10% após proibição de bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  incerto | InfoMoney | Tem dinheiro em bets? Veja perguntas e respostas sobre a MP que proíbe apostas online | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  direto | Correio do Povo | Após MP, bets vão ter de devolver R$ 1,7 bilhão a 23 milhões de apostadores | Relata o mesmo acontecimento
+  descartado | Portal 98 FM Natal | Número de transações por Pix cai 10% em apenas três dias após medida contra bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  contexto | Jetss on MSN | Bets avaliam ações pós-eleições e preveem atuação no Congresso para reverter MP de Lula | Outra etapa: fala de proposta ou anúncio, não da decisão
+  descartado | Senado Federal | Chega ao Congresso projeto que torna crime a exploração de bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  direto | conjur.com.br | Para especialistas, uso de MP para proibir bets fere a Constituição | Pelo título, relata o mesmo acontecimento
+  descartado | Congresso em Foco | Senado abre consulta sobre proibição das bets; veja como participar | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  descartado | UOL Economia | Bets contam com STF e Congresso para derrubar decisão que proíbe apostas | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  contexto | G1 | MP que proíbe bets precisa ser aprovada pelo Congresso até o começo de março para não perder validade | Outro fato sobre o mesmo assunto
+  descartado | stf noticias | Associações questionam no STF medida provisória que proíbe bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  contexto | migalhas.com.br | Entidades pedem ao STF suspensão da MP que proíbe bets | Outro fato sobre o mesmo assunto
+  incerto | Meio e Mensagem | MP das bets divide reações no varejo | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  contexto | Estadão | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | Outro fato sobre o mesmo assunto
+  contexto | CartaCapital | Entidades vão ao STF para suspender MP de Lula que proíbe as bets | Outro fato sobre o mesmo assunto
+  nao_independente | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  descartado | Agência Brasil | Número de transações com Pix caem 10% após proibição de bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  contexto | www.gov.br | Presidente Lula assina Medida Provisória que proíbe as bets no Brasil — Ministério da Saúde | Outro fato sobre o mesmo assunto
+  direto | Meio e Mensagem | Medida Provisória proíbe atuação das bets no Brasil | Pelo título, relata o mesmo acontecimento
+  descartado | CUT - Central Única dos Trabalhadores | Consulta Pública do Senado: mais de 80% dos votantes são favoráveis ao fim das bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Brasil 247 | Senado abre consulta pública sobre medida provisória que proíbe bets no Brasil | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  contexto | Poder360 | Senado abre consulta pública sobre MP que proíbe bets | Trata do mesmo assunto, sem relatar este acontecimento
+  descartado | ICL Notícias | Consulta do Senado tem 84,6% de apoio à proibição das bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  incerto | Senado Federal | Medida provisória que proíbe bets no país já está no Congresso Nacional | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  contexto | G1 | Ministério da Justiça vai fiscalizar se loterias estaduais cumprem as regras de proibição das bets | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto
+  nao_independente | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  descartado | ICL Notícias | Consulta do Senado tem 84,6% de apoio à proibição das bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | REDE BRASIL DE TELEVISÃO | O governo federal aprovou uma medida provisória que proíbe a exploração, a oferta, a intermediação e a publici | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Congresso em Foco | Senado abre consulta sobre proibição das bets; veja como participar | Outro acontecimento: Outro acontecimento com nomes ou palavras em comum
+  direto | bombabomba.com.br | Medida provisória proíbe o funcionamento de bets no Brasil | Pelo título, relata o mesmo acontecimento
+  contexto | Portal da Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | Outra etapa: fala de proposta ou anúncio, não da decisão
+  direto | mattosfilho.com.br | Medida Provisória proíbe apostas de quota fixa no Brasil | Pelo título, relata o mesmo acontecimento
+  contexto | www.gov.br | Presidente Lula assina Medida Provisória que proíbe as bets no Brasil — Ministério da Saúde | Outro fato sobre o mesmo assunto
+  contexto | Terra | Santos suspende contrato com casa de apostas após proibição do Governo | Outro fato sobre o mesmo assunto
+  contexto | G1 | Entidades que representam bets pedem ao STF suspensão da MP de Lula que proíbe apostas online | Outro fato sobre o mesmo assunto
+  descartado | stf noticias | Associações questionam no STF medida provisória que proíbe bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Demarest | Governo Federal proíbe apostas de quota fixa no Brasil | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | Estadão | Senado abre consulta pública sobre medida que proíbe as bets no Brasil | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  direto | Meio e Mensagem | Medida Provisória proíbe atuação das bets no Brasil | Pelo título, relata o mesmo acontecimento
+  incerto | Agência Brasil | Bets passam a ser proibidas no país e apostador receberá saldo | Parece o mesmo acontecimento, mas o texto lido não diz quem agiu
+  incerto | Senado Federal | Medida provisória que proíbe bets no país já está no Congresso Nacional | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  descartado | www.gov.br | Governo Federal proíbe bets em todo o País e lança pacote de proteção às famílias endividadas | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  incerto | Agência Brasil | MP das Bets: veja o que muda e saiba datas para devolução de valores | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  contexto | Meio e Mensagem | Abert orienta veículos e Conar fala sobre MP das bets | Trata do mesmo assunto, sem relatar este acontecimento
+  direto | BNLData | MP 1.394 proíbe publicidade de apostas de quota fixa no Brasil | Pelo título, relata o mesmo acontecimento
+  nao_independente | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  contexto | Opera Mundi | Associações acionam STF contra MP de Lula que proíbe as bets no Brasil | Outro fato sobre o mesmo assunto
+  descartado | CartaCapital | Bets pedem ao STF suspensão da proibição no Brasil | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  direto | portal.rbnfm.com.br | MP determina fim das bets no Brasil e estabelece prazo para retirada de dinheiro das plataformas | Pelo título, relata o mesmo acontecimento
+  descartado | Bahia Comenta | Chega ao Congresso projeto que torna crime a exploração de bets | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  contexto | noveen.com.br | Lula assina MP que proíbe bets no Brasil e determina fim das plataformas em outubro | Outro fato sobre o mesmo assunto
+  descartado | mppr.mp.br | Ministério Público do Estado do Paraná | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | mppr.mp.br | Portal da Transparência do Ministério Público | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | cidesp.com.br | O que significa MP na fatura do cartão? - cidesp.com.br | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | mpf.mp.br | Ministério Público Federal | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | site.mppr.mp.br | MP Atende - Formulário - MPPR | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | sabertecnologias.com.br | O que significa MP na fatura do cartão? | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | mpm.mp.br | Consulta Processual - mpm.mp.br | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | mpincorporadora.com.br | MP Construtora e Incorporadora | Outro acontecimento: Outro assunto com palavras parecidas
+  descartado | mpsp.mp.br | Home - Ministério Público do Estado de São Paulo | Outro acontecimento: Trata de outras pessoas ou de outro lugar
+  descartado | consultaprocessual.cnmp.mp.br | Consulta processual | Outro acontecimento: Outro assunto com palavras parecidas
+  contexto | Wikipédia | Medida Provisória n.º 1.394, de 25 de setembro de 2026 | Contexto geral (enciclopédia)
+  descartado | Wikipédia | CazéTV | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Fatal Model | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | MP | página de desambiguação
+  descartado | Wikipédia | MP Lafer | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | MP 34 | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+INDEPENDENCIA (7)
+  republicacao | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  republicacao | Jornal de Uberaba | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  republicacao | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  republicacao | Jornal de Uberaba | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  republicacao | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  republicacao | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  republicacao | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+ACONTECIMENTO (94)
+  outro_acontecimento | Bahia Comenta | Chega ao Congresso projeto que torna crime a exploração de bets | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: exploracao, bet — em comum; Nomes citados: congresso — nenhum aparece na matéria importada
+  outro_acontecimento | Jornal de Uberaba | Jornal de Uberaba 04-11-25 | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: jornal, uberaba — nenhum aparece na matéria importada
+  mesmo_acontecimento | Bahia.ba | Após proibição das bets, MP prevê fim das operações em 30 dias | Relata o mesmo acontecimento | Quem: MP — o mesmo da matéria importada; Ação: “prevê” — equivale a “proíbe”; Sobre o quê: operacoe — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: cita 30 dias
+  mesmo_acontecimento | O GLOBO | MP do fim das bets dispensa governo de indenizar empresas; entenda | Relata o mesmo acontecimento | Quem: Medida — o mesmo da matéria importada; Ação: “prevê” — equivale a “proíbe”; Sobre o quê: devolucao, medida — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  outro_acontecimento | Jornal Estado de Minas | Governo proíbe totalmente as bets no Brasil; o que muda? | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber pelo texto lido; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: bet — em comum; Nomes citados: brasil — nenhum aparece na matéria importada
+  mesmo_acontecimento | Jornal União | MP proíbe bets no Brasil e determina retirada de plataformas do ar em outubro | Relata o mesmo acontecimento | Quem: MP — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: bet, determina — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  mesmo_acontecimento | ISTOÉ DINHEIRO | MP proíbe bets no Brasil e barra indenização a empresas | Relata o mesmo acontecimento | Quem: MP — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: bet — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  contexto_relacionado | InfoMoney | Governo anuncia MP que proíbe bets no Brasil; veja o que muda | Outra etapa: fala de proposta ou anúncio, não da decisão | Quem: não dá para saber pelo texto lido; Ação: “anuncia” — diferente de “proíbe”; Sobre o quê: proibe, bet — em comum
+  mesmo_acontecimento | Jornal de Uberaba | MP proíbe bets no Brasil e determina devolução de saldo ao apostador | Relata o mesmo acontecimento | Quem: MP — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: bet, determina, devolucao — em comum; Quando: publicado em 25/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  outro_acontecimento | Polêmica Paraíba | TEM DINHEIRO NA BET? Veja o que acontece com seu saldo, prazo para sacar e quais plataformas sairão do ar | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: dinheiro, bet — nenhum aparece na matéria importada
+  relacao_incerta | Diário do Centro do Mundo | A disputa por R$ 2,55 bilhões com o governo após fim das bets | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: bet — em comum
+  contexto_relacionado | Jornal Grande Bahia | Presidente Lula proíbe bets nove dias antes do 1º turno; MP rompe regulação federal e abre disputa judicial po | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto | Quem: Presidente Lula — não é quem agiu na matéria importada (MP); Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: bet, mp — em comum
+  relacao_incerta | SBT News | MP das bets: Pix tem queda de 10% após medida | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: bet, medida — em comum
+  relacao_incerta | Agência Brasil | Bets passam a ser proibidas no país e apostador receberá saldo | Parece o mesmo acontecimento, mas o texto lido não diz quem agiu | Quem: não dá para saber pelo texto lido; Ação: “proibidas” — equivale a “proíbe”; Sobre o quê: bet — em comum
+  outro_acontecimento | ABC Agora | Proibição de Bets Pela MP 1.394 Mobiliza Banco Central e Sistema Financeiro Em Operação de Bloqueio | Mesma ação sobre outro assunto | Quem: não dá para saber pelo texto lido; Ação: “Proibição” — equivale a “proíbe”; Sobre o quê: sem palavras do assunto em comum
+  contexto_relacionado | TV Guararapes | Transações por Pix caem 10% após publicação de MP contra bets | Outro fato sobre o mesmo assunto | Quem: Transações Pix — não é quem agiu na matéria importada (MP); Ação: “caem” — diferente de “proíbe”; Sobre o quê: bet, mp — em comum
+  contexto_relacionado | www.gov.br | Presidente Lula assina Medida Provisória que proíbe as bets no Brasil — Ministério da Saúde | Outro fato sobre o mesmo assunto | Quem: Presidente Lula — não é quem agiu na matéria importada (MP); Ação: “assina” — diferente de “proíbe”; Sobre o quê: proibe, bet — em comum
+  contexto_relacionado | CBN | Lula anuncia nesta sexta (25) MP para proibir operação de bets no Brasil | Outra etapa: fala de proposta ou anúncio, não da decisão | Quem: Lula — não é quem agiu na matéria importada (MP); Ação: “anuncia” — diferente de “proíbe”; Sobre o quê: bet, mp — em comum
+  contexto_relacionado | Propmark | MP das bets suspende operações de apostas no Brasil | Mesmo envolvido, outra ação sobre o mesmo assunto | Quem: MP bets — o mesmo da matéria importada; Ação: “suspende” — diferente de “proíbe”; Sobre o quê: operacoe, aposta, bet — em comum
+  mesmo_acontecimento | Acontecendo Aqui | MP das bets proíbe operações no Brasil e veta publicidade a partir de outubro | Pelo título, relata o mesmo acontecimento | Quem: MP bets — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: operacoe, publicidade, bet — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  contexto_relacionado | UOL Economia | DOU extra traz MP do Desenrola 3.0 e MP que proíbe operação das bets no País | Mesmo envolvido, outra ação sobre o mesmo assunto | Quem: DOU extra traz MP — o mesmo da matéria importada; Ação: “operação” — diferente de “proíbe”; Sobre o quê: bet, proibe — em comum
+  mesmo_acontecimento | Tribuna do Planalto | Maioria apoia a MP da proibição das bets em consulta pública; decisão pede encerramento das operações em 30 di | Pelo título, relata o mesmo acontecimento | Quem: Maioria apoia MP — o mesmo da matéria importada; Ação: “proibição” — equivale a “proíbe”; Sobre o quê: bet — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: cita 30 dias
+  mesmo_acontecimento | bahia.ba | Após proibição das bets, MP prevê fim das operações em 30 dias | Pelo título, relata o mesmo acontecimento | Quem: MP — o mesmo da matéria importada; Ação: “prevê” — equivale a “proíbe”; Sobre o quê: operacoe — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: cita 30 dias
+  contexto_relacionado | cbncaruaru.com | Lula anuncia nesta sexta-feira (25) MP para proibir operação de bets no Brasil | Outra etapa: fala de proposta ou anúncio, não da decisão | Quem: Lula — não é quem agiu na matéria importada (MP); Ação: “anuncia” — diferente de “proíbe”; Sobre o quê: bet, mp — em comum
+  mesmo_acontecimento | nopontosc.com.br | MP proíbe operação das bets no Brasil e estabelece prazo para devolução de saldo | Pelo título, relata o mesmo acontecimento | Quem: MP — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: bet, devolucao — em comum; Quando: publicado em 25/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  mesmo_acontecimento | UOL | Alicia Klein: MP de Lula proibirá todas as bets no Brasil e deve ser assinada amanhã | Pelo título, relata o mesmo acontecimento | Quem: MP Lula — o mesmo da matéria importada; Ação: “proibirá” — equivale a “proíbe”; Sobre o quê: bet — em comum; Quando: publicado em 24/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  contexto_relacionado | Poder Paraíba | Governo prepara MP para proibir apostas virtuais no Brasil | Outra etapa: fala de proposta ou anúncio, não da decisão | Quem: não dá para saber pelo texto lido; Ação: “prepara” — diferente de “proíbe”; Sobre o quê: aposta — em comum
+  contexto_relacionado | Repórter PB | Bets começam a rescindir contratos com emissoras após MP que proíbe operações no Brasil | Outro fato sobre o mesmo assunto | Quem: Bets começam rescindir — não é quem agiu na matéria importada (MP); Ação: “contratos” — diferente de “proíbe”; Sobre o quê: proibe, operacoe, bet, mp — em comum
+  contexto_relacionado | bahia.ba | Lula prepara MP para proibir bets no Brasil nesta sexta-feira | Outra etapa: fala de proposta ou anúncio, não da decisão | Quem: Lula — não é quem agiu na matéria importada (MP); Ação: “prepara” — diferente de “proíbe”; Sobre o quê: bet — em comum
+  outro_acontecimento | mpf.mp.br | Jogo de Sombras: MPF e Receita Federal deflagram operação contra esquema de bets que movimentou mais de R$ 5 b | Trata de outras pessoas ou de outro lugar | Quem: MPF Receita Federal deflagram — não é quem agiu na matéria importada (MP); Ação: “operação” — diferente de “proíbe”; Sobre o quê: bet — em comum; Nomes citados: jogo, sombras, mpf, receita — nenhum aparece na matéria importada
+  outro_acontecimento | Ministério Público do Estado da Bahia. | | Operação 'Aposta Suja' é deflagrada contra bets ilegais, golpes e lavagem de dinheiro | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber pelo texto lido; Ação: “Operação” — diferente de “proíbe”; Sobre o quê: bet — em comum; Nomes citados: aposta, suja — nenhum aparece na matéria importada
+  mesmo_acontecimento | O GLOBO | MP do fim das bets dispensa governo de indenizar empresas; entenda | Relata o mesmo acontecimento | Quem: Medida — o mesmo da matéria importada; Ação: “prevê” — equivale a “proíbe”; Sobre o quê: devolucao, medida — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  contexto_relacionado | InfoMoney | Governo anuncia MP que proíbe bets no Brasil; veja o que muda | Outra etapa: fala de proposta ou anúncio, não da decisão | Quem: não dá para saber pelo texto lido; Ação: “anuncia” — diferente de “proíbe”; Sobre o quê: proibe, bet — em comum
+  mesmo_acontecimento | ISTOÉ DINHEIRO | MP proíbe bets no Brasil e barra indenização a empresas | Relata o mesmo acontecimento | Quem: MP — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: bet — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  relacao_incerta | Misturebas | MP contra bets é publicada e Pix registra queda de 10% nas transações | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: bet — em comum
+  contexto_relacionado | Portal do Zacarias | Pix registra queda de 10% nas transações após MP que proibiu bets | Trata do mesmo assunto, sem relatar este acontecimento | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: bet, mp — em comum
+  outro_acontecimento | Jornal de Uberaba | Número de transações com Pix caem 10% após proibição de bets | Trata de outras pessoas ou de outro lugar | Quem: Número transações Pix — não é quem agiu na matéria importada (MP); Ação: “caem” — diferente de “proíbe”; Sobre o quê: bet — em comum; Nomes citados: pix — nenhum aparece na matéria importada
+  relacao_incerta | InfoMoney | Tem dinheiro em bets? Veja perguntas e respostas sobre a MP que proíbe apostas online | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: bet, proibe, aposta, mp — em comum
+  mesmo_acontecimento | Correio do Povo | Após MP, bets vão ter de devolver R$ 1,7 bilhão a 23 milhões de apostadores | Relata o mesmo acontecimento | Quem: Medida provisória — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: operacoe, aposta, medida, provisoria — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  outro_acontecimento | Portal 98 FM Natal | Número de transações por Pix cai 10% em apenas três dias após medida contra bets | Trata de outras pessoas ou de outro lugar | Quem: Número transações Pix — não é quem agiu na matéria importada (MP); Ação: “cai” — diferente de “proíbe”; Sobre o quê: medida, bet — em comum; Nomes citados: pix — nenhum aparece na matéria importada
+  contexto_relacionado | Jetss on MSN | Bets avaliam ações pós-eleições e preveem atuação no Congresso para reverter MP de Lula | Outra etapa: fala de proposta ou anúncio, não da decisão | Quem: Bets — não é quem agiu na matéria importada (MP); Ação: “avaliam” — diferente de “proíbe”; Sobre o quê: bet, mp — em comum
+  outro_acontecimento | Senado Federal | Chega ao Congresso projeto que torna crime a exploração de bets | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: exploracao, bet — em comum; Nomes citados: congresso — nenhum aparece na matéria importada
+  mesmo_acontecimento | conjur.com.br | Para especialistas, uso de MP para proibir bets fere a Constituição | Pelo título, relata o mesmo acontecimento | Quem: especialistas uso MP — o mesmo da matéria importada; Ação: “proibir” — equivale a “proíbe”; Sobre o quê: bet — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  outro_acontecimento | Congresso em Foco | Senado abre consulta sobre proibição das bets; veja como participar | Outro acontecimento com nomes ou palavras em comum | Quem: não dá para saber pelo texto lido; Ação: “participar” — diferente de “proíbe”; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | UOL Economia | Bets contam com STF e Congresso para derrubar decisão que proíbe apostas | Trata de outras pessoas ou de outro lugar | Quem: Bets contam STF Congresso — não é quem agiu na matéria importada (MP); Ação: “derrubar” — diferente de “proíbe”; Sobre o quê: proibe, aposta, bet — em comum; Nomes citados: stf, congresso — nenhum aparece na matéria importada
+  contexto_relacionado | G1 | MP que proíbe bets precisa ser aprovada pelo Congresso até o começo de março para não perder validade | Outro fato sobre o mesmo assunto | Quem: Congresso começo — não é quem agiu na matéria importada (MP); Ação: “aprovada” — diferente de “proíbe”; Sobre o quê: proibe, bet, mp — em comum
+  outro_acontecimento | stf noticias | Associações questionam no STF medida provisória que proíbe bets | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: medida, provisoria, proibe, bet — em comum; Nomes citados: stf — nenhum aparece na matéria importada
+  contexto_relacionado | migalhas.com.br | Entidades pedem ao STF suspensão da MP que proíbe bets | Outro fato sobre o mesmo assunto | Quem: não dá para saber pelo texto lido; Ação: “pedem ao STF” — diferente de “proíbe”; Sobre o quê: proibe, bet, mp — em comum
+  relacao_incerta | Meio e Mensagem | MP das bets divide reações no varejo | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: bet — em comum
+  contexto_relacionado | Estadão | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | Outro fato sobre o mesmo assunto | Quem: Bap presidente Flamengo — não é quem agiu na matéria importada (MP); Ação: “pede” — diferente de “proíbe”; Sobre o quê: bet — em comum
+  contexto_relacionado | CartaCapital | Entidades vão ao STF para suspender MP de Lula que proíbe as bets | Outro fato sobre o mesmo assunto | Quem: não dá para saber pelo texto lido; Ação: “vão ao STF” — diferente de “proíbe”; Sobre o quê: proibe, bet, mp — em comum
+  outro_acontecimento | Agência Brasil | Número de transações com Pix caem 10% após proibição de bets | Trata de outras pessoas ou de outro lugar | Quem: Número transações Pix — não é quem agiu na matéria importada (MP); Ação: “caem” — diferente de “proíbe”; Sobre o quê: bet — em comum; Nomes citados: pix — nenhum aparece na matéria importada
+  contexto_relacionado | www.gov.br | Presidente Lula assina Medida Provisória que proíbe as bets no Brasil — Ministério da Saúde | Outro fato sobre o mesmo assunto | Quem: Presidente Lula — não é quem agiu na matéria importada (MP); Ação: “assina” — diferente de “proíbe”; Sobre o quê: proibe, bet — em comum
+  mesmo_acontecimento | Meio e Mensagem | Medida Provisória proíbe atuação das bets no Brasil | Pelo título, relata o mesmo acontecimento | Quem: Medida Provisória — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: bet — em comum; Quando: publicado em 25/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  outro_acontecimento | CUT - Central Única dos Trabalhadores | Consulta Pública do Senado: mais de 80% dos votantes são favoráveis ao fim das bets | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: bet — em comum; Nomes citados: consulta, publica, senado — nenhum aparece na matéria importada
+  outro_acontecimento | Brasil 247 | Senado abre consulta pública sobre medida provisória que proíbe bets no Brasil | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: medida, provisoria, proibe, bet — em comum; Nomes citados: brasil — nenhum aparece na matéria importada
+  contexto_relacionado | Poder360 | Senado abre consulta pública sobre MP que proíbe bets | Trata do mesmo assunto, sem relatar este acontecimento | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: proibe, bet, mp — em comum
+  outro_acontecimento | ICL Notícias | Consulta do Senado tem 84,6% de apoio à proibição das bets | Trata de outras pessoas ou de outro lugar | Quem: Consulta Senado 84 6 — não é quem agiu na matéria importada (MP); Ação: “proibição” — equivale a “proíbe”; Sobre o quê: bet — em comum; Nomes citados: consulta, senado — nenhum aparece na matéria importada
+  relacao_incerta | Senado Federal | Medida provisória que proíbe bets no país já está no Congresso Nacional | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: medida, provisoria, proibe, bet — em comum
+  contexto_relacionado | G1 | Ministério da Justiça vai fiscalizar se loterias estaduais cumprem as regras de proibição das bets | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto | Quem: Ministério Justiça fiscalizar loterias — não é quem agiu na matéria importada (MP); Ação: “proibição” — equivale a “proíbe”; Sobre o quê: bet, regra — em comum
+  outro_acontecimento | ICL Notícias | Consulta do Senado tem 84,6% de apoio à proibição das bets | Trata de outras pessoas ou de outro lugar | Quem: Consulta Senado 84 6 — não é quem agiu na matéria importada (MP); Ação: “proibição” — equivale a “proíbe”; Sobre o quê: bet — em comum; Nomes citados: consulta, senado — nenhum aparece na matéria importada
+  outro_acontecimento | REDE BRASIL DE TELEVISÃO | O governo federal aprovou uma medida provisória que proíbe a exploração, a oferta, a intermediação e a publici | Trata de outras pessoas ou de outro lugar | Quem: governo federal — não é quem agiu na matéria importada (MP); Ação: “aprovou” — diferente de “proíbe”; Sobre o quê: medida, provisoria, proibe, exploracao — em comum; Nomes citados: brasil — nenhum aparece na matéria importada
+  outro_acontecimento | Congresso em Foco | Senado abre consulta sobre proibição das bets; veja como participar | Outro acontecimento com nomes ou palavras em comum | Quem: não dá para saber pelo texto lido; Ação: “participar” — diferente de “proíbe”; Sobre o quê: sem palavras do assunto em comum
+  mesmo_acontecimento | bombabomba.com.br | Medida provisória proíbe o funcionamento de bets no Brasil | Pelo título, relata o mesmo acontecimento | Quem: Medida provisória — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: bet, medida, provisoria — em comum; Quando: publicado em 29/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  contexto_relacionado | Portal da Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | Outra etapa: fala de proposta ou anúncio, não da decisão | Quem: não dá para saber pelo texto lido; Ação: “Projeto de lei” — diferente de “proíbe”; Sobre o quê: exploracao, publicidade, bet — em comum
+  mesmo_acontecimento | mattosfilho.com.br | Medida Provisória proíbe apostas de quota fixa no Brasil | Pelo título, relata o mesmo acontecimento | Quem: Medida Provisória — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: aposta, quota, fixa — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  contexto_relacionado | www.gov.br | Presidente Lula assina Medida Provisória que proíbe as bets no Brasil — Ministério da Saúde | Outro fato sobre o mesmo assunto | Quem: Presidente Lula — não é quem agiu na matéria importada (MP); Ação: “assina” — diferente de “proíbe”; Sobre o quê: proibe, bet — em comum
+  contexto_relacionado | Terra | Santos suspende contrato com casa de apostas após proibição do Governo | Outro fato sobre o mesmo assunto | Quem: Santos — não é quem agiu na matéria importada (MP); Ação: “suspende” — diferente de “proíbe”; Sobre o quê: aposta — em comum
+  contexto_relacionado | G1 | Entidades que representam bets pedem ao STF suspensão da MP de Lula que proíbe apostas online | Outro fato sobre o mesmo assunto | Quem: Entidades representam bets pedem — não é quem agiu na matéria importada (MP); Ação: “suspensão” — diferente de “proíbe”; Sobre o quê: proibe, aposta, bet — em comum
+  outro_acontecimento | stf noticias | Associações questionam no STF medida provisória que proíbe bets | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: medida, provisoria, proibe, bet — em comum; Nomes citados: stf — nenhum aparece na matéria importada
+  outro_acontecimento | Demarest | Governo Federal proíbe apostas de quota fixa no Brasil | Trata de outras pessoas ou de outro lugar | Quem: Governo Federal — não é quem agiu na matéria importada (MP); Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: aposta, quota, fixa — em comum; Nomes citados: brasil — nenhum aparece na matéria importada
+  outro_acontecimento | Estadão | Senado abre consulta pública sobre medida que proíbe as bets no Brasil | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: medida, proibe, bet — em comum; Nomes citados: brasil — nenhum aparece na matéria importada
+  mesmo_acontecimento | Meio e Mensagem | Medida Provisória proíbe atuação das bets no Brasil | Pelo título, relata o mesmo acontecimento | Quem: Medida Provisória — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: bet — em comum; Quando: publicado em 25/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  relacao_incerta | Agência Brasil | Bets passam a ser proibidas no país e apostador receberá saldo | Parece o mesmo acontecimento, mas o texto lido não diz quem agiu | Quem: não dá para saber pelo texto lido; Ação: “proibidas” — equivale a “proíbe”; Sobre o quê: bet — em comum
+  relacao_incerta | Senado Federal | Medida provisória que proíbe bets no país já está no Congresso Nacional | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: medida, provisoria, proibe, bet — em comum
+  outro_acontecimento | www.gov.br | Governo Federal proíbe bets em todo o País e lança pacote de proteção às famílias endividadas | Trata de outras pessoas ou de outro lugar | Quem: Governo Federal — não é quem agiu na matéria importada (MP); Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: bet — em comum; Nomes citados: pais — nenhum aparece na matéria importada
+  relacao_incerta | Agência Brasil | MP das Bets: veja o que muda e saiba datas para devolução de valores | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: devolucao, bet — em comum
+  contexto_relacionado | Meio e Mensagem | Abert orienta veículos e Conar fala sobre MP das bets | Trata do mesmo assunto, sem relatar este acontecimento | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: bet, mp — em comum
+  mesmo_acontecimento | BNLData | MP 1.394 proíbe publicidade de apostas de quota fixa no Brasil | Pelo título, relata o mesmo acontecimento | Quem: MP 1 394 — o mesmo da matéria importada; Ação: “proíbe” — equivale a “proíbe”; Sobre o quê: publicidade, aposta, quota, fixa — em comum; Quando: publicado em 29/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  contexto_relacionado | Opera Mundi | Associações acionam STF contra MP de Lula que proíbe as bets no Brasil | Outro fato sobre o mesmo assunto | Quem: Associações — não é quem agiu na matéria importada (MP); Ação: “acionam” — diferente de “proíbe”; Sobre o quê: proibe, bet, mp — em comum
+  outro_acontecimento | CartaCapital | Bets pedem ao STF suspensão da proibição no Brasil | Trata de outras pessoas ou de outro lugar | Quem: Bets — não é quem agiu na matéria importada (MP); Ação: “pedem ao STF” — diferente de “proíbe”; Sobre o quê: bet — em comum; Nomes citados: stf, brasil — nenhum aparece na matéria importada
+  mesmo_acontecimento | portal.rbnfm.com.br | MP determina fim das bets no Brasil e estabelece prazo para retirada de dinheiro das plataformas | Pelo título, relata o mesmo acontecimento | Quem: MP — o mesmo da matéria importada; Ação: “determina” — equivale a “proíbe”; Sobre o quê: bet — em comum; Quando: publicado em 28/09/2026 — compatível com 28/09/2026 (data de publicação); Detalhe: 30 dias não aparece no que foi lido
+  outro_acontecimento | Bahia Comenta | Chega ao Congresso projeto que torna crime a exploração de bets | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: exploracao, bet — em comum; Nomes citados: congresso — nenhum aparece na matéria importada
+  contexto_relacionado | noveen.com.br | Lula assina MP que proíbe bets no Brasil e determina fim das plataformas em outubro | Outro fato sobre o mesmo assunto | Quem: Lula — não é quem agiu na matéria importada (MP); Ação: “assina” — diferente de “proíbe”; Sobre o quê: proibe, bet, determina — em comum
+  outro_acontecimento | mppr.mp.br | Ministério Público do Estado do Paraná | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: publico, parana — nenhum aparece na matéria importada
+  outro_acontecimento | mppr.mp.br | Portal da Transparência do Ministério Público | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: portal, transparencia, publico — nenhum aparece na matéria importada
+  outro_acontecimento | cidesp.com.br | O que significa MP na fatura do cartão? - cidesp.com.br | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | mpf.mp.br | Ministério Público Federal | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: publico — nenhum aparece na matéria importada
+  outro_acontecimento | site.mppr.mp.br | MP Atende - Formulário - MPPR | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | sabertecnologias.com.br | O que significa MP na fatura do cartão? | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | mpm.mp.br | Consulta Processual - mpm.mp.br | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: consulta, processual — nenhum aparece na matéria importada
+  outro_acontecimento | mpincorporadora.com.br | MP Construtora e Incorporadora | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+  outro_acontecimento | mpsp.mp.br | Home - Ministério Público do Estado de São Paulo | Trata de outras pessoas ou de outro lugar | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum; Nomes citados: publico, paulo — nenhum aparece na matéria importada
+  outro_acontecimento | consultaprocessual.cnmp.mp.br | Consulta processual | Outro assunto com palavras parecidas | Quem: não dá para saber — o texto lido não diz o que aconteceu; Ação: o texto lido não diz o que aconteceu; Sobre o quê: sem palavras do assunto em comum
+DUPLICATA (8)
+  removida | O GLOBO | MP do fim das bets dispensa governo de indenizar empresas; entenda | mesma URL já recebida de bing_news
+  removida | InfoMoney | Governo anuncia MP que proíbe bets no Brasil; veja o que muda | mesma URL já recebida de bing_news
+  removida | ISTOÉ DINHEIRO | MP proíbe bets no Brasil e barra indenização a empresas | mesma URL já recebida de bing_news
+  removida | www.gov.br | Presidente Lula assina Medida Provisória que proíbe as bets no Brasil — Ministério da Saúde | mesma URL já recebida de google_news
+  removida | www.gov.br | Presidente Lula assina Medida Provisória que proíbe as bets no Brasil — Ministério da Saúde | mesma URL já recebida de google_news
+  removida | Meio e Mensagem | Medida Provisória proíbe atuação das bets no Brasil | mesma URL já recebida de google_news
+  removida | Senado Federal | Medida provisória que proíbe bets no país já está no Congresso Nacional | mesma URL já recebida de google_news
+  removida | Agência Brasil | Bets passam a ser proibidas no país e apostador receberá saldo | mesma URL já recebida de google_news
+REPUBLICACAO (4)
+  agrupada | bahia.ba | Após proibição das bets, MP prevê fim das operações em 30 dias | título/trecho quase igual a Bahia.ba
+  agrupada | bombabomba.com.br | Medida provisória proíbe o funcionamento de bets no Brasil | título/trecho quase igual a Meio e Mensagem
+  agrupada | Portal do Zacarias | Pix registra queda de 10% nas transações após MP que proibiu bets | título/trecho quase igual a Misturebas
+  agrupada | cbncaruaru.com | Lula anuncia nesta sexta-feira (25) MP para proibir operação de bets no Brasil | título/trecho quase igual a CBN
+RELEITURA (0)
+LIMITE (17)
+  incerto | Agência Brasil | MP das Bets: veja o que muda e saiba datas para devolução de valores | acima do limite de 6 na seção
+  incerto | Agência Brasil | Bets passam a ser proibidas no país e apostador receberá saldo | acima do limite de 6 na seção
+  contexto | www.gov.br | Presidente Lula assina Medida Provisória que proíbe as bets no Brasil — Ministério da Saúde | acima do limite de 8 na seção
+  contexto | Propmark | MP das bets suspende operações de apostas no Brasil | acima do limite de 8 na seção
+  contexto | Poder Paraíba | Governo prepara MP para proibir apostas virtuais no Brasil | acima do limite de 8 na seção
+  contexto | bahia.ba | Lula prepara MP para proibir bets no Brasil nesta sexta-feira | acima do limite de 8 na seção
+  contexto | G1 | MP que proíbe bets precisa ser aprovada pelo Congresso até o começo de março para não perder validade | acima do limite de 8 na seção
+  contexto | migalhas.com.br | Entidades pedem ao STF suspensão da MP que proíbe bets | acima do limite de 8 na seção
+  contexto | Estadão | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | acima do limite de 8 na seção
+  contexto | CartaCapital | Entidades vão ao STF para suspender MP de Lula que proíbe as bets | acima do limite de 8 na seção
+  contexto | Poder360 | Senado abre consulta pública sobre MP que proíbe bets | acima do limite de 8 na seção
+  contexto | G1 | Entidades que representam bets pedem ao STF suspensão da MP de Lula que proíbe apostas online | acima do limite de 8 na seção
+  contexto | Opera Mundi | Associações acionam STF contra MP de Lula que proíbe as bets no Brasil | acima do limite de 8 na seção
+  contexto | Meio e Mensagem | Abert orienta veículos e Conar fala sobre MP das bets | acima do limite de 8 na seção
+  contexto | G1 | Ministério da Justiça vai fiscalizar se loterias estaduais cumprem as regras de proibição das bets | acima do limite de 8 na seção
+  contexto | Portal da Câmara dos Deputados | Projeto de lei apresentado pelo governo torna crime a exploração e a publicidade de bets | acima do limite de 8 na seção
+  contexto | Terra | Santos suspende contrato com casa de apostas após proibição do Governo | acima do limite de 8 na seção
+EXIBIDA (32)
+  direto | Bahia.ba | Após proibição das bets, MP prevê fim das operações em 30 dias | Relata o mesmo acontecimento
+  direto | Tribuna do Planalto | Maioria apoia a MP da proibição das bets em consulta pública; decisão pede encerramento das operações em 30 di | Pelo título, relata o mesmo acontecimento
+  direto | Jornal União | MP proíbe bets no Brasil e determina retirada de plataformas do ar em outubro | Relata o mesmo acontecimento
+  direto | Jornal de Uberaba | MP proíbe bets no Brasil e determina devolução de saldo ao apostador | Relata o mesmo acontecimento
+  direto | Correio do Povo | Após MP, bets vão ter de devolver R$ 1,7 bilhão a 23 milhões de apostadores | Relata o mesmo acontecimento
+  direto | Acontecendo Aqui | MP das bets proíbe operações no Brasil e veta publicidade a partir de outubro | Pelo título, relata o mesmo acontecimento
+  direto | nopontosc.com.br | MP proíbe operação das bets no Brasil e estabelece prazo para devolução de saldo | Pelo título, relata o mesmo acontecimento
+  direto | O GLOBO | MP do fim das bets dispensa governo de indenizar empresas; entenda | Relata o mesmo acontecimento
+  direto | ISTOÉ DINHEIRO | MP proíbe bets no Brasil e barra indenização a empresas | Relata o mesmo acontecimento
+  direto | conjur.com.br | Para especialistas, uso de MP para proibir bets fere a Constituição | Pelo título, relata o mesmo acontecimento
+  direto | Meio e Mensagem | Medida Provisória proíbe atuação das bets no Brasil | Pelo título, relata o mesmo acontecimento
+  direto | mattosfilho.com.br | Medida Provisória proíbe apostas de quota fixa no Brasil | Pelo título, relata o mesmo acontecimento
+  direto | BNLData | MP 1.394 proíbe publicidade de apostas de quota fixa no Brasil | Pelo título, relata o mesmo acontecimento
+  direto | portal.rbnfm.com.br | MP determina fim das bets no Brasil e estabelece prazo para retirada de dinheiro das plataformas | Pelo título, relata o mesmo acontecimento
+  direto | UOL | Alicia Klein: MP de Lula proibirá todas as bets no Brasil e deve ser assinada amanhã | Pelo título, relata o mesmo acontecimento
+  incerto | Diário do Centro do Mundo | A disputa por R$ 2,55 bilhões com o governo após fim das bets | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  incerto | Misturebas | MP contra bets é publicada e Pix registra queda de 10% nas transações | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  incerto | InfoMoney | Tem dinheiro em bets? Veja perguntas e respostas sobre a MP que proíbe apostas online | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  incerto | Senado Federal | Medida provisória que proíbe bets no país já está no Congresso Nacional | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  incerto | SBT News | MP das bets: Pix tem queda de 10% após medida | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  incerto | Meio e Mensagem | MP das bets divide reações no varejo | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu
+  contexto | Jornal Grande Bahia | Presidente Lula proíbe bets nove dias antes do 1º turno; MP rompe regulação federal e abre disputa judicial po | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto
+  contexto | CBN | Lula anuncia nesta sexta (25) MP para proibir operação de bets no Brasil | Outra etapa: fala de proposta ou anúncio, não da decisão
+  contexto | UOL Economia | DOU extra traz MP do Desenrola 3.0 e MP que proíbe operação das bets no País | Mesmo envolvido, outra ação sobre o mesmo assunto
+  contexto | Repórter PB | Bets começam a rescindir contratos com emissoras após MP que proíbe operações no Brasil | Outro fato sobre o mesmo assunto
+  contexto | noveen.com.br | Lula assina MP que proíbe bets no Brasil e determina fim das plataformas em outubro | Outro fato sobre o mesmo assunto
+  contexto | InfoMoney | Governo anuncia MP que proíbe bets no Brasil; veja o que muda | Outra etapa: fala de proposta ou anúncio, não da decisão
+  contexto | Jetss on MSN | Bets avaliam ações pós-eleições e preveem atuação no Congresso para reverter MP de Lula | Outra etapa: fala de proposta ou anúncio, não da decisão
+  contexto | TV Guararapes | Transações por Pix caem 10% após publicação de MP contra bets | Outro fato sobre o mesmo assunto
+  contexto_geral | Wikipédia | Medida Provisória n.º 1.394, de 25 de setembro de 2026 | Contexto geral (enciclopédia)
+  nao_independente | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+  nao_independente | Jornal de Uberaba | MP proíbe bets e determina encerramento das operações em 30 dias | mesmo título da matéria importada, publicado por outro veículo (republicação)
+RELACAO (32)
+  mesmo_fato | Bahia.ba | Após proibição das bets, MP prevê fim das operações em 30 dias | Relata o mesmo acontecimento [leitura: pagina] «Medida Provisória (MP) nº 1.394/2026 proíbe bets no Brasil e determina o encerramento das operações em até 30 dias.»
+  mesmo_fato | Tribuna do Planalto | Maioria apoia a MP da proibição das bets em consulta pública; decisão pede encerramento das operações em 30 di | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | Jornal União | MP proíbe bets no Brasil e determina retirada de plataformas do ar em outubro | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | Jornal de Uberaba | MP proíbe bets no Brasil e determina devolução de saldo ao apostador | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | Correio do Povo | Após MP, bets vão ter de devolver R$ 1,7 bilhão a 23 milhões de apostadores | Relata o mesmo acontecimento [leitura: pagina] «Medida provisória proíbe novas operações e estabelece prazos para que as casas de apostas online retornem valores aos usuários ...»
+  mesmo_fato | Acontecendo Aqui | MP das bets proíbe operações no Brasil e veta publicidade a partir de outubro | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | nopontosc.com.br | MP proíbe operação das bets no Brasil e estabelece prazo para devolução de saldo | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | O GLOBO | MP do fim das bets dispensa governo de indenizar empresas; entenda | Relata o mesmo acontecimento [leitura: pagina] «Medida prevê extinção das autorizações sem devolução dos valores pagos pelas licenças; regra poderá ser questionada na Justiça ...»
+  mesmo_fato | ISTOÉ DINHEIRO | MP proíbe bets no Brasil e barra indenização a empresas | Relata o mesmo acontecimento [leitura: pagina] «Medida Provisória proíbe bets no Brasil, nega indenização a empresas e causa disputa judicial.»
+  mesmo_fato | conjur.com.br | Para especialistas, uso de MP para proibir bets fere a Constituição | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | Meio e Mensagem | Medida Provisória proíbe atuação das bets no Brasil | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | mattosfilho.com.br | Medida Provisória proíbe apostas de quota fixa no Brasil | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | BNLData | MP 1.394 proíbe publicidade de apostas de quota fixa no Brasil | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | portal.rbnfm.com.br | MP determina fim das bets no Brasil e estabelece prazo para retirada de dinheiro das plataformas | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  mesmo_fato | UOL | Alicia Klein: MP de Lula proibirá todas as bets no Brasil e deve ser assinada amanhã | Pelo título, relata o mesmo acontecimento [leitura: titulo]
+  indefinido | Diário do Centro do Mundo | A disputa por R$ 2,55 bilhões com o governo após fim das bets | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: trecho]
+  indefinido | Misturebas | MP contra bets é publicada e Pix registra queda de 10% nas transações | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: pagina]
+  indefinido | InfoMoney | Tem dinheiro em bets? Veja perguntas e respostas sobre a MP que proíbe apostas online | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: pagina]
+  indefinido | Senado Federal | Medida provisória que proíbe bets no país já está no Congresso Nacional | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: titulo]
+  indefinido | SBT News | MP das bets: Pix tem queda de 10% após medida | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: titulo]
+  indefinido | Meio e Mensagem | MP das bets divide reações no varejo | Trata do mesmo assunto, mas o que foi lido não diz o que aconteceu [leitura: titulo]
+  contexto | Jornal Grande Bahia | Presidente Lula proíbe bets nove dias antes do 1º turno; MP rompe regulação federal e abre disputa judicial po | Outra pessoa ou instituição fez algo parecido sobre o mesmo assunto [leitura: trecho]
+  contexto | CBN | Lula anuncia nesta sexta (25) MP para proibir operação de bets no Brasil | Outra etapa: fala de proposta ou anúncio, não da decisão [leitura: titulo]
+  contexto | UOL Economia | DOU extra traz MP do Desenrola 3.0 e MP que proíbe operação das bets no País | Mesmo envolvido, outra ação sobre o mesmo assunto [leitura: titulo]
+  contexto | Repórter PB | Bets começam a rescindir contratos com emissoras após MP que proíbe operações no Brasil | Outro fato sobre o mesmo assunto [leitura: titulo]
+  contexto | noveen.com.br | Lula assina MP que proíbe bets no Brasil e determina fim das plataformas em outubro | Outro fato sobre o mesmo assunto [leitura: titulo]
+  contexto | InfoMoney | Governo anuncia MP que proíbe bets no Brasil; veja o que muda | Outra etapa: fala de proposta ou anúncio, não da decisão [leitura: trecho]
+  contexto | Jetss on MSN | Bets avaliam ações pós-eleições e preveem atuação no Congresso para reverter MP de Lula | Outra etapa: fala de proposta ou anúncio, não da decisão [leitura: trecho]
+  contexto | TV Guararapes | Transações por Pix caem 10% após publicação de MP contra bets | Outro fato sobre o mesmo assunto [leitura: titulo]
+  contexto | Wikipédia | Medida Provisória n.º 1.394, de 25 de setembro de 2026 | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]
+  republicacao | Senado Federal | MP proíbe bets e determina encerramento das operações em 30 dias | Republicação da matéria importada [leitura: titulo]
+  republicacao | Jornal de Uberaba | MP proíbe bets e determina encerramento das operações em 30 dias | Republicação da matéria importada [leitura: trecho]

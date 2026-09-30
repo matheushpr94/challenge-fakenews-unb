@@ -1,0 +1,350 @@
+{
+ "image": "camara-bets-pl.png",
+ "width": 1080,
+ "height": 2400,
+ "blocks": [
+  {
+   "text": "MENU",
+   "box": [
+    78,
+    96,
+    143,
+    113
+   ],
+   "lines": [
+    {
+     "text": "MENU",
+     "box": [
+      78,
+      96,
+      143,
+      113
+     ],
+     "confidence": 0.8369140625
+    }
+   ]
+  },
+  {
+   "text": "XOANOS CÂMARA DOS",
+   "box": [
+    379,
+    40,
+    724,
+    89
+   ],
+   "lines": [
+    {
+     "text": "XOANOS CÂMARA DOS",
+     "box": [
+      379,
+      40,
+      724,
+      89
+     ],
+     "confidence": 0.6861979365348816
+    }
+   ]
+  },
+  {
+   "text": "Compartilhe",
+   "box": [
+    125,
+    451,
+    334,
+    500
+   ],
+   "lines": [
+    {
+     "text": "Compartilhe",
+     "box": [
+      125,
+      451,
+      334,
+      500
+     ],
+     "confidence": 0.8121448755264282
+    }
+   ]
+  },
+  {
+   "text": "DEPUTADOS",
+   "box": [
+    575,
+    77,
+    712,
+    92
+   ],
+   "lines": [
+    {
+     "text": "DEPUTADOS",
+     "box": [
+      575,
+      77,
+      712,
+      92
+     ],
+     "confidence": 0.8016493320465088
+    }
+   ]
+  },
+  {
+   "text": "AGÊNCIA CÂMARA DE\nNOTÍCIAS",
+   "box": [
+    179,
+    186,
+    896,
+    341
+   ],
+   "lines": [
+    {
+     "text": "AGÊNCIA CÂMARA DE",
+     "box": [
+      179,
+      191,
+      897,
+      255
+     ],
+     "confidence": 0.8270833492279053
+    },
+    {
+     "text": "NOTÍCIAS",
+     "box": [
+      384,
+      271,
+      696,
+      340
+     ],
+     "confidence": 0.7861328125
+    }
+   ]
+  },
+  {
+   "text": "SEGURANÇA",
+   "box": [
+    432,
+    572,
+    649,
+    611
+   ],
+   "lines": [
+    {
+     "text": "SEGURANÇA",
+     "box": [
+      432,
+      572,
+      649,
+      611
+     ],
+     "confidence": 0.8415798544883728
+    }
+   ]
+  },
+  {
+   "text": "Projeto de lei apresentado pelo\ngoverno torna crimea\nexploração e a publicidade de\nbets",
+   "box": [
+    23,
+    661,
+    999,
+    946
+   ],
+   "lines": [
+    {
+     "text": "Projeto de lei apresentado pelo",
+     "box": [
+      27,
+      668,
+      999,
+      737
+     ],
+     "confidence": 0.90625
+    },
+    {
+     "text": "governo torna crimea",
+     "box": [
+      47,
+      743,
+      711,
+      808
+     ],
+     "confidence": 0.8763020634651184
+    },
+    {
+     "text": "exploração e a publicidade de",
+     "box": [
+      49,
+      813,
+      948,
+      893
+     ],
+     "confidence": 0.8845312595367432
+    },
+    {
+     "text": "bets",
+     "box": [
+      25,
+      900,
+      154,
+      946
+     ],
+     "confidence": 0.896484375
+    }
+   ]
+  },
+  {
+   "text": "Proposta foi enviada pelo Poder Executivo após a\nedição de MP que proíbe as loterias de apostas de\nquota fixa no Brasil",
+   "box": [
+    22,
+    1007,
+    1001,
+    1187
+   ],
+   "lines": [
+    {
+     "text": "Proposta foi enviada pelo Poder Executivo após a",
+     "box": [
+      25,
+      1014,
+      981,
+      1060
+     ],
+     "confidence": 0.8883383870124817
+    },
+    {
+     "text": "edição de MP que proíbe as loterias de apostas de",
+     "box": [
+      23,
+      1081,
+      1001,
+      1123
+     ],
+     "confidence": 0.8690429925918579
+    },
+    {
+     "text": "quota fixa no Brasil",
+     "box": [
+      23,
+      1138,
+      393,
+      1187
+     ],
+     "confidence": 0.8671875
+    }
+   ]
+  },
+  {
+   "text": "Da Agência Câmara - 28\/09\/2026 - 18:47",
+   "box": [
+    25,
+    1271,
+    800,
+    1311
+   ],
+   "lines": [
+    {
+     "text": "Da Agência Câmara - 28\/09\/2026 - 18:47",
+     "box": [
+      25,
+      1271,
+      800,
+      1311
+     ],
+     "confidence": 0.8519287109375
+    }
+   ]
+  },
+  {
+   "text": "Comentário PropostaEnquete",
+   "box": [
+    116,
+    1449,
+    893,
+    1500
+   ],
+   "lines": [
+    {
+     "text": "Comentário PropostaEnquete",
+     "box": [
+      116,
+      1449,
+      893,
+      1500
+     ],
+     "confidence": 0.867968738079071
+    }
+   ]
+  },
+  {
+   "text": "MEDIDA PROVisÓRIA",
+   "box": [
+    305,
+    1658,
+    770,
+    1695
+   ],
+   "lines": [
+    {
+     "text": "MEDIDA PROVisÓRIA",
+     "box": [
+      305,
+      1658,
+      770,
+      1695
+     ],
+     "confidence": 0.72509765625
+    }
+   ]
+  },
+  {
+   "text": "BRASIL SEM BETS\nE DESENROLA 3.0",
+   "box": [
+    77,
+    1704,
+    999,
+    1867
+   ],
+   "lines": [
+    {
+     "text": "BRASIL SEM BETS",
+     "box": [
+      77,
+      1704,
+      994,
+      1775
+     ],
+     "confidence": 0.8494591116905212
+    },
+    {
+     "text": "E DESENROLA 3.0",
+     "box": [
+      132,
+      1783,
+      999,
+      1867
+     ],
+     "confidence": 0.7992788553237915
+    }
+   ]
+  },
+  {
+   "text": "Medida provisória que proíbe as bets foi editada na última",
+   "box": [
+    25,
+    2352,
+    1017,
+    2390
+   ],
+   "lines": [
+    {
+     "text": "Medida provisória que proíbe as bets foi editada na última",
+     "box": [
+      25,
+      2352,
+      1017,
+      2390
+     ],
+     "confidence": 0.8690210580825806
+    }
+   ]
+  }
+ ]
+}

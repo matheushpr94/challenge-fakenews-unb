@@ -1,0 +1,276 @@
+{
+ "image": "uol-flamengo-stf.png",
+ "width": 586,
+ "height": 538,
+ "blocks": [
+  {
+   "text": "Futebol",
+   "box": [
+    35,
+    21,
+    76,
+    30
+   ],
+   "lines": [
+    {
+     "text": "Futebol",
+     "box": [
+      35,
+      21,
+      76,
+      30
+     ],
+     "confidence": 0.8459821343421936
+    }
+   ]
+  },
+  {
+   "text": "Flamengo aciona STF e reforça\nação das bets contra proibição",
+   "box": [
+    37,
+    45,
+    509,
+    120
+   ],
+   "lines": [
+    {
+     "text": "Flamengo aciona STF e reforça",
+     "box": [
+      38,
+      45,
+      509,
+      75
+     ],
+     "confidence": 0.883593738079071
+    },
+    {
+     "text": "ação das bets contra proibição",
+     "box": [
+      37,
+      90,
+      506,
+      120
+     ],
+     "confidence": 0.8734976053237915
+    }
+   ]
+  },
+  {
+   "text": "do governo",
+   "box": [
+    36,
+    136,
+    208,
+    165
+   ],
+   "lines": [
+    {
+     "text": "do governo",
+     "box": [
+      36,
+      136,
+      208,
+      165
+     ],
+     "confidence": 0.8849826455116272
+    }
+   ]
+  },
+  {
+   "text": "lgor Siqueira Do UOL, no Rio de Janeiro\n29\/09\/2026 22h03",
+   "box": [
+    36,
+    188,
+    249,
+    216
+   ],
+   "lines": [
+    {
+     "text": "lgor Siqueira Do UOL, no Rio de Janeiro",
+     "box": [
+      36,
+      188,
+      249,
+      198
+     ],
+     "confidence": 0.7822265625
+    },
+    {
+     "text": "29\/09\/2026 22h03",
+     "box": [
+      36,
+      208,
+      125,
+      216
+     ],
+     "confidence": 0.8283854126930237
+    }
+   ]
+  },
+  {
+   "text": "Resumo",
+   "box": [
+    69,
+    251,
+    110,
+    262
+   ],
+   "lines": [
+    {
+     "text": "Resumo",
+     "box": [
+      69,
+      251,
+      110,
+      262
+     ],
+     "confidence": 0.8294270634651184
+    }
+   ]
+  },
+  {
+   "text": "O Flamengo engrossou o coro\ndas casas de apostas e\ningressou no Supremo Tribunal\nFederal para reforçar a tentativa\nde derrubar o veto às bets.",
+   "box": [
+    36,
+    308,
+    263,
+    421
+   ],
+   "lines": [
+    {
+     "text": "O Flamengo engrossou o coro",
+     "box": [
+      36,
+      308,
+      251,
+      322
+     ],
+     "confidence": 0.8045176863670349
+    },
+    {
+     "text": "das casas de apostas e",
+     "box": [
+      36,
+      334,
+      203,
+      348
+     ],
+     "confidence": 0.908203125
+    },
+    {
+     "text": "ingressou no Supremo Tribunal",
+     "box": [
+      36,
+      359,
+      257,
+      373
+     ],
+     "confidence": 0.8204627633094788
+    },
+    {
+     "text": "Federal para reforçar a tentativa",
+     "box": [
+      37,
+      385,
+      263,
+      400
+     ],
+     "confidence": 0.8719019293785095
+    },
+    {
+     "text": "de derrubar o veto às bets.",
+     "box": [
+      36,
+      410,
+      225,
+      421
+     ],
+     "confidence": 0.8599076867103577
+    }
+   ]
+  },
+  {
+   "text": "O clube carioca entrou com\npetição hoje à noite para ser\namigo da corte em pelo menos",
+   "box": [
+    36,
+    468,
+    255,
+    533
+   ],
+   "lines": [
+    {
+     "text": "O clube carioca entrou com",
+     "box": [
+      36,
+      468,
+      230,
+      479
+     ],
+     "confidence": 0.8664772510528564
+    },
+    {
+     "text": "petição hoje à noite para ser",
+     "box": [
+      37,
+      493,
+      237,
+      509
+     ],
+     "confidence": 0.80419921875
+    },
+    {
+     "text": "amigo da corte em pelo menos",
+     "box": [
+      36,
+      519,
+      255,
+      533
+     ],
+     "confidence": 0.9013247489929199
+    }
+   ]
+  },
+  {
+   "text": "O Ouvir",
+   "box": [
+    302,
+    247,
+    354,
+    266
+   ],
+   "lines": [
+    {
+     "text": "O Ouvir",
+     "box": [
+      302,
+      247,
+      354,
+      266
+     ],
+     "confidence": 0.5592448115348816
+    }
+   ]
+  },
+  {
+   "text": "1x",
+   "box": [
+    523,
+    255,
+    533,
+    262
+   ],
+   "lines": [
+    {
+     "text": "1x",
+     "box": [
+      523,
+      255,
+      533,
+      262
+     ],
+     "confidence": 0.48046875
+    }
+   ]
+  }
+ ]
+}

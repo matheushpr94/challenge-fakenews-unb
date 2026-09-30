@@ -1,0 +1,8 @@
+# Copie as linhas desejadas para local.properties (não versionado). O Android Studio grava sdk.dir sozinho.
+# sdk.dir=/Users/SEU_USUARIO/Library/Android/sdk            (macOS)
+# sdk.dir=C\:\Users\SEU_USUARIO\AppData\Local\Android\Sdk (Windows)
+
+# Endereço do Ollama visto pelo app. Padrão: 127.0.0.1 via `adb reverse tcp:11434 tcp:11434`.
+# Alternativa no emulador sem adb reverse: http://10.0.2.2:11434 (o Ollama precisa escutar em 0.0.0.0 ou 127.0.0.1 do host).
+lume.ollama.url=http://127.0.0.1:11434
+lume.ollama.embedModel=paraphrase-multilingual

@@ -1,0 +1,164 @@
+CAPTURA: estadao-flamengo-stf | AFIRMAÇÃO: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil
+esclarecimento: escolher=false opções=[] motivo=intenção clara para as regras
+modo=unica status=ok
+--- parte: Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil
+tipo=acontecimento entidades=[STF, Brasil] termos=[flamengo, primeiro, clube, entrar, pedido, apostas] numeros=[]
+partes=[] tópicos=[clube, flamengo, e, o, primeiro, a, entrar, com, pedido, no, stf, contra, fim, da, casa, de, aposta, brasil]
+siglas={} variações=[] prazos=[] etapa=null dataRef=null
+consultas=[especifica: STF Brasil flamengo primeiro clube apostas, acontecimento: STF flamengo primeiro apostas, ampliada: STF Brasil flamengo]
+status=ok síntese=sem_comparacao descartados=45 1862 ms semântica=false
+  seção responde: 0 -> []
+  seção direto: 3 -> [Estadão, O GLOBO, Gazeta Brasil]
+  seção anterior: 0 -> []
+  seção contexto: 8 -> [O TEMPO, O GLOBO, migalhas.com.br, Metrópoles, pt.wikipedia.org, UOL, Gazeta Botafogo, CNN Brasil]
+  seção contexto_geral: 2 -> [Wikipédia, Wikipédia]
+CONSULTAS (8)
+  [google_news] 'STF Brasil flamengo primeiro clube apostas' -> ok 20
+  [bing_news] 'STF Brasil flamengo primeiro clube apostas' -> ok 4
+  [google_news] 'STF flamengo primeiro apostas' -> ok 20
+  [bing_news] 'STF flamengo primeiro apostas' -> ok 2
+  [google_news] 'STF Brasil flamengo' -> ok 20
+  [bing_web] 'STF Brasil flamengo primeiro clube apostas' -> ok 10
+  [wikipedia] 'STF flamengo primeiro' -> ok 3
+  [wikipedia] 'STF' -> ok 3
+TRIAGEM (82)
+  direto | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Trata do mesmo acontecimento
+  direto | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Trata do mesmo acontecimento
+  contexto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | G1 | Antes de reunião com clubes, Lula diz que acabar com bets não traz 'prejuízo para o futebol' | poucos detalhes em comum (entidades 0/2, termos 1/5)
+  descartado | Impactto News | Entidades de apostas contestam no STF medida que suspendeu bets no Brasil | apenas o nome coincide; outro assunto
+  descartado | ge | Fim das bets: reunião de clubes com ministros é adiada para depois do primeiro turno das eleições | poucos detalhes em comum (entidades 0/2, termos 2/5)
+  descartado | avozdocampo.com | Ministério do Esporte cancela reunião com clubes e federações para tratar sobre proibição das bets | poucos detalhes em comum (entidades 0/2, termos 1/5)
+  descartado | Terra | Bap, presidente do Flamengo, pede que MP da proibição das bets seja rejeitada pelo Congresso | poucos detalhes em comum (entidades 0/2, termos 1/5)
+  descartado | Impactto News | Clubes paulistas discutem atuação conjunta após veto às casas de apostas | poucos detalhes em comum (entidades 0/2, termos 1/5)
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | instagram.com | ZENIT QUER 35 MILHÕES DE EUROS POR LUIZ HENRIQUE E JORNALISTA ACREDITA QUE NENHUM CLUBE BRASILEIRO TEM ESSA GR | poucos detalhes em comum (entidades 0/2, termos 1/5)
+  contexto | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Impactto News | Cruzeiro empata com o Flamengo no primeiro jogo das oitavas de final | Mesmo tema, sem citar STF, Brasil
+  descartado | exame.com | 'Como vou pagar o Paquetá?': Bap critica proibição de bets e aponta impacto de R$ 400 mi no Fla | poucos detalhes em comum (entidades 0/2, termos 0/5)
+  descartado | CNN Brasil | Sport reage a parecer da PGR sobre título do Campeonato Brasileiro de 1987 | poucos detalhes em comum (entidades 0/2, termos 0/5)
+  contexto | Estadão | Corinthians e Flamengo veem patrocínios de bets em xeque após veto do STF | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | ge | Forçar cartão amarelo é manipulação? Debate chega ao STF, e especialistas veem riscos | apenas o nome coincide; outro assunto
+  descartado | ge | Defesa de Bruno Henrique contesta acusação por estelionato e pede julgamento de STJ e STF | apenas o nome coincide; outro assunto
+  contexto | ge | STF decide que forçar cartão a pedido de apostadores não basta para manipular evento esportivo | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | ge | STF proíbe patrocinadoras de Corinthians e Flamengo de operar nacionalmente | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Trata do mesmo acontecimento
+  descartado | Gazeta Brasil | “Hoje sou Flávio Bolsonaro 22”: torcedores do Flamengo reagem à MP das bets | poucos detalhes em comum (entidades 0/2, termos 1/5)
+  contexto | O TEMPO | Flamengo, Fluminense e Grêmio se manifestam sobre proibição das bets no Brasil | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Gazeta Brasil | “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Trata do mesmo acontecimento
+  direto | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Trata do mesmo acontecimento
+  contexto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | ge | Associações de apostas alegam inconstitucionalidade e pedem derrubada de MP no STF | apenas o nome coincide; outro assunto
+  descartado | R7 | Setor de apostas pede ao STF para suspender MP que proíbe bets no Brasil | apenas o nome coincide; outro assunto
+  descartado | Paranaíba Mais | Bets: setor pede ao STF suspensão da MP e AGU prepara ofensiva | apenas o nome coincide; outro assunto
+  descartado | Sem Pauta News | Bets recorrem ao STF contra MP de Lula que proibiu apostas no País | apenas o nome coincide; outro assunto
+  descartado | G1 | Entidades que representam bets pedem ao STF suspensão da MP de Lula que proíbe apostas online | apenas o nome coincide; outro assunto
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | ge | Defesa de Bruno Henrique contesta acusação por estelionato e pede julgamento de STJ e STF | apenas o nome coincide; outro assunto
+  descartado | Agência Brasil | Justiça torna Bruno Henrique réu por estelionato | poucos detalhes em comum (entidades 0/2, termos 0/5)
+  contexto | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | GZH | O contra-ataque das bets no STF e como ficará a camisa do Grêmio no próximo jogo | apenas o nome coincide; outro assunto
+  descartado | Consultor Jurídico | Forçar cartão amarelo não é conduta passível de punição na esfera penal | poucos detalhes em comum (entidades 0/2, termos 0/5)
+  descartado | Estadão | Bruno Henrique vira réu por estelionato na Justiça do DF após recurso do MP | poucos detalhes em comum (entidades 0/2, termos 0/5)
+  contexto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | O GLOBO | Empresas de apostas vivem cenário de incerteza enquanto aguardam STF | apenas o nome coincide; outro assunto
+  contexto | ge | STF decide que forçar cartão a pedido de apostadores não basta para manipular evento esportivo | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | ge | Forçar cartão amarelo é manipulação? Debate chega ao STF, e especialistas veem riscos | apenas o nome coincide; outro assunto
+  descartado | CNN Brasil | Sport reage a parecer da PGR sobre título do Campeonato Brasileiro de 1987 | poucos detalhes em comum (entidades 0/2, termos 0/5)
+  direto | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Trata do mesmo acontecimento
+  contexto | O GLOBO | Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites ilegais desde proibiç | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Trata do mesmo acontecimento
+  contexto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  direto | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Trata do mesmo acontecimento
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | stf noticias | 135 anos do STF: como a Corte resolveu disputas jurídicas do futebol | apenas o nome coincide; outro assunto
+  descartado | Metrópoles | STF supera futebol em buscas no Google durante julgamento de Moraes | apenas o nome coincide; outro assunto
+  contexto | Gazeta de São Paulo | STF tem torcedores de Flamengo, Palmeiras e Corinthians, mas estes não são maioria; veja lista completa dos ti | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Francês News | Julgamento de Moraes faz buscas por STF superarem Flamengo no Google | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | Agência Brasil | PGR defende que Flamengo e Sport sejam campeões do Brasileiro de 1987 | poucos detalhes em comum (entidades 0/2, termos 1/5)
+  contexto | migalhas.com.br | No STF, PGR defende pedido do Flamengo como campeão brasileiro de 1987 | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | stf noticias | STF mantém ação penal contra ex-diretor do Flamengo por incêndio no Ninho do Urubu | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | CNN Brasil | Sport reage a parecer da PGR sobre título do Campeonato Brasileiro de 1987 | poucos detalhes em comum (entidades 0/2, termos 0/5)
+  contexto | Agência Brasil | STF nega recurso do Flamengo e mantém Sport campeão brasileiro de 87 | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Estadão | Ministros do STF, de Lula e parlamentares acompanham Supercopa; Flamengo se aproxima do Congresso | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | migalhas.com.br | Futebol: Saiba para quais times torcem os ministros do STF | apenas o nome coincide; outro assunto
+  contexto | Metrópoles | Ministros do STF vão à final da Supercopa entre Flamengo e Corinthians | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | CNN Brasil | Moraes e Padilha acompanham título do Corinthians contra Flamengo | poucos detalhes em comum (entidades 0/2, termos 1/5)
+  descartado | Agência Brasil | STF acompanha operação no RJ com “atenção e solidariedade”, diz Fachin | apenas o nome coincide; outro assunto
+  descartado | portal.stf.jus.br | Página Principal | Portal STF | apenas o nome coincide; outro assunto
+  descartado | portal.stf.jus.br | Supremo Tribunal Federal | apenas o nome coincide; outro assunto
+  contexto | pt.wikipedia.org | Supremo Tribunal Federal – Wikipédia, a enciclopédia livre | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  descartado | g1.globo.com | STF - Supremo Tribunal Federal | Tudo Sobre | G1 | apenas o nome coincide; outro assunto
+  descartado | stf.jus.br | Supremo Tribunal Federal - stf.jus.br | apenas o nome coincide; outro assunto
+  descartado | cnnbrasil.com.br | STF | CNN Brasil | apenas o nome coincide; outro assunto
+  descartado | noticias.stf.jus.br | Supremo Tribunal Federal | apenas o nome coincide; outro assunto
+  descartado | constituicao.stf.jus.br | STF - Constituição Federal do Brasil | apenas o nome coincide; outro assunto
+  descartado | cms.stf.jus.br | Consulta processual - cms.stf.jus.br | apenas o nome coincide; outro assunto
+  descartado | veja.abril.com.br | Notícias sobre Supremo Tribunal Federal – STF - VEJA | apenas o nome coincide; outro assunto
+  contexto | Wikipédia | Clube de Regatas do Flamengo | Contexto geral (enciclopédia)
+  contexto | Wikipédia | Títulos do Clube de Regatas do Flamengo no futebol | Contexto geral (enciclopédia)
+  descartado | Wikipédia | Campeonato Brasileiro de Futebol de 2026 - Série A | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Lista de presidentes do Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+  descartado | Wikipédia | Lista de ministros do Supremo Tribunal Federal | enciclopédia sobre nome ou assunto genérico, sem o acontecimento pesquisado
+DUPLICATA (12)
+  removida | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesma URL já recebida de bing_news
+  removida | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesma URL já recebida de google_news
+  removida | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesma URL já recebida de google_news
+  removida | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesma URL já recebida de google_news
+  removida | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | mesma URL já recebida de google_news
+  removida | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | mesma URL já recebida de google_news
+  removida | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesma URL já recebida de google_news
+  removida | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | mesma URL já recebida de google_news
+  removida | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | mesma URL já recebida de google_news
+  removida | ge | STF decide que forçar cartão a pedido de apostadores não basta para manipular evento esportivo | mesma URL já recebida de google_news
+  removida | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | mesma URL já recebida de google_news
+  removida | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | mesma URL já recebida de google_news
+REPUBLICACAO (2)
+  agrupada | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | título/trecho quase igual a Estadão
+  agrupada | Terra | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | título/trecho quase igual a Estadão
+RELEITURA (2)
+  direto | Gazeta Brasil | “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil | página lida: Trata do mesmo acontecimento
+  direto | O GLOBO | Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites ilegais desde proibiç | página lida: Trata do mesmo acontecimento
+LIMITE (10)
+  contexto | Estadão | Corinthians e Flamengo veem patrocínios de bets em xeque após veto do STF | acima do limite de 8 na seção
+  contexto | ge | STF decide que forçar cartão a pedido de apostadores não basta para manipular evento esportivo | acima do limite de 8 na seção
+  contexto | ge | STF proíbe patrocinadoras de Corinthians e Flamengo de operar nacionalmente | acima do limite de 8 na seção
+  contexto | O GLOBO | Clubes já articulam ação conjunta no STF pedindo fim da MP que proibiu bets | acima do limite de 8 na seção
+  contexto | Gazeta de São Paulo | STF tem torcedores de Flamengo, Palmeiras e Corinthians, mas estes não são maioria; veja lista completa dos ti | acima do limite de 8 na seção
+  contexto | Francês News | Julgamento de Moraes faz buscas por STF superarem Flamengo no Google | acima do limite de 8 na seção
+  contexto | stf noticias | STF mantém ação penal contra ex-diretor do Flamengo por incêndio no Ninho do Urubu | acima do limite de 8 na seção
+  contexto | Agência Brasil | STF nega recurso do Flamengo e mantém Sport campeão brasileiro de 87 | acima do limite de 8 na seção
+  contexto | Estadão | Ministros do STF, de Lula e parlamentares acompanham Supercopa; Flamengo se aproxima do Congresso | acima do limite de 8 na seção
+  contexto | Impactto News | Cruzeiro empata com o Flamengo no primeiro jogo das oitavas de final | acima do limite de 8 na seção
+EXIBIDA (13)
+  direto | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Trata do mesmo acontecimento
+  direto | O GLOBO | Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites ilegais desde proibiç | Trata do mesmo acontecimento
+  direto | Gazeta Brasil | “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil | Trata do mesmo acontecimento
+  contexto | O TEMPO | Flamengo, Fluminense e Grêmio se manifestam sobre proibição das bets no Brasil | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | migalhas.com.br | No STF, PGR defende pedido do Flamengo como campeão brasileiro de 1987 | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Metrópoles | Ministros do STF vão à final da Supercopa entre Flamengo e Corinthians | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | pt.wikipedia.org | Supremo Tribunal Federal – Wikipédia, a enciclopédia livre | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Mesma pessoa/instituição, outro aspecto ou só parte do acontecimento
+  contexto_geral | Wikipédia | Títulos do Clube de Regatas do Flamengo no futebol | Contexto geral (enciclopédia)
+  contexto_geral | Wikipédia | Clube de Regatas do Flamengo | Contexto geral (enciclopédia)
+RELACAO (13)
+  mesmo_fato | Estadão | Flamengo é o primeiro clube a entrar com pedido no STF contra fim das casas de apostas no Brasil | Relata o mesmo acontecimento [leitura: pagina]
+  mesmo_fato | O GLOBO | Bets entram com nova ação no STF, pedem relatoria de Fux e dizem ter detectado 833 sites ilegais desde proibiç | Relata o mesmo acontecimento [leitura: pagina] «28/09/2026 16h20 Atualizado 28/09/2026 20h25 Entidades que representam empresas de apostas entraram com uma nova ação no Supremo Tribunal Fe»
+  mesmo_fato | Gazeta Brasil | “Proibir não acaba com o jogo”: Flamengo se posiciona contra restrições a bets no Brasil | Relata o mesmo acontecimento [leitura: pagina] «Levantamento da Sports Value mostra que o Flamengo recebeu R$ 269 milhões em patrocínios de bets em 2025, o maior valor entre os clubes deta»
+  contexto | O TEMPO | Flamengo, Fluminense e Grêmio se manifestam sobre proibição das bets no Brasil | Trata do tema, mas não confirma o detalhe pesquisado [leitura: pagina]
+  contexto | O GLOBO | Flamengo se antecipa a clubes e pede ingresso em ação no STF contra fim das bets | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | migalhas.com.br | No STF, PGR defende pedido do Flamengo como campeão brasileiro de 1987 | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Metrópoles | Ministros do STF vão à final da Supercopa entre Flamengo e Corinthians | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | pt.wikipedia.org | Supremo Tribunal Federal – Wikipédia, a enciclopédia livre | Trata do tema, mas não confirma o detalhe pesquisado [leitura: pagina]
+  contexto | UOL | Flamengo aciona STF e reforça ação das bets contra proibição do governo | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Gazeta Botafogo | Quarta derrota de Lula? Botafogo, Flamengo, Fluminense, Vasco, Corinthians, Santos, São Paulo, Palmeiras e Cru | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | CNN Brasil | PGR defende no STF que Flamengo e Sport dividam título brasileiro de 1987 | Trata do tema, mas não confirma o detalhe pesquisado [leitura: titulo]
+  contexto | Wikipédia | Títulos do Clube de Regatas do Flamengo no futebol | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]
+  contexto | Wikipédia | Clube de Regatas do Flamengo | Trata do tema, mas não confirma o detalhe pesquisado [leitura: trecho]

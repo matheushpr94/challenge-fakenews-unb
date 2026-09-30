@@ -1,0 +1,317 @@
+{
+ "image": "g1-inadimplencia-corpo.png",
+ "width": 1080,
+ "height": 2400,
+ "blocks": [
+  {
+   "text": "agosto",
+   "box": [
+    56,
+    36,
+    281,
+    102
+   ],
+   "lines": [
+    {
+     "text": "agosto",
+     "box": [
+      56,
+      36,
+      281,
+      102
+     ],
+     "confidence": 0.908203125
+    }
+   ]
+  },
+  {
+   "text": "De janeiro a agosto deste ano, os bancos liberaram R$\n311 bilhões por meio dessa linha de crédito, se\naproximando dos R$ 400 bilhões desembolsados em\n2025 (0 maior dos últimos anos). Juro do cartão de\ncrédito rotativo somou 445% ao ano no mês passado.",
+   "box": [
+    54,
+    143,
+    1023,
+    411
+   ],
+   "lines": [
+    {
+     "text": "De janeiro a agosto deste ano, os bancos liberaram R$",
+     "box": [
+      56,
+      143,
+      1023,
+      182
+     ],
+     "confidence": 0.865234375
+    },
+    {
+     "text": "311 bilhões por meio dessa linha de crédito, se",
+     "box": [
+      54,
+      198,
+      891,
+      236
+     ],
+     "confidence": 0.858473539352417
+    },
+    {
+     "text": "aproximando dos R$ 400 bilhões desembolsados em",
+     "box": [
+      54,
+      259,
+      999,
+      298
+     ],
+     "confidence": 0.839557945728302
+    },
+    {
+     "text": "2025 (0 maior dos últimos anos). Juro do cartão de",
+     "box": [
+      54,
+      316,
+      956,
+      353
+     ],
+     "confidence": 0.8585175275802612
+    },
+    {
+     "text": "crédito rotativo somou 445% ao ano no mês passado.",
+     "box": [
+      55,
+      373,
+      1011,
+      411
+     ],
+     "confidence": 0.8664434552192688
+    }
+   ]
+  },
+  {
+   "text": "Por Alexandro Martello, g1 - Brasília\n29\/09\/2026 08h40 Atualizado há 7 horas",
+   "box": [
+    54,
+    485,
+    687,
+    573
+   ],
+   "lines": [
+    {
+     "text": "Por Alexandro Martello, g1 - Brasília",
+     "box": [
+      56,
+      485,
+      687,
+      517
+     ],
+     "confidence": 0.8367919921875
+    },
+    {
+     "text": "29\/09\/2026 08h40 Atualizado há 7 horas",
+     "box": [
+      54,
+      542,
+      659,
+      573
+     ],
+     "confidence": 0.8797348737716675
+    }
+   ]
+  },
+  {
+   "text": "CONTINUA DEPOIS DA PUBLICIDADE",
+   "box": [
+    263,
+    909,
+    814,
+    929
+   ],
+   "lines": [
+    {
+     "text": "CONTINUA DEPOIS DA PUBLICIDADE",
+     "box": [
+      263,
+      909,
+      814,
+      929
+     ],
+     "confidence": 0.7837094664573669
+    }
+   ]
+  },
+  {
+   "text": "itaú",
+   "box": [
+    787,
+    1053,
+    846,
+    1089
+   ],
+   "lines": [
+    {
+     "text": "itaú",
+     "box": [
+      787,
+      1053,
+      846,
+      1089
+     ],
+     "confidence": 0.6005859375
+    }
+   ]
+  },
+  {
+   "text": "Personnalitë",
+   "box": [
+    732,
+    1125,
+    903,
+    1148
+   ],
+   "lines": [
+    {
+     "text": "Personnalitë",
+     "box": [
+      732,
+      1125,
+      903,
+      1148
+     ],
+     "confidence": 0.8050130009651184
+    }
+   ]
+  },
+  {
+   "text": "Pra todoS\nOS seus feitos.",
+   "box": [
+    620,
+    1222,
+    894,
+    1346
+   ],
+   "lines": [
+    {
+     "text": "Pra todoS",
+     "box": [
+      620,
+      1224,
+      805,
+      1277
+     ],
+     "confidence": 0.85107421875
+    },
+    {
+     "text": "OS seus feitos.",
+     "box": [
+      621,
+      1286,
+      894,
+      1346
+     ],
+     "confidence": 0.7250601053237915
+    }
+   ]
+  },
+  {
+   "text": "Abra sua conta.",
+   "box": [
+    603,
+    1372,
+    792,
+    1394
+   ],
+   "lines": [
+    {
+     "text": "Abra sua conta.",
+     "box": [
+      603,
+      1372,
+      792,
+      1394
+     ],
+     "confidence": 0.862379789352417
+    }
+   ]
+  },
+  {
+   "text": "A taxa de inadimplência média total\nregistrada pelos bancos nas operações de\ncrédito subiu de 4,9% para 5% de julho\npara agosto, informou nesta terça-feira (29)\no Banco Central (BC).",
+   "box": [
+    53,
+    1895,
+    999,
+    2237
+   ],
+   "lines": [
+    {
+     "text": "A taxa de inadimplência média total",
+     "box": [
+      53,
+      1895,
+      874,
+      1946
+     ],
+     "confidence": 0.8915364742279053
+    },
+    {
+     "text": "registrada pelos bancos nas operações de",
+     "box": [
+      56,
+      1973,
+      999,
+      2020
+     ],
+     "confidence": 0.8814732432365417
+    },
+    {
+     "text": "crédito subiu de 4,9% para 5% de julho",
+     "box": [
+      71,
+      2042,
+      930,
+      2095
+     ],
+     "confidence": 0.8802923560142517
+    },
+    {
+     "text": "para agosto, informou nesta terça-feira (29)",
+     "box": [
+      56,
+      2120,
+      992,
+      2167
+     ],
+     "confidence": 0.8880208134651184
+    },
+    {
+     "text": "o Banco Central (BC).",
+     "box": [
+      55,
+      2194,
+      496,
+      2237
+     ],
+     "confidence": 0.8624131679534912
+    }
+   ]
+  },
+  {
+   "text": "O valor atingiu, assim, o maior patamar",
+   "box": [
+    88,
+    2339,
+    892,
+    2388
+   ],
+   "lines": [
+    {
+     "text": "O valor atingiu, assim, o maior patamar",
+     "box": [
+      88,
+      2339,
+      892,
+      2388
+     ],
+     "confidence": 0.8499053120613098
+    }
+   ]
+  }
+ ]
+}

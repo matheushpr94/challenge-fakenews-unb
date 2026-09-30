@@ -1,100 +1,55 @@
-# Lume — protótipo Android de OCR e pesquisa (0.1)
+# Lume para Android — pesquisa de fontes sem classificador de veracidade
 
-**Protótipo experimental separado do produto oficial em `lume/android/`.** Esta pasta contém uma cópia completa das fontes do projeto LumeOCRTest de 28/09/2026, para continuar o desenvolvimento em outro computador. Não substitui a demo oficial nem os experimentos do challenge.
+Este é o aplicativo Android nativo que pode ser demonstrado enquanto o classificador do projeto é treinado. Ele **não calcula uma chance de a notícia ser falsa ou verdadeira**. A tela mostra fontes consultadas, trechos, diferenças de contexto e o que não foi possível esclarecer.
 
-## O que já funciona
+## Fluxos disponíveis
 
-- Interface nativa em Kotlin/Jetpack Compose, com identidade visual verde e creme.
-- Personagem original na tela inicial; gotinha flutuante com permissão explícita, arraste, encaixe na borda, painel e desativação.
-- “Simular captura”: escolher um print → ML Kit OCR no aparelho → limpeza de texto e extração de metadados → pesquisa.
-- Entrada de texto ou link; links públicos acessíveis fornecem título/descrição para orientar a pesquisa.
-- Pesquisa nativa de fontes públicas, leitura de páginas acessíveis, contexto e agrupamento de republicações.
-- Apresentação integrada dos detalhes; publicações apenas relacionadas ficam recolhidas.
-- Animações suaves, preferências locais e preservação da sessão ao girar a tela.
+- Colar texto ou link, receber texto/imagem por compartilhamento ou pelo menu de seleção de texto do Android.
+- Importar uma imagem e aplicar OCR local com revisão do texto.
+- Ler a captura por papéis (`ocr/ArticleReader.kt`): título, subtítulo, assinatura/data, corpo, legenda, crédito de imagem, texto dentro de imagem, coluna lateral, cabeçalho, anúncio e recomendações — cada bloco com o motivo. Veículo, autoria (pessoa ou assinatura institucional, como "Publicado por Agência Senado") e data aparecem com a linha da imagem que os sustenta; o que não aparece fica "não identificado na imagem". Crédito de foto nunca vira autor.
+- Mostrar a afirmação que será pesquisada, com edição e frases alternativas da matéria. Sem título completo (recorte, título cortado ou pergunta), o app pede que a pessoa escolha a frase em vez de completar por suposição.
+- Tocar em **Ler esta tela**, autorizar a captura do Android para aquela sessão e revisar a imagem/texto antes de pesquisar. A gotinha flutuante é opcional e oferece a mesma ação.
+- Pesquisar em Google Notícias RSS, Bing RSS e Wikipédia com consultas complementares (específica, acontecimento, variação de redação tirada do próprio texto da matéria — ex.: sigla por extenso —, detalhe e partes da frase), ler páginas públicas e comparar cada fonte com a matéria importada pela **estrutura do fato** (`research/EventFrame.kt`): quem agiu e em que papel, qual ação e em que etapa (pedido, proposta, decisão, vigência, revogação…), sobre o quê, quando (data do fato ≠ data de publicação), números, prazos, negação e, em indicadores, a origem do dado. Cada fonte recebe uma relação — **mesmo acontecimento**, **mesmo acontecimento com detalhe divergente**, **contexto relacionado**, **relação incerta** ou **outro acontecimento** (fica de fora, com o motivo em "Como a pesquisa foi feita") — com os trechos literais comparados ("Por que esta relação?") e se o Lume leu a página, só o resumo do buscador ou só o título.
+- A notícia importada não conta como fonte dela mesma (`research/Independence.kt`): a própria matéria (mesmo endereço, ou mesmo veículo e título), outras matérias do mesmo veículo e republicações (título idêntico em outro veículo, ou crédito explícito) aparecem em "Não contam como fontes independentes".
+- Comparação de sentido opcional com o modelo multilíngue gratuito `paraphrase-multilingual` no Ollama local (computador conectado). Ela só ordena as fontes para leitura e ajuda a ver se o **assunto** é o mesmo quando quem agiu e a ação já coincidem pelo texto; nunca cria agente, ação, data ou trecho e não decide sozinha. Sem ela, a comparação estruturada continua funcionando (mesmo resultado na busca real do UOL, em cerca de 2 s).
+- Salvar rascunho e pesquisas no próprio aparelho, reabrir resultados em **Ajustes** e apagar o histórico. Imagens e texto bruto de OCR não entram no histórico.
 
-**Não há captura automática da tela nem integração com um modelo de veracidade.** As comparações usam as regras já existentes; muitos casos ficam inconclusivos. Ausência de fontes não prova falsidade. O fluxo principal não precisa de servidor no Mac, Docker, chave de API nem serviço pago; exige internet para pesquisar.
+As buscas públicas não exigem chave nem API paga. O Ollama roda no computador; por isso a comparação de sentido na demonstração depende de o computador estar ligado e conectado por ADB. O app funciona sem ela. O classificador do colega permanece separado.
 
-## Abrir em casa — caminho mais simples
+## Abrir e executar
 
-1. No GitHub, use **Code → Download ZIP** e extraia o repositório. Também pode usar Git:
+**Preparar Windows ou macOS (SDK, Ollama, modelo, emulador, testes): veja [`SETUP.md`](SETUP.md).** Modelos: `setup/ollama-models.txt`; configuração local: `local.properties.example`; scripts: `start-lume-local-ai.ps1` (Windows) e `setup/start-lume-local-ai.sh` (macOS/Linux).
 
-   ```bash
-   git clone https://github.com/matheushpr94/challenge-fakenews-unb.git
-   ```
+Abra **esta pasta** (`lume/prototypes/ocr-native-android`) no Android Studio, sincronize o Gradle, selecione o emulador ou aparelho e clique em **Run**. O projeto usa Android API 24 como mínimo e compileSdk 37. O APK de debug é gerado em `app/build/outputs/apk/debug/app-debug.apk`.
 
-2. Instale/abra o **Android Studio** e escolha **Open**.
-3. Selecione a pasta **`lume/prototypes/ocr-native-android`**, onde estão `settings.gradle.kts`, `gradlew` e `app/`. Não abra a raiz do repositório como projeto Android.
-4. Aguarde a sincronização do Gradle e aceite os downloads necessários do SDK/JDK pelo Android Studio.
-5. Em **SDK Manager**, instale **Android SDK Platform 37**, ferramentas de build solicitadas e Platform Tools. O projeto mantém exatamente a configuração usada no Mac: AGP 9.4.1, Gradle 9.6.0 e daemon JDK 25. Se a sua versão do Android Studio não suportar essa configuração, atualize-a antes de sincronizar; não altere versões aleatoriamente.
-6. Em **Gradle JDK**, use JDK 25. `gradle/gradle-daemon-jvm.properties` também contém a configuração de provisionamento automático do JDK para macOS, Windows e Linux.
-7. Crie um emulador ou conecte um aparelho Android 7/API 24 ou superior, com depuração USB, e clique em **Run**.
-8. Toque em **Simular captura** e escolha um print para testar; ou **Colar texto ou link**. Ativar a gotinha exige a autorização de sobreposição do Android. Ela abre as opções de análise, sem ler outros apps automaticamente.
+No Windows, com Ollama instalado, execute `start-lume-local-ai.ps1` no PowerShell antes da demonstração. O script verifica/baixa o modelo gratuito `paraphrase-multilingual` (aprox. 560 MB) e cria a ponte ADB local. Repita o script após reiniciar o emulador ou desconectar o cabo USB. A aplicação Ollama deve continuar aberta enquanto o Lume pesquisa.
 
-O Android Studio cria `local.properties` com o SDK do seu computador. Esse arquivo não foi exportado porque o caminho do SDK do Mac não funciona em outro computador. Não são necessários Python, MPS, GPU, pesos de modelos ou treinamento para executar o app.
-
-## Terminal integrado
-
-Dentro desta pasta, com o SDK configurado e JDK 25:
-
-**Windows / PowerShell**
+Para conferir o projeto pelo terminal:
 
 ```powershell
-.\gradlew.bat :app:assembleDebug :app:testDebugUnitTest :app:lintDebug
+.\gradlew.bat :app:testDebugUnitTest :app:assembleDebug :app:lintDebug
+.\gradlew.bat :app:connectedDebugAndroidTest
 ```
 
-**macOS / Linux**
+## Diagnóstico e regressões
 
-```bash
-chmod +x gradlew
-./gradlew :app:assembleDebug :app:testDebugUnitTest :app:lintDebug
-```
+- `OcrFixtureDumpTest` (androidTest) grava a saída real do ML Kit das capturas em `app/src/test/resources/ocr`; `ArticleReaderRegressionTest` e `ReaderDiagnosticsTest` usam esses arquivos na JVM.
+- `WebCaptureTool` (androidTest) gera capturas de páginas públicas no emulador: `adb shell am instrument -w -e class com.example.lumeocrtest.WebCaptureTool -e captureUrl <url> -e captureName <nome> com.example.lumeocrtest.test/androidx.test.runner.AndroidJUnitRunner`.
+- Cada pesquisa gera um `ResearchTrace` (consultas, itens por provedor, triagem com motivo, duplicatas, agrupamentos, limite, exibidos e relação). No app de depuração ele vai para o logcat (`LumeTrace`); na tela, um resumo em "Como a pesquisa foi feita".
+- Busca com rede real pela JVM: `LUME_LIVE=1 gradlew.bat :app:testDebugUnitTest --tests "*LiveResearchDiagnostics*"` (relatórios em `app/build/lume-live/`).
+- Relatório da validação de 29/09/2026, com capturas de tela: `docs/validacao-imagem/RELATORIO.md`.
+- Pares difíceis (matéria importada × fonte): `app/src/test/resources/pairs/pares-dificeis.json`, verificados por `SameEventPairsTest` (antes/depois em `app/build/lume-live/pares-*.txt`). Relatório da correção de "mesmo acontecimento", avaliação de modelos locais e telas: `docs/validacao-mesmo-acontecimento/RELATORIO.md`.
 
-APK gerado: `app/build/outputs/apk/debug/app-debug.apk`. APKs, caches e chaves de assinatura não são versionados. Um build debug feito em outro computador pode exigir reinstalar o app por ter assinatura diferente.
+## Limites honestos desta versão
 
-Com emulador/aparelho conectado:
+- A leitura da matéria usa regras de layout validadas em 7 capturas (Agência Senado, BBC, Agência Brasil, Agência Câmara, g1 em dois pontos da página e um recorte) e em casos sintéticos. Diagramações muito diferentes, modo escuro, imagem de baixa qualidade ou erros do OCR ainda podem exigir que o usuário corrija a afirmação.
+- A comparação estruturada usa um vocabulário geral de ações do português jornalístico; verbos fora dele deixam a ação "não identificada" e a fonte tende a ficar em "relação incerta". Contradições que não envolvem números, negação, direção (sobe/cai) ou etapa não são detectadas. Quando uma página repete o acontecimento só na abertura, com outro foco no título, a fonte pode ser aceita pelo que a abertura diz.
+- Links do Google Notícias não são abertos pelo app (redirecionamento); essas fontes são avaliadas só pelo título, e a tela informa isso.
+- Uma pesquisa pode ficar inconclusiva; ausência de fonte não prova falsidade.
+- RSS e páginas públicas podem ficar indisponíveis, omitir o corpo da notícia ou não oferecer dados estruturados.
+- Modelos locais foram avaliados em 37 pares reais e sintéticos em português (`docs/validacao-mesmo-acontecimento/`): nenhum decide "mesmo acontecimento" com segurança sozinho; por isso o modelo é só auxiliar e nunca decide veracidade.
+- OCR não detecta montagem de imagem, deepfake ou autenticidade de vídeo. Captura de tela pode ser bloqueada pelo Android em conteúdo protegido.
+- O histórico fica no armazenamento privado do aplicativo. A pesquisa envia as consultas aos provedores públicos, mesmo quando a IA roda localmente.
+- Para disponibilizar a IA a usuários sem o computador conectado, será necessário hospedar um serviço ou integrar um modelo compatível no aparelho; isso não está entregue nesta demonstração gratuita.
 
-```bash
-./gradlew :app:connectedDebugAndroidTest
-```
-
-No Windows, troque `./gradlew` por `.\gradlew.bat`.
-
-## Organização
-
-| Pasta / arquivo | Finalidade |
-| --- | --- |
-| `app/` | Aplicativo completo, recursos e testes |
-| `app/src/main/java/com/example/lumeocrtest/ocr/` | OCR, limpeza e metadados |
-| `app/src/main/java/com/example/lumeocrtest/research/` | Pesquisa, relevância, contexto e comparação nativa |
-| `app/src/main/java/com/example/lumeocrtest/mascot/` | Serviço da gotinha flutuante |
-| `gradle/`, `gradlew`, `gradlew.bat` | Build reproduzível e wrapper incluído |
-| `FRONTEND-LUME.md` | Interface, animações e validação |
-| `RESEARCH-NATIVE.md` | Arquitetura nativa e limitações dos provedores |
-| `docs/frontend/` | Capturas de referência da versão implementada |
-| `research-server/`, `evidence-server/`, `local-vlm-server/` | Referências de etapas anteriores; não necessárias ao fluxo atual |
-| `ml-training/` | Scripts de experimentos anteriores; sem datasets ou modelos |
-| `EXPORT-MANIFEST.json` | SHA-256 das fontes copiadas, para conferir a integridade |
-
-As pastas auxiliares foram preservadas como referência porque pertenciam ao projeto original. Seus READMEs podem descrever integrações antigas; siga este README e `RESEARCH-NATIVE.md` para executar a versão atual. Caminhos `/Users/aluno1/...` em documentos históricos não devem ser usados no seu computador.
-
-## Validação e limites
-
-No Mac de origem: build debug e lint concluídos (com avisos), **78 testes unitários e 4 instrumentados aprovados**, inspeção visual, OCR real, permissões, gotinha sobre outros apps, arraste, desativação, rotação e fonte a 160%.
-
-A exportação conserva os mesmos fontes e versões. A execução em Windows/Linux e em diferentes aparelhos físicos ainda deve ser conferida. Google/Bing RSS e páginas públicas podem mudar ou limitar acesso; a qualidade da interpretação continua limitada pelas regras. A gotinha pode ser ocultada pelo Android em telas protegidas.
-
-Os mascotes foram preservados: gotinha original do projeto e personagem da tela inicial recortado do screenshot fornecido. O original de maior resolução poderá melhorar sua nitidez.
-
-## Continuar o desenvolvimento
-
-Depois de baixar por Git:
-
-```bash
-git pull --ff-only
-# trabalhe apenas nesta pasta do protótipo
-git add lume/prototypes/ocr-native-android
-git commit -m "feat(lume-prototype): descreva a melhoria"
-git push
-```
-
-Execute esses últimos comandos na raiz do repositório; evite incluir configurações locais, modelos ou arquivos gerados. Para colaborar, prefira uma branch e pull request. Nenhum arquivo anterior do produto oficial foi alterado por esta exportação.
+O código do treinamento e o fluxo legado em `lume/android` continuam separados deste aplicativo.

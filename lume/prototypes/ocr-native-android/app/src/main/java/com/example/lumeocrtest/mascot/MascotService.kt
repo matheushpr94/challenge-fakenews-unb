@@ -14,6 +14,7 @@ import android.widget.*
 import androidx.core.app.NotificationCompat
 import com.example.lumeocrtest.MainActivity
 import com.example.lumeocrtest.R
+import com.example.lumeocrtest.capture.CaptureActivity
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlin.math.abs
@@ -25,6 +26,8 @@ class MascotService : Service() {
         val active = mutableActive.asStateFlow()
         const val OPEN_ANALYSIS = "com.example.lumeocrtest.OPEN_ANALYSIS"
         const val STOP = "com.example.lumeocrtest.STOP_MASCOT"
+        const val HIDE_FOR_CAPTURE = "com.example.lumeocrtest.HIDE_FOR_CAPTURE"
+        const val SHOW_AFTER_CAPTURE = "com.example.lumeocrtest.SHOW_AFTER_CAPTURE"
         private const val CHANNEL = "lume_mascot"
     }
     private lateinit var manager: WindowManager
@@ -51,6 +54,15 @@ class MascotService : Service() {
     }
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         if (intent?.action == STOP) { dismissMascot(); return START_NOT_STICKY }
+        if (intent?.action == HIDE_FOR_CAPTURE) {
+            hidePanel()
+            bubble?.visibility = View.INVISIBLE
+            return START_NOT_STICKY
+        }
+        if (intent?.action == SHOW_AFTER_CAPTURE) {
+            bubble?.visibility = View.VISIBLE
+            return START_NOT_STICKY
+        }
         if (!Settings.canDrawOverlays(this)) { stopSelf(); return START_NOT_STICKY }
         try {
             if (bubble == null) showBubble()
@@ -167,7 +179,7 @@ class MascotService : Service() {
             text="Uma dúvida? Me chama."; textSize=17f; setTextColor(android.graphics.Color.rgb(43,63,52))
         })
         container.addView(TextView(this).apply {
-            text="Abra o Lume para colar um texto ou escolher um print."; textSize=14f
+            text="Escolha o trecho da tela ou abra o Lume para colar texto e importar uma imagem."; textSize=14f
             setPadding(0,dp(8),0,dp(8)); setTextColor(android.graphics.Color.rgb(100,111,99))
         })
         fun button(text: String, action: () -> Unit) {
@@ -184,6 +196,10 @@ class MascotService : Service() {
             hidePanel()
             startActivity(Intent(this,MainActivity::class.java).setAction(OPEN_ANALYSIS)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP))
+        }
+        button("Ler esta tela") {
+            hidePanel()
+            startActivity(Intent(this,CaptureActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
         }
         button("Fechar opções") { hidePanel(animated=true) }
         button("Desativar mascote") {

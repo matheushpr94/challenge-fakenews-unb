@@ -1,7 +1,18 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
 }
+
+// Configuração local por máquina (não versionada): local.properties na raiz do projeto.
+//   lume.ollama.url=http://127.0.0.1:11434   (emulador/aparelho via `adb reverse tcp:11434 tcp:11434`)
+//   lume.ollama.embedModel=paraphrase-multilingual
+val localProps = Properties().apply {
+    providers.fileContents(rootProject.layout.projectDirectory.file("local.properties")).asText.orNull
+        ?.let { load(it.reader()) }
+}
+fun localProp(key: String, default: String) = (localProps.getProperty(key) ?: providers.gradleProperty(key).orNull ?: default).trim()
 
 android {
     namespace = "com.example.lumeocrtest"
@@ -17,6 +28,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "OLLAMA_URL", "\"${localProp("lume.ollama.url", "http://127.0.0.1:11434")}\"")
+        buildConfigField("String", "OLLAMA_EMBED_MODEL", "\"${localProp("lume.ollama.embedModel", "paraphrase-multilingual")}\"")
     }
 
     buildTypes {
@@ -32,6 +45,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 

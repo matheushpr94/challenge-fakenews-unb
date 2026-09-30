@@ -12,16 +12,18 @@ const val MAX_INPUT = 5000
 val CONNECTORS = setOf("de", "da", "do", "das", "dos", "del")
 
 /** Palavras genéricas que não descrevem o acontecimento em si. */
-private val GENERIC: Set<String> = """aconteceu acontece acontecer ocorreu ocorre noticia noticias notícia
+internal val GENERIC: Set<String> = """aconteceu acontece acontecer ocorreu ocorre noticia noticias notícia
 notícias informação informacao caso assunto polêmica polemica sabe saber alguém alguem pessoa
 pessoas gente hoje ontem agora semana ano anos mês mes dia dias recentemente vídeo video post
 publicação print foto mil milhão milhao milhões milhoes bilhão bilhao bilhões bilhoes reais
 dólares dolares cento existe existem existir existia existiam pode podem poderia situação situacao situações
-situacoes alguma algum""".split(Regex("\\s+")).filter { it.isNotBlank() }.map { norm(it) }.toSet()
+situacoes alguma algum entenda entenda veja saiba confira explicação explicacao guia resumo detalhes
+volta voltam voltar bate batem bater fica ficam ficar passa passam passar chega chegam chegar segue seguem
+ganha ganham faz fazem deve devem novo nova novos novas meio pais paises""".split(Regex("\\s+")).filter { it.isNotBlank() }.map { norm(it) }.toSet()
 
 val BYLINE_RE = Regex("(?:^|(?<=[.\\n]))\\s*(?:Por|By)\\s+[A-ZÀ-Ý][\\p{L}\\p{N}_'’]+(?:\\s+(?:d[aeo]s?\\s+)?[A-ZÀ-Ý][\\p{L}\\p{N}_'’]+)*\\s*[,|–-]?",
     RegexOption.MULTILINE)
-private val TIME_WORDS: Set<String> = MONTHS.keys.map { norm(it) }.toSet() + WEEKDAYS.map { norm(it) } + "feira"
+internal val TIME_WORDS: Set<String> = MONTHS.keys.map { norm(it) }.toSet() + WEEKDAYS.map { norm(it) } + "feira"
 
 private val FRAMING_RE = Regex(
     "^\\s*(é|e)?\\s*(verdade|fato|real)\\s+que\\s+|^\\s*ser[aá]\\s+que\\s+|^\\s*procede\\s+que\\s+|" +
@@ -40,6 +42,7 @@ private val NUMBER_RE = Regex(
         "bilh(?:ão|ões|ao|oes)|trilh(?:ão|ões|ao|oes)|reais|d[oó]lares|pessoas|mortos|anos))?", RegexOption.IGNORE_CASE)
 private val QUESTION_RE = Regex("^\\s*(quem|qual|quais|quando|onde|como|por que|porque|o que|é verdade|será)$WE",
     RegexOption.IGNORE_CASE)
+private val INTRO_RE = Regex("(?iu)^\\s*(?:em meio|após|apos|depois|antes|durante|diante|com|sem|segundo|conforme|mesmo com|apesar)$WE[^,]{3,60},\\s*")
 private val SENTENCE_SPLIT = Regex("(?<=[.!?])\\s+|\\n+")
 private val STARTS_SENTENCE = Regex("(?:[.!?:\"“(]|\\n)\\s*$")
 
@@ -64,6 +67,22 @@ data class Interpretation(
     val consultaContextoPropriedade: String = "",
     val afirmacao: Afirmacao? = null,
     val quantity: Quantity? = null,
+    /** Formas alternativas de nomes/siglas, tiradas do texto da própria matéria ("MP" -> "medida provisória"). */
+    val aliases: Map<String, List<String>> = emptyMap(),
+    /** Palavras que a matéria usa para o mesmo assunto sem estar na afirmação ("apostas"). */
+    val vocabulario: List<String> = emptyList(),
+    /** Prazos/durações citados ("30 dias"): detalhe do fato, não contagem. */
+    val prazos: List<String> = emptyList(),
+    /** Radicais que dizem a que se refere o número da afirmação (ex.: encerramento, extinção, autorizações). */
+    val detalheStems: Set<String> = emptySet(),
+    /** Etapa do ato: proposto, aprovado, decidido, vigente, revogado, negado, previsto. */
+    val etapa: String? = null,
+    /** Data da matéria lida na captura, quando conhecida. */
+    val dataReferencia: Long? = null,
+    /** Partes coordenadas da frase ("A proíbe X e B receberá Y"): termos de cada parte, avaliadas separadamente. */
+    val partes: List<List<String>> = emptyList(),
+    /** Radicais centrais da matéria lida (no título ou repetidos no texto); vazio sem contexto. */
+    val topicos: Set<String> = emptySet(),
 )
 
 fun cleanInput(text: String?): String {
@@ -164,20 +183,29 @@ private fun datesOf(text: String): List<DateMention> {
     return found
 }
 
-fun interpret(text: String?, nowMs: Long = System.currentTimeMillis()): Interpretation {
+fun interpret(text: String?, nowMs: Long = System.currentTimeMillis(), context: ArticleContext? = null): Interpretation {
     val nowYear = Calendar.getInstance(TimeZone.getTimeZone("UTC")).apply { timeInMillis = nowMs }.get(Calendar.YEAR)
     val clean = cleanInput(text)
     val original = (text ?: "").trim().take(MAX_INPUT)
     val isQuestion = original.trimEnd().endsWith("?") || QUESTION_RE.containsMatchIn(original)
     val sents = sentencesOf(clean)
     val main = sents.firstOrNull { s -> tokens(s).count { it !in STOP_NORM } >= 3 } ?: sents.firstOrNull() ?: ""
-    val rest = sents.filter { it !== main }.joinToString(" ")
+    // Moldura inicial ("Em meio à corrida eleitoral, …", "Após X, …"): contexto da frase, não o núcleo do fato.
+    val intro = INTRO_RE.find(main)?.value.orEmpty()
+    val rest = (listOf(intro) + sents.filter { it !== main }).joinToString(" ")
     val mainN = " ${norm(main)} "
     val ents = extractEntities(BYLINE_RE.replace(clean, " "))
         .sortedBy { if (" ${norm(it)} " in mainN) 0 else 1 } // entidades da frase principal primeiro
     val mainEnts = ents.filter { " ${norm(it)} " in mainN }
     val entTokens = tokens(ents.joinToString(" ")).toSet()
-    val terms = termsOf(main, rest, entTokens).take(6)
+    val introOnly = tokens(intro).map { stem(it) }.toSet() - tokens(main.removePrefix(intro)).map { stem(it) }.toSet()
+    val allTerms = termsOf(main.removePrefix(intro), rest, entTokens).filter { stem(it) !in introOnly }
+    // O último termo de conteúdo da manchete costuma ser o objeto ("… a publicidade de bets"): nunca fica de fora.
+    val last = lastContentTerm(main, allTerms)
+    // Sujeito que depende do contexto ("O texto…", "A medida…"): o substantivo não descreve o fato e não vira termo.
+    val vague = com.example.lumeocrtest.ocr.vagueSubject(main)?.let { v -> tokens(v).lastOrNull() }
+    val terms = allTerms.filter { vague == null || norm(it) != vague }.take(6)
+        .let { t -> if (last == null || last in t || t.size < 6) t else t.dropLast(1) + last }
 
     val dates = datesOf(clean)
     val dateSpans = dates.joinToString(" ") { it.texto }
@@ -198,12 +226,25 @@ fun interpret(text: String?, nowMs: Long = System.currentTimeMillis()): Interpre
         entidades = ents.take(6), termos = terms, numeros = nums.take(4), datas = dates.take(3), anos = years.take(3),
         negacoes = negs.take(3), tempoRelativo = relative.take(2),
     )
+    val ctxText = context?.fullText.orEmpty()
+    val aliases = resolveAliases(clean, ctxText)
+    val aliasTokens = aliases.values.flatten().flatMap { tokens(it) }.toSet()
+    interp = interp.copy(
+        aliases = aliases, prazos = durationsIn(clean), etapa = actStage(main.ifEmpty { clean }),
+        vocabulario = contextVocabulary(main.ifEmpty { clean }, context?.body.orEmpty() + " " + context?.subtitle.orEmpty(),
+            exclude = aliasTokens + entTokens),
+        detalheStems = detailStems(main.ifEmpty { clean }, ctxText), dataReferencia = context?.publishedAtMs,
+        partes = clausesOf(main.removePrefix(intro), terms),
+        topicos = topicStems(context),
+    )
     val (afirmacao, quantity) = structure(interp, main.ifEmpty { clean }, nowYear)
     // Incompleta = sem acontecimento ou propriedade identificável (não por falta de resultados).
     val incompleto = quantity == null && (terms.isEmpty() || ents.size + terms.size <= 1)
     interp = interp.copy(afirmacao = afirmacao, quantity = quantity, incompleto = incompleto)
     interp = interp.copy(
-        consultas = buildQueries(interp, clean, mainEnts.ifEmpty { ents }),
+        consultas = buildQueries(interp, clean, mainEnts.ifEmpty { ents },
+            if (quantity == null && afirmacao.tipo !in setOf("contagem", "quantidade_periodo", "fato_historico"))
+                eventQuery(originalEvent(main.ifEmpty { clean }, context, nowMs), main.ifEmpty { clean }) else null),
         consultaContexto = ents.firstOrNull() ?: terms.take(2).joinToString(" "),
     )
     return interp.copy(consultaContextoPropriedade = contextQuery(interp))
@@ -239,7 +280,7 @@ fun joinQuery(parts: List<String>, maxWords: Int = 10): String {
 }
 
 /** Poucas consultas complementares: específica -> acontecimento/valor -> ampliada. */
-fun buildQueries(interp: Interpretation, clean: String, ents: List<String>): List<SearchQuery> {
+fun buildQueries(interp: Interpretation, clean: String, ents: List<String>, eventQuery: String? = null): List<SearchQuery> {
     val terms = interp.termos
     val nums = interp.numeros.take(1).map { it.texto }
     val years = interp.anos.take(1).map { it.toString() }
@@ -272,9 +313,29 @@ fun buildQueries(interp: Interpretation, clean: String, ents: List<String>): Lis
         candidates += "sem_data" to joinQuery(ents.take(2) + terms.take(4), 8)
         candidates += "ampliada" to joinQuery(if (ents.isNotEmpty()) ents.take(2) + terms.take(1) else terms.take(2), 6)
     } else {
-        candidates += "especifica" to joinQuery(ents.take(3) + terms.take(3) + nums + years, 11)
-        candidates += "acontecimento" to joinQuery(ents.take(1) + terms.take(5), 8)
+        // Específica (como o título), acontecimento (quem + ação + objeto), variações de redação e o detalhe.
+        // Variações usam só formas encontradas no texto da própria matéria (sigla por extenso, palavras repetidas).
+        val actor = ents.firstOrNull()
+        val actorLong = actor?.let { interp.aliases[it]?.firstOrNull() }
+        val prazos = interp.prazos.take(1)
+        val months = MONTHS.keys.filter { m -> Regex("(?iu)$WB$m$WE").containsMatchIn(interp.assunto) }.take(1)
+        val obj = lastContentTerm(interp.assunto, terms)?.takeIf { it !in terms.take(3) }
+        candidates += "especifica" to joinQuery(ents.take(3) + terms.take(3) + listOfNotNull(obj) + (prazos.ifEmpty { nums }) + months + years, 11)
+        // Quem + alvo + assunto, pela estrutura do fato (sem verbos secundários que restringem demais a busca).
+        eventQuery?.let { candidates += "evento" to joinQuery(listOf(it), 7) }
+        // Com número/prazo, o fim da frase costuma ser o detalhe (consulta própria abaixo); sem ele, é o objeto.
+        val eventObj = obj.takeIf { prazos.isEmpty() && nums.isEmpty() }
+        candidates += "acontecimento" to joinQuery(listOfNotNull(actorLong ?: actor) + terms.take(2) + listOfNotNull(eventObj), 7)
+        if (interp.vocabulario.isNotEmpty() && terms.size >= 2) {
+            candidates += "variacao" to joinQuery(listOfNotNull(actorLong ?: actor) + terms.take(1) + interp.vocabulario.take(2), 7)
+        }
+        if (prazos.isNotEmpty() || nums.isNotEmpty()) {
+            val core = terms.drop(1).take(1) + termsNear(clean, (prazos + nums).first(), terms).take(2)
+            candidates += "detalhe" to joinQuery(listOfNotNull(actor) + core + prazos.ifEmpty { nums }, 7)
+        }
         candidates += "ampliada" to joinQuery(if (ents.isNotEmpty()) ents.take(2) + terms.take(1) else terms.take(2), 6)
+        // Frase com duas afirmações: a segunda parte também é procurada (a primeira já está nas consultas acima).
+        interp.partes.drop(1).firstOrNull()?.let { candidates += "parte" to joinQuery(ents.take(1) + it.take(3), 6) }
     }
     val out = mutableListOf<SearchQuery>()
     val seen = HashSet<Set<String>>()
@@ -283,4 +344,40 @@ fun buildQueries(interp: Interpretation, clean: String, ents: List<String>): Lis
         if (text.isNotBlank() && seen.add(key)) out.add(SearchQuery(text, purpose))
     }
     return out
+}
+
+/** Termos da afirmação nas 5 palavras antes do número/prazo: dizem a que o número se refere. */
+fun termsNear(text: String, anchor: String, terms: List<String>): List<String> {
+    val toks = tokens(text)
+    val at = toks.indexOf(tokens(anchor).firstOrNull() ?: return emptyList())
+    if (at < 0) return emptyList()
+    val window = toks.subList(maxOf(0, at - 5), at).map { stem(it) }.toSet()
+    return terms.filter { stem(it) in window }
+}
+
+/** Meses citados na frase (forma normalizada, sem acento). */
+fun monthsIn(text: String): Set<String> = tokens(text).filter { it in MONTHS.keys.map { m -> norm(m) } }.map { if (it == "marco") "marco" else it }.toSet()
+
+/** Divide a frase em partes coordenadas por " e "/";" quando cada lado tem ao menos dois termos próprios. */
+fun clausesOf(sentence: String, terms: List<String>): List<List<String>> {
+    val pieces = sentence.split(Regex("\\s+e\\s+|;\\s*")).map { p -> terms.filter { t -> stem(t) in stemsOf(p) } }
+    val parts = mutableListOf<MutableList<String>>()
+    for (p in pieces) if (p.size >= 2 || parts.isEmpty()) parts += p.toMutableList() else parts.last().addAll(p)
+    return if (parts.size >= 2 && parts.all { it.size >= 2 }) parts.map { it.distinct() } else emptyList()
+}
+
+/** Último termo de conteúdo da frase que está entre os termos extraídos. */
+fun lastContentTerm(sentence: String, terms: List<String>): String? {
+    val byStem = terms.associateBy { stem(it) }
+    return tokens(sentence).reversed().firstNotNullOfOrNull { byStem[stem(it)] }
+}
+
+/** Chave de palavra para tópicos: normalizada e no singular simples (radical truncado confunde "publicado"/"publicidade"). */
+fun topicKey(word: String): String = norm(word).removeSuffix("s")
+
+/** Palavras que aparecem no título da matéria ou pelo menos duas vezes no texto lido. */
+fun topicStems(context: ArticleContext?): Set<String> {
+    if (context == null) return emptySet()
+    val counts = tokens(context.fullText).filter { it.length >= 3 && it !in STOP_NORM }.groupingBy { topicKey(it) }.eachCount()
+    return counts.filter { it.value >= 2 }.keys + tokens(context.title).map { topicKey(it) }
 }

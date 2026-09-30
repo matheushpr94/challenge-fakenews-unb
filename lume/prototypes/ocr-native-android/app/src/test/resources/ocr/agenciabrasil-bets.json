@@ -1,0 +1,487 @@
+{
+ "image": "agenciabrasil-bets.png",
+ "width": 1080,
+ "height": 2400,
+ "blocks": [
+  {
+   "text": "agênciaBrasil(",
+   "box": [
+    273,
+    38,
+    803,
+    119
+   ],
+   "lines": [
+    {
+     "text": "agênciaBrasil(",
+     "box": [
+      273,
+      38,
+      803,
+      119
+     ],
+     "confidence": 0.7678571343421936
+    }
+   ]
+  },
+  {
+   "text": "ÚLTIMAS NOTÍCIAS",
+   "box": [
+    45,
+    189,
+    351,
+    218
+   ],
+   "lines": [
+    {
+     "text": "ÚLTIMAS NOTÍCIAS",
+     "box": [
+      45,
+      189,
+      351,
+      218
+     ],
+     "confidence": 0.6976562738418579
+    }
+   ]
+  },
+  {
+   "text": "Bets passam a ser proibidas no\npaís e apostador receberá saldo",
+   "box": [
+    87,
+    388,
+    1014,
+    537
+   ],
+   "lines": [
+    {
+     "text": "Bets passam a ser proibidas no",
+     "box": [
+      87,
+      388,
+      994,
+      451
+     ],
+     "confidence": 0.8864062428474426
+    },
+    {
+     "text": "país e apostador receberá saldo",
+     "box": [
+      91,
+      470,
+      1014,
+      537
+     ],
+     "confidence": 0.8657407164573669
+    }
+   ]
+  },
+  {
+   "text": "MP diz que plataformas ficarão fora do ar e proíbe\nnovos depósitos",
+   "box": [
+    64,
+    572,
+    1017,
+    667
+   ],
+   "lines": [
+    {
+     "text": "MP diz que plataformas ficarão fora do ar e proíbe",
+     "box": [
+      64,
+      572,
+      1017,
+      611
+     ],
+     "confidence": 0.8584222793579102
+    },
+    {
+     "text": "novos depósitos",
+     "box": [
+      386,
+      627,
+      695,
+      667
+     ],
+     "confidence": 0.7857142686843872
+    }
+   ]
+  },
+  {
+   "text": "AGÊNCIA BRASIL",
+   "box": [
+    43,
+    803,
+    287,
+    831
+   ],
+   "lines": [
+    {
+     "text": "AGÊNCIA BRASIL",
+     "box": [
+      43,
+      803,
+      287,
+      831
+     ],
+     "confidence": 0.8031851053237915
+    }
+   ]
+  },
+  {
+   "text": "CULTURA DIREITOS HUMANOS ECC",
+   "box": [
+    450,
+    195,
+    1080,
+    218
+   ],
+   "lines": [
+    {
+     "text": "CULTURA DIREITOS HUMANOS ECC",
+     "box": [
+      450,
+      195,
+      1080,
+      218
+     ],
+     "confidence": 0.772656261920929
+    }
+   ]
+  },
+  {
+   "text": "MARCELo BRANDÃo - REPÓRTER DA",
+   "box": [
+    44,
+    759,
+    588,
+    789
+   ],
+   "lines": [
+    {
+     "text": "MARCELo BRANDÃo - REPÓRTER DA",
+     "box": [
+      44,
+      759,
+      588,
+      789
+     ],
+     "confidence": 0.7440624833106995
+    }
+   ]
+  },
+  {
+   "text": "Economia",
+   "box": [
+    470,
+    314,
+    611,
+    338
+   ],
+   "lines": [
+    {
+     "text": "Economia",
+     "box": [
+      470,
+      314,
+      611,
+      338
+     ],
+     "confidence": 0.84423828125
+    }
+   ]
+  },
+  {
+   "text": "Publicado em 25\/09\/2026 - 20:33\nBrasília",
+   "box": [
+    45,
+    859,
+    520,
+    926
+   ],
+   "lines": [
+    {
+     "text": "Publicado em 25\/09\/2026 - 20:33",
+     "box": [
+      45,
+      859,
+      520,
+      886
+     ],
+     "confidence": 0.8956886529922485
+    },
+    {
+     "text": "Brasília",
+     "box": [
+      45,
+      901,
+      138,
+      926
+     ],
+     "confidence": 0.8359375
+    }
+   ]
+  },
+  {
+   "text": "0:00 \/6:14",
+   "box": [
+    172,
+    1763,
+    343,
+    1791
+   ],
+   "lines": [
+    {
+     "text": "0:00 \/6:14",
+     "box": [
+      172,
+      1763,
+      343,
+      1791
+     ],
+     "confidence": 0.8363715410232544
+    }
+   ]
+  },
+  {
+   "text": "Uso de cookies",
+   "box": [
+    70,
+    1858,
+    360,
+    1896
+   ],
+   "lines": [
+    {
+     "text": "Uso de cookies",
+     "box": [
+      70,
+      1858,
+      360,
+      1896
+     ],
+     "confidence": 0.7981770634651184
+    }
+   ]
+  },
+  {
+   "text": "OK",
+   "box": [
+    121,
+    2261,
+    166,
+    2286
+   ],
+   "lines": [
+    {
+     "text": "OK",
+     "box": [
+      121,
+      2261,
+      166,
+      2286
+     ],
+     "confidence": 0.712890625
+    }
+   ]
+  },
+  {
+   "text": "GOVERNO FEDERAL\nCONTRA AS BETS",
+   "box": [
+    286,
+    1004,
+    1082,
+    1156
+   ],
+   "lines": [
+    {
+     "text": "GOVERNO FEDERAL",
+     "box": [
+      286,
+      1005,
+      1081,
+      1077
+     ],
+     "confidence": 0.8091517686843872
+    },
+    {
+     "text": "CONTRA AS BETS",
+     "box": [
+      339,
+      1083,
+      1026,
+      1155
+     ],
+     "confidence": 0.8011067509651184
+    }
+   ]
+  },
+  {
+   "text": "MINSTERIC",
+   "box": [
+    623,
+    1245,
+    684,
+    1256
+   ],
+   "lines": [
+    {
+     "text": "MINSTERIC",
+     "box": [
+      623,
+      1245,
+      684,
+      1256
+     ],
+     "confidence": 0.6219618320465088
+    }
+   ]
+  },
+  {
+   "text": "© PAULO PINTO\/AGÊNCIA BRASIL",
+   "box": [
+    589,
+    1576,
+    1061,
+    1601
+   ],
+   "lines": [
+    {
+     "text": "© PAULO PINTO\/AGÊNCIA BRASIL",
+     "box": [
+      589,
+      1576,
+      1061,
+      1601
+     ],
+     "confidence": 0.7542187571525574
+    }
+   ]
+  },
+  {
+   "text": "Versão em áudio",
+   "box": [
+    397,
+    1669,
+    680,
+    1695
+   ],
+   "lines": [
+    {
+     "text": "Versão em áudio",
+     "box": [
+      397,
+      1669,
+      680,
+      1695
+     ],
+     "confidence": 0.8109976053237915
+    }
+   ]
+  },
+  {
+   "text": "Utilizamos cookies e outras tecnologias semelhantes para",
+   "box": [
+    69,
+    1939,
+    902,
+    1970
+   ],
+   "lines": [
+    {
+     "text": "Utilizamos cookies e outras tecnologias semelhantes para",
+     "box": [
+      69,
+      1939,
+      902,
+      1970
+     ],
+     "confidence": 0.8675000071525574
+    }
+   ]
+  },
+  {
+   "text": "melhorar a sua experiência em nossa plataforma. Ao continuar\nnavegando, você concorda com as condições previstas na nossa\nPolítica de Privacidade.",
+   "box": [
+    68,
+    1992,
+    1001,
+    2132
+   ],
+   "lines": [
+    {
+     "text": "melhorar a sua experiência em nossa plataforma. Ao continuar",
+     "box": [
+      69,
+      1995,
+      973,
+      2023
+     ],
+     "confidence": 0.8367637991905212
+    },
+    {
+     "text": "navegando, você concorda com as condições previstas na nossa",
+     "box": [
+      69,
+      2048,
+      1002,
+      2080
+     ],
+     "confidence": 0.8596754670143127
+    },
+    {
+     "text": "Política de Privacidade.",
+     "box": [
+      69,
+      2101,
+      402,
+      2131
+     ],
+     "confidence": 0.8407315611839294
+    }
+   ]
+  },
+  {
+   "text": "in",
+   "box": [
+    1007,
+    771,
+    1028,
+    789
+   ],
+   "lines": [
+    {
+     "text": "in",
+     "box": [
+      1007,
+      771,
+      1028,
+      789
+     ],
+     "confidence": 0.59765625
+    }
+   ]
+  },
+  {
+   "text": "Para mais informações, consulte aqui.",
+   "box": [
+    79,
+    2153,
+    671,
+    2193
+   ],
+   "lines": [
+    {
+     "text": "Para mais informações, consulte aqui.",
+     "box": [
+      79,
+      2153,
+      671,
+      2193
+     ],
+     "confidence": 0.8059895634651184
+    }
+   ]
+  }
+ ]
+}
