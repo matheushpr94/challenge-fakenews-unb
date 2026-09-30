@@ -1,0 +1,415 @@
+{
+ "image": "zz-x-post-almoco.png",
+ "width": 1170,
+ "height": 2532,
+ "blocks": [
+  {
+   "text": "11:08 C",
+   "box": [
+    101,
+    56,
+    277,
+    99
+   ],
+   "lines": [
+    {
+     "text": "11:08 C",
+     "box": [
+      101,
+      56,
+      277,
+      99
+     ],
+     "confidence": 0.6881510615348816
+    }
+   ]
+  },
+  {
+   "text": "WEW",
+   "box": [
+    79,
+    398,
+    114,
+    416
+   ],
+   "lines": [
+    {
+     "text": "WEW",
+     "box": [
+      79,
+      398,
+      114,
+      416
+     ],
+     "confidence": 0.48046875
+    }
+   ]
+  },
+  {
+   "text": "SPACE LIBERDADE",
+   "box": [
+    206,
+    328,
+    587,
+    369
+   ],
+   "lines": [
+    {
+     "text": "SPACE LIBERDADE",
+     "box": [
+      206,
+      328,
+      587,
+      369
+     ],
+     "confidence": 0.875
+    }
+   ]
+  },
+  {
+   "text": "@NewsLiberdade",
+   "box": [
+    186,
+    386,
+    534,
+    420
+   ],
+   "lines": [
+    {
+     "text": "@NewsLiberdade",
+     "box": [
+      186,
+      386,
+      534,
+      420
+     ],
+     "confidence": 0.8384486436843872
+    }
+   ]
+  },
+  {
+   "text": "3 Show translation",
+   "box": [
+    31,
+    488,
+    382,
+    521
+   ],
+   "lines": [
+    {
+     "text": "3 Show translation",
+     "box": [
+      31,
+      488,
+      382,
+      521
+     ],
+     "confidence": 0.835205078125
+    }
+   ]
+  },
+  {
+   "text": "10:05· 30\/09\/26 - 21K Views",
+   "box": [
+    29,
+    1447,
+    578,
+    1489
+   ],
+   "lines": [
+    {
+     "text": "10:05· 30\/09\/26 - 21K Views",
+     "box": [
+      29,
+      1447,
+      578,
+      1489
+     ],
+     "confidence": 0.80808424949646
+    }
+   ]
+  },
+  {
+   "text": "9 12 L 113",
+   "box": [
+    30,
+    1543,
+    436,
+    1593
+   ],
+   "lines": [
+    {
+     "text": "9 12 L 113",
+     "box": [
+      30,
+      1543,
+      436,
+      1593
+     ],
+     "confidence": 0.5859375
+    }
+   ]
+  },
+  {
+   "text": "TopBOVESPA",
+   "box": [
+    48,
+    1889,
+    135,
+    1906
+   ],
+   "lines": [
+    {
+     "text": "TopBOVESPA",
+     "box": [
+      48,
+      1889,
+      135,
+      1906
+     ],
+     "confidence": 0.7484375238418579
+    }
+   ]
+  },
+  {
+   "text": "Post",
+   "box": [
+    534,
+    187,
+    637,
+    226
+   ],
+   "lines": [
+    {
+     "text": "Post",
+     "box": [
+      534,
+      187,
+      637,
+      226
+     ],
+     "confidence": 0.8779296875
+    }
+   ]
+  },
+  {
+   "text": "URGENTE - Imagens mostram como foio\nalmoço 'ultra vip' organizado por Vorcaro para\nMoraes, diz O Globo",
+   "box": [
+    29,
+    555,
+    1066,
+    740
+   ],
+   "lines": [
+    {
+     "text": "URGENTE - Imagens mostram como foio",
+     "box": [
+      100,
+      555,
+      1032,
+      599
+     ],
+     "confidence": 0.8139322996139526
+    },
+    {
+     "text": "almoço 'ultra vip' organizado por Vorcaro para",
+     "box": [
+      29,
+      624,
+      1066,
+      671
+     ],
+     "confidence": 0.8755859136581421
+    },
+    {
+     "text": "Moraes, diz O Globo",
+     "box": [
+      31,
+      695,
+      485,
+      740
+     ],
+     "confidence": 0.84521484375
+    }
+   ]
+  },
+  {
+   "text": "Relevant v",
+   "box": [
+    30,
+    1671,
+    241,
+    1707
+   ],
+   "lines": [
+    {
+     "text": "Relevant v",
+     "box": [
+      30,
+      1671,
+      241,
+      1707
+     ],
+     "confidence": 0.8823784589767456
+    }
+   ]
+  },
+  {
+   "text": "Post your reply",
+   "box": [
+    67,
+    2191,
+    361,
+    2233
+   ],
+   "lines": [
+    {
+     "text": "Post your reply",
+     "box": [
+      67,
+      2191,
+      361,
+      2233
+     ],
+     "confidence": 0.9137620329856873
+    }
+   ]
+  },
+  {
+   "text": "o 984",
+   "box": [
+    863,
+    54,
+    1080,
+    99
+   ],
+   "lines": [
+    {
+     "text": "o 984",
+     "box": [
+      863,
+      54,
+      1080,
+      99
+     ],
+     "confidence": 0.544921875
+    }
+   ]
+  },
+  {
+   "text": "793",
+   "box": [
+    644,
+    1552,
+    715,
+    1585
+   ],
+   "lines": [
+    {
+     "text": "793",
+     "box": [
+      644,
+      1552,
+      715,
+      1585
+     ],
+     "confidence": 0.8984375
+    }
+   ]
+  },
+  {
+   "text": "X.com",
+   "box": [
+    932,
+    325,
+    1111,
+    375
+   ],
+   "lines": [
+    {
+     "text": "X.com",
+     "box": [
+      932,
+      325,
+      1111,
+      375
+     ],
+     "confidence": 0.6875
+    }
+   ]
+  },
+  {
+   "text": "16",
+   "box": [
+    908,
+    1552,
+    949,
+    1586
+   ],
+   "lines": [
+    {
+     "text": "16",
+     "box": [
+      908,
+      1552,
+      949,
+      1586
+     ],
+     "confidence": 0.693359375
+    }
+   ]
+  },
+  {
+   "text": "View quotes >",
+   "box": [
+    847,
+    1674,
+    1126,
+    1714
+   ],
+   "lines": [
+    {
+     "text": "View quotes >",
+     "box": [
+      847,
+      1674,
+      1126,
+      1714
+     ],
+     "confidence": 0.8604403138160706
+    }
+   ]
+  },
+  {
+   "text": "Junior Arcanjo ® @topBovespa · 17m\nPague seus impostos em dia, \"cumpanhêro\".",
+   "box": [
+    185,
+    1800,
+    1081,
+    1906
+   ],
+   "lines": [
+    {
+     "text": "Junior Arcanjo ® @topBovespa · 17m",
+     "box": [
+      185,
+      1800,
+      930,
+      1847
+     ],
+     "confidence": 0.8339170217514038
+    },
+    {
+     "text": "Pague seus impostos em dia, \"cumpanhêro\".",
+     "box": [
+      188,
+      1864,
+      1081,
+      1906
+     ],
+     "confidence": 0.8046875
+    }
+   ]
+  }
+ ]
+}

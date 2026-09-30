@@ -79,10 +79,37 @@ Logs úteis: `adb logcat -s LumeResearch LumeUi`.
 - Resultados dependem do que os buscadores devolvem no momento. A indicação descreve os trechos
   encontrados e não garante a verdade.
 
-## O que ficou como referência (fora do fluxo principal)
+## Referências fora do aplicativo
 
-- `research-server/` (cópia Python do protótipo) e `RESEARCH-INTEGRATION.md`: integração intermediária
-  pelo Mac, substituída por esta arquitetura. `ocr/ResearchClient.kt` e seu teste continuam no projeto,
-  mas a interface não os usa.
-- `ocr/SearchClient.kt`, `QueryAnalyzer.kt`, `RelevanceScorer.kt`, `EvidenceClient.kt`, `VlmClient.kt`,
-  `evidence-server/`, `local-vlm-server/`, `ml-training/`: preservados, não usados pela tela.
+- `research-server/` (cópia Python do protótipo) e `RESEARCH-INTEGRATION.md` documentam a integração
+  intermediária pelo Mac, substituída pela pesquisa nativa.
+- `evidence-server/`, `local-vlm-server/` e `ml-training/` são experimentos separados. Os clientes Android
+  antigos para esses servidores, a busca RSS antiga e seus testes exclusivos foram retirados do módulo do app:
+  a interface atual não os chamava. A pesquisa em `research/` e os testes do fluxo atual permanecem.
+
+## Publicação antiga x afirmação atual (30/09/2026)
+
+- **Post com imagem anexada**: quando há um @perfil no alto e texto logo abaixo, esse texto é o conteúdo do post. Letras grandes dentro da arte ou da foto não viram título, e respostas de outros perfis ficam fora (`ArticleReader`).
+- **Afirmação datada com número**: se a frase traz "hoje", "amanhã" etc., ou vem de uma publicação com data e descreve uma ação, só fontes sobre o mesmo acontecimento e do mesmo período apoiam ou contradizem o detalhe (`happening` em `ResearchService`, `contextOnly` em `quantityEvidence`). Publicações anteriores e fontes relacionadas aparecem como "Não comparado — … contexto histórico/relacionado".
+- **Valor citado com negação**: frase da fonte que cita o número para negá-lo ou restringi-lo ("não estabeleceu uma taxa de 55% para…") não conta como apoio.
+- **Contagens e fatos estáveis** ("tem 5 títulos", "em 2020 registrou…") continuam aceitando fontes antigas.
+- **Consultas**: afirmações datadas com número levam mais palavras do assunto e nenhuma palavra de tempo.
+- Testes: `OldVersusCurrentTests` e `postTextWinsOverBigTextInsideAttachedImage`.
+
+## Post com chamada, material citado e atribuição (30/09/2026)
+
+- **Delimitação**: com o post reconhecido (@perfil no alto), o corpo é só o texto do post; contadores, respostas de outros perfis e demais posts ficam fora. O nome do perfil vem do bloco ao lado ou logo acima do @.
+- **Limpeza da entrada** (`cleanInput`): remove a chamada inicial ("URGENTE -", "BOMBA:"), separa palavras curtas coladas pela leitura ("foio" → "foi o") e tira a moldura "Imagens/Vídeo mostram como foi…" (o material citado fica em `materialCitado`).
+- **Quadro do fato** (`eventFrame`): a atribuição final ("…, diz O Globo") não é a ação; particípio seguido de "por" é voz passiva ("almoço organizado por X"); nova classe de ação `organizar`; o substantivo que nomeia o fato fica em `eventNoun`.
+- **Consulta do fato**: na voz passiva, quem promoveu + demais envolvidos + substantivo do fato ("Vorcaro Moraes almoço").
+- **Comparação**: com `eventNoun`, outra redação que traga o mesmo substantivo e todos os envolvidos é o mesmo acontecimento (sem verbo, com "participou", "confirma/nega"). Só nomes em comum não bastam; outra ação (investiga, decide) continua como contexto.
+- **Data**: se a matéria importada não diz quando o fato ocorreu e a fonte é da mesma época, a data citada na fonte é a do fato relatado, não "fato anterior".
+- **Avisos**: material citado e veículo citado pelo texto aparecem em "O que ainda não sabemos?"; matérias sobre o fato não confirmam esses pontos.
+- Testes: `PostClaimRetrievalTests` e `postBodyStopsBeforeCountersAndRepliesFromOtherProfiles`.
+
+## Título de serviço, data solta e formato incerto (30/09/2026)
+
+- **Corte do título** (`claimFor`): "Título: entenda…" só vira "Título" quando a primeira parte é a notícia inteira (4+ palavras) e o resto não traz números nem nomes. Senão, fica o título sem o verbo de chamada ("Lei Seca: em quais estados é proibido beber no 1° turno das eleições"), com nota de que é um guia. Nunca sobra uma palavra solta no lugar de um título longo.
+- **Data sozinha na linha** ("30/09/2026 04:00") deixou de ser tratada como contador; com isso a autoria logo acima também é lida.
+- **Formato incerto**: se a captura tem @perfil no alto e, abaixo, um título com linha fina, assinatura ou vários parágrafos, fica a leitura de notícia; o texto junto ao perfil vai para as opções, com nota explicando a dúvida.
+- Regressões com OCR real: `metropoles-lei-seca`, `x-post-almoco`, `x-post-sobretaxa`, `x-post-flamengo` (em `src/test/resources/ocr`, listados em `RealCaptures.MORE`).

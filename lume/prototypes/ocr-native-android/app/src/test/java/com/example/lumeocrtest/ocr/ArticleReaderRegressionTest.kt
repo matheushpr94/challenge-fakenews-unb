@@ -107,10 +107,11 @@ class ArticleReaderRegressionTest {
     @Test fun cropWithoutHeaderLeavesFieldsUnidentified() {
         val (r, c) = real("recorte-senado-sem-titulo")
         assertNull(r.title); assertNull(r.metadata.source); assertNull(r.metadata.author); assertNull(r.metadata.publishedAt)
-        assertTrue(c.needsChoice)
-        assertNull(c.claim)
+        // Sem título, a frase que abre o texto vira a sugestão (editável); veículo, autor e data seguem sem palpite.
+        assertFalse(c.needsChoice)
+        assertTrue(c.claim!!.startsWith("Começou a tramitar"))
+        assertTrue(c.note!!.contains("Não encontramos um título"))
         assertFalse(r.body.contains("Proposições"))
-        assertTrue(c.alternatives.first().startsWith("Começou a tramitar"))
     }
 
     private fun assertNotNullAndNot(forbidden: String, value: String?) {
@@ -191,7 +192,199 @@ class ArticleReaderRegressionTest {
         assertEquals("Ana Souza", r.metadata.author)
     }
 
-    @Test fun questionTitleRequiresChoice() {
+    @Test fun serviceTitleKeepsPlaceAndPeriodInsteadOfBareTopic() {
+        val (r, c) = real("metropoles-lei-seca")
+        assertEquals("Lei Seca: saiba em quais estados é proibido beber no 1° turno das eleições", r.title)
+        assertEquals("Lei Seca: em quais estados é proibido beber no 1° turno das eleições", c.claim)
+        assertFalse(c.needsChoice)
+        assertTrue(c.note!!.contains("guia"))
+        assertTrue(r.subtitle!!.startsWith("Levantamento do Metrópoles"))
+        assertEquals("Giovanna Estrela", r.metadata.author)
+        assertEquals("30/09/2026 04:00", r.metadata.publishedAt)
+        assertFalse(r.socialPost)
+    }
+
+    @Test fun realPostsKeepOnlyTheAuthorsText() {
+        val (almoco, ca) = real("x-post-almoco")
+        assertTrue(almoco.socialPost)
+        assertEquals("SPACE LIBERDADE @NewsLiberdade", almoco.postProfile)
+        assertFalse("resposta de outro perfil", almoco.body.contains("impostos"))
+        assertFalse("contadores", almoco.body.contains("113"))
+        assertFalse(ca.needsChoice)
+        assertTrue(ca.claim!!.contains("organizado por Vorcaro para Moraes"))
+        val (taxa, ct) = real("x-post-sobretaxa")
+        assertTrue(taxa.socialPost); assertNull("texto dentro da foto não é título", taxa.title)
+        assertEquals("China impõe sobretaxa de 55% sobre as carnes bovinas brasileiras a partir de amanhã", ct.claim)
+        assertFalse(taxa.body.contains("Por isso"))
+        val (fla, cf) = real("x-post-flamengo")
+        assertTrue(fla.socialPost)
+        assertTrue(cf.claim!!.startsWith("Flamengo se antecipa aos clubes"))
+        assertFalse(cf.needsChoice)
+    }
+
+    @Test fun titleCutOnlyWhenTheFirstPartIsTheWholeNews() {
+        fun claimOf(title: String) = reader.claimFor(reader.read(listOf(
+            b(title, 40, 40, 620, 36, listOf(title.take(title.length / 2), title.drop(title.length / 2))),
+            para("O texto da matéria explica a medida e traz a posição das autoridades envolvidas no caso.", 40, 160, 620, 16, 3),
+        ), 700, 400)).claim
+        assertEquals("Torvana aprova nova regra para os vinhos importados", claimOf("Torvana aprova nova regra para os vinhos importados: entenda o que muda"))
+        assertEquals("Vale Claro amplia vacinação: quem pode se vacinar a partir de 5 de outubro",
+            claimOf("Vale Claro amplia vacinação: saiba quem pode se vacinar a partir de 5 de outubro"))
+        assertEquals("IPVA: como pagar com desconto em Valdória", claimOf("IPVA: veja como pagar com desconto em Valdória"))
+        assertEquals("Frete grátis: o que muda para quem compra em Torvana", claimOf("Frete grátis: o que muda para quem compra em Torvana"))
+    }
+
+    @Test fun newsPageWithProfileHandleAtTheTopKeepsTheTitleAndOffersTheOtherReading() {
+        // Barra com @ do jornal no alto, uma chamada de texto e, abaixo, título, linha fina, assinatura e parágrafos.
+        val blocks = listOf(
+            b("Siga @jornalvaldoria", 40, 20, 300, 16),
+            b("Receba as principais notícias do dia no seu celular", 40, 50, 600, 16),
+            b("Torvana aprova nova regra para os vinhos importados de Valdória", 40, 110, 620, 36,
+                listOf("Torvana aprova nova regra para os", "vinhos importados de Valdória")),
+            b("Texto segue para sanção e muda a cobrança sobre os produtores da região", 40, 200, 620, 20),
+            b("Por Ana Souza", 40, 240, 200, 14),
+            para("O parlamento de Torvana aprovou nesta terça a nova regra para os vinhos importados de Valdória.", 40, 280, 620, 16, 3),
+            para("A regra entra em vigor em janeiro, segundo o governo, e vale para todos os importadores.", 40, 360, 620, 16, 3),
+        )
+        val r = reader.read(blocks, 700, 500)
+        assertEquals("Torvana aprova nova regra para os vinhos importados de Valdória", r.title)
+        assertFalse(r.socialPost)
+        val c = reader.claimFor(r)
+        assertEquals("Torvana aprova nova regra para os vinhos importados de Valdória", c.claim)
+        assertFalse(c.needsChoice)
+        assertTrue(c.note!!.contains("notícia e de post"))
+        assertTrue(c.alternatives.first().startsWith("Receba as principais"))
+    }
+
+    // ---- posts de rede social (nomes fictícios) ------------------------------------------------
+
+    private fun postHeader(y: Int) = listOf(b("Rádio Valdória", 150, y, 260, 22), b("@valdoria_fm · 3h", 440, y, 200, 22))
+
+    @Test fun postAboutOneEventSuggestsOpeningSentenceAndKeepsDetailsAside() {
+        val blocks = postHeader(60) + listOf(
+            para("URGENTE! Clube Ardeo entra com pedido no Tribunal de Torvana contra Norma Geral que proibiu os patrocínios.", 150, 100, 620, 22, 3),
+            para("O clube pediu hoje ao juiz Ivo Lestan para participar da ação que questiona a NG. A diretoria também quer que sua manifestação seja considerada.", 150, 230, 620, 22, 4),
+            para("Na petição, o Ardeo afirma que a proibição afeta o financiamento do esporte.", 150, 390, 620, 22, 2),
+        )
+        val r = reader.read(blocks, 800, 600)
+        assertNull(r.title)
+        assertTrue(r.socialPost)
+        assertEquals("Rádio Valdória @valdoria_fm", r.postProfile)
+        val c = reader.claimFor(r)
+        assertEquals("Clube Ardeo entra com pedido no Tribunal de Torvana contra Norma Geral que proibiu os patrocínios", c.claim)
+        assertFalse("um acontecimento só: não pede escolha", c.needsChoice)
+        assertEquals(3, c.alternatives.size)
+        assertTrue(c.alternatives.first().startsWith("O clube pediu hoje"))
+    }
+
+    @Test fun postIsRecognizedWhenBadgeIsReadAsLetterGluedToHandle() {
+        val blocks = listOf(b("Rádio Valdória", 150, 60, 260, 22), b("O@valdoria... . 3h", 440, 60, 200, 22),
+            para("Clube Ardeo entra com pedido no Tribunal de Torvana contra Norma Geral que proibiu os patrocínios.", 150, 100, 620, 22, 3))
+        val r = reader.read(blocks, 800, 300)
+        assertTrue(r.socialPost)
+        assertEquals("Rádio Valdória", r.postProfile)
+        assertFalse(reader.claimFor(r).needsChoice)
+    }
+
+    @Test fun textWithoutTitleOrProfileStillGetsOneSuggestion() {
+        val blocks = listOf(
+            para("Clube Ardeo entra com pedido no Tribunal de Torvana contra Norma Geral que proibiu os patrocínios.", 150, 100, 620, 22, 3),
+            para("O clube pediu hoje ao juiz Ivo Lestan para participar da ação que questiona a NG.", 150, 230, 620, 22, 3),
+        )
+        val r = reader.read(blocks, 800, 400)
+        val c = reader.claimFor(r)
+        assertFalse(r.socialPost)
+        assertTrue(c.claim!!.startsWith("Clube Ardeo entra com pedido"))
+        assertFalse(c.needsChoice)
+        assertEquals(1, c.alternatives.size)
+    }
+
+    @Test fun postTextWinsOverBigTextInsideAttachedImage() {
+        // Perfil, rótulo do aplicativo, texto do post (duas caixas), arte com letras grandes, data e uma resposta.
+        val blocks = listOf(
+            b("VAL Valdória Agora @valdoriaagora", 66, 324, 432, 44, listOf("VAL Valdória Agora", "@valdoriaagora")),
+            b("Show translation", 66, 489, 300, 30),
+            b("BOMBA: Torvana impõe sobretaxa de 40%", 101, 548, 900, 50),
+            b("sobre os vinhos de Valdória a partir de amanhã.", 28, 615, 1030, 50, listOf("sobre os vinhos de Valdória a partir de", "amanhã.")),
+            b("Taxa de 40% de Torvana", 774, 974, 250, 66, listOf("Taxa de 40%", "de Torvana")),
+            b("Imposto Novo", 846, 1130, 130, 30),
+            b("08:57 · 30/09/26 · 8,5K Views", 30, 1652, 560, 40),
+            b("Ivo Lestan @ivolestan · 9m Por isso eu sempre digo que devemos ter", 186, 2008, 817, 44,
+                listOf("Ivo Lestan @ivolestan · 9m", "Por isso eu sempre digo que devemos ter")),
+        )
+        val r = reader.read(blocks, 1170, 2532)
+        assertNull("letras grandes dentro da imagem não são título", r.title)
+        assertTrue(r.socialPost)
+        assertEquals("Valdória Agora @valdoriaagora", r.postProfile)
+        assertEquals("BOMBA: Torvana impõe sobretaxa de 40% sobre os vinhos de Valdória a partir de amanhã.", r.body)
+        assertFalse("a resposta de outro perfil não é texto do post", r.body.contains("Por isso"))
+        val c = reader.claimFor(r)
+        assertEquals("Torvana impõe sobretaxa de 40% sobre os vinhos de Valdória a partir de amanhã", c.claim)
+        assertFalse(c.needsChoice)
+        assertEquals(BlockRole.TEXTO_NA_IMAGEM, r.decisions.first { it.text.startsWith("Taxa de 40%") }.role)
+    }
+
+    @Test fun postBodyStopsBeforeCountersAndRepliesFromOtherProfiles() {
+        // Nome do perfil acima do @, letras do avatar ao lado, texto do post, fotos (espaço vazio), data, contadores e resposta.
+        val blocks = listOf(
+            b("RADAR VALDÓRIA", 206, 328, 380, 40),
+            b("@RadarValdoria", 186, 386, 348, 34),
+            b("WEW", 79, 398, 35, 18, conf = 0.3f),
+            b("Show translation", 31, 488, 350, 33),
+            b("URGENTE - Imagens mostram como foio jantar 'de gala' organizado por Lestan para Ardeo, diz O Correio", 29, 555, 1037, 50,
+                listOf("URGENTE - Imagens mostram como foio", "jantar 'de gala' organizado por Lestan para", "Ardeo, diz O Correio")),
+            b("10:05 · 30/09/26 · 21K Views", 29, 1447, 549, 42),
+            b("9 12 L 113", 30, 1543, 406, 50),
+            b("Ivo Lestan ® @ivolestan · 17m Pague seus impostos em dia, \"companheiro\".", 185, 1800, 896, 46,
+                listOf("Ivo Lestan ® @ivolestan · 17m", "Pague seus impostos em dia, \"companheiro\".")),
+        )
+        val r = reader.read(blocks, 1170, 2532)
+        assertTrue(r.socialPost)
+        assertEquals("RADAR VALDÓRIA @RadarValdoria", r.postProfile)
+        assertEquals("URGENTE - Imagens mostram como foio jantar 'de gala' organizado por Lestan para Ardeo, diz O Correio", r.body)
+        val c = reader.claimFor(r)
+        assertFalse("um post, uma sugestão: a resposta de outro perfil não vira opção", c.needsChoice)
+        assertTrue(c.claim!!.startsWith("Imagens mostram como foio jantar"))
+        assertTrue(c.alternatives.isEmpty())
+    }
+
+    @Test fun articleWithHandleInBylineKeepsItsTitle() {
+        val blocks = listOf(
+            b("Torvana aprova nova regra para vinhos importados", 40, 60, 620, 40, listOf("Torvana aprova nova regra", "para vinhos importados")),
+            b("Por Ana Souza @anasouza", 40, 180, 300, 16),
+            para("O parlamento de Torvana aprovou nesta terça a nova regra para os vinhos importados de Valdória.", 40, 230, 620, 16, 3),
+        )
+        val r = reader.read(blocks, 700, 400)
+        assertEquals("Torvana aprova nova regra para vinhos importados", r.title)
+        assertFalse(r.socialPost)
+    }
+
+    @Test fun postWithTwoUnrelatedEventsStillAsksWhichOne() {
+        val blocks = postHeader(60) + listOf(
+            para("Prefeitura de Valdória inaugura ponte sobre o rio Ardeo nesta segunda com presença do governador.", 150, 100, 620, 22, 3),
+            para("Seleção de Torvana vence o torneio continental de vôlei por 3 sets a 1 contra a Merídia.", 150, 230, 620, 22, 3),
+        )
+        val r = reader.read(blocks, 800, 500)
+        val c = reader.claimFor(r)
+        assertTrue(r.socialPost)
+        assertNull("dois assuntos: não escolhe por conta própria", c.claim)
+        assertTrue(c.needsChoice)
+        assertEquals(2, c.alternatives.size)
+        assertTrue(c.alternatives[0].startsWith("Prefeitura de Valdória"))
+        assertTrue(c.alternatives[1].startsWith("Seleção de Torvana"))
+    }
+
+    @Test fun postThatOpensDependingOnEarlierContextDoesNotGuess() {
+        val blocks = postHeader(60) + listOf(
+            para("Ele disse ontem que a medida vai ser revista pelo conselho de Valdória ainda neste mês.", 150, 100, 620, 22, 3),
+            para("A decisão do conselho de Valdória deve sair até sexta, segundo a assessoria do órgão.", 150, 230, 620, 22, 3),
+        )
+        val c = reader.claimFor(reader.read(blocks, 800, 500))
+        assertNull(c.claim)
+        assertTrue(c.needsChoice)
+    }
+
+    @Test fun questionTitleSuggestsTheStatementBelowIt() {
         val blocks = listOf(
             b("Por que o governo mudou a regra do transporte?", 40, 40, 620, 36, listOf("Por que o governo mudou a", "regra do transporte?")),
             para("O Ministério dos Transportes alterou o prazo de renovação das concessões de ônibus interestaduais.", 40, 160, 620, 16, 3),
@@ -200,8 +393,20 @@ class ArticleReaderRegressionTest {
         val r = reader.read(blocks, 700, 400)
         val c = reader.claimFor(r)
         assertNull(r.metadata.author)
+        // A pergunta não é pesquisada como afirmação; a frase logo abaixo dá o foco.
+        assertTrue(c.claim!!.startsWith("O Ministério dos Transportes alterou"))
+        assertFalse(c.needsChoice)
+        assertTrue(c.note!!.contains("pergunta"))
+        assertTrue(c.alternatives.single().startsWith("Segundo a pasta"))
+    }
+
+    @Test fun questionTitleWithoutClearStatementStillAsks() {
+        val blocks = listOf(
+            b("Por que a regra mudou de novo?", 40, 40, 620, 36, listOf("Por que a regra mudou", "de novo?")),
+            para("Ela passa a valer ainda neste mês, segundo pessoas que acompanham as conversas sobre o tema.", 40, 160, 620, 16, 3),
+        )
+        val c = reader.claimFor(reader.read(blocks, 700, 300))
         assertNull(c.claim)
         assertTrue(c.needsChoice)
-        assertTrue(c.alternatives.first().startsWith("O Ministério dos Transportes alterou"))
     }
 }

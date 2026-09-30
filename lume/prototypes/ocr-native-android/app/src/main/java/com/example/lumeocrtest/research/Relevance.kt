@@ -8,9 +8,9 @@ import java.net.URI
  */
 
 const val RECENT_DAYS = 30
-private const val RELATIVE_MAX_AGE_MS = 14 * Dates.DAY_MS
+const val RELATIVE_MAX_AGE_MS = 14 * Dates.DAY_MS
 /** Publicações muito anteriores à data da matéria lida tratam de um episódio anterior. */
-private const val REFERENCE_WINDOW_MS = 21 * Dates.DAY_MS
+const val REFERENCE_WINDOW_MS = 21 * Dates.DAY_MS
 val CONTENT_RANK = mapOf("completo" to 3, "resumo" to 2, "trecho" to 2, "titulo" to 1)
 
 class Assessment(

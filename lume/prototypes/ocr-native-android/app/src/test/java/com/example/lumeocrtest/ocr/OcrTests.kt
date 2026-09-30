@@ -3,7 +3,6 @@ package com.example.lumeocrtest.ocr
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
-import org.junit.Assert.assertFalse
 import org.junit.Test
 
 class OcrTests {
@@ -140,105 +139,5 @@ class OcrTests {
         assertEquals("21 de setembro de 2026 às 10:57", result.metadata.publishedAt)
         assertTrue(result.consumedBlockIndexes.contains(3))
         assertTrue(!result.consumedBlockIndexes.contains(0))
-    }
-
-    @Test
-    fun testRelevanceScorer_O_sol_e_frio() {
-        val analyzer = QueryAnalyzer()
-        val scorer = RelevanceScorer()
-
-        val query = analyzer.analyze("O sol é frio")
-        assertTrue(query.isAmbiguous)
-        
-        val news1 = scorer.score(query, "Manhãs frias de sol", "O clima está mais ameno nas manhãs frias com muito sol no litoral.")
-        assertTrue(!news1.isRelevant)
-        
-        val news2 = scorer.score(query, "Temperatura do Sol", "Cientistas descobrem anomalias na temperatura do sol, com manchas solares inesperadamente frias.")
-        // O sol (entidade) e frio (contexto).
-        // Devido ao matchRatio < 1.0f e totalImportantTerms <= 2, pode falhar. Vamos ajustar a expectativa se nosso modelo
-        // foi desenhado para ser conservador e rejeitar consultas extremamente curtas como essa.
-        // A regra diz: se é muito curta (<= 2 termos importantes) E não bate tudo, rejeita.
-        // Como "sol" e "frio" estão presentes, o matchRatio devia ser 1.0f.
-        // Na nossa análise, "sol" foi para entidades e "frio" para context. Ambos presentes na query e ambos no snippet.
-        // Logo, matchRatio = 1.0. A distância mínima entre eles é resolvida. 
-        // Portanto deveria passar, se isRelevant voltar falso, a distância mínima foi ativada.
-        assertTrue(news2.isRelevant)
-    }
-
-    @Test
-    fun testRelevanceScorer_Terra_plana() {
-        val analyzer = QueryAnalyzer()
-        val scorer = RelevanceScorer()
-
-        val query = analyzer.analyze("A Terra é plana")
-        assertTrue(!query.isAmbiguous)
-        
-        val news1 = scorer.score(query, "Jornal Terra Plana", "Assine o Jornal Terra Plana e receba as principais notícias da cidade.")
-        assertTrue(!news1.isRelevant)
-        
-        val news2 = scorer.score(query, "Debate sobre Terra Plana", "O formato da terra continua gerando debate entre teóricos da terra plana na internet.")
-        assertTrue(news2.isRelevant)
-    }
-
-    @Test
-    fun testRelevanceScorer_Virginia_morreu() {
-        val analyzer = QueryAnalyzer()
-        val query = analyzer.analyze("Virginia morreu")
-        
-        // Should be highly ambiguous requiring more info
-        assertTrue(query.isAmbiguous)
-    }
-
-    @Test
-    fun testRelevanceScorer_EntitiesAndNegations() {
-        val analyzer = QueryAnalyzer()
-        val scorer = RelevanceScorer()
-
-        val query = analyzer.analyze("Flamengo e Bahia não aceitaram a proposta")
-        assertTrue(query.negations.contains("não"))
-        
-        val news1 = scorer.score(query, "Flamengo e Bahia recusam", "Clubes rejeitam a nova proposta de regulamento.")
-        // Doesn't have 'não' but it's a semantic synonym... we are testing our lexical fallback for now.
-        // Wait, our lexical fallback requires 'não' to be present if it was in the query.
-        // If they "recusam", 'não' isn't there, so it provides CONTEXT or UNRELATED.
-        // Let's assert it falls back to CONTEXT because missing "negação".
-        assertTrue(news1.level == RelevanceLevel.CONTEXT || news1.level == RelevanceLevel.UNRELATED)
-        
-        val news2 = scorer.score(query, "Clubes e a proposta", "Flamengo e Bahia não aceitaram o acordo financeiro.")
-        assertEquals(RelevanceLevel.DIRECT, news2.level)
-    }
-    @Test
-    fun subscriptionPagesAreRejectedWithoutBlockingReporting() {
-        val query = QueryAnalyzer().analyze("Rio Verde aprovou orçamento")
-        val scorer = RelevanceScorer()
-        assertFalse(scorer.score(query, "Jornal Rio Verde", "Assine e receba as notícias do orçamento").isRelevant)
-        assertTrue(scorer.score(query, "Rio Verde aprovou orçamento", "Vereadores aprovaram o orçamento municipal.").isRelevant)
-    }
-
-    @Test
-    fun incidentalWeatherDoesNotDiscardAnUnrelatedEventQuery() {
-        val query = QueryAnalyzer().analyze("Marina anunciou projeto")
-        assertTrue(RelevanceScorer().score(query, "Marina anunciou projeto", "O projeto foi anunciado em uma manhã fria.").isRelevant)
-    }
-
-    @Test
-    fun testCompoundEntitiesExtraction() {
-        val analyzer = QueryAnalyzer()
-        val query = analyzer.analyze("Mensagens revelam troca de informações entre Ibaneis Rocha e Daniel Vorcaro no Banco Master")
-        
-        assertFalse(query.mainEntities.contains("Mensagens"))
-        assertTrue(query.mainEntities.contains("Ibaneis Rocha"))
-        assertTrue(query.mainEntities.contains("Daniel Vorcaro"))
-        assertTrue(query.mainEntities.contains("Banco Master"))
-    }
-
-    @Test
-    fun testDisambiguationAndPartialMatchInWikipedia() {
-        val analyzer = QueryAnalyzer()
-        val scorer = RelevanceScorer()
-        
-        val query = analyzer.analyze("Ibaneis Rocha assina decreto")
-        val scoreResult = scorer.score(query, "Rocha (desambiguação)", "Rocha é um agregado de minerais.", isWiki = true)
-        assertFalse(scoreResult.isRelevant)
     }
 }

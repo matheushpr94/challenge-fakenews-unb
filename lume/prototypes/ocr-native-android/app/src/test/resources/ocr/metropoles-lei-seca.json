@@ -1,0 +1,423 @@
+{
+ "image": "zz-metropoles-lei-seca.png",
+ "width": 724,
+ "height": 1370,
+ "blocks": [
+  {
+   "text": "Brasil",
+   "box": [
+    19,
+    33,
+    64,
+    46
+   ],
+   "lines": [
+    {
+     "text": "Brasil",
+     "box": [
+      19,
+      33,
+      64,
+      46
+     ],
+     "confidence": 0.9264323115348816
+    }
+   ]
+  },
+  {
+   "text": "Lei Seca: saiba em quais estados é\nproibido beber no 1° turno das eleições",
+   "box": [
+    19,
+    66,
+    644,
+    151
+   ],
+   "lines": [
+    {
+     "text": "Lei Seca: saiba em quais estados é",
+     "box": [
+      19,
+      66,
+      564,
+      105
+     ],
+     "confidence": 0.8723493218421936
+    },
+    {
+     "text": "proibido beber no 1° turno das eleições",
+     "box": [
+      19,
+      114,
+      644,
+      151
+     ],
+     "confidence": 0.8433948755264282
+    }
+   ]
+  },
+  {
+   "text": "Levantamento do Metrópoles mostra regras diferentes sobre a Lei Seca entre\nestados e municípios para o primeiro turno, em 4 de outubro",
+   "box": [
+    19,
+    165,
+    678,
+    210
+   ],
+   "lines": [
+    {
+     "text": "Levantamento do Metrópoles mostra regras diferentes sobre a Lei Seca entre",
+     "box": [
+      19,
+      165,
+      678,
+      185
+     ],
+     "confidence": 0.8900146484375
+    },
+    {
+     "text": "estados e municípios para o primeiro turno, em 4 de outubro",
+     "box": [
+      19,
+      190,
+      538,
+      210
+     ],
+     "confidence": 0.8840880393981934
+    }
+   ]
+  },
+  {
+   "text": "Giovanna Estrela",
+   "box": [
+    19,
+    236,
+    157,
+    249
+   ],
+   "lines": [
+    {
+     "text": "Giovanna Estrela",
+     "box": [
+      19,
+      236,
+      157,
+      249
+     ],
+     "confidence": 0.8864583373069763
+    }
+   ]
+  },
+  {
+   "text": "30\/09\/2026 04:00",
+   "box": [
+    19,
+    262,
+    157,
+    275
+   ],
+   "lines": [
+    {
+     "text": "30\/09\/2026 04:00",
+     "box": [
+      19,
+      262,
+      157,
+      275
+     ],
+     "confidence": 0.8786458373069763
+    }
+   ]
+  },
+  {
+   "text": "9 Enviar no WhatsApp",
+   "box": [
+    31,
+    304,
+    221,
+    328
+   ],
+   "lines": [
+    {
+     "text": "9 Enviar no WhatsApp",
+     "box": [
+      31,
+      304,
+      221,
+      328
+     ],
+     "confidence": 0.8405330777168274
+    }
+   ]
+  },
+  {
+   "text": "Facebook",
+   "box": [
+    281,
+    307,
+    360,
+    326
+   ],
+   "lines": [
+    {
+     "text": "Facebook",
+     "box": [
+      281,
+      307,
+      360,
+      326
+     ],
+     "confidence": 0.8525390625
+    }
+   ]
+  },
+  {
+   "text": "Adicioneo Metrópoles\ncomo fonte preferencial no\nGoogle",
+   "box": [
+    69,
+    359,
+    284,
+    425
+   ],
+   "lines": [
+    {
+     "text": "Adicioneo Metrópoles",
+     "box": [
+      69,
+      360,
+      250,
+      376
+     ],
+     "confidence": 0.87890625
+    },
+    {
+     "text": "como fonte preferencial no",
+     "box": [
+      78,
+      383,
+      285,
+      401
+     ],
+     "confidence": 0.8947010636329651
+    },
+    {
+     "text": "Google",
+     "box": [
+      69,
+      405,
+      126,
+      425
+     ],
+     "confidence": 0.84375
+    }
+   ]
+  },
+  {
+   "text": "ouvir notícia",
+   "box": [
+    20,
+    966,
+    116,
+    979
+   ],
+   "lines": [
+    {
+     "text": "ouvir notícia",
+     "box": [
+      20,
+      966,
+      116,
+      979
+     ],
+     "confidence": 0.8059895634651184
+    }
+   ]
+  },
+  {
+   "text": "X Twitter",
+   "box": [
+    407,
+    301,
+    474,
+    328
+   ],
+   "lines": [
+    {
+     "text": "X Twitter",
+     "box": [
+      407,
+      301,
+      474,
+      328
+     ],
+     "confidence": 0.68017578125
+    }
+   ]
+  },
+  {
+   "text": "Ler resumo +",
+   "box": [
+    305,
+    1095,
+    429,
+    1109
+   ],
+   "lines": [
+    {
+     "text": "Ler resumo +",
+     "box": [
+      305,
+      1095,
+      429,
+      1109
+     ],
+     "confidence": 0.865234375
+    }
+   ]
+  },
+  {
+   "text": "TMeTRÓPOLES",
+   "box": [
+    590,
+    245,
+    716,
+    266
+   ],
+   "lines": [
+    {
+     "text": "TMeTRÓPOLES",
+     "box": [
+      590,
+      245,
+      716,
+      266
+     ],
+     "confidence": 0.5784801244735718
+    }
+   ]
+  },
+  {
+   "text": "CONTINUA DEPOIS DA PUBLICIDADE",
+   "box": [
+    202,
+    1358,
+    530,
+    1370
+   ],
+   "lines": [
+    {
+     "text": "CONTINUA DEPOIS DA PUBLICIDADE",
+     "box": [
+      202,
+      1358,
+      530,
+      1370
+     ],
+     "confidence": 0.7297453880310059
+    }
+   ]
+  },
+  {
+   "text": "a Getty Images",
+   "box": [
+    591,
+    443,
+    714,
+    462
+   ],
+   "lines": [
+    {
+     "text": "a Getty Images",
+     "box": [
+      591,
+      443,
+      714,
+      462
+     ],
+     "confidence": 0.8033854365348816
+    }
+   ]
+  },
+  {
+   "text": "0:00 1.0",
+   "box": [
+    646,
+    1007,
+    710,
+    1025
+   ],
+   "lines": [
+    {
+     "text": "0:00 1.0",
+     "box": [
+      646,
+      1007,
+      710,
+      1025
+     ],
+     "confidence": 0.8337053656578064
+    }
+   ]
+  },
+  {
+   "text": "A Lei Seca será adotada de forma diferente nos estados durante o primeiro turno\ndas Eleições 2026, que ocorre no domingo (4\/10). Como não há uma regra\nnacional que determine a proibição da venda e do consumo de bebidas alcoólicas\nno dia da votação, cada estado pode definir se haverá restrição e quais serão os\nhorários e locais abrangidos pela medida.",
+   "box": [
+    18,
+    1166,
+    708,
+    1331
+   ],
+   "lines": [
+    {
+     "text": "A Lei Seca será adotada de forma diferente nos estados durante o primeiro turno",
+     "box": [
+      18,
+      1166,
+      705,
+      1184
+     ],
+     "confidence": 0.8779592514038086
+    },
+    {
+     "text": "das Eleições 2026, que ocorre no domingo (4\/10). Como não há uma regra",
+     "box": [
+      24,
+      1201,
+      647,
+      1222
+     ],
+     "confidence": 0.8690732717514038
+    },
+    {
+     "text": "nacional que determine a proibição da venda e do consumo de bebidas alcoólicas",
+     "box": [
+      19,
+      1238,
+      708,
+      1258
+     ],
+     "confidence": 0.8693773746490479
+    },
+    {
+     "text": "no dia da votação, cada estado pode definir se haverá restrição e quais serão os",
+     "box": [
+      19,
+      1274,
+      690,
+      1293
+     ],
+     "confidence": 0.8781368136405945
+    },
+    {
+     "text": "horários e locais abrangidos pela medida.",
+     "box": [
+      18,
+      1310,
+      369,
+      1331
+     ],
+     "confidence": 0.8831380009651184
+    }
+   ]
+  }
+ ]
+}

@@ -25,11 +25,18 @@ data class ArticleReading(
     val decisions: List<BlockDecision>,
     /** Candidatos a título com a pontuação (diagnóstico). */
     val titleCandidates: List<Pair<String, Double>> = emptyList(),
+    /** A captura é um post de rede social: há um @perfil logo acima do texto (não um título de matéria). */
+    val socialPost: Boolean = false,
+    /** Nome e @ do perfil que publicou, como aparecem na imagem. */
+    val postProfile: String? = null,
+    /** Formato incerto: texto logo abaixo de um @perfil numa captura que também parece página de notícia. */
+    val textNearProfile: String? = null,
 ) {
     fun roleOf(index: Int) = decisions.firstOrNull { it.index == index }?.role
 
     fun report(): String = buildString {
         appendLine("título=$title${partialTitle?.let { " | título parcial=“$it”" } ?: ""}")
+        if (socialPost) appendLine("post de rede social | perfil=$postProfile")
         appendLine("candidatos a título=$titleCandidates")
         appendLine("subtítulo=$subtitle")
         val m = metadata
@@ -68,8 +75,22 @@ class ArticleReader {
         private val PLAYER = Regex("\\d{1,2}:\\d{2}\\s*/\\s*\\d{1,2}:\\d{2}")
         private val CREDIT = Regex("(?iu)^(?:©|foto|fotos|imagem|crédito|reprodução|divulgação|arquivo pessoal|getty|reuters|afp|ap photo|efe)|" +
             "(?:/\\s*(?:agência|agencia|divulgação|reprodução|getty|reuters|afp|arquivo)\\b)|\\bgetty\\s+ima|\\bshutterstock\\b")
+        /** Verbo de chamada no começo de um trecho ("saiba", "entenda"): convida à leitura, não informa. */
+        private val EDITORIAL_VERB = Regex("(?iu)^(?:entenda|veja|saiba|confira|leia|descubra|conheça)\\s+")
         private val EDITORIAL_TAIL = Regex("(?iu)^(?:entenda|veja|saiba|confira|leia|assista|ouça|vídeo|video|ao vivo|infográfico|como|o que|por que|quem|quais)\\b")
         private val QUESTION_START = Regex("(?iu)^(?:por que|porque|como|o que|quem|qual|quais|quando|onde|quanto|será)\\b")
+        /** @perfil (não e-mail), como aparece acima do texto de um post. */
+        private val HANDLE = Regex("(?<![\\p{L}\\d._-]{2})@[\\p{L}\\d_]{2,}")
+        /** Chamada de atenção no começo de um post ("URGENTE:", "BOMBA!"): não faz parte da afirmação. */
+        private val ATTENTION = Regex("(?iu)^(?:urgente|bomba|aten[cç][aã]o|alerta|agora|plant[aã]o|exclusivo|grave|absurdo|esc[aâ]ndalo|" +
+            "inacredit[aá]vel|breaking|[uú]ltima hora|confirmado|oficial|vejam?|olha isso)\\s*[:!|–-]+\\s*(?=\\S)")
+        private val PRONOUN_START = Regex("(?iu)^(?:ele|ela|eles|elas|isso|isto|aquilo|além disso|alem disso|também|tambem|já|ja|por isso|com isso|segundo|de acordo)\\b")
+        private val LINK_STOP = setOf("para", "como", "mais", "menos", "pela", "pelo", "pelas", "pelos", "entre", "sobre", "tambem",
+            "desde", "seus", "suas", "esta", "este", "essa", "esse", "isso", "quando", "onde", "quem", "qual", "quais", "muito",
+            "ainda", "apos", "contra", "hoje", "ontem", "amanha", "sera", "foram", "estao", "pode", "podem", "deve", "devem",
+            "cada", "todo", "toda", "todos", "todas", "outro", "outra", "outros", "outras", "segundo", "durante", "porque",
+            "mesmo", "mesma", "apenas", "anos", "dias", "disse", "afirma", "afirmou", "agora", "aqui", "numa", "nesta", "neste",
+            "nessa", "nesse", "dessa", "desse", "desta", "deste", "sendo", "seria", "tinha", "havia", "sao", "alem", "antes", "depois")
         private val SENTENCE_END = Regex("(?<=[.!?])\\s+(?=[\\p{Lu}\"“])")
     }
 
@@ -99,7 +120,8 @@ class ArticleReader {
                 CHROME_CONTAINS.containsMatchIn(b.text) -> "aviso de cookies/assinatura/notificações"
                 words.isNotEmpty() && words.all { it.trim('(', ')', ':', '.', '!') in CHROME_WORDS } && b.words <= 6 -> "rótulos de botões ou menus"
                 PLAYER.containsMatchIn(b.text) -> "controle de áudio/vídeo"
-                NUMERIC_ONLY.matches(b.text) -> "somente números/cotações"
+                // "30/09/2026 04:00" sozinha é a data da matéria, não cotação nem contador.
+                NUMERIC_ONLY.matches(b.text) && BylineParser.parse(b.text).date == null -> "somente números/cotações"
                 b.conf != null && b.conf < 0.6f && b.words <= 2 -> "leitura de baixa confiança e muito curta"
                 b.text.count { it.isLetterOrDigit() } < 2 -> "sem texto legível"
                 else -> null
@@ -325,11 +347,75 @@ class ArticleReader {
             imageCredits = decisions.values.filter { it.role == BlockRole.CREDITO_IMAGEM }.map { it.text },
             captions = decisions.values.filter { it.role == BlockRole.LEGENDA }.map { it.text }, publishedAtMs = dateMs,
         )
-        val bodyText = ArticleTextExtractor().mergeInOrder(bodyBlocks.sortedBy { it.box.top }.map { it.block })
+        var bodyText = ArticleTextExtractor().mergeInOrder(bodyBlocks.sortedBy { it.box.top }.map { it.block })
+        // Post de rede social: um @perfil no alto e, logo abaixo, o texto do post. Esse texto é o conteúdo principal;
+        // letras grandes mais abaixo (arte ou foto anexada) não são título, e o que vem depois são respostas.
+        val uiRoles = setOf(BlockRole.INTERFACE, BlockRole.ANUNCIO)
+        val textual = all.filter { decisions[it.i]?.role !in uiRoles && (it.conf ?: 1f) >= 0.5f }
+        val topHandle = all.filter { HANDLE.containsMatchIn(it.text) && it.box.top < height * 0.5 }.minByOrNull { it.box.top }
+        val postStart = topHandle?.let { h -> textual.filter { it !== h && it.box.top >= h.box.bottom - 2 && it.words >= 4 &&
+            !HANDLE.containsMatchIn(it.text) && it !in bylineLike }.minByOrNull { it.box.top }
+            ?.takeIf { it.box.top - h.box.bottom <= max(6 * it.lh, height * 0.12) } }
+        val postBlocks = mutableListOf<B>()
+        if (postStart != null) {
+            postBlocks += postStart
+            var last: B = postStart
+            while (true) {
+                val next = textual.filter { it !in postBlocks && it !== topHandle && it.box.top >= last.box.bottom - last.lh * 0.5 &&
+                    overlapX(it.box, postStart.box) > 0 }.minByOrNull { it.box.top } ?: break
+                if (next.box.top - last.box.bottom > 2.6 * postStart.lh || HANDLE.containsMatchIn(next.text) || next in bylineLike ||
+                    abs(next.lh - postStart.lh) > postStart.lh * 0.3) break
+                postBlocks += next; last = next
+            }
+        }
+        val titleBelowPost = postStart != null && titleTop != null && titleTop > postStart.box.top
+        // Sinais de página de notícia no título: subtítulo, assinatura ou mais de um parágrafo abaixo dele.
+        val newsSignals = titleText != null && (subtitleBlocks.isNotEmpty() || author != null || org != null ||
+            bodyBlocks.count { it.box.top > titleBottom } >= 2)
+        // Com sinais dos dois formatos, a leitura de notícia fica; o texto junto ao perfil vira alternativa.
+        val formatDoubt = titleBelowPost && newsSignals
+        val handle = topHandle?.takeIf { postStart != null && (titleText == null || titleBelowPost) && !formatDoubt }
+        // Com o post delimitado, o corpo é só ele: respostas, contadores e outros posts ficam de fora.
+        val postOverride = handle != null
+        if (postOverride) {
+            (titleMembers + subtitleBlocks).forEach { decide(it, BlockRole.TEXTO_NA_IMAGEM, "texto de imagem anexada ao post, abaixo do texto principal") }
+            bodyBlocks.filter { it !in postBlocks }.forEach { decide(it, BlockRole.NAO_USADO, "abaixo do post (respostas ou outro conteúdo)") }
+            postBlocks.forEach { decide(it, BlockRole.CORPO, "texto do post, logo abaixo do @perfil") }
+            bodyText = buildString {
+                postBlocks.forEachIndexed { i, blk ->
+                    if (i > 0) {
+                        val prev = postBlocks[i - 1]
+                        val sameParagraph = blk.box.top - prev.box.bottom <= prev.lh * 0.8 &&
+                            (!Regex("[.!?]$").containsMatchIn(prev.text) || blk.text.first().isLowerCase())
+                        append(if (sameParagraph) " " else "\n\n")
+                    }
+                    append(blk.text)
+                }
+            }
+        }
+        // Nome do perfil: à esquerda do @ na mesma linha ou logo acima dele (não as letras do avatar, de leitura incerta).
+        fun nameLike(b: B, h: B) = b !== h && b.text.any(Char::isLetter) && !HANDLE.containsMatchIn(b.text) && b.words <= 6 &&
+            decisions[b.i]?.role !in uiRoles && (b.conf ?: 1f) >= 0.6f
+        val profileName = handle?.let { h ->
+            all.filter { nameLike(it, h) && it.box.right <= h.box.left + 4 && it.box.top < h.box.bottom && it.box.bottom > h.box.top }.maxByOrNull { it.box.right }
+                ?: all.filter { nameLike(it, h) && it.box.bottom <= h.box.top + 4 && h.box.top - it.box.bottom <= h.box.height &&
+                    abs(it.box.left - h.box.left) <= width * 0.1 }.maxByOrNull { it.box.bottom }
+        }
+        // @ cortado pelo aplicativo ("@nome...") não é mostrado pela metade.
+        val handleText = handle?.let { h -> HANDLE.find(h.text)?.takeUnless { m -> h.text.substring(m.range.last + 1).trimStart().let { it.startsWith("…") || it.startsWith("..") } }?.value }
+        // Letras do avatar lidas coladas ao nome ("CHE Chequei…"): o pedaço repetido sai.
+        val nameInHandleBlock = handle?.text?.substringBefore('@')?.trim()?.takeIf { it.any(Char::isLetter) }?.let { n ->
+            val parts = n.split(" ")
+            if (parts.size >= 3 && parts[0].length <= 4 && parts[0].all { it.isUpperCase() } && parts[1].startsWith(parts[0], ignoreCase = true))
+                parts.drop(1).joinToString(" ") else n
+        }
+        val postProfile = handle?.let { listOfNotNull(profileName?.text ?: nameInHandleBlock, handleText).joinToString(" ") }
         return ArticleReading(
-            title = titleText?.takeUnless { titleCut }, partialTitle = titleText?.takeIf { titleCut },
-            subtitle = subtitleBlocks.firstOrNull()?.text, metadata = metadata, body = bodyText,
+            title = titleText?.takeUnless { titleCut || postOverride }, partialTitle = titleText?.takeIf { titleCut && !postOverride },
+            subtitle = subtitleBlocks.firstOrNull()?.text?.takeUnless { postOverride }, metadata = metadata, body = bodyText,
             decisions = decisions.values.sortedBy { it.index }, titleCandidates = titleCandidates,
+            socialPost = handle != null, postProfile = postProfile,
+            textNearProfile = if (formatDoubt) postBlocks.joinToString(" ") { it.text } else null,
         )
     }
 
@@ -340,6 +426,12 @@ class ArticleReader {
         val alternatives = (listOfNotNull(reading.subtitle) + sentences).distinct().take(4)
         val title = reading.title
         if (title == null) {
+            // Sem título utilizável: sugere a frase que abre o texto, quando ela dá um foco seguro.
+            bodyFocus(reading, when {
+                reading.partialTitle != null -> "O título aparece cortado na imagem (“…${reading.partialTitle}”). Sugerimos a frase que abre o texto."
+                reading.socialPost -> "Esta é a frase que abre o post."
+                else -> "Não encontramos um título nesta imagem. Sugerimos a frase que abre o texto lido."
+            })?.let { return it }
             val why = if (reading.partialTitle != null) "O título aparece cortado na imagem (“…${reading.partialTitle}”)."
                 else "Não encontramos um título nesta imagem."
             return ClaimChoice(null, alternatives, true, "$why Escolha uma frase abaixo ou escreva o que quer pesquisar.")
@@ -347,13 +439,89 @@ class ArticleReader {
         var claim = title.trim()
         Regex("(?iu)^(?:vídeo|video|ao vivo|exclusivo|urgente|análise|opinião)\\s*[:|-]\\s*").find(claim)?.let { claim = claim.substring(it.range.last + 1) }
         val cut = Regex("\\s*(?::|\\s[-–—]\\s|;)\\s*").findAll(claim).firstOrNull { m -> EDITORIAL_TAIL.containsMatchIn(claim.substring(m.range.last + 1)) }
-        if (cut != null) claim = claim.substring(0, cut.range.first)
+        var guide = false
+        var guideWord: String? = null
+        if (cut != null) {
+            val head = claim.substring(0, cut.range.first).trim()
+            val tail = claim.substring(cut.range.last + 1).trim()
+            // "Fux derruba decisão…: entenda o vaivém" → a primeira parte é a notícia. "Lei Seca: saiba em quais estados…"
+            // → a primeira parte é só o tema; lugar, período e números estão depois dos dois-pontos e ficam.
+            val tailDetail = tail.any(Char::isDigit) || (properNames(tail) - properNames("x $head")).isNotEmpty()
+            if (head.split(Regex("\\s+")).size >= 4 && !tailDetail) claim = head
+            else {
+                claim = "$head${claim.substring(cut.range.first, cut.range.last + 1).trimEnd()} ${EDITORIAL_VERB.replace(tail, "")}".trim()
+                guide = true
+                guideWord = EDITORIAL_VERB.find(tail)?.value?.trim()?.lowercase()
+            }
+        }
         claim = claim.trim().trimEnd('.', ':', ';')
+        // Nunca uma palavra solta no lugar de um título com vários detalhes.
+        if (claim.split(Regex("\\s+")).size < 3 && title.split(Regex("\\s+")).size >= 5) claim = title.trim().trimEnd('.', ':', ';')
         if (claim.endsWith("?") || QUESTION_START.containsMatchIn(claim)) {
+            bodyFocus(reading, "O título é uma pergunta (“$claim”). Sugerimos a frase que abre o texto.")?.let { return it }
             return ClaimChoice(null, alternatives, true,
                 "O título é uma pergunta (“$claim”). Escolha uma afirmação para pesquisar ou escreva a sua.")
         }
-        return ClaimChoice(claim, alternatives.filter { it != claim }, false, null)
+        reading.textNearProfile?.let { near ->
+            return ClaimChoice(claim, (listOf(near) + alternatives).filter { it != claim }.distinct().take(4), false,
+                "A imagem tem sinais de página de notícia e de post. Sugerimos o título; o texto que aparece junto ao perfil está nas opções abaixo.")
+        }
+        return ClaimChoice(claim, alternatives.filter { it != claim }, false,
+            when {
+                guide && guideWord != null -> "O título é um guia (“$guideWord…”), não uma afirmação única. " +
+                    "Sugerimos o título sem essa palavra; edite se quiser conferir um ponto específico."
+                guide -> "O título apresenta um tema com várias informações, não uma afirmação única. Edite se quiser conferir um ponto específico."
+                else -> null
+            })
+    }
+
+    /**
+     * Texto sem título utilizável (post, recorte, título cortado ou em forma de pergunta): sugere a frase que abre
+     * o texto e trata as demais como detalhes do mesmo acontecimento.
+     * As frases são agrupadas por assunto (mesmo parágrafo ou termos em comum); só quando sobra mais de um grupo,
+     * com nomes próprios diferentes, a escolha volta para a pessoa. Nulo = não dá para sugerir com segurança.
+     */
+    private fun bodyFocus(reading: ArticleReading, why: String): ClaimChoice? {
+        class Group(val sentences: MutableList<String> = mutableListOf(), val terms: MutableSet<String> = mutableSetOf())
+        val groups = mutableListOf<Group>()
+        var last: Group? = null
+        (listOfNotNull(reading.subtitle) + reading.body.split(Regex("\\n\\s*\\n"))).forEach { paragraph ->
+            var inParagraph: Group? = null
+            paragraph.replace("\n", " ").split(SENTENCE_END).map { it.trim() }
+                .filter { s -> s.length in 30..320 && s.split(" ").size >= 5 && !s.endsWith("?") }.forEach { s ->
+                    val t = linkTerms(s)
+                    val g = groups.firstOrNull { g -> g.terms.any { it in t } } ?: inParagraph
+                        ?: last?.takeIf { PRONOUN_START.containsMatchIn(s) || vagueSubject(s) != null || properNames(s).isEmpty() }
+                        ?: Group().also { groups += it }
+                    g.sentences += s; g.terms += t; inParagraph = g; last = g
+                }
+        }
+        val lead = groups.firstOrNull()?.sentences?.firstOrNull() ?: return null
+        if (vagueSubject(lead) != null || PRONOUN_START.containsMatchIn(lead) || properNames(lead).isEmpty()) return null
+        if (groups.size > 1) return ClaimChoice(null, groups.map { it.sentences.first() }.take(4), true,
+            "Esta imagem traz mais de um assunto. Escolha qual deles pesquisar ou escreva o que quer pesquisar.")
+        return ClaimChoice(ATTENTION.replace(lead, "").trimEnd('.', ':', ';'), groups.first().sentences.drop(1).take(6),
+            false, "$why Confira e edite, se precisar, antes de pesquisar.")
+    }
+
+    /** Nomes próprios e siglas da frase (fora a primeira palavra, que é maiúscula de qualquer jeito). */
+    private fun properNames(s: String): Set<String> = Regex("[\\p{L}\\d]+").findAll(s).map { it.value }.toList().drop(1)
+        .filter { it.first().isUpperCase() && it.length >= 2 }.map { plain(it) }.toSet()
+
+    /** Termos que ligam duas frases ao mesmo assunto: radicais das palavras de conteúdo, siglas e siglas de nomes compostos. */
+    private fun linkTerms(s: String): Set<String> {
+        val words = Regex("[\\p{L}\\d]+").findAll(s).map { it.value }.toList()
+        val out = mutableSetOf<String>()
+        words.forEach { w ->
+            val p = plain(w)
+            if (w.length in 2..6 && w.all { it.isUpperCase() }) out += p
+            else if (p.length >= 4 && p !in LINK_STOP && p.any(Char::isLetter)) out += p.take(5)
+        }
+        // "Medida Provisória" ↔ "MP": iniciais de palavras seguidas com maiúscula.
+        Regex("\\p{Lu}[\\p{L}]+(?:\\s+\\p{Lu}[\\p{L}]+)+").findAll(s).forEach { m ->
+            out += m.value.split(Regex("\\s+")).joinToString("") { it.take(1) }.lowercase()
+        }
+        return out
     }
 
     private fun isParagraphLike(b: B) = (b.block.lines.size >= 2 && b.text.length >= 40 && b.words >= 6) ||
