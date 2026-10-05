@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-multipart
+torch
+torchvision
+transformers>=4.49.0
+accelerate
+qwen-vl-utils
+Pillow
+pydantic
