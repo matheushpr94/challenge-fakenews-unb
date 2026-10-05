@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lume</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="top">
+    <svg class="mascot" viewBox="0 0 64 80" aria-hidden="true">
+      <path d="M32 4 C22 22 8 36 8 52 a24 24 0 0 0 48 0 C56 36 42 22 32 4z" class="drop"/>
+      <ellipse cx="23" cy="50" rx="4" ry="5.5" class="eye"/>
+      <ellipse cx="41" cy="50" rx="4" ry="5.5" class="eye"/>
+      <path d="M24 62 q8 7 16 0" class="smile"/>
+      <ellipse cx="20" cy="34" rx="4" ry="7" class="shine"/>
+    </svg>
+    <div>
+      <h1>Lume</h1>
+      <p class="tagline">Entenda uma notícia: veja o assunto, o contexto e as fontes.</p>
+    </div>
+  </header>
+
+  <main>
+    <form id="form" class="card">
+      <label for="texto">Cole uma notícia, afirmação ou pergunta</label>
+      <textarea id="texto" rows="4" maxlength="5000"
+        placeholder="Ex.: Vacina da dengue do Butantan é suspensa pela Anvisa"></textarea>
+      <div class="actions">
+        <button type="submit" id="btn">Pesquisar</button>
+        <button type="button" id="cancel" class="secondary" hidden>Cancelar</button>
+      </div>
+    </form>
+
+    <section id="status" class="status" role="status" aria-live="polite" hidden></section>
+    <section id="out"></section>
+  </main>
+
+  <footer class="foot">
+    O Lume não diz se algo é verdadeiro ou falso. Ele organiza o que as fontes encontradas publicaram.
+  </footer>
+</body>
+</html>
