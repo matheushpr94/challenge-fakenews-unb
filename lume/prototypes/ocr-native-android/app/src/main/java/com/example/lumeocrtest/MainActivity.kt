@@ -261,7 +261,7 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0,
         lastAction = { runSearch(text) }
         job = scope.launch {
             try {
-                val result = service.evaluate(text, "req-$ticket", articleContext)
+                val result = service.evaluate(text, "req-$ticket", articleContext, languageText = state.languageText.takeIf { it.isNotBlank() })
                 result.partes.forEach { p -> p.diagnostico?.report()?.chunked(3500)?.forEach { Log.d("LumeTrace", it) } }
                 if (gate.deliver(ticket, result) { evaluation = it }) {
                     ResearchHistory.save(context, text, result)
@@ -350,6 +350,7 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0,
             return
         }
         flowOriginal = t; flowDetails = ""; flowRejected = emptyList(); flowRound = 0; lastOptions = null
+        state.languageText = t
         clarifyThenSearch()
     }
 
@@ -540,7 +541,7 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0,
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     OutlinedTextField(value = correctionText, onValueChange = { correctionText = it }, modifier = Modifier.fillMaxWidth(),
                         shape = MaterialTheme.shapes.medium, label = { Text("Corrigir a pergunta") })
-                    Button(enabled = correctionText.isNotBlank(), onClick = { queryText = correctionText; runSearch(correctionText.trim()) }) {
+                    Button(enabled = correctionText.isNotBlank(), onClick = { queryText = correctionText; state.languageText = correctionText.trim(); runSearch(correctionText.trim()) }) {
                         Text("Pesquisar esta pergunta")
                     }
                     lastOptions?.let { c -> ClarificationChooser(c.opcoes, onOption = { queryText = it; runSearch(it) }, onNotThis = null) }

@@ -1,0 +1,31 @@
+{
+  "args": {
+    "cv": false,
+    "final": true,
+    "use_test": true,
+    "epochs": 4,
+    "batch": 32,
+    "lr": 2e-05,
+    "max_len": 128,
+    "seed": 42,
+    "limit": 0
+  },
+  "teste": {
+    "macro_f1": 0.7962218125616819,
+    "f1": {
+      "factual": 0.9221628045157457,
+      "citacao": 0.8986013986013986,
+      "enviesada": 0.5679012345679012
+    },
+    "precisao": {
+      "factual": 0.9118683901292597,
+      "citacao": 0.8801369863013698,
+      "enviesada": 0.6509433962264151
+    },
+    "revocacao": {
+      "factual": 0.9326923076923077,
+      "citacao": 0.9178571428571428,
+      "enviesada": 0.5036496350364964
+    }
+  }
+}

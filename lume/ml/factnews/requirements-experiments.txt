@@ -1,0 +1,2 @@
+# Só para os experimentos das ideias 3 (léxico). Instale depois de requirements.txt: pip install -r requirements-experiments.txt
+pyreadr>=0.5

@@ -1,0 +1,380 @@
+[
+ {
+  "genre": "enciclopedia",
+  "url": "https://pt.wikipedia.org/wiki/Supremo_Tribunal_Federal",
+  "title": "Supremo Tribunal Federal",
+  "sentences": 143,
+  "sha256": "12eb6e46106644ccf6f413491abbe0f2fd12352c880340c1860fa3c5e8dce03e"
+ },
+ {
+  "genre": "enciclopedia",
+  "url": "https://pt.wikipedia.org/wiki/Elei%C3%A7%C3%B5es_gerais_no_Brasil_em_2022",
+  "title": "Eleições gerais no Brasil em 2022",
+  "sentences": 105,
+  "sha256": "a69fe2ccbb42bcd008bf88cff7d90421c7986861d05d8598d94a4c0c911fbf6c"
+ },
+ {
+  "genre": "enciclopedia",
+  "url": "https://pt.wikipedia.org/wiki/Luiz_In%C3%A1cio_Lula_da_Silva",
+  "title": "Luiz Inácio Lula da Silva",
+  "sentences": 454,
+  "sha256": "7b904475d4d7e232daac7c47c84b8b19bc7ec4386674ce1babc095f1a52ba5cd"
+ },
+ {
+  "genre": "enciclopedia",
+  "url": "https://pt.wikipedia.org/wiki/Jair_Bolsonaro",
+  "title": "Jair Bolsonaro",
+  "sentences": 443,
+  "sha256": "a2d24a7ebfe959055414af000f59b54866048bee2b01cb1ae9bac0adb20245ef"
+ },
+ {
+  "genre": "enciclopedia",
+  "url": "https://pt.wikipedia.org/wiki/Congresso_Nacional_do_Brasil",
+  "title": "Congresso Nacional do Brasil",
+  "sentences": 134,
+  "sha256": "fef26ec5246ab891fb9f253ed4df3ce79801ce77d6299a556d4c977b998af27d"
+ },
+ {
+  "genre": "enciclopedia",
+  "url": "https://pt.wikipedia.org/wiki/Pandemia_de_COVID-19_no_Brasil",
+  "title": "Pandemia de COVID-19 no Brasil",
+  "sentences": 132,
+  "sha256": "bbb39066476414c94a4ac3e9a691ce99b77df78aa00d50e5ca5a9cea5451210c"
+ },
+ {
+  "genre": "enciclopedia",
+  "url": "https://pt.wikipedia.org/wiki/Opera%C3%A7%C3%A3o_Lava_Jato",
+  "title": "Operação Lava Jato",
+  "sentences": 390,
+  "sha256": "dd150a4b8de170ed633d9fb5aa7733619b7df9aa4f93a06190059da9e5f0644e"
+ },
+ {
+  "genre": "enciclopedia",
+  "url": "https://pt.wikipedia.org/wiki/Tribunal_Superior_Eleitoral",
+  "title": "Tribunal Superior Eleitoral",
+  "sentences": 68,
+  "sha256": "2fabdef8ab37603df663f8a2a3d7155223bde2e2d27b0376e3e5318ee172ae3c"
+ },
+ {
+  "genre": "enciclopedia",
+  "url": "https://pt.wikipedia.org/wiki/Partido_dos_Trabalhadores",
+  "title": "Partido dos Trabalhadores",
+  "sentences": 212,
+  "sha256": "75b7237e47dc56b3450e5bee1b6943111e70f6244eab661726e946ed18ec1117"
+ },
+ {
+  "genre": "enciclopedia",
+  "url": "https://pt.wikipedia.org/wiki/C%C3%A2mara_dos_Deputados_do_Brasil",
+  "title": "Câmara dos Deputados do Brasil",
+  "sentences": 112,
+  "sha256": "3ade0f87791a1ec170f8a53993dff4a120c32914abeabdd2c5407295ae491c10"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/a-cruzada-eleitoral-pelas-mulheres/",
+  "title": "A cruzada eleitoral pelas mulheres - revista piauí",
+  "sentences": 152,
+  "sha256": "cc5ff416364f6fe938d552fd3974e23662632230e9c35fcbcd83cff6848cb860"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/mulheres-e-seguranca-publica-o-feminicidio-em-foco-na-campanha-eleitoral-293744",
+  "title": "Mulheres e segurança pública: o feminicídio em foco na campanha eleitoral",
+  "sentences": 65,
+  "sha256": "275c8632f8ff1314c5feda6572e3a56868b58102dc908f4965550cfe75408183"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/muito-alem-da-renda-como-agiu-a-maquina-de-ressonancia-social-no-primeiro-turno-das-eleicoes-293726",
+  "title": "Muito além da renda: como agiu a máquina de ressonância social no primeiro turno das eleições",
+  "sentences": 80,
+  "sha256": "53df937159139f691fa7fa955986ed50f9dd4d308fdee9e7c016ee7f2539976f"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/o-triunfo-do-punitivismo-nas-urnas-por-que-o-brasil-escolhe-a-seguranca-da-extrema-direita-mesmo-contra-as-evidencias-293739",
+  "title": "O triunfo do punitivismo nas urnas: por que o Brasil escolhe a segurança da extrema-direita mesmo contra as evidências?",
+  "sentences": 47,
+  "sha256": "6a4577821b569bb7e3580e1e5fb80b87e805a7fd97bb7da72e6770ffe18a0cbe"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/brazil-election-authoritarian-right-gain-an-edge-fueled-by-voter-apathy-and-discontent-293655",
+  "title": "Brazil election: Authoritarian right gain an edge, fueled by voter apathy and discontent",
+  "sentences": 45,
+  "sha256": "944c0445cce03218839f1fe858c5f6abfe807527edfbf46831bc37c73b1dac47"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/estrelas-acesas-no-cerebro-e-a-alga-que-deu-origem-ao-nobel-de-medicina-293647",
+  "title": "Estrelas acesas no cérebro e a alga que deu origem ao Nobel de Medicina",
+  "sentences": 69,
+  "sha256": "92e50819c8b4121d4f23e63aeed8fe92fa0c2978799cf9b48b9168e66f3428ba"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/caso-lito-sousa-o-que-faz-a-proteina-prion-ficar-infecciosa-novo-estudo-mostra-que-depende-de-onde-ela-esta-293510",
+  "title": "Caso Lito Sousa: o que faz a proteína prion ficar infecciosa? Novo estudo mostra que depende de onde ela está",
+  "sentences": 56,
+  "sha256": "dc64f970aa270c3fbdb94858950f35ada2417e19082056804457be5fa17aa14e"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/inteligencia-artificial-pode-ser-usada-para-promover-um-envelhecimento-saudavel-292433",
+  "title": "Inteligência Artificial pode ser usada para promover um envelhecimento saudável",
+  "sentences": 59,
+  "sha256": "3bdf10ea1188e15a537fdffe4d9305874ff8be5ecbf3e8152a2c7e1c8ad3037b"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/a-bolha-autoritaria-transbordou-nas-urnas-293642",
+  "title": "A bolha autoritária transbordou nas urnas",
+  "sentences": 43,
+  "sha256": "8e0a1378c51c9b54f82d2aca346f961f7657e6d895a7e6b1209f540ee2acb9ce"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/o-que-significa-controlar-as-variaveis-em-um-estudo-cientifico-um-estatistico-explica-293075",
+  "title": "O que significa “controlar” as variáveis em um estudo científico? Um estatístico explica",
+  "sentences": 55,
+  "sha256": "c02759f10cc2d629c51d469fd71743c3cb105608c0b60694ba61287e5f3c91ec"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/brazils-new-republic-is-dead-and-what-comes-next-has-not-yet-been-born-293545",
+  "title": "Brazil’s “New Republic” is dead, and what comes next has not yet been born",
+  "sentences": 66,
+  "sha256": "3e18b5ef5e046f51e3e4be7e861ea76eb2deac39bbf1416668e36536fd557375"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/brazil-elections-2026-first-round-victories-demand-a-commitment-to-democracy-by-the-far-right-that-has-not-yet-been-made-293548",
+  "title": "Brazil elections 2026: First-round victories demand a commitment to democracy by the far-right that has not yet been mad",
+  "sentences": 58,
+  "sha256": "216fcf8ac21d92dca821a7d2e52c7242332cd46ba5f9d19515aed6504e7a3a88"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/analise-a-nova-republica-morreu-neste-domingo-e-o-que-vira-ainda-nao-nasceu-293549",
+  "title": "Análise: a Nova República morreu neste domingo, e o que virá ainda não nasceu",
+  "sentences": 64,
+  "sha256": "db14b40a81bef43e2d8cfeca5bc09e8a44b8e2efe8ea097725185d1e1f6f0299"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://theconversation.com/eleicoes-vitorias-no-primeiro-turno-cobram-da-extrema-direita-compromisso-que-ela-ainda-nao-assumiu-com-a-democracia-293542",
+  "title": "Eleições: vitórias no primeiro turno cobram da extrema-direita compromisso que ela ainda não assumiu com a democracia",
+  "sentences": 53,
+  "sha256": "9c5805a97884e9f1f2aff512404e457d465d0afa5fa29c68ccc3b7cc1d9a7758"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://www.cartacapital.com.br/economia/bc-cria-indicador-para-acompanhar-reajustes-salariais-negociados/",
+  "title": "BC cria indicador para acompanhar reajustes salariais negociados",
+  "sentences": 17,
+  "sha256": "81c84df354d3f3e13b79a2c0317130876f957affda6389fa81b61ebb89b5d13c"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://www.cartacapital.com.br/esporte/raphael-veiga-volta-ao-palmeiras-meia-tem-futuro-definido-no-clube/",
+  "title": "Raphael Veiga volta ao Palmeiras? Meia tem futuro definido no clube",
+  "sentences": 17,
+  "sha256": "3607ec6da11ec282fcfa30cc8d2e0e7b3f1461c56c3668cb77f5ed14f205f462"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://www.cartacapital.com.br/politica/policia-investiga-rodrigo-constantino-por-chamar-a-bahia-de-cancer-do-brasil/",
+  "title": "Polícia investiga Rodrigo Constantino por chamar a Bahia de &#039;câncer do Brasil&#039;",
+  "sentences": 20,
+  "sha256": "5eae17137fd34226ceb49eb42be30dcedc686863a8c82df7891f0c7b57381a7d"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://www.cartacapital.com.br/cartalab/frio-e-chuva-marcam-a-terca-feira-6-em-sao-paulo-veja-a-previsao/",
+  "title": "Frio e chuva marcam a terça-feira 6 em São Paulo; veja a previsão",
+  "sentences": 18,
+  "sha256": "1f34913baee0837dcc34e8410c26fa4bd8c0578fcc75fc0c25437fe24a134324"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://www.cartacapital.com.br/mundo/imperio-em-transe-recebe-vera-chaia-e-claudio-couto-para-debater-interferencia-dos-eua/",
+  "title": "‘Império em Transe’ recebe Vera Chaia e Cláudio Couto para debater a interferência dos EUA no Brasil",
+  "sentences": 19,
+  "sha256": "8cc2b9cd0f87f3ee6b6046b8830004f91a1581686caa76b0a71d432bc10d7a0d"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://www.cartacapital.com.br/cartaexpressa/reuters-ipsos-desaprovacao-a-trump-nos-eua-chega-a-65/",
+  "title": "Reuters/Ipsos: Desaprovação a Trump nos EUA chega a 65%",
+  "sentences": 19,
+  "sha256": "4af1a700b8ec7d712d4595d2c01e97fee1c4f0323995575c68caf6c484a68ad5"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://www.cartacapital.com.br/receitas/salmao-no-forno-5-receitas-ricas-em-proteinas-para-o-almoco/",
+  "title": "Salmão no forno: 5 receitas ricas em proteínas para o almoço",
+  "sentences": 53,
+  "sha256": "5ad81f2889b811f2dc0115d5c255aef2d9f30805dc5f54ec2e528842750e91e7"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://www.cartacapital.com.br/bem-estar/envelheca-com-mais-saude-veja-atividades-fisicas-para-preservar-forca-mobilidade-e-autonomia/",
+  "title": "Envelheça com mais saúde: veja atividades físicas para preservar força, mobilidade e autonomia",
+  "sentences": 40,
+  "sha256": "fe6eabede5ef1be47feb6681741c3c8a39c0bee63d0bebe623f4325e2dddb07b"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://www.cartacapital.com.br/artigo/uma-vez-mais/",
+  "title": "Uma vez mais",
+  "sentences": 76,
+  "sha256": "b4dcba96a440c97dc7132a9e06666e9fc681833094781bc7c08122c95c3a6667"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://www.cartacapital.com.br/politica/fachin-se-reune-com-lider-de-lula-e-coordenador-de-campanha-de-flavio-bolsonaro/",
+  "title": "Fachin se reúne com líder de Lula e coordenador de campanha de Flávio Bolsonaro",
+  "sentences": 21,
+  "sha256": "e1be8d673e85fad5fd4267119ed6c6754fb811b134584640e21b66ceb616bf1e"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://www.cartacapital.com.br/politica/big-techs-descumprem-regras-eleitorais-no-dia-da-votacao-diz-ufrj/",
+  "title": "Big techs descumprem regras eleitorais no dia da votação, diz estudo da UFRJ",
+  "sentences": 50,
+  "sha256": "08c78d0798f5af202029204f15577ae3d2b6897e16c6db29ec252a02798785d9"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/cinco-parlamentares-eleitos-perfis-piaui/",
+  "title": "O que cinco vencedores da eleição fizeram nos verões passados - revista piauí",
+  "sentences": 59,
+  "sha256": "bdc08d4ad7e7cf0df5fbf6de1fc9f3ec37fcd943dba832f65d9691bdff0481a5"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/vorcaro-festas-londres-macallan/",
+  "title": "Além do Macallan: os luxos de Vorcaro e autoridades em Londres - revista piauí",
+  "sentences": 82,
+  "sha256": "5ccdfccc2bc59a3a6077747b375114e2ba9a71b6e1fbbab6e4553e63417a7cb7"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/bets-proibir-e-regular/",
+  "title": "Bets: proibir é regular - revista piauí",
+  "sentences": 45,
+  "sha256": "070b6855e72fc52f19e8b68ae1fb53e48ad9636ef0bf8e3a479d2e1f043920c0"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/ft132/",
+  "title": "Lula x Flávio: o que está em jogo na reta final - revista piauí",
+  "sentences": 815,
+  "sha256": "39f7a7013e9d911e1d0074913c9e3f6bcde18871221d71ca9e4bf461049280c8"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/festas-vorcaro-autoridades/",
+  "title": "A corte de prazeres de Vorcaro - revista piauí",
+  "sentences": 279,
+  "sha256": "7c277d4f60ebf3f2df6fcb988649737ab7ce30713674645ce82960b3d6f78449"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/mensagens-celular-flavio-vorcaro/",
+  "title": "As 96 mensagens entre Flávio e Vorcaro, 90 dias antes da prisão - revista piauí",
+  "sentences": 305,
+  "sha256": "e9627b26a978e12a5cf67b7d916be02a3c2f21f7758699db47193502e32a18a2"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/o-que-esses-brasileiros-sabem/",
+  "title": "O que esses brasileiros sabem - revista piauí",
+  "sentences": 406,
+  "sha256": "8994273e4f175037ad163cdc04be3d83cbecf399c8ca7f1561c07427ab1ffc30"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/daniel-vorcaro-fabiano-zettel-conversas-audio-guardo-exterior/",
+  "title": "“Ele guardou R$ 20 bi no exterior” - revista piauí",
+  "sentences": 158,
+  "sha256": "808d5b916ce7ef4ef8098c12f0daec423de434f4135f1c8e0d7ee8e24f1ddef3"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/vorcaro-sicario-ataque-site-piaui/",
+  "title": "Vorcaro atacou site da piauí, diz SBT News - revista piauí",
+  "sentences": 31,
+  "sha256": "3ab68b9df68286f7f6f7fa7f3365e6eea6168cc102569de8f899ff5989f791ee"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/como-o-brasil-foi-engolido-pelas-bets/",
+  "title": "Como o Brasil foi engolido pelas bets - revista piauí",
+  "sentences": 124,
+  "sha256": "49fb827e4763b11af82a2b86d6900df4f5239c6495589a59036690bb14378481"
+ },
+ {
+  "genre": "revista_analise",
+  "url": "https://piaui.uol.com.br/web/cgu-emendas-mario-frias-dark-horse/",
+  "title": "CGU investiga emendas em favor da produtora de Dark Horse - revista piauí",
+  "sentences": 52,
+  "sha256": "59f38a52ffc9acad5bd01c4694db45d9b2a4d4a0b43dac7bd29f06e9cf6d23e5"
+ },
+ {
+  "genre": "noticia_controle",
+  "url": "https://agenciabrasil.ebc.com.br/cultura/noticia/2026-10/sp-mostra-abriu-portas-para-o-cinema-mundial",
+  "title": "SP: mostra abriu as portas para o cinema mundial | Agência Brasil",
+  "sentences": 69,
+  "sha256": "99f008ee936718a99a3e20ff46bd8d8358af494c82a67f6b302d4de76aba6786"
+ },
+ {
+  "genre": "noticia_controle",
+  "url": "https://agenciabrasil.ebc.com.br/saude/noticia/2026-10/quenia-confirma-primeiro-caso-de-ebola-homem-morreu-apos-tratamento",
+  "title": "Quênia confirma primeiro caso de ebola; homem morreu após tratamento | Agência Brasil",
+  "sentences": 17,
+  "sha256": "f2270acd9c1f0fe7eaee57e4720be6fc3d3f5fc34274ae6b98b3486d7694b463"
+ },
+ {
+  "genre": "noticia_controle",
+  "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/com-91-anos-erundina-e-deputada-estadual-mais-velha-eleita-em-2026",
+  "title": "Com 91 anos, Erundina é a deputada estadual mais velha eleita em 2026 | Agência Brasil",
+  "sentences": 16,
+  "sha256": "133860c944e4131d1434d7a761a544051b19ac736c529e13b2be7febd90eb418"
+ },
+ {
+  "genre": "noticia_controle",
+  "url": "https://agenciabrasil.ebc.com.br/justica/noticia/2026-10/agu-pede-fux-que-aguarde-pgr-e-mantenha-proibicao-das-bets-no-pais",
+  "title": "AGU pede a Fux que aguarde PGR e mantenha proibição das bets no país | Agência Brasil",
+  "sentences": 16,
+  "sha256": "78fbf52840eb884ba77ae7711997a5d29fa949ba92d334db03217df6f10aa707"
+ },
+ {
+  "genre": "noticia_controle",
+  "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/big-techs-descumprem-regras-eleitorais-no-dia-da-votacao-diz-estudo",
+  "title": "Big techs descumprem regras eleitorais no dia da votação, diz estudo | Agência Brasil",
+  "sentences": 39,
+  "sha256": "42ea30ed5e4989445e518112b37dc5d3ffebe7a04f7750f8e188ec90bc316fae"
+ },
+ {
+  "genre": "noticia_controle",
+  "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/cresce-numero-de-mulheres-eleitas-para-o-congresso-nacional",
+  "title": "Cresce número de mulheres eleitas para o Congresso Nacional | Agência Brasil",
+  "sentences": 40,
+  "sha256": "b9bd025748de624732c171f8f8fac1ab530e5977b9185bc12d139783814ccea8"
+ },
+ {
+  "genre": "noticia_controle",
+  "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/renovacao-da-camara-federal-chegou-35-veja-nova-composicao-da-casa",
+  "title": "Renovação da Câmara federal chegou a 35%; veja nova composição da Casa | Agência Brasil",
+  "sentences": 38,
+  "sha256": "486d1e7d3c96271eb485f7c4e818bb5b0b46ba3a6cbe39481983a21fabc66972"
+ },
+ {
+  "genre": "noticia_controle",
+  "url": "https://agenciabrasil.ebc.com.br/politica/noticia/2026-10/garotinho-desiste-de-recurso-e-eleicao-do-rj-pode-acabar-em-1o-turno",
+  "title": "Garotinho desiste de recurso e eleição do RJ pode acabar em 1º turno | Agência Brasil",
+  "sentences": 25,
+  "sha256": "a4bfd99f3231ba65091f4ff633d04c3df08b0d6ca12f3887b9b31b0feb5c0d21"
+ }
+]

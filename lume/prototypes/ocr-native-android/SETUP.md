@@ -34,6 +34,31 @@ lume.ollama.embedModel=paraphrase-multilingual
 - Alternativa só no emulador: `http://10.0.2.2:11434` (endereço do computador visto pelo emulador), sem `adb reverse`.
 - Mudou `local.properties`? Recompile o app (o valor é gravado no APK).
 
+## Linguagem do texto (modelo FactNews, opcional)
+
+O app pode mostrar uma seção **"Linguagem do texto"**: rotula cada frase da matéria (tom de relato, fala citada, linguagem
+enviesada) e resume em *sinal de viés*, *sem sinal de viés*, *inconclusivo* ou *sem texto para analisar*. É um **sinal de estilo, não
+um veredito**: não diz se a notícia é verdadeira ou falsa. Detalhes, medidas e limites: `lume/ml/factnews/README.md`.
+
+Fica **desligada por padrão** (`lume.roleclassifier.url` vazio): sem isso o app funciona como antes. Para ligar:
+
+1. **Ambiente e pesos do modelo** (uma vez por computador; pasta `lume/ml/factnews`, Python 3.11 — passos em `ml/factnews/README.md`):
+   `pip install -r requirements.txt` e `-r requirements-bert.txt` (PyTorch: Windows com GPU NVIDIA usa o índice `cu128`; no Mac, o do PyPI)
+   e `python scripts/fetch_weights.py` (baixa ~192 MB da Release do GitHub e confere o SHA-256; **a Release ainda não foi publicada**,
+   então por ora use `--file <pacote.zip>` ou treine: `scripts/04_context_ensemble.py --export --use-test --ctx none --seeds 42 --tag factnews-v2`).
+2. **`local.properties`** do app: `lume.roleclassifier.url=http://127.0.0.1:8765` e **recompile** o app.
+3. **Ligar o servidor e a ponte do emulador** (deixe a janela aberta):
+   - Windows: `lume\ml\factnews\scripts\start-factnews-server.ps1`
+   - macOS: `lume/ml/factnews/scripts/start-factnews-server.sh`
+
+   Ele escuta só em `127.0.0.1:8765` (nunca na rede), roda `adb reverse tcp:8765 tcp:8765` e carrega o modelo. Repita após reiniciar o emulador.
+4. Faça uma pesquisa. Com o servidor desligado o app continua funcionando e mostra "Indisponível" nessa seção.
+
+Como funciona: o título é rotulado primeiro e **nunca conclui sozinho** (em manchetes, "enviesada" erra metade das vezes). Depois o app
+lê o corpo: o texto da captura, se tiver frases suficientes; senão a própria matéria encontrada na internet (mesmo endereço, republicação
+ou resultado com o mesmo título); senão só o título ou a frase digitada. Texto em CAIXA ALTA é normalizado antes de classificar.
+Logcat: `adb logcat -s LumeResearch LumeRoles`. **Validado em 06/10/2026 no emulador (API 37) de um PC com Windows 11; passos de macOS desta seção: não testados em um Mac.**
+
 ## macOS (validação pendente)
 
 1. **Clonar ou atualizar**

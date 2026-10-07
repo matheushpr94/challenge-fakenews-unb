@@ -1,0 +1,16 @@
+# Ajuste fino do BERTimbau (etapa 03). Versões conferidas no índice do pip em 06/10/2026.
+# Instale DEPOIS de `pip install -r requirements.txt`.
+#
+# Windows (GPU NVIDIA RTX 50xx / Blackwell exige CUDA 12.8 ou superior):
+#   pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu128
+#   pip install -r requirements-bert.txt
+# macOS (Apple Silicon usa o backend MPS; o torch do PyPI já serve):
+#   pip install torch==2.11.0
+#   pip install -r requirements-bert.txt
+#
+# transformers 4.57.x: linha 4 (a 5.x existe, mas o BERTimbau só publica pytorch_model.bin, sem safetensors,
+# e não foi verificado se a 5.x ainda o carrega sem ajustes).
+transformers==4.57.6
+accelerate>=1.0
+sentencepiece>=0.2
+# Modelo: neuralmind/bert-base-portuguese-cased (licença MIT, ~438 MB) é baixado do Hugging Face na primeira execução.

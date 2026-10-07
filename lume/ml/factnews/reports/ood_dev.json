@@ -1,0 +1,31 @@
+{
+ "docs_noticia_fora": 235,
+ "mediana_noticia": 0.9090071464849266,
+ "limiar_p95": 1.2717828983052,
+ "medianas_por_fold": {
+  "1": 0.9338522093218443,
+  "2": 0.9599458162273766,
+  "3": 0.8932930873156518,
+  "4": 0.8707650609637314
+ },
+ "generos": {
+  "enciclopedia": {
+   "docs": 111,
+   "mediana": 0.9513326351573599,
+   "marcados_%": 6.306306306306306,
+   "auc_vs_noticia": 0.5403871957063446
+  },
+  "revista_analise": {
+   "docs": 174,
+   "mediana": 1.10573566008674,
+   "marcados_%": 12.643678160919542,
+   "auc_vs_noticia": 0.7730985571044265
+  },
+  "noticia_controle": {
+   "docs": 13,
+   "mediana": 0.9318818772526449,
+   "marcados_%": 0.0,
+   "auc_vs_noticia": 0.45793780687397706
+  }
+ }
+}

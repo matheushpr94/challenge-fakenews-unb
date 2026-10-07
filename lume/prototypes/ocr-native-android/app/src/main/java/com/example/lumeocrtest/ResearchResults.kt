@@ -52,6 +52,10 @@ import com.example.lumeocrtest.research.RelationKind
 import com.example.lumeocrtest.research.Independence
 import com.example.lumeocrtest.research.EventEvidence
 import com.example.lumeocrtest.research.DetailStatus
+import com.example.lumeocrtest.research.LanguageAnalysis
+import com.example.lumeocrtest.research.LanguageRules
+import com.example.lumeocrtest.research.LanguageState
+import com.example.lumeocrtest.research.SentenceRole
 import com.example.lumeocrtest.research.norm
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -467,12 +471,69 @@ private fun AboutSearch(r: ResearchResult) {
     }
 }
 
+private fun roleLabel(rotulo: String) = when (rotulo) {
+    SentenceRole.FACTUAL -> "tom de relato"
+    SentenceRole.CITACAO -> "fala citada"
+    SentenceRole.ENVIESADA -> "linguagem enviesada"
+    else -> rotulo
+}
+
+/** Sinal de linguagem do texto (modelo local). Descreve o estilo das frases; não diz se a notícia é verdadeira. */
+@Composable
+private fun LanguageSection(a: LanguageAnalysis) {
+    val (tagText, tone) = when (a.estado) {
+        LanguageState.SINAL_DE_VIES -> "Sinal de viés" to Tone.Amber
+        LanguageState.SEM_SINAL -> "Sem sinal de viés" to Tone.Green
+        LanguageState.INCONCLUSIVO -> "Inconclusivo" to Tone.Neutral
+        LanguageState.SEM_TEXTO -> "Sem texto para analisar" to Tone.Neutral
+        else -> "Indisponível" to Tone.Neutral
+    }
+    LumeCard {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Overline("Linguagem do texto")
+            Tag(tagText, tone)
+            Text(a.resumo, style = MaterialTheme.typography.titleMedium, modifier = Modifier.semantics { heading() })
+            a.motivos.forEach { Text(it, style = MaterialTheme.typography.bodySmall, color = InkSoft) }
+            a.titulo?.let {
+                Text((if (a.fonteTexto == "digitado") "Frase informada" else "Título") + ": ${roleLabel(it.rotulo)}" + if (it.rotulo == SentenceRole.ENVIESADA) " (indício fraco)" else "",
+                    style = MaterialTheme.typography.bodyMedium)
+            }
+            if (a.frasesAnalisadas > 0) {
+                val origem = when (a.fonteTexto) {
+                    "captura" -> "do texto da captura"
+                    "pagina" -> "da matéria encontrada na internet" + (a.fonteDescricao?.let { " ($it)" } ?: "")
+                    else -> "do texto informado"
+                }
+                val lidas = if (a.frasesNaoLidas > 0) "as primeiras ${a.frasesAnalisadas} de ${a.frasesAnalisadas + a.frasesNaoLidas} frases" else "${a.frasesAnalisadas} frases"
+                Text("Foram lidas $lidas $origem" + if (a.frasesIgnoradas > 0) " (${a.frasesIgnoradas} trechos curtos ou repetidos foram ignorados)." else ".",
+                    style = MaterialTheme.typography.bodySmall, color = InkSoft)
+                Text("Em tom de relato: ${a.contagem[SentenceRole.FACTUAL] ?: 0} · Citações: ${a.contagem[SentenceRole.CITACAO] ?: 0} · " +
+                    "Enviesadas: ${a.contagem[SentenceRole.ENVIESADA] ?: 0} (${a.totalDestaques} com confiança alta)", style = MaterialTheme.typography.bodyMedium)
+            }
+            if (a.destaques.isNotEmpty()) {
+                HorizontalDivider(color = Hairline)
+                Text("Trechos com possível viés", style = MaterialTheme.typography.titleSmall, modifier = Modifier.semantics { heading() })
+                a.destaques.forEach {
+                    Text("“${it.texto}”", style = MaterialTheme.typography.bodyMedium)
+                    Text("Em testes, cerca de ${(LanguageRules.estimatedPrecision(it.confianca) * 100).toInt()}% dos trechos assim eram realmente enviesados", style = MaterialTheme.typography.bodySmall, color = InkFaint)
+                }
+                if (a.totalDestaques > a.destaques.size) Text("Mais ${a.totalDestaques - a.destaques.size} trechos com sinal não são mostrados.",
+                    style = MaterialTheme.typography.bodySmall, color = InkSoft)
+                Text("São sugestões: cerca de 3 de cada 10 trechos marcados não eram enviesados, e o modelo deixa passar cerca da metade dos que eram.",
+                    style = MaterialTheme.typography.bodySmall, color = InkSoft)
+            }
+            if (a.estado != LanguageState.INDISPONIVEL) Text("Isto descreve o estilo das frases (“tom de relato” não quer dizer que o fato seja verdadeiro). Não diz se a notícia é verdadeira ou falsa.", style = MaterialTheme.typography.bodySmall, color = InkFaint)
+        }
+    }
+}
+
 @Composable
 fun ResearchResults(e: Evaluation, onOption: (String) -> Unit) {
     var detailsOpen by remember(e) { mutableStateOf(false) }
     var relatedOpen by remember(e) { mutableStateOf(false) }
     val parts = e.partes
     Column(if(LocalLumeMotion.current) Modifier.animateContentSize() else Modifier, verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        e.linguagem?.let { LanguageSection(it) }
         if (parts.size <= 1) {
             parts.firstOrNull()?.let { ResultBlock(it, null, onOption) }
         } else {

@@ -1,0 +1,3 @@
+2026-10-06T10:28:49 teste lido
+2026-10-06T11:25:53 teste lido
+2026-10-06T11:27 (esclarecimento da entrada de 11:25:53) uso como TREINO: o teste entrou no treino do modelo exportado models/factnews-v2 (04_context_ensemble.py --export); NAO foi lido como medida. A unica leitura do teste como medida segue sendo a de 10:28:49.

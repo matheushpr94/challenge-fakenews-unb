@@ -1,0 +1,40 @@
+{
+  "args": {
+    "cv": true,
+    "final": false,
+    "export": false,
+    "weight_power": 0.5,
+    "tag": "_ep6",
+    "use_test": false,
+    "epochs": 6,
+    "batch": 32,
+    "lr": 2e-05,
+    "max_len": 128,
+    "seed": 42,
+    "limit": 0
+  },
+  "por_historia": {
+    "macro_f1": 0.8019002501106417,
+    "f1": {
+      "factual": 0.9371279221722085,
+      "citacao": 0.9205208801077683,
+      "enviesada": 0.548051948051948
+    },
+    "precisao": {
+      "factual": 0.9280989358642507,
+      "citacao": 0.9184587813620072,
+      "enviesada": 0.6045845272206304
+    },
+    "revocacao": {
+      "factual": 0.9463343108504398,
+      "citacao": 0.9225922592259226,
+      "enviesada": 0.501187648456057
+    }
+  },
+  "macro_f1_por_fold": [
+    0.8203314557988617,
+    0.7919760663881351,
+    0.7879734425919165,
+    0.8040196492510364
+  ]
+}

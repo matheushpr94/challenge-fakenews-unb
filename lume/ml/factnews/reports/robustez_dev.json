@@ -1,0 +1,173 @@
+[
+ {
+  "experimento": "sem o jornal Estadão",
+  "treino": 3383,
+  "teste": 1559,
+  "historias_teste": 81,
+  "enviesadas_teste": 141,
+  "f1_macro_de_fora": 0.815417499658002,
+  "f1_macro_base": 0.8078225839075683,
+  "dif_macro_ic": [
+   -0.008211945748669049,
+   0.025649444409278382
+  ],
+  "f1_env_de_fora": 0.5801526717557252,
+  "f1_env_base": 0.5680933852140078,
+  "dif_env_ic": [
+   -0.028103883275989616,
+   0.0612564640203073
+  ]
+ },
+ {
+  "experimento": "sem o jornal Folha",
+  "treino": 3136,
+  "teste": 1806,
+  "historias_teste": 81,
+  "enviesadas_teste": 162,
+  "f1_macro_de_fora": 0.8142637644500356,
+  "f1_macro_base": 0.822126190601869,
+  "dif_macro_ic": [
+   -0.025280914175999664,
+   0.01319170992497553
+  ],
+  "f1_env_de_fora": 0.575,
+  "f1_env_base": 0.5980707395498392,
+  "dif_env_ic": [
+   -0.07244337223385452,
+   0.03354304567232653
+  ]
+ },
+ {
+  "experimento": "sem o jornal O Globo",
+  "treino": 3365,
+  "teste": 1577,
+  "historias_teste": 81,
+  "enviesadas_teste": 118,
+  "f1_macro_de_fora": 0.7976894224555667,
+  "f1_macro_base": 0.7926247716962246,
+  "dif_macro_ic": [
+   -0.012851913709575261,
+   0.025915470761108447
+  ],
+  "f1_env_de_fora": 0.5377358490566038,
+  "f1_env_base": 0.5253456221198156,
+  "dif_env_ic": [
+   -0.03536603843311155,
+   0.06803148915564075
+  ]
+ },
+ {
+  "experimento": "passado -> presente (treino 2006 a 2008; teste 2021 e 2022)",
+  "treino": 2248,
+  "teste": 2694,
+  "historias_teste": 39,
+  "enviesadas_teste": 216,
+  "f1_macro_de_fora": 0.7856049499392163,
+  "f1_macro_base": 0.7981903589650595,
+  "dif_macro_ic": [
+   -0.0349455662883374,
+   0.010367032127339314
+  ],
+  "f1_env_de_fora": 0.5245901639344263,
+  "f1_env_base": 0.5490196078431373,
+  "dif_env_ic": [
+   -0.08832293650857222,
+   0.040471896665591874
+  ]
+ },
+ {
+  "experimento": "presente -> passado (treino 2021 e 2022; teste 2006 a 2008)",
+  "treino": 2694,
+  "teste": 2248,
+  "historias_teste": 42,
+  "enviesadas_teste": 205,
+  "f1_macro_de_fora": 0.8057445421138123,
+  "f1_macro_base": 0.8221120455429558,
+  "dif_macro_ic": [
+   -0.05440333609472383,
+   0.003960799519244996
+  ],
+  "f1_env_de_fora": 0.5386996904024768,
+  "f1_env_base": 0.5888594164456233,
+  "dif_env_ic": [
+   -0.15848974478836217,
+   0.00467346153507434
+  ]
+ },
+ {
+  "experimento": "sem a editoria sports",
+  "treino": 4579,
+  "teste": 363,
+  "historias_teste": 7,
+  "enviesadas_teste": 96,
+  "f1_macro_de_fora": 0.7731137735448588,
+  "f1_macro_base": 0.8599767231346179,
+  "dif_macro_ic": [
+   -0.13426808594000703,
+   0.01066383489788304
+  ],
+  "f1_env_de_fora": 0.6013071895424836,
+  "f1_env_base": 0.7789473684210526,
+  "dif_env_ic": [
+   -0.2594369134515121,
+   0.01919248829977699
+  ]
+ },
+ {
+  "experimento": "sem a editoria politics",
+  "treino": 1591,
+  "teste": 3351,
+  "historias_teste": 52,
+  "enviesadas_teste": 255,
+  "f1_macro_de_fora": 0.6630283937332988,
+  "f1_macro_base": 0.7940689748152154,
+  "dif_macro_ic": [
+   -0.1675186955364213,
+   -0.09228019329755482
+  ],
+  "f1_env_de_fora": 0.14965986394557823,
+  "f1_env_base": 0.5228758169934641,
+  "dif_env_ic": [
+   -0.47093043455685935,
+   -0.26709066553015237
+  ]
+ },
+ {
+  "experimento": "sem a editoria world",
+  "treino": 4309,
+  "teste": 633,
+  "historias_teste": 12,
+  "enviesadas_teste": 47,
+  "f1_macro_de_fora": 0.7399444911847463,
+  "f1_macro_base": 0.7829641831445491,
+  "dif_macro_ic": [
+   -0.12707762166620584,
+   0.0013422579777686446
+  ],
+  "f1_env_de_fora": 0.3855421686746988,
+  "f1_env_base": 0.4791666666666667,
+  "dif_env_ic": [
+   -0.3371101536799725,
+   0.03326452628866083
+  ]
+ },
+ {
+  "experimento": "sem a editoria daily",
+  "treino": 4583,
+  "teste": 359,
+  "historias_teste": 7,
+  "enviesadas_teste": 7,
+  "f1_macro_de_fora": 0.7281025192951799,
+  "f1_macro_base": 0.6676569878624673,
+  "dif_macro_ic": [
+   0.0074766026976664625,
+   0.12206179657930269
+  ],
+  "f1_env_de_fora": 0.2857142857142857,
+  "f1_env_base": 0.15384615384615385,
+  "dif_env_ic": [
+   0.0,
+   0.3333333333333333
+  ]
+ }
+]

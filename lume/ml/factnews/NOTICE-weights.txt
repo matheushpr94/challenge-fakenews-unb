@@ -1,0 +1,29 @@
+FactNews — rotulador de frases (pesos fine-tuned)  ·  atribuições e avisos
+==========================================================================
+
+O que são estes pesos
+  Um modelo que rotula UMA frase de notícia em português como "factual", "citação" ou "enviesada".
+  Descreve o PAPEL e o estilo da frase. NÃO diz se algo é verdadeiro ou falso e NÃO é um classificador de veracidade.
+
+De onde vêm
+  1) Modelo-base: BERTimbau Base ("neuralmind/bert-base-portuguese-cased"), licença MIT.
+     Copyright (c) 2020, NeuralMind (Fabio Capuano de Souza, Rodrigo Nogueira, Roberto de Alencar Lotufo).
+     Texto da licença: ver BERTimbau-MIT.txt (distribuído junto com estes pesos).
+     Citação: F. Souza, R. Nogueira, R. Lotufo. "BERTimbau: pretrained BERT models for Brazilian Portuguese".
+     9th Brazilian Conference on Intelligent Systems (BRACIS), 2020.
+  2) Dados de ajuste fino: FactNews v2.0.0, licença CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+     Vargas, F., Jaidka, K., Pardo, T. A. S., Benevenuto, F. "Predicting Sentence-Level Factuality of News and Bias of
+     Media Outlets". RANLP 2023. https://aclanthology.org/2023.ranlp-1.127
+     Registro: https://zenodo.org/records/10794023 · https://github.com/franciellevargas/FactNews
+
+Alterações feitas
+  O BERTimbau foi ajustado (fine-tuning) para classificar frases em 3 classes com as 6.191 frases do FactNews v2.0.0
+  (100 histórias de Folha, Estadão e O Globo), 4 épocas, e salvo em precisão meia (fp16). Detalhes, medidas e limites:
+  ml/factnews/README.md e ml/factnews/reports/.
+
+Limites que valem para qualquer uso
+  - Treinado em notícias de 2006–2008 e 2021–2022 de três jornais; sem garantia em outros veículos, gêneros (revistas,
+    opinião, redes sociais) ou períodos.
+  - "Enviesada" é um julgamento subjetivo: o modelo perde cerca de metade dessas frases e cerca de 3 em cada 10 marcadas
+    não eram enviesadas (validação por história).
+  - "Tom de relato" (factual) não quer dizer que o fato seja verdadeiro.
