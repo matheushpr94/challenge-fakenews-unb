@@ -6,3 +6,7 @@
 # Alternativa no emulador sem adb reverse: http://10.0.2.2:11434 (o Ollama precisa escutar em 0.0.0.0 ou 127.0.0.1 do host).
 lume.ollama.url=http://127.0.0.1:11434
 lume.ollama.embedModel=paraphrase-multilingual
+
+# Análise de linguagem do texto (fato, citação, trecho enviesado), opcional. Vazio = desligada.
+# O modelo roda no computador: ml/factnews/scripts/serve.py (veja ml/factnews/README.md) e `adb reverse tcp:8765 tcp:8765`.
+lume.roleclassifier.url=

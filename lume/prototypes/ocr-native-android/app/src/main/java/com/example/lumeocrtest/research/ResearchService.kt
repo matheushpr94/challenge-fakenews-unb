@@ -96,7 +96,9 @@ data class ResearchTrace(val consultas: List<SourceStatus>, val itens: List<Trac
 
 /** Uma afirmação (modo "unica") ou várias avaliadas separadamente (modo "partes"). */
 data class Evaluation(val idConsulta: String, val modo: String, val status: String, val mensagem: String,
-                      val partes: List<ResearchResult>)
+                      val partes: List<ResearchResult>,
+                      /** Sinal de linguagem do texto (fato, citação, trecho enviesado); null quando o modelo local não está configurado. */
+                      val linguagem: LanguageAnalysis? = null)
 
 fun sourceType(domain: String, origin: String): String = when {
     origin == "wikipedia" -> "enciclopedia"
@@ -143,6 +145,7 @@ class ResearchService(
     private val fetchPages: Boolean = true,
     private val cache: TtlCache = TtlCache(),
     private val semanticRanker: SemanticRanker? = null,
+    private val roleClassifier: SentenceRoleClassifier? = null,
 ) {
     // ---- fontes ------------------------------------------------------------------------------
     private suspend fun call(name: String, query: String): Pair<List<Candidate>, SourceStatus> {
@@ -505,16 +508,70 @@ class ResearchService(
     }
 
     /** Uma afirmação: pesquisa normal. Várias: cada uma é pesquisada e avaliada separadamente. */
-    suspend fun evaluate(text: String, requestId: String, context: ArticleContext? = null): Evaluation = withContext(Dispatchers.Default) {
+    /** [languageText]: o que a pessoa escreveu (a pesquisa pode ter sido reformulada pelo esclarecimento); usado só na análise de linguagem. */
+    suspend fun evaluate(text: String, requestId: String, context: ArticleContext? = null, languageText: String? = null): Evaluation = withContext(Dispatchers.Default) {
         val parts = splitClaims(text)
         if (parts.size < 2) {
             val r = search(text, requestId, context)
-            return@withContext Evaluation(requestId, "unica", r.status, r.mensagem, listOf(r))
+            return@withContext Evaluation(requestId, "unica", r.status, r.mensagem, listOf(r), languageSignal(languageText ?: text, context, listOf(r)))
         }
         val results = parts.map { (sentence, query) -> async { search(query, requestId, context).copy(trechoDaEntrada = sentence) } }.awaitAll()
         val allFailed = results.all { it.status == "erro" }
         Evaluation(requestId, "partes", if (allFailed) "erro" else "ok",
-            "A entrada tem ${parts.size} afirmações. Cada uma foi avaliada separadamente; o Lume não classifica a notícia inteira.", results)
+            "A entrada tem ${parts.size} afirmações. Cada uma foi avaliada separadamente; o Lume não classifica a notícia inteira.", results,
+            languageSignal(languageText ?: text, context, results))
+    }
+
+    // ---- linguagem do texto (modelo local FactNews) --------------------------------------------
+    /**
+     * Rotula o papel de cada frase (fato, citação, trecho enviesado) e resume em um dos estados de [LanguageState].
+     * Texto lido: (1) o corpo da captura, se tiver frases suficientes; senão (2) a própria matéria encontrada na busca
+     * (mesmo endereço ou republicação do mesmo texto); senão (3) só o título/frase informado. Nunca decide veracidade.
+     * Null quando o modelo local não está configurado; [LanguageState.INDISPONIVEL] quando está mas não responde.
+     */
+    private suspend fun languageSignal(entered: String, context: ArticleContext?, parts: List<ResearchResult>): LanguageAnalysis? {
+        val classifier = roleClassifier ?: return null
+        return try {
+            var source = if (context != null) "captura" else "digitado"
+            var note: String? = null
+            var title = context?.title?.takeIf { it.isNotBlank() }
+            var (body, ignored) = LanguageRules.sentencesOf(context?.body ?: if (context == null) entered else "")
+            if (context == null && body.size == 1) { title = body.first(); body = emptyList() }   // uma frase só: tratada como o título
+            if (body.size < LanguageRules.MIN_BODY && (context != null || title != null)) {
+                // A matéria na internet: a própria matéria da captura (mesmo endereço, ou republicação do mesmo texto) e, em seguida,
+                // qualquer resultado com o mesmo título. Só fica com uma página que tenha mais frases do que já se tem.
+                val cards = parts.flatMap { it.resultados.values.flatten() }.distinctBy { it.url }
+                val own = cards.filter { it.relacao == "nao_independente" && it.relacaoTipo in setOf(Independence.PROPRIA, Independence.REPUBLICACAO) }
+                    .sortedBy { if (it.relacaoTipo == Independence.PROPRIA) 0 else 1 }
+                val sameTitle = title?.let { t -> cards.filter { c -> c !in own && sameHeadline(t, c.titulo) } }.orEmpty()
+                for (card in (own + sameTitle).take(3)) {
+                    val info = withTimeoutOrNull(8_000L) { page(card.url) } ?: continue
+                    val (fromPage, ign) = LanguageRules.sentencesOf(info.paragraphs.joinToString("\n"))
+                    if (fromPage.size > body.size) {
+                        body = fromPage; ignored = ign; source = "pagina"
+                        note = listOf(card.veiculo.ifBlank { null }, card.titulo.take(90).ifBlank { null }).filterNotNull().joinToString(": ").ifBlank { null }
+                        if (title == null) title = card.titulo
+                        break
+                    }
+                }
+            }
+            val unread = (body.size - LanguageRules.MAX_SENTENCES).coerceAtLeast(0)
+            if (unread > 0) body = body.take(LanguageRules.MAX_SENTENCES)
+            if (body.isEmpty() && title == null) return LanguageAnalysis(LanguageState.SEM_TEXTO, "Não há texto de matéria para analisar.")
+            val key = "linguagem|" + (listOfNotNull(title) + body).joinToString("\u0001").hashCode()
+            cache.get<LanguageAnalysis>(key, clock())?.let { return it.first }
+            val texts = listOfNotNull(title) + body
+            val scores = withTimeoutOrNull(35_000L) { classifier.classify(texts) } ?: return LanguageRules.unavailable()
+            val signals = texts.zip(scores).map { (t, s) -> SentenceSignal(t.take(400), s.label, s.confidence) }
+            val titleSignal = if (title != null) signals.first() else null
+            val bodySignals = if (title != null) signals.drop(1) else signals
+            LanguageRules.assess(titleSignal, bodySignals, ignored, source, note, unread).also { cache.put(key, it, PAGE_TTL, clock()) }
+        } catch (e: kotlinx.coroutines.CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            logW("linguagem: ${e.javaClass.simpleName}: ${e.message}")
+            LanguageRules.unavailable("A análise de linguagem falhou e foi ignorada.")
+        }
     }
 
     /** Etapa anterior à pesquisa: decide se é preciso perguntar "O que você quer saber?". */

@@ -1,0 +1,15 @@
+# Dados baixados e derivados (reproduza com scripts/00_download_data.py)
+data/
+# Ambiente e artefatos pesados
+.venv/
+__pycache__/
+*.pt
+*.bin
+*.safetensors
+models/
+checkpoints/
+# O registro de leituras do teste lacrado É versionado (a regra geral ignora *.log)
+!reports/test_usage.log
+
+# Pacote de pesos gerado por scripts/package_weights.py (vai como anexo de Release, não no Git)
+dist/

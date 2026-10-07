@@ -1,0 +1,134 @@
+{
+  "linhas": 6191,
+  "historias": 100,
+  "artigos": 307,
+  "arquivos": 604,
+  "frases_de_manchete": 656,
+  "linhas_letra_do_id_diverge_do_arquivo": 15,
+  "linhas_sem_nome_de_veiculo_no_arquivo": 82,
+  "historias_com_3_veiculos": 100,
+  "rotulos": {
+    "factual": 4242,
+    "citacao": 1391,
+    "enviesada": 558
+  },
+  "anotadores_concordam": 6138,
+  "anotadores_discordam": 53,
+  "final_igual_aos_dois_quando_concordam": 0.9949494949494949,
+  "linhas_final_difere_dos_dois_anotadores_que_concordam": 31,
+  "kappa_geral": 0.9817367505683836,
+  "kappa_um_contra_resto": {
+    "factual": 0.980077170809254,
+    "citacao": 1.0,
+    "enviesada": 0.945747746523329
+  },
+  "discordancias_por_par": {
+    "0|1": 52,
+    "1|0": 1
+  },
+  "rotulo_final_nas_discordancias": {
+    "enviesada": 43,
+    "factual": 10
+  },
+  "frases_em_grupos_duplicados": 252,
+  "grupos_duplicados": 116,
+  "grupos_duplicados_com_rotulos_conflitantes": 7,
+  "frases_com_gemea_em_outro_veiculo_sim>=0.6": 0.10192214504926506,
+  "frases_com_gemea_em_outro_veiculo_sim>=0.8": 0.04926506218704571,
+  "frases_com_gemea_em_outro_veiculo_sim>=0.9": 0.033112582781456956,
+  "rotulo_igual_entre_gemeas_sim>=0.8": 0.9672131147540983,
+  "manchete_x_corpo": {
+    "False": {
+      "factual": 3677,
+      "citacao": 1356,
+      "enviesada": 502
+    },
+    "True": {
+      "factual": 565,
+      "citacao": 35,
+      "enviesada": 56
+    }
+  },
+  "por_classe": {
+    "factual": {
+      "frases": 4242,
+      "com_aspas": 0.059,
+      "palavras_mediana": 18.0,
+      "palavras_media": 20.396
+    },
+    "citacao": {
+      "frases": 1391,
+      "com_aspas": 0.616,
+      "palavras_mediana": 14.0,
+      "palavras_media": 17.391
+    },
+    "enviesada": {
+      "frases": 558,
+      "com_aspas": 0.066,
+      "palavras_mediana": 20.0,
+      "palavras_media": 22.172
+    }
+  },
+  "taxa_enviesada_por_veiculo": {
+    "Estadão": {
+      "mean": 0.087,
+      "size": 2093
+    },
+    "Folha": {
+      "mean": 0.106,
+      "size": 2175
+    },
+    "O Globo": {
+      "mean": 0.075,
+      "size": 1923
+    }
+  },
+  "taxa_enviesada_por_editoria": {
+    "culture": {
+      "mean": 0.126,
+      "size": 412
+    },
+    "daily": {
+      "mean": 0.024,
+      "size": 413
+    },
+    "politics": {
+      "mean": 0.077,
+      "size": 3873
+    },
+    "science": {
+      "mean": 0.057,
+      "size": 123
+    },
+    "sports": {
+      "mean": 0.208,
+      "size": 490
+    },
+    "world": {
+      "mean": 0.099,
+      "size": 880
+    }
+  },
+  "taxa_enviesada_por_ano": {
+    "2006": {
+      "mean": 0.081,
+      "size": 676
+    },
+    "2007": {
+      "mean": 0.087,
+      "size": 1996
+    },
+    "2008": {
+      "mean": 0.077,
+      "size": 39
+    },
+    "2021": {
+      "mean": 0.076,
+      "size": 277
+    },
+    "2022": {
+      "mean": 0.095,
+      "size": 3203
+    }
+  }
+}

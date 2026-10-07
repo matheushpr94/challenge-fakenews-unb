@@ -8,6 +8,7 @@ plugins {
 // Configuração local por máquina (não versionada): local.properties na raiz do projeto.
 //   lume.ollama.url=http://127.0.0.1:11434   (emulador/aparelho via `adb reverse tcp:11434 tcp:11434`)
 //   lume.ollama.embedModel=paraphrase-multilingual
+//   lume.roleclassifier.url=http://127.0.0.1:8765   (opcional; vazio = análise de linguagem desligada; `adb reverse tcp:8765 tcp:8765`)
 val localProps = Properties().apply {
     providers.fileContents(rootProject.layout.projectDirectory.file("local.properties")).asText.orNull
         ?.let { load(it.reader()) }
@@ -30,6 +31,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "OLLAMA_URL", "\"${localProp("lume.ollama.url", "http://127.0.0.1:11434")}\"")
         buildConfigField("String", "OLLAMA_EMBED_MODEL", "\"${localProp("lume.ollama.embedModel", "paraphrase-multilingual")}\"")
+        buildConfigField("String", "ROLE_CLASSIFIER_URL", "\"${localProp("lume.roleclassifier.url", "")}\"")
     }
 
     buildTypes {

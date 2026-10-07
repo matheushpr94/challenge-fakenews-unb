@@ -9,7 +9,8 @@ import kotlinx.coroutines.*
 
 /** Memory-only session; survives rotation without saving captures to disk. */
 class AnalysisState : ViewModel() {
-    val service=ResearchService(semanticRanker = OllamaEmbeddingRanker(BuildConfig.OLLAMA_EMBED_MODEL, BuildConfig.OLLAMA_URL))
+    val service=ResearchService(semanticRanker = OllamaEmbeddingRanker(BuildConfig.OLLAMA_EMBED_MODEL, BuildConfig.OLLAMA_URL),
+        roleClassifier = BuildConfig.ROLE_CLASSIFIER_URL.takeIf { it.isNotBlank() }?.let { LocalSentenceRoleClient(it) })
     val gate=RequestGate()
     val linkFetcher=OkHttpFetcher()
     val scope=CoroutineScope(SupervisorJob()+Dispatchers.Main.immediate)
@@ -45,6 +46,8 @@ class AnalysisState : ViewModel() {
     val correcting = mutableStateOf(false)
     val correctionText = mutableStateOf("")
     val flowOriginal = mutableStateOf("")
+    /** O que a pessoa escreveu (ou corrigiu) para pesquisar; a análise de linguagem olha para isto, não para a pesquisa reformulada. */
+    var languageText = ""
     val flowDetails = mutableStateOf("")
     val flowRejected = mutableStateOf<List<String>>(emptyList())
     val flowRound = mutableIntStateOf(0)
