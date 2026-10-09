@@ -1,0 +1,79 @@
+{
+ "o_que_e": "decisor do pipeline, ciclo 2 (regressão logística); nota = 1 / (1 + exp(-soma)) | 6B: precisa da nota_texto (BERTimbau, servidor)",
+ "intercepto": -1.7945753066404861,
+ "numeros": {
+  "cosseno": {
+   "media": 0.359454167499254,
+   "desvio": 0.23271782055543946,
+   "peso": 1.2944645273062543
+  },
+  "sobreposicao": {
+   "media": 0.1331388748147952,
+   "desvio": 0.14578395884037437,
+   "peso": 0.04964694882866302
+  },
+  "nota_texto": {
+   "media": 0.1867890023558184,
+   "desvio": 0.3409866053117063,
+   "peso": 0.8910955910422195
+  }
+ },
+ "idade_dias": {
+  "mediana_do_log": 3.332204510175204,
+  "media": 3.253782157805912,
+  "desvio": 2.050382985139997,
+  "peso": -0.7483955239366021
+ },
+ "marcas": {
+  "tem_idade": 0.19185573361959513,
+  "comparou": -0.015216847179162198,
+  "titulo_cortado": 0.11486780867338946
+ },
+ "categorias": {
+  "quem": {
+   "mesmo": 0.16749322392465332,
+   "nao_sabe": -0.016655180815462394,
+   "outro": -0.13201723894154474,
+   "sem": -0.021066615932193528
+  },
+  "acao": {
+   "diferente": 0.06803756055688051,
+   "equivale": 0.31952521159230235,
+   "nao_sabe": -0.3687419679815368,
+   "sem": -0.021066615932193528
+  },
+  "assunto": {
+   "diferente": -0.2433858628651283,
+   "em_comum": 0.28009170832701363,
+   "ia_equivalente": -0.017885041294239384,
+   "sem": -0.021066615932193528
+  },
+  "quando": {
+   "antes": -0.4424097567692444,
+   "compativel": 0.22933340870991095,
+   "materia_sem_data": 0.16809128943756507,
+   "sem": 0.042739246857221275
+  },
+  "buscador": {
+   "ausente": 0.3615700236023273,
+   "bing_news": 0.1802383443820278,
+   "bing_web": -0.39878138784378714,
+   "google_news": 0.001872964613171377,
+   "wikipedia": -0.14714575651828551
+  },
+  "tipo_afirmacao": {
+   "acontecimento": -0.4567716339983784,
+   "acontecimento_recente": 0.4144622278559006,
+   "ausente": -0.058176547133326366,
+   "contagem": 0.3882660886587717,
+   "opiniao": -0.02619057397694566,
+   "previsao": -0.15807271644422324,
+   "quantidade_periodo": -0.10576265672634545
+  }
+ },
+ "corte": 0.874239,
+ "mesmo_da_regra": [
+  "mesmo_acontecimento",
+  "detalhe_divergente"
+ ]
+}
