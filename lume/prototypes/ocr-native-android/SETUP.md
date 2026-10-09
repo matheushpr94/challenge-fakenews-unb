@@ -3,8 +3,7 @@
 Pasta do app no repositório: `lume/prototypes/ocr-native-android`. Tudo abaixo é relativo a ela.
 
 **Estado da validação:** passos de Windows executados em 30/09/2026 (Windows 11, Android Studio com JBR, emulador
-`Medium_Phone` API 37, Ollama 0.34.4). **Passos de macOS: não testados em um Mac — validação pendente.** Os comandos seguem a
-documentação oficial das ferramentas e o script `setup/start-lume-local-ai.sh` foi executado apenas no Git Bash do Windows.
+`Medium_Phone` API 37, Ollama 0.34.4). **macOS (Apple Silicon): compilação, testes unitários, instalação no emulador (API 37), `adb reverse` e Ollama local validados em 07/10/2026**; no Mac o `gradlew` pode estar sem permissão de execução (use `bash gradlew`). O script `setup/start-lume-local-ai.sh` ainda NÃO foi executado em um Mac (só no Git Bash do Windows): validação pendente.
 
 ## O que precisa existir em cada computador (não vem do Git)
 
@@ -14,6 +13,8 @@ documentação oficial das ferramentas e o script `setup/start-lume-local-ai.sh`
 | Um AVD (ex.: Pixel/“Medium Phone”, API 37, Google APIs) | emulador | Device Manager |
 | Ollama | serviço local de IA | https://ollama.com/download (macOS: também `brew install ollama`) |
 | Pesos do modelo `paraphrase-multilingual:latest` (≈562 MB) | comparação de sentido | `ollama pull paraphrase-multilingual` |
+| Opcional: `lume-mpnet-ajustado` no Ollama e pesos locais do BERTimbau ajustado | modelo treinado de pares integrado | provisionar os pesos localmente; eles não são versionados |
+| Opcional: servidor local do BERTimbau (porta 8765) | pontuar pares para a integração do modelo treinado | `lume/ml/integracao_modelo_matheus/servidor_bert.py` |
 | `local.properties` | caminho do SDK e endereço do Ollama | criado pelo Android Studio; modelo em `local.properties.example` |
 
 O GitHub guarda **só os identificadores** dos modelos (`setup/ollama-models.txt`: nome, digest e tamanho), nunca os pesos.
@@ -27,12 +28,16 @@ O código não tem caminhos de máquina. O endereço do Ollama e o modelo vêm d
 ```properties
 lume.ollama.url=http://127.0.0.1:11434
 lume.ollama.embedModel=paraphrase-multilingual
+# Opcional: habilita o modelo treinado de pares quando os dois serviços estiverem ativos
+lume.pairModel.url=http://127.0.0.1:8765
+lume.pairModel.embedModel=lume-mpnet-ajustado
 ```
 
 - Padrão `http://127.0.0.1:11434` + `adb reverse tcp:11434 tcp:11434`: o `127.0.0.1` do emulador/aparelho é encaminhado ao
   computador. Funciona igual no Windows e no Mac, e com celular por cabo USB.
 - Alternativa só no emulador: `http://10.0.2.2:11434` (endereço do computador visto pelo emulador), sem `adb reverse`.
 - Mudou `local.properties`? Recompile o app (o valor é gravado no APK).
+- O modelo treinado de pares só é ativado quando `lume.pairModel.url` está configurado. Ele precisa do modelo `lume-mpnet-ajustado` no Ollama e do servidor BERTimbau acessível; faça também `adb reverse tcp:8765 tcp:8765`. O servidor aceita `LUME_BERT_DIR` para apontar para os pesos locais do BERTimbau. Sem essa configuração, o app segue com a comparação estruturada e o recurso `paraphrase-multilingual`, se disponível.
 
 ## macOS (validação pendente)
 
@@ -68,9 +73,11 @@ lume.ollama.embedModel=paraphrase-multilingual
    adb install -r app/build/outputs/apk/debug/app-debug.apk
    ```
    `connectedDebugAndroidTest` desinstala o app ao terminar; reinstale depois. Ou use *Run* no Android Studio.
-9. **Testar o app:** importe uma captura (ex.: arraste `app/src/androidTest/assets/uol-flamengo-stf.png` para o emulador), confira
-   a leitura (autor “Igor Siqueira”, veículo UOL), pesquise e abra “Como a pesquisa foi feita”: deve dizer que a comparação de
-   sentido (IA local) foi usada. Logcat: `adb logcat -s LumeResearch LumeSemantic`.
+9. **Opcional — ativar o modelo treinado de pares:** no `local.properties`, configure `lume.pairModel.url=http://127.0.0.1:8765` e `lume.pairModel.embedModel=lume-mpnet-ajustado`. Inicie o Ollama com esse modelo e rode `servidor_bert.py` em um ambiente Python com PyTorch e Transformers, apontando `LUME_BERT_DIR` para os pesos locais. Encaminhe a porta com `adb reverse tcp:8765 tcp:8765` e recompile o app. O protótipo integra a combinação treinada de MPNet, sobreposição lexical e BERTimbau; ela é auxiliar e não avalia veracidade.
+10. **Testar o app:** importe uma captura (ex.: arraste `app/src/androidTest/assets/uol-flamengo-stf.png` para o emulador), confira
+   a leitura (autor “Igor Siqueira”, veículo UOL), pesquise e abra “Como a pesquisa foi feita”: confira se a comparação de sentido
+   foi usada e, se configurou os serviços do modelo treinado, se a nota dele aparece na relação das fontes. Logcat:
+   `adb logcat -s LumeResearch LumeSemantic`.
 
 ## Windows (validado neste PC)
 

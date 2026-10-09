@@ -2,7 +2,7 @@
 
 Mascote para Android que ajuda a entender notícias e posts a partir de um trecho escolhido pela pessoa. Este diretório é a base versionada do produto dentro do challenge.
 
-**Estado: 0.3.0-demo.** O APK distribuído funciona offline, tem respostas fictícias e não analisa o conteúdo capturado. Não faz pesquisas nem consome tokens de IA. O índice de evidências demonstrativo não é uma probabilidade de verdade.
+**Estado: protótipo nativo em desenvolvimento.** A versão atual está em [`prototypes/ocr-native-android`](prototypes/ocr-native-android): OCR no aparelho (ML Kit), leitura da matéria, busca de fontes e comparação de "mesmo acontecimento", com trechos que sustentam a análise. O app combina comparação estruturada com dois recursos semânticos locais: `paraphrase-multilingual` para ordenar/relacionar textos e o modelo treinado de pares integrado ao fluxo (MPNet ajustado, sobreposição lexical e BERTimbau ajustado). Este último é opcional e só funciona com os serviços locais configurados. Nenhum deles determina se uma notícia é verdadeira ou falsa. A demo 0.3.0 abaixo (respostas fictícias, offline) é a **versão antiga**, mantida como referência em [`prototypes/referencia-antigo`](prototypes/referencia-antigo).
 
 - [Experimentar no navegador](https://lume-previa.vercel.app/)
 - [Baixar APK demo 0.3.0](https://lume-previa.vercel.app/downloads/lume-demo-0.3.0.apk)
@@ -22,7 +22,7 @@ lume/
 └── CHANGELOG.md
 ```
 
-O trabalho acadêmico com LIAR2 continua nas pastas originais do repositório. A interface, o servidor e o app vivem aqui. Não há modelo treinado nem integração do classificador do challenge com o produto neste commit.
+O modelo treinado de pares está integrado opcionalmente ao protótipo Android; ele auxilia a comparação entre uma afirmação e títulos de fontes encontradas. A integração não é o classificador de veracidade acadêmico e não dá um veredito sobre a notícia. Veja [como o modelo entra no app](docs/RELATORIO-MODELO-MATHEUS-NO-APP.md) e os requisitos locais em [`prototypes/ocr-native-android/SETUP.md`](prototypes/ocr-native-android/SETUP.md). O trabalho acadêmico com LIAR2 continua separado.
 
 ## Testar no Android
 

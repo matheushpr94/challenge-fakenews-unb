@@ -1,0 +1,106 @@
+{
+ "medias": [
+  0.5623891750147286,
+  0.27772204014006235,
+  0.5384060415562084
+ ],
+ "desvios": [
+  0.2583979207440838,
+  0.2149050612814223,
+  0.4562862134997896
+ ],
+ "pesos": [
+  0.8188883495449529,
+  0.6377980487241676,
+  0.8917558194280873
+ ],
+ "intercepto": -0.3153206821967418,
+ "corte": 0.783151,
+ "entradas": [
+  "cosseno(lume-mpnet-ajustado)",
+  "sobreposicao(jaccard, palavras>=3)",
+  "nota_texto(BERTimbau ajustado)"
+ ],
+ "casos": [
+  {
+   "afirmacao": "Vacina Pneumo-20, que previne pneumonia e meningite, está disponível no SUS para idosos",
+   "titulo": "SUS disponibiliza nova vacina pneumo 20 contra pneumonia e meningite",
+   "cosseno": 0.7525191787618504,
+   "nota_texto": 0.9319296479225159,
+   "sobreposicao": 0.35714285714285715,
+   "nota": 0.7844889042768132
+  },
+  {
+   "afirmacao": "Justiça Federal suspende imposto de exportação de 12% sobre petróleo",
+   "titulo": "Justiça restabelece imposto de 12% sobre exportação de petróleo",
+   "cosseno": 0.8389808824562346,
+   "nota_texto": 0.9967869520187378,
+   "sobreposicao": 0.625,
+   "nota": 0.9232772488362848
+  },
+  {
+   "afirmacao": "O que é uma onda de calor? Entenda alerta vermelho do Inmet para oito estados brasileiros",
+   "titulo": "Rio de Janeiro entra em alerta vermelho por onda de calor",
+   "cosseno": 0.5033552157570201,
+   "nota_texto": 0.20862409472465515,
+   "sobreposicao": 0.25,
+   "nota": 0.22632190201921443
+  },
+  {
+   "afirmacao": "Bandeira tarifária de energia permanece amarela em setembro",
+   "titulo": "Bandeira tarifária amarela é mantida em setembro; entenda o que muda no orçamento",
+   "cosseno": 0.7459390806809273,
+   "nota_texto": 0.9957072734832764,
+   "sobreposicao": 0.36363636363636365,
+   "nota": 0.8045666122764744
+  },
+  {
+   "afirmacao": "Inflação oficial cai a 0,07% em julho e IPCA volta à meta",
+   "titulo": "2º turno começa a mudar a rotina antes da votação: veja quando volta a propaganda eleitoral e o que acontece com as loterias",
+   "cosseno": 0.024984780857396055,
+   "nota_texto": 0.0033452718053013086,
+   "sobreposicao": 0.047619047619047616,
+   "nota": 0.023044326819269337
+  },
+  {
+   "afirmacao": "Brasil cria 165,8 mil empregos formais em agosto, aponta Novo Caged",
+   "titulo": "Brasil cria 165,8 mil empregos com carteira assinada em agosto, aponta Caged",
+   "cosseno": 0.8671622959016452,
+   "nota_texto": 0.9965521097183228,
+   "sobreposicao": 0.6153846153846154,
+   "nota": 0.9274420867238448
+  },
+  {
+   "afirmacao": "Lula participa de 7 de setembro com Fachin, Alcolumbre e Motta; evento tem soberania como tema",
+   "titulo": "Fachin nega julgar Mendonça junto com Moraes e agenda nova sessão",
+   "cosseno": 0.2770147259418687,
+   "nota_texto": 0.004340811632573605,
+   "sobreposicao": 0.1,
+   "nota": 0.057817280708732835
+  },
+  {
+   "afirmacao": "Lua quase desaparece no céu brasileiro em 28 de agosto; veja como observar e o que mais acontece no céu este mês",
+   "titulo": "Eclipse Lunar de agosto de 2026: a Lua quase engolida pela sombra",
+   "cosseno": 0.6412985979906897,
+   "nota_texto": 0.339261919260025,
+   "sobreposicao": 0.15,
+   "nota": 0.30290403403417937
+  },
+  {
+   "afirmacao": "Conta de luz mais cara em SC? Veja o que muda após aumento de até 14% aprovado pela Aneel",
+   "titulo": "Conta de luz continua mais cara em agosto com bandeira amarela; veja o valor da cobrança extra",
+   "cosseno": 0.4338109977111123,
+   "nota_texto": 0.7955410480499268,
+   "sobreposicao": 0.23809523809523808,
+   "nota": 0.41632856877437374
+  },
+  {
+   "afirmacao": "Cúpula da Bamor é denunciada por tortura, extorsão, roubo e organização criminosa",
+   "titulo": "PF investiga policiais suspeitos de ligação com facção criminosa no Rio de Janeiro",
+   "cosseno": 0.23763046511250902,
+   "nota_texto": 0.0033030107151716948,
+   "sobreposicao": 0.058823529411764705,
+   "nota": 0.04565306914738109
+  }
+ ]
+}
