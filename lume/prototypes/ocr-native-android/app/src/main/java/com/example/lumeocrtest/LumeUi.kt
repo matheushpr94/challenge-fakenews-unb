@@ -122,7 +122,7 @@ fun SectionHeader(title: String, subtitle: String? = null, modifier: Modifier = 
     }
 }
 
-enum class Tone { Green, Amber, Neutral }
+enum class Tone { Green, Amber, Neutral, Blue }
 
 @Composable
 fun Tag(text: String, tone: Tone = Tone.Neutral) {
@@ -130,6 +130,7 @@ fun Tag(text: String, tone: Tone = Tone.Neutral) {
         Tone.Green -> LumeLightGreen to LumeDarkGreen
         Tone.Amber -> AmberSoft to Amber
         Tone.Neutral -> Color(0xFFEDEFE8) to InkSoft
+        Tone.Blue -> Color(0xFFE4EDF5) to Color(0xFF2C4F6B)
     }
     Surface(shape = RoundedCornerShape(50), color = bg) {
         Text(text, Modifier.padding(horizontal = 10.dp, vertical = 4.dp), style = MaterialTheme.typography.labelMedium, color = fg)

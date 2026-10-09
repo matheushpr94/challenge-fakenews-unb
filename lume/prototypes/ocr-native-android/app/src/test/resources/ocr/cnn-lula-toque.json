@@ -1,0 +1,132 @@
+{
+ "image": "cnn-lula-toque.png",
+ "width": 1442,
+ "height": 1310,
+ "blocks": [
+  {
+   "text": "Lula diz que falou de coragem feminina ao citar\n\"toque\" e critica Nikolas",
+   "box": [
+    14,
+    50,
+    1409,
+    179
+   ],
+   "lines": [
+    {
+     "text": "Lula diz que falou de coragem feminina ao citar",
+     "box": [
+      14,
+      50,
+      1409,
+      106
+     ],
+     "confidence": 0.875901460647583
+    },
+    {
+     "text": "\"toque\" e critica Nikolas",
+     "box": [
+      14,
+      124,
+      722,
+      179
+     ],
+     "confidence": 0.8664772510528564
+    }
+   ]
+  },
+  {
+   "text": "Em Salvador o presidente criticou a divulgação de corte descontextualizado e\ndefendeu sua declaração sobre exames preventivos feita durante agenda no Pará",
+   "box": [
+    8,
+    262,
+    1362,
+    353
+   ],
+   "lines": [
+    {
+     "text": "Em Salvador o presidente criticou a divulgação de corte descontextualizado e",
+     "box": [
+      8,
+      262,
+      1297,
+      295
+     ],
+     "confidence": 0.8618608117103577
+    },
+    {
+     "text": "defendeu sua declaração sobre exames preventivos feita durante agenda no Pará",
+     "box": [
+      19,
+      319,
+      1362,
+      353
+     ],
+     "confidence": 0.8585587739944458
+    }
+   ]
+  },
+  {
+   "text": "Pedro Penteado, colaboração para a CNN Brasil, São Paulo",
+   "box": [
+    15,
+    399,
+    770,
+    427
+   ],
+   "lines": [
+    {
+     "text": "Pedro Penteado, colaboração para a CNN Brasil, São Paulo",
+     "box": [
+      15,
+      399,
+      770,
+      427
+     ],
+     "confidence": 0.861572265625
+    }
+   ]
+  },
+  {
+   "text": "29\/09\/26 às 20:26 | Atualizado 29\/09\/26 às 20:26",
+   "box": [
+    7,
+    449,
+    649,
+    475
+   ],
+   "lines": [
+    {
+     "text": "29\/09\/26 às 20:26 | Atualizado 29\/09\/26 às 20:26",
+     "box": [
+      7,
+      449,
+      649,
+      475
+     ],
+     "confidence": 0.8930068612098694
+    }
+   ]
+  },
+  {
+   "text": "7",
+   "box": [
+    1360,
+    545,
+    1379,
+    563
+   ],
+   "lines": [
+    {
+     "text": "7",
+     "box": [
+      1360,
+      545,
+      1379,
+      563
+     ],
+     "confidence": 0.5234375
+    }
+   ]
+  }
+ ]
+}

@@ -1,5 +1,10 @@
 # Histórico do Lume
 
+## Protótipo Android — integração do modelo de pares — 2026-10-09
+
+- Documentada a integração opcional do modelo treinado de pares ao fluxo Android: combinação de MPNet ajustado, sobreposição lexical e BERTimbau ajustado, além do uso separado de `paraphrase-multilingual` para similaridade/ordenação.
+- Registrado que a IA local auxilia a comparação de fontes, não declara veracidade, e depende de serviços e pesos locais que não são versionados.
+
 ## 0.3.0-demo — 2026-09-19
 
 - Piscada com um segundo quadro do mascote, mantendo a imagem original.

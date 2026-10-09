@@ -4,6 +4,7 @@ import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
@@ -19,6 +20,9 @@ private const val WEB_TTL = 30 * 60_000L
 private const val WIKI_TTL = 6 * 3_600_000L
 private const val PAGE_TTL = 3_600_000L
 private const val TOTAL_BUDGET_MS = 45_000L
+private const val AVISO_MODELO = "O modelo de linguagem indica que pode ser outro fato; confira a fonte."
+private const val PAGE_FIRST_WINDOW_MS = 3_500L
+private const val PAGE_MAX_WAIT_MS = 6_000L
 private val STABLE_TYPES = setOf("contagem", "quantidade_periodo", "fato_historico")
 private val CATEGORY_RANK = mapOf("direto" to 4, "incerto" to 3, "anterior" to 2, "contexto" to 1, "descartado" to 0, "nao_independente" to -1)
 val CONTENT_LABEL = mapOf("completo" to "Conteúdo da página consultado", "trecho" to "Trecho fornecido pelo buscador",
@@ -143,6 +147,9 @@ class ResearchService(
     private val fetchPages: Boolean = true,
     private val cache: TtlCache = TtlCache(),
     private val semanticRanker: SemanticRanker? = null,
+    private val pairScorer: PairScorer? = null,
+    /** Cosseno do MPNet AJUSTADO, só para o modelo de "mesmo fato"; a regra segue usando [semanticRanker], inalterado. */
+    private val pairRanker: SemanticRanker? = null,
 ) {
     // ---- fontes ------------------------------------------------------------------------------
     private suspend fun call(name: String, query: String): Pair<List<Candidate>, SourceStatus> {
@@ -227,8 +234,18 @@ class ResearchService(
                 if (cand.origin in allowed) { targets.add(cand); perGroup++ }
             }
         }
+        // Não espera a página mais lenta: depois de PAGE_FIRST_WINDOW_MS segue com o que chegou, desde que pelo menos
+        // metade das páginas tenha respondido; senão espera até PAGE_MAX_WAIT_MS. Quem não chegou fica com o trecho do buscador.
         val budget = minOf(8_000L, maxOf(100L, deadline - System.currentTimeMillis()))
-        val infos = targets.map { c -> async { withTimeoutOrNull(budget) { page(c.url) } to c } }.awaitAll()
+        val got = java.util.concurrent.atomic.AtomicReferenceArray<PageInfo?>(targets.size)
+        val jobs = targets.mapIndexed { i, c -> async { got.set(i, withTimeoutOrNull(budget) { page(c.url) }) } }
+        val start = System.currentTimeMillis()
+        withTimeoutOrNull(minOf(PAGE_FIRST_WINDOW_MS, budget)) { jobs.joinAll() }
+        if (jobs.count { it.isCompleted } * 2 < jobs.size) withTimeoutOrNull(maxOf(0L, minOf(PAGE_MAX_WAIT_MS, budget) - (System.currentTimeMillis() - start))) { jobs.joinAll() }
+        val late = jobs.count { !it.isCompleted }
+        jobs.forEach { if (!it.isCompleted) it.cancel() }
+        if (late > 0) logI("leitura de páginas: $late de ${jobs.size} não chegaram a tempo; seguem com o trecho do buscador")
+        val infos = targets.mapIndexed { i, c -> got.get(i) to c }
         val claimStems = interp.termos.map { stem(it) }.toSet() + interp.entidades.flatMap { it.split(" ") }.map { stem(it) }
         for ((info, cand) in infos) {
             if (info == null) {
@@ -280,10 +297,12 @@ class ResearchService(
     }
 
     /** Todo o processamento (análise de HTML, regras) roda fora da thread principal. */
-    suspend fun search(text: String, requestId: String, context: ArticleContext? = null): ResearchResult =
-        withContext(Dispatchers.Default) { doSearch(text, requestId, context) }
+    suspend fun search(text: String, requestId: String, context: ArticleContext? = null,
+                       onPreview: ((ResearchResult) -> Unit)? = null): ResearchResult =
+        withContext(Dispatchers.Default) { doSearch(text, requestId, context, onPreview) }
 
-    private suspend fun doSearch(text: String, requestId: String, context: ArticleContext?): ResearchResult {
+    private suspend fun doSearch(text: String, requestId: String, context: ArticleContext?,
+                                 onPreview: ((ResearchResult) -> Unit)? = null): ResearchResult {
         val t0 = System.currentTimeMillis()
         val deadline = t0 + TOTAL_BUDGET_MS
         val now = clock()
@@ -294,6 +313,9 @@ class ResearchService(
         logI("[$requestId] entrada: '${interp.assunto.take(120)}' | tipo=${interp.afirmacao?.tipo} | siglas=${interp.aliases} | " +
             "variações=${interp.vocabulario} | prazos=${interp.prazos} | consultas: ${interp.consultas.map { it.texto }}")
         val (jobs, extra) = plan(interp)
+        val marks = linkedMapOf<String, Long>()
+        var lastMark = t0
+        fun mark(etapa: String) { val n = System.currentTimeMillis(); marks[etapa] = n - lastMark; lastMark = n }
         val (cands0, st0) = run(jobs, deadline)
         val cands = cands0.toMutableList()
         val statuses = st0.toMutableList()
@@ -306,14 +328,29 @@ class ResearchService(
         }
         // Similaridade de sentido (modelo local, opcional): só ordena candidatas e, na comparação estruturada,
         // desempata se o ASSUNTO é equivalente quando quem agiu e a ação já coincidem. Não classifica sozinha.
+        mark("busca")
         val simByUrl = HashMap<String, Double>()
-        if (semanticRanker != null && pairs.isNotEmpty()) {
-            val news = pairs.map { it.first }.filter { it.origin != "wikipedia" }.distinctBy { it.url }.take(60)
-            val values = withTimeoutOrNull(maxOf(100L, minOf(20_000L, deadline - System.currentTimeMillis()))) {
-                semanticRanker.similarities(interp.assunto, news.map { it.title })
+        // Modelo de "mesmo fato" (opcional): cosseno do MPNet ajustado + sobreposição + nota do BERTimbau ajustado.
+        // Só promove fontes que a regra deixou em dúvida a "provável mesmo fato"; nunca rebaixa nem vira veredito.
+        val modelByUrl = HashMap<String, Double>()
+        // As três consultas locais dependem só dos candidatos: rodam juntas, não em fila.
+        val news = pairs.map { it.first }.filter { it.origin != "wikipedia" }.distinctBy { it.url }.take(60)
+        val titles = news.map { it.title }
+        if (news.isNotEmpty()) coroutineScope {
+            fun left(cap: Long) = maxOf(100L, minOf(cap, deadline - System.currentTimeMillis()))
+            val sem = semanticRanker?.let { r -> async { withTimeoutOrNull(left(20_000L)) { r.similarities(interp.assunto, titles) } } }
+            val useModel = pairScorer != null && pairRanker != null
+            val cos = if (useModel) async { withTimeoutOrNull(left(20_000L)) { pairRanker!!.similarities(interp.assunto, titles) } } else null
+            val bert = if (useModel) async { withTimeoutOrNull(left(25_000L)) { pairScorer!!.scores(interp.assunto, titles) } } else null
+            sem?.await()?.let { values -> news.zip(values).forEach { (c, v) -> simByUrl[c.url] = v } }
+            val cosines = cos?.await()
+            val notas = bert?.await()
+            if (cosines != null && notas != null) news.indices.forEach { i ->
+                modelByUrl[news[i].url] = PairModel.nota(cosines[i], PairModel.sobreposicao(interp.assunto, news[i].title), notas[i])
             }
-            if (values != null) news.zip(values).forEach { (c, v) -> simByUrl[c.url] = v }
         }
+        if (pairScorer != null) logI("modelo mesmo fato: ${modelByUrl.size} notas, ${modelByUrl.count { it.value >= PairModel.CORTE }} acima do corte ${PairModel.CORTE}")
+        mark("sentido_e_modelo")
         val semanticUsed = simByUrl.isNotEmpty()
         // Comparação estruturada do acontecimento (quem, ação e etapa, assunto, data, números, negação) e
         // independência em relação à matéria importada. Vale para afirmações sobre acontecimentos com ação reconhecida.
@@ -325,9 +362,49 @@ class ResearchService(
             independenceOf(context, c)?.let { ind ->
                 independence[c] = ind; a.category = "nao_independente"; a.relation = ind.motivo; a.strong = false; return
             }
-            val o = original ?: return
-            val cmp = compareEvent(o, c, now, simByUrl[c.url])
+            val o = original ?: run {
+                // Sem ação reconhecida não há comparação estruturada: o modelo só promove o que a triagem por termos não aceitou.
+                val nota = modelByUrl[c.url]
+                if (nota != null) logI("modelo par: regra=sem_acao:${a.category} nota=${"%.2f".format(java.util.Locale.US, nota)} | ${c.title.take(100)}")
+                if (nota != null && nota < PairModel.AVISO_ABAIXO && a.category == "direto") {
+                    a.alerts.add(AVISO_MODELO)
+                    logI("modelo avisa (regra disse mesmo): nota ${"%.2f".format(java.util.Locale.US, nota)} | ${c.title.take(90)}")
+                }
+                if (nota != null && nota >= PairModel.CONFIRMA_SEM_ACAO && a.category in setOf("contexto", "descartado", "incerto")) {
+                    a.category = "direto"; a.strong = false
+                    a.relation = "Mesmo acontecimento, confirmado pelo modelo de linguagem"
+                    a.alerts.add("A regra do app não confirmou; o modelo de linguagem deu nota alta. Confira a fonte.")
+                    logI("modelo confirmou (sem ação): nota ${"%.2f".format(java.util.Locale.US, nota)} | ${c.title.take(90)}")
+                } else if (nota != null && nota >= PairModel.CORTE && a.category in setOf("contexto", "descartado")) {
+                    a.category = "incerto"; a.strong = false
+                    a.relation = "Provável mesmo fato (modelo de linguagem); a regra do app não confirmou"
+                    a.alerts.add("Indicação do modelo de linguagem, sem confirmação pelas regras do app; confira a fonte.")
+                    logI("modelo promoveu (sem ação): nota ${"%.2f".format(java.util.Locale.US, nota)} | ${c.title.take(90)}")
+                }
+                return
+            }
+            var cmp = compareEvent(o, c, now, simByUrl[c.url])
+            val nota = modelByUrl[c.url]
+            if (nota != null) logI("modelo par: regra=${cmp.kind} nota=${"%.2f".format(java.util.Locale.US, nota)} | ${c.title.take(100)}")
+            if (nota != null) {
+                val passa = nota >= PairModel.CORTE_COM_ACAO
+                val linha = "Modelo de linguagem: nota ${"%.2f".format(java.util.Locale.US, nota)} (corte ${"%.2f".format(java.util.Locale.US, PairModel.CORTE_COM_ACAO)}) — " +
+                    if (passa) "indica o mesmo fato" else "não indica o mesmo fato"
+                cmp = if (nota >= PairModel.CONFIRMA_COM_ACAO && cmp.kind in setOf(EventRelation.INCERTA, EventRelation.CONTEXTO, EventRelation.OUTRO) && !cmp.anterior) {
+                    cmp.copy(kind = EventRelation.MESMO, resumo = "Mesmo acontecimento, confirmado pelo modelo de linguagem",
+                        motivos = cmp.motivos + linha, alertas = cmp.alertas + "A regra do app não confirmou; o modelo de linguagem deu nota alta. Confira a fonte.")
+                } else if (passa && cmp.kind in setOf(EventRelation.INCERTA, EventRelation.CONTEXTO, EventRelation.OUTRO) && !cmp.anterior) {
+                    val recente = c.published?.let { now - it <= 2 * 86_400_000L } == true
+                    cmp.copy(kind = EventRelation.INCERTA,
+                        resumo = if (recente) "Provável mesmo fato (modelo de linguagem); a regra do app não confirmou" else "Mesmo assunto, confira a data (modelo de linguagem); a regra do app não confirmou",
+                        motivos = cmp.motivos + linha, alertas = cmp.alertas + "Indicação do modelo de linguagem, sem confirmação pelas regras do app; confira a fonte.")
+                } else if (nota < PairModel.AVISO_ABAIXO && cmp.kind in setOf(EventRelation.MESMO, EventRelation.DIVERGENTE)) {
+                    logI("modelo avisa (regra disse mesmo): nota ${"%.2f".format(java.util.Locale.US, nota)} | ${c.title.take(90)}")
+                    cmp.copy(motivos = cmp.motivos + linha, alertas = cmp.alertas + AVISO_MODELO)
+                } else cmp.copy(motivos = cmp.motivos + linha)
+            }
             comparisons[c] = cmp
+            if (nota != null && cmp.resumo.contains("modelo de linguagem")) logI("modelo promoveu: nota ${"%.2f".format(java.util.Locale.US, nota)} | ${c.title.take(90)}")
             a.strong = false
             when (cmp.kind) {
                 EventRelation.MESMO, EventRelation.DIVERGENTE -> { a.category = "direto"; a.relation = cmp.resumo }
@@ -354,136 +431,173 @@ class ResearchService(
         groups.forEach { g -> g.members.filter { it !== g.lead }.forEach { (c, _) ->
             row("republicacao", c, "agrupada", "título/trecho quase igual a ${g.lead.first.sourceName}")
         } }
-        if (fetchPages && groups.isNotEmpty()) enrich(groups, interp, deadline, simByUrl)
-        // Depois de ler a página, compara de novo com o conteúdo lido: pode confirmar (outras palavras no título),
-        // rebaixar (outra data, outro envolvido) ou revelar republicação creditada ao veículo da captura.
-        for (g in groups) for (i in g.members.indices) {
-            val (c, old) = g.members[i]
-            if (c.pageText.isBlank()) continue
-            val re = assess(interp, c, now, c.pageText)
-            val eventMode = original != null || independenceOf(context, c) != null
-            if (eventMode) {
-                judgeEvent(c, re)
-                if (re.category != old.category || re.relation != old.relation) {
-                    g.members[i] = c to re
-                    row("releitura", c, re.category, "página lida: ${if (re.category == "descartado") re.reason else re.relation}")
+        // Monta o resultado a partir dos grupos. Chamada uma vez com prévia (antes de ler as páginas, em cópias dos grupos)
+        // e uma vez no final; a prévia não altera candidatos nem o diagnóstico do resultado final.
+        suspend fun assemble(groupsIn: List<Group>, trace: MutableList<TraceItem>, final: Boolean): ResearchResult {
+            fun row(etapa: String, c: Candidate, resultado: String, motivo: String) =
+                trace.add(TraceItem(etapa, c.origin, c.query, c.sourceName, c.title, c.url, resultado, motivo))
+            var groups = groupsIn
+            // Depois de ler a página, compara de novo com o conteúdo lido: pode confirmar (outras palavras no título),
+            // rebaixar (outra data, outro envolvido) ou revelar republicação creditada ao veículo da captura.
+            for (g in groups) for (i in g.members.indices) {
+                val (c, old) = g.members[i]
+                if (c.pageText.isBlank()) continue
+                val re = assess(interp, c, now, c.pageText)
+                val eventMode = original != null || independenceOf(context, c) != null
+                if (eventMode) {
+                    judgeEvent(c, re)
+                    if (re.category != old.category || re.relation != old.relation) {
+                        g.members[i] = c to re
+                        row("releitura", c, re.category, "página lida: ${if (re.category == "descartado") re.reason else re.relation}")
+                    }
+                } else {
+                    // Sem ação reconhecida, a triagem é por palavras em comum. A página só pode PROMOVER a fonte pelo que trata
+                    // como assunto principal (resumo e frases de abertura que retomam o título); palavras achadas mais abaixo
+                    // (antecedentes, outras notícias, menções) não fazem da matéria um relato do mesmo acontecimento.
+                    val lead = leadOf(c)
+                    val reLead = if (lead.isBlank()) old else assess(interp, c, now, lead)
+                    if (CATEGORY_RANK.getValue(reLead.category) > CATEGORY_RANK.getValue(old.category)) {
+                        g.members[i] = c to reLead
+                        row("releitura", c, reLead.category, "página lida (abertura): ${reLead.relation}")
+                    } else if (CATEGORY_RANK.getValue(re.category) > CATEGORY_RANK.getValue(old.category)) {
+                        row("releitura", c, old.category, "página lida: os termos aparecem só no corpo, não na abertura; mantido como ${old.category}")
+                    }
                 }
-            } else if (CATEGORY_RANK.getValue(re.category) > CATEGORY_RANK.getValue(old.category)) {
-                g.members[i] = c to re
-                row("releitura", c, re.category, "página lida: ${re.relation}")
             }
-        }
-        // Fonte que, lida a página, virou "outro acontecimento" ou republicação sai dos grupos exibidos.
-        groups = groups.onEach { g -> g.members.removeAll { it.second.category in setOf("descartado", "nao_independente") } }
-            .filter { it.members.isNotEmpty() }
-        groups = groups.sortedWith(compareBy({ g -> -g.members.maxOf { CATEGORY_RANK.getValue(it.second.category) } }, { g -> -g.members.maxOf { it.second.score } }))
+            // Fonte que, lida a página, virou "outro acontecimento" ou republicação sai dos grupos exibidos.
+            groups = groups.onEach { g -> g.members.removeAll { it.second.category in setOf("descartado", "nao_independente") } }
+                .filter { it.members.isNotEmpty() }
+            groups = groups.sortedWith(compareBy({ g -> -g.members.maxOf { CATEGORY_RANK.getValue(it.second.category) } }, { g -> -g.members.maxOf { it.second.score } }))
 
-        val evGroups = groups.take(20)
-        val nDirect = groups.count { g -> g.members.maxOf { CATEGORY_RANK.getValue(it.second.category) } == CATEGORY_RANK.getValue("direto") }
-        // Afirmação sobre algo que acontece numa data (traz "hoje", "amanhã"… ou vem de uma publicação datada e descreve
-        // uma ação): só fontes sobre o mesmo acontecimento, no mesmo período, esclarecem o detalhe. Publicações
-        // anteriores e fontes relacionadas viram contexto. Contagens e fatos estáveis continuam aceitando fontes antigas.
-        val happening = interp.quantity != null && interp.afirmacao?.tipo != "quantidade_periodo" && (interp.tempoRelativo.isNotEmpty() ||
-            interp.dataReferencia != null && originalEvent(interp.assunto, context, now).frame.action != null)
-        val contextOnly: (Candidate, Assessment) -> String? = { c, a ->
-            val pub = c.published.takeIf { c.origin != "wikipedia" }
-            val ref = interp.dataReferencia
+            val evGroups = groups.take(20)
+            val nDirect = groups.count { g -> g.members.maxOf { CATEGORY_RANK.getValue(it.second.category) } == CATEGORY_RANK.getValue("direto") }
+            // Afirmação sobre algo que acontece numa data (traz "hoje", "amanhã"… ou vem de uma publicação datada e descreve
+            // uma ação): só fontes sobre o mesmo acontecimento, no mesmo período, esclarecem o detalhe. Publicações
+            // anteriores e fontes relacionadas viram contexto. Contagens e fatos estáveis continuam aceitando fontes antigas.
+            val happening = interp.quantity != null && interp.afirmacao?.tipo != "quantidade_periodo" && (interp.tempoRelativo.isNotEmpty() ||
+                interp.dataReferencia != null && originalEvent(interp.assunto, context, now).frame.action != null)
+            val contextOnly: (Candidate, Assessment) -> String? = { c, a ->
+                val pub = c.published.takeIf { c.origin != "wikipedia" }
+                val ref = interp.dataReferencia
+                when {
+                    !happening -> null
+                    a.category == "anterior" -> "contexto_anterior"
+                    pub != null && ref != null && pub < ref - REFERENCE_WINDOW_MS -> "contexto_anterior"
+                    pub != null && ref == null && interp.tempoRelativo.isNotEmpty() && now - pub > RELATIVE_MAX_AGE_MS -> "contexto_anterior"
+                    a.category != "direto" -> "contexto_relacionado"
+                    else -> null
+                }
+            }
+            var sintese = synthesize(interp, evGroups, nDirect, contextOnly)
+            val evByGroup = sintese.usadas.groupBy { it.group }
+            val buckets = linkedMapOf<String, MutableList<Group>>("responde" to mutableListOf(), "direto" to mutableListOf(),
+                "incerto" to mutableListOf(), "anterior" to mutableListOf(), "contexto" to mutableListOf(), "contexto_geral" to mutableListOf(),
+                "nao_independente" to ownGroups.toMutableList())
+            groups.forEachIndexed { i, g ->
+                var cat = g.members.maxBy { CATEGORY_RANK.getValue(it.second.category) }.second.category
+                if (i in evByGroup) cat = "responde" else if (g.lead.first.origin == "wikipedia") cat = "contexto_geral"
+                buckets.getValue(cat).add(g)
+            }
+            val limits = mapOf("responde" to 6, "direto" to 20, "incerto" to 6, "anterior" to 4, "contexto" to 8, "contexto_geral" to 2, "nao_independente" to 6)
+            val index = groups.withIndex().associate { (i, g) -> System.identityHashCode(g) to i }
+            val results = buckets.mapValues { (k, v) -> v.take(limits.getValue(k)).map { g -> card(g, k, evByGroup[index[System.identityHashCode(g)]], interp, comparisons, independence) } }
+            buckets.forEach { (k, v) ->
+                v.drop(limits.getValue(k)).forEach { g -> row("limite", g.lead.first, k, "acima do limite de ${limits.getValue(k)} na seção") }
+                v.take(limits.getValue(k)).forEach { g -> row("exibida", g.lead.first, k, g.lead.second.relation) }
+            }
+            results.values.flatten().forEach { c ->
+                trace.add(TraceItem("relacao", "", "", c.veiculo, c.titulo, c.url, c.relacaoTipo, "${c.resumoRelacao} [leitura: ${c.baseLeitura}]${c.trechoRelacao?.let { t -> " «${t.take(140)}»" } ?: ""}"))
+            }
+
+            if (final) mark("releitura_e_montagem")
+            val searchOk = statuses.any { it.status in setOf("ok", "vazio") && it.fonte in setOf("google_news", "bing_news", "bing_web") }
+            val failed = statuses.filter { it.status == "erro" }
+            val status: String
+            val msg: String
+            var sugestoes = emptyList<Option>()
             when {
-                !happening -> null
-                a.category == "anterior" -> "contexto_anterior"
-                pub != null && ref != null && pub < ref - REFERENCE_WINDOW_MS -> "contexto_anterior"
-                pub != null && ref == null && interp.tempoRelativo.isNotEmpty() && now - pub > RELATIVE_MAX_AGE_MS -> "contexto_anterior"
-                a.category != "direto" -> "contexto_relacionado"
-                else -> null
+                !searchOk -> {
+                    status = "erro"
+                    msg = "Não foi possível consultar as fontes. Verifique a conexão e tente novamente."
+                    sintese = Synthesis("erro_tecnico", SITUACAO_FRASE.getValue("erro_tecnico"), interp.afirmacao?.detalheVerificavel, "nenhum")
+                }
+                sintese.opcoes.isNotEmpty() -> {
+                    status = "ambigua"
+                    msg = "O nome pesquisado corresponde a mais de uma entidade nas fontes. O que você quer saber?"
+                    sugestoes = sintese.opcoes
+                }
+                results.getValue("responde").isNotEmpty() || results.getValue("direto").isNotEmpty() -> {
+                    status = "ok"; msg = "Pesquisa concluída."
+                }
+                results.getValue("incerto").isNotEmpty() -> {
+                    status = "insuficiente"
+                    msg = "Encontramos publicações parecidas, mas o que foi lido não basta para dizer se tratam do mesmo acontecimento. " +
+                        "Isso não significa que seja falso."
+                }
+                else -> {
+                    status = "insuficiente"
+                    msg = "A pesquisa foi concluída, mas não encontrou publicações que tratem diretamente deste detalhe. " +
+                        "Isso não significa que seja falso." +
+                        if (results.getValue("anterior").isNotEmpty()) " Há publicações anteriores sobre assunto semelhante; elas não mostram que o fato ocorreu agora." else ""
+                }
             }
-        }
-        var sintese = synthesize(interp, evGroups, nDirect, contextOnly)
-        val evByGroup = sintese.usadas.groupBy { it.group }
-        val buckets = linkedMapOf<String, MutableList<Group>>("responde" to mutableListOf(), "direto" to mutableListOf(),
-            "incerto" to mutableListOf(), "anterior" to mutableListOf(), "contexto" to mutableListOf(), "contexto_geral" to mutableListOf(),
-            "nao_independente" to ownGroups.toMutableList())
-        groups.forEachIndexed { i, g ->
-            var cat = g.members.maxBy { CATEGORY_RANK.getValue(it.second.category) }.second.category
-            if (i in evByGroup) cat = "responde" else if (g.lead.first.origin == "wikipedia") cat = "contexto_geral"
-            buckets.getValue(cat).add(g)
-        }
-        val limits = mapOf("responde" to 6, "direto" to 20, "incerto" to 6, "anterior" to 4, "contexto" to 8, "contexto_geral" to 2, "nao_independente" to 6)
-        val index = groups.withIndex().associate { (i, g) -> System.identityHashCode(g) to i }
-        val results = buckets.mapValues { (k, v) -> v.take(limits.getValue(k)).map { g -> card(g, k, evByGroup[index[System.identityHashCode(g)]], interp, comparisons, independence) } }
-        buckets.forEach { (k, v) ->
-            v.drop(limits.getValue(k)).forEach { g -> row("limite", g.lead.first, k, "acima do limite de ${limits.getValue(k)} na seção") }
-            v.take(limits.getValue(k)).forEach { g -> row("exibida", g.lead.first, k, g.lead.second.relation) }
-        }
-        results.values.flatten().forEach { c ->
-            trace.add(TraceItem("relacao", "", "", c.veiculo, c.titulo, c.url, c.relacaoTipo, "${c.resumoRelacao} [leitura: ${c.baseLeitura}]${c.trechoRelacao?.let { t -> " «${t.take(140)}»" } ?: ""}"))
-        }
+            val avisos = if (failed.isNotEmpty() && searchOk)
+                listOf("Algumas fontes não responderam; os resultados podem estar incompletos.") else emptyList()
+            sintese = sintese.copy(indicacao = indicate(sintese, interp))
 
-        val searchOk = statuses.any { it.status in setOf("ok", "vazio") && it.fonte in setOf("google_news", "bing_news", "bing_web") }
-        val failed = statuses.filter { it.status == "erro" }
-        val status: String
-        val msg: String
-        var sugestoes = emptyList<Option>()
-        when {
-            !searchOk -> {
-                status = "erro"
-                msg = "Não foi possível consultar as fontes. Verifique a conexão e tente novamente."
-                sintese = Synthesis("erro_tecnico", SITUACAO_FRASE.getValue("erro_tecnico"), interp.afirmacao?.detalheVerificavel, "nenhum")
+            val extraDetails = mutableListOf<Synthesis>()
+            val first = interp.quantity
+            if (first != null && status != "erro") {
+                // Outros valores na mesma frase ("8 títulos nacionais e 3 estaduais") são avaliados separadamente.
+                val entity = interp.entidades.firstOrNull()
+                val entTokens = entity?.let { norm(it).split(" ").toSet() } ?: emptySet()
+                for (q2 in extractQuantities(interp.assunto, entTokens).take(4)) {
+                    if (q2.posicao == first.posicao || extraDetails.size >= 2) continue
+                    val i2 = interp.copy(quantity = q2, afirmacao = interp.afirmacao?.copy(quantidade = q2, detalheNegado = q2.negada,
+                        detalheVerificavel = detailText(q2, entity)))
+                    val s2 = synthesize(i2, evGroups, nDirect, contextOnly)
+                    extraDetails.add(s2.copy(indicacao = indicate(s2, i2)))
+                }
             }
-            sintese.opcoes.isNotEmpty() -> {
-                status = "ambigua"
-                msg = "O nome pesquisado corresponde a mais de uma entidade nas fontes. O que você quer saber?"
-                sugestoes = sintese.opcoes
+            val answerTexts = sintese.evidencias.map { it.trecho } + extraDetails.flatMap { s -> s.evidencias.map { it.trecho } }
+            val contexto = if (status == "erro") emptyList() else selectContext(interp, groups, answerTexts)
+            val result = ResearchResult(
+                idConsulta = requestId, consultadoEm = now, interpretacao = interp, status = status, mensagem = msg,
+                avisos = avisos, sintese = sintese, detalhesAdicionais = extraDetails, contexto = contexto,
+                sugestoes = sugestoes, resultados = results,
+                observacoes = observations(interp, buckets.getValue("direto") + buckets.getValue("responde"), groups) + ownObservations(independence.values.toList(), context),
+                fontesConsultadas = statuses.sortedWith(compareBy({ it.fonte }, { it.consulta })),
+                descartados = discarded.size, duracaoMs = System.currentTimeMillis() - t0,
+                comparacaoSemanticaLocal = semanticUsed,
+                diagnostico = ResearchTrace(statuses.toList(), trace.toList(), cands.map { it.copy() }),
+            )
+            if (final) {
+                logI("[$requestId] status=$status sintese=${sintese.situacao} indicacao=${sintese.indicacao?.rotulo} " +
+                    "responde=${results.getValue("responde").size} direto=${results.getValue("direto").size} descartados=${discarded.size} " +
+                    "falhas=${failed.size} (${result.duracaoMs} ms)")
+                logI("[$requestId] tempos: ${marks.entries.joinToString(" ") { "${it.key}=${it.value}ms" }} total=${result.duracaoMs}ms")
+                failed.forEach { logW("[$requestId] fonte ${it.fonte} '${it.consulta}': ${it.erro}") }
             }
-            results.getValue("responde").isNotEmpty() || results.getValue("direto").isNotEmpty() -> {
-                status = "ok"; msg = "Pesquisa concluída."
-            }
-            results.getValue("incerto").isNotEmpty() -> {
-                status = "insuficiente"
-                msg = "Encontramos publicações parecidas, mas o que foi lido não basta para dizer se tratam do mesmo acontecimento. " +
-                    "Isso não significa que seja falso."
-            }
-            else -> {
-                status = "insuficiente"
-                msg = "A pesquisa foi concluída, mas não encontrou publicações que tratem diretamente deste detalhe. " +
-                    "Isso não significa que seja falso." +
-                    if (results.getValue("anterior").isNotEmpty()) " Há publicações anteriores sobre assunto semelhante; elas não mostram que o fato ocorreu agora." else ""
-            }
+            return result
         }
-        val avisos = if (failed.isNotEmpty() && searchOk)
-            listOf("Algumas fontes não responderam; os resultados podem estar incompletos.") else emptyList()
-        sintese = sintese.copy(indicacao = indicate(sintese, interp))
+        mark("julgamento")
+        if (fetchPages && groups.isNotEmpty()) {
+            // Prévia: o que a busca já mostra (títulos e trechos), enquanto as páginas são lidas.
+            if (onPreview != null) runCatching {
+                onPreview(assemble(groups.map { Group(it.members.toMutableList()) }, mutableListOf(), false))
+                logI("[$requestId] prévia entregue em ${System.currentTimeMillis() - t0} ms")
+            }
+                .onFailure { logW("prévia falhou: ${it.message}") }
+            enrich(groups, interp, deadline, simByUrl)
+        }
+        mark("paginas")
+        return assemble(groups, trace, true)
+    }
 
-        val extraDetails = mutableListOf<Synthesis>()
-        val first = interp.quantity
-        if (first != null && status != "erro") {
-            // Outros valores na mesma frase ("8 títulos nacionais e 3 estaduais") são avaliados separadamente.
-            val entity = interp.entidades.firstOrNull()
-            val entTokens = entity?.let { norm(it).split(" ").toSet() } ?: emptySet()
-            for (q2 in extractQuantities(interp.assunto, entTokens).take(4)) {
-                if (q2.posicao == first.posicao || extraDetails.size >= 2) continue
-                val i2 = interp.copy(quantity = q2, afirmacao = interp.afirmacao?.copy(quantidade = q2, detalheNegado = q2.negada,
-                    detalheVerificavel = detailText(q2, entity)))
-                val s2 = synthesize(i2, evGroups, nDirect, contextOnly)
-                extraDetails.add(s2.copy(indicacao = indicate(s2, i2)))
-            }
-        }
-        val answerTexts = sintese.evidencias.map { it.trecho } + extraDetails.flatMap { s -> s.evidencias.map { it.trecho } }
-        val contexto = if (status == "erro") emptyList() else selectContext(interp, groups, answerTexts)
-        val result = ResearchResult(
-            idConsulta = requestId, consultadoEm = now, interpretacao = interp, status = status, mensagem = msg,
-            avisos = avisos, sintese = sintese, detalhesAdicionais = extraDetails, contexto = contexto,
-            sugestoes = sugestoes, resultados = results,
-            observacoes = observations(interp, buckets.getValue("direto") + buckets.getValue("responde"), groups) + ownObservations(independence.values.toList(), context),
-            fontesConsultadas = statuses.sortedWith(compareBy({ it.fonte }, { it.consulta })),
-            descartados = discarded.size, duracaoMs = System.currentTimeMillis() - t0,
-            comparacaoSemanticaLocal = semanticUsed,
-            diagnostico = ResearchTrace(statuses.toList(), trace.toList(), cands.map { it.copy() }),
-        )
-        logI("[$requestId] status=$status sintese=${sintese.situacao} indicacao=${sintese.indicacao?.rotulo} " +
-            "responde=${results.getValue("responde").size} direto=${results.getValue("direto").size} descartados=${discarded.size} " +
-            "falhas=${failed.size} (${result.duracaoMs} ms)")
-        failed.forEach { logW("[$requestId] fonte ${it.fonte} '${it.consulta}': ${it.erro}") }
-        return result
+    /** Abertura da matéria lida: frases do início da página que retomam o título (pula menus, legendas e antecedentes). */
+    private fun leadOf(c: Candidate): String {
+        val titleStems = stemsOf(c.title)
+        return sentencesIn(c.pageText.take(4000)).filter { (stemsOf(it) intersect titleStems).size >= 2 }.take(3).joinToString(" ")
     }
 
     /** Frases com afirmação própria. Frases sem nome próprio herdam as entidades da primeira. */
@@ -505,10 +619,11 @@ class ResearchService(
     }
 
     /** Uma afirmação: pesquisa normal. Várias: cada uma é pesquisada e avaliada separadamente. */
-    suspend fun evaluate(text: String, requestId: String, context: ArticleContext? = null): Evaluation = withContext(Dispatchers.Default) {
+    suspend fun evaluate(text: String, requestId: String, context: ArticleContext? = null,
+                         onPreview: ((Evaluation) -> Unit)? = null): Evaluation = withContext(Dispatchers.Default) {
         val parts = splitClaims(text)
         if (parts.size < 2) {
-            val r = search(text, requestId, context)
+            val r = search(text, requestId, context, onPreview?.let { cb -> { p: ResearchResult -> cb(Evaluation(requestId, "unica", p.status, p.mensagem, listOf(p))) } })
             return@withContext Evaluation(requestId, "unica", r.status, r.mensagem, listOf(r))
         }
         val results = parts.map { (sentence, query) -> async { search(query, requestId, context).copy(trechoDaEntrada = sentence) } }.awaitAll()
@@ -519,7 +634,10 @@ class ResearchService(
 
     /** Etapa anterior à pesquisa: decide se é preciso perguntar "O que você quer saber?". */
     suspend fun clarify(texto: String, detalhes: String = "", rejeitadas: List<String> = emptyList(), rodada: Int = 0): Clarification =
-        withContext(Dispatchers.Default) { clarifyInner(texto, detalhes, rejeitadas, rodada) }
+        withContext(Dispatchers.Default) {
+            val t = System.currentTimeMillis()
+            clarifyInner(texto, detalhes, rejeitadas, rodada).also { logI("tempos: desambiguacao=${System.currentTimeMillis() - t}ms") }
+        }
 
     private suspend fun clarifyInner(texto: String, detalhes: String, rejeitadas: List<String>, rodada: Int): Clarification =
         analyzeClarification(texto, detalhes, rejeitadas, rodada, clock()) { q ->

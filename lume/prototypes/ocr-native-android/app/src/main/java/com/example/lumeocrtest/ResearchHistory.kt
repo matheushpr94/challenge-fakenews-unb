@@ -30,6 +30,8 @@ object ResearchHistory {
         prefs(context).edit().putString(DRAFT, text.take(4_000)).apply()
     }
 
+    fun clearDraft(context: Context) { prefs(context).edit().remove(DRAFT).apply() }
+
     fun list(context: Context): List<SavedResearch> = runCatching {
         val array = JSONArray(prefs(context).getString(ITEMS, "[]"))
         (0 until array.length()).map { array.getJSONObject(it) }.map {

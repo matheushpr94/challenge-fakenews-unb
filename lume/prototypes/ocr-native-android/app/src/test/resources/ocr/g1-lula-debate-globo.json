@@ -1,0 +1,246 @@
+{
+ "image": "g1-lula-debate-globo.png",
+ "width": 1404,
+ "height": 1424,
+ "blocks": [
+  {
+   "text": "Lula informa que não vai participar do debate da\nGlobo, nesta quinta-feira (1°)",
+   "box": [
+    15,
+    47,
+    1294,
+    168
+   ],
+   "lines": [
+    {
+     "text": "Lula informa que não vai participar do debate da",
+     "box": [
+      32,
+      47,
+      1294,
+      105
+     ],
+     "confidence": 0.8814452886581421
+    },
+    {
+     "text": "Globo, nesta quinta-feira (1°)",
+     "box": [
+      15,
+      113,
+      763,
+      168
+     ],
+     "confidence": 0.8700810074806213
+    }
+   ]
+  },
+  {
+   "text": "Estão confirmados os candidatos Flávio Bolsonaro (PL), Ronaldo Caiado (PSD), Augusto Cury (Avante)\ne Romeu Zema (Novo).",
+   "box": [
+    13,
+    194,
+    1382,
+    277
+   ],
+   "lines": [
+    {
+     "text": "Estão confirmados os candidatos Flávio Bolsonaro (PL), Ronaldo Caiado (PSD), Augusto Cury (Avante)",
+     "box": [
+      15,
+      201,
+      1383,
+      231
+     ],
+     "confidence": 0.8586482405662537
+    },
+    {
+     "text": "e Romeu Zema (Novo).",
+     "box": [
+      13,
+      242,
+      320,
+      272
+     ],
+     "confidence": 0.8391544222831726
+    }
+   ]
+  },
+  {
+   "text": "Por Redação g1",
+   "box": [
+    14,
+    322,
+    209,
+    355
+   ],
+   "lines": [
+    {
+     "text": "Por Redação g1",
+     "box": [
+      14,
+      322,
+      209,
+      355
+     ],
+     "confidence": 0.8541666865348816
+    }
+   ]
+  },
+  {
+   "text": "30\/09\/2026 13h14 Atualizado há 28 minutos",
+   "box": [
+    13,
+    373,
+    517,
+    391
+   ],
+   "lines": [
+    {
+     "text": "30\/09\/2026 13h14 Atualizado há 28 minutos",
+     "box": [
+      13,
+      373,
+      517,
+      391
+     ],
+     "confidence": 0.8827040195465088
+    }
+   ]
+  },
+  {
+   "text": "CONTINUA DEPOIS DA PUBLICIDADE",
+   "box": [
+    497,
+    650,
+    917,
+    666
+   ],
+   "lines": [
+    {
+     "text": "CONTINUA DEPOIS DA PUBLICIDADE",
+     "box": [
+      497,
+      650,
+      917,
+      666
+     ],
+     "confidence": 0.7790798544883728
+    }
+   ]
+  },
+  {
+   "text": "DESCO",
+   "box": [
+    700,
+    764,
+    888,
+    862
+   ],
+   "lines": [
+    {
+     "text": "DESCO",
+     "box": [
+      700,
+      764,
+      888,
+      862
+     ],
+     "confidence": 0.596875011920929
+    }
+   ]
+  },
+  {
+   "text": "Especialistas prontos\npara te atender.",
+   "box": [
+    445,
+    1049,
+    774,
+    1122
+   ],
+   "lines": [
+    {
+     "text": "Especialistas prontos",
+     "box": [
+      446,
+      1052,
+      775,
+      1083
+     ],
+     "confidence": 0.8990234136581421
+    },
+    {
+     "text": "para te atender.",
+     "box": [
+      445,
+      1090,
+      685,
+      1122
+     ],
+     "confidence": 0.8811383843421936
+    }
+   ]
+  },
+  {
+   "text": "Nós usamos cookies e outras tecnologias semelhantes para melhorar a sua experiência em nossos serviços, personalizar\npublicidade e recomendar conteúdo de seu interesse. Ao utilizar nossos serviços, você está ciente dessa funcionalidade.\nInformamos ainda que atualizamoS nosso Aviso de Privacidade. Conheça nosso Portal da Privacidade e veja o nosso novo AVİSO.",
+   "box": [
+    40,
+    1176,
+    1355,
+    1282
+   ],
+   "lines": [
+    {
+     "text": "Nós usamos cookies e outras tecnologias semelhantes para melhorar a sua experiência em nossos serviços, personalizar",
+     "box": [
+      40,
+      1176,
+      1282,
+      1198
+     ],
+     "confidence": 0.8533415794372559
+    },
+    {
+     "text": "publicidade e recomendar conteúdo de seu interesse. Ao utilizar nossos serviços, você está ciente dessa funcionalidade.",
+     "box": [
+      40,
+      1215,
+      1269,
+      1239
+     ],
+     "confidence": 0.8438626527786255
+    },
+    {
+     "text": "Informamos ainda que atualizamoS nosso Aviso de Privacidade. Conheça nosso Portal da Privacidade e veja o nosso novo AVİSO.",
+     "box": [
+      40,
+      1260,
+      1355,
+      1282
+     ],
+     "confidence": 0.8389508724212646
+    }
+   ]
+  },
+  {
+   "text": "Prosseguir",
+   "box": [
+    637,
+    1348,
+    781,
+    1376
+   ],
+   "lines": [
+    {
+     "text": "Prosseguir",
+     "box": [
+      637,
+      1348,
+      781,
+      1376
+     ],
+     "confidence": 0.860546886920929
+    }
+   ]
+  }
+ ]
+}
