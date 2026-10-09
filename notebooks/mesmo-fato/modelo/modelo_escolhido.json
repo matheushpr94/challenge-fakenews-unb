@@ -1,0 +1,27 @@
+{
+ "modelo": "6B: regressão logística (class_weight=balanced) sobre montar_preprocessador(com_regra=False, extras=('nota_texto',)); nota_texto = nota do cross-encoder BERTimbau (fora da dobra no estudo)",
+ "C": 0.03,
+ "peso_dos_duvidosos": 1.0,
+ "nota_do_texto": "como sai",
+ "corte": 0.874239,
+ "precisao_da_regra_no_simulado": 0.855172,
+ "entradas": [
+  "cosseno",
+  "sobreposicao",
+  "nota_texto",
+  "idade_dias",
+  "tem_idade",
+  "comparou",
+  "titulo_cortado",
+  "quem",
+  "acao",
+  "assunto",
+  "quando",
+  "buscador",
+  "tipo_afirmacao"
+ ],
+ "pesos_do_cross_encoder": "challenges/challenge-01-desinformacao-v2/data/interim/cross-encoder-ciclo-2 (fora do git)",
+ "tamanho_do_model_safetensors": 435719148,
+ "impressao_digital_das_notas_no_simulado": "a9d0e64bfbfbf6d697aa2dc80a0342630bd6dcf74c2ce6d5f56106c2eae65114",
+ "escolhido_em": "etapa 10 (o 6B, pelo Matheus), etapa 11 (botões, dentro do estudo), etapa 12 (corte, no simulado)"
+}

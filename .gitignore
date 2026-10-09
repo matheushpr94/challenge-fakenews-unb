@@ -30,3 +30,6 @@ models/
 Thumbs.db
 .vscode/
 .idea/
+
+# Entrega do modelo "mesmo fato" (09/10/2026): o notebook precisa destas tabelas derivadas (títulos, rótulos, notas)
+!notebooks/mesmo-fato/dados/*.csv

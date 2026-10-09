@@ -1,0 +1,74 @@
+{
+ "o_que_e": "decisor do pipeline, ciclo 2 (regressão logística); nota = 1 / (1 + exp(-soma)) | plano B: sem a nota do texto (precisa só do MPNet, pelo Ollama)",
+ "intercepto": -2.0770073624950776,
+ "numeros": {
+  "cosseno": {
+   "media": 0.359454167499254,
+   "desvio": 0.23271782055543946,
+   "peso": 2.0701844815967165
+  },
+  "sobreposicao": {
+   "media": 0.1331388748147952,
+   "desvio": 0.14578395884037437,
+   "peso": 0.37996599809287895
+  }
+ },
+ "idade_dias": {
+  "mediana_do_log": 3.332204510175204,
+  "media": 3.253782157805912,
+  "desvio": 2.050382985139997,
+  "peso": -0.8116515222045011
+ },
+ "marcas": {
+  "tem_idade": 0.15834538546657081,
+  "comparou": -0.0984833080691186,
+  "titulo_cortado": 0.37806708803114114
+ },
+ "categorias": {
+  "quem": {
+   "mesmo": 0.3110696863573939,
+   "nao_sabe": 0.12631214859782636,
+   "outro": -0.4352676907465233,
+   "sem": -0.04690518958146464
+  },
+  "acao": {
+   "diferente": 0.05230878316551669,
+   "equivale": 0.5768961717018675,
+   "nao_sabe": -0.6270908106586858,
+   "sem": -0.04690518958146464
+  },
+  "assunto": {
+   "diferente": -0.3088595838996392,
+   "em_comum": 0.39689891703783386,
+   "ia_equivalente": -0.08592518892949794,
+   "sem": -0.04690518958146464
+  },
+  "quando": {
+   "antes": -1.12823452282914,
+   "compativel": 0.4481864869929202,
+   "materia_sem_data": 0.39577619116698975,
+   "sem": 0.23948079929646557
+  },
+  "buscador": {
+   "ausente": 0.7637893605398978,
+   "bing_news": 0.22218814005569412,
+   "bing_web": -0.646266105959054,
+   "google_news": 0.12592254834171054,
+   "wikipedia": -0.5104249883510148
+  },
+  "tipo_afirmacao": {
+   "acontecimento": -0.6065570992295811,
+   "acontecimento_recente": 0.6778850070830952,
+   "ausente": -0.2322057785417758,
+   "contagem": 0.8487519233038721,
+   "opiniao": -0.11333080873528328,
+   "previsao": -0.20688774001809773,
+   "quantidade_periodo": -0.41244654923499424
+  }
+ },
+ "corte": 0.8537879111393075,
+ "mesmo_da_regra": [
+  "mesmo_acontecimento",
+  "detalhe_divergente"
+ ]
+}
