@@ -30,18 +30,25 @@ fun interface SemanticRanker {
  */
 class OllamaEmbeddingRanker(
     private val model: String = "paraphrase-multilingual",
-    private val baseUrl: String = "http://127.0.0.1:11434",
+    private val baseUrlProvider: () -> String = { "http://127.0.0.1:11434" },
+    private val tokenProvider: () -> String? = { null },
 ) : SemanticRanker {
+    constructor(model: String, baseUrl: String) : this(model, { baseUrl })
+
+    private var lastUrl = ""
     private val client = OkHttpClient.Builder().connectTimeout(3, TimeUnit.SECONDS)
         .readTimeout(20, TimeUnit.SECONDS).callTimeout(25, TimeUnit.SECONDS).build()
     private var unavailableUntil = 0L
 
     override suspend fun similarities(claim: String, texts: List<String>): List<Double>? = withContext(Dispatchers.IO) {
-        if (texts.isEmpty() || System.currentTimeMillis() < unavailableUntil) return@withContext null
+        val baseUrl = baseUrlProvider()
+        if (baseUrl != lastUrl) { lastUrl = baseUrl; unavailableUntil = 0L }   // endereço novo: tenta já
+        if (baseUrl.isBlank() || texts.isEmpty() || System.currentTimeMillis() < unavailableUntil) return@withContext null
         try {
             val input = JsonArray().apply { add(claim.take(500)); texts.forEach { add(it.take(500)) } }
             val body = JsonObject().apply { addProperty("model", model); add("input", input) }
             val req = Request.Builder().url("${baseUrl.trimEnd('/')}/api/embed")
+                .apply { tokenProvider()?.let { header(ServerConfig.HEADER, it) } }
                 .post(body.toString().toRequestBody("application/json".toMediaType())).build()
             client.newCall(req).execute().use { response ->
                 if (!response.isSuccessful) throw IllegalStateException("Ollama HTTP ${response.code}")
