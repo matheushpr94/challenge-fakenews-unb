@@ -37,6 +37,9 @@ private fun sameTitle(a: String, b: String): Boolean {
     return jaccard(ka, kb) >= 0.85
 }
 
+/** Título da entrada igual ao da fonte (usado quando não há matéria lida na captura, só o texto digitado ou colado). */
+fun sameTitleAs(entry: String, cand: Candidate): Boolean = sameTitle(entry, cand.title)
+
 /** Republicação sai perto da original: publicação muito distante da data da matéria importada é outro texto. */
 private fun closeInTime(article: ArticleContext, cand: Candidate): Boolean {
     val a = article.publishedAtMs ?: return true

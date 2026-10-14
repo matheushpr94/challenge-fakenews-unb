@@ -18,6 +18,8 @@ data class ArticleContext(
     val author: String? = null,
     /** Endereço da matéria importada, quando a pessoa colou um link. */
     val url: String? = null,
+    /** O endereço veio inteiro do sistema (não do OCR, que o Chrome corta na barra). */
+    val urlComplete: Boolean = false,
 ) {
     val fullText: String get() = listOfNotNull(title, subtitle, body).joinToString("\n")
 }

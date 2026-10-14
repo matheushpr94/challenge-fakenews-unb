@@ -123,3 +123,9 @@ O APK **não** traz modelo embutido: a comparação de sentido depende do Ollama
 
 `LUME_LIVE=1 LUME_LIVE_SEMANTIC=1 ./gradlew :app:testDebugUnitTest --tests '*LiveResearchDiagnostics*'` (relatórios em
 `app/build/lume-live/`). Sem `LUME_LIVE_SEMANTIC`, roda sem o Ollama.
+
+
+## Sinal do texto (opcional)
+Mostra o estilo da escrita (boato/checagem x notícia comum) de textos longos; não verifica fatos. Servidor local em `lume/ml/sinal_texto`
+(porta 8766). Ligar tudo de uma vez: `bash lume/ml/iniciar_modelos_locais.sh`. Em `local.properties`: `lume.textSignal.url=http://127.0.0.1:8766`
+(sem a linha, o recurso fica desligado). Detalhes, calibração e limites: `lume/docs/SINAL-DO-TEXTO.md`.

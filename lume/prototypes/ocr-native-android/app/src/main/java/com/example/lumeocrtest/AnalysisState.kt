@@ -11,7 +11,8 @@ import kotlinx.coroutines.*
 class AnalysisState : ViewModel() {
     val service=ResearchService(semanticRanker = OllamaEmbeddingRanker(BuildConfig.OLLAMA_EMBED_MODEL, BuildConfig.OLLAMA_URL),
         pairScorer = BuildConfig.PAIR_MODEL_URL.takeIf { it.isNotBlank() }?.let { HttpPairScorer(it) },
-        pairRanker = BuildConfig.PAIR_MODEL_URL.takeIf { it.isNotBlank() }?.let { OllamaEmbeddingRanker(BuildConfig.PAIR_EMBED_MODEL, BuildConfig.OLLAMA_URL) })
+        pairRanker = BuildConfig.PAIR_MODEL_URL.takeIf { it.isNotBlank() }?.let { OllamaEmbeddingRanker(BuildConfig.PAIR_EMBED_MODEL, BuildConfig.OLLAMA_URL) },
+        textSignal = BuildConfig.TEXT_SIGNAL_URL.takeIf { it.isNotBlank() }?.let { HttpTextSignalScorer(it) })
     val gate=RequestGate()
     val linkFetcher=OkHttpFetcher()
     val scope=CoroutineScope(SupervisorJob()+Dispatchers.Main.immediate)
