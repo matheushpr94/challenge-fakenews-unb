@@ -71,7 +71,21 @@ import androidx.compose.ui.text.style.TextOverflow
 import com.example.lumeocrtest.research.jaccard
 import com.example.lumeocrtest.research.titleKey
 import com.example.lumeocrtest.ui.theme.Amber
+import com.example.lumeocrtest.ui.theme.AmberSoft
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.offset
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.draw.shadow
+import com.example.lumeocrtest.research.SignalBand
+import com.example.lumeocrtest.research.TextSignal
+import com.example.lumeocrtest.research.FactCheckSource
+import com.example.lumeocrtest.research.factChecksIn
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.ModalBottomSheet
@@ -382,7 +396,7 @@ private fun Stat(value: Int, label: String, modifier: Modifier = Modifier, tone:
 }
 
 @Composable
-private fun ResultBlock(r: ResearchResult, title: String?, onOption: (String) -> Unit) {
+private fun ResultBlock(r: ResearchResult, title: String?, onOption: (String) -> Unit, signal: TextSignal? = null) {
     val all = r.resultados.values.flatten().distinctBy { it.url }
     val notIndependent = all.filter { it.relacao == "nao_independente" }
     val independent = all - notIndependent.toSet()
@@ -446,6 +460,7 @@ private fun ResultBlock(r: ResearchResult, title: String?, onOption: (String) ->
                 }
             }
         }
+        signal?.let { SignalPill(it) }
         // Quantidades comparáveis (ex.: "tem 5 títulos"): síntese própria por regras.
         if (r.interpretacao.quantity != null) r.sintese?.let { IndicationCard(it, observations = r.observacoes) }
         r.detalhesAdicionais.forEach { IndicationCard(it, "Outro detalhe da mesma frase") }
@@ -479,14 +494,16 @@ private fun ResultBlock(r: ResearchResult, title: String?, onOption: (String) ->
             key(current.first) { CardList(current.second, 5, "Ver mais", defaultLabel) }
         }
         ContextSection(r.contexto)
-        UnknownsSection(r, same, different, uncertain)
+        signal?.let { TextSignalCard(it, independentOutlets = outlets.size, checks = factChecksIn(all)) }
+        UnknownsSection(r, same, different, uncertain, hasSignal = signal != null)
         AboutSearch(r)
     }
 }
 
 /** "O que ainda não sabemos?": limites reais desta pesquisa. */
 @Composable
-private fun UnknownsSection(r: ResearchResult, same: List<ResultCard>, different: List<ResultCard>, uncertain: List<ResultCard>) {
+private fun UnknownsSection(r: ResearchResult, same: List<ResultCard>, different: List<ResultCard>, uncertain: List<ResultCard>,
+                            hasSignal: Boolean = false) {
     val detail = r.interpretacao.prazos.firstOrNull() ?: r.interpretacao.numeros.firstOrNull()?.texto
     val items = buildList {
         if (r.status == "insuficiente") add(r.mensagem)
@@ -500,7 +517,8 @@ private fun UnknownsSection(r: ResearchResult, same: List<ResultCard>, different
         if (different.isNotEmpty()) add("Há fontes com informação diferente sobre o detalhe; o Lume não decide qual está certa.")
         r.fontesConsultadas.filter { it.status == "erro" }.map { it.nome }.distinct().takeIf { it.isNotEmpty() }
             ?.let { add("Não responderam nesta pesquisa: ${it.joinToString(", ")}.") }
-        add("O Lume não avalia se a notícia é verdadeira. A classificação de veracidade está sendo desenvolvida separadamente.")
+        add(if (hasSignal) "O Lume não confirma nem desmente fatos. O sinal do texto mostra só o estilo da escrita, e as fontes acima mostram o que foi publicado."
+            else "O Lume não avalia se a notícia é verdadeira. A classificação de veracidade está sendo desenvolvida separadamente.")
     }
     Collapsible("O que ainda não sabemos? (${items.size})", key = r.idConsulta, initiallyOpen = r.status == "insuficiente", strong = true) {
         LumeCard(color = MaterialTheme.colorScheme.surfaceContainerHigh, border = Color.Transparent) {
@@ -558,9 +576,10 @@ fun ResearchResults(e: Evaluation, onOption: (String) -> Unit) {
     val parts = e.partes
     Column(if(LocalLumeMotion.current) Modifier.animateContentSize() else Modifier, verticalArrangement = Arrangement.spacedBy(14.dp)) {
         if (parts.size <= 1) {
-            parts.firstOrNull()?.let { ResultBlock(it, null, onOption) }
+            parts.firstOrNull()?.let { ResultBlock(it, null, onOption, e.sinalTexto) }
         } else {
             Text("O que encontramos", style = MaterialTheme.typography.headlineSmall, modifier = Modifier.semantics { heading() })
+            e.sinalTexto?.let { SignalPill(it) }
             val informative = parts.filter { it.sintese != null && it.sintese.situacao !in listOf("sem_comparacao", "insuficiente", "nao_verificavel") }
             if (informative.isEmpty()) {
                 Text("Ainda não conseguimos esclarecer todos os detalhes desta notícia. Veja as publicações encontradas e o que elas relatam.")
@@ -574,7 +593,8 @@ fun ResearchResults(e: Evaluation, onOption: (String) -> Unit) {
                 }
                 if (informative.size < parts.size) Text("Outros detalhes continuam sem esclarecimento suficiente.")
             }
-            Text(AVISO_INDICACAO, style = MaterialTheme.typography.bodySmall, color = InkFaint)
+            Text(if (e.sinalTexto != null) "Pesquisa de fontes e contexto. O sinal do texto mede só o estilo da escrita; o Lume não confirma nem desmente fatos."
+                else AVISO_INDICACAO, style = MaterialTheme.typography.bodySmall, color = InkFaint)
             parts.filter { it.status == "ambigua" }.flatMap { it.sugestoes }.distinctBy { it.texto }.takeIf { it.isNotEmpty() }
                 ?.let { ClarificationChooser(it, onOption, null) }
             ContextSection(parts.flatMap { it.contexto }.distinctBy { it.texto }.take(2))
@@ -593,6 +613,11 @@ fun ResearchResults(e: Evaluation, onOption: (String) -> Unit) {
                         related.forEach { SourceCard(it) }
                     }
                 }
+            }
+            e.sinalTexto?.let { sig ->
+                val cards = parts.flatMap { it.resultados.values.flatten() }.distinctBy { it.url }
+                TextSignalCard(sig, independentOutlets = cards.filter { it.relacaoTipo == RelationKind.MESMO_FATO }.map { it.veiculo }.distinct().size,
+                    checks = factChecksIn(cards))
             }
             ExpanderRow(if(detailsOpen) "Ocultar detalhes da análise" else "Sobre esta análise", detailsOpen, { detailsOpen = !detailsOpen })
             LumeVisibility(detailsOpen) {
@@ -617,4 +642,126 @@ private fun plainReason(r: String): String = when {
     r.startsWith("página de desambiguação") -> "página de enciclopédia com vários significados"
     r.startsWith("Outro acontecimento: ") -> "outro acontecimento: " + r.removePrefix("Outro acontecimento: ").replaceFirstChar { it.lowercase() }
     else -> r.substringBefore(" (")
+}
+
+
+// ------------------------------------------------------------------------------------------------
+// Sinal do texto
+
+private val ZoneNews = Color(0xFFD5E3EE)
+private val ZoneNeutral = Color(0xFFE7E9E0)
+private val ZoneHoax = Color(0xFFF2DCB0)
+private val InkBlue = Color(0xFF2C4F6B)
+private val SoftBlue = Color(0xFFE4EDF5)
+
+/**
+ * Estilo da escrita numa escala de três zonas (notícia comum · sem sinal claro · estilo de boato), com o marcador na
+ * posição do texto. Nunca mostra número nem "é falso": é uma pista de estilo, ao lado do que as fontes publicaram.
+ */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun TextSignalCard(signal: TextSignal, independentOutlets: Int, checks: List<FactCheckSource>) {
+    val title = when (signal.faixa) {
+        SignalBand.DESINFORMACAO -> "Pelo estilo, o texto tende a lembrar desinformação"
+        SignalBand.NOTICIA -> "Pelo estilo, o texto tende a ser de notícia comum"
+        else -> "O estilo do texto não aponta para nenhum lado"
+    }
+    val accent = when (signal.faixa) { SignalBand.DESINFORMACAO -> Amber; SignalBand.NOTICIA -> InkBlue; else -> InkSoft }
+    // Palavras só quando o texto cai numa faixa: num texto sem sinal claro elas pesam pouco e só gerariam alarme à toa.
+    val words = when (signal.faixa) {
+        SignalBand.NOTICIA -> signal.pesamNoticia to "Palavras que lembram notícia comum"
+        SignalBand.DESINFORMACAO -> signal.pesamBoato to "Palavras que lembram boato ou checagem"
+        else -> emptyList<com.example.lumeocrtest.research.SignalTerm>() to ""
+    }
+    LumeCard {
+        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Box(Modifier.size(8.dp).clip(CircleShape).background(accent))
+                Overline("Sinal do texto", color = InkSoft)
+            }
+            Text(title, style = MaterialTheme.typography.headlineSmall, modifier = Modifier.semantics { heading() })
+            StyleScale(signal, accent)
+            Text("Isto mede só o jeito de escrever: o vocabulário e o estilo comuns em boatos e textos de checagem, ou em notícias. " +
+                "Não confirma nem desmente os fatos.", style = MaterialTheme.typography.bodySmall, color = InkSoft)
+
+            // Cruzamento com as fontes: o estilo pode vir de rede social ou de um boato citado, e o fato ter vários relatos.
+            if (signal.faixa == SignalBand.DESINFORMACAO && independentOutlets >= 3) {
+                Surface(shape = RoundedCornerShape(12.dp), color = LumeMist) {
+                    Text("$independentOutlets veículos independentes relataram este mesmo acontecimento. O estilo pode vir de um texto de " +
+                        "rede social ou de um boato citado: veja o que as fontes dizem.",
+                        Modifier.padding(12.dp), style = MaterialTheme.typography.bodyMedium, color = LumeDarkGreen)
+                }
+            }
+            if (checks.isNotEmpty()) Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Text(if (checks.size == 1) "Já checado por uma agência" else "Já checado por agências", style = MaterialTheme.typography.titleSmall,
+                    color = LumeDarkGreen)
+                checks.forEach { c -> ResearchLink("${c.agencia}: ${c.titulo.take(80)}", c.url, small = true) }
+            }
+            if (words.first.isNotEmpty()) Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                Text(words.second, style = MaterialTheme.typography.labelMedium, color = InkSoft)
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    words.first.take(5).forEach { t ->
+                        Surface(shape = RoundedCornerShape(50), color = if (signal.faixa == SignalBand.NOTICIA) SoftBlue else AmberSoft) {
+                            Text(t.termo, Modifier.padding(horizontal = 10.dp, vertical = 4.dp), style = MaterialTheme.typography.labelMedium,
+                                color = if (signal.faixa == SignalBand.NOTICIA) InkBlue else Amber)
+                        }
+                    }
+                }
+            }
+            Collapsible("Como ler este sinal", key = signal.posicao) {
+                Text("O modelo aprendeu com cerca de 12 mil textos do FakeRecogna (boatos e checagens de um lado, notícias do outro). " +
+                    "Ele reconhece estilo e vocabulário, por isso pode errar com notícias em tom de rede social e com boatos bem escritos. " +
+                    "Em um teste com 81 notícias reais do dia, 2 foram marcadas como estilo de boato; entre textos de boato conhecidos, " +
+                    "cerca de 7 em cada 10. Use como pista, ao lado das fontes, nunca como resposta.",
+                    style = MaterialTheme.typography.bodySmall, color = InkSoft)
+            }
+        }
+    }
+}
+
+@Composable
+private fun StyleScale(signal: TextSignal, accent: Color) {
+    val motion = LocalLumeMotion.current
+    var shown by remember(signal) { mutableStateOf(!motion) }
+    LaunchedEffect(signal) { shown = true }
+    val pos by animateFloatAsState(if (shown) signal.posicao else 0.5f, tween(if (motion) 750 else 0, easing = FastOutSlowInEasing), label = "estilo")
+    val label = when (signal.faixa) {
+        SignalBand.DESINFORMACAO -> "estilo de boato"; SignalBand.NOTICIA -> "estilo de notícia comum"; else -> "sem sinal claro"
+    }
+    Column(Modifier.semantics(mergeDescendants = true) { contentDescription = "Escala de estilo do texto: $label" }, verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        BoxWithConstraints(Modifier.fillMaxWidth().height(26.dp)) {
+            Row(Modifier.align(Alignment.Center).fillMaxWidth().height(10.dp).clip(RoundedCornerShape(5.dp)),
+                horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+                Box(Modifier.weight(signal.limiteNoticia.coerceAtLeast(0.08f)).fillMaxHeight().background(ZoneNews))
+                Box(Modifier.weight((signal.limiteBoato - signal.limiteNoticia).coerceAtLeast(0.08f)).fillMaxHeight().background(ZoneNeutral))
+                Box(Modifier.weight((1f - signal.limiteBoato).coerceAtLeast(0.08f)).fillMaxHeight().background(ZoneHoax))
+            }
+            val size = 22.dp
+            val x = (maxWidth * pos - size / 2).coerceIn(0.dp, maxWidth - size)
+            Box(Modifier.offset(x = x).align(Alignment.CenterStart).size(size).shadow(3.dp, CircleShape).clip(CircleShape)
+                .background(Color.White).border(BorderStroke(4.dp, accent), CircleShape))
+        }
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            Text("Estilo de notícia", style = MaterialTheme.typography.labelSmall, color = InkFaint)
+            Text("Estilo de boato", style = MaterialTheme.typography.labelSmall, color = InkFaint)
+        }
+    }
+}
+
+/** Resumo de uma linha do sinal do texto, logo abaixo do resumo da pesquisa (o cartão completo fica depois das fontes). */
+@Composable
+private fun SignalPill(signal: TextSignal) {
+    val (text, accent) = when (signal.faixa) {
+        SignalBand.DESINFORMACAO -> "Sinal do texto: o estilo tende a lembrar desinformação" to Amber
+        SignalBand.NOTICIA -> "Sinal do texto: o estilo tende a ser de notícia comum" to InkBlue
+        else -> "Sinal do texto: sem sinal claro de estilo" to InkSoft
+    }
+    Surface(shape = RoundedCornerShape(14.dp), color = Sheet, border = BorderStroke(1.dp, Hairline)) {
+        Row(Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            Box(Modifier.size(10.dp).clip(CircleShape).background(accent))
+            Text(text, style = MaterialTheme.typography.bodyMedium, color = Ink, modifier = Modifier.weight(1f))
+            Text("veja abaixo", style = MaterialTheme.typography.labelSmall, color = InkFaint)
+        }
+    }
 }

@@ -145,6 +145,16 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
                             if(active) OutlinedButton(onClick={context.startService(Intent(context,MascotService::class.java).setAction(MascotService.STOP))},modifier=Modifier.heightIn(min=48.dp)) { Text("Desativar mascote") }
                         }
                     }
+                    SectionHeader("Endereço da matéria",modifier=Modifier.padding(horizontal=4.dp))
+                    LumeCard {
+                        Column(Modifier.padding(16.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                            val on = com.example.lumeocrtest.capture.PageUrlService.enabled
+                            Text(if(on) "Ativado. Ao tocar em 'Ler esta tela', o Lume lê só o endereço da página aberta no navegador."
+                                else "Desativado. Ative para o Lume abrir a matéria da página e medir o estilo do texto, mesmo em prints só com a manchete.",style=MaterialTheme.typography.bodyLarge)
+                            OutlinedButton(onClick={context.startActivity(Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))},modifier=Modifier.heightIn(min=48.dp)) { Text("Abrir ajustes de acessibilidade") }
+                            Text("Em Acessibilidade, escolha 'Lume: endereço da matéria'. Ele só enxerga navegadores e não observa nada em segundo plano.",style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
+                        }
+                    }
                     SectionHeader("Histórico neste aparelho",modifier=Modifier.padding(horizontal=4.dp))
                     val saved = remember(historyRevision, page) { ResearchHistory.list(context) }
                     if (saved.isEmpty()) Text("Nenhuma pesquisa salva.",color=MaterialTheme.colorScheme.secondary,modifier=Modifier.padding(horizontal=4.dp))
@@ -172,7 +182,7 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
                     LumeCard(color=MaterialTheme.colorScheme.surfaceContainerHigh,border=androidx.compose.ui.graphics.Color.Transparent) {
                         Column(Modifier.padding(16.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
                             Text("O Lume lê a imagem escolhida ou uma tela autorizada por você. Ao pesquisar, o texto é usado em consultas na internet. A gotinha só inicia a captura quando você toca em 'Ler esta tela' e aceita a permissão do Android.",style=MaterialTheme.typography.bodyMedium)
-                            Text("A pesquisa consulta fontes públicas. A classificação de veracidade ainda não está disponível.",style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.secondary)
+                            Text("A pesquisa consulta fontes públicas e, em textos longos, mostra o estilo da escrita. O Lume não confirma nem desmente fatos.",style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.secondary)
                             Text("A comparação contextual por IA usa o modelo gratuito instalado neste computador quando ele está conectado ao app.",
                                 style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
                         }

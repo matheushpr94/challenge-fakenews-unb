@@ -23,6 +23,12 @@
         <service android:name=".mascot.MascotService" android:exported="false" android:foregroundServiceType="specialUse">
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="User-enabled draggable reading companion overlay; no screen capture or monitoring" />
         </service>
+        <service android:name=".capture.PageUrlService" android:exported="false"
+            android:label="@string/page_url_service_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter><action android:name="android.accessibilityservice.AccessibilityService" /></intent-filter>
+            <meta-data android:name="android.accessibilityservice" android:resource="@xml/page_url_service" />
+        </service>
         <service android:name=".capture.CaptureService" android:exported="false" android:foregroundServiceType="mediaProjection" />
         <activity android:name=".capture.CaptureActivity" android:exported="false" android:excludeFromRecents="true" android:theme="@style/Theme.LumeOCRTest" />
         <activity

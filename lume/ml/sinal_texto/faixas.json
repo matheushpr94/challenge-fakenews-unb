@@ -1,0 +1,74 @@
+{
+ "versao": 1,
+ "data": "2026-10-14",
+ "min_palavras": 60,
+ "limite_curto": 150,
+ "cortes": {
+  "curto": {
+   "desinformacao": -1.0,
+   "noticia": 0.3
+  },
+  "normal": {
+   "desinformacao": -0.75,
+   "noticia": 0.3
+  }
+ },
+ "posicao": {
+  "minimo": -1.5,
+  "maximo": 1.5
+ },
+ "calibracao": {
+  "fonte": "notícias reais coletadas no dia (Bing Notícias RSS + página), FakeTrueBr e FakeRecogna",
+  "n_reais": 81,
+  "dominios": 29,
+  "reais_completo": {
+   "n": 81,
+   "desinformacao": 2,
+   "taxa": 0.025,
+   "ic95": [
+    0.007,
+    0.086
+   ],
+   "noticia": 0.63,
+   "sem_sinal": 0.346
+  },
+  "reais_100": {
+   "n": 81,
+   "desinformacao": 1,
+   "taxa": 0.012,
+   "ic95": [
+    0.002,
+    0.067
+   ],
+   "noticia": 0.296,
+   "sem_sinal": 0.691
+  },
+  "reais_60": {
+   "n": 81,
+   "desinformacao": 0,
+   "taxa": 0.0,
+   "ic95": [
+    0,
+    0.045
+   ],
+   "noticia": 0.247,
+   "sem_sinal": 0.753
+  },
+  "boatos_faketruebr": {
+   "n": 329,
+   "marcados": 0.696,
+   "como_noticia": 0.006
+  },
+  "fakerecogna_classe0": {
+   "n": 800,
+   "desinformacao": 0.804,
+   "noticia": 0.007
+  },
+  "fakerecogna_classe1": {
+   "n": 800,
+   "desinformacao": 0.084,
+   "noticia": 0.759
+  }
+ },
+ "aviso": "Mede o estilo do texto (treinado em FakeRecogna: boatos/checagens x notícia comum). Não verifica fatos."
+}

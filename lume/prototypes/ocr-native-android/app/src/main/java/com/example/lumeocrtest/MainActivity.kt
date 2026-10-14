@@ -140,6 +140,7 @@ class MainActivity : ComponentActivity() {
                 openRequest++
             }
             OPEN_CAPTURE -> {
+                com.example.lumeocrtest.capture.PageUrlHolder.forAnalysis = com.example.lumeocrtest.capture.PageUrlHolder.take()
                 sharedImage = intent.getStringExtra(CAPTURE_URI)
                 sharedText = null
                 captureError = intent.getStringExtra(CAPTURE_ERROR)
@@ -495,8 +496,10 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0,
             recognizedText = out.text; cleanedText = out.cleaned; metadata = out.metadata
             mainClaim = out.mainClaim; subtitle = out.subtitle; claims = out.otherClaims
             reading = out.reading; claimChoice = out.choice
+            val pageUrl = com.example.lumeocrtest.capture.PageUrlHolder.takeForAnalysis()
             articleContext = ArticleContext(out.reading.title, out.reading.subtitle, out.reading.body,
-                out.metadata.source, out.metadata.publishedAtMs, author = out.metadata.author)
+                out.metadata.source, out.metadata.publishedAtMs, author = out.metadata.author,
+                url = pageUrl ?: out.metadata.url, urlComplete = pageUrl != null)
             ocrState = ""
             // Só preenche a pesquisa quando há uma afirmação clara; senão, pede a escolha ao usuário.
             queryText = out.choice.claim.orEmpty()

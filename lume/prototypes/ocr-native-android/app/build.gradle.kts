@@ -31,6 +31,8 @@ android {
         buildConfigField("String", "OLLAMA_URL", "\"${localProp("lume.ollama.url", "http://127.0.0.1:11434")}\"")
         // Vazio = modelo de "mesmo fato" desligado (comportamento estável anterior).
         buildConfigField("String", "PAIR_MODEL_URL", "\"${localProp("lume.pairModel.url", "")}\"")
+        // Vazio = "sinal do texto" desligado. Servidor: lume/ml/sinal_texto (porta 8766).
+        buildConfigField("String", "TEXT_SIGNAL_URL", "\"${localProp("lume.textSignal.url", "")}\"")
         buildConfigField("String", "PAIR_EMBED_MODEL", "\"${localProp("lume.pairModel.embedModel", "lume-mpnet-ajustado")}\"")
         buildConfigField("String", "OLLAMA_EMBED_MODEL", "\"${localProp("lume.ollama.embedModel", "paraphrase-multilingual")}\"")
     }

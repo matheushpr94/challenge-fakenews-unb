@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Só os navegadores abaixo; nenhum evento observado; leitura apenas no toque em "Ler esta tela". -->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeNotificationStateChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:canRetrieveWindowContent="true"
+    android:description="@string/page_url_service_description"
+    android:notificationTimeout="1000"
+    android:packageNames="com.android.chrome,com.chrome.beta,com.sec.android.app.sbrowser,org.mozilla.firefox,com.microsoft.emmx,com.brave.browser,com.opera.browser" />

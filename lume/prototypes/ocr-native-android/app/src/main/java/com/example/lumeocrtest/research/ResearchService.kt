@@ -21,6 +21,8 @@ private const val WIKI_TTL = 6 * 3_600_000L
 private const val PAGE_TTL = 3_600_000L
 private const val TOTAL_BUDGET_MS = 45_000L
 private const val AVISO_MODELO = "O modelo de linguagem indica que pode ser outro fato; confira a fonte."
+private const val SIGNAL_TIMEOUT_MS = 1_500L
+private const val OWN_PAGE_BUDGET_MS = 7_000L
 private const val PAGE_FIRST_WINDOW_MS = 3_500L
 private const val PAGE_MAX_WAIT_MS = 6_000L
 private val STABLE_TYPES = setOf("contagem", "quantidade_periodo", "fato_historico")
@@ -100,7 +102,9 @@ data class ResearchTrace(val consultas: List<SourceStatus>, val itens: List<Trac
 
 /** Uma afirmação (modo "unica") ou várias avaliadas separadamente (modo "partes"). */
 data class Evaluation(val idConsulta: String, val modo: String, val status: String, val mensagem: String,
-                      val partes: List<ResearchResult>)
+                      val partes: List<ResearchResult>,
+                      /** Estilo do texto de entrada (opcional; não verifica fatos nem altera as fontes). */
+                      val sinalTexto: TextSignal? = null)
 
 fun sourceType(domain: String, origin: String): String = when {
     origin == "wikipedia" -> "enciclopedia"
@@ -150,6 +154,8 @@ class ResearchService(
     private val pairScorer: PairScorer? = null,
     /** Cosseno do MPNet AJUSTADO, só para o modelo de "mesmo fato"; a regra segue usando [semanticRanker], inalterado. */
     private val pairRanker: SemanticRanker? = null,
+    /** Estilo do texto (SVM do FakeRecogna, servidor local). Roda em paralelo com a busca e nunca a atrasa. */
+    private val textSignal: TextSignalScorer? = null,
 ) {
     // ---- fontes ------------------------------------------------------------------------------
     private suspend fun call(name: String, query: String): Pair<List<Candidate>, SourceStatus> {
@@ -298,10 +304,12 @@ class ResearchService(
 
     /** Todo o processamento (análise de HTML, regras) roda fora da thread principal. */
     suspend fun search(text: String, requestId: String, context: ArticleContext? = null,
+                       ownText: java.util.concurrent.atomic.AtomicReference<String?>? = null,
                        onPreview: ((ResearchResult) -> Unit)? = null): ResearchResult =
-        withContext(Dispatchers.Default) { doSearch(text, requestId, context, onPreview) }
+        withContext(Dispatchers.Default) { doSearch(text, requestId, context, ownText, onPreview) }
 
     private suspend fun doSearch(text: String, requestId: String, context: ArticleContext?,
+                                 ownText: java.util.concurrent.atomic.AtomicReference<String?>? = null,
                                  onPreview: ((ResearchResult) -> Unit)? = null): ResearchResult {
         val t0 = System.currentTimeMillis()
         val deadline = t0 + TOTAL_BUDGET_MS
@@ -469,6 +477,7 @@ class ResearchService(
                 .filter { it.members.isNotEmpty() }
             groups = groups.sortedWith(compareBy({ g -> -g.members.maxOf { CATEGORY_RANK.getValue(it.second.category) } }, { g -> -g.members.maxOf { it.second.score } }))
 
+            if (final) mark("releitura")
             val evGroups = groups.take(20)
             val nDirect = groups.count { g -> g.members.maxOf { CATEGORY_RANK.getValue(it.second.category) } == CATEGORY_RANK.getValue("direto") }
             // Afirmação sobre algo que acontece numa data (traz "hoje", "amanhã"… ou vem de uma publicação datada e descreve
@@ -500,6 +509,7 @@ class ResearchService(
             }
             val limits = mapOf("responde" to 6, "direto" to 20, "incerto" to 6, "anterior" to 4, "contexto" to 8, "contexto_geral" to 2, "nao_independente" to 6)
             val index = groups.withIndex().associate { (i, g) -> System.identityHashCode(g) to i }
+            if (final) mark("sintese")
             val results = buckets.mapValues { (k, v) -> v.take(limits.getValue(k)).map { g -> card(g, k, evByGroup[index[System.identityHashCode(g)]], interp, comparisons, independence) } }
             buckets.forEach { (k, v) ->
                 v.drop(limits.getValue(k)).forEach { g -> row("limite", g.lead.first, k, "acima do limite de ${limits.getValue(k)} na seção") }
@@ -509,7 +519,7 @@ class ResearchService(
                 trace.add(TraceItem("relacao", "", "", c.veiculo, c.titulo, c.url, c.relacaoTipo, "${c.resumoRelacao} [leitura: ${c.baseLeitura}]${c.trechoRelacao?.let { t -> " «${t.take(140)}»" } ?: ""}"))
             }
 
-            if (final) mark("releitura_e_montagem")
+            if (final) mark("cartoes")
             val searchOk = statuses.any { it.status in setOf("ok", "vazio") && it.fonte in setOf("google_news", "bing_news", "bing_web") }
             val failed = statuses.filter { it.status == "erro" }
             val status: String
@@ -560,7 +570,9 @@ class ResearchService(
                 }
             }
             val answerTexts = sintese.evidencias.map { it.trecho } + extraDetails.flatMap { s -> s.evidencias.map { it.trecho } }
+            if (final) mark("detalhes")
             val contexto = if (status == "erro") emptyList() else selectContext(interp, groups, answerTexts)
+            if (final) mark("contexto")
             val result = ResearchResult(
                 idConsulta = requestId, consultadoEm = now, interpretacao = interp, status = status, mensagem = msg,
                 avisos = avisos, sintese = sintese, detalhesAdicionais = extraDetails, contexto = contexto,
@@ -588,10 +600,94 @@ class ResearchService(
                 logI("[$requestId] prévia entregue em ${System.currentTimeMillis() - t0} ms")
             }
                 .onFailure { logW("prévia falhou: ${it.message}") }
-            enrich(groups, interp, deadline, simByUrl)
+            coroutineScope {
+                // A própria matéria importada sai dos grupos exibidos, mas o corpo dela alimenta o sinal do texto.
+                val ownJob = if (ownText == null) null else async {
+                    withTimeoutOrNull(OWN_PAGE_BUDGET_MS) { readOwn(requestId, pairs.map { it.first }, independence, context, text) }
+                        ?.let { ownText.set(it) }
+                }
+                enrich(groups, interp, deadline, simByUrl)
+                ownJob?.await()
+            }
+        } else if (ownText != null) {
+            withTimeoutOrNull(OWN_PAGE_BUDGET_MS) { readOwn(requestId, pairs.map { it.first }, independence, context, text) }?.let { ownText.set(it) }
         }
         mark("paginas")
         return assemble(groups, trace, true)
+    }
+
+    /**
+     * Candidato cujo corpo representa a matéria importada: a própria (endereço, ou veículo e título iguais) ou, sem veículo
+     * identificado na captura, a de título igual (o texto de uma republicação é o mesmo). Nunca outro veículo com título parecido.
+     */
+    /**
+     * Corpo da matéria importada, para o sinal do texto, na ordem: (1) link completo visível na captura; (2) candidato da
+     * busca que é a própria matéria; (3) busca restrita ao domínio visível na captura (`site:domínio "título"`), que devolve o
+     * endereço direto mesmo quando o buscador só entregou links de redirecionamento. Nunca usa outro veículo.
+     */
+    private suspend fun readOwn(requestId: String, cands: List<Candidate>, independence: Map<Candidate, IndependenceCheck>,
+                                context: ArticleContext?, entry: String): String? {
+        val title = context?.title?.takeIf { it.isNotBlank() } ?: entry.lineSequence().firstOrNull { it.isNotBlank() }?.trim().orEmpty()
+        val shown = context?.url?.trim()?.takeIf { it.isNotEmpty() }
+        val shownUrl = shown?.let { if (it.startsWith("http", ignoreCase = true)) it else "https://$it" }
+        val domain = shownUrl?.let { domainOf(it) }.orEmpty()
+        // O Chrome corta o endereço na barra ("g1.globo.com/mundo/uc"): só vale como link se terminar como uma página.
+        val hasPath = (shownUrl?.let { runCatching { java.net.URI(it).path }.getOrNull() }?.trim('/')?.length ?: 0) > 3
+        val complete = (context?.urlComplete == true && hasPath) || shownUrl?.let { runCatching { java.net.URI(it).path }.getOrNull() }
+            ?.let { Regex("(?i)\\.(?:s?html?|ghtml|php|aspx?|amp)$|/\\d{5,}/?$").containsMatchIn(it) } == true
+        suspend fun read(u: String, how: String): String? {
+            val body = page(u)?.paragraphs?.joinToString(" ").orEmpty()
+            val ok = body.length >= 500
+            logI("[$requestId] própria matéria: via $how | ${u.take(110)} | ${if (ok) "${body.split(' ').size} palavras lidas" else "página sem texto utilizável"}")
+            return if (ok) body.take(MAX_SIGNAL_CHARS) else null
+        }
+        if (complete && shownUrl != null && safeLink(shownUrl)) read(shownUrl, "link visível na captura")?.let { return it }
+        ownCandidate(cands, independence, context, entry)?.let { c0 ->
+            directPage(c0)?.let { d -> read(d.url, "candidato da busca (${d.sourceName}, ${d.origin})")?.let { return it } }
+        }
+        if (domain.isNotEmpty() && title.length >= 20) {
+            val q = "site:$domain \"${title.take(140)}\""
+            val inDomain = call("bing_web", q).first.filter { c ->
+                "news.google.com" !in c.url && domainOf(c.url).let { d -> d == domain || d.endsWith(".$domain") || domain.endsWith(".$d") }
+            }
+            // O domínio já restringe ao veículo; o título lido por OCR pode ter pequenas diferenças (aspas, sufixos).
+            val tk = titleKey(title)
+            val scored = inDomain.map { c -> c to jaccard(tk, titleKey(c.title)) }
+            val hit = scored.filter { (c, j) -> j >= 0.6 && numbersIn(title) == numbersIn(c.title) }.maxByOrNull { it.second }?.first
+            if (hit == null) logI("[$requestId] própria matéria: busca no domínio sem título compatível (${inDomain.size} do domínio; melhor " +
+                "${"%.2f".format(java.util.Locale.US, scored.maxOfOrNull { it.second } ?: 0.0)}: ${scored.maxByOrNull { it.second }?.first?.title?.take(80)})")
+            if (hit != null) read(hit.url, "busca no domínio $domain")?.let { return it }
+        }
+        logI("[$requestId] própria matéria: não localizada (domínio na captura: ${domain.ifEmpty { "não" }}; título: ${title.take(60)})")
+        return null
+    }
+
+    /** O Google News só entrega um link de redirecionamento: procura a mesma matéria (título igual) com o endereço direto. */
+    private suspend fun directPage(c: Candidate): Candidate? {
+        if ("news.google.com" !in c.url) return c
+        val title = c.title.substringBeforeLast(" - ").trim().ifEmpty { c.title }
+        for (src in listOf("bing_news", "bing_web")) {
+            call(src, title).first.firstOrNull { "news.google.com" !in it.url && sameTitleAs(title, it) }?.let { return it }
+        }
+        return null
+    }
+
+    private fun ownCandidate(cands: List<Candidate>, independence: Map<Candidate, IndependenceCheck>,
+                             context: ArticleContext?, entry: String): Candidate? {
+        val entryTitle = if (context?.title.isNullOrBlank()) entry.lineSequence().firstOrNull { it.isNotBlank() }?.trim()
+            ?.takeIf { it.length in 20..300 } else null
+        fun isOwn(c: Candidate): Boolean {
+            val i = independence[c]
+            return i?.kind == Independence.PROPRIA ||
+                (i?.kind == Independence.REPUBLICACAO && i.motivo.startsWith("mesmo título da matéria importada")) ||
+                // Sem matéria lida na captura (texto digitado, colado ou compartilhado só com a manchete): título igual ao da entrada.
+                (entryTitle != null && c.origin != "wikipedia" && sameTitleAs(entryTitle, c))
+        }
+        val own = cands.filter { isOwn(it) }
+        // Links de redirecionamento do Google News não são a página: prefere o endereço direto da mesma matéria.
+        return own.firstOrNull { "news.google.com" !in it.url && it.origin != "google_news" && independence[it]?.kind == Independence.PROPRIA }
+            ?: own.firstOrNull { "news.google.com" !in it.url }
+            ?: own.firstOrNull()
     }
 
     /** Abertura da matéria lida: frases do início da página que retomam o título (pula menus, legendas e antecedentes). */
@@ -621,15 +717,43 @@ class ResearchService(
     /** Uma afirmação: pesquisa normal. Várias: cada uma é pesquisada e avaliada separadamente. */
     suspend fun evaluate(text: String, requestId: String, context: ArticleContext? = null,
                          onPreview: ((Evaluation) -> Unit)? = null): Evaluation = withContext(Dispatchers.Default) {
+        // O sinal do texto começa junto com a busca quando a entrada já tem texto suficiente. Se for curta (manchete),
+        // a pesquisa localiza a própria matéria, lê a página e o sinal é calculado sobre o corpo dela; se não achar, a entrada é usada.
+        val signalSource = textSignal?.let { signalText(context, text) }
+        val ready = java.util.concurrent.atomic.AtomicReference<TextSignal?>(null)
+        val ownText = java.util.concurrent.atomic.AtomicReference<String?>(null)
+        suspend fun runSignal(src: String, origem: String): TextSignal? {
+            val t0 = System.currentTimeMillis()
+            val sig = withTimeoutOrNull(SIGNAL_TIMEOUT_MS) { runCatching { textSignal!!.score(src) }.getOrNull() }
+            if (sig != null) {
+                ready.set(sig)
+                logI("[$requestId] sinal do texto ($origem): faixa=${sig.faixa} posicao=${"%.2f".format(java.util.Locale.US, sig.posicao)} " +
+                    "palavras=${sig.palavras} regime=${sig.regime} (${System.currentTimeMillis() - t0} ms)")
+            }
+            return sig
+        }
+        val signalJob = signalSource?.let { src -> async { runSignal(src, "entrada") } }
+        suspend fun lateSignal(): TextSignal? {
+            signalJob?.await()?.let { return it }
+            if (textSignal == null) return null
+            val body = ownText.get()?.let { signalText(null, it) } ?: return null
+            return runSignal(body, "própria matéria")
+        }
         val parts = splitClaims(text)
         if (parts.size < 2) {
-            val r = search(text, requestId, context, onPreview?.let { cb -> { p: ResearchResult -> cb(Evaluation(requestId, "unica", p.status, p.mensagem, listOf(p))) } })
-            return@withContext Evaluation(requestId, "unica", r.status, r.mensagem, listOf(r))
+            val r = search(text, requestId, context, if (signalSource == null && textSignal != null) ownText else null, onPreview?.let { cb ->
+                { p: ResearchResult -> cb(Evaluation(requestId, "unica", p.status, p.mensagem, listOf(p), ready.get())) }
+            })
+            val waitStart = System.currentTimeMillis()
+            val sig = lateSignal()
+            if (signalJob != null) logI("[$requestId] sinal do texto: esperou ${System.currentTimeMillis() - waitStart} ms no fim da pesquisa")
+            return@withContext Evaluation(requestId, "unica", r.status, r.mensagem, listOf(r), sig)
         }
         val results = parts.map { (sentence, query) -> async { search(query, requestId, context).copy(trechoDaEntrada = sentence) } }.awaitAll()
         val allFailed = results.all { it.status == "erro" }
         Evaluation(requestId, "partes", if (allFailed) "erro" else "ok",
-            "A entrada tem ${parts.size} afirmações. Cada uma foi avaliada separadamente; o Lume não classifica a notícia inteira.", results)
+            "A entrada tem ${parts.size} afirmações. Cada uma foi avaliada separadamente; o Lume não classifica a notícia inteira.", results,
+            signalJob?.await())
     }
 
     /** Etapa anterior à pesquisa: decide se é preciso perguntar "O que você quer saber?". */
