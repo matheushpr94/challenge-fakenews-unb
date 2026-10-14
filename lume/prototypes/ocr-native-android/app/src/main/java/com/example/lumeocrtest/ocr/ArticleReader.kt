@@ -31,6 +31,10 @@ data class ArticleReading(
     val postProfile: String? = null,
     /** Formato incerto: texto logo abaixo de um @perfil numa captura que também parece página de notícia. */
     val textNearProfile: String? = null,
+    /** Confiança média do leitor de imagem nas linhas do título (0 a 1); nulo quando não informada. */
+    val titleConfidence: Float? = null,
+    /** Avisos de conferência da leitura (número da manchete que não bate, leitura de baixa confiança…). */
+    val integrityNotes: List<String> = emptyList(),
 ) {
     fun roleOf(index: Int) = decisions.firstOrNull { it.index == index }?.role
 
@@ -42,7 +46,7 @@ data class ArticleReading(
         val m = metadata
         appendLine("veículo=${m.source} (${m.sourceOrigin}; “${m.sourceEvidence}”)")
         appendLine("autor=${m.author} (${m.authorEvidence}) | assinatura institucional=${m.institutionalByline}")
-        appendLine("data=${m.publishedAt} (${m.dateEvidence}) | atualizado=${m.updated} | local=${m.place}")
+        appendLine("data=${m.publishedAt} (${m.dateEvidence}) | atualizado=${m.updated} | assinado_em=${m.place}")
         appendLine("créditos=${m.imageCredits} | legendas=${m.captions}")
         appendLine("corpo=${body.replace("\n", " ⏎ ").take(700)}")
         decisions.sortedBy { it.box?.top ?: 0 }.forEach {
@@ -314,6 +318,8 @@ class ArticleReader {
         val legacy = ArticleMetadataExtractor().extractMetadata(blocks, (bylineBlocks + zone).map { it.i }.toSet(), titleMembers.map { it.i })
         var source = org; var sourceOrigin = if (org != null) MetadataOrigin.BYLINE else null; var sourceEv = orgEv
         if (org != null && Regex("(?iu)^(?:a\\s+)?(?:redação|redacao|equipe|editoria)$").matches(org)) { source = null; sourceOrigin = null }
+        // "Redação g1": a assinatura institucional é a redação; o veículo é o que vem depois.
+        Regex("(?iu)^reda[cç][aã]o\\s+(.{2,40})$").find(org ?: "")?.let { source = it.groupValues[1] }
         if (source == null && legacy.metadata.source != null && legacy.metadata.sourceOrigin != MetadataOrigin.HEADER_CANDIDATE) {
             source = legacy.metadata.source; sourceOrigin = legacy.metadata.sourceOrigin; sourceEv = legacy.metadata.source
         }
@@ -416,11 +422,19 @@ class ArticleReader {
             decisions = decisions.values.sortedBy { it.index }, titleCandidates = titleCandidates,
             socialPost = handle != null, postProfile = postProfile,
             textNearProfile = if (formatDoubt) postBlocks.joinToString(" ") { it.text } else null,
+            titleConfidence = titleMembers.mapNotNull { it.conf }.takeIf { it.isNotEmpty() }?.average()?.toFloat(),
         )
     }
 
     /** Afirmação a pesquisar: o título (sem “entenda…/veja…”), ou nada quando a captura não permite escolher com segurança. */
     fun claimFor(reading: ArticleReading): ClaimChoice {
+        val choice = claimWithoutChecks(reading)
+        if (reading.integrityNotes.isEmpty()) return choice
+        val base = choice.note ?: "Esta é a afirmação principal que encontramos na imagem. Confira e edite, se precisar, antes de pesquisar."
+        return choice.copy(note = base + " Atenção: " + reading.integrityNotes.joinToString(" "))
+    }
+
+    private fun claimWithoutChecks(reading: ArticleReading): ClaimChoice {
         val sentences = reading.body.split("\n").flatMap { it.split(SENTENCE_END) }.map { it.trim() }
             .filter { s -> s.length in 30..320 && s.split(" ").size >= 5 && !s.endsWith("?") }
         val alternatives = (listOfNotNull(reading.subtitle) + sentences).distinct().take(4)

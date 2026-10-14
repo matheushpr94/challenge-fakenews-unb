@@ -1,0 +1,493 @@
+{
+ "image": "itatiaia-flamengo-stf.png",
+ "width": 1462,
+ "height": 1240,
+ "blocks": [
+  {
+   "text": "Flamengo entra com ação no STF contra o fim das\nbets",
+   "box": [
+    70,
+    46,
+    964,
+    120
+   ],
+   "lines": [
+    {
+     "text": "Flamengo entra com ação no STF contra o fim das",
+     "box": [
+      70,
+      46,
+      964,
+      81
+     ],
+     "confidence": 0.8621504902839661
+    },
+    {
+     "text": "bets",
+     "box": [
+      70,
+      93,
+      145,
+      120
+     ],
+     "confidence": 0.904296875
+    }
+   ]
+  },
+  {
+   "text": "Rubro-Negro aumenta pressão em prol da parceria com o mercadO de apostas esportivas",
+   "box": [
+    69,
+    155,
+    818,
+    172
+   ],
+   "lines": [
+    {
+     "text": "Rubro-Negro aumenta pressão em prol da parceria com o mercadO de apostas esportivas",
+     "box": [
+      69,
+      155,
+      818,
+      172
+     ],
+     "confidence": 0.8433648943901062
+    }
+   ]
+  },
+  {
+   "text": "Felippe Rocha e Wellington Campos, da Itatiaia\n30\/09\/26 às 11:18 | Atualizado 30\/O9\/26 às 11:20",
+   "box": [
+    69,
+    199,
+    478,
+    243
+   ],
+   "lines": [
+    {
+     "text": "Felippe Rocha e Wellington Campos, da Itatiaia",
+     "box": [
+      78,
+      199,
+      466,
+      217
+     ],
+     "confidence": 0.8163086175918579
+    },
+    {
+     "text": "30\/09\/26 às 11:18 | Atualizado 30\/O9\/26 às 11:20",
+     "box": [
+      69,
+      225,
+      478,
+      243
+     ],
+     "confidence": 0.836223304271698
+    }
+   ]
+  },
+  {
+   "text": "Flamengo entrou com ação no STF contra o fim das bets Foto: Divulgação\/ Flamengo",
+   "box": [
+    69,
+    786,
+    811,
+    803
+   ],
+   "lines": [
+    {
+     "text": "Flamengo entrou com ação no STF contra o fim das bets Foto: Divulgação\/ Flamengo",
+     "box": [
+      69,
+      786,
+      811,
+      803
+     ],
+     "confidence": 0.8498717546463013
+    }
+   ]
+  },
+  {
+   "text": "O Flamengo saiu na frente. De maneira individual, o Rubro-Negro entrou com ação no STF\n(Supremo Tribunal Federal) contra a Medida Provisória do Governo que impõe o fim das bets\nno Brasil.",
+   "box": [
+    142,
+    898,
+    887,
+    975
+   ],
+   "lines": [
+    {
+     "text": "O Flamengo saiu na frente. De maneira individual, o Rubro-Negro entrou com ação no STF",
+     "box": [
+      142,
+      898,
+      869,
+      914
+     ],
+     "confidence": 0.85791015625
+    },
+    {
+     "text": "(Supremo Tribunal Federal) contra a Medida Provisória do Governo que impõe o fim das bets",
+     "box": [
+      142,
+      929,
+      887,
+      948
+     ],
+     "confidence": 0.8481770753860474
+    },
+    {
+     "text": "no Brasil.",
+     "box": [
+      142,
+      962,
+      212,
+      975
+     ],
+     "confidence": 0.7404513955116272
+    }
+   ]
+  },
+  {
+   "text": "O ANOS",
+   "box": [
+    1120,
+    153,
+    1211,
+    181
+   ],
+   "lines": [
+    {
+     "text": "O ANOS",
+     "box": [
+      1120,
+      153,
+      1211,
+      181
+     ],
+     "confidence": 0.688281238079071
+    }
+   ]
+  },
+  {
+   "text": "COM VOCE\nDO BRASI\nAMINHOS",
+   "box": [
+    1127,
+    181,
+    1195,
+    207
+   ],
+   "lines": [
+    {
+     "text": "COM VOCE",
+     "box": [
+      1127,
+      181,
+      1167,
+      193
+     ],
+     "confidence": 0.6640625
+    },
+    {
+     "text": "DO BRASI",
+     "box": [
+      1127,
+      196,
+      1170,
+      207
+     ],
+     "confidence": 0.4235491156578064
+    },
+    {
+     "text": "AMINHOS",
+     "box": [
+      1159,
+      190,
+      1195,
+      203
+     ],
+     "confidence": 0.7823660969734192
+    }
+   ]
+  },
+  {
+   "text": "Oferecido por Mercedes",
+   "box": [
+    1025,
+    321,
+    1229,
+    337
+   ],
+   "lines": [
+    {
+     "text": "Oferecido por Mercedes",
+     "box": [
+      1025,
+      321,
+      1229,
+      337
+     ],
+     "confidence": 0.900390625
+    }
+   ]
+  },
+  {
+   "text": "Mais Lidas",
+   "box": [
+    1025,
+    469,
+    1117,
+    487
+   ],
+   "lines": [
+    {
+     "text": "Mais Lidas",
+     "box": [
+      1025,
+      469,
+      1117,
+      487
+     ],
+     "confidence": 0.9066840410232544
+    }
+   ]
+  },
+  {
+   "text": "Sete décadas pelas estradas e cidades do\nBrasil",
+   "box": [
+    1025,
+    343,
+    1381,
+    378
+   ],
+   "lines": [
+    {
+     "text": "Sete décadas pelas estradas e cidades do",
+     "box": [
+      1025,
+      343,
+      1381,
+      359
+     ],
+     "confidence": 0.896484375
+    },
+    {
+     "text": "Brasil",
+     "box": [
+      1025,
+      365,
+      1073,
+      378
+     ],
+     "confidence": 0.86328125
+    }
+   ]
+  },
+  {
+   "text": "Mendonça reconsidera decisão e libera\npost de deputada sobre Nossa Senhora",
+   "box": [
+    1025,
+    725,
+    1363,
+    765
+   ],
+   "lines": [
+    {
+     "text": "Mendonça reconsidera decisão e libera",
+     "box": [
+      1025,
+      725,
+      1361,
+      742
+     ],
+     "confidence": 0.877012312412262
+    },
+    {
+     "text": "post de deputada sobre Nossa Senhora",
+     "box": [
+      1025,
+      749,
+      1363,
+      765
+     ],
+     "confidence": 0.8954132795333862
+    }
+   ]
+  },
+  {
+   "text": "Nossa Senhora: Nunes\nMarques marcou sessão\nno TSE após conversa\ncom Fachin",
+   "box": [
+    1167,
+    815,
+    1375,
+    900
+   ],
+   "lines": [
+    {
+     "text": "Nossa Senhora: Nunes",
+     "box": [
+      1169,
+      817,
+      1361,
+      830
+     ],
+     "confidence": 0.8441840410232544
+    },
+    {
+     "text": "Marques marcou sessão",
+     "box": [
+      1169,
+      835,
+      1375,
+      856
+     ],
+     "confidence": 0.8244243264198303
+    },
+    {
+     "text": "no TSE após conversa",
+     "box": [
+      1169,
+      861,
+      1355,
+      878
+     ],
+     "confidence": 0.8529411554336548
+    },
+    {
+     "text": "com Fachin",
+     "box": [
+      1168,
+      883,
+      1264,
+      900
+     ],
+     "confidence": 0.859375
+    }
+   ]
+  },
+  {
+   "text": "ACM Neto liderou\nesquema de desvio de\nrecursos públicos em\nMG, diz PF",
+   "box": [
+    1168,
+    962,
+    1360,
+    1046
+   ],
+   "lines": [
+    {
+     "text": "ACM Neto liderou",
+     "box": [
+      1168,
+      962,
+      1317,
+      975
+     ],
+     "confidence": 0.8512834906578064
+    },
+    {
+     "text": "esquema de desvio de",
+     "box": [
+      1169,
+      985,
+      1360,
+      1001
+     ],
+     "confidence": 0.8122702240943909
+    },
+    {
+     "text": "recursos públicos em",
+     "box": [
+      1169,
+      1006,
+      1350,
+      1023
+     ],
+     "confidence": 0.8463541865348816
+    },
+    {
+     "text": "MG, diz PF",
+     "box": [
+      1169,
+      1030,
+      1258,
+      1046
+     ],
+     "confidence": 0.82666015625
+    }
+   ]
+  },
+  {
+   "text": "Briga entre pilotOs faz",
+   "box": [
+    1169,
+    1107,
+    1355,
+    1123
+   ],
+   "lines": [
+    {
+     "text": "Briga entre pilotOs faz",
+     "box": [
+      1169,
+      1107,
+      1355,
+      1123
+     ],
+     "confidence": 0.8423827886581421
+    }
+   ]
+  },
+  {
+   "text": "vOo com destino a Israel\npousar na Arábia",
+   "box": [
+    1168,
+    1130,
+    1376,
+    1168
+   ],
+   "lines": [
+    {
+     "text": "vOo com destino a Israel",
+     "box": [
+      1168,
+      1130,
+      1376,
+      1143
+     ],
+     "confidence": 0.7417968511581421
+    },
+    {
+     "text": "pousar na Arábia",
+     "box": [
+      1169,
+      1151,
+      1313,
+      1168
+     ],
+     "confidence": 0.8864397406578064
+    }
+   ]
+  },
+  {
+   "text": "Saudita",
+   "box": [
+    1169,
+    1175,
+    1232,
+    1188
+   ],
+   "lines": [
+    {
+     "text": "Saudita",
+     "box": [
+      1169,
+      1175,
+      1232,
+      1188
+     ],
+     "confidence": 0.8297991156578064
+    }
+   ]
+  }
+ ]
+}

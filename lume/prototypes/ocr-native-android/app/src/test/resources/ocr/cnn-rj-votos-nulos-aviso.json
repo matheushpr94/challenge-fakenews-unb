@@ -1,0 +1,1151 @@
+{
+ "image": "cnn-rj-votos-nulos-aviso.png",
+ "width": 1700,
+ "height": 1538,
+ "blocks": [
+  {
+   "text": "ENN ELEIÇÕES",
+   "box": [
+    194,
+    29,
+    340,
+    50
+   ],
+   "lines": [
+    {
+     "text": "ENN ELEIÇÕES",
+     "box": [
+      194,
+      29,
+      340,
+      50
+     ],
+     "confidence": 0.6228693127632141
+    }
+   ]
+  },
+  {
+   "text": "BRASIL",
+   "box": [
+    190,
+    57,
+    226,
+    64
+   ],
+   "lines": [
+    {
+     "text": "BRASIL",
+     "box": [
+      190,
+      57,
+      226,
+      64
+     ],
+     "confidence": 0.8411458134651184
+    }
+   ]
+  },
+  {
+   "text": "-20 26",
+   "box": [
+    269,
+    52,
+    339,
+    64
+   ],
+   "lines": [
+    {
+     "text": "-20 26",
+     "box": [
+      269,
+      52,
+      339,
+      64
+     ],
+     "confidence": 0.706250011920929
+    }
+   ]
+  },
+  {
+   "text": "Política",
+   "box": [
+    219,
+    116,
+    280,
+    130
+   ],
+   "lines": [
+    {
+     "text": "Política",
+     "box": [
+      219,
+      116,
+      280,
+      130
+     ],
+     "confidence": 0.845703125
+    }
+   ]
+  },
+  {
+   "text": "Eleições",
+   "box": [
+    336,
+    114,
+    408,
+    132
+   ],
+   "lines": [
+    {
+     "text": "Eleições",
+     "box": [
+      336,
+      114,
+      408,
+      132
+     ],
+     "confidence": 0.7529296875
+    }
+   ]
+  },
+  {
+   "text": "• Ao vivo",
+   "box": [
+    535,
+    39,
+    602,
+    54
+   ],
+   "lines": [
+    {
+     "text": "• Ao vivo",
+     "box": [
+      535,
+      39,
+      602,
+      54
+     ],
+     "confidence": 0.5301339030265808
+    }
+   ]
+  },
+  {
+   "text": "Apuração",
+   "box": [
+    466,
+    116,
+    548,
+    134
+   ],
+   "lines": [
+    {
+     "text": "Apuração",
+     "box": [
+      466,
+      116,
+      548,
+      134
+     ],
+     "confidence": 0.8076171875
+    }
+   ]
+  },
+  {
+   "text": "ARLETORAL",
+   "box": [
+    354,
+    712,
+    494,
+    777
+   ],
+   "lines": [
+    {
+     "text": "ARLETORAL",
+     "box": [
+      354,
+      712,
+      494,
+      777
+     ],
+     "confidence": 0.3168402910232544
+    }
+   ]
+  },
+  {
+   "text": "ONN atualizações? Ative as notificações.",
+   "box": [
+    643,
+    66,
+    1043,
+    97
+   ],
+   "lines": [
+    {
+     "text": "ONN atualizações? Ative as notificações.",
+     "box": [
+      643,
+      66,
+      1043,
+      97
+     ],
+     "confidence": 0.8118489384651184
+    }
+   ]
+  },
+  {
+   "text": "BRASIL",
+   "box": [
+    655,
+    95,
+    700,
+    104
+   ],
+   "lines": [
+    {
+     "text": "BRASIL",
+     "box": [
+      655,
+      95,
+      700,
+      104
+     ],
+     "confidence": 0.8802083134651184
+    }
+   ]
+  },
+  {
+   "text": "RJ: 204 mil eleitores votaram \"5\" para\ngovernador e anularam seus votos",
+   "box": [
+    201,
+    195,
+    898,
+    275
+   ],
+   "lines": [
+    {
+     "text": "RJ: 204 mil eleitores votaram \"5\" para",
+     "box": [
+      202,
+      195,
+      898,
+      229
+     ],
+     "confidence": 0.708251953125
+    },
+    {
+     "text": "governador e anularam seus votos",
+     "box": [
+      202,
+      242,
+      812,
+      273
+     ],
+     "confidence": 0.8692801594734192
+    }
+   ]
+  },
+  {
+   "text": "Jonatas Martinse Murillo Ferrari, da CNN Brasil, Brasílla e São Paulo\n06\/10\/26 às 16:18| Atualizado 06\/10\/26 às 16:18",
+   "box": [
+    202,
+    380,
+    773,
+    424
+   ],
+   "lines": [
+    {
+     "text": "Jonatas Martinse Murillo Ferrari, da CNN Brasil, Brasílla e São Paulo",
+     "box": [
+      203,
+      380,
+      773,
+      396
+     ],
+     "confidence": 0.8230932354927063
+    },
+    {
+     "text": "06\/10\/26 às 16:18| Atualizado 06\/10\/26 às 16:18",
+     "box": [
+      202,
+      406,
+      610,
+      424
+     ],
+     "confidence": 0.8501333594322205
+    }
+   ]
+  },
+  {
+   "text": "Quer receber as últimas notícias e",
+   "box": [
+    735,
+    49,
+    1033,
+    64
+   ],
+   "lines": [
+    {
+     "text": "Quer receber as últimas notícias e",
+     "box": [
+      735,
+      49,
+      1033,
+      64
+     ],
+     "confidence": 0.8912984728813171
+    }
+   ]
+  },
+  {
+   "text": "O número 13, asSociado ao PT (Partido dos Trabalhadores), representa cerca de 30,25% de todos os Votos\nnulos para o cargo de goOvernador do Rio de Janeiro",
+   "box": [
+    202,
+    304,
+    1090,
+    351
+   ],
+   "lines": [
+    {
+     "text": "O número 13, asSociado ao PT (Partido dos Trabalhadores), representa cerca de 30,25% de todos os Votos",
+     "box": [
+      202,
+      304,
+      1090,
+      321
+     ],
+     "confidence": 0.8148618936538696
+    },
+    {
+     "text": "nulos para o cargo de goOvernador do Rio de Janeiro",
+     "box": [
+      202,
+      336,
+      634,
+      351
+     ],
+     "confidence": 0.8098028302192688
+    }
+   ]
+  },
+  {
+   "text": "CNN",
+   "box": [
+    561,
+    1300,
+    598,
+    1317
+   ],
+   "lines": [
+    {
+     "text": "CNN",
+     "box": [
+      561,
+      1300,
+      598,
+      1317
+     ],
+     "confidence": 0.3723958432674408
+    }
+   ]
+  },
+  {
+   "text": "BRASIL",
+   "box": [
+    567,
+    1316,
+    596,
+    1325
+   ],
+   "lines": [
+    {
+     "text": "BRASIL",
+     "box": [
+      567,
+      1316,
+      596,
+      1325
+     ],
+     "confidence": 0.806640625
+    }
+   ]
+  },
+  {
+   "text": "8RANCO",
+   "box": [
+    624,
+    810,
+    681,
+    839
+   ],
+   "lines": [
+    {
+     "text": "8RANCO",
+     "box": [
+      624,
+      810,
+      681,
+      839
+     ],
+     "confidence": 0.8274739384651184
+    }
+   ]
+  },
+  {
+   "text": "Urna eletrônica utilizada nas eleições brasileiras • Roberto Jayme",
+   "box": [
+    202,
+    966,
+    763,
+    983
+   ],
+   "lines": [
+    {
+     "text": "Urna eletrônica utilizada nas eleições brasileiras • Roberto Jayme",
+     "box": [
+      202,
+      966,
+      763,
+      983
+     ],
+     "confidence": 0.846039891242981
+    }
+   ]
+  },
+  {
+   "text": "0",
+   "box": [
+    737,
+    785,
+    756,
+    807
+   ],
+   "lines": [
+    {
+     "text": "0",
+     "box": [
+      737,
+      785,
+      756,
+      807
+     ],
+     "confidence": 0.4765625
+    }
+   ]
+  },
+  {
+   "text": "Caro leitor,",
+   "box": [
+    566,
+    1364,
+    735,
+    1395
+   ],
+   "lines": [
+    {
+     "text": "Caro leitor,",
+     "box": [
+      566,
+      1364,
+      735,
+      1395
+     ],
+     "confidence": 0.8572443127632141
+    }
+   ]
+  },
+  {
+   "text": "12",
+   "box": [
+    753,
+    603,
+    830,
+    638
+   ],
+   "lines": [
+    {
+     "text": "12",
+     "box": [
+      753,
+      603,
+      830,
+      638
+     ],
+     "confidence": 0.640625
+    }
+   ]
+  },
+  {
+   "text": "Con+inuar",
+   "box": [
+    608,
+    1530,
+    694,
+    1538
+   ],
+   "lines": [
+    {
+     "text": "Con+inuar",
+     "box": [
+      608,
+      1530,
+      694,
+      1538
+     ],
+     "confidence": 0.3680555522441864
+    }
+   ]
+  },
+  {
+   "text": "8",
+   "box": [
+    762,
+    727,
+    781,
+    749
+   ],
+   "lines": [
+    {
+     "text": "8",
+     "box": [
+      762,
+      727,
+      781,
+      749
+     ],
+     "confidence": 0.859375
+    }
+   ]
+  },
+  {
+   "text": "5",
+   "box": [
+    789,
+    671,
+    806,
+    691
+   ],
+   "lines": [
+    {
+     "text": "5",
+     "box": [
+      789,
+      671,
+      806,
+      691
+     ],
+     "confidence": 0.88671875
+    }
+   ]
+  },
+  {
+   "text": "Depois",
+   "box": [
+    871,
+    144,
+    935,
+    160
+   ],
+   "lines": [
+    {
+     "text": "Depois",
+     "box": [
+      871,
+      144,
+      935,
+      160
+     ],
+     "confidence": 0.923828125
+    }
+   ]
+  },
+  {
+   "text": "O acessO ao conteúdo será liberado\nimediatamente após o anúncio.",
+   "box": [
+    502,
+    1425,
+    802,
+    1465
+   ],
+   "lines": [
+    {
+     "text": "O acessO ao conteúdo será liberado",
+     "box": [
+      502,
+      1425,
+      802,
+      1439
+     ],
+     "confidence": 0.779633641242981
+    },
+    {
+     "text": "imediatamente após o anúncio.",
+     "box": [
+      522,
+      1449,
+      782,
+      1465
+     ],
+     "confidence": 0.825120210647583
+    }
+   ]
+  },
+  {
+   "text": "9",
+   "box": [
+    830,
+    743,
+    847,
+    762
+   ],
+   "lines": [
+    {
+     "text": "9",
+     "box": [
+      830,
+      743,
+      847,
+      762
+     ],
+     "confidence": 0.578125
+    }
+   ]
+  },
+  {
+   "text": "Mais de 204 mil eleitores apertaram \"13\" nas urnas eletrônicas ao escolher o governador no\nRio de Janeiro no último domingo (4). Como não havia concorrente ao Palácio Guanabara\nCom essa identificacão, 0s 204.309 votos foram anulados, o que representa cerca de\n90 250de todos os votos nuoe no estado e 20% dos eleitores ou comnareceranmnos locais",
+   "box": [
+    275,
+    1097,
+    1023,
+    1206
+   ],
+   "lines": [
+    {
+     "text": "Mais de 204 mil eleitores apertaram \"13\" nas urnas eletrônicas ao escolher o governador no",
+     "box": [
+      275,
+      1097,
+      1013,
+      1114
+     ],
+     "confidence": 0.8667762875556946
+    },
+    {
+     "text": "Rio de Janeiro no último domingo (4). Como não havia concorrente ao Palácio Guanabara",
+     "box": [
+      275,
+      1128,
+      999,
+      1145
+     ],
+     "confidence": 0.8535698652267456
+    },
+    {
+     "text": "Com essa identificacão, 0s 204.309 votos foram anulados, o que representa cerca de",
+     "box": [
+      275,
+      1160,
+      963,
+      1176
+     ],
+     "confidence": 0.8260044455528259
+    },
+    {
+     "text": "90 250de todos os votos nuoe no estado e 20% dos eleitores ou comnareceranmnos locais",
+     "box": [
+      278,
+      1190,
+      1023,
+      1206
+     ],
+     "confidence": 0.46423855423927307
+    }
+   ]
+  },
+  {
+   "text": "JUSTIÇA\nELEITORAL",
+   "box": [
+    851,
+    528,
+    1003,
+    603
+   ],
+   "lines": [
+    {
+     "text": "JUSTIÇA",
+     "box": [
+      883,
+      532,
+      995,
+      576
+     ],
+     "confidence": 0.8297991156578064
+    },
+    {
+     "text": "ELEITORAL",
+     "box": [
+      851,
+      558,
+      998,
+      601
+     ],
+     "confidence": 0.796875
+    }
+   ]
+  },
+  {
+   "text": "6",
+   "box": [
+    854,
+    685,
+    870,
+    705
+   ],
+   "lines": [
+    {
+     "text": "6",
+     "box": [
+      854,
+      685,
+      870,
+      705
+     ],
+     "confidence": 0.8828125
+    }
+   ]
+  },
+  {
+   "text": "Ative",
+   "box": [
+    1006,
+    144,
+    1052,
+    158
+   ],
+   "lines": [
+    {
+     "text": "Ative",
+     "box": [
+      1006,
+      144,
+      1052,
+      158
+     ],
+     "confidence": 0.875
+    }
+   ]
+  },
+  {
+   "text": "3",
+   "box": [
+    879,
+    628,
+    896,
+    649
+   ],
+   "lines": [
+    {
+     "text": "3",
+     "box": [
+      879,
+      628,
+      896,
+      649
+     ],
+     "confidence": 0.90234375
+    }
+   ]
+  },
+  {
+   "text": "Esportes",
+   "box": [
+    1129,
+    40,
+    1201,
+    55
+   ],
+   "lines": [
+    {
+     "text": "Esportes",
+     "box": [
+      1129,
+      40,
+      1201,
+      55
+     ],
+     "confidence": 0.83837890625
+    }
+   ]
+  },
+  {
+   "text": "Viagem & Gastronomia",
+   "box": [
+    1244,
+    41,
+    1433,
+    57
+   ],
+   "lines": [
+    {
+     "text": "Viagem & Gastronomia",
+     "box": [
+      1244,
+      41,
+      1433,
+      57
+     ],
+     "confidence": 0.8717448115348816
+    }
+   ]
+  },
+  {
+   "text": "Monitor de Debates",
+   "box": [
+    1109,
+    117,
+    1271,
+    130
+   ],
+   "lines": [
+    {
+     "text": "Monitor de Debates",
+     "box": [
+      1109,
+      117,
+      1271,
+      130
+     ],
+     "confidence": 0.83935546875
+    }
+   ]
+  },
+  {
+   "text": "Oferecido por Serasa Experian",
+   "box": [
+    1158,
+    470,
+    1419,
+    486
+   ],
+   "lines": [
+    {
+     "text": "Oferecido por Serasa Experian",
+     "box": [
+      1158,
+      470,
+      1419,
+      486
+     ],
+     "confidence": 0.8937800526618958
+    }
+   ]
+  },
+  {
+   "text": "Crédito para empresas exige leitura mais\ncompleta do risco",
+   "box": [
+    1158,
+    492,
+    1507,
+    531
+   ],
+   "lines": [
+    {
+     "text": "Crédito para empresas exige leitura mais",
+     "box": [
+      1158,
+      492,
+      1507,
+      508
+     ],
+     "confidence": 0.8918526768684387
+    },
+    {
+     "text": "completa do risco",
+     "box": [
+      1158,
+      514,
+      1311,
+      531
+     ],
+     "confidence": 0.8950520753860474
+    }
+   ]
+  },
+  {
+   "text": "Mais Lidas",
+   "box": [
+    1157,
+    619,
+    1252,
+    637
+   ],
+   "lines": [
+    {
+     "text": "Mais Lidas",
+     "box": [
+      1157,
+      619,
+      1252,
+      637
+     ],
+     "confidence": 0.8763020634651184
+    }
+   ]
+  },
+  {
+   "text": "Moraes e Gilmar mandam quatro sinais\nem 48h ao bolsonarismo",
+   "box": [
+    1157,
+    875,
+    1492,
+    911
+   ],
+   "lines": [
+    {
+     "text": "Moraes e Gilmar mandam quatro sinais",
+     "box": [
+      1158,
+      875,
+      1492,
+      888
+     ],
+     "confidence": 0.8135080933570862
+    },
+    {
+     "text": "em 48h ao bolsonarismo",
+     "box": [
+      1157,
+      898,
+      1368,
+      911
+     ],
+     "confidence": 0.8295641541481018
+    }
+   ]
+  },
+  {
+   "text": "Leila do Vôlei pede\nlicença médica do\nSenado e não retomará\nao mandato",
+   "box": [
+    1301,
+    961,
+    1502,
+    1047
+   ],
+   "lines": [
+    {
+     "text": "Leila do Vôlei pede",
+     "box": [
+      1302,
+      963,
+      1462,
+      981
+     ],
+     "confidence": 0.798583984375
+    },
+    {
+     "text": "licença médica do",
+     "box": [
+      1302,
+      984,
+      1455,
+      1005
+     ],
+     "confidence": 0.8572916388511658
+    },
+    {
+     "text": "Senado e não retomará",
+     "box": [
+      1302,
+      1010,
+      1503,
+      1024
+     ],
+     "confidence": 0.8491753339767456
+    },
+    {
+     "text": "ao mandato",
+     "box": [
+      1301,
+      1032,
+      1401,
+      1047
+     ],
+     "confidence": 0.7352430820465088
+    }
+   ]
+  },
+  {
+   "text": "Flávio diz que usará\nmaioria no Congresso\npara \"mudar\nConstituição\"",
+   "box": [
+    1302,
+    1106,
+    1486,
+    1195
+   ],
+   "lines": [
+    {
+     "text": "Flávio diz que usará",
+     "box": [
+      1301,
+      1107,
+      1468,
+      1126
+     ],
+     "confidence": 0.7697610259056091
+    },
+    {
+     "text": "maioria no Congresso",
+     "box": [
+      1302,
+      1134,
+      1487,
+      1151
+     ],
+     "confidence": 0.830078125
+    },
+    {
+     "text": "para \"mudar",
+     "box": [
+      1302,
+      1154,
+      1407,
+      1171
+     ],
+     "confidence": 0.833203136920929
+    },
+    {
+     "text": "Constituição\"",
+     "box": [
+      1302,
+      1178,
+      1412,
+      1196
+     ],
+     "confidence": 0.8452523946762085
+    }
+   ]
+  },
+  {
+   "text": "Os números são\nbastante cruéis para\nLula, diz CEO da Nexus\nsobre 2° turno",
+   "box": [
+    1301,
+    1255,
+    1498,
+    1337
+   ],
+   "lines": [
+    {
+     "text": "Os números são",
+     "box": [
+      1302,
+      1255,
+      1439,
+      1269
+     ],
+     "confidence": 0.7415364384651184
+    },
+    {
+     "text": "bastante cruéis para",
+     "box": [
+      1302,
+      1278,
+      1477,
+      1295
+     ],
+     "confidence": 0.8630642294883728
+    },
+    {
+     "text": "Lula, diz CEO da Nexus",
+     "box": [
+      1302,
+      1301,
+      1498,
+      1316
+     ],
+     "confidence": 0.8185763955116272
+    },
+    {
+     "text": "sobre 2° turno",
+     "box": [
+      1301,
+      1324,
+      1424,
+      1337
+     ],
+     "confidence": 0.7916666865348816
+    }
+   ]
+  },
+  {
+   "text": "Cleitinho faz\nprocedimento estético\num dia após ser eleito\ngovernador de MG",
+   "box": [
+    1301,
+    1397,
+    1492,
+    1485
+   ],
+   "lines": [
+    {
+     "text": "Cleitinho faz",
+     "box": [
+      1301,
+      1398,
+      1405,
+      1415
+     ],
+     "confidence": 0.8030598759651184
+    },
+    {
+     "text": "procedimento estético",
+     "box": [
+      1302,
+      1420,
+      1492,
+      1439
+     ],
+     "confidence": 0.8746093511581421
+    },
+    {
+     "text": "um dia após ser eleito",
+     "box": [
+      1302,
+      1445,
+      1490,
+      1462
+     ],
+     "confidence": 0.8548176884651184
+    },
+    {
+     "text": "governador de MG",
+     "box": [
+      1301,
+      1465,
+      1456,
+      1485
+     ],
+     "confidence": 0.8791852593421936
+    }
+   ]
+  },
+  {
+   "text": "Q",
+   "box": [
+    1558,
+    39,
+    1573,
+    53
+   ],
+   "lines": [
+    {
+     "text": "Q",
+     "box": [
+      1558,
+      39,
+      1573,
+      53
+     ],
+     "confidence": 0.3984375
+    }
+   ]
+  }
+ ]
+}

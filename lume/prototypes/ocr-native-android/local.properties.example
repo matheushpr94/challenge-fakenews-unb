@@ -6,3 +6,13 @@
 # Alternativa no emulador sem adb reverse: http://10.0.2.2:11434 (o Ollama precisa escutar em 0.0.0.0 ou 127.0.0.1 do host).
 lume.ollama.url=http://127.0.0.1:11434
 lume.ollama.embedModel=paraphrase-multilingual
+
+# Opcional: ativa o modelo treinado de pares. O servidor local pontua com BERTimbau;
+# o MPNet ajustado também precisa estar disponível no Ollama.
+# Para o emulador, encaminhe a porta com: adb reverse tcp:8765 tcp:8765
+lume.pairModel.url=http://127.0.0.1:8765
+lume.pairModel.embedModel=lume-mpnet-ajustado
+
+# Opcional: "sinal do texto" (estilo da escrita, SVM do FakeRecogna). Servidor: lume/ml/sinal_texto (porta 8766).
+# Para o emulador, encaminhe a porta com: adb reverse tcp:8766 tcp:8766
+lume.textSignal.url=http://127.0.0.1:8766

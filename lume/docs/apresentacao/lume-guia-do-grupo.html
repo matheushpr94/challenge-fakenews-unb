@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Lume — guia para o grupo</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root{
+    --dark:#1f3d33; --mid:#3f6b57; --soft:#e8f1ea; --soft2:#f4f8f4; --ink:#1d2622; --muted:#5d6b64;
+    --amber:#b7791f; --amberbg:#fff4dc; --line:#d6e2d9; --blue:#2b5f8a; --bluebg:#e6f0f8; --red:#9b3b3b; --redbg:#fbeaea;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:-apple-system,"SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);font-size:10.6pt;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{width:210mm;min-height:297mm;padding:16mm 16mm 14mm;page-break-after:always;position:relative}
+  .page:last-child{page-break-after:auto}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em}
+  h2{font-size:18pt;color:var(--dark);margin-bottom:3mm}
+  h3{font-size:11.8pt;color:var(--dark);margin:0 0 1.5mm}
+  p{margin:0 0 3mm}
+  .eyebrow{font-size:8.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);font-weight:700;margin-bottom:2mm}
+  .lead{font-size:12pt;color:var(--muted)}
+  .small{font-size:9pt;color:var(--muted)}
+  .tech{color:var(--muted);font-size:.92em}
+
+  /* capa */
+  .cover{padding:0;background:var(--dark);color:#fff;display:flex;flex-direction:column}
+  .cover .top{padding:30mm 20mm 0}
+  .drop{width:34mm;height:34mm;border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;background:radial-gradient(circle at 35% 30%,#f2fbf3,#bfe3c7 60%,#8fc9a1);position:relative;box-shadow:0 6mm 14mm rgba(0,0,0,.25)}
+  .drop:before,.drop:after{content:"";position:absolute;top:44%;width:5mm;height:7mm;border-radius:50%;background:#1f3d33}
+  .drop:before{left:30%}.drop:after{right:30%}
+  .cover h1{font-size:46pt;margin-top:14mm;line-height:1}
+  .cover .sub{font-size:16pt;opacity:.9;margin-top:5mm;max-width:140mm}
+  .cover .chips{margin-top:10mm}
+  .chip{display:inline-block;border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:1.2mm 4mm;margin:0 2mm 2mm 0;font-size:9.5pt}
+  .cover .bottom{margin-top:auto;padding:12mm 20mm;background:rgba(0,0,0,.18);font-size:9.5pt;line-height:1.6}
+  .cover .bottom b{color:#cfe9d6}
+
+  /* caixas */
+  .card{border:1px solid var(--line);border-radius:4mm;padding:4mm 5mm;background:#fff;break-inside:avoid}
+  .soft{background:var(--soft2)}
+  .callout{border-radius:4mm;padding:4mm 5mm;margin:3mm 0;break-inside:avoid}
+  .callout.ok{background:var(--soft);border-left:1.6mm solid var(--mid)}
+  .callout.warn{background:var(--amberbg);border-left:1.6mm solid var(--amber)}
+  .callout.no{background:var(--redbg);border-left:1.6mm solid var(--red)}
+  .callout.info{background:var(--bluebg);border-left:1.6mm solid var(--blue)}
+  .callout b.t{display:block;margin-bottom:1mm}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3.5mm}
+
+  /* passos */
+  .steps{counter-reset:s;display:grid;grid-template-columns:1fr 1fr;gap:3.5mm}
+  .step{border:1px solid var(--line);border-radius:4mm;padding:3.5mm 4mm 3.5mm 15mm;position:relative;background:#fff;break-inside:avoid}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:4mm;top:3.5mm;width:7.5mm;height:7.5mm;border-radius:50%;background:var(--dark);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:10pt}
+  .step h3{font-size:10.8pt;margin-bottom:.8mm}
+  .step p{margin:0;font-size:9.6pt}
+
+  /* tabela */
+  table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:3.5mm;overflow:hidden;font-size:9.6pt;break-inside:avoid}
+  th{background:var(--dark);color:#fff;text-align:left;padding:2.4mm 3mm;font-weight:600}
+  td{padding:2.4mm 3mm;border-top:1px solid var(--line);vertical-align:top}
+  tr:nth-child(even) td{background:var(--soft2)}
+  .tag{display:inline-block;padding:.4mm 2.2mm;border-radius:99px;font-size:8.6pt;font-weight:700}
+  .t-g{background:var(--soft);color:var(--dark)}.t-a{background:var(--amberbg);color:var(--amber)}.t-b{background:var(--bluebg);color:var(--blue)}.t-r{background:var(--redbg);color:var(--red)}
+
+  /* faixas de resultado */
+  .res{display:grid;grid-template-columns:34mm 1fr;gap:3mm;align-items:center;padding:2.2mm 0;border-top:1px solid var(--line)}
+  .res:first-child{border-top:none}
+
+  /* escala */
+  .scale{height:7mm;border-radius:99px;background:linear-gradient(90deg,#d97b6c 0%,#d97b6c 25%,#e8d9a4 25%,#e8d9a4 62%,#8fc9a1 62%,#8fc9a1 100%);position:relative;margin:3mm 0 1.5mm}
+  .scale i{position:absolute;top:-1.4mm;left:57%;width:2mm;height:10mm;background:var(--dark);border-radius:1mm}
+  .scale-l{display:flex;justify-content:space-between;font-size:8.4pt;color:var(--muted)}
+
+  .stat{border-radius:4mm;background:var(--soft);padding:4mm;text-align:center;break-inside:avoid}
+  .stat .n{font-size:20pt;font-weight:800;color:var(--dark);line-height:1.1}
+  .stat .l{font-size:8.8pt;color:var(--muted)}
+  .flow{display:flex;align-items:stretch;gap:2mm;margin:3mm 0}
+  .flow .b{flex:1;border-radius:3mm;padding:3mm;text-align:center;font-size:9.2pt;font-weight:600}
+  .flow .a{align-self:center;color:var(--mid);font-weight:800}
+  .b1{background:#e8f1ea}.b2{background:#e6f0f8}.b3{background:#fff4dc}.b4{background:#f1e8f6}
+  dl{margin:0;display:grid;grid-template-columns:34mm 1fr;gap:1.6mm 4mm;font-size:9.6pt}
+  dt{font-weight:700;color:var(--dark)}dd{margin:0}
+  ul{margin:0 0 3mm;padding-left:5mm}li{margin-bottom:1.2mm}
+  .foot{position:absolute;left:16mm;right:16mm;bottom:8mm;font-size:8pt;color:var(--muted);display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:2mm}
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<section class="page cover">
+  <div class="top">
+    <div class="drop"></div>
+    <h1>Lume</h1>
+    <div class="sub">Guia do grupo: o que o app faz, como faz e o que usamos nele</div>
+    <div class="chips">
+      <span class="chip">Challenge 1 · Apresentação final</span>
+      <span class="chip">Protótipo Android · 14/10/2026</span>
+      <span class="chip">Linguagem simples, com os termos técnicos explicados</span>
+    </div>
+  </div>
+  <div class="bottom">
+    <b>Como ler:</b> sempre que aparecer um termo técnico, o que ele significa está entre parênteses.<br>
+    <b>De onde vêm os fatos:</b> do código do app e das medições feitas nas últimas semanas. Textos antigos do repositório que descrevem o app
+    anterior não foram usados.<br>
+    <b>Importante:</b> o Lume mostra fontes e estilo de escrita. <b>Ele não diz se algo é verdadeiro ou falso.</b>
+  </div>
+</section>
+
+<!-- 1. O QUE É -->
+<section class="page">
+  <div class="eyebrow">1 · A ideia</div>
+  <h2>O que é o Lume</h2>
+  <p class="lead">Um app de celular com uma <b>gotinha flutuante</b>. Você está lendo uma notícia, um post ou um print, toca na gotinha, e o Lume
+  mostra <b>o que outras fontes dizem sobre aquele mesmo fato</b>.</p>
+
+  <div class="grid2" style="margin-top:5mm">
+    <div class="callout ok"><b class="t">O que ele faz</b>
+      Lê o que está na tela, entende qual é a afirmação, procura outras matérias, compara uma a uma e mostra o <b>trecho exato</b> que justifica cada
+      comparação. Quando há texto suficiente, mostra também o <b>estilo da escrita</b>.</div>
+    <div class="callout no"><b class="t">O que ele NÃO faz</b>
+      Não afirma que algo é verdadeiro ou falso. Mesmo o estilo do texto aparece como "tende a lembrar…" ou "sem sinal claro", nunca como sentença.</div>
+  </div>
+
+  <h3 style="margin-top:5mm">O problema que ele ataca</h3>
+  <p>Hoje a pessoa recebe uma notícia e fica sem saber se outros veículos contam o mesmo fato, se aquilo é de outro momento ou se só se parece. O Lume
+  junta essas fontes <b>sem tirar a pessoa do que ela está lendo</b>.</p>
+
+  <h3>Cinco formas de mandar conteúdo</h3>
+  <div class="grid3" style="margin-bottom:4mm">
+    <div class="card"><b>Tocar na gotinha</b><br><span class="small">"Ler esta tela", sobre qualquer app.</span></div>
+    <div class="card"><b>Compartilhar</b><br><span class="small">Texto, link ou imagem enviados para o Lume.</span></div>
+    <div class="card"><b>Marcar texto</b><br><span class="small">Selecionar em outro app e escolher "Lume".</span></div>
+    <div class="card"><b>Colar</b><br><span class="small">Texto ou link no campo do app.</span></div>
+    <div class="card"><b>Importar imagem</b><br><span class="small">Escolher um print da galeria.</span></div>
+    <div class="card"><b>Ler esta tela</b><br><span class="small">Botão na tela inicial do app.</span></div>
+  </div>
+
+  <h3>Visão geral em quatro blocos</h3>
+  <div class="flow">
+    <div class="b b1">1. Ler<br><span class="small">imagem, texto e endereço</span></div><div class="a">➜</div>
+    <div class="b b2">2. Entender<br><span class="small">afirmação, números, datas</span></div><div class="a">➜</div>
+    <div class="b b3">3. Buscar e comparar<br><span class="small">fontes, mesmo fato?</span></div><div class="a">➜</div>
+    <div class="b b4">4. Mostrar<br><span class="small">com a evidência</span></div>
+  </div>
+  <div class="foot"><span>Lume · guia do grupo</span><span>2</span></div>
+</section>
+
+<!-- 2. PASSO A PASSO -->
+<section class="page">
+  <div class="eyebrow">2 · O caminho completo</div>
+  <h2>Passo a passo, do toque ao resultado</h2>
+  <div class="steps">
+    <div class="step"><h3>Você manda o conteúdo</h3><p>Toca na gotinha ou compartilha, cola, marca ou importa. O Android pede autorização para ler a tela.</p></div>
+    <div class="step"><h3>Lê a imagem no celular</h3><p>Usa <b>OCR</b> <span class="tech">(reconhecimento de texto em imagem)</span>. A foto não sai do aparelho e é apagada logo depois.</p></div>
+    <div class="step"><h3>Descobre o endereço da página</h3><p>Um <b>serviço de acessibilidade</b> <span class="tech">(função do Android que "enxerga" a tela)</span> lê o endereço no navegador, só no toque e só se você ativou.</p></div>
+    <div class="step"><h3>Entende a notícia</h3><p>Separa título, texto, veículo, autor e data. Escolhe a <b>afirmação principal</b> <span class="tech">(a frase que será pesquisada)</span> ou pergunta "O que você quer saber?".</p></div>
+    <div class="step"><h3>Interpreta por regras</h3><p>Descobre quem fez o quê, números, datas e negações. <span class="tech">(São regras escritas à mão pela equipe, não uma IA adivinhando.)</span></p></div>
+    <div class="step"><h3>Busca outras fontes</h3><p>Google Notícias, Bing Notícias, Bing Web e Wikipédia, sem chave paga. Abre as páginas mais relevantes para ler o texto.</p></div>
+    <div class="step"><h3>Tira repetições</h3><p>Cópias da mesma notícia e a própria matéria não contam como fontes diferentes <span class="tech">(republicação: o mesmo texto em outro site)</span>.</p></div>
+    <div class="step"><h3>Compara com o texto lido</h3><p>Pergunta: é o <b>mesmo fato</b>? Mesma pessoa, mesma ação, mesma etapa, mesma data, mesmos números. Cada resposta guarda o trecho que a justifica.</p></div>
+    <div class="step"><h3>Mede o estilo da escrita</h3><p>Com 60 palavras ou mais, um modelo vê se o jeito de escrever lembra notícia comum ou boato. Só a manchete? O Lume abre a página da própria matéria.</p></div>
+    <div class="step"><h3>Mostra o resultado</h3><p>Fontes separadas por tipo, com o motivo de cada decisão. Uma prévia aparece em poucos segundos; o resultado completo logo depois.</p></div>
+  </div>
+
+  <div class="callout info" style="margin-top:5mm"><b class="t">Por que o endereço importa</b>
+    O print só tem a manchete e um pedaço do texto, e o Chrome corta o endereço na barra. Lendo o endereço <b>inteiro</b> pelo sistema, o Lume abre a
+    matéria completa e consegue medir o estilo mesmo quando o print é curto. Isso foi testado: uma matéria do g1 teve 423 palavras lidas e o sinal calculado.</div>
+  <div class="foot"><span>Lume · guia do grupo</span><span>3</span></div>
+</section>
+
+<!-- 3. IA -->
+<section class="page">
+  <div class="eyebrow">3 · Inteligência artificial</div>
+  <h2>O que a IA faz — e o que não faz</h2>
+  <p>O Lume usa <b>regras</b> para decidir e <b>modelos de IA</b> como apoio. Nenhum modelo diz se algo é verdade. Tudo roda no computador ou no celular:
+  <b>nada em nuvem de IA, nada pago.</b></p>
+
+  <table>
+    <tr><th style="width:36%">Peça</th><th>Em palavras simples</th><th style="width:30%">Papel no app</th></tr>
+    <tr><td><b>OCR</b> (ML Kit)</td><td>Lê o texto que aparece na imagem.</td><td>Transforma o print em texto.</td></tr>
+    <tr><td><b>Regras do app</b></td><td>Condições escritas pela equipe: quem, ação, etapa, data, números.</td><td><span class="tag t-g">DECIDEM</span> se a fonte é do mesmo fato.</td></tr>
+    <tr><td><b>paraphrase-multilingual</b><br><span class="tech">modelo de similaridade</span></td><td>Mede o quanto duas frases "querem dizer a mesma coisa".</td><td><span class="tag t-b">ORDENA</span> quais fontes ler primeiro.</td></tr>
+    <tr><td><b>Modelo de pares</b><br><span class="tech">MPNet + BERTimbau + regressão logística</span></td><td>Três medidas de semelhança entre a frase e o título de cada fonte, combinadas numa nota de 0 a 1.</td><td><span class="tag t-a">PROMOVE ou AVISA</span>. Nunca rebaixa, nunca decide verdade.</td></tr>
+    <tr><td><b>SVM do FakeRecogna</b><br><span class="tech">classificador treinado em notícias verdadeiras e falsas</span></td><td>Olha as palavras usadas e diz se o estilo lembra boato ou notícia comum.</td><td><span class="tag t-b">MOSTRA O ESTILO</span>, não a veracidade.</td></tr>
+  </table>
+
+  <div class="grid2" style="margin-top:5mm">
+    <div class="card"><h3>Modelo de pares: como entra</h3>
+      <p class="small" style="margin:0">A regra pode deixar uma fonte em dúvida. Se a nota do modelo passa de um <b>corte</b> <span class="tech">(nota mínima para agir)</span>, a fonte vai para "Incerta"; com nota ainda mais alta (0,90 ou 0,93), é <b>confirmada</b> como "mesmo fato" com selo próprio. Nota baixa numa fonte que a regra aceitou só gera o aviso "confira".</p></div>
+    <div class="card"><h3>Sinal do texto: como funciona</h3>
+      <p class="small" style="margin:0">O texto é <b>lematizado</b> <span class="tech">(cada palavra volta à forma base: "correram" → "correr")</span>, pontuado pelo SVM e colocado numa escala. A faixa final depende de cortes calibrados para que <b>poucas notícias reais</b> sejam marcadas por engano.</p></div>
+  </div>
+
+  <h3 style="margin-top:5mm">Como o sinal aparece na tela</h3>
+  <div class="card soft">
+    <div class="scale-l"><span><b>estilo de boato</b></span><span>sem sinal claro</span><span><b>estilo de notícia comum</b></span></div>
+    <div class="scale"><i></i></div>
+    <p class="small" style="margin:0">Escala de −1,5 a +1,5, com as palavras que mais pesaram. O marcador é só ilustração.</p>
+  </div>
+  <div class="foot"><span>Lume · guia do grupo</span><span>4</span></div>
+</section>
+
+<!-- 4. TELA E NUMEROS -->
+<section class="page">
+  <div class="eyebrow">4 · Resultado e medidas</div>
+  <h2>O que aparece na tela e o que foi medido</h2>
+
+  <div class="card">
+    <div class="res"><span class="tag t-g">Mesmo fato</span><span>Fontes que contam o mesmo acontecimento.</span></div>
+    <div class="res"><span class="tag t-a">Incerta</span><span>Pode ser o mesmo fato, mas o app não tem certeza: "confira".</span></div>
+    <div class="res"><span class="tag t-b">Anteriores / Contexto</span><span>Mesmo assunto, de outro momento ou etapa.</span></div>
+    <div class="res"><span class="tag t-r">Outro acontecimento</span><span>Parece igual, mas é outra coisa (outra pessoa, lugar ou data).</span></div>
+  </div>
+  <div class="grid2" style="margin-top:4mm">
+    <div class="card"><b>"Por que esta relação?"</b><br><span class="small">Abre quem, ação, assunto, data, números e os trechos literais usados.</span></div>
+    <div class="card"><b>"Já checado por…"</b><br><span class="small">Aparece quando uma agência de checagem (Aos Fatos, Lupa, Comprova etc.) tratou do assunto.</span></div>
+    <div class="card"><b>"Como a pesquisa foi feita"</b><br><span class="small">Lista o que foi consultado, o que falhou e por quê.</span></div>
+    <div class="card"><b>Selos de modelo</b><br><span class="small">"Confirmado pelo modelo de linguagem" ou "confira a fonte" mostram quando a IA participou.</span></div>
+  </div>
+
+  <div class="foot"><span>Lume · guia do grupo</span><span>5</span></div>
+</section>
+
+<!-- MEDIDAS -->
+<section class="page">
+  <div class="eyebrow">4 · Medidas</div>
+  <h2>O que foi medido</h2>
+  <p>Cada número abaixo diz <b>como</b> foi medido. Nenhum foi inventado ou copiado de outro projeto.</p>
+  <div class="grid3">
+    <div class="stat"><div class="n">2,5–3,7 s</div><div class="l">prévia na tela</div></div>
+    <div class="stat"><div class="n">5–10 s</div><div class="l">resultado completo (emulador)</div></div>
+    <div class="stat"><div class="n">214</div><div class="l">testes automáticos, 0 falhas</div></div>
+  </div>
+  <table style="margin-top:4mm">
+    <tr><th>Medida</th><th>Resultado</th><th>Como foi medido</th></tr>
+    <tr><td><b>Achar fontes do mesmo fato</b><br><span class="tech">recall = de todas as certas, quantas achou</span></td><td>Regra sozinha: <b>48,6%</b><br>Regra + modelo: <b>54,6%</b></td><td>1.398 pares de desenvolvimento (o conjunto de teste não foi usado para ajustar).</td></tr>
+    <tr><td><b>Aceitar fonte errada</b><br><span class="tech">falso positivo</span></td><td>Regra: <b>7,6%</b><br>Regra + modelo: <b>8,1%</b></td><td>Os mesmos 1.398 pares.</td></tr>
+    <tr><td><b>Notícias reais marcadas como "estilo de boato"</b></td><td><b>2,5%</b> <span class="tech">(margem 0,7% a 8,6%)</span></td><td>81 notícias de 29 sites, coletadas em 14/10.</td></tr>
+    <tr><td><b>Boatos marcados como "estilo de boato"</b></td><td><b>69,6%</b></td><td>329 boatos do FakeTrueBr.</td></tr>
+  </table>
+
+  <div class="callout warn" style="margin-top:4mm"><b class="t">Leia com cuidado</b>
+    Esses números vêm de amostras pequenas (81 notícias de um dia, só de veículos grandes) e de dados de pesquisa. Servem para mostrar que o
+    caminho funciona, não para prometer um desempenho fixo.</div>
+  <h3 style="margin-top:5mm">Como ler esses números</h3>
+  <div class="grid2">
+    <div class="card"><b>Recall × falso positivo</b><br><span class="small">Quanto mais fontes certas o app acha (recall), mais ele também tende a aceitar fontes erradas (falso positivo). Os cortes foram escolhidos para equilibrar os dois.</span></div>
+    <div class="card"><b>Por que o conjunto de teste ficou de lado</b><br><span class="small">Cortes e pesos foram escolhidos só em treino e validação; o teste serve para conferir no fim, sem "colar" nele.</span></div>
+  </div>
+  <div class="foot"><span>Lume · guia do grupo</span><span>6</span></div>
+</section>
+
+<!-- CONFIANCA -->
+<section class="page">
+  <div class="eyebrow">5 · Confiança</div>
+  <h2>Privacidade, limites e pendências</h2>
+
+  <div class="grid2">
+    <div class="callout ok"><b class="t">Privacidade</b>
+      <ul style="margin:0">
+        <li>A imagem é lida no celular e <b>apagada</b> em seguida.</li>
+        <li>Os modelos rodam <b>localmente</b>; o texto não vai a serviço de IA externo.</li>
+        <li>O histórico fica só no aparelho e pode ser apagado.</li>
+        <li>A acessibilidade só lê o <b>endereço do site</b>, só no toque, só em navegadores.</li>
+      </ul></div>
+    <div class="callout warn"><b class="t">Limites (ditos com franqueza)</b>
+      <ul style="margin:0">
+        <li>Mostra <b>fontes e estilo</b>, não a verdade.</li>
+        <li>O estilo reconhece o <b>tipo de texto</b>: um texto de checagem também parece "boato".</li>
+        <li>Testado em <b>emulador</b> e no Chrome; falta aparelho físico e outros navegadores.</li>
+        <li>Páginas com assinatura paga ou montadas por JavaScript podem não ser lidas.</li>
+      </ul></div>
+  </div>
+
+  <div class="callout no"><b class="t">Pendência importante antes de publicar</b>
+    O app <b>ainda não respeita o robots.txt</b> <span class="tech">(arquivo em que o site diz o que robôs podem ler)</span> <b>nem limita pedidos
+    por segundo</b> em cada site. Isso existe só no coletor usado na calibração e precisa ser implementado no app.</div>
+
+  <h3 style="margin-top:5mm">O que o grupo ainda precisa fechar para a entrega</h3>
+  <table>
+    <tr><th>Item</th><th style="width:48%">Situação</th></tr>
+    <tr><td>Organização/Scrum e papéis</td><td>Sem registro no projeto; o grupo preenche.</td></tr>
+    <tr><td>Datasets, EDA e guiding questions</td><td>Do trabalho de pesquisa; precisam ser organizados no repositório.</td></tr>
+    <tr><td>Requisitos funcionais e não funcionais</td><td>Rascunho pronto (derivado do app); o grupo confirma.</td></tr>
+    <tr><td>Origem e licença do modelo do sinal</td><td>Confirmar com a equipe antes de publicar.</td></tr>
+    <tr><td>Teste em celular físico e outros navegadores</td><td>Pendente.</td></tr>
+  </table>
+
+  <div class="foot"><span>Lume · guia do grupo</span><span>7</span></div>
+</section>
+
+<!-- GLOSSARIO -->
+<section class="page">
+  <div class="eyebrow">6 · Apoio</div>
+  <h2>Glossário e como ligar o ambiente</h2>
+  <dl class="card soft">
+    <dt>OCR</dt><dd>Transforma texto de uma imagem em texto digital.</dd>
+    <dt>Acessibilidade</dt><dd>Recurso do Android que permite a um app ler elementos da tela, com permissão.</dd>
+    <dt>Modelo de linguagem</dt><dd>Programa treinado com muito texto para medir semelhança ou classificar frases.</dd>
+    <dt>SVM</dt><dd>Tipo de modelo que separa dois grupos (aqui, "estilo de boato" e "estilo de notícia").</dd>
+    <dt>Regressão logística</dt><dd>Fórmula que combina várias medidas numa nota entre 0 e 1.</dd>
+    <dt>Corte</dt><dd>Nota mínima para o app agir (promover uma fonte, avisar).</dd>
+    <dt>Calibração</dt><dd>Ajustar os cortes com dados reais para controlar o número de erros.</dd>
+    <dt>Recall / falso positivo</dt><dd>Quantas fontes certas achou / quantas erradas aceitou.</dd>
+    <dt>Republicação</dt><dd>A mesma matéria publicada por outro veículo.</dd>
+  </dl>
+
+  <h3 style="margin-top:5mm">Como ligar tudo para demonstrar</h3>
+  <div class="card">
+    <p class="small" style="margin:0 0 2mm">O app precisa de três serviços no computador para usar os modelos. Um único script liga todos e confere se estão respondendo:</p>
+    <p style="margin:0 0 2mm;font-family:Menlo,monospace;font-size:9.4pt;background:var(--soft);padding:2mm 3mm;border-radius:2mm">bash lume/ml/iniciar_modelos_locais.sh</p>
+    <dl>
+      <dt>Ollama</dt><dd>serviço que roda os modelos de similaridade (porta 11434).</dd>
+      <dt>Servidor BERTimbau</dt><dd>dá a nota de "mesmo fato" a cada par (porta 8765).</dd>
+      <dt>Servidor do sinal</dt><dd>mede o estilo da escrita (porta 8766).</dd>
+      <dt>adb reverse</dt><dd>liga o celular/emulador ao computador por essas portas.</dd>
+    </dl>
+    <p class="small" style="margin:2mm 0 0">Sem esses serviços o app continua funcionando só com as regras (sem os selos de modelo e sem o sinal do texto).</p>
+  </div>
+  <div class="foot"><span>Lume · guia do grupo</span><span>8</span></div>
+</section>
+
+</body>
+</html>
