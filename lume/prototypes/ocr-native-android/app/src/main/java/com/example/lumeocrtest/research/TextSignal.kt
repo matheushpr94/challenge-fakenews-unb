@@ -42,6 +42,9 @@ data class TextSignal(
 
 /** Pontua o estilo do texto; null quando o servidor local não está disponível ou o texto não serve. */
 fun interface TextSignalScorer {
+    /** Falso quando não há servidor configurado: a pesquisa nem tenta (e não lê a página só para isso). */
+    val configured: Boolean get() = true
+
     suspend fun score(text: String): TextSignal?
 }
 
@@ -62,16 +65,26 @@ fun parseTextSignal(json: String): TextSignal? = runCatching {
 }.getOrNull()
 
 /** Servidor local (lume/ml/sinal_texto/servidor_sinal.py). No emulador: `adb reverse tcp:8766 tcp:8766`. */
-class HttpTextSignalScorer(private val baseUrl: String = "http://127.0.0.1:8766") : TextSignalScorer {
-    private val client = OkHttpClient.Builder().connectTimeout(1, TimeUnit.SECONDS)
-        .readTimeout(3, TimeUnit.SECONDS).callTimeout(4, TimeUnit.SECONDS).build()
+class HttpTextSignalScorer(
+    private val baseUrlProvider: () -> String = { "http://127.0.0.1:8766" },
+    private val tokenProvider: () -> String? = { null },
+) : TextSignalScorer {
+    constructor(baseUrl: String) : this({ baseUrl })
+
+    override val configured: Boolean get() = baseUrlProvider().isNotBlank()
+    private var lastUrl = ""
+    private val client = OkHttpClient.Builder().connectTimeout(3, TimeUnit.SECONDS)
+        .readTimeout(4, TimeUnit.SECONDS).callTimeout(6, TimeUnit.SECONDS).build()
     private var unavailableUntil = 0L
 
     override suspend fun score(text: String): TextSignal? = withContext(Dispatchers.IO) {
-        if (System.currentTimeMillis() < unavailableUntil) return@withContext null
+        val baseUrl = baseUrlProvider()
+        if (baseUrl != lastUrl) { lastUrl = baseUrl; unavailableUntil = 0L }
+        if (baseUrl.isBlank() || System.currentTimeMillis() < unavailableUntil) return@withContext null
         try {
             val body = JsonObject().apply { addProperty("texto", text.take(MAX_SIGNAL_CHARS)) }
             val req = Request.Builder().url("${baseUrl.trimEnd('/')}/sinal")
+                .apply { tokenProvider()?.let { header(ServerConfig.HEADER, it) } }
                 .post(body.toString().toRequestBody("application/json".toMediaType())).build()
             client.newCall(req).execute().use { r ->
                 if (!r.isSuccessful) throw IllegalStateException("HTTP ${r.code}")

@@ -4,15 +4,18 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.lifecycle.ViewModel
 import com.example.lumeocrtest.ocr.ArticleMetadata
+import com.example.lumeocrtest.research.ServerConfig
 import com.example.lumeocrtest.research.*
 import kotlinx.coroutines.*
 
 /** Memory-only session; survives rotation without saving captures to disk. */
 class AnalysisState : ViewModel() {
-    val service=ResearchService(semanticRanker = OllamaEmbeddingRanker(BuildConfig.OLLAMA_EMBED_MODEL, BuildConfig.OLLAMA_URL),
-        pairScorer = BuildConfig.PAIR_MODEL_URL.takeIf { it.isNotBlank() }?.let { HttpPairScorer(it) },
-        pairRanker = BuildConfig.PAIR_MODEL_URL.takeIf { it.isNotBlank() }?.let { OllamaEmbeddingRanker(BuildConfig.PAIR_EMBED_MODEL, BuildConfig.OLLAMA_URL) },
-        textSignal = BuildConfig.TEXT_SIGNAL_URL.takeIf { it.isNotBlank() }?.let { HttpTextSignalScorer(it) })
+    // Endereços e chave são lidos a cada pedido: trocar o servidor em Ajustes vale sem reiniciar o app.
+    val service=ResearchService(
+        semanticRanker = OllamaEmbeddingRanker(BuildConfig.OLLAMA_EMBED_MODEL, { ServerConfig.ollamaUrl() }, { ServerConfig.tokenOrNull() }),
+        pairScorer = HttpPairScorer({ ServerConfig.pairUrl() }, { ServerConfig.tokenOrNull() }),
+        pairRanker = OllamaEmbeddingRanker(BuildConfig.PAIR_EMBED_MODEL, { if (ServerConfig.pairUrl().isBlank()) "" else ServerConfig.ollamaUrl() }, { ServerConfig.tokenOrNull() }),
+        textSignal = HttpTextSignalScorer({ ServerConfig.signalUrl() }, { ServerConfig.tokenOrNull() }))
     val gate=RequestGate()
     val linkFetcher=OkHttpFetcher()
     val scope=CoroutineScope(SupervisorJob()+Dispatchers.Main.immediate)

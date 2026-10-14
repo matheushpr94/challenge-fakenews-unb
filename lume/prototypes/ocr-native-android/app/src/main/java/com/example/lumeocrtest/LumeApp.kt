@@ -145,6 +145,34 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
                             if(active) OutlinedButton(onClick={context.startService(Intent(context,MascotService::class.java).setAction(MascotService.STOP))},modifier=Modifier.heightIn(min=48.dp)) { Text("Desativar mascote") }
                         }
                     }
+                    SectionHeader("Servidor dos modelos (sem cabo)",modifier=Modifier.padding(horizontal=4.dp))
+                    LumeCard {
+                        var addr by remember { mutableStateOf(com.example.lumeocrtest.research.ServerConfig.address) }
+                        var key by remember { mutableStateOf(com.example.lumeocrtest.research.ServerConfig.token) }
+                        var status by remember { mutableStateOf("") }
+                        var testing by remember { mutableStateOf(false) }
+                        val scope = rememberCoroutineScope()
+                        Column(Modifier.padding(16.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                            Text("Cole o endereço e a chave que o script do Mac mostra (iniciar_servidor_remoto.sh). Com o Mac ligado, o celular usa os modelos sem cabo. Sem servidor, o Lume funciona só com as regras.",style=MaterialTheme.typography.bodyMedium)
+                            androidx.compose.material3.OutlinedTextField(value=addr,onValueChange={addr=it},label={Text("Endereço (https://…)")},singleLine=true,modifier=Modifier.fillMaxWidth())
+                            androidx.compose.material3.OutlinedTextField(value=key,onValueChange={key=it},label={Text("Chave")},singleLine=true,
+                                visualTransformation=androidx.compose.ui.text.input.PasswordVisualTransformation(),modifier=Modifier.fillMaxWidth())
+                            OutlinedButton(enabled=!testing,onClick={
+                                scope.launch {
+                                    testing=true; status="Testando…"
+                                    val saved=com.example.lumeocrtest.research.ServerConfig.save(addr,key)
+                                    status = when {
+                                        saved==null -> "Endereço inválido. Use o https://… que o script mostrou."
+                                        saved.isEmpty() -> "Servidor removido. O Lume usa só o que há neste aparelho."
+                                        else -> com.example.lumeocrtest.research.testServer(saved,key)
+                                    }
+                                    testing=false
+                                }
+                            },modifier=Modifier.heightIn(min=48.dp)) { Text(if(testing) "Testando…" else "Salvar e testar") }
+                            if(status.isNotBlank()) Text(status,style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.secondary)
+                            Text("O endereço e a chave ficam só neste aparelho. O texto da pesquisa passa pelo túnel até o Mac do grupo; nenhuma IA em nuvem é usada.",style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
+                        }
+                    }
                     SectionHeader("Endereço da matéria",modifier=Modifier.padding(horizontal=4.dp))
                     LumeCard {
                         Column(Modifier.padding(16.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {

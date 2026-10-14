@@ -171,6 +171,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        com.example.lumeocrtest.research.ServerConfig.init(applicationContext)
         enableEdgeToEdge()
         receive(intent)
         setContent { LumeOCRTestTheme { LumeApp(openRequest, sharedText, sharedImage, captureError) } }
