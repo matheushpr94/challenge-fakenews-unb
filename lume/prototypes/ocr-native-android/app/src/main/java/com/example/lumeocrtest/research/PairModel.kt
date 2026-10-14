@@ -62,19 +62,28 @@ fun interface PairScorer {
 }
 
 /** BERTimbau ajustado servido por lume/ml/integracao_modelo_matheus/servidor_bert.py (emulador: `adb reverse tcp:8765 tcp:8765`). */
-class HttpPairScorer(private val baseUrl: String = "http://127.0.0.1:8765") : PairScorer {
+class HttpPairScorer(
+    private val baseUrlProvider: () -> String = { "http://127.0.0.1:8765" },
+    private val tokenProvider: () -> String? = { null },
+) : PairScorer {
+    constructor(baseUrl: String) : this({ baseUrl })
+
+    private var lastUrl = ""
     private val client = OkHttpClient.Builder().connectTimeout(3, TimeUnit.SECONDS)
         .readTimeout(25, TimeUnit.SECONDS).callTimeout(30, TimeUnit.SECONDS).build()
     private var unavailableUntil = 0L
 
     override suspend fun scores(claim: String, titles: List<String>): List<Double>? = withContext(Dispatchers.IO) {
-        if (titles.isEmpty() || System.currentTimeMillis() < unavailableUntil) return@withContext null
+        val baseUrl = baseUrlProvider()
+        if (baseUrl != lastUrl) { lastUrl = baseUrl; unavailableUntil = 0L }
+        if (baseUrl.isBlank() || titles.isEmpty() || System.currentTimeMillis() < unavailableUntil) return@withContext null
         try {
             val body = JsonObject().apply {
                 addProperty("claim", claim.take(500))
                 add("titles", JsonArray().apply { titles.forEach { add(it.take(300)) } })
             }
             val req = Request.Builder().url("${baseUrl.trimEnd('/')}/score")
+                .apply { tokenProvider()?.let { header(ServerConfig.HEADER, it) } }
                 .post(body.toString().toRequestBody("application/json".toMediaType())).build()
             client.newCall(req).execute().use { r ->
                 if (!r.isSuccessful) throw IllegalStateException("HTTP ${r.code}")

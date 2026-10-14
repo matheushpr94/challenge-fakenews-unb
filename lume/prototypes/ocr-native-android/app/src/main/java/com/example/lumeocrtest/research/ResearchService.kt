@@ -21,7 +21,7 @@ private const val WIKI_TTL = 6 * 3_600_000L
 private const val PAGE_TTL = 3_600_000L
 private const val TOTAL_BUDGET_MS = 45_000L
 private const val AVISO_MODELO = "O modelo de linguagem indica que pode ser outro fato; confira a fonte."
-private const val SIGNAL_TIMEOUT_MS = 1_500L
+private const val SIGNAL_TIMEOUT_MS = 2_500L
 private const val OWN_PAGE_BUDGET_MS = 7_000L
 private const val PAGE_FIRST_WINDOW_MS = 3_500L
 private const val PAGE_MAX_WAIT_MS = 6_000L
@@ -719,7 +719,7 @@ class ResearchService(
                          onPreview: ((Evaluation) -> Unit)? = null): Evaluation = withContext(Dispatchers.Default) {
         // O sinal do texto começa junto com a busca quando a entrada já tem texto suficiente. Se for curta (manchete),
         // a pesquisa localiza a própria matéria, lê a página e o sinal é calculado sobre o corpo dela; se não achar, a entrada é usada.
-        val signalSource = textSignal?.let { signalText(context, text) }
+        val signalSource = textSignal?.takeIf { it.configured }?.let { signalText(context, text) }
         val ready = java.util.concurrent.atomic.AtomicReference<TextSignal?>(null)
         val ownText = java.util.concurrent.atomic.AtomicReference<String?>(null)
         suspend fun runSignal(src: String, origem: String): TextSignal? {
@@ -741,7 +741,7 @@ class ResearchService(
         }
         val parts = splitClaims(text)
         if (parts.size < 2) {
-            val r = search(text, requestId, context, if (signalSource == null && textSignal != null) ownText else null, onPreview?.let { cb ->
+            val r = search(text, requestId, context, if (signalSource == null && textSignal?.configured == true) ownText else null, onPreview?.let { cb ->
                 { p: ResearchResult -> cb(Evaluation(requestId, "unica", p.status, p.mensagem, listOf(p), ready.get())) }
             })
             val waitStart = System.currentTimeMillis()
