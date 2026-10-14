@@ -65,8 +65,6 @@ O [Lume](lume/README.md) é um app Android com mascote flutuante que ajuda a ent
 
 O Lume **não afirma que algo é verdadeiro ou falso** e não usa o LIAR2. O sinal do texto mostra o **estilo** (tende a lembrar notícia comum, sem sinal claro, tende a lembrar desinformação), nunca um veredito, e foi calibrado com poucos dados (81 notícias de um dia). A integração dos modelos é opcional, depende de serviços locais (Ollama e dois servidores Python, ligados por `lume/ml/iniciar_modelos_locais.sh`) e não substitui as regras de comparação. Limites e medidas: [`lume/docs/SINAL-DO-TEXTO.md`](lume/docs/SINAL-DO-TEXTO.md) e [`lume/docs/FLUXO-COMPLETO-DO-LUME.md`](lume/docs/FLUXO-COMPLETO-DO-LUME.md).
 
-**Em planejamento:** uma nova feature construída a partir de um dataset de alegações já checadas por agências, indicando se a afirmação já foi checada. Fluxo e plano em `lume/`.
-
 A versão anterior (demo offline com respostas fictícias, APK 0.3.0 e prévia web) ficou como referência em [`lume/prototypes/referencia-antigo`](lume/prototypes/referencia-antigo).
 
 ## Como rodar
