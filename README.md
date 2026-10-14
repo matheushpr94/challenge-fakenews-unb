@@ -47,13 +47,15 @@ O [Lume](lume/README.md) é um app Android com mascote flutuante que ajuda a ent
 
 **Versão atual:** [`lume/prototypes/ocr-native-android`](lume/prototypes/ocr-native-android) (Kotlin + Compose). O que ela já faz:
 
-1. lê o print com OCR (ML Kit) e separa título, corpo, veículo, data e autor;
-2. escolhe a afirmação principal e a interpreta (quem, ação, números, datas, negação);
-3. busca matérias candidatas em fontes de notícia e descarta a própria matéria e republicações;
-4. compara cada candidata com a matéria importada por regras estruturadas e mostra o trecho que sustenta a relação;
-5. pode usar `paraphrase-multilingual` para similaridade/ordenação e, quando os serviços locais estão configurados, o modelo treinado de pares (MPNet ajustado, sobreposição lexical e BERTimbau ajustado) como apoio à comparação.
+1. lê o print com OCR (ML Kit) e separa título, corpo, veículo, data e autor; a captura acontece só quando a pessoa toca no mascote e autoriza o Android;
+2. escolhe a afirmação principal e a interpreta (quem, ação, números, datas, negação), perguntando "O que você quer saber?" quando há ambiguidade;
+3. busca matérias candidatas em fontes de notícia (Google Notícias, Bing Notícias, Bing Web e Wikipédia, sem chave de API) e descarta a própria matéria e republicações;
+4. compara cada candidata com a matéria importada por regras estruturadas (quem agiu, ação e etapa, assunto, data, números, negação) e mostra o trecho que sustenta a relação;
+5. pode usar `paraphrase-multilingual` para similaridade/ordenação e, quando os serviços locais estão configurados, o modelo treinado de pares (MPNet ajustado, sobreposição lexical e BERTimbau ajustado) como apoio à comparação: ele só promove uma fonte a "Incerta", confirma com nota alta ou avisa "confira a fonte";
+6. lê a página da própria matéria (endereço lido pelo navegador no toque do mascote, pela busca ou por domínio e título) e, com 60 palavras ou mais, mostra o **sinal do texto**: uma faixa de estilo de escrita calculada por um SVM treinado no FakeRecogna, com as palavras que mais pesaram;
+7. indica quando uma agência de checagem (Aos Fatos, Lupa, Comprova, Estadão Verifica, Fato ou Fake, Boatos.org, E-Farsas, AFP) aparece entre as fontes.
 
-O Lume **não afirma que algo é verdadeiro ou falso** e não usa o classificador do LIAR2. A integração do modelo treinado é opcional, depende de serviços e pesos locais e não substitui as regras de comparação.
+O Lume **não afirma que algo é verdadeiro ou falso** e não usa o classificador do LIAR2. O sinal do texto mostra o **estilo** (tende a lembrar notícia comum, sem sinal claro, tende a lembrar desinformação), nunca um veredito, e foi calibrado com poucos dados (81 notícias de um dia). A integração dos modelos é opcional, depende de serviços locais (Ollama e dois servidores Python, ligados por `lume/ml/iniciar_modelos_locais.sh`) e não substitui as regras de comparação. Limites e medidas: [`lume/docs/SINAL-DO-TEXTO.md`](lume/docs/SINAL-DO-TEXTO.md) e [`lume/docs/FLUXO-COMPLETO-DO-LUME.md`](lume/docs/FLUXO-COMPLETO-DO-LUME.md).
 
 **Em planejamento:** uma nova feature construída a partir de um dataset de alegações já checadas por agências, indicando se a afirmação já foi checada. Fluxo e plano em `lume/`.
 
