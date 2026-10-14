@@ -1,0 +1,7 @@
+GATEWAY DO LUME (celular sem cabo)
+Uma porta (127.0.0.1:9000) que repassa ao Ollama, ao BERTimbau e ao sinal do texto. Toda chamada exige o
+cabeçalho X-Lume-Token (a chave fica em .token, fora do Git; é criada no primeiro uso).
+Rotas: GET /saude · POST /sinal · POST /score · POST /api/embed.
+Uso normal: bash lume/ml/iniciar_servidor_remoto.sh   (liga tudo, abre o túnel e mostra endereço e chave)
+Só o gateway: python3 lume/ml/gateway/gateway.py
+Privacidade: o texto passa pelo túnel (Cloudflare) antes de chegar ao Mac; o gateway não grava o corpo.
