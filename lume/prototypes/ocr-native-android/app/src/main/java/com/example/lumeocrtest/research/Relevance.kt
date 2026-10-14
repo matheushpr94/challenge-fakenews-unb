@@ -68,9 +68,13 @@ fun assess(interp: Interpretation, cand: Candidate, nowMs: Long, extra: String =
     val acr = acronymsOf(text)
     // Sigla ou nome por extenso (resolvidos pelo texto da própria matéria) contam como o mesmo nome.
     val entHits = ents.filter { e -> entityMatch(e, cn, ctoks, acr) || interp.aliases[e].orEmpty().any { " ${norm(it)} " in " $cn " } }
-    val directTermHits = terms.filter { stem(it) in cstems }
+    // Termo com hífen ("sul-africana", "ex-presidente") casa quando todas as partes aparecem: o texto da fonte é
+    // normalizado em palavras separadas, então o termo inteiro nunca casaria.
+    fun hit(t: String): Boolean = stem(t) in cstems ||
+        tokens(t).filter { it.length >= 3 }.let { parts -> parts.size >= 2 && parts.all { stem(it) in cstems } }
+    val directTermHits = terms.filter { hit(it) }
     // Palavra que a própria matéria usa para o mesmo assunto substitui no máximo UM termo ausente.
-    val vocabHit = interp.vocabulario.firstOrNull { stem(it) in cstems }
+    val vocabHit = interp.vocabulario.firstOrNull { hit(it) }
     val missingTerm = terms.firstOrNull { it !in directTermHits }
     val termHits = if (vocabHit != null && missingTerm != null && directTermHits.size == 1) directTermHits + missingTerm else directTermHits
     // Núcleo do acontecimento: os dois primeiros termos da frase (em manchetes, em geral a ação e o objeto).

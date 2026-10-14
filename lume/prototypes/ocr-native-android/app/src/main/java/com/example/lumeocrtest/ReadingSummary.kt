@@ -126,11 +126,11 @@ fun ReadingSummary(r: ArticleReading, evaluation: Evaluation?, preview: ImageBit
         original?.autor != null -> fields += ReadField("Autoria", "não aparece na imagem", "Segundo a página consultada (${original.veiculo}): ${original.autor}.")
         else -> missing += "autor"
     }
-    if (m.publishedAt != null) fields += ReadField("Publicado em", m.publishedAt + (m.updated?.let { " · atualizado $it" } ?: ""),
+    if (m.publishedAt != null) fields += ReadField("Publicado em", m.publishedAt + (m.updated?.takeIf { sameStamp(it, m.publishedAt) == false }?.let { " · atualizado $it" } ?: ""),
         // Mesma linha já citada no veículo: não repete.
         m.dateEvidence?.takeIf { it != m.sourceEvidence || m.source == null }?.let { "Lido na imagem: “$it”" })
     else missing += "data"
-    m.place?.let { fields += ReadField("Local", it) }
+    m.place?.let { fields += ReadField("Assinado em", it, "Cidade da assinatura do veículo; não é onde o fato aconteceu.") }
     // Num post, os rótulos do aplicativo acima do texto não são crédito de foto.
     if (m.imageCredits.isNotEmpty() && !post) fields += ReadField("Crédito da imagem", m.imageCredits.joinToString("; "),
         "Crédito de foto ou arte, não é a autoria da matéria.")
@@ -193,4 +193,10 @@ fun ReadingSummary(r: ArticleReading, evaluation: Evaluation?, preview: ImageBit
             }
         }
     }
+}
+
+/** "Publicado" e "atualizado" com o mesmo dia e hora: mostra uma só vez. */
+internal fun sameStamp(a: String?, b: String?): Boolean {
+    fun n(t: String?) = (t ?: "").lowercase().replace(Regex("(?iu)atualizad[oa]|publicad[oa]|\\bem\\b|\\bàs\\b|\\bas\\b|[^\\p{L}\\d]"), "")
+    return n(a).isNotEmpty() && n(a) == n(b)
 }

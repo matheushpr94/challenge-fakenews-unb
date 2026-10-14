@@ -212,6 +212,10 @@ class MascotService : Service() {
         val content = ui.content(
             onRead = {
                 hidePanel(); motion?.acknowledged()
+                // Antes da tela de permissão da captura: ainda é o navegador que está em primeiro plano.
+                val pageUrl = com.example.lumeocrtest.capture.PageUrlService.readCurrentUrl()
+                android.util.Log.i("LumePageUrl", "servico=${com.example.lumeocrtest.capture.PageUrlService.enabled} endereco=${pageUrl?.let { java.net.URI(it).host + " (" + it.length + " caracteres)" }}")
+                com.example.lumeocrtest.capture.PageUrlHolder.remember(pageUrl)
                 startActivity(Intent(this,CaptureActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             },
             onOpen = {

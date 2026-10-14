@@ -1,0 +1,427 @@
+{
+ "image": "ifsc-cloroquina.png",
+ "width": 1078,
+ "height": 1452,
+ "blocks": [
+  {
+   "text": "Cloroquina e hidroxicloroquina: esses\nmedicamentos têm eficácia contraa",
+   "box": [
+    21,
+    42,
+    989,
+    169
+   ],
+   "lines": [
+    {
+     "text": "Cloroquina e hidroxicloroquina: esses",
+     "box": [
+      21,
+      42,
+      989,
+      100
+     ],
+     "confidence": 0.8548942804336548
+    },
+    {
+     "text": "medicamentos têm eficácia contraa",
+     "box": [
+      61,
+      113,
+      972,
+      169
+     ],
+     "confidence": 0.8809896111488342
+    }
+   ]
+  },
+  {
+   "text": "Covid-19?",
+   "box": [
+    21,
+    186,
+    274,
+    233
+   ],
+   "lines": [
+    {
+     "text": "Covid-19?",
+     "box": [
+      21,
+      186,
+      274,
+      233
+     ],
+     "confidence": 0.8394097089767456
+    }
+   ]
+  },
+  {
+   "text": "IFSC VERIFICA Data de Publicação: 09 jun 2020 14:23 Data de Atualização: 18 fev 2021 17:49",
+   "box": [
+    20,
+    294,
+    851,
+    312
+   ],
+   "lines": [
+    {
+     "text": "IFSC VERIFICA Data de Publicação: 09 jun 2020 14:23 Data de Atualização: 18 fev 2021 17:49",
+     "box": [
+      20,
+      294,
+      851,
+      312
+     ],
+     "confidence": 0.8927603960037231
+    }
+   ]
+  },
+  {
+   "text": "Um dos assuntos mais polêmicos ao se falar no combate à Covid-19 éo uso dos medicamentos\ncloroquina e hidroxicloroquina. No início da pandemia no Brasil, em meados do mês de março, foram\nanunciadas pesquisas com essas drogas no combate à doença, o que gerou uma corrida às farmácias por\npessoas que queriam estocar o medicamento em casa, obrigando a Agência Nacional de Vigilância\nSanitária (Anvisa) a emitir resolução para que a venda dessas drogas fosse feita apenas com receituário\nmédico especial.",
+   "box": [
+    18,
+    347,
+    1049,
+    558
+   ],
+   "lines": [
+    {
+     "text": "Um dos assuntos mais polêmicos ao se falar no combate à Covid-19 éo uso dos medicamentos",
+     "box": [
+      20,
+      351,
+      949,
+      374
+     ],
+     "confidence": 0.8878960013389587
+    },
+    {
+     "text": "cloroquina e hidroxicloroquina. No início da pandemia no Brasil, em meados do mês de março, foram",
+     "box": [
+      19,
+      390,
+      1010,
+      411
+     ],
+     "confidence": 0.8801448345184326
+    },
+    {
+     "text": "anunciadas pesquisas com essas drogas no combate à doença, o que gerou uma corrida às farmácias por",
+     "box": [
+      19,
+      425,
+      1050,
+      446
+     ],
+     "confidence": 0.8853539228439331
+    },
+    {
+     "text": "pessoas que queriam estocar o medicamento em casa, obrigando a Agência Nacional de Vigilância",
+     "box": [
+      20,
+      462,
+      977,
+      482
+     ],
+     "confidence": 0.890820324420929
+    },
+    {
+     "text": "Sanitária (Anvisa) a emitir resolução para que a venda dessas drogas fosse feita apenas com receituário",
+     "box": [
+      19,
+      498,
+      1034,
+      519
+     ],
+     "confidence": 0.8754438757896423
+    },
+    {
+     "text": "médico especial.",
+     "box": [
+      19,
+      529,
+      178,
+      555
+     ],
+     "confidence": 0.8333333134651184
+    }
+   ]
+  },
+  {
+   "text": "Nos meses subsequentes, houve um esforço mundial para a realização de pesquisas com a substância.\nComo resultado, revistas científicas importantes, bem como a comunidade médica e científica, passaram\na desaconselhar o uso da cloroquina e da hidroxicloroquina para o tratamento da Covid-19 por não\napresentarem resultados clínicos relevantese terem muitos efeitos colaterais.",
+   "box": [
+    19,
+    592,
+    1040,
+    721
+   ],
+   "lines": [
+    {
+     "text": "Nos meses subsequentes, houve um esforço mundial para a realização de pesquisas com a substância.",
+     "box": [
+      20,
+      592,
+      1021,
+      615
+     ],
+     "confidence": 0.8725056648254395
+    },
+    {
+     "text": "Como resultado, revistas científicas importantes, bem como a comunidade médica e científica, passaram",
+     "box": [
+      20,
+      630,
+      1040,
+      651
+     ],
+     "confidence": 0.8786429166793823
+    },
+    {
+     "text": "a desaconselhar o uso da cloroquina e da hidroxicloroquina para o tratamento da Covid-19 por não",
+     "box": [
+      19,
+      666,
+      990,
+      686
+     ],
+     "confidence": 0.884741485118866
+    },
+    {
+     "text": "apresentarem resultados clínicos relevantese terem muitos efeitos colaterais.",
+     "box": [
+      19,
+      702,
+      780,
+      721
+     ],
+     "confidence": 0.8944754600524902
+    }
+   ]
+  },
+  {
+   "text": "No Brasil e nos Estados Unidos, principalmente, o uso da droga virou questão política. O governo\nbrasileiro chegou a emitir portaria recomendando o uso da cloroquina e hidroxicloroquina, desde que o\npaciente assine termo de responsabilidade. Laboratórios do Exército Brasileiro também passaram a\nproduzir esses medicamentos.",
+   "box": [
+    20,
+    762,
+    1033,
+    890
+   ],
+   "lines": [
+    {
+     "text": "No Brasil e nos Estados Unidos, principalmente, o uso da droga virou questão política. O governo",
+     "box": [
+      20,
+      762,
+      966,
+      783
+     ],
+     "confidence": 0.8762056231498718
+    },
+    {
+     "text": "brasileiro chegou a emitir portaria recomendando o uso da cloroquina e hidroxicloroquina, desde que o",
+     "box": [
+      20,
+      798,
+      1033,
+      819
+     ],
+     "confidence": 0.8782776594161987
+    },
+    {
+     "text": "paciente assine termo de responsabilidade. Laboratórios do Exército Brasileiro também passaram a",
+     "box": [
+      20,
+      834,
+      1008,
+      854
+     ],
+     "confidence": 0.9007812738418579
+    },
+    {
+     "text": "produzir esses medicamentos.",
+     "box": [
+      20,
+      870,
+      316,
+      890
+     ],
+     "confidence": 0.871995210647583
+    }
+   ]
+  },
+  {
+   "text": "Já no início da pandemia, a Organização Mundial da Saúde (OMS) lançou o Solidarity, um esforço\nconjunto mundial de pesquisa que busca acelerar a identificação de alguma droga que possa ajudar no\ntratamento da Covid-19, entre eles a cloroquina e a hidroxicoloroquina. No início de junho, a OMS\nafirmou que novas pesquisas serão feitas com a cloroquina e a hidroxicloroquina, inclusive a revisão de\num artigo importante publicado na revista científica The Lancet. Porém, não há recomendação do seu",
+   "box": [
+    19,
+    927,
+    1029,
+    1095
+   ],
+   "lines": [
+    {
+     "text": "Já no início da pandemia, a Organização Mundial da Saúde (OMS) lançou o Solidarity, um esforço",
+     "box": [
+      22,
+      927,
+      969,
+      951
+     ],
+     "confidence": 0.8606606125831604
+    },
+    {
+     "text": "conjunto mundial de pesquisa que busca acelerar a identificação de alguma droga que possa ajudar no",
+     "box": [
+      19,
+      966,
+      1026,
+      987
+     ],
+     "confidence": 0.8780692219734192
+    },
+    {
+     "text": "tratamento da Covid-19, entre eles a cloroquina e a hidroxicoloroquina. No início de junho, a OMS",
+     "box": [
+      19,
+      1002,
+      973,
+      1022
+     ],
+     "confidence": 0.8801448345184326
+    },
+    {
+     "text": "afirmou que novas pesquisas serão feitas com a cloroquina e a hidroxicloroquina, inclusive a revisão de",
+     "box": [
+      19,
+      1038,
+      1029,
+      1058
+     ],
+     "confidence": 0.8917347192764282
+    },
+    {
+     "text": "um artigo importante publicado na revista científica The Lancet. Porém, não há recomendação do seu",
+     "box": [
+      20,
+      1070,
+      1019,
+      1095
+     ],
+     "confidence": 0.8825799822807312
+    }
+   ]
+  },
+  {
+   "text": "uso no momento.",
+   "box": [
+    20,
+    1112,
+    190,
+    1126
+   ],
+   "lines": [
+    {
+     "text": "uso no momento.",
+     "box": [
+      20,
+      1112,
+      190,
+      1126
+     ],
+     "confidence": 0.7722355723381042
+    }
+   ]
+  },
+  {
+   "text": "Para esclarecer esse assunto, conversamos com o médico Diego Vinícius de Magalhães, do Subsistema\nIntegrado de Atenção à Saúde do Servidor (SIASS) do IFSC. Ele é reumatologista e tem experiência em\nreceitar esses medicamentos, muito utilizados no tratamento de doenças imunomediadas, como artrite\nreumatoide e lúpus, e também no tratamento da malária.",
+   "box": [
+    20,
+    1170,
+    1031,
+    1297
+   ],
+   "lines": [
+    {
+     "text": "Para esclarecer esse assunto, conversamos com o médico Diego Vinícius de Magalhães, do Subsistema",
+     "box": [
+      20,
+      1170,
+      1020,
+      1189
+     ],
+     "confidence": 0.8697916865348816
+    },
+    {
+     "text": "Integrado de Atenção à Saúde do Servidor (SIASS) do IFSC. Ele é reumatologista e tem experiência em",
+     "box": [
+      20,
+      1204,
+      1005,
+      1227
+     ],
+     "confidence": 0.8563159108161926
+    },
+    {
+     "text": "receitar esses medicamentos, muito utilizados no tratamento de doenças imunomediadas, como artrite",
+     "box": [
+      20,
+      1242,
+      1031,
+      1261
+     ],
+     "confidence": 0.8940373659133911
+    },
+    {
+     "text": "reumatoide e lúpus, e também no tratamento da malária.",
+     "box": [
+      20,
+      1278,
+      581,
+      1297
+     ],
+     "confidence": 0.872707188129425
+    }
+   ]
+  },
+  {
+   "text": "Diego reafirma a posição da comunidade médica, de que essas drogas não apresentam efeitos\ncomprovados contra a Covid-19, e ainda alerta para o perigo da automedicação com substâncias que\npodem ter efeitos colaterais graves.",
+   "box": [
+    20,
+    1338,
+    1005,
+    1430
+   ],
+   "lines": [
+    {
+     "text": "Diego reafirma a posição da comunidade médica, de que essas drogas não apresentam efeitos",
+     "box": [
+      20,
+      1338,
+      943,
+      1358
+     ],
+     "confidence": 0.8827611207962036
+    },
+    {
+     "text": "comprovados contra a Covid-19, e ainda alerta para o perigo da automedicação com substâncias que",
+     "box": [
+      20,
+      1374,
+      1005,
+      1395
+     ],
+     "confidence": 0.8636147379875183
+    },
+    {
+     "text": "podem ter efeitos colaterais graves.",
+     "box": [
+      20,
+      1410,
+      366,
+      1430
+     ],
+     "confidence": 0.89013671875
+    }
+   ]
+  }
+ ]
+}

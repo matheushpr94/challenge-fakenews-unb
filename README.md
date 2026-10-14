@@ -43,10 +43,21 @@ challenge-fakenews-unb/
 
 ## Produto Lume
 
-O [Lume](lume/README.md) é o protótipo de um mascote Android para ajudar a entender notícias e posts. O código do produto fica em `lume/`, separado dos experimentos acadêmicos com LIAR2. A versão atual é uma **demo offline**, com respostas e índices fictícios; o classificador do challenge ainda não está integrado ao app.
+O [Lume](lume/README.md) é um app Android com mascote flutuante que ajuda a entender notícias e posts a partir de um print. O código do produto fica em `lume/`, separado dos experimentos acadêmicos com LIAR2.
 
-- [Prévia web](https://lume-previa.vercel.app/) · [APK demo](https://lume-previa.vercel.app/downloads/lume-demo-0.3.0.apk)
-- [NLP, classificação e percentual de confiabilidade](lume/docs/ia-e-confiabilidade.md)
+**Versão atual:** [`lume/prototypes/ocr-native-android`](lume/prototypes/ocr-native-android) (Kotlin + Compose). O que ela já faz:
+
+1. lê o print com OCR (ML Kit) e separa título, corpo, veículo, data e autor;
+2. escolhe a afirmação principal e a interpreta (quem, ação, números, datas, negação);
+3. busca matérias candidatas em fontes de notícia e descarta a própria matéria e republicações;
+4. compara cada candidata com a matéria importada por regras estruturadas e mostra o trecho que sustenta a relação;
+5. pode usar `paraphrase-multilingual` para similaridade/ordenação e, quando os serviços locais estão configurados, o modelo treinado de pares (MPNet ajustado, sobreposição lexical e BERTimbau ajustado) como apoio à comparação.
+
+O Lume **não afirma que algo é verdadeiro ou falso** e não usa o classificador do LIAR2. A integração do modelo treinado é opcional, depende de serviços e pesos locais e não substitui as regras de comparação.
+
+**Em planejamento:** uma nova feature construída a partir de um dataset de alegações já checadas por agências, indicando se a afirmação já foi checada. Fluxo e plano em `lume/`.
+
+A versão anterior (demo offline com respostas fictícias, APK 0.3.0 e prévia web) ficou como referência em [`lume/prototypes/referencia-antigo`](lume/prototypes/referencia-antigo).
 
 ## Como rodar
 

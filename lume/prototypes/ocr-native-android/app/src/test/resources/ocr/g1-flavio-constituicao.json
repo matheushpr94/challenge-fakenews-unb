@@ -1,0 +1,399 @@
+{
+ "image": "g1-flavio-constituicao.png",
+ "width": 1300,
+ "height": 1558,
+ "blocks": [
+  {
+   "text": "EMENU",
+   "box": [
+    18,
+    7,
+    113,
+    24
+   ],
+   "lines": [
+    {
+     "text": "EMENU",
+     "box": [
+      18,
+      7,
+      113,
+      24
+     ],
+     "confidence": 0.6312500238418579
+    }
+   ]
+  },
+  {
+   "text": "g1",
+   "box": [
+    128,
+    2,
+    158,
+    34
+   ],
+   "lines": [
+    {
+     "text": "g1",
+     "box": [
+      128,
+      2,
+      158,
+      34
+     ],
+     "confidence": 0.501953125
+    }
+   ]
+  },
+  {
+   "text": "ELEIÇÖES 2026",
+   "box": [
+    552,
+    0,
+    752,
+    33
+   ],
+   "lines": [
+    {
+     "text": "ELEIÇÖES 2026",
+     "box": [
+      552,
+      0,
+      752,
+      33
+     ],
+     "confidence": 0.7802734375
+    }
+   ]
+  },
+  {
+   "text": "Flávio diz que fala sobre 'mudar a\nConstituição' se refere a maioridade\npenal e reforma no STF",
+   "box": [
+    287,
+    390,
+    941,
+    530
+   ],
+   "lines": [
+    {
+     "text": "Flávio diz que fala sobre 'mudar a",
+     "box": [
+      289,
+      394,
+      889,
+      432
+     ],
+     "confidence": 0.8812779188156128
+    },
+    {
+     "text": "Constituição' se refere a maioridade",
+     "box": [
+      287,
+      442,
+      942,
+      481
+     ],
+     "confidence": 0.86474609375
+    },
+    {
+     "text": "penal e reforma no STF",
+     "box": [
+      299,
+      484,
+      701,
+      530
+     ],
+     "confidence": 0.8756510615348816
+    }
+   ]
+  },
+  {
+   "text": "07\/10\/2026 1Oh15 Atualizado há um minuto",
+   "box": [
+    286,
+    552,
+    662,
+    570
+   ],
+   "lines": [
+    {
+     "text": "07\/10\/2026 1Oh15 Atualizado há um minuto",
+     "box": [
+      286,
+      552,
+      662,
+      570
+     ],
+     "confidence": 0.8439732193946838
+    }
+   ]
+  },
+  {
+   "text": "O candidato à Presidência Flávio Bolsonaro (PL) afirmou,\nnesta quarta-feira (7), que a declaração sobre querer\n\"mudar a Constituição para redemocratizar o país\" se\nreferia a propostas já anunciadas por ele caso seja eleito,\ncomo a redução da maioridade penal e mudanças no\nSupremo Tribunal Federal (STE).",
+   "box": [
+    286,
+    688,
+    750,
+    845
+   ],
+   "lines": [
+    {
+     "text": "O candidato à Presidência Flávio Bolsonaro (PL) afirmou,",
+     "box": [
+      286,
+      688,
+      742,
+      705
+     ],
+     "confidence": 0.863679826259613
+    },
+    {
+     "text": "nesta quarta-feira (7), que a declaração sobre querer",
+     "box": [
+      287,
+      716,
+      715,
+      734
+     ],
+     "confidence": 0.8796705007553101
+    },
+    {
+     "text": "\"mudar a Constituição para redemocratizar o país\" se",
+     "box": [
+      287,
+      744,
+      750,
+      763
+     ],
+     "confidence": 0.8712673783302307
+    },
+    {
+     "text": "referia a propostas já anunciadas por ele caso seja eleito,",
+     "box": [
+      287,
+      771,
+      747,
+      790
+     ],
+     "confidence": 0.8752343654632568
+    },
+    {
+     "text": "como a redução da maioridade penal e mudanças no",
+     "box": [
+      286,
+      800,
+      718,
+      817
+     ],
+     "confidence": 0.856152355670929
+    },
+    {
+     "text": "Supremo Tribunal Federal (STE).",
+     "box": [
+      286,
+      828,
+      542,
+      845
+     ],
+     "confidence": 0.8193359375
+    }
+   ]
+  },
+  {
+   "text": "\"Tem que haver, sim, uma reforma no Judiciário. Eu sou a favor da\nredução da maioridade penal há bastante tempo, tem que ser feito. Têm\npontos aqui da reforma tributária que têm que ser alterados por PEC. E o\nfim da reeleição\", afirmou o senador.",
+   "box": [
+    306,
+    1033,
+    993,
+    1136
+   ],
+   "lines": [
+    {
+     "text": "\"Tem que haver, sim, uma reforma no Judiciário. Eu sou a favor da",
+     "box": [
+      306,
+      1033,
+      929,
+      1051
+     ],
+     "confidence": 0.8715359568595886
+    },
+    {
+     "text": "redução da maioridade penal há bastante tempo, tem que ser feito. Têm",
+     "box": [
+      307,
+      1061,
+      991,
+      1081
+     ],
+     "confidence": 0.884159505367279
+    },
+    {
+     "text": "pontos aqui da reforma tributária que têm que ser alterados por PEC. E o",
+     "box": [
+      307,
+      1089,
+      993,
+      1108
+     ],
+     "confidence": 0.8922140002250671
+    },
+    {
+     "text": "fim da reeleição\", afirmou o senador.",
+     "box": [
+      306,
+      1117,
+      655,
+      1136
+     ],
+     "confidence": 0.8797607421875
+    }
+   ]
+  },
+  {
+   "text": "Durante viagem a Goiânia nessa terça-feira (6), Flávio falou que, caso seja eleito, quer\nusar a maioria no Congresso conquistada nas urnas no último domingo (4) para\n\"mudar a Constituição\", mas não disse o que pretende alterar (relembre mais abaixo).",
+   "box": [
+    287,
+    1214,
+    1006,
+    1288
+   ],
+   "lines": [
+    {
+     "text": "Durante viagem a Goiânia nessa terça-feira (6), Flávio falou que, caso seja eleito, quer",
+     "box": [
+      287,
+      1214,
+      987,
+      1231
+     ],
+     "confidence": 0.8898958563804626
+    },
+    {
+     "text": "usar a maioria no Congresso conquistada nas urnas no último domingo (4) para",
+     "box": [
+      287,
+      1242,
+      974,
+      1260
+     ],
+     "confidence": 0.88348388671875
+    },
+    {
+     "text": "\"mudar a Constituição\", mas não disse o que pretende alterar (relembre mais abaixo).",
+     "box": [
+      287,
+      1270,
+      1006,
+      1288
+     ],
+     "confidence": 0.8748372197151184
+    }
+   ]
+  },
+  {
+   "text": "Q BUSCAR",
+   "box": [
+    1072,
+    10,
+    1171,
+    26
+   ],
+   "lines": [
+    {
+     "text": "Q BUSCAR",
+     "box": [
+      1072,
+      10,
+      1171,
+      26
+     ],
+     "confidence": 0.7779017686843872
+    }
+   ]
+  },
+  {
+   "text": "Nós usamos cookies e outras tecnologias semelhantes para melhorar a sua experiência em nossos serviços, personalizar publicidade e\nrecomendar conteúdo de seu interesse. Ao utilizar nossos serviços, você está ciente dessa funcionalidade. Informamos ainda que\natualizamos nosso Aviso de Privacidade. Conheça nosso Portal da Privacidade e veja o nosso novo Aviso.",
+   "box": [
+    34,
+    1453,
+    1103,
+    1523
+   ],
+   "lines": [
+    {
+     "text": "Nós usamos cookies e outras tecnologias semelhantes para melhorar a sua experiência em nossos serviços, personalizar publicidade e",
+     "box": [
+      35,
+      1453,
+      1103,
+      1471
+     ],
+     "confidence": 0.84831303358078
+    },
+    {
+     "text": "recomendar conteúdo de seu interesse. Ao utilizar nossos serviços, você está ciente dessa funcionalidade. Informamos ainda que",
+     "box": [
+      34,
+      1478,
+      1058,
+      1496
+     ],
+     "confidence": 0.8587713241577148
+    },
+    {
+     "text": "atualizamos nosso Aviso de Privacidade. Conheça nosso Portal da Privacidade e veja o nosso novo Aviso.",
+     "box": [
+      34,
+      1505,
+      860,
+      1523
+     ],
+     "confidence": 0.8679956793785095
+    }
+   ]
+  },
+  {
+   "text": "Eleições :",
+   "box": [
+    1187,
+    64,
+    1283,
+    85
+   ],
+   "lines": [
+    {
+     "text": "Eleições :",
+     "box": [
+      1187,
+      64,
+      1283,
+      85
+     ],
+     "confidence": 0.7638888955116272
+    }
+   ]
+  },
+  {
+   "text": "Prosseguir",
+   "box": [
+    1162,
+    1477,
+    1252,
+    1497
+   ],
+   "lines": [
+    {
+     "text": "Prosseguir",
+     "box": [
+      1162,
+      1477,
+      1252,
+      1497
+     ],
+     "confidence": 0.8999999761581421
+    }
+   ]
+  }
+ ]
+}

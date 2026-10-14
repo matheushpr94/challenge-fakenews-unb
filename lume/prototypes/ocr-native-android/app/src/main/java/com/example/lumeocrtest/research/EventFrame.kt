@@ -118,6 +118,9 @@ private val ACTIONS = listOf(
     ap("proibir", "proib\\w+|proibe|bane|baniu|banir|ved(?:a|am|ou|ar)|restring\\w+"),
     ap("revogar", "revog\\w+|suspend\\w+|suspens\\w+|derrub\\w+|anul\\w+|cancel\\w+|interromp\\w+|cass(?:a|am|ou|aram)|sust(?:a|am|ou|aram)|invalid\\w+|revert(?:e|em|eu)"),
     ap("rejeitar", "rejeit\\w+|arquiv\\w+"),
+    // Ordem de uma autoridade expressa como "manda/mandou + verbo" ("TSE manda retirar", "juiz manda X apagar"):
+    // é uma decisão; o verbo que vem depois (retirar, apagar, soltar…) e o que ele afeta ficam no assunto.
+    ap("decidir", "mand(?:a|am|ou|aram) (?:o |a |os |as |\\w+ )?\\w+(?:ar|er|ir)"),
     ap("decidir", "decid\\w+|determin\\w+|julg\\w+|mantem|manteve|autoriz\\w+|liber(?:a|am|ou|aram)|conden\\w+|absolv\\w+|decret\\w+|ordena\\w*|acat(?:a|am|ou|aram)|defer(?:e|em|iu)|restabelec\\w+|restaur(?:a|am|ou)|preve|preveem|previu|estabelec(?:e|em|eu)"),
     ap("propor", "propo\\w+|propos\\w*|sugere\\w*|sugeriu|planej\\w+|pretend\\w+|articul\\w+|prepar\\w+|estud(?:a|am)|projeto de lei|avali(?:a|am)"),
     ap("anunciar", "anunci\\w+|lanc(?:a|am|ou|aram)|divulg\\w+"),
@@ -230,6 +233,28 @@ private fun findAction(t: List<Tok>): Triple<Int, Int, String>? {
     return hits.firstOrNull { h ->
         (maxOf(0, h.first - 3) until h.first).none { i -> t[i].n in SUBORDINATORS && hits.none { o -> o.first in (i + 1) until h.first } }
     }
+}
+
+// ------------------------------------------------------------------------------------------------
+// Papéis em torno de um conteúdo (publicações, vídeos, falas…): quem publicou e contra quem.
+
+/** Conteúdos que alguém publica ou diz: "publicações de X", "vídeos de X", "posts de X". */
+private const val CONTENT = "(?:publicac\\w+|posts?|postage\\w+|videos?|mensage\\w+|conteudos?|perfis|perfil|falas?|declarac\\w+|" +
+    "propagandas?|inserc\\w+|ataques?|comentarios?|montage\\w+|noticias? falsas?|desinformac\\w+)"
+private val AUTHOR_OF = Regex("(?<![a-z0-9])$CONTENT (?:feit[oa]s? por|publicad[oa]s? por|de|do|da|dos|das) (.+?)(?= (?:contra|sobre|com|que|para|no|na|nos|nas|em|ao|apos)(?![a-z0-9])|$)")
+/** "manda X retirar", "manda Lula, Janja e deputados removerem": quem recebe a ordem é quem publicou o conteúdo. */
+private val ORDERED_TO = Regex("(?<![a-z0-9])(?:mand|orden|determin|obrig)\\w* (.+?) (?:a )?(?:retir|remov|apag|exclu|derrub|tir|suspend|bloque|delet)\\w*")
+private val TARGET_OF = Regex("(?<![a-z0-9])(?:contra|sobre|ataques? a|criticas? a|que (?:ligam|ligava|associam|associavam|atacam|acusam) ?) (.+?)(?= (?:com|que|para|por|no|na|nos|nas|em|ao|apos|feit\\w+|e farmacia)(?![a-z0-9])|$)")
+
+/** Quem publicou e quem é o alvo do conteúdo citado na frase (palavras de nomes próprios; vazio quando a frase não diz). */
+fun contentRoles(sentence: String, contextText: String): Pair<Set<String>, Set<String>> {
+    val n = norm(sentence)
+    val names = nameTokens(sentence, contextText + "\n" + sentence)
+    fun namesIn(span: String) = tokens(span).filter { it in names }.toSet()
+    val authors = (AUTHOR_OF.findAll(n).map { it.groupValues[1] } + ORDERED_TO.findAll(n).map { it.groupValues[1] })
+        .flatMap { namesIn(it) }.toSet()
+    val targets = TARGET_OF.findAll(n).flatMap { namesIn(it.groupValues[1]) }.toSet()
+    return authors to (targets - authors)
 }
 
 // ------------------------------------------------------------------------------------------------
@@ -795,6 +820,29 @@ fun compareEvent(o: OriginalEvent, cand: Candidate, nowMs: Long, semantic: Doubl
                     if (evidence.none { it.texto == other.first.sentence }) evidence.add(EventEvidence(v.evidence.first().onde, other.first.sentence))
                 }
                 else -> motivos += "Detalhe: ${literalNumber(oF.sentence, value, unit)} não aparece no que foi lido"
+            }
+        }
+    }
+    // Papéis do conteúdo: quem publicou e contra quem. Mesma instituição, mesma ação e as mesmas pessoas citadas não bastam
+    // se a fonte diz que outra pessoa publicou, que o alvo é outro ou que os papéis estão trocados.
+    if (kind == EventRelation.MESMO || kind == EventRelation.DIVERGENTE) {
+        val (oA, oT) = contentRoles(oF.sentence, o.contextText)
+        val (cA, cT) = contentRoles(v.frame.sentence, ctx)
+        val swapped = (oA intersect cT).isNotEmpty() && (oT intersect cA).isNotEmpty()
+        val otherAuthors = oA.isNotEmpty() && cA.isNotEmpty() && (oA intersect cA).isEmpty()
+        val otherTargets = oT.isNotEmpty() && cT.isNotEmpty() && (oT intersect cT).isEmpty()
+        fun show(x: Set<String>) = x.joinToString(", ") { it.replaceFirstChar(Char::uppercase) }
+        when {
+            swapped -> {
+                kind = EventRelation.OUTRO
+                resumo = "Mesma ação, mas com os papéis trocados: quem publicou e quem é o alvo estão invertidos"
+                motivos += "Papéis: na fonte, ${show(cA)} publicou contra ${show(cT)}; na matéria importada, ${show(oA)} contra ${show(oT)}"
+            }
+            otherAuthors || otherTargets -> {
+                kind = EventRelation.INCERTA
+                resumo = "Mesma instituição e ação, mas o conteúdo é de outra pessoa ou tem outro alvo"
+                if (otherAuthors) motivos += "Quem publicou: a fonte cita ${show(cA)}; a matéria importada, ${show(oA)}"
+                if (otherTargets) motivos += "Alvo: a fonte cita ${show(cT)}; a matéria importada, ${show(oT)}"
             }
         }
     }

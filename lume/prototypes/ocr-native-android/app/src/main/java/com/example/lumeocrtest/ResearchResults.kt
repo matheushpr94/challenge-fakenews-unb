@@ -71,6 +71,29 @@ import androidx.compose.ui.text.style.TextOverflow
 import com.example.lumeocrtest.research.jaccard
 import com.example.lumeocrtest.research.titleKey
 import com.example.lumeocrtest.ui.theme.Amber
+import com.example.lumeocrtest.ui.theme.AmberSoft
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.offset
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.draw.shadow
+import com.example.lumeocrtest.research.SignalBand
+import com.example.lumeocrtest.research.TextSignal
+import com.example.lumeocrtest.research.FactCheckSource
+import com.example.lumeocrtest.research.factChecksIn
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
+import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.runtime.key
+import com.example.lumeocrtest.ui.theme.Ink
+import com.example.lumeocrtest.ui.theme.LumeGreen
 import com.example.lumeocrtest.ui.theme.Hairline
 import com.example.lumeocrtest.ui.theme.InkFaint
 import com.example.lumeocrtest.ui.theme.InkSoft
@@ -186,36 +209,68 @@ private fun readLabel(base: String) = when (base) {
     else -> "Só o título"
 }
 
-/**
- * Uma publicação, sempre na mesma ordem: veículo e data → título → relação com a notícia → trecho de
- * evidência → abrir a fonte. Textos que repetem a etiqueta ou o título não são mostrados de novo.
- */
-@OptIn(ExperimentalLayoutApi::class)
+/** Fonte indicada só pelo modelo de linguagem (as regras do app não confirmaram). */
+private fun fromModel(c: ResultCard) = "modelo de linguagem" in c.resumoRelacao || "modelo de linguagem" in c.relacaoTexto
+
+/** Data relativa curta ("há 3 h", "ontem", "29/09/2026"). */
+private fun relativeDate(ms: Long?, now: Long = System.currentTimeMillis()): String? {
+    ms ?: return null
+    val min = (now - ms) / 60_000L
+    return when {
+        min < 0 -> Dates.format(ms)
+        min < 60 -> "há ${maxOf(1, min)} min"
+        min < 24 * 60 -> "há ${min / 60} h"
+        min < 48 * 60 -> "ontem"
+        min < 7 * 24 * 60 -> "há ${min / (24 * 60)} dias"
+        else -> Dates.format(ms)
+    }
+}
+
+private val AVATAR_COLORS = listOf(Color(0xFF2B4035), Color(0xFF53775B), Color(0xFF2C4F6B), Color(0xFF6B4E2C),
+    Color(0xFF5A3D5C), Color(0xFF3D5A5A), Color(0xFF7A4A3A))
+
+/** Inicial do veículo num círculo de cor estável (a mesma cor para o mesmo veículo). */
 @Composable
-private fun SourceCard(c: ResultCard) {
-    val (label, tone) = relationLabel(c)
-    // "Cita o mesmo detalhe (30 dias)" já diz tudo: vira a própria etiqueta em vez de repetir a frase.
-    val summary = c.resumoRelacao.trim()
-    // A frase repete a etiqueta ("Relata o mesmo acontecimento" × "Mesmo acontecimento")?
-    // Também é redundante a frase genérica da seção ("Relata o mesmo acontecimento", "Pelo título, relata…").
+private fun OutletAvatar(name: String) {
+    val color = AVATAR_COLORS[Math.floorMod(norm(name).hashCode(), AVATAR_COLORS.size)]
+    Box(Modifier.size(36.dp).clip(CircleShape).background(color), contentAlignment = Alignment.Center) {
+        Text(name.trim().firstOrNull { it.isLetterOrDigit() }?.uppercase() ?: "?", color = Color.White,
+            style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+    }
+}
+
+/**
+ * Uma publicação, compacta: veículo, data e quanto foi lido → título → selo (só quando difere do padrão da
+ * seção) → trecho de evidência → "Por que esta relação?" (folha inferior) e abrir a fonte.
+ */
+@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
+@Composable
+private fun SourceCard(c: ResultCard, sectionLabel: String? = null) {
+    val (label, tone) = when {
+        fromModel(c) && c.relacaoTipo == RelationKind.MESMO_FATO -> "Confirmado pelo modelo de linguagem" to Tone.Blue
+        fromModel(c) -> "Indicado pelo modelo de linguagem" to Tone.Blue
+        else -> relationLabel(c)
+    }
+    // Na fonte indicada pelo modelo, o selo já diz a origem: a frase fica só com a orientação ("confira a data").
+    val summary = c.resumoRelacao.trim().let { if (fromModel(c)) it.substringBefore(" (modelo").trim() else it }
     val summaryIsLabel = summary.isNotEmpty() && (norm(summary).startsWith(norm(label)) ||
         jaccard(titleKey(summary), titleKey(label)) >= 0.5 || "relata o mesmo acontecimento" in norm(summary))
     val tagText = if (norm(summary).startsWith(norm(label)) && summary.length <= 42) summary else label
-    LumeCard {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(c.veiculo, style = MaterialTheme.typography.titleSmall, color = LumeDarkGreen, maxLines = 1,
-                    overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f))
-                c.data?.let { Text(Dates.format(it), style = MaterialTheme.typography.bodySmall, color = InkFaint) }
+    val showTag = sectionLabel == null || norm(tagText) != norm(sectionLabel)
+    LumeCard(border = if (fromModel(c)) Color(0xFFB9CDE0) else Hairline) {
+        Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                OutletAvatar(c.veiculo)
+                Column(Modifier.weight(1f)) {
+                    Text(c.veiculo, style = MaterialTheme.typography.titleSmall, color = LumeDarkGreen, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text(listOfNotNull(relativeDate(c.data), readLabel(c.baseLeitura),
+                        c.autor?.takeIf { norm(it) != norm(c.veiculo) }?.let { "por $it" }).joinToString(" · "),
+                        style = MaterialTheme.typography.bodySmall, color = InkFaint, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                }
             }
-            Text(c.titulo, style = MaterialTheme.typography.titleLarge)
-            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp),
-                itemVerticalAlignment = Alignment.CenterVertically) {
-                Tag(tagText, tone)
-                Text(listOfNotNull(readLabel(c.baseLeitura), c.autor?.takeIf { norm(it) != norm(c.veiculo) }?.let { "por $it" })
-                    .joinToString(" · "), style = MaterialTheme.typography.bodySmall, color = InkFaint)
-            }
-            if (summary.isNotEmpty() && !summaryIsLabel) Text(summary, style = MaterialTheme.typography.bodyMedium)
+            Text(c.titulo, style = MaterialTheme.typography.titleMedium, maxLines = 3, overflow = TextOverflow.Ellipsis)
+            if (showTag) Tag(tagText, tone)
+            if (summary.isNotEmpty() && !summaryIsLabel) Text(summary, style = MaterialTheme.typography.bodyMedium, color = InkSoft)
 
             val reasons = c.motivos.orEmpty()
             val compared = c.trechosComparacao.orEmpty()
@@ -229,29 +284,37 @@ private fun SourceCard(c: ResultCard) {
                     c.trecho.take(300) to (if (c.conteudo == "resumo") "Resumo da Wikipédia" else "No resumo do buscador")
                 else -> null
             }
-            // Um trecho igual ao título não acrescenta nada.
-            quote?.takeIf { jaccard(titleKey(it.first), titleKey(c.titulo)) < 0.8 }?.let { QuoteBlock(it.first, it.second) }
+            quote?.takeIf { jaccard(titleKey(it.first), titleKey(c.titulo)) < 0.8 }?.let { QuoteBlock(it.first.take(320), it.second) }
 
-            c.alertas.filterNot { it.startsWith("Lemos apenas") }.forEach {
-                Text(it, style = MaterialTheme.typography.bodySmall, color = WARN)
+            // Avisos de leitura repetem o que a linha de cima já diz ("Só o resumo do buscador").
+            c.alertas.filterNot { it.startsWith("Lemos apenas") || it.startsWith("Indicação do modelo") || it.startsWith("A regra do app não confirmou") || it.startsWith("Página indisponível") || it.startsWith("Não foi possível extrair") }.forEach {
+                Text(it, style = MaterialTheme.typography.bodySmall, color = if (fromModel(c)) Color(0xFF2C4F6B) else WARN)
             }
             if (c.republicacoes.isNotEmpty()) {
                 Text("Mesmo texto também em: " + c.republicacoes.take(3).joinToString(", ") { it.veiculo } +
                     if (c.republicacoes.size > 3) " e mais ${c.republicacoes.size - 3}" else "",
                     style = MaterialTheme.typography.bodySmall, color = InkSoft)
             }
-            // Rodapé do cartão: justificativa (a um toque) à esquerda, abrir a fonte à direita.
             var why by remember(c.url) { mutableStateOf(false) }
             FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween,
                 itemVerticalAlignment = Alignment.CenterVertically) {
-                if (reasons.isNotEmpty()) TextButton(onClick = { why = !why }, contentPadding = PaddingValues(horizontal = 4.dp),
-                    modifier = Modifier.heightIn(min = 48.dp).semantics { stateDescription = if (why) "Aberto" else "Fechado" }) {
-                    Text(if (why) "Ocultar comparação" else "Por que esta relação?", style = MaterialTheme.typography.labelLarge)
+                if (reasons.isNotEmpty()) TextButton(onClick = { why = true }, contentPadding = PaddingValues(horizontal = 4.dp),
+                    modifier = Modifier.heightIn(min = 48.dp)) {
+                    Text("Por que esta relação?", style = MaterialTheme.typography.labelLarge)
                 }
                 else Spacer(Modifier.width(1.dp))
                 OpenSourceButton(c.url, c.veiculo)
             }
-            if (reasons.isNotEmpty()) LumeVisibility(why) { ComparisonDetails(reasons, compared) }
+            if (why) ModalBottomSheet(onDismissRequest = { why = false }, containerColor = Sheet) {
+                Column(Modifier.padding(horizontal = 20.dp).padding(bottom = 28.dp).verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Overline("Por que esta relação?")
+                    Text(c.veiculo, style = MaterialTheme.typography.titleSmall, color = LumeDarkGreen)
+                    Text(c.titulo, style = MaterialTheme.typography.titleMedium)
+                    Tag(tagText, tone)
+                    ComparisonDetails(reasons, compared)
+                }
+            }
         }
     }
 }
@@ -267,7 +330,14 @@ private fun whereLabel(onde: String) = when (onde) {
 @Composable
 private fun ComparisonDetails(reasons: List<String>, compared: List<EventEvidence>) {
     Column(Modifier.padding(start = 4.dp, bottom = 4.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        reasons.forEach { Text(it, style = MaterialTheme.typography.bodySmall, color = InkSoft) }
+        reasons.forEach { r ->
+            val (k, v) = r.substringBefore(":", "") to r.substringAfter(":", r)
+            if (k.isNotEmpty() && k.length <= 22) Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Text(k, style = MaterialTheme.typography.labelLarge, color = LumeDarkGreen, modifier = Modifier.width(92.dp))
+                Text(v.trim(), style = MaterialTheme.typography.bodyMedium, color = Ink, modifier = Modifier.weight(1f))
+            } else Text(r, style = MaterialTheme.typography.bodyMedium, color = InkSoft)
+        }
+        if (compared.isNotEmpty()) HorizontalDivider(color = Hairline)
         compared.forEach { e -> QuoteBlock(e.texto, whereLabel(e.onde)) }
     }
 }
@@ -288,27 +358,29 @@ private fun ContextSection(items: List<ContextItem>) {
 
 /** Lista de fontes: os primeiros itens entram em sequência suave; o restante fica atrás de "Ver mais". */
 @Composable
-private fun CardList(items: List<ResultCard>, visible: Int, moreLabel: String) {
+private fun CardList(items: List<ResultCard>, visible: Int, moreLabel: String, sectionLabel: String? = null) {
     var expanded by remember(items) { mutableStateOf(false) }
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        items.take(visible).forEachIndexed { i, c -> Reveal(i, c.url) { SourceCard(c) } }
+        items.take(visible).forEachIndexed { i, c -> Reveal(i, c.url) { SourceCard(c, sectionLabel) } }
         val rest = items.drop(visible)
         if (rest.isNotEmpty()) {
             ExpanderRow(if (expanded) "Ver menos" else "$moreLabel (${rest.size})", expanded, { expanded = !expanded })
-            LumeVisibility(expanded) { Column(verticalArrangement = Arrangement.spacedBy(10.dp)) { rest.forEach { SourceCard(it) } } }
+            LumeVisibility(expanded) { Column(verticalArrangement = Arrangement.spacedBy(10.dp)) { rest.forEach { SourceCard(it, sectionLabel) } } }
         }
     }
 }
 
-/** Grupo secundário de publicações: fechado por padrão, com a contagem no rótulo. */
+private val SECTION_COLORS = mapOf("Mesmo fato" to LumeGreen, "Divergente" to Amber, "Incerta" to Color(0xFF8FB0C9),
+    "Contexto" to Color(0xFFC9CFC2), "Anteriores" to Color(0xFFDDE1D7), "Não independentes" to Color(0xFFB5B9AE))
+
+/** Barra fina com a proporção de cada tipo de relação (cores das seções). */
 @Composable
-private fun SecondaryGroup(title: String, subtitle: String, items: List<ResultCard>) {
-    if (items.isEmpty()) return
-    Collapsible("$title (${items.size})", key = items, strong = true) {
-        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Text(subtitle, style = MaterialTheme.typography.bodySmall, color = InkSoft)
-            items.forEach { SourceCard(it) }
-        }
+private fun ProportionBar(parts: List<Pair<Int, Color>>) {
+    val total = parts.sumOf { it.first }
+    if (total == 0) return
+    Row(Modifier.fillMaxWidth().height(8.dp).clip(RoundedCornerShape(4.dp)).semantics { contentDescription = "Proporção dos tipos de relação" },
+        horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+        parts.filter { it.first > 0 }.forEach { (n, color) -> Box(Modifier.weight(n.toFloat()).fillMaxHeight().background(color)) }
     }
 }
 
@@ -324,7 +396,7 @@ private fun Stat(value: Int, label: String, modifier: Modifier = Modifier, tone:
 }
 
 @Composable
-private fun ResultBlock(r: ResearchResult, title: String?, onOption: (String) -> Unit) {
+private fun ResultBlock(r: ResearchResult, title: String?, onOption: (String) -> Unit, signal: TextSignal? = null) {
     val all = r.resultados.values.flatten().distinctBy { it.url }
     val notIndependent = all.filter { it.relacao == "nao_independente" }
     val independent = all - notIndependent.toSet()
@@ -344,13 +416,25 @@ private fun ResultBlock(r: ResearchResult, title: String?, onOption: (String) ->
             LumeCard(color = if (same.isNotEmpty()) LumeMist else Sheet, border = if (same.isNotEmpty()) LumeLightGreen else Hairline) {
                 Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Overline("Resumo da pesquisa", color = InkSoft)
-                    Text(when {
-                        same.isEmpty() && different.isEmpty() && uncertain.isNotEmpty() ->
-                            "Encontramos publicações parecidas, mas não deu para confirmar que tratam do mesmo acontecimento."
-                        same.isEmpty() && different.isEmpty() -> "Não encontramos outros veículos relatando este mesmo acontecimento."
-                        outlets.size == 1 -> "1 outro veículo relatou este mesmo acontecimento."
-                        else -> "${outlets.size} outros veículos relataram este mesmo acontecimento."
-                    }, style = MaterialTheme.typography.headlineSmall, modifier = Modifier.semantics { heading() })
+                    if (outlets.isNotEmpty()) Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(14.dp),
+                        modifier = Modifier.semantics(mergeDescendants = true) { heading() }) {
+                        Text("${outlets.size}", style = MaterialTheme.typography.displayMedium, color = LumeDarkGreen, fontWeight = FontWeight.SemiBold)
+                        Text(if (outlets.size == 1) "outro veículo relatou este mesmo acontecimento"
+                            else "outros veículos relataram este mesmo acontecimento", style = MaterialTheme.typography.titleMedium, color = Ink)
+                    } else Text(if (uncertain.isNotEmpty()) "Encontramos publicações parecidas, mas não deu para confirmar que tratam do mesmo acontecimento."
+                        else "Não encontramos outros veículos relatando este mesmo acontecimento.",
+                        style = MaterialTheme.typography.headlineSmall, modifier = Modifier.semantics { heading() })
+                    val publications = same.size + different.size
+                    if (outlets.isNotEmpty() && outlets.size != publications)
+                        Text("Em $publications publicações; algumas foram republicadas por mais de um veículo.",
+                            style = MaterialTheme.typography.bodySmall, color = InkSoft)
+                    ProportionBar(listOf(same.size to SECTION_COLORS.getValue("Mesmo fato"), different.size to SECTION_COLORS.getValue("Divergente"),
+                        uncertain.size to SECTION_COLORS.getValue("Incerta"), context.size to SECTION_COLORS.getValue("Contexto"),
+                        older.size to SECTION_COLORS.getValue("Anteriores")))
+                    val dated = (same + different).filter { it.data != null }.sortedBy { it.data }
+                    if (dated.size >= 2) Text("Primeiro: ${dated.first().veiculo} (${Dates.format(dated.first().data!!)}) · " +
+                        "mais recente: ${dated.last().veiculo} (${relativeDate(dated.last().data)})",
+                        style = MaterialTheme.typography.bodySmall, color = InkSoft)
                     if (detail != null && (same.isNotEmpty() || different.isNotEmpty())) {
                         val cites = same.count { it.detalheStatus == DetailStatus.CITA }
                         Text("Sobre o detalhe “$detail”", style = MaterialTheme.typography.labelMedium, color = InkSoft)
@@ -376,34 +460,50 @@ private fun ResultBlock(r: ResearchResult, title: String?, onOption: (String) ->
                 }
             }
         }
+        signal?.let { SignalPill(it) }
         // Quantidades comparáveis (ex.: "tem 5 títulos"): síntese própria por regras.
         if (r.interpretacao.quantity != null) r.sintese?.let { IndicationCard(it, observations = r.observacoes) }
         r.detalhesAdicionais.forEach { IndicationCard(it, "Outro detalhe da mesma frase") }
         r.avisos.forEach { Text(it, style = MaterialTheme.typography.bodySmall, color = WARN) }
 
-        if (same.isNotEmpty()) {
-            SectionHeader("Quais publicações falam deste mesmo acontecimento?",
-                "Outros veículos, com o mesmo envolvido, a mesma ação, o mesmo assunto e data compatível.")
-            val ordered = same.sortedBy { when (it.detalheStatus) { DetailStatus.CITA -> 0; DetailStatus.NAO_CITA -> 1; else -> 2 } }
-            CardList(ordered, 4, "Ver mais publicações do mesmo acontecimento")
+        // Fontes por tipo de relação: um filtro por vez, em vez de várias seções recolhidas com o mesmo peso.
+        val sections = listOf(
+            Triple("Mesmo fato", same.sortedBy { when (it.detalheStatus) { DetailStatus.CITA -> 0; DetailStatus.NAO_CITA -> 1; else -> 2 } },
+                "Outros veículos, com o mesmo envolvido, a mesma ação, o mesmo assunto e data compatível."),
+            Triple("Divergente", different, "Mesmo acontecimento com outro número, outro prazo ou o sentido oposto (negação). Confira o trecho."),
+            Triple("Incerta", uncertain.sortedBy { if (fromModel(it)) 0 else 1 }, "Parecidas, mas o que foi lido não basta para dizer se é o mesmo fato."),
+            Triple("Contexto", context, "Outros fatos sobre o mesmo assunto: outra ação, outro envolvido ou outra etapa."),
+            Triple("Anteriores", older, "Fatos parecidos em datas anteriores. Não mostram que o fato ocorreu agora."),
+            Triple("Não independentes", notIndependent, "A própria matéria importada, republicações dela e textos do mesmo veículo."),
+        ).filter { it.second.isNotEmpty() }
+        if (sections.isNotEmpty()) {
+            var selected by remember(r.idConsulta) { mutableStateOf(sections.first().first) }
+            val current = sections.firstOrNull { it.first == selected } ?: sections.first()
+            SectionHeader("Publicações encontradas")
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                sections.forEach { (name, items, _) ->
+                    FilterChip(selected = current.first == name, onClick = { selected = name },
+                        label = { Text("$name · ${items.size}") }, modifier = Modifier.heightIn(min = 48.dp),
+                        leadingIcon = { Box(Modifier.size(10.dp).clip(CircleShape).background(SECTION_COLORS[name] ?: InkFaint)) },
+                        colors = FilterChipDefaults.filterChipColors(selectedContainerColor = LumeLightGreen, selectedLabelColor = LumeDarkGreen))
+                }
+            }
+            Text(current.third, style = MaterialTheme.typography.bodySmall, color = InkSoft)
+            val defaultLabel = when (current.first) { "Mesmo fato" -> "Mesmo acontecimento"; "Incerta" -> "Relação incerta"
+                "Contexto" -> "Contexto relacionado"; "Anteriores" -> "Fato anterior"; "Divergente" -> "Detalhe divergente"; else -> null }
+            key(current.first) { CardList(current.second, 5, "Ver mais", defaultLabel) }
         }
-        if (different.isNotEmpty()) {
-            SectionHeader("Mesmo acontecimento, com detalhe divergente", "Confira o trecho: outro número, outro prazo ou o sentido oposto (negação).")
-            CardList(different, 3, "Ver mais")
-        }
-        SecondaryGroup("Relação incerta", "Parecidas, mas o que foi lido não basta para dizer se é o mesmo fato.", uncertain)
-        SecondaryGroup("Contexto relacionado", "Outros fatos sobre o mesmo assunto: outra ação, outro envolvido ou outra etapa.", context)
-        SecondaryGroup("Fatos parecidos em datas anteriores", "Não mostram que o fato ocorreu agora.", older)
-        SecondaryGroup("Não contam como fontes independentes", "A própria matéria importada, republicações dela e textos do mesmo veículo.", notIndependent)
         ContextSection(r.contexto)
-        UnknownsSection(r, same, different, uncertain)
+        signal?.let { TextSignalCard(it, independentOutlets = outlets.size, checks = factChecksIn(all)) }
+        UnknownsSection(r, same, different, uncertain, hasSignal = signal != null)
         AboutSearch(r)
     }
 }
 
 /** "O que ainda não sabemos?": limites reais desta pesquisa. */
 @Composable
-private fun UnknownsSection(r: ResearchResult, same: List<ResultCard>, different: List<ResultCard>, uncertain: List<ResultCard>) {
+private fun UnknownsSection(r: ResearchResult, same: List<ResultCard>, different: List<ResultCard>, uncertain: List<ResultCard>,
+                            hasSignal: Boolean = false) {
     val detail = r.interpretacao.prazos.firstOrNull() ?: r.interpretacao.numeros.firstOrNull()?.texto
     val items = buildList {
         if (r.status == "insuficiente") add(r.mensagem)
@@ -417,15 +517,17 @@ private fun UnknownsSection(r: ResearchResult, same: List<ResultCard>, different
         if (different.isNotEmpty()) add("Há fontes com informação diferente sobre o detalhe; o Lume não decide qual está certa.")
         r.fontesConsultadas.filter { it.status == "erro" }.map { it.nome }.distinct().takeIf { it.isNotEmpty() }
             ?.let { add("Não responderam nesta pesquisa: ${it.joinToString(", ")}.") }
-        add("O Lume não avalia se a notícia é verdadeira. A classificação de veracidade está sendo desenvolvida separadamente.")
+        add(if (hasSignal) "O Lume não confirma nem desmente fatos. O sinal do texto mostra só o estilo da escrita, e as fontes acima mostram o que foi publicado."
+            else "O Lume não avalia se a notícia é verdadeira. A classificação de veracidade está sendo desenvolvida separadamente.")
     }
-    SectionHeader("O que ainda não sabemos?")
-    LumeCard(color = MaterialTheme.colorScheme.surfaceContainerHigh, border = Color.Transparent) {
-        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            items.forEach { item ->
-                Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    Box(Modifier.padding(top = 8.dp).size(5.dp).clip(CircleShape).background(InkFaint))
-                    Text(item, style = MaterialTheme.typography.bodyMedium, color = InkSoft)
+    Collapsible("O que ainda não sabemos? (${items.size})", key = r.idConsulta, initiallyOpen = r.status == "insuficiente", strong = true) {
+        LumeCard(color = MaterialTheme.colorScheme.surfaceContainerHigh, border = Color.Transparent) {
+            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                items.forEach { item ->
+                    Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                        Box(Modifier.padding(top = 8.dp).size(5.dp).clip(CircleShape).background(InkFaint))
+                        Text(item, style = MaterialTheme.typography.bodyMedium, color = InkSoft)
+                    }
                 }
             }
         }
@@ -474,9 +576,10 @@ fun ResearchResults(e: Evaluation, onOption: (String) -> Unit) {
     val parts = e.partes
     Column(if(LocalLumeMotion.current) Modifier.animateContentSize() else Modifier, verticalArrangement = Arrangement.spacedBy(14.dp)) {
         if (parts.size <= 1) {
-            parts.firstOrNull()?.let { ResultBlock(it, null, onOption) }
+            parts.firstOrNull()?.let { ResultBlock(it, null, onOption, e.sinalTexto) }
         } else {
             Text("O que encontramos", style = MaterialTheme.typography.headlineSmall, modifier = Modifier.semantics { heading() })
+            e.sinalTexto?.let { SignalPill(it) }
             val informative = parts.filter { it.sintese != null && it.sintese.situacao !in listOf("sem_comparacao", "insuficiente", "nao_verificavel") }
             if (informative.isEmpty()) {
                 Text("Ainda não conseguimos esclarecer todos os detalhes desta notícia. Veja as publicações encontradas e o que elas relatam.")
@@ -490,7 +593,8 @@ fun ResearchResults(e: Evaluation, onOption: (String) -> Unit) {
                 }
                 if (informative.size < parts.size) Text("Outros detalhes continuam sem esclarecimento suficiente.")
             }
-            Text(AVISO_INDICACAO, style = MaterialTheme.typography.bodySmall, color = InkFaint)
+            Text(if (e.sinalTexto != null) "Pesquisa de fontes e contexto. O sinal do texto mede só o estilo da escrita; o Lume não confirma nem desmente fatos."
+                else AVISO_INDICACAO, style = MaterialTheme.typography.bodySmall, color = InkFaint)
             parts.filter { it.status == "ambigua" }.flatMap { it.sugestoes }.distinctBy { it.texto }.takeIf { it.isNotEmpty() }
                 ?.let { ClarificationChooser(it, onOption, null) }
             ContextSection(parts.flatMap { it.contexto }.distinctBy { it.texto }.take(2))
@@ -509,6 +613,11 @@ fun ResearchResults(e: Evaluation, onOption: (String) -> Unit) {
                         related.forEach { SourceCard(it) }
                     }
                 }
+            }
+            e.sinalTexto?.let { sig ->
+                val cards = parts.flatMap { it.resultados.values.flatten() }.distinctBy { it.url }
+                TextSignalCard(sig, independentOutlets = cards.filter { it.relacaoTipo == RelationKind.MESMO_FATO }.map { it.veiculo }.distinct().size,
+                    checks = factChecksIn(cards))
             }
             ExpanderRow(if(detailsOpen) "Ocultar detalhes da análise" else "Sobre esta análise", detailsOpen, { detailsOpen = !detailsOpen })
             LumeVisibility(detailsOpen) {
@@ -533,4 +642,126 @@ private fun plainReason(r: String): String = when {
     r.startsWith("página de desambiguação") -> "página de enciclopédia com vários significados"
     r.startsWith("Outro acontecimento: ") -> "outro acontecimento: " + r.removePrefix("Outro acontecimento: ").replaceFirstChar { it.lowercase() }
     else -> r.substringBefore(" (")
+}
+
+
+// ------------------------------------------------------------------------------------------------
+// Sinal do texto
+
+private val ZoneNews = Color(0xFFD5E3EE)
+private val ZoneNeutral = Color(0xFFE7E9E0)
+private val ZoneHoax = Color(0xFFF2DCB0)
+private val InkBlue = Color(0xFF2C4F6B)
+private val SoftBlue = Color(0xFFE4EDF5)
+
+/**
+ * Estilo da escrita numa escala de três zonas (notícia comum · sem sinal claro · estilo de boato), com o marcador na
+ * posição do texto. Nunca mostra número nem "é falso": é uma pista de estilo, ao lado do que as fontes publicaram.
+ */
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun TextSignalCard(signal: TextSignal, independentOutlets: Int, checks: List<FactCheckSource>) {
+    val title = when (signal.faixa) {
+        SignalBand.DESINFORMACAO -> "Pelo estilo, o texto tende a lembrar desinformação"
+        SignalBand.NOTICIA -> "Pelo estilo, o texto tende a ser de notícia comum"
+        else -> "O estilo do texto não aponta para nenhum lado"
+    }
+    val accent = when (signal.faixa) { SignalBand.DESINFORMACAO -> Amber; SignalBand.NOTICIA -> InkBlue; else -> InkSoft }
+    // Palavras só quando o texto cai numa faixa: num texto sem sinal claro elas pesam pouco e só gerariam alarme à toa.
+    val words = when (signal.faixa) {
+        SignalBand.NOTICIA -> signal.pesamNoticia to "Palavras que lembram notícia comum"
+        SignalBand.DESINFORMACAO -> signal.pesamBoato to "Palavras que lembram boato ou checagem"
+        else -> emptyList<com.example.lumeocrtest.research.SignalTerm>() to ""
+    }
+    LumeCard {
+        Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Box(Modifier.size(8.dp).clip(CircleShape).background(accent))
+                Overline("Sinal do texto", color = InkSoft)
+            }
+            Text(title, style = MaterialTheme.typography.headlineSmall, modifier = Modifier.semantics { heading() })
+            StyleScale(signal, accent)
+            Text("Isto mede só o jeito de escrever: o vocabulário e o estilo comuns em boatos e textos de checagem, ou em notícias. " +
+                "Não confirma nem desmente os fatos.", style = MaterialTheme.typography.bodySmall, color = InkSoft)
+
+            // Cruzamento com as fontes: o estilo pode vir de rede social ou de um boato citado, e o fato ter vários relatos.
+            if (signal.faixa == SignalBand.DESINFORMACAO && independentOutlets >= 3) {
+                Surface(shape = RoundedCornerShape(12.dp), color = LumeMist) {
+                    Text("$independentOutlets veículos independentes relataram este mesmo acontecimento. O estilo pode vir de um texto de " +
+                        "rede social ou de um boato citado: veja o que as fontes dizem.",
+                        Modifier.padding(12.dp), style = MaterialTheme.typography.bodyMedium, color = LumeDarkGreen)
+                }
+            }
+            if (checks.isNotEmpty()) Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                Text(if (checks.size == 1) "Já checado por uma agência" else "Já checado por agências", style = MaterialTheme.typography.titleSmall,
+                    color = LumeDarkGreen)
+                checks.forEach { c -> ResearchLink("${c.agencia}: ${c.titulo.take(80)}", c.url, small = true) }
+            }
+            if (words.first.isNotEmpty()) Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                Text(words.second, style = MaterialTheme.typography.labelMedium, color = InkSoft)
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    words.first.take(5).forEach { t ->
+                        Surface(shape = RoundedCornerShape(50), color = if (signal.faixa == SignalBand.NOTICIA) SoftBlue else AmberSoft) {
+                            Text(t.termo, Modifier.padding(horizontal = 10.dp, vertical = 4.dp), style = MaterialTheme.typography.labelMedium,
+                                color = if (signal.faixa == SignalBand.NOTICIA) InkBlue else Amber)
+                        }
+                    }
+                }
+            }
+            Collapsible("Como ler este sinal", key = signal.posicao) {
+                Text("O modelo aprendeu com cerca de 12 mil textos do FakeRecogna (boatos e checagens de um lado, notícias do outro). " +
+                    "Ele reconhece estilo e vocabulário, por isso pode errar com notícias em tom de rede social e com boatos bem escritos. " +
+                    "Em um teste com 81 notícias reais do dia, 2 foram marcadas como estilo de boato; entre textos de boato conhecidos, " +
+                    "cerca de 7 em cada 10. Use como pista, ao lado das fontes, nunca como resposta.",
+                    style = MaterialTheme.typography.bodySmall, color = InkSoft)
+            }
+        }
+    }
+}
+
+@Composable
+private fun StyleScale(signal: TextSignal, accent: Color) {
+    val motion = LocalLumeMotion.current
+    var shown by remember(signal) { mutableStateOf(!motion) }
+    LaunchedEffect(signal) { shown = true }
+    val pos by animateFloatAsState(if (shown) signal.posicao else 0.5f, tween(if (motion) 750 else 0, easing = FastOutSlowInEasing), label = "estilo")
+    val label = when (signal.faixa) {
+        SignalBand.DESINFORMACAO -> "estilo de boato"; SignalBand.NOTICIA -> "estilo de notícia comum"; else -> "sem sinal claro"
+    }
+    Column(Modifier.semantics(mergeDescendants = true) { contentDescription = "Escala de estilo do texto: $label" }, verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        BoxWithConstraints(Modifier.fillMaxWidth().height(26.dp)) {
+            Row(Modifier.align(Alignment.Center).fillMaxWidth().height(10.dp).clip(RoundedCornerShape(5.dp)),
+                horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+                Box(Modifier.weight(signal.limiteNoticia.coerceAtLeast(0.08f)).fillMaxHeight().background(ZoneNews))
+                Box(Modifier.weight((signal.limiteBoato - signal.limiteNoticia).coerceAtLeast(0.08f)).fillMaxHeight().background(ZoneNeutral))
+                Box(Modifier.weight((1f - signal.limiteBoato).coerceAtLeast(0.08f)).fillMaxHeight().background(ZoneHoax))
+            }
+            val size = 22.dp
+            val x = (maxWidth * pos - size / 2).coerceIn(0.dp, maxWidth - size)
+            Box(Modifier.offset(x = x).align(Alignment.CenterStart).size(size).shadow(3.dp, CircleShape).clip(CircleShape)
+                .background(Color.White).border(BorderStroke(4.dp, accent), CircleShape))
+        }
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+            Text("Estilo de notícia", style = MaterialTheme.typography.labelSmall, color = InkFaint)
+            Text("Estilo de boato", style = MaterialTheme.typography.labelSmall, color = InkFaint)
+        }
+    }
+}
+
+/** Resumo de uma linha do sinal do texto, logo abaixo do resumo da pesquisa (o cartão completo fica depois das fontes). */
+@Composable
+private fun SignalPill(signal: TextSignal) {
+    val (text, accent) = when (signal.faixa) {
+        SignalBand.DESINFORMACAO -> "Sinal do texto: o estilo tende a lembrar desinformação" to Amber
+        SignalBand.NOTICIA -> "Sinal do texto: o estilo tende a ser de notícia comum" to InkBlue
+        else -> "Sinal do texto: sem sinal claro de estilo" to InkSoft
+    }
+    Surface(shape = RoundedCornerShape(14.dp), color = Sheet, border = BorderStroke(1.dp, Hairline)) {
+        Row(Modifier.fillMaxWidth().padding(horizontal = 14.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+            Box(Modifier.size(10.dp).clip(CircleShape).background(accent))
+            Text(text, style = MaterialTheme.typography.bodyMedium, color = Ink, modifier = Modifier.weight(1f))
+            Text("veja abaixo", style = MaterialTheme.typography.labelSmall, color = InkFaint)
+        }
+    }
 }

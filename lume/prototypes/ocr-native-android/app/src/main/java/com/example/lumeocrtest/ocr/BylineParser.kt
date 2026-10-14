@@ -34,10 +34,16 @@ object BylineParser {
     private val DATE_NUM = Regex("""(?<!\d)(\d{1,2})[/.](\d{1,2})[/.](\d{2,4})(?!\d)""")
     private val DATE_TXT = Regex("""(?iu)(?<!\d)(\d{1,2})º?\s+(?:de\s+)?($MONTHS|$MONTHS_SHORT)\.?\s+(?:de\s+)?(\d{4})""")
     private val TIME = Regex("""(?iu)(?<!\d)(\d{1,2})(?:h(\d{2})?|:(\d{2}))(?:min)?(?![\p{L}\d])""")
-    private val RELATIVE = Regex("""(?iu)\b(?:há|ha)\s+\d+\s+(?:minutos?|min|horas?|h|dias?)\b""")
+    private val RELATIVE = Regex("""(?iu)\b(?:há|ha)\s+(?:\d+|um|uma|dois|duas|três|tres|quatro|cinco|seis|sete|oito|nove|dez|meia)\s+(?:minutos?|min|horas?|h|dias?)\b""")
     private val PUBLISHED = Regex("""(?iu)^(?:publicad[oa]|publicação|postad[oa])(?:\s+em)?\s*:?\s*""")
     private val UPDATED = Regex("""(?iu)^(?:atualizad[oa]|última atualização|atualização)(?:\s+em)?\s*:?\s*""")
     private val AUTHOR_MARK = Regex("""(?iu)^(?:por|by|escrito por|texto(?: de)?|reportagem(?: de)?|autor(?:a|ia)?)\s*:?\s+(.+)$""")
+    /** "Nome Sobrenome e Nome Sobrenome, da Organização, Cidade e Cidade" (autoria sem "Por"). */
+    private val NAMES_THEN_ORG = Regex("""(?u)^(.+?),\s*[Dd](?:a|o|as|os)\s+(.+)$""")
+    private val DATA_LABELS = Regex("""(?iu)^(.*?)\s*data\s+de\s+publica[cç][aã]o\s*:?\s*(.+?)(?:\s+data\s+de\s+atualiza[cç][aã]o\s*:?\s*(.+))?$""")
+    /** OCR lê o zero como letra O entre dígitos ("1Oh15", "2O26"). */
+    private val OCR_ZERO = Regex("""(?<=\d)[Oo](?=\d|h\d)|(?<=\dh)[Oo](?=\d)""")
+    private val ORG_TAIL = Regex("""(?u)^[Dd](?:a|o|as|os)\s+(.+)$""")
     private val ORG_MARK = Regex("""(?u)^(?:[Dd][aoe]s?)\s+(.+)$""")
     private val ROLE = Regex("""(?iu)\b(repórter|reporter|colunista|correspondente|enviad[oa] especial|editor[a]?|colaboração|especial|estagiári[oa]|analista)\s*(?:para|d[aoe]s?)?\s+(.+)$""")
     private val PLACE_TAIL = Regex("""(?u)\s+(?:em|no|na)\s+(\p{Lu}[\p{L}]+(?:\s+(?:d[aoe]s?\s+)?\p{Lu}[\p{L}]+){0,2})$""")
@@ -52,11 +58,19 @@ object BylineParser {
     private val OCR_CAPITAL_I = Regex("""(?<![\p{L}])l(?=[bcdfgjkmnpqrstvwxz][a-zà-ÿ])""")
     /** "Nome Sobrenome Do Veículo, no Local": o separador visual (ponto, barra) às vezes some no OCR. */
     private val NAME_THEN_ORG = Regex("""^(.+?)\s+((?:Do|Da|Dos|Das)\s+\p{Lu}.*)$""")
-    private val BEFORE_DATE = Regex("""(?<![Ee]m)(?<![:|,])\s+(?=\d{1,2}/\d{1,2}/\d{2,4})""")
+    private val BEFORE_DATE = Regex("""(?<![Ee]m)(?<![:|,])(?<![Aa]tualizado)(?<![Aa]tualizada)(?<![Pp]ublicado)(?<![Pp]ublicada)(?<![Aa]tualização)(?<![Aa]tualizacao)(?<!ATUALIZADO)(?<!PUBLICADO)\s+(?=\d{1,2}/\d{1,2}/\d{2,4})""")
 
     fun parse(raw: String): BylineParse {
         var text = TZ_SUFFIX.replace(raw.replace(Regex("\\s+"), " ").trim().trimEnd('>', '›', '»', ' '), "")
         text = OCR_CAPITAL_I.replace(text, "I")
+        text = OCR_ZERO.replace(text, "0")
+        DATA_LABELS.find(text)?.let { m ->
+            val head = m.groupValues[1].trim().trim('|', '-', '–', '—', ':').trim()
+            val pub = m.groupValues[2].trim(); val upd = m.groupValues[3].trim().ifEmpty { null }
+            val dm = DATE_NUM.find(pub) ?: DATE_TXT.find(pub)
+            if (dm != null) return BylineParse(organization = head.takeIf { it.split(" ").size in 1..4 && it.any(Char::isLetter) }?.let { cleanOrg(it) },
+                date = pub, dateMs = dateMillis(dm), updated = upd)
+        }
         // Data colada ao resto da linha ("... Rio de Janeiro 29/09/2026 22h03").
         text = BEFORE_DATE.replace(text, " | ")
         NAME_THEN_ORG.find(text.substringBefore(" | "))?.let { m ->
@@ -102,7 +116,11 @@ object BylineParser {
                 val who = parts.first()
                 if (ORG_WORDS.containsMatchIn(who) || GENERIC_ORG.matches(who)) org = cleanOrg(who)
                 else if (isPersonName(who)) author = normalizeName(who)
-                parts.drop(1).firstOrNull()?.let { tail ->
+                val orgTail = parts.drop(1).firstOrNull()?.let { ORG_TAIL.find(it)?.groupValues?.get(1) }
+                if (org == null && orgTail != null && isOrgName(orgTail)) {
+                    org = cleanOrg(orgTail)
+                    parts.drop(2).joinToString(", ").takeIf { it.isNotEmpty() && isPlace(it) }?.let { place = fixPlace(it) }
+                } else parts.drop(1).firstOrNull()?.let { tail ->
                     // Depois da vírgula: veículo quando tem cara de marca/organização; senão é o local ("Por X, Brasília").
                     val brandLike = ORG_WORDS.containsMatchIn(tail) || tail.any(Char::isDigit) ||
                         Regex("^[A-Z]{2,6}$").matches(tail) || Regex("^[a-z][\\w.]{1,15}$").matches(tail)
@@ -112,10 +130,30 @@ object BylineParser {
                 }
                 continue
             }
+            if (author == null && org == null) {
+                val m = NAMES_THEN_ORG.find(seg)
+                if (m != null) {
+                    val names = m.groupValues[1].split(Regex("""\s+e\s+|\s*&\s*|\s*;\s*|,\s*""")).map { it.trim() }.filter { it.isNotEmpty() }
+                    val tail = m.groupValues[2].split(",").map { it.trim() }.filter { it.isNotEmpty() }
+                    val restTail = tail.drop(1).joinToString(", ")
+                    // Só vale se TODOS os nomes forem de pessoa e o que sobra depois da organização for um local (senão é uma frase).
+                    if (names.isNotEmpty() && names.all { isPersonName(it) } && tail.isNotEmpty() && isOrgName(tail[0]) &&
+                        (restTail.isEmpty() || isPlace(restTail))) {
+                        author = names.joinToString(" e ") { normalizeName(it) }
+                        org = cleanOrg(tail[0])
+                        if (restTail.isNotEmpty()) place = fixPlace(restTail)
+                        continue
+                    }
+                }
+            }
             val roleMatch = ROLE.find(seg)
             if (roleMatch != null) {
                 role = roleMatch.groupValues[1].lowercase()
-                org = org ?: cleanOrg(roleMatch.groupValues[2])
+                val before = seg.substring(0, roleMatch.range.first).trim().trimEnd(',', '-', '–', '—', '|').trim()
+                if (author == null && before.isNotEmpty() && isPersonName(before)) author = normalizeName(before)      // "Nome, colaboração para a Org"
+                val orgParts = roleMatch.groupValues[2].replace(Regex("(?iu)^(?:a|o|as|os)\\s+"), "").split(",").map { it.trim() }.filter { it.isNotEmpty() }
+                if (orgParts.isNotEmpty()) org = org ?: cleanOrg(orgParts[0])
+                orgParts.drop(1).joinToString(", ").takeIf { it.isNotEmpty() && isPlace(it) }?.let { place = place ?: fixPlace(it) }
                 continue
             }
             val orgMatch = ORG_MARK.find(seg)
@@ -144,9 +182,33 @@ object BylineParser {
         return BylineParse(author, org, date, dateMs, updated, place, role, bare)
     }
 
+    private val KNOWN_PLACES = listOf("Brasília", "São Paulo", "Rio de Janeiro", "Belo Horizonte", "Porto Alegre", "Salvador", "Fortaleza", "Recife", "Curitiba", "Manaus", "Belém", "Goiânia",
+        "Florianópolis", "Vitória", "Natal", "Maceió", "Aracaju", "Teresina", "São Luís", "João Pessoa", "Cuiabá", "Campo Grande", "Palmas", "Macapá", "Boa Vista", "Porto Velho", "Rio Branco",
+        "Brasil", "Washington", "Nova York", "Londres", "Paris", "Buenos Aires", "Lisboa", "Madri", "Pequim", "Jerusalém", "Kiev", "Moscou")
+    private fun plain(t: String) = java.text.Normalizer.normalize(t, java.text.Normalizer.Form.NFD).replace(Regex("\\p{M}+"), "").lowercase()
+    private fun oneEdit(a: String, b: String): Boolean {
+        if (a == b) return true
+        if (kotlin.math.abs(a.length - b.length) > 1) return false
+        var i = 0; var j = 0; var diff = 0
+        while (i < a.length && j < b.length) {
+            if (a[i] == b[j]) { i++; j++; continue }
+            if (++diff > 1) return false
+            when { a.length > b.length -> i++; a.length < b.length -> j++; else -> { i++; j++ } }
+        }
+        return diff + (a.length - i) + (b.length - j) <= 1
+    }
+    /** Local lido pelo OCR com uma letra perdida ("Braslia" -> "Brasília"): só troca por nomes conhecidos, com a mesma inicial. */
+    fun fixPlace(text: String): String = text.split(Regex("(?<=\\s)|(?=\\s)|(?<=,)|(?=,)")).joinToString("") { w ->
+        val k = plain(w)
+        if (w.length < 6 || !w.first().isUpperCase()) w
+        else KNOWN_PLACES.firstOrNull { plain(it) == k } ?: KNOWN_PLACES.firstOrNull { !it.contains(' ') && plain(it).first() == k.first() && oneEdit(plain(it), k) } ?: w
+    }
+
     fun isPlace(text: String): Boolean {
-        val words = text.split(" ")
-        return words.size in 1..3 && words.all { w -> w.first().isUpperCase() && w.all { it.isLetter() || it == '-' } } &&
+        val words = text.trim().split(" ").filter { it.isNotEmpty() }
+        val connectors = setOf("e", "de", "do", "da", "dos", "das")
+        return words.size in 1..5 && words.first().first().isUpperCase() && words.last().first().isUpperCase() &&
+            words.all { w -> (w.first().isUpperCase() && w.all { it.isLetter() || it == '-' }) || w in connectors } &&
             !ORG_WORDS.containsMatchIn(text)
     }
 

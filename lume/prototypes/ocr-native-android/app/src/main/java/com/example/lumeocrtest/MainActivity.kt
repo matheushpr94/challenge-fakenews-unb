@@ -92,6 +92,7 @@ import com.example.lumeocrtest.ui.theme.Sheet
 import com.example.lumeocrtest.ui.theme.LumeDarkGreen
 import com.example.lumeocrtest.ui.theme.LumeLightGreen
 import com.example.lumeocrtest.ui.theme.LumeOCRTestTheme
+import com.example.lumeocrtest.ocr.OcrIntegrity
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.Text as MlText
 import com.google.mlkit.vision.text.TextRecognition
@@ -100,6 +101,8 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import com.example.lumeocrtest.research.combine
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
@@ -137,6 +140,7 @@ class MainActivity : ComponentActivity() {
                 openRequest++
             }
             OPEN_CAPTURE -> {
+                com.example.lumeocrtest.capture.PageUrlHolder.forAnalysis = com.example.lumeocrtest.capture.PageUrlHolder.take()
                 sharedImage = intent.getStringExtra(CAPTURE_URI)
                 sharedText = null
                 captureError = intent.getStringExtra(CAPTURE_ERROR)
@@ -156,6 +160,15 @@ class MainActivity : ComponentActivity() {
         setIntent(intent)
         receive(intent)
     }
+    /** Ao sair do app (não ao girar a tela), o texto digitado e o rascunho são apagados; o histórico de pesquisas é outra coisa. */
+    override fun onStop() {
+        super.onStop()
+        if (!isChangingConfigurations) {
+            ResearchHistory.clearDraft(this)
+            androidx.lifecycle.ViewModelProvider(this)[AnalysisState::class.java].queryText.value = ""
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -183,7 +196,9 @@ private suspend fun runOcr(context: android.content.Context, uri: String, onPrev
         val blocks = result.toOcrBlocks()
         // Leitura por papéis: título, assinatura, corpo, legenda, crédito, lateral, anúncio… (ver ArticleReader).
         val reader = com.example.lumeocrtest.ocr.ArticleReader()
-        val reading = reader.read(blocks, inputImage.width, inputImage.height)
+        val firstReading = reader.read(blocks, inputImage.width, inputImage.height)
+        // Defesa contra leitura errada de números: relê a manchete ampliada e confere com o resto do texto.
+        val reading = OcrIntegrity.verify(firstReading, rereadHeadline(recognizer, inputImage, firstReading))
         val choice = reader.claimFor(reading)
         if ((context.applicationInfo.flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
             reading.report().chunked(3500).forEach { Log.d("LumeOcr", it) }
@@ -193,6 +208,37 @@ private suspend fun runOcr(context: android.content.Context, uri: String, onPrev
             choice.claim, choice.alternatives, reading.subtitle, reading, choice)
     } finally {
         recognizer.close()
+    }
+}
+
+/** Relê só a manchete, recortada e ampliada (2x e 3x), para o voto dos números. Vazio quando não há dígitos ou recorte. */
+private suspend fun rereadHeadline(recognizer: com.google.mlkit.vision.text.TextRecognizer, image: InputImage,
+                                   reading: com.example.lumeocrtest.ocr.ArticleReading): List<String> {
+    val title = reading.title ?: return emptyList()
+    if (title.none(Char::isDigit)) return emptyList()
+    val bitmap = image.bitmapInternal ?: return emptyList()
+    val boxes = reading.decisions.filter { it.role == com.example.lumeocrtest.ocr.BlockRole.TITULO }.mapNotNull { it.box }
+    if (boxes.isEmpty()) return emptyList()
+    val padV = (boxes.maxOf { it.bottom } - boxes.minOf { it.top }) / 10 + 4
+    val padH = bitmap.width / 100 + 4
+    val l = (boxes.minOf { it.left } - padH).coerceAtLeast(0)
+    val t = (boxes.minOf { it.top } - padV).coerceAtLeast(0)
+    val r = (boxes.maxOf { it.right } + padH).coerceAtMost(bitmap.width)
+    val b = (boxes.maxOf { it.bottom } + padV).coerceAtMost(bitmap.height)
+    if (r - l < 8 || b - t < 8) return emptyList()
+    return withContext(Dispatchers.Default) {
+        val crop = android.graphics.Bitmap.createBitmap(bitmap, l, t, r - l, b - t)
+        listOf(2, 3).mapNotNull { k ->
+            runCatching {
+                val scaled = android.graphics.Bitmap.createScaledBitmap(crop, (crop.width * k).coerceAtMost(4096), (crop.height * k).coerceAtMost(4096), true)
+                val text: MlText = suspendCancellableCoroutine { cont ->
+                    recognizer.process(InputImage.fromBitmap(scaled, 0))
+                        .addOnSuccessListener { if (cont.isActive) cont.resume(it) }
+                        .addOnFailureListener { if (cont.isActive) cont.resumeWithException(it) }
+                }
+                text.text
+            }.getOrNull()
+        }
     }
 }
 
@@ -252,6 +298,47 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0,
         evaluation = null; clarification = null; searchError = null; notice = null; correcting = false; enteringDetails = false
     }
 
+    /** Uma pesquisa em andamento. As prévias só aparecem quando liberadas (a pesquisa antecipada espera o esclarecimento). */
+    class SearchRun(val text: String) {
+        @Volatile var showPreview = false
+        @Volatile var buffered: Evaluation? = null
+        @Volatile var finished = false
+        lateinit var result: kotlinx.coroutines.Deferred<Evaluation>
+    }
+
+    fun showPreview(run: SearchRun, ticket: Long, preview: Evaluation) {
+        if (!run.finished && gate.deliver(ticket, preview) { evaluation = it }) busyText = "Confirmando nas páginas das fontes…"
+    }
+
+    fun kotlinx.coroutines.CoroutineScope.startSearch(text: String, ticket: Long, showPreviewNow: Boolean): SearchRun {
+        val run = SearchRun(text).also { it.showPreview = showPreviewNow }
+        run.result = async {
+            service.evaluate(text, "req-$ticket", articleContext) { preview ->
+                // Prévia pela busca (títulos e trechos) enquanto as páginas das fontes são lidas.
+                scope.launch { if (run.showPreview) showPreview(run, ticket, preview) else run.buffered = preview }
+            }.also { run.finished = true }
+        }
+        return run
+    }
+
+    suspend fun finishSearch(run: SearchRun, ticket: Long) {
+        try {
+            val result = run.result.await()
+            result.partes.forEach { p -> p.diagnostico?.report()?.chunked(3500)?.forEach { Log.d("LumeTrace", it) } }
+            if (gate.deliver(ticket, result) { evaluation = it }) {
+                ResearchHistory.save(context, run.text, result)
+                state.historyRevision.intValue++
+            } else Log.i(TAG, "resposta descartada: pertence a uma pesquisa anterior (req-$ticket)")
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: Exception) {
+            Log.e(TAG, "pesquisa falhou", e)
+            gate.deliver(ticket, e) { searchError = "Não foi possível concluir a pesquisa. Verifique a conexão e tente novamente." }
+        } finally {
+            if (gate.isCurrent(ticket)) busyText = ""
+        }
+    }
+
     fun runSearch(text: String) {
         job?.cancel()
         val ticket = gate.next()
@@ -259,23 +346,7 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0,
         searchedText = text
         busyText = "Pesquisando e lendo as fontes…"
         lastAction = { runSearch(text) }
-        job = scope.launch {
-            try {
-                val result = service.evaluate(text, "req-$ticket", articleContext)
-                result.partes.forEach { p -> p.diagnostico?.report()?.chunked(3500)?.forEach { Log.d("LumeTrace", it) } }
-                if (gate.deliver(ticket, result) { evaluation = it }) {
-                    ResearchHistory.save(context, text, result)
-                    state.historyRevision.intValue++
-                } else Log.i(TAG, "resposta descartada: pertence a uma pesquisa anterior (req-$ticket)")
-            } catch (e: CancellationException) {
-                throw e
-            } catch (e: Exception) {
-                Log.e(TAG, "pesquisa falhou", e)
-                gate.deliver(ticket, e) { searchError = "Não foi possível concluir a pesquisa. Verifique a conexão e tente novamente." }
-            } finally {
-                if (gate.isCurrent(ticket)) busyText = ""
-            }
-        }
+        job = scope.launch { finishSearch(startSearch(text, ticket, true), ticket) }
     }
 
     fun clarifyThenSearch() {
@@ -286,21 +357,35 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0,
         busyText = "Entendendo a pergunta…"
         lastAction = { clarifyThenSearch() }
         job = scope.launch {
+            // Pesquisa antecipada: começa junto com o esclarecimento, com o mesmo texto que ele usaria se não
+            // precisar perguntar nada. Só é mostrada depois que o esclarecimento confirma; senão é cancelada.
+            val specText = combine(flowOriginal, flowDetails)
+            val spec = startSearch(specText, ticket, false)
             try {
                 val c = service.clarify(flowOriginal, flowDetails, flowRejected, flowRound)
-                if (!gate.isCurrent(ticket)) return@launch
+                if (!gate.isCurrent(ticket)) { spec.result.cancel(); return@launch }
                 if (c.precisaEscolher) {
+                    spec.result.cancel()
                     clarification = c
                     lastOptions = c
                     busyText = ""
                     if (c.aviso.isNotEmpty()) Log.w(TAG, c.aviso)
+                } else if (c.textoPesquisa == specText) {
+                    searchedText = specText
+                    busyText = "Pesquisando e lendo as fontes…"
+                    lastAction = { runSearch(specText) }
+                    spec.showPreview = true
+                    spec.buffered?.let { showPreview(spec, ticket, it) }
+                    finishSearch(spec, ticket)
                 } else {
+                    spec.result.cancel()
                     runSearch(c.textoPesquisa)
                 }
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
                 Log.e(TAG, "esclarecimento falhou", e)
+                spec.result.cancel()
                 if (gate.isCurrent(ticket)) runSearch(flowOriginal) // sem esclarecimento, pesquisa como escrito
             }
         }
@@ -411,8 +496,10 @@ internal fun OcrScreen(modifier: Modifier = Modifier, importRequest: Int = 0,
             recognizedText = out.text; cleanedText = out.cleaned; metadata = out.metadata
             mainClaim = out.mainClaim; subtitle = out.subtitle; claims = out.otherClaims
             reading = out.reading; claimChoice = out.choice
+            val pageUrl = com.example.lumeocrtest.capture.PageUrlHolder.takeForAnalysis()
             articleContext = ArticleContext(out.reading.title, out.reading.subtitle, out.reading.body,
-                out.metadata.source, out.metadata.publishedAtMs, author = out.metadata.author)
+                out.metadata.source, out.metadata.publishedAtMs, author = out.metadata.author,
+                url = pageUrl ?: out.metadata.url, urlComplete = pageUrl != null)
             ocrState = ""
             // Só preenche a pesquisa quando há uma afirmação clara; senão, pede a escolha ao usuário.
             queryText = out.choice.claim.orEmpty()

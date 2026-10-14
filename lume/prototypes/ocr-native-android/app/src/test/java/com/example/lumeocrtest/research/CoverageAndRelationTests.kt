@@ -208,6 +208,21 @@ class CoverageAndRelationTests {
         assertEquals(RelationKind.ANTERIOR, card(r, "Jornal B").relacaoTipo)
     }
 
+    @Test fun previewDoesNotChangeFinalResult() {
+        // A prévia (resultado antes de ler as páginas) não pode alterar o resultado final.
+        val without = run(web())
+        val previews = mutableListOf<ResearchResult>()
+        val with = runBlocking { ResearchService(fetcher = web(), clock = { NOW }).search(CLAIM, "t", ARTICLE) { previews.add(it) } }
+        assertEquals(1, previews.size)
+        fun sig(r: ResearchResult) = r.resultados.mapValues { (_, v) -> v.map { listOf(it.veiculo, it.url, it.relacaoTipo, it.resumoRelacao, it.baseLeitura, it.detalheStatus, it.trechoRelacao, it.alertas) } }
+        assertEquals(sig(without), sig(with))
+        assertEquals(without.status, with.status)
+        assertEquals(without.sintese, with.sintese)
+        assertEquals(without.diagnostico!!.itens, with.diagnostico!!.itens)
+        // A prévia vem antes da leitura: nenhum cartão dela foi baseado na página.
+        assertTrue(previews[0].resultados.values.flatten().none { it.baseLeitura == "pagina" })
+    }
+
     @Test fun semanticSimilarityNeverDecidesAlone() {
         // Comparador de sentido simulado que erra de propósito: tudo "idêntico" (1.0) e depois tudo "sem relação" (0.0).
         val allSame = SemanticRanker { _, texts -> texts.map { 1.0 } }

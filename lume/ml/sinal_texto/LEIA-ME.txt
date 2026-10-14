@@ -1,0 +1,13 @@
+SINAL DO TEXTO (estilo da escrita) — servidor local do Lume
+Documentação completa: lume/docs/SINAL-DO-TEXTO.md
+
+Arquivos
+  exportar_modelo.py   lê o .pkl (carregador restrito) e grava modelo_sinal.json (pesos, vocabulário, idf)
+  sinal.py             lematiza com spaCy, calcula TF-IDF e a distância ao hiperplano (sem scikit-learn)
+  teste_paridade.py    confere que sinal.py reproduz o pipeline original (diferença máxima ~1e-7)
+  coletar_noticias.py  coleta notícias reais atuais (Bing Notícias RSS + página; robots.txt, 1 req/s por domínio)
+  calibrar.py          escolhe as faixas e grava faixas.json com as taxas medidas
+  servidor_sinal.py    POST /sinal (127.0.0.1:8766); não registra o texto
+Ambiente: .venv com spaCy + pt_core_news_sm (python -m venv .venv && pip install spacy pandas scikit-learn beautifulsoup4
+  && python -m spacy download pt_core_news_sm). scikit-learn só é usado para exportar e testar.
+Não vai para o GitHub: .venv e o texto coletado. O modelo exportado (modelo_sinal.json) deriva do .pkl da equipe: confirmar a origem/licença antes de publicar.

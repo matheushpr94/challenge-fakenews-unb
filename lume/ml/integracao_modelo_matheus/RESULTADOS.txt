@@ -1,0 +1,34 @@
+MODELO DO MATHEUS x REGRA DO APP, nos 1.650 pares v3 (medido em 09/10/2026)
+
+Como foi medido: scripts 1_calcular_entradas.py, 2_comparar.py, 3_explorar_dev.py (esta pasta). Positivo = esperado "mesmo
+acontecimento" (ou divergente); 4 pares "incerta" ficaram de fora. Cortes e pesos escolhidos só em treino/validação; teste lido
+uma vez (teste_usado.log), 248 pares de 26 histórias, intervalos sorteando histórias.
+Conferido: nota do BERTimbau no exemplo do LEIA-ME = 0,9959 (igual); sobreposição = Jaccard de palavras com 3+ letras (bate nos 36
+casos dele); 0 dos 36 casos de conferência dele estão nos nossos pares.
+
+LIMITE: é o "6B reduzido". O 6B completo tem mais 10 entradas que só o app calcula (quem, ação, assunto, quando, idade...).
+Aqui usei BERTimbau + MPNet ajustado + sobreposição, com regressão que EU treinei no nosso treino. O plano B usa os pesos e o corte DELE.
+
+TESTE (recall = acha o "mesmo fato"; FP = aceita fonte que não é)
+  só a regra (título)                         recall 22,4%  FP 4,0%
+  só a regra (trecho)                         recall 33,7%  FP 4,7%
+  plano B dele (MPNet + sobreposição)         recall 57,1%  FP 3,3%   precisão 91,8%
+  BERTimbau dele sozinho                      recall 56,1%  FP 2,7%   precisão 93,2%
+  6B reduzido sozinho                         recall 60,2%  FP 4,0%   precisão 90,8%   IC95 recall 41-79%
+  regra + 6B reduzido, com FP total <= 5%     recall 33,7%  FP 4,0%   (a regra gasta o orçamento de FP)
+DESENVOLVIMENTO (treino+validação, sem teste): regra 39,5%/4,3% | modelo 61,4%/4,9% | união 70,4%/8,2% | regra E modelo 30,5%/1,0%
+  Positivos que só a regra acha: 50 | só o modelo: 173 | ambos: 171. FPs da regra: 36 (o modelo também aceita 8).
+
+LEITURA: com o mesmo nível de erro, o modelo acha cerca de 2x mais fontes do que a regra. A regra ainda acha 50 que o modelo
+perde (vale como segundo voto, com selo mais fraco). "Regra E modelo" tem só 1% de erro: serve para o selo forte.
+Intervalos são largos (26 histórias no teste). Falta rodar o app de verdade (11 entradas) e conferir os pares de estudo dele.
+
+INTEGRAÇÃO NO APP (09/10/2026) - FEITA, SÓ NO MAC, SEM COMMIT
+- Backup do estado estável: backup/app_estavel_antes_do_6b.tar.gz (desfazer = apagar a linha lume.pairModel.url do local.properties).
+- Ligado só quando lume.pairModel.url=http://127.0.0.1:8765 existe no local.properties. Sem ela o app é o de antes.
+- Precisa: ollama com lume-mpnet-ajustado, servidor_bert.py rodando (../factnews/.venv/bin/python servidor_bert.py) e
+  adb reverse tcp:8765 tcp:8765 e tcp:11434 tcp:11434.
+- A regra do app e o cosseno que ela usa NÃO mudaram. O modelo só promove "contexto/outro/incerto" a "incerto" com o selo
+  "Provável mesmo fato (modelo de linguagem)" ou "Mesmo assunto, confira a data" (fonte com mais de 2 dias). Nunca rebaixa.
+- Teste no emulador: 48 notas, 19 acima do corte; 13 fontes promovidas, todas do mesmo Nobel da Paz 2026. 199 testes passam.
+- Também: o texto digitado e o rascunho são apagados ao sair do app (não ao girar a tela).

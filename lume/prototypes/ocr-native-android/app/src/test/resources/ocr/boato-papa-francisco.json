@@ -1,0 +1,330 @@
+{
+ "image": "boato-papa-francisco.png",
+ "width": 1122,
+ "height": 1394,
+ "blocks": [
+  {
+   "text": "Alegação de que papa Francisco foi\nsubstituído por ator é falsa e bizarra",
+   "box": [
+    106,
+    66,
+    792,
+    148
+   ],
+   "lines": [
+    {
+     "text": "Alegação de que papa Francisco foi",
+     "box": [
+      106,
+      66,
+      784,
+      104
+     ],
+     "confidence": 0.9132543206214905
+    },
+    {
+     "text": "substituído por ator é falsa e bizarra",
+     "box": [
+      106,
+      111,
+      792,
+      148
+     ],
+     "confidence": 0.895263671875
+    }
+   ]
+  },
+  {
+   "text": "Religião - 24\/02\/2025 - por Edgard Matsuki",
+   "box": [
+    106,
+    171,
+    459,
+    188
+   ],
+   "lines": [
+    {
+     "text": "Religião - 24\/02\/2025 - por Edgard Matsuki",
+     "box": [
+      106,
+      171,
+      459,
+      188
+     ],
+     "confidence": 0.8521050214767456
+    }
+   ]
+  },
+  {
+   "text": "Checamos!",
+   "box": [
+    392,
+    492,
+    723,
+    545
+   ],
+   "lines": [
+    {
+     "text": "Checamos!",
+     "box": [
+      392,
+      492,
+      723,
+      545
+     ],
+     "confidence": 0.8663194179534912
+    }
+   ]
+  },
+  {
+   "text": "Análise",
+   "box": [
+    119,
+    1241,
+    196,
+    1262
+   ],
+   "lines": [
+    {
+     "text": "Análise",
+     "box": [
+      119,
+      1241,
+      196,
+      1262
+     ],
+     "confidence": 0.8683035969734192
+    }
+   ]
+  },
+  {
+   "text": "t3SA SEMANA",
+   "box": [
+    428,
+    557,
+    674,
+    578
+   ],
+   "lines": [
+    {
+     "text": "t3SA SEMANA",
+     "box": [
+      428,
+      557,
+      674,
+      578
+     ],
+     "confidence": 0.4453125
+    }
+   ]
+  },
+  {
+   "text": "ESTÁ PREVISTO!",
+   "box": [
+    440,
+    584,
+    679,
+    625
+   ],
+   "lines": [
+    {
+     "text": "ESTÁ PREVISTO!",
+     "box": [
+      440,
+      584,
+      679,
+      625
+     ],
+     "confidence": 0.7989783883094788
+    }
+   ]
+  },
+  {
+   "text": "DADA ALÃnÉo",
+   "box": [
+    473,
+    670,
+    674,
+    699
+   ],
+   "lines": [
+    {
+     "text": "DADA ALÃnÉo",
+     "box": [
+      473,
+      670,
+      674,
+      699
+     ],
+     "confidence": 0.2992187440395355
+    }
+   ]
+  },
+  {
+   "text": "PAPA E UM ATOR...",
+   "box": [
+    411,
+    725,
+    691,
+    751
+   ],
+   "lines": [
+    {
+     "text": "PAPA E UM ATOR...",
+     "box": [
+      411,
+      725,
+      691,
+      751
+     ],
+     "confidence": 0.78515625
+    }
+   ]
+  },
+  {
+   "text": "ELABOMPAL\nNGUNS ALCMMS",
+   "box": [
+    512,
+    755,
+    690,
+    797
+   ],
+   "lines": [
+    {
+     "text": "ELABOMPAL",
+     "box": [
+      544,
+      756,
+      690,
+      776
+     ],
+     "confidence": 0.2586805522441864
+    },
+    {
+     "text": "NGUNS ALCMMS",
+     "box": [
+      513,
+      779,
+      613,
+      796
+     ],
+     "confidence": 0.43075284361839294
+    }
+   ]
+  },
+  {
+   "text": "UM SOSIA",
+   "box": [
+    635,
+    778,
+    687,
+    794
+   ],
+   "lines": [
+    {
+     "text": "UM SOSIA",
+     "box": [
+      635,
+      778,
+      687,
+      794
+     ],
+     "confidence": 0.4559151828289032
+    }
+   ]
+  },
+  {
+   "text": "Boatos\nAorg",
+   "box": [
+    859,
+    676,
+    943,
+    740
+   ],
+   "lines": [
+    {
+     "text": "Boatos",
+     "box": [
+      863,
+      679,
+      941,
+      706
+     ],
+     "confidence": 0.90234375
+    },
+    {
+     "text": "Aorg",
+     "box": [
+      870,
+      706,
+      940,
+      740
+     ],
+     "confidence": 0.4482421875
+    }
+   ]
+  },
+  {
+   "text": "Boato -0 papa Francisco morreu em 2019 e foi substituído por um ator\nchamado Jonathan Pryce.",
+   "box": [
+    106,
+    1132,
+    988,
+    1192
+   ],
+   "lines": [
+    {
+     "text": "Boato -0 papa Francisco morreu em 2019 e foi substituído por um ator",
+     "box": [
+      106,
+      1132,
+      988,
+      1155
+     ],
+     "confidence": 0.8740931749343872
+    },
+    {
+     "text": "chamado Jonathan Pryce.",
+     "box": [
+      106,
+      1169,
+      423,
+      1192
+     ],
+     "confidence": 0.902157723903656
+    }
+   ]
+  },
+  {
+   "text": "Um vídeo tem sido compartilhado nas redes sociais comn uma teoria da conspiração,\nno mínimo, inusitada. Segundo a gravação, o papa Francisco teria morrido em 2019 e",
+   "box": [
+    106,
+    1317,
+    1006,
+    1376
+   ],
+   "lines": [
+    {
+     "text": "Um vídeo tem sido compartilhado nas redes sociais comn uma teoria da conspiração,",
+     "box": [
+      106,
+      1317,
+      988,
+      1340
+     ],
+     "confidence": 0.8832088112831116
+    },
+    {
+     "text": "no mínimo, inusitada. Segundo a gravação, o papa Francisco teria morrido em 2019 e",
+     "box": [
+      106,
+      1353,
+      1006,
+      1376
+     ],
+     "confidence": 0.8708673119544983
+    }
+   ]
+  }
+ ]
+}
