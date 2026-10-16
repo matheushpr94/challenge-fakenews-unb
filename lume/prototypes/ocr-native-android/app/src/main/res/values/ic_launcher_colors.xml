@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Fundo do ícone do Lume: o creme do app e do site (16/10/2026). -->
+    <color name="lume_icone_fundo">#F7F8F3</color>
+</resources>
