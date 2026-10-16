@@ -16,3 +16,8 @@ lume.pairModel.embedModel=lume-mpnet-ajustado
 # Opcional: "sinal do texto" (estilo da escrita, SVM do FakeRecogna). Servidor: lume/ml/sinal_texto (porta 8766).
 # Para o emulador, encaminhe a porta com: adb reverse tcp:8766 tcp:8766
 lume.textSignal.url=http://127.0.0.1:8766
+
+# Servidor dos modelos "de fabrica" (opcional): o APK ja sai apontando para o gateway do grupo (HTTPS obrigatorio).
+# A chave e a do arquivo .token do gateway; nunca commite este arquivo com ela preenchida.
+#lume.servidor.url=https://lume.191-252-218-172.sslip.io
+#lume.servidor.chave=

@@ -37,6 +37,11 @@ lume.pairModel.embedModel=lume-mpnet-ajustado
   computador. Funciona igual no Windows e no Mac, e com celular por cabo USB.
 - Alternativa só no emulador: `http://10.0.2.2:11434` (endereço do computador visto pelo emulador), sem `adb reverse`.
 - Mudou `local.properties`? Recompile o app (o valor é gravado no APK).
+- **Servidor de fábrica (APK para distribuir):** `lume.servidor.url=https://...` e `lume.servidor.chave=<chave do .token do gateway>`
+  fazem o APK sair já apontando para o gateway do grupo (`lume/ml/gateway`), sem a pessoa colar nada em Ajustes. Em Ajustes ela
+  ainda pode trocar o servidor, e "Salvar e testar" com os campos vazios volta ao de fábrica. A chave dentro do APK é extraível por
+  quem abrir o arquivo: serve para a demonstração (o gateway limita pedidos por IP e a chave se troca em um comando), não para um
+  produto com usuários de verdade, que pediria uma chave por pessoa.
 - O modelo treinado de pares só é ativado quando `lume.pairModel.url` está configurado. Ele precisa do modelo `lume-mpnet-ajustado` no Ollama e do servidor BERTimbau acessível; faça também `adb reverse tcp:8765 tcp:8765`. O servidor aceita `LUME_BERT_DIR` para apontar para os pesos locais do BERTimbau. Sem essa configuração, o app segue com a comparação estruturada e o recurso `paraphrase-multilingual`, se disponível.
 
 ## macOS (validação pendente)
