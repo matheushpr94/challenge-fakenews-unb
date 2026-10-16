@@ -33,9 +33,9 @@ O modelo treinado de pares está integrado opcionalmente ao protótipo Android; 
 
 1. Siga o [`SETUP.md`](prototypes/ocr-native-android/SETUP.md) do protótipo e instale o app no emulador ou no celular (Android Studio, **Run**).
 2. Para usar os modelos locais, rode `bash lume/ml/iniciar_modelos_locais.sh`. Ele liga o Ollama, o servidor do BERTimbau (porta 8765) e o do sinal do texto (porta 8766) e faz o `adb reverse`. Sem esses serviços, o app funciona só com as regras.
-3. Abra o Lume e toque em **Ativar mascote**; permita **exibir sobre outros apps**.
+3. Abra o Lume. Na primeira vez ele guia a configuração (**"Ative o Lume completo"**): o Android abre, uma por vez, as telas para liberar **aparecer sobre outros apps**, **avisos** e a **leitura completa** (acessibilidade). A gotinha liga sozinha quando o essencial é liberado. Se algo ficar pendente, toque em **Ativar agora** na tela inicial.
 4. Com uma notícia aberta no navegador, toque no mascote e em **Ler esta tela**; autorize a captura. A imagem fica no aparelho e é apagada depois da leitura. Também dá para compartilhar um texto, link ou imagem, colar um texto ou importar uma imagem.
-5. Opcional: em **Ajustes › Endereço da matéria**, ative o serviço de acessibilidade do Lume. Ele lê só o endereço da página no navegador, no toque do mascote, para abrir a matéria completa e medir o estilo mesmo em prints só com a manchete.
+5. A **leitura completa** usa a acessibilidade do Android só para reconhecer o endereço da página aberta no navegador, no toque do mascote, para abrir a matéria inteira e medir o estilo mesmo em prints só com a manchete. Nada é gravado. Dá para ligar ou desligar em **Ajustes › Leitura completa**.
 
 O funcionamento em aparelhos físicos ainda precisa ser validado. Os testes até aqui foram em emulador e com o Chrome.
 
