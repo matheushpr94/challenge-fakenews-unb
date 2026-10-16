@@ -65,3 +65,11 @@ footer{flex-wrap:wrap;align-items:center;gap:14px}
 @media(max-width:850px){.lume-avatar.hero-mascot{width:205px}}
 @media(min-width:851px) and (max-height:800px){.lume-avatar.hero-mascot{width:215px}}
 @media(prefers-reduced-motion:reduce){.lume-body{animation:none!important;transform:none!important}.lume-blink{opacity:0!important;transition:none!important}}
+
+/* instalação: QR, passos e aviso de privacidade (15/10/2026) */
+.install{margin-top:18px;display:grid;grid-template-columns:132px 1fr;gap:16px 22px;align-items:start;max-width:620px}
+.install img{border:1px solid #d8ddcf;border-radius:10px;background:#fff;padding:6px;width:132px;height:132px}
+.install ol{margin:0;padding-left:18px;font-size:13px;line-height:1.5;color:var(--ink,#1f2d26)}
+.install ol li+li{margin-top:6px}
+.install .privacy{grid-column:1/-1;margin:4px 0 0;font-size:12px;line-height:1.5;color:#5f6b64}
+@media (max-width:560px){.install{grid-template-columns:1fr}.install img{justify-self:start}}

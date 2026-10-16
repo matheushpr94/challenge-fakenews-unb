@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Lume — primeira experiência</title><meta name="description" content="Experimente a prévia do Lume: um mascote que ajuda a entender notícias e posts. Demonstração com respostas de exemplo."><link rel="icon" type="image/png" href="assets/lume-mascot.png">
+  <title>Lume — primeira experiência</title><meta name="description" content="Lume: um companheiro de leitura que mostra quem mais relatou o mesmo fato de uma notícia, com o trecho que justifica. Baixe o app Android (0.4.0)."><link rel="icon" type="image/png" href="assets/lume-mascot.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,8 +14,18 @@
       <p class="lead">Um pequeno companheiro para entender<br class="desktop"> o que aparece na sua tela.</p>
       <div class="character-stage"><div class="halo"></div><img data-lume src="assets/lume-mascot.png" alt="Lume: uma gotinha verde suave, com olhos curiosos e um pequeno sorriso" class="hero-mascot"><span class="note">oi, eu sou o lume :)<svg viewBox="0 0 90 65" aria-hidden="true"><path d="M8 8Q75 3 67 53M55 41L67 55 78 44"/></svg></span></div>
       <div class="traits"><span>Curioso.</span><span>Tranquilo.</span><span>Do seu lado.</span></div>
-      <div class="android-download"><a href="https://lume-previa.vercel.app/downloads/lume-demo-0.3.0.apk" download>Baixar APK demo <span aria-hidden="true">↓</span></a><span>Android 8+ · sem consumo de IA</span><small>Instale, abra o Lume e permita exibir sobre outros apps.<br>Versão de teste com respostas fictícias.</small></div>
-    </section>
+      <div class="android-download"><a href="https://github.com/matheushpr94/challenge-fakenews-unb/releases/download/v0.4.0/lume-0.4.0-debug.apk" download>Baixar o Lume 0.4.0 (APK, 66 MB) <span aria-hidden="true">↓</span></a><span>Android 8+ · busca real em Google Notícias, Bing e Wikipédia</span></div>
+      <div class="install" id="instalar">
+        <img src="assets/qr-lume.png" alt="QR code que abre esta página, lume-previa.vercel.app" width="132" height="132">
+        <ol>
+          <li>Baixe o APK e permita “instalar apps desconhecidos” quando o Android pedir.</li>
+          <li>Abra o Lume, toque em <b>Ativar mascote</b> e permita “exibir sobre outros apps”.</li>
+          <li>Com uma notícia aberta, toque na gotinha e em <b>Ler esta tela</b>.</li>
+          <li>Para os selos do modelo e o sinal do texto, em <b>Ajustes › Servidor dos modelos</b> cole o endereço e a chave do servidor do grupo (peça no estande). Sem servidor, o app funciona só com as regras.</li>
+        </ol>
+        <p class="privacy">O Lume não diz se uma notícia é verdadeira ou falsa: mostra quem mais relatou o mesmo fato, com o trecho que justifica. O texto que você analisa passa pelo servidor do grupo apenas para calcular as notas e não é guardado.</p>
+      </div>
+      </section>
     <section class="experience" aria-label="Demonstração do aplicativo">
       <div class="demo-heading"><span>EXPERIMENTE O FLUXO</span><button id="reset" class="reset">Recomeçar ↺</button></div>
       <div class="scenario-picker"><label for="scenario-select">Exemplo</label><select id="scenario-select"><option value="0">Notícia com lacunas</option><option value="1">Post sem fonte</option><option value="2">Notícia com evidências</option></select></div>
