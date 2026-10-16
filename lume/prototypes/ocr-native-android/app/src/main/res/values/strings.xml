@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Lume</string>
-    <string name="page_url_service_name">Lume: endereço da matéria</string>
-    <string name="page_url_service_description">Quando você toca em “Ler esta tela”, o Lume lê somente o endereço da página aberta no navegador, para abrir a matéria e medir o estilo do texto. Não observa nem guarda o que você faz.</string>
+    <string name="page_url_service_name">Lume (leitura completa)</string>
+    <string name="page_url_service_description">Deixa o Lume reconhecer a notícia que você está lendo quando você toca nele. Ele só usa o endereço da página, só quando você pede, e não grava nada.</string>
 </resources>

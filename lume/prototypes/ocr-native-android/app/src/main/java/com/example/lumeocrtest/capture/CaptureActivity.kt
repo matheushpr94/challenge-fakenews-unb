@@ -10,6 +10,10 @@ import com.example.lumeocrtest.mascot.MascotService
 
 /** A captura acontece apenas após um toque e a autorização do sistema para esta sessão. */
 class CaptureActivity : Activity() {
+    companion object {
+        /** A captura veio da gotinha: o Lume não pode estar na frente na hora da foto. */
+        const val EXTRA_FROM_MASCOT = "capture_from_mascot"
+    }
     private val requestCode = 42
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +36,7 @@ class CaptureActivity : Activity() {
             val service = Intent(this, CaptureService::class.java)
                 .putExtra(CaptureService.RESULT_CODE, resultCode)
                 .putExtra(CaptureService.PROJECTION_DATA, data)
+                .putExtra(CaptureService.AVOID_LUME, intent.getBooleanExtra(EXTRA_FROM_MASCOT, false))
             if (Build.VERSION.SDK_INT >= 26) startForegroundService(service) else startService(service)
         } else {
             if (MascotService.active.value) startService(Intent(this, MascotService::class.java)
@@ -42,5 +47,6 @@ class CaptureActivity : Activity() {
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP))
         }
         finish()
+        @Suppress("DEPRECATION") overridePendingTransition(0, 0)   // sem animação: o navegador volta na hora
     }
 }

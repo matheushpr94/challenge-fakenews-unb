@@ -172,6 +172,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         com.example.lumeocrtest.research.ServerConfig.init(applicationContext)
+        lifecycle.addObserver(androidx.lifecycle.LifecycleEventObserver { _, event ->
+            when (event) {
+                androidx.lifecycle.Lifecycle.Event.ON_RESUME -> com.example.lumeocrtest.capture.AppVisibility.mainResumed = true
+                androidx.lifecycle.Lifecycle.Event.ON_PAUSE, androidx.lifecycle.Lifecycle.Event.ON_DESTROY -> com.example.lumeocrtest.capture.AppVisibility.mainResumed = false
+                else -> Unit
+            }
+        })
         enableEdgeToEdge()
         receive(intent)
         setContent { LumeOCRTestTheme { LumeApp(openRequest, sharedText, sharedImage, captureError) } }
