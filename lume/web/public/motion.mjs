@@ -22,7 +22,7 @@ export function initMascotMotion() {
     closed.className = 'lume-frame lume-blink'; closed.alt = '';
     closed.src = 'assets/lume-mascot-blink.png';
     body.append(image, closed); avatar.append(body);
-    const actor = { avatar, visible: false, ready: false, timer: null, opening: null, greeting: null };
+    const actor = { avatar, hero, visible: false, ready: false, timer: null, opening: null, greeting: null, gesture: null, gestureEnd: null, rounds: 0 };
     closed.addEventListener('load', () => { actor.ready = true; schedule(actor); });
     if (closed.complete && closed.naturalWidth) actor.ready = true;
     if (hero) avatar.addEventListener('click', () => react(actor));
@@ -30,10 +30,31 @@ export function initMascotMotion() {
   });
   const enabled = () => !paused && !media.matches && pageVisible;
   const canBlink = actor => enabled() && actor.visible && actor.ready && !actor.avatar.classList.contains('is-dragging');
+  const GESTURES = ['is-looking-left', 'is-looking-right', 'is-hopping', 'is-leaning', 'is-waving'];
   function stop(actor) {
     clearTimeout(actor.timer); clearTimeout(actor.opening); clearTimeout(actor.greeting);
-    actor.timer = actor.opening = actor.greeting = null;
-    actor.avatar.classList.remove('is-blinking', 'is-greeting');
+    clearTimeout(actor.gesture); clearTimeout(actor.gestureEnd);
+    actor.timer = actor.opening = actor.greeting = actor.gesture = actor.gestureEnd = null;
+    actor.avatar.classList.remove('is-blinking', 'is-greeting', ...GESTURES);
+  }
+  // Gestos de descanso (só o mascote grande): um gesto curto a cada 7 a 15 s, nunca o mesmo duas vezes seguidas, e a
+  // cada 3 ou 4 gestos uma pausa longa de 25 a 45 s. A pausa quebra o ar de laço infinito; o sorteio quebra o ritmo.
+  function scheduleGesture(actor) {
+    clearTimeout(actor.gesture);
+    if (!actor.hero || !canBlink(actor)) return;
+    const resting = actor.rounds > 0 && actor.rounds % (3 + Math.floor(Math.random() * 2)) === 0;
+    const wait = resting ? 25000 + Math.random() * 20000 : 7000 + Math.random() * 8000;
+    actor.gesture = setTimeout(() => {
+      if (!canBlink(actor)) return;
+      const choices = GESTURES.filter(g => g !== actor.last);
+      const pick = choices[Math.floor(Math.random() * choices.length)];
+      actor.last = pick; actor.rounds += 1;
+      actor.avatar.classList.add(pick);
+      actor.gestureEnd = setTimeout(() => {
+        actor.avatar.classList.remove(pick);
+        scheduleGesture(actor);
+      }, pick === 'is-hopping' ? 700 : pick === 'is-waving' ? 1100 : 1500);
+    }, wait);
   }
   function schedule(actor) {
     clearTimeout(actor.timer);
@@ -59,14 +80,14 @@ export function initMascotMotion() {
       control.textContent = media.matches ? 'Movimento reduzido' : paused ? 'Animações: pausadas' : 'Pausar animações';
       control.disabled = media.matches;
     }
-    for (const actor of actors) { stop(actor); schedule(actor); }
+    for (const actor of actors) { stop(actor); schedule(actor); scheduleGesture(actor); }
   }
   const observer = new IntersectionObserver(entries => {
     for (const entry of entries) {
       const actor = actors.find(a => a.avatar === entry.target);
       actor.visible = entry.isIntersecting;
       actor.avatar.classList.toggle('is-offscreen', !actor.visible);
-      stop(actor); schedule(actor);
+      stop(actor); schedule(actor); scheduleGesture(actor);
     }
   });
   actors.forEach(actor => observer.observe(actor.avatar));
@@ -92,7 +113,7 @@ export function initMascotMotion() {
       if (!actor) return;
       actor.avatar.classList.toggle('is-dragging', dragging && enabled());
       actor.avatar.style.setProperty('--drag-angle', `${Math.max(-8, Math.min(8, offset / 8))}deg`);
-      if (dragging) stop(actor); else schedule(actor);
+      if (dragging) stop(actor); else { schedule(actor); scheduleGesture(actor); }
     },
   };
 }
