@@ -56,6 +56,8 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
     val focus = LocalFocusManager.current
     var pendingPermission by rememberSaveable { mutableStateOf(false) }
     var explanation by remember { mutableStateOf(false) }
+    var guided by rememberSaveable { mutableStateOf(false) }          // configuração guiada em andamento
+    var lastMissing by rememberSaveable { mutableIntStateOf(0) }       // quantas permissões faltavam ao abrir o último passo
     var message by remember { mutableStateOf<String?>(null) }
     val prefs=remember { context.getSharedPreferences("lume_preferences",0) }
     val analysisState = remember(context) { androidx.lifecycle.ViewModelProvider(context as ComponentActivity)[AnalysisState::class.java] }
@@ -65,10 +67,14 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
     val owner=LocalLifecycleOwner.current
     var resumed by remember { mutableStateOf(owner.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) }
     var motionScale by remember { mutableFloatStateOf(Settings.Global.getFloat(context.contentResolver,Settings.Global.ANIMATOR_DURATION_SCALE,1f)) }
+    var away by remember { mutableStateOf(false) }   // o Lume saiu de cena (abriu uma tela de permissão)
+    var setupTick by remember { mutableIntStateOf(0) }   // muda ao voltar das telas de permissão, para reler o que já foi liberado
     DisposableEffect(owner) {
         val observer=LifecycleEventObserver { _,event ->
             resumed=event==Lifecycle.Event.ON_RESUME || owner.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)
+            if (event==Lifecycle.Event.ON_PAUSE) away=true
             if (event==Lifecycle.Event.ON_RESUME) {
+                if (away) { away=false; setupTick++ }   // voltou de uma tela de permissão: reavalia o que foi liberado
                 motionScale=Settings.Global.getFloat(context.contentResolver,Settings.Global.ANIMATOR_DURATION_SCALE,1f)
                 if (!Settings.canDrawOverlays(context)) context.stopService(Intent(context,MascotService::class.java))
             }
@@ -82,7 +88,7 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
         runCatching { ContextCompat.startForegroundService(context,Intent(context,MascotService::class.java)) }
             .onFailure { message="Não foi possível ativar o mascote. Tente novamente." }
     }
-    val notification=rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { startMascot() }
+    val notification=rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { if (!guided) startMascot() }
     fun activate() {
         if (Build.VERSION.SDK_INT>=33 && ContextCompat.checkSelfPermission(context,Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED)
             notification.launch(Manifest.permission.POST_NOTIFICATIONS) else startMascot()
@@ -90,8 +96,43 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
     val permission=rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (pendingPermission) {
             pendingPermission=false
-            if (Settings.canDrawOverlays(context)) activate() else message="Permissão não concedida. Você pode continuar usando texto ou imagem."
+            if (guided) { /* a avaliação acontece quando o Lume volta à tela */ }
+            else if (Settings.canDrawOverlays(context)) activate() else message="Permissão não concedida. Você pode continuar usando texto ou imagem."
         }
+    }
+    // ---- Configuração inicial guiada: pop-up (sobreposição), notificações e acessibilidade ----
+    // O Android não deixa um app ligar essas permissões sozinho; o Lume abre direto cada tela certa, uma de cada vez.
+    fun overlayOk() = Settings.canDrawOverlays(context)
+    fun notifOk() = Build.VERSION.SDK_INT<33 || ContextCompat.checkSelfPermission(context,Manifest.permission.POST_NOTIFICATIONS)==PackageManager.PERMISSION_GRANTED
+    fun a11yOk() = com.example.lumeocrtest.capture.PageUrlService.enabled ||
+        (Settings.Secure.getString(context.contentResolver,Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES)?.contains("PageUrlService")==true)
+    fun missing() = listOf(overlayOk(),notifOk(),a11yOk()).count { !it }
+    fun runNextStep() {
+        lastMissing=missing(); away=false
+        when {
+            !overlayOk() -> { pendingPermission=true; permission.launch(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,Uri.parse("package:${context.packageName}"))) }
+            !notifOk() -> notification.launch(Manifest.permission.POST_NOTIFICATIONS)
+            !a11yOk() -> {
+                message="Toque em “Lume (leitura completa)” e ligue a chave."
+                runCatching { context.startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)) }
+            }
+            else -> { guided=false; if(!active) activate() }
+        }
+    }
+    fun startGuided() { guided=true; runNextStep() }
+    LaunchedEffect(setupTick) {
+        kotlinx.coroutines.delay(600)   // junta duas voltas de tela seguidas (resultado + retomada) numa só avaliação
+        if (overlayOk() && notifOk() && !active) startMascot()   // a gotinha liga assim que o essencial sai
+        if (!guided || setupTick==0) return@LaunchedEffect   // só avalia depois que a pessoa saiu e voltou ao Lume
+        val m=missing()
+        when {
+            m==0 -> { guided=false; message=null }
+            m<lastMissing -> runNextStep()      // o passo anterior foi liberado: abre o próximo
+            else -> guided=false                // a pessoa não liberou: para de insistir
+        }
+    }
+    LaunchedEffect(Unit) {   // primeira abertura do app: já começa a configuração
+        if (!prefs.getBoolean("setup_auto",false) && missing()>0) { prefs.edit().putBoolean("setup_auto",true).apply(); startGuided() }
     }
     LaunchedEffect(openRequest) { if(openRequest>0) { analysisVisited=true; page="analysis" } }
     LaunchedEffect(page) { if(page!="analysis") focus.clearFocus() }
@@ -173,14 +214,14 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
                             Text("O endereço e a chave ficam só neste aparelho. O texto da pesquisa passa pelo túnel até o Mac do grupo; nenhuma IA em nuvem é usada.",style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
                         }
                     }
-                    SectionHeader("Endereço da matéria",modifier=Modifier.padding(horizontal=4.dp))
+                    SectionHeader("Leitura completa",modifier=Modifier.padding(horizontal=4.dp))
                     LumeCard {
                         Column(Modifier.padding(16.dp),verticalArrangement=Arrangement.spacedBy(10.dp)) {
                             val on = com.example.lumeocrtest.capture.PageUrlService.enabled
-                            Text(if(on) "Ativado. Ao tocar em 'Ler esta tela', o Lume lê só o endereço da página aberta no navegador."
-                                else "Desativado. Ative para o Lume abrir a matéria da página e medir o estilo do texto, mesmo em prints só com a manchete.",style=MaterialTheme.typography.bodyLarge)
+                            Text(if(on) "Ativada. Ao tocar em 'Ler esta tela', o Lume reconhece a notícia aberta no navegador."
+                                else "Desativada. Ative para o Lume ler a notícia inteira, mesmo quando só a manchete aparece na tela.",style=MaterialTheme.typography.bodyLarge)
                             OutlinedButton(onClick={context.startActivity(Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))},modifier=Modifier.heightIn(min=48.dp)) { Text("Abrir ajustes de acessibilidade") }
-                            Text("Em Acessibilidade, escolha 'Lume: endereço da matéria'. Ele só enxerga navegadores e não observa nada em segundo plano.",style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
+                            Text("Em Acessibilidade, escolha 'Lume (leitura completa)'. Ele só enxerga navegadores, só quando você toca no Lume, e não grava nada.",style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
                         }
                     }
                     SectionHeader("Histórico neste aparelho",modifier=Modifier.padding(horizontal=4.dp))
@@ -226,6 +267,21 @@ fun LumeApp(openRequest: Int = 0, sharedText: String? = null, sharedImage: Strin
                     Text("Cole um texto, compartilhe um link, importe uma imagem ou peça ao Lume para ler a tela com sua autorização.",
                         Modifier.fillMaxWidth().padding(horizontal=8.dp),textAlign=TextAlign.Center,color=MaterialTheme.colorScheme.secondary)
                     Spacer(Modifier.height(8.dp))
+                    if (setupTick>=0 && missing()>0) LumeCard {
+                        Column(Modifier.padding(16.dp),verticalArrangement=Arrangement.spacedBy(8.dp)) {
+                            Text("Ative o Lume completo",style=MaterialTheme.typography.titleMedium)
+                            Text("São 3 toques rápidos para ele ler a notícia que você está vendo:",style=MaterialTheme.typography.bodyMedium,color=MaterialTheme.colorScheme.secondary)
+                            Text("${if(overlayOk()) "✓" else "○"}  Gotinha sempre à mão")
+                            Text("${if(notifOk()) "✓" else "○"}  Avisos do Lume")
+                            Text("${if(a11yOk()) "✓" else "○"}  Leitura completa da notícia")
+                            Text("O Android vai mostrar um aviso padrão de segurança. O Lume só usa essa permissão para reconhecer a página que você está lendo, quando você toca nele. Nada é gravado.",
+                                style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.secondary)
+                            Button(onClick={ startGuided() },modifier=Modifier.fillMaxWidth().heightIn(min=52.dp)) { Text("Ativar agora") }
+                            if(!a11yOk()) TextButton(onClick={ runCatching { context.startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,Uri.parse("package:${context.packageName}"))) } }) {
+                                Text("Não consegue ligar? Toque aqui")
+                            }
+                        }
+                    }
                     Button(onClick={ if(Settings.canDrawOverlays(context)) activate() else explanation=true },enabled=!active,
                         modifier=Modifier.fillMaxWidth().heightIn(min=54.dp)) {
                         Icon(Icons.Outlined.WaterDrop,null,Modifier.size(20.dp)); Spacer(Modifier.width(8.dp)); Text(if(active) "Mascote ativado" else "Ativar mascote")
