@@ -1,5 +1,5 @@
 // A "demonstração" do site é a tela real do app, gravada no emulador em 14/10/2026 (lume/web/public/videos). Sem
-// simulação, sem índice em porcentagem, sem respostas fictícias: o que aparece aqui é o que o Lume 0.4.0 mostra.
+// simulação, sem índice em porcentagem, sem respostas fictícias: o que aparece aqui é o que o Lume 0.4.x mostra.
 // Cada notícia é uma lista de trechos tocados em sequência e em laço; o seletor troca a notícia.
 export const NOTICIAS = [
   { nome: 'Marco Legal dos games', trechos: ['videos/marco-legal-captura.mp4', 'videos/marco-legal-resultado.mp4'],
