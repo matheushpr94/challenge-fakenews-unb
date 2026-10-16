@@ -87,3 +87,8 @@ footer{flex-wrap:wrap;align-items:center;gap:14px}
 @keyframes lume-wave{0%,100%{transform:rotate(0)}20%{transform:rotate(-6deg)}40%{transform:rotate(6deg)}60%{transform:rotate(-5deg)}80%{transform:rotate(4deg)}}
 .motion-paused .hero-mascot .lume-body{animation:none!important}
 @media (prefers-reduced-motion:reduce){.hero-mascot .lume-body{animation:none!important}}
+
+/* gravação real dentro da moldura do celular (15/10/2026) */
+.phone-real{position:relative;overflow:hidden;background:#0d1410}
+.phone-real .demo-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit;cursor:pointer;background:#0d1410}
+.phone-real .home-bar{z-index:2}
