@@ -3,7 +3,7 @@
 // Cada notícia é uma lista de trechos tocados em sequência e em laço; o seletor troca a notícia.
 export const NOTICIAS = [
   { nome: 'Marco Legal dos games', trechos: ['videos/marco-legal-captura.mp4', 'videos/marco-legal-resultado.mp4'],
-    legenda: 'Gravação real do Lume 0.4.0 no emulador, 14/10/2026, sem edição: a notícia aberta no Chrome, a gotinha, “Ler esta tela”, a manchete lida, Pesquisar e o resultado: 6 outros veículos relataram o mesmo acontecimento.' },
+    legenda: 'Gravação real do Lume no emulador, 14/10/2026, sem edição: a notícia aberta no Chrome, a gotinha, “Ler esta tela”, a manchete lida, Pesquisar e o resultado: 6 outros veículos relataram o mesmo acontecimento.' },
   { nome: 'El Niño', trechos: ['videos/el-nino-resultado.mp4'],
     legenda: 'Resultado real para “Painel indica que El Niño pode ser um dos mais intensos desde 1950” (Agência Brasil): 9 veículos com o mesmo fato, cada um com o trecho que justifica.' },
   { nome: 'Confiança da indústria', trechos: ['videos/industria-resultado.mp4'],
