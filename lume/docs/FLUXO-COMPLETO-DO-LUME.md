@@ -108,7 +108,7 @@ Arquivo: `capture/PageUrlService.kt` + `res/xml/page_url_service.xml`.
   (`onAccessibilityEvent` vazio) e não guarda histórico. O endereço lido vale por 2 minutos e é entregue uma única vez.
 - **Validação do endereço:** sem espaços, com domínio; texto digitado na barra não vira link. Endereço **só com domínio** (feed ou página
   inicial) não conta como link de matéria.
-- **Ativação:** o usuário liga em Configurações › Acessibilidade; o app tem a seção "Endereço da matéria" em Ajustes com o atalho.
+- **Ativação:** o usuário liga em Configurações › Acessibilidade; na primeira abertura o app guia a configuração ("Ative o Lume completo") e abre as telas do Android; há também a seção "Leitura completa" em Ajustes. O serviço aparece no Android como "Lume (leitura completa)".
 - **Verificado:** Chrome (g1). Os identificadores dos outros navegadores estão no código mas **não foram testados**.
 
 ## 7. OCR e leitura da matéria
@@ -341,7 +341,7 @@ de veículos grandes: **não** é amostra de sites pequenos.
 - **Sinal do texto**: pílula e cartão com a escala de estilo (três zonas, marcador animado) e termos que pesaram.
 - **Já checado por…** quando há agência de checagem entre as fontes.
 - **"Como a pesquisa foi feita"**: fontes consultadas e falhas por fonte, etapas e motivos de cada decisão.
-- **Ajustes**: animações, salvar pesquisas/rascunho, ativar/desativar mascote, histórico local, ativar o endereço da matéria.
+- **Ajustes**: animações, salvar pesquisas/rascunho, ativar/desativar mascote, histórico local, ligar a leitura completa.
 - **Mascote**: pisca e se move; abre o painel "Posso ajudar?" com "Ler esta tela", "Abrir análise" e "Desativar mascote".
 
 ## 19. Requisitos (derivados do comportamento do app)
