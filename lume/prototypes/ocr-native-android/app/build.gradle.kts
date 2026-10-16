@@ -35,6 +35,11 @@ android {
         buildConfigField("String", "TEXT_SIGNAL_URL", "\"${localProp("lume.textSignal.url", "")}\"")
         buildConfigField("String", "PAIR_EMBED_MODEL", "\"${localProp("lume.pairModel.embedModel", "lume-mpnet-ajustado")}\"")
         buildConfigField("String", "OLLAMA_EMBED_MODEL", "\"${localProp("lume.ollama.embedModel", "paraphrase-multilingual")}\"")
+        // Servidor dos modelos "de fábrica" (gateway lume/ml/gateway por HTTPS + chave X-Lume-Token). Vazio = o app usa os
+        // endereços locais acima até a pessoa colar endereço e chave em Ajustes. Preenchido = o APK já sai apontando para o
+        // servidor do grupo; a pessoa ainda pode trocar ou limpar em Ajustes. A chave fica só no local.properties (fora do Git).
+        buildConfigField("String", "SERVER_URL", "\"${localProp("lume.servidor.url", "")}\"")
+        buildConfigField("String", "SERVER_TOKEN", "\"${localProp("lume.servidor.chave", "")}\"")
     }
 
     buildTypes {

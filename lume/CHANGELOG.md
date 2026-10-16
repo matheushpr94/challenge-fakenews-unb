@@ -1,5 +1,12 @@
 # Histórico do Lume
 
+## 0.4.1 (proposta, 15/10/2026): servidor dos modelos de fábrica
+
+- O APK pode sair já apontando para o gateway do grupo (`lume.servidor.url` e `lume.servidor.chave` no `local.properties`
+  → `BuildConfig.SERVER_URL` e `SERVER_TOKEN`). Sem preferência salva em Ajustes, vale o de fábrica; com os campos vazios em
+  "Salvar e testar", volta ao de fábrica. Sem os dois valores na compilação, nada muda em relação ao 0.4.0.
+- Modelos no ar em `https://lume.191-252-218-172.sslip.io` (VPS do grupo; só HTTPS, chave obrigatória, limite por IP).
+
 ## Protótipo Android — integração do modelo de pares — 2026-10-09
 
 - Documentada a integração opcional do modelo treinado de pares ao fluxo Android: combinação de MPNet ajustado, sobreposição lexical e BERTimbau ajustado, além do uso separado de `paraphrase-multilingual` para similaridade/ordenação.
