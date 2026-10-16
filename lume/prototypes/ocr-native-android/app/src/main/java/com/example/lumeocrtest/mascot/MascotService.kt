@@ -216,7 +216,7 @@ class MascotService : Service() {
                 val pageUrl = com.example.lumeocrtest.capture.PageUrlService.readCurrentUrl()
                 android.util.Log.i("LumePageUrl", "servico=${com.example.lumeocrtest.capture.PageUrlService.enabled} endereco=${pageUrl?.let { java.net.URI(it).host + " (" + it.length + " caracteres)" }}")
                 com.example.lumeocrtest.capture.PageUrlHolder.remember(pageUrl)
-                startActivity(Intent(this,CaptureActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                startActivity(Intent(this,CaptureActivity::class.java).putExtra(CaptureActivity.EXTRA_FROM_MASCOT,true).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
             },
             onOpen = {
                 hidePanel(); motion?.acknowledged()

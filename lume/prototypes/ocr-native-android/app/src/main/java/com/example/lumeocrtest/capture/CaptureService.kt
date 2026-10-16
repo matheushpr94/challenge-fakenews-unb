@@ -30,10 +30,13 @@ class CaptureService : Service() {
     companion object {
         const val RESULT_CODE = "capture_result_code"
         const val PROJECTION_DATA = "capture_projection_data"
+        const val AVOID_LUME = "capture_avoid_lume"
         private const val STOP = "capture_stop"
         private const val CHANNEL = "lume_capture"
         /** Espera a janela de permissão sumir e o navegador voltar à frente antes de tirar a foto da tela. */
         private const val CAPTURE_SETTLE_MS = 1_300L
+        /** Quanto tempo esperar o Lume sair da frente antes de desistir (captura pela gotinha). */
+        private const val LUME_BEHIND_MAX_MS = 3_500L
     }
 
     private val handler = Handler(Looper.getMainLooper())
@@ -41,6 +44,7 @@ class CaptureService : Service() {
     private var reader: ImageReader? = null
     private var display: VirtualDisplay? = null
     private var done = false
+    private var avoidLume = false
     private var width = 0
     private var height = 0
 
@@ -69,6 +73,7 @@ class CaptureService : Service() {
             return START_NOT_STICKY
         }
         if (projection != null || done) return START_NOT_STICKY
+        avoidLume = intent?.getBooleanExtra(AVOID_LUME, false) == true
         val permission = if (Build.VERSION.SDK_INT >= 33)
             intent?.getParcelableExtra(PROJECTION_DATA, Intent::class.java)
         else intent?.getParcelableExtra<Intent>(PROJECTION_DATA)
@@ -97,14 +102,26 @@ class CaptureService : Service() {
             width = bounds?.width() ?: resources.displayMetrics.widthPixels
             height = bounds?.height() ?: resources.displayMetrics.heightPixels
             handler.postDelayed({
-                if (!done) try {
-                    makeReader(width, height)
-                    display = projection!!.createVirtualDisplay("Lume one screen", width, height,
-                        resources.displayMetrics.densityDpi, DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
-                        reader!!.surface, null, handler)
-                } catch (_: Exception) {
-                    finishCapture(null, "Não foi possível capturar. Tente compartilhar uma imagem.")
+                // Pela gotinha, o Lume nunca pode ser a tela fotografada: espera ele sair da frente; se não sair, avisa.
+                val limit = android.os.SystemClock.uptimeMillis() + LUME_BEHIND_MAX_MS
+                fun capture() {
+                    if (done) return
+                    if (avoidLume && AppVisibility.mainResumed) {
+                        if (android.os.SystemClock.uptimeMillis() >= limit) {
+                            finishCapture(null, "O Lume ficou na frente e não deu para ler a outra tela. Abra a notícia e toque na gotinha de novo.")
+                        } else handler.postDelayed({ capture() }, 150)
+                        return
+                    }
+                    try {
+                        makeReader(width, height)
+                        display = projection!!.createVirtualDisplay("Lume one screen", width, height,
+                            resources.displayMetrics.densityDpi, DisplayManager.VIRTUAL_DISPLAY_FLAG_AUTO_MIRROR,
+                            reader!!.surface, null, handler)
+                    } catch (_: Exception) {
+                        finishCapture(null, "Não foi possível capturar. Tente compartilhar uma imagem.")
+                    }
                 }
+                capture()
             }, CAPTURE_SETTLE_MS)
             handler.postDelayed({ if (!done) finishCapture(null, "A tela não ficou disponível. Tente novamente.") }, 15_000)
         } catch (_: Exception) {
