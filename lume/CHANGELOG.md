@@ -1,5 +1,11 @@
 # Histórico do Lume
 
+## 0.4.3 (16/10/2026): ícone do Lume
+
+- O ícone do app passa a ser o mascote (a gotinha) sobre o creme do app e do site, nos três formatos do Android
+  (adaptativo, redondo e quadrado) e em todas as densidades, com a camada monocromática para os temas do Android 13+.
+  Antes era o robô padrão do Android Studio.
+
 ## 0.4.1 (proposta, 15/10/2026): servidor dos modelos de fábrica
 
 - O APK pode sair já apontando para o gateway do grupo (`lume.servidor.url` e `lume.servidor.chave` no `local.properties`
