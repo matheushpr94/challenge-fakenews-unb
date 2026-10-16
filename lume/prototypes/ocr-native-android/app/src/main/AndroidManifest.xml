@@ -30,7 +30,10 @@
             <meta-data android:name="android.accessibilityservice" android:resource="@xml/page_url_service" />
         </service>
         <service android:name=".capture.CaptureService" android:exported="false" android:foregroundServiceType="mediaProjection" />
-        <activity android:name=".capture.CaptureActivity" android:exported="false" android:excludeFromRecents="true" android:theme="@style/Theme.LumeOCRTest" />
+        <!-- Pilha própria (taskAffinity vazio) e tema transparente: o navegador continua visível atrás da janela de permissão
+             e o Lume não vem para a frente; senão a captura mostraria a tela do próprio Lume. -->
+        <activity android:name=".capture.CaptureActivity" android:exported="false" android:excludeFromRecents="true"
+            android:taskAffinity="" android:noHistory="true" android:theme="@style/Theme.LumeOCRTest.Capture" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

@@ -42,5 +42,6 @@ class CaptureActivity : Activity() {
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP))
         }
         finish()
+        @Suppress("DEPRECATION") overridePendingTransition(0, 0)   // sem animação: o navegador volta na hora
     }
 }

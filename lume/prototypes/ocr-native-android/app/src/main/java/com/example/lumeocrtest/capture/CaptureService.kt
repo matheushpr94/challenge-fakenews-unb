@@ -32,6 +32,8 @@ class CaptureService : Service() {
         const val PROJECTION_DATA = "capture_projection_data"
         private const val STOP = "capture_stop"
         private const val CHANNEL = "lume_capture"
+        /** Espera a janela de permissão sumir e o navegador voltar à frente antes de tirar a foto da tela. */
+        private const val CAPTURE_SETTLE_MS = 1_300L
     }
 
     private val handler = Handler(Looper.getMainLooper())
@@ -103,7 +105,7 @@ class CaptureService : Service() {
                 } catch (_: Exception) {
                     finishCapture(null, "Não foi possível capturar. Tente compartilhar uma imagem.")
                 }
-            }, 700)
+            }, CAPTURE_SETTLE_MS)
             handler.postDelayed({ if (!done) finishCapture(null, "A tela não ficou disponível. Tente novamente.") }, 15_000)
         } catch (_: Exception) {
             finishCapture(null, "O Android não autorizou a captura. Tente novamente.")
