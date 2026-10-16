@@ -7,7 +7,8 @@ import com.example.lumeocrtest.BuildConfig
 /**
  * Servidor dos modelos (Ollama, BERTimbau e sinal do texto) que o celular usa SEM cabo: o gateway do Mac
  * (`lume/ml/gateway`) exposto por um túnel HTTPS. Endereço e chave ficam só neste aparelho (fora do backup).
- * Sem endereço salvo, o app usa os endereços locais da compilação (emulador com `adb reverse`).
+ * Sem endereço salvo, vale o servidor "de fábrica" da compilação (BuildConfig.SERVER_URL e SERVER_TOKEN, vindos do
+ * local.properties); se ele também estiver vazio, o app usa os endereços locais da compilação (emulador com `adb reverse`).
  */
 object ServerConfig {
     const val HEADER = "X-Lume-Token"
@@ -22,21 +23,35 @@ object ServerConfig {
     fun init(context: Context) {
         val p = context.applicationContext.getSharedPreferences(FILE, Context.MODE_PRIVATE)
         prefs = p
-        remoteUrl = p.getString(KEY_URL, "").orEmpty()
-        remoteToken = p.getString(KEY_TOKEN, "").orEmpty()
+        val salvoUrl = p.getString(KEY_URL, "").orEmpty()
+        if (salvoUrl.isNotBlank()) {
+            remoteUrl = salvoUrl
+            remoteToken = p.getString(KEY_TOKEN, "").orEmpty()
+        } else {
+            aplicarFabrica()
+        }
     }
+
+    /** Endereço e chave gravados na compilação (vazios quando o APK foi gerado sem `lume.servidor.*`). */
+    private fun aplicarFabrica() {
+        remoteUrl = normalizeBaseUrl(BuildConfig.SERVER_URL).orEmpty()
+        remoteToken = if (remoteUrl.isBlank()) "" else BuildConfig.SERVER_TOKEN.trim()
+    }
+
+    /** Há um servidor de fábrica e nada foi salvo por cima dele. */
+    val isFactory: Boolean get() = remoteUrl.isNotBlank() && prefs?.getString(KEY_URL, "").isNullOrBlank()
 
     val address: String get() = remoteUrl
     val token: String get() = remoteToken
     val isRemote: Boolean get() = remoteUrl.isNotBlank()
 
-    /** Salva (ou limpa, com campos vazios). Devolve o endereço normalizado ou null se for inválido. */
+    /** Salva (ou limpa, com campos vazios: volta ao servidor de fábrica, se houver). Devolve o endereço normalizado ou null se for inválido. */
     fun save(rawUrl: String, rawToken: String): String? {
         val url = if (rawUrl.isBlank()) "" else normalizeBaseUrl(rawUrl) ?: return null
         val tk = rawToken.trim()
-        remoteUrl = url; remoteToken = tk
         prefs?.edit()?.putString(KEY_URL, url)?.putString(KEY_TOKEN, tk)?.apply()
-        return url
+        if (url.isBlank()) aplicarFabrica() else { remoteUrl = url; remoteToken = tk }
+        return remoteUrl
     }
 
     fun ollamaUrl(): String = remoteUrl.ifBlank { BuildConfig.OLLAMA_URL }
