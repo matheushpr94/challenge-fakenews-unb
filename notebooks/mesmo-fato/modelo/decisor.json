@@ -75,5 +75,21 @@
  "mesmo_da_regra": [
   "mesmo_acontecimento",
   "detalhe_divergente"
- ]
+ ],
+ "calibracao": {
+  "o_que_e": "calibração de Platt da nota (ciclo 3, exercício 4, 23/10/2026): aprendida nas notas fora da dobra do estudo, medida no simulado (Brier 0,062 -> 0,032; ECE 0,105 -> 0,014); a prova não foi aberta. Não muda a decisão: o corte 0,874239 na nota bruta equivale a 0,515 na chance.",
+  "como_usar": "logit = ln(nota / (1 - nota)); chance = 1 / (1 + exp(-(inclinacao * logit + posicao))). Mostrar como 'cerca de N em 10' (N = round(10 * chance)).",
+  "inclinacao": 1.0095,
+  "posicao": -1.8969,
+  "corte_em_chance": 0.515,
+  "exemplos": {
+   "0.44": 0.105,
+   "0.65": 0.219,
+   "0.75": 0.313,
+   "0.85": 0.464,
+   "0.874239": 0.515,
+   "0.97": 0.834
+  },
+  "medido_em": "ml_pipeline/c3_calibracao.json; figura ml_pipeline/figures/c3_calibracao.png"
+ }
 }
